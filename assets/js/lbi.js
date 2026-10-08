@@ -767,12 +767,14 @@ ${remoteMode ? remoteHtml : `
   // ---------- events ----------
   // Switching variants: if the configurator stage is on screen, it stays exactly where it is (the bar
   // must not jump away under the user's hand); from anywhere else the page goes to the new variant's hero.
-  function go(id) {
+  function go(id, open) {
     if (!byId[id]) return;
-    const stage = $(".stage"), before = stage.getBoundingClientRect();
+    const stage = $(".stage"), before = stage.getBoundingClientRect(), cmp = $("#compare"), cmpBefore = cmp && cmp.getBoundingClientRect();
     const topEdge = (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0);
-    const visible = Math.min(before.bottom, innerHeight) - Math.max(before.top, topEdge);
-    const inConfigurator = visible > 120;
+    const seen = (r) => Math.min(r.bottom, innerHeight) - Math.max(r.top, topEdge);
+    const inConfigurator = seen(before) > 120;
+    // At the compare table the page also holds still (David, 2026-10-08): the new model's column lights up in place.
+    const inCompare = !inConfigurator && !open && cmpBefore && seen(cmpBefore) > 160;
     state.id = id;
     renderProduct(true);
     try { history.replaceState(null, "", `#${id}`); } catch (e) { /* sandboxed */ }
@@ -784,15 +786,44 @@ ${remoteMode ? remoteHtml : `
       if (target < topEdge && target + after.height < innerHeight) target = Math.min(topEdge, innerHeight - after.height);
       const d = after.top - target;
       if (Math.abs(d) > 0.5) window.scrollBy({ top: d, left: 0, behavior: "instant" });
+    } else if (inCompare) {
+      const d = cmp.getBoundingClientRect().top - cmpBefore.top;
+      if (Math.abs(d) > 0.5) window.scrollBy({ top: d, left: 0, behavior: "instant" });
     } else {
       $("#product").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
     }
   }
 
+  // Scroll catch on laptops (David, 2026-10-08): scrolling down with a mouse or trackpad stops the page for a moment
+  // with the configurator framed under the switcher. The rest of that gesture, trackpad momentum included, is absorbed;
+  // the next scroll (or a long steady one) carries on down the page. Only when the whole stage fits the window.
+  (() => {
+    let armed = true, holding = false, held = 0, last = 0;
+    const edge = () => parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    const gap = () => $(".stage").getBoundingClientRect().top - edge();   // > 0 while the stage is still below its spot
+    const fits = () => matchMedia("(min-width: 900px)").matches && $(".stage").offsetHeight + edge() + 8 <= innerHeight;
+    addEventListener("scroll", () => { if (!holding && gap() > 2) armed = true; }, { passive: true });
+    addEventListener("wheel", (e) => {
+      if (e.ctrlKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      const now = performance.now();
+      if (holding) {
+        if (e.deltaY < 0 || (now - held > 800 && now - last > 220) || now - held > 2500) { holding = false; return; }
+        last = now; e.preventDefault(); return;
+      }
+      if (!armed || e.deltaY <= 0 || !fits()) return;
+      const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? innerHeight : 1), g = gap();
+      if (g > -1 && g - dy <= 0) {
+        e.preventDefault();
+        armed = false; holding = true; held = last = now;
+        if (g > 0.5) window.scrollBy({ top: g, left: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      }
+    }, { passive: false });
+  })();
+
   document.addEventListener("click", (e) => {
     const t = e.target.closest("button, a");
     if (!t) return;
-    if (t.dataset.go) { go(t.dataset.go); return; }
+    if (t.dataset.go) { go(t.dataset.go, !!t.closest("#cmp-cards")); return; }   // a phone card's "Open" button still goes to the bar
     const v = byId[state.id];
     if (t.dataset.size) { state.size = t.dataset.size; renderControls(v); return; }
     if (t.dataset.slide) {
