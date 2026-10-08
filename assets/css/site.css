@@ -1294,3 +1294,25 @@ td.ies { white-space: nowrap; }
 @media (max-width: 560px) { .tk { width: 140px; } .tk-name { font-size: 0.8125rem; } }
 .extras.cs-more { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
 .extras.cs-more .extra { grid-column: auto; }
+
+/* IES chooser: one file per wattage and color temperature */
+.ies-dlg { border: 0; border-radius: var(--radius); padding: clamp(18px, 3vw, 28px); width: min(460px, calc(100vw - 32px)); background: var(--surface); color: var(--ink); box-shadow: 0 30px 80px -20px rgb(0 0 0 / .5); }
+.ies-dlg::backdrop { background: rgb(10 12 18 / .55); backdrop-filter: blur(4px); }
+.ies-dlg form { position: absolute; top: 10px; right: 10px; margin: 0; }
+.ies-dlg .x { width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--surface-2); color: var(--ink); font-size: 1.5rem; line-height: 1; cursor: pointer; }
+.ies-dlg h3 { margin: 0; font-size: 1.25rem; }
+.ies-dlg .pn { margin: 4px 0 0; font-family: var(--font-mono); font-size: 0.875rem; font-weight: 600; }
+.ies-dlg .hint { margin: 10px 0 14px; font-size: 0.875rem; color: var(--muted); }
+.ies-dlg table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.ies-dlg th, .ies-dlg td { padding: 6px 4px; text-align: center; border-bottom: 1px solid var(--line); }
+.ies-dlg thead th { font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.ies-dlg tbody th { text-align: left; font-weight: 700; }
+.ies-dlg td a { display: inline-flex; align-items: center; gap: 4px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--accent); font-weight: 700; text-decoration: none; white-space: nowrap; }
+.ies-dlg td a:hover { border-color: var(--accent); }
+.ies-dlg td a svg { width: 14px; height: 14px; }
+.ies-dlg .all { margin-top: 16px; width: 100%; justify-content: center; }
+@media (max-width: 480px) {
+  .ies-dlg th, .ies-dlg td { padding: 6px 2px; }
+  .ies-dlg td a { padding: 6px 8px; gap: 0; font-size: 0.8125rem; }
+  .ies-dlg td a svg { display: none; }
+}

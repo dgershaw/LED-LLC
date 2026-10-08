@@ -333,6 +333,37 @@
     new IntersectionObserver(es => { const was = seen; seen = es.some(x => x.isIntersecting); if (seen && !was) requestAnimationFrame(step); }).observe(tk);
   });
 
+  /* ----- IES files: one per wattage and color temperature. The table link opens a chooser; without the script it
+     downloads the part number's zip. ----- */
+  const iesLinks = $$("a[data-ies]");
+  if (iesLinks.length) {
+    const dlg = document.createElement("dialog");
+    dlg.className = "ies-dlg"; dlg.setAttribute("aria-labelledby", "ies-dlg-h");
+    document.body.append(dlg);
+    const zipOk = {};
+    const esc = v => String(v).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    iesLinks.forEach(a => a.addEventListener("click", e => {
+      e.preventDefault();
+      const d = JSON.parse(a.dataset.ies);
+      const W = [...new Set(d.files.map(f => f[0]))], K = [...new Set(d.files.map(f => f[1]))];
+      const cell = (w, k) => { const f = d.files.find(x => x[0] === w && x[1] === k); return f ? `<a href="${esc(f[2])}" download="${esc(f[3])}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>${esc(k)}</a>` : "<span>—</span>"; };
+      dlg.innerHTML = `<form method="dialog"><button class="x" aria-label="Close">×</button></form>
+        <h3 id="ies-dlg-h">IES files</h3><p class="pn">${esc(d.pn)}</p>
+        <p class="hint">One file for each FlexWatt and FlexColor setting. Pick the one you are laying out.</p>
+        <table><thead><tr><th scope="col">Wattage</th>${K.map(k => `<th scope="col">${esc(k)}</th>`).join("")}</tr></thead>
+        <tbody>${W.map(w => `<tr><th scope="row">${esc(w)}</th>${K.map(k => `<td>${cell(w, k)}</td>`).join("")}</tr>`).join("")}</tbody></table>
+        ${d.zip ? `<a class="btn btn-primary all" href="${esc(d.zip)}" download hidden>Download all ${d.files.length} as one zip</a>` : ""}`;
+      dlg.showModal();
+      /* Some previews cannot serve zip files, so the button only appears once the zip is known to be there */
+      const all = dlg.querySelector(".all");
+      if (all) {
+        if (!(d.zip in zipOk)) zipOk[d.zip] = fetch(all.href, { method: "HEAD" }).then(r => r.ok, () => false);
+        zipOk[d.zip].then(ok => { all.hidden = !ok; });
+      }
+    }));
+    dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+  }
+
   /* ----- Customer portal: not live yet, so say so instead of going nowhere ----- */
   const tip = $("#portal-tip");
   let tipTimer = 0;
