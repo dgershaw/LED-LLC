@@ -73,7 +73,8 @@
     scored.sort((a, b) => b[0] - a[0] || a[1].pn.localeCompare(b[1].pn));
     const top = scored.slice(0, 40);
     if (!top.length) { results.innerHTML = `<div class="empty">No part numbers match “${q.replace(/[<>&]/g, "")}”. Try the first characters only, or browse by brand above.</div>`; return; }
-    results.innerHTML = top.map(([, it]) => `<a href="${root}${it.href}"><span class="pn">${it.pn}</span><span class="brand">${it.brand}</span><span class="where">${it.name}${it.table && it.table !== it.name ? " · " + it.table : ""}</span></a>`).join("");
+    const key = t => t.replace(/[^a-z0-9]/gi, "").toLowerCase();
+    results.innerHTML = top.map(([, it]) => `<a href="${root}${it.href}"><span class="pn">${it.pn}</span><span class="brand">${it.brand}</span><span class="where">${it.name}${it.table && key(it.table) !== key(it.name) ? " · " + it.table : ""}</span></a>`).join("");
   }
   input?.addEventListener("input", () => render(input.value));
   input?.addEventListener("keydown", e => {
@@ -274,9 +275,11 @@
       const [px, py] = (getComputedStyle(img).objectPosition.match(/[\d.]+%/g) || ["50%", "50%"]).map(v => parseFloat(v) / 100);
       const dx = (W - dw) * px, dy = (H - dh) * py;
       $$(".glow", fig).forEach(g => {
-        const [x, y, w, h, deg = 0] = g.dataset.g.split(",").map(Number);
-        Object.assign(g.style, { left: dx + x * dw + "px", top: dy + y * dh + "px", width: w * dw * 1.6 + "px", height: (h || w) * dw * 1.6 + "px" });  // 1.6: the halo spills past the lamp
+        const [x, y, w, h, deg = 0, top = 0.25] = g.dataset.g.split(",").map(Number);
+        const k = g.classList.contains("beam") || g.classList.contains("spark") ? 1 : 1.6;  // 1.6: the halo spills past the lamp
+        Object.assign(g.style, { left: dx + x * dw + "px", top: dy + y * dh + "px", width: w * dw * k + "px", height: (h || w) * dw * k + "px" });
         g.style.setProperty("--r", deg + "deg");
+        g.style.setProperty("--tw", top * 100 + "%");
       });
     });
     place();
@@ -363,6 +366,12 @@
     }));
     dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
   }
+
+  /* ----- Wide tables: fade the right edge while there are more columns to swipe to ----- */
+  $$(".table-scroll.wide-table").forEach(box => {
+    const edge = () => box.classList.toggle("more", box.scrollLeft + box.clientWidth < box.scrollWidth - 4);
+    edge(); box.addEventListener("scroll", edge, { passive: true }); window.addEventListener("resize", edge);
+  });
 
   /* ----- Customer portal: not live yet, so say so instead of going nowhere ----- */
   const tip = $("#portal-tip");
