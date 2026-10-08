@@ -32,6 +32,45 @@
 
   const V = [
     {
+      id: "g1", group: "white", name: "LBI G1", short: "G1",
+      kind: "Economical linkable white light bar", glyph: "#fff8ec", profile: "slim",
+      tagline: "The economical LBI. Up to 146 lumens per watt, with wattage and color temperature you set on the bar.",
+      lead: "The economical Linkable Bar with Internal Driver, in the same 1.2 in profile and lengths as LBI G2. Three wattages and three color temperatures on the bar, in standard or warm models. A direct replacement for fluorescent strips, troffers, vapor tights, low and high bays, coves and stairwells.",
+      features: [
+        "SuperFLEX: switch between 3 wattages and 3 color temperatures on the bar.",
+        "Standard models (WC) set 3500K, 4000K or 5000K. Warm models (WC2) set 2700K, 3000K or 3500K.",
+        "Link 33 four-foot bars at 120VAC or 40 at 277VAC from one power feed.",
+        "Pass-through 0-10V dimming and auxiliary 12V output, so a whole run dims together.",
+        "Simple Lighting Control (in-line microwave or PIR occupancy with daylight harvesting) or Silvair Bluetooth mesh network control. Optional sensors link right to the bars.",
+        "Mounting clips with rare-earth magnets, plus T-bar, blade, suspended and 45° options. Suitable for dry and damp locations."
+      ],
+      apps: ["Fluorescent strip replacement", "Troffers and vapor tights", "Low and high bays", "Cove lighting", "Stairwells"],
+      photos: [["cutsheet/lbi-g1/pool.jpg", "Indoor pool and fitness center"]],
+      sizes: { "2": { len: 19.3, watts: [6, 9, 12], lm: [706, 1063, 1419], def: 0 }, "3": { len: 31.3, watts: [10, 12, 15], lm: [1335, 1648, 1961], def: 0 }, "4": { len: 43.3, watts: [10, 15, 25], lm: [1344, 2255, 3166], def: 1 } },
+      lmNote: "at 3500K",
+      // Two models per length, each with its own 3-position FlexColor switch (spec sheet p. 3).
+      cctSets: [{ code: "WC", label: "Standard", range: "3500–5000K", ccts: [3500, 4000, 5000], def: 4000 }, { code: "WC2", label: "Warm", range: "2700–3500K", ccts: [2700, 3000, 3500], def: 2700 }],
+      ccts: [3500, 4000, 5000], cctRemoteOnly: [], cctDef: 4000,
+      pn: (s, w, k, st) => `RP-LBI-G1-${s}F-${{ "2": 6, "3": 10, "4": 15 }[s]}W-${st && st.set === 1 ? "27K-WC2" : "40K-WC"}`,
+      link: "4 ft: 33 @ 120V · 40 @ 277V",
+      specs: [
+        ["Efficacy", "Up to 146", "lm/W (light engine)"],
+        ["Lumens", "696–3,653", "Across 2, 3 and 4 ft"],
+        ["Wattage", "6–25 W", "FlexWatt, 3 settings"],
+        ["Color temp", "2700–5000K", "FlexColor, 3 settings per model"],
+        ["CRI", "80+", ""],
+        ["Beam", "120°", ""],
+        ["Power factor", ">0.9", "THD <20%"],
+        ["Operating temp", "-13°F to 140°F", ""],
+        ["Size", "1.2 × 1.2 in", "19.3, 31.3 or 43.3 in long"],
+        ["Warranty", "10 years", "120–277V"]
+      ],
+      docs: [["Spec sheet", "spec-sheets/RP-LBI-Spec_Sheet.pdf", "PDF, 15 pages, rev. 06.30.26"]],
+      parts: [["RP-LBI-G1-2F-6W-40K-WC", "2 ft linkable bar, standard 3500/4000/5000K", "6/9/12 W", "780–1,560"], ["RP-LBI-G1-2F-6W-27K-WC2", "2 ft linkable bar, warm 2700/3000/3500K", "6/9/12 W", "696–1,524"], ["RP-LBI-G1-3F-10W-40K-WC", "3 ft linkable bar, standard 3500/4000/5000K", "10/12/15 W", "1,400–2,100"], ["RP-LBI-G1-3F-10W-27K-WC2", "3 ft linkable bar, warm 2700/3000/3500K", "10/12/15 W", "1,270–1,980"], ["RP-LBI-G1-4F-15W-40K-WC", "4 ft linkable bar, standard 3500/4000/5000K", "10/15/25 W", "1,462–3,653"], ["RP-LBI-G1-4F-15W-27K-WC2", "4 ft linkable bar, warm 2700/3000/3500K", "10/15/25 W", "1,260–3,400"]],
+      shot: "g1-hero.jpg",
+      cmp: { light: "White, 2700–5000K", watts: "2 ft: 6–12 W · 3 ft: 10–15 W · 4 ft: 10–25 W", lm: "2 ft: 696–1,560 · 3 ft: 1,270–2,100 · 4 ft: 1,260–3,653", control: "On-board switches, Simple or Silvair sensors", rating: "Dry and damp", eff: "Up to 146 lm/W", best: "Economical retrofits, fluorescent strip replacement" }
+    },
+    {
       id: "g2", group: "white", name: "LBI G2", short: "G2",
       kind: "Linkable white light bar", glyph: "#fff4e0", profile: "slim",
       tagline: "The everyday workhorse. Up to 160 lumens per watt, with wattage and color temperature you set on site.",
@@ -141,45 +180,6 @@
       shot: "max-hero.jpg",
       closeups: [["max-corner.jpg", "Seamless 90° corner piece"], ["max-square.jpg", "Four corners make a square"], ["max-bracket.jpg", "Surface mount linking bracket"], ["max-vhooks.jpg", "Included V-hooks for suspension"]],
       cmp: { light: "White, 3000–5000K", watts: "2 ft: 15–30 W · 4 ft: 30–48 W", lm: "2 ft: 1,950–3,900 · 4 ft: 3,997–6,365", control: "On-board switches, IR remote, Silvair", rating: "Dry and damp", eff: "146 lm/W", best: "Warehouses, manufacturing, high ceilings" }
-    },
-    {
-      id: "g1", group: "white", name: "LBI G1", short: "G1",
-      kind: "Economical linkable white light bar", glyph: "#fff8ec", profile: "slim",
-      tagline: "The economical LBI. Up to 146 lumens per watt, with wattage and color temperature you set on the bar.",
-      lead: "The economical Linkable Bar with Internal Driver, in the same 1.2 in profile and lengths as LBI G2. Three wattages and three color temperatures on the bar, in standard or warm models. A direct replacement for fluorescent strips, troffers, vapor tights, low and high bays, coves and stairwells.",
-      features: [
-        "SuperFLEX: switch between 3 wattages and 3 color temperatures on the bar.",
-        "Standard models (WC) set 3500K, 4000K or 5000K. Warm models (WC2) set 2700K, 3000K or 3500K.",
-        "Link 33 four-foot bars at 120VAC or 40 at 277VAC from one power feed.",
-        "Pass-through 0-10V dimming and auxiliary 12V output, so a whole run dims together.",
-        "Simple Lighting Control (in-line microwave or PIR occupancy with daylight harvesting) or Silvair Bluetooth mesh network control. Optional sensors link right to the bars.",
-        "Mounting clips with rare-earth magnets, plus T-bar, blade, suspended and 45° options. Suitable for dry and damp locations."
-      ],
-      apps: ["Fluorescent strip replacement", "Troffers and vapor tights", "Low and high bays", "Cove lighting", "Stairwells"],
-      photos: [["cutsheet/lbi-g1/pool.jpg", "Indoor pool and fitness center"]],
-      sizes: { "2": { len: 19.3, watts: [6, 9, 12], lm: [706, 1063, 1419], def: 0 }, "3": { len: 31.3, watts: [10, 12, 15], lm: [1335, 1648, 1961], def: 0 }, "4": { len: 43.3, watts: [10, 15, 25], lm: [1344, 2255, 3166], def: 1 } },
-      lmNote: "at 3500K",
-      // Two models per length, each with its own 3-position FlexColor switch (spec sheet p. 3).
-      cctSets: [{ code: "WC", label: "Standard", range: "3500–5000K", ccts: [3500, 4000, 5000], def: 4000 }, { code: "WC2", label: "Warm", range: "2700–3500K", ccts: [2700, 3000, 3500], def: 2700 }],
-      ccts: [3500, 4000, 5000], cctRemoteOnly: [], cctDef: 4000,
-      pn: (s, w, k, st) => `RP-LBI-G1-${s}F-${{ "2": 6, "3": 10, "4": 15 }[s]}W-${st && st.set === 1 ? "27K-WC2" : "40K-WC"}`,
-      link: "4 ft: 33 @ 120V · 40 @ 277V",
-      specs: [
-        ["Efficacy", "Up to 146", "lm/W (light engine)"],
-        ["Lumens", "696–3,653", "Across 2, 3 and 4 ft"],
-        ["Wattage", "6–25 W", "FlexWatt, 3 settings"],
-        ["Color temp", "2700–5000K", "FlexColor, 3 settings per model"],
-        ["CRI", "80+", ""],
-        ["Beam", "120°", ""],
-        ["Power factor", ">0.9", "THD <20%"],
-        ["Operating temp", "-13°F to 140°F", ""],
-        ["Size", "1.2 × 1.2 in", "19.3, 31.3 or 43.3 in long"],
-        ["Warranty", "10 years", "120–277V"]
-      ],
-      docs: [["Spec sheet", "spec-sheets/RP-LBI-Spec_Sheet.pdf", "PDF, 15 pages, rev. 06.30.26"]],
-      parts: [["RP-LBI-G1-2F-6W-40K-WC", "2 ft linkable bar, standard 3500/4000/5000K", "6/9/12 W", "780–1,560"], ["RP-LBI-G1-2F-6W-27K-WC2", "2 ft linkable bar, warm 2700/3000/3500K", "6/9/12 W", "696–1,524"], ["RP-LBI-G1-3F-10W-40K-WC", "3 ft linkable bar, standard 3500/4000/5000K", "10/12/15 W", "1,400–2,100"], ["RP-LBI-G1-3F-10W-27K-WC2", "3 ft linkable bar, warm 2700/3000/3500K", "10/12/15 W", "1,270–1,980"], ["RP-LBI-G1-4F-15W-40K-WC", "4 ft linkable bar, standard 3500/4000/5000K", "10/15/25 W", "1,462–3,653"], ["RP-LBI-G1-4F-15W-27K-WC2", "4 ft linkable bar, warm 2700/3000/3500K", "10/15/25 W", "1,260–3,400"]],
-      shot: "g1-hero.jpg",
-      cmp: { light: "White, 2700–5000K", watts: "2 ft: 6–12 W · 3 ft: 10–15 W · 4 ft: 10–25 W", lm: "2 ft: 696–1,560 · 3 ft: 1,270–2,100 · 4 ft: 1,260–3,653", control: "On-board switches, Simple or Silvair sensors", rating: "Dry and damp", eff: "Up to 146 lm/W", best: "Economical retrofits, fluorescent strip replacement" }
     },
     {
       id: "palette", group: "color", name: "LBI Color Palette", short: "Palette",
@@ -398,7 +398,7 @@
     if (animate) { ["#product-head", "#details"].forEach(s => { const el = $(s); el.classList.remove("fade"); void el.offsetWidth; el.classList.add("fade"); }); }
   }
 
-  // Popular accessories: one tab each for LBI G2 + LBI G1, LBI 65 and LBI MAX. The open tab follows the variant on the stage.
+  // Popular accessories: one tab each for LBI G1 + LBI G2, LBI 65 and LBI MAX. The open tab follows the variant on the stage.
   // Without the script every panel shows, each under its own heading.
   function selectAcc(key, focus) {
     const acc = document.querySelector("[data-acc]");
@@ -744,7 +744,7 @@ ${remoteMode ? remoteHtml : `
   // ---------- finder ----------
   const finder = { light: null, need: null };
   const NEEDS = {
-    white: [["g2", "Indoor, dry or damp", "Offices, retail, schools, back of house"], ["lbi65", "Wet, outdoor or washdown", "Garages, coolers, canopies, tunnels"], ["max", "High ceilings, more lumens", "Warehouses, manufacturing, big box retail"], ["g1", "Economical, indoor", "Fluorescent strip and troffer replacement on a budget"]],
+    white: [["g1", "Economical, indoor", "Fluorescent strip and troffer replacement on a budget"], ["g2", "Indoor, dry or damp", "Offices, retail, schools, back of house"], ["lbi65", "Wet, outdoor or washdown", "Garages, coolers, canopies, tunnels"], ["max", "High ceilings, more lumens", "Warehouses, manufacturing, big box retail"]],
     color: [["palette", "One exact color, indoors", "Pick 1 of 6 wavelengths, set on the bar"], ["plus", "White now, any color later", "Ships in white mode; RGBWW color with the optional remote"], ["x", "Any color, programmed shows", "RGBWW over DMX, with warm and cool white channels"], ["palette65", "One exact color, wet locations", "IP65; pick 1 of 6 wavelengths, set with the remote"]]
   };
   function renderFinder() {
