@@ -111,9 +111,32 @@
       if (count) count.textContent = nq ? `${shown} ${shown === 1 ? "match" : "matches"}` : "";
     };
     filter.addEventListener("input", apply); apply();
-    // deep link: #pn=LED-8038 highlights that row
-    const m = location.hash.match(/^#pn=(.+)$/);
-    if (m) { filter.value = decodeURIComponent(m[1]); apply(); const first = rows.find(r => !r.hidden); first?.classList.add("hit"); first?.scrollIntoView({ block: "center" }); }
+    // deep link from search: #pn=LED-8038 opens the product page at the top (David, 2026-10-08), picks out that row in the
+    // table and adds a note under the hero that leads to it
+    const focusPn = () => {
+      const m = location.hash.match(/^#pn=(.+)$/);
+      if (!m) return;
+      const pn = decodeURIComponent(m[1]), want = norm(pn);
+      const cell = r => norm(r.querySelector("td.pn")?.textContent);
+      const row = rows.find(r => cell(r) === want) || rows.find(r => cell(r).includes(want) || norm(r.textContent).includes(want));
+      $$("tr.hit", scope).forEach(r => r.classList.remove("hit"));
+      if (!row) return;
+      row.classList.add("hit");
+      const actions = $(".page-hero .actions");
+      if (actions) {
+        let note = $(".pn-found");
+        if (!note) { note = document.createElement("p"); note.className = "pn-found"; actions.after(note); }
+        note.innerHTML = '<span>Part number <b></b> is on this page.</span> <a href="#parts">Show it in the table ›</a>';
+        note.querySelector("b").textContent = pn;
+        note.querySelector("a").addEventListener("click", e => {
+          e.preventDefault();
+          row.scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+        });
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    };
+    focusPn();
+    window.addEventListener("hashchange", focusPn);
   }
 
   /* ----- Copy buttons ----- */
@@ -140,7 +163,7 @@
   try {
     const nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
     const fresh = !nav || nav.type === "navigate";
-    if (window.top !== window && fresh && !location.hash) {
+    if (window.top !== window && fresh && (!location.hash || /^#pn=/.test(location.hash))) {
       const toTop = () => {
         const html = document.documentElement, pad = html.style.scrollPaddingTop;
         html.style.scrollPaddingTop = "0px";
@@ -239,14 +262,75 @@
   window.addEventListener("hashchange", unfold);
   unfold();
 
-  /* ----- Part-number links on the same page (#pn=...) ----- */
-  window.addEventListener("hashchange", () => {
-    const m = location.hash.match(/^#pn=(.+)$/), f = $("#pn-filter");
-    if (!m || !f) return;
-    f.value = decodeURIComponent(m[1]);
-    f.dispatchEvent(new Event("input"));
-    const row = $$("table.parts tbody tr").find(r => !r.hidden);
-    if (row) { $$("tr.hit").forEach(r => r.classList.remove("hit")); row.classList.add("hit"); row.scrollIntoView({ block: "center" }); }
+  /* ----- Home mosaic glows: each glow is given in image coordinates ("x,y,w,h" fractions), so place it on the
+     cropped image (object-fit: cover, centered) every time the tile changes size ----- */
+  const glowTiles = $$(".mosaic figure").filter(f => f.querySelector(".glow"));
+  if (glowTiles.length) {
+    const place = () => glowTiles.forEach(fig => {
+      const img = fig.querySelector("img"), W = fig.clientWidth, H = fig.clientHeight;
+      const iw = +img.getAttribute("width") || img.naturalWidth, ih = +img.getAttribute("height") || img.naturalHeight;
+      if (!iw || !ih || !W) return;
+      const s = Math.max(W / iw, H / ih), dw = iw * s, dh = ih * s;
+      const [px, py] = (getComputedStyle(img).objectPosition.match(/[\d.]+%/g) || ["50%", "50%"]).map(v => parseFloat(v) / 100);
+      const dx = (W - dw) * px, dy = (H - dh) * py;
+      $$(".glow", fig).forEach(g => {
+        const [x, y, w, h, deg = 0] = g.dataset.g.split(",").map(Number);
+        Object.assign(g.style, { left: dx + x * dw + "px", top: dy + y * dh + "px", width: w * dw * 1.6 + "px", height: (h || w) * dw * 1.6 + "px" });  // 1.6: the halo spills past the lamp
+        g.style.setProperty("--r", deg + "deg");
+      });
+    });
+    place();
+    window.addEventListener("load", place, { once: true });
+    if ("ResizeObserver" in window) new ResizeObserver(place).observe($(".mosaic")); else window.addEventListener("resize", place);
+  }
+
+  /* ----- At a glance on phones: the first six points, the rest one tap away ----- */
+  $$(".spec-tiles").forEach(list => {
+    if (list.children.length <= 6) return;
+    list.classList.add("clip");
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "glance-more"; btn.setAttribute("aria-expanded", "false");
+    btn.innerHTML = "<span>Show all</span> <span aria-hidden=\"true\">▾</span>";
+    btn.addEventListener("click", () => {
+      const open = list.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open);
+      btn.firstChild.textContent = open ? "Show fewer" : "Show all";
+      if (!open) list.closest("section")?.scrollIntoView({ block: "start" });
+    });
+    list.after(btn);
+  });
+
+  /* ----- More from <brand>: the strip drifts left on its own and loops; a hover, touch or keyboard focus holds it,
+     and visitors can still swipe or scroll it by hand. Reduced motion leaves it still. ----- */
+  $$("[data-ticker]").forEach(tk => {
+    const track = $(".tk-track", tk);
+    const items = [...track.children];
+    if (!items.length) return;
+    items.forEach(a => { const b = a.cloneNode(true); b.setAttribute("aria-hidden", "true"); b.tabIndex = -1; track.append(b); });
+    if (reduce) return;
+    let held = false, seen = false, last = 0, pos = 0, resume = 0;
+    const half = () => track.scrollWidth / 2;
+    const step = t => {
+      if (!seen) { last = 0; return; }
+      if (last && !held) {
+        pos += (t - last) * 0.035;              // about 35 px a second
+        if (pos >= half()) pos -= half();
+        tk.scrollLeft = pos;
+      } else if (held) pos = tk.scrollLeft;
+      last = t;
+      requestAnimationFrame(step);
+    };
+    const hold = () => { held = true; clearTimeout(resume); };
+    const free = (ms = 1200) => { clearTimeout(resume); resume = setTimeout(() => { pos = tk.scrollLeft; held = false; }, ms); };
+    tk.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") hold(); });
+    tk.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") free(200); });
+    tk.addEventListener("touchstart", hold, { passive: true });
+    tk.addEventListener("touchend", () => free(2500), { passive: true });
+    tk.addEventListener("focusin", hold);
+    tk.addEventListener("focusout", () => free(400));
+    tk.addEventListener("wheel", () => { hold(); free(1500); }, { passive: true });
+    tk.addEventListener("scroll", () => { if (held && tk.scrollLeft >= half()) tk.scrollLeft -= half(); }, { passive: true });
+    new IntersectionObserver(es => { const was = seen; seen = es.some(x => x.isIntersecting); if (seen && !was) requestAnimationFrame(step); }).observe(tk);
   });
 
   /* ----- Customer portal: not live yet, so say so instead of going nowhere ----- */
