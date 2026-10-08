@@ -168,6 +168,8 @@
       <span>Pack <b>${pk.short} · ${fmt(pk.wh)} Wh</b></span>
       <span>EPA <b>${v.epa.toFixed(1)}</b></span>
       <span>Pole <b class="pn" style="font-size:.875rem">${pole.pn}</b> <span class="${ok ? "ok" : "bad"}">${ok ? "✓" : "✗"} ${pole.epa.toFixed(1)} EPA at ${state.pole.wind} mph</span></span>`;
+    // phones: the photo and footprint scroll away and this slim bar stays pinned above the controls instead
+    $("#stage-bar").innerHTML = `<img src="${sysImg()}" alt=""><div><b class="pn">${pnOf()}</b><span>${h(v.name)} · ${fmt(v.lm)} lm · ${pk.short} · ${fmt(pk.wh)} Wh · EPA ${v.epa.toFixed(1)}</span><span class="${ok ? "ok" : "bad"}">${ok ? "✓" : "✗"} ${state.pole.h} ft pole · max EPA ${pole.epa.toFixed(1)} at ${state.pole.wind} mph</span></div>`;
   }
 
   // ---------- controls ----------
