@@ -1402,3 +1402,9 @@ h3 { line-height: 1.25; }
   .related .section-head h2 { font-size: 1.25rem; }
   .related .section-head > a { grid-column: 1; grid-row: auto; }
 }
+/* Home headline: "since 2008" on its own line in the accent colour (David, 2026-10-08) */
+.home-hero h1 .since { display: block; color: var(--accent); }
+/* Home: how the company works, right under the headline (David, 2026-10-08) */
+.home-hero .values { margin: 16px auto 0; font-family: var(--font-display); font-size: clamp(1.1875rem, 2vw, 1.5rem); font-weight: 700; letter-spacing: -0.01em; color: var(--ink); display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 14px; }
+.home-hero .values span { display: inline-flex; align-items: center; gap: 8px; }
+.home-hero .values span::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #799b3e; box-shadow: 0 0 10px rgb(121 155 62 / 0.7); }
