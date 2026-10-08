@@ -198,3 +198,4 @@ table.is-poles { min-width: 760px; }
 .cmp .colbtn .is-g { color: var(--accent); }
 .cmp-card summary .is-g { color: var(--accent); margin-right: 10px; }
 .cmp .pnlist { font-family: var(--font-mono, ui-monospace, monospace); font-size: 0.8125rem; }
+@media (max-width: 480px) { .is-finder .opts.row { grid-template-columns: minmax(0, 1fr); } }
