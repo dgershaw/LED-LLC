@@ -380,17 +380,26 @@
   });
 
   /* ----- Customer portal: not live yet, so say so instead of going nowhere ----- */
+  /* The note closes on its own, when the mouse leaves the button (unless it moves onto the note), on a click or tap
+     anywhere else, on scroll and on Escape, so it never lingers over the page. */
   const tip = $("#portal-tip");
   let tipTimer = 0;
+  const hideTip = (ms = 0) => { clearTimeout(tipTimer); tipTimer = setTimeout(() => { if (tip) tip.hidden = true; }, ms); };
   document.addEventListener("click", e => {
+    if (!tip) return;
     const b = e.target.closest("[data-portal]");
-    if (!b || !tip) return;
+    if (!b) { if (!tip.hidden && !e.target.closest("#portal-tip")) hideTip(); return; }
     e.preventDefault();
     tip.hidden = false;
-    clearTimeout(tipTimer);
-    tipTimer = setTimeout(() => (tip.hidden = true), 7000);
+    hideTip(4500);
   });
-  document.addEventListener("keydown", e => { if (e.key === "Escape" && tip) tip.hidden = true; });
+  if (tip) {
+    document.querySelectorAll("[data-portal]").forEach(b => b.addEventListener("pointerleave", e => { if (e.pointerType === "mouse" && !tip.hidden) hideTip(600); }));
+    tip.addEventListener("pointerenter", () => clearTimeout(tipTimer));
+    tip.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") hideTip(400); });
+    addEventListener("scroll", () => { if (!tip.hidden) hideTip(); }, { passive: true });
+  }
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && tip) hideTip(); });
 
   /* ----- Meet Eddy ----- */
   const buddy = $("[data-eddy-talk]");

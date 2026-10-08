@@ -486,15 +486,7 @@
       const colors = [["R", 0], ["G", 120], ["B", 230], ["", 30], ["", 55], ["", 90], ["", 165], ["", 190], ["", 210], ["", 275], ["", 300], ["", 330]];
       const names = { 0: "Red", 120: "Green", 230: "Blue", 30: "Orange", 55: "Yellow", 90: "Lime", 165: "Teal", 190: "Cyan", 210: "Azure", 275: "Violet", 300: "Magenta", 330: "Pink" };
       const kIdx = v.ccts.indexOf(p.k);
-      el.innerHTML = `
-      <div class="plus-note">
-        <span class="pn-ic" aria-hidden="true">${ICON.tag}</span>
-        <div><b>Ships in white light mode.</b> Every LBI Color Palette + leaves the factory set to white, with FlexWatt and FlexColor switches identical to LBI G2, so it is DLC listed and rebate eligible as installed. Color is unlocked with the optional RGBWW remote <span class="mono">RP-REMOTE-RGB-WC</span>, sold separately. One remote adjusts every bar on the job.</div>
-      </div>
-      <div class="mode-pills" role="group" aria-label="What is controlling the bar">
-        <button class="mode-pill" data-pmode="white" aria-pressed="${!remoteMode}" style="--c:#fff4e0"><i></i>White light via switches <small>as shipped</small></button>
-        <button class="mode-pill" data-pmode="remote" aria-pressed="${remoteMode}" style="--c:${hsl(p.hue, 95, 55)}"><i class="${p.white ? "" : "rainbow"}"></i>Color via optional remote</button>
-      </div>
+      const remoteHtml = `
       <div class="sub-head"><h4>Optional RGBWW remote</h4><span>RP-REMOTE-RGB-WC, includes holster. One remote for every bar. RGBWW: red, green, blue, warm white and cool white.</span></div>
       <div class="remote-layout">
         <div class="remote rgbww${remoteMode ? " active" : ""}" role="group" aria-label="RGBWW remote control">
@@ -525,11 +517,26 @@
         </div>
       </div>
       <div class="sub-head"><h4>Switches on the back of the bar</h4><span>Identical to LBI G2. This is how every LBI Color Palette + ships.</span></div>
-      <div class="ctl-grid${remoteMode ? " dimmed" : ""}">
+      <div class="ctl-grid dimmed">
         ${slide("pw2", "FlexWatt switch", sz.watts.map(w => ({ label: `${w}W` })), p.w)}
         ${slide("pk2", "FlexColor switch", v.ccts.map(k => ({ label: `${(k / 1000).toFixed(1).replace(".0", "")}K`, aria: `${k}K` })), kIdx)}
       </div>
       <p class="illus">Factory set to <b>${v.factoryW[state.size]}W · 4000K</b>. Moving a switch sets the white light the bar returns to whenever the remote is not in use.</p>`;
+      el.innerHTML = `
+      <div class="plus-note">
+        <span class="pn-ic" aria-hidden="true">${ICON.tag}</span>
+        <div><b>Ships in white light mode.</b> Every LBI Color Palette + leaves the factory set to white, with FlexWatt and FlexColor switches identical to LBI G2, so it is DLC listed and rebate eligible as installed. Color is unlocked with the optional RGBWW remote <span class="mono">RP-REMOTE-RGB-WC</span>, sold separately. One remote adjusts every bar on the job.</div>
+      </div>
+      <div class="mode-pills" role="group" aria-label="What is controlling the bar">
+        <button class="mode-pill" data-pmode="white" aria-pressed="${!remoteMode}" style="--c:#fff4e0"><i></i>White light via switches <small>as shipped</small></button>
+        <button class="mode-pill" data-pmode="remote" aria-pressed="${remoteMode}" style="--c:${hsl(p.hue, 95, 55)}"><i class="${p.white ? "" : "rainbow"}"></i>Color via optional remote</button>
+      </div>
+${remoteMode ? remoteHtml : `
+      <div class="ctl-grid">
+        ${slide("pw2", "FlexWatt switch", sz.watts.map(w => ({ label: `${w}W` })), p.w)}
+        ${slide("pk2", "FlexColor switch", v.ccts.map(k => ({ label: `${(k / 1000).toFixed(1).replace(".0", "")}K`, aria: `${k}K` })), kIdx)}
+      </div>
+      <p class="illus">Set on site with the switches on the back of the bar, identical to LBI G2. Factory set to <b>${v.factoryW[state.size]}W · 4000K</b>.</p>`}`;
     } else if (v.id === "x") {
       const d = state.dmx, CH = { r: 1, g: 2, b: 3, ww: 4, cw: 5 };   // RGBWW: five channels, two of them white
       const fader = (k, name, col) => `<div class="fader" style="--fc:${col}"><span class="ch">CH ${CH[k]}</span><output id="o-${k}">${String(d[k]).padStart(3, "0")}</output><div class="slot"><input type="range" min="0" max="255" value="${d[k]}" data-fader="${k}" aria-label="${name.replace("<br>", " ")} channel"></div><span class="name">${name}</span></div>`;
