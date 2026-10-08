@@ -1135,6 +1135,8 @@ html { scroll-padding-top: calc(var(--safe-top) + var(--header-h) + 12px); }
 .gallery figure.cut figcaption { display: block; -webkit-line-clamp: unset; }
 
 /* Tablet: brand cards sit side by side with their photo instead of stacking full-width pictures */
+/* one row of icons when they all fit, otherwise two even rows (never a lone icon on its own row) */
+@media (min-width: 1320px) { .cs-icons { grid-template-columns: repeat(var(--n, 8), minmax(0, 132px)); } }
 @media (min-width: 561px) and (max-width: 860px) {
   .brand-card { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); grid-template-rows: auto 1fr; }
   .brand-card .pic { grid-column: 1; grid-row: 1 / 3; aspect-ratio: auto; min-height: 230px; }
@@ -1266,6 +1268,21 @@ html { scroll-padding-top: calc(var(--safe-top) + var(--header-h) + 12px); }
 .cs-ctl a:hover { text-decoration: underline; }
 .cs-ctl .ic { height: 26px; }
 .cs-ctl p { margin: 0 0 0 auto; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink); }
+/* Wide screens: keep the card's contents together in the middle instead of spread edge to edge.
+   Listing marks and the SuperFlex/FlexColor note share one centred row with a divider; icons sit in fixed-width columns. */
+@media (min-width: 561px) {
+  .cs-top { justify-content: center; gap: 16px 0; }
+  .cs-top > .cs-flex { margin-left: clamp(20px, 3vw, 40px); padding-left: clamp(20px, 3vw, 40px); border-left: 1px solid var(--line); }
+  .cs-icons { grid-template-columns: repeat(var(--half, 4), minmax(0, 132px)); justify-content: center; gap: 20px 14px; }
+  .cs-ctl { justify-content: center; }
+  .cs-ctl p { margin-left: 0; }
+}
+/* one row of icons when they all fit, otherwise two even rows (never a lone icon on its own row) */
+@media (min-width: 1320px) { .cs-icons { grid-template-columns: repeat(var(--n, 8), minmax(0, 132px)); } }
+@media (min-width: 561px) and (max-width: 860px) {
+  .cs-top > .cs-flex { margin-left: 0; padding-left: 0; border-left: 0; }
+  .cs-top { gap: 16px 32px; }
+}
 @media (max-width: 560px) {
   .cs-icons { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 6px; }
   .cs-icons .ic { height: 40px; }
