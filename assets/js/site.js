@@ -105,8 +105,10 @@
     const apply = () => {
       const nq = norm(filter.value);
       let shown = 0;
-      rows.forEach(r => { const hit = !nq || norm(r.textContent).includes(nq); r.hidden = !hit; if (hit) shown++; });
-      blocks.forEach(b => { b.hidden = !!nq && !$$("tbody tr", b).some(r => !r.hidden); });
+      // download cells (spec sheet, instructions) are not part of the row's data, so they never count as a match
+      rows.forEach(r => { const hit = !nq || norm([...r.cells].filter(c => !c.classList.contains("dl-cell")).map(c => c.textContent).join(" ")).includes(nq); r.hidden = !hit; if (hit) shown++; });
+      blocks.forEach(b => { b.hidden = !!nq && !$$("tbody tr", b).some(r => !r.hidden); if (nq && !b.hidden && b.tagName === "DETAILS") b.open = true; });
+      if (scope.classList) scope.classList.toggle("filtering", !!nq);  // merged spec-sheet cells give way to one per row
       empty.hidden = !(nq && shown === 0);
       if (foot) foot.hidden = !!nq && shown === 0;
       if (count) count.textContent = nq ? `${shown} ${shown === 1 ? "match" : "matches"}` : "";
@@ -131,6 +133,7 @@
         note.querySelector("b").textContent = pn;
         note.querySelector("a").addEventListener("click", e => {
           e.preventDefault();
+          const fold = row.closest("details"); if (fold) fold.open = true;
           row.scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
         });
       }
@@ -337,8 +340,8 @@
     new IntersectionObserver(es => { const was = seen; seen = es.some(x => x.isIntersecting); if (seen && !was) requestAnimationFrame(step); }).observe(tk);
   });
 
-  /* ----- IES files: one per wattage and color temperature. The table link opens a chooser; without the script it
-     downloads the part number's zip. ----- */
+  /* ----- IES files: one per wattage and color temperature (a grid), or the factory's own files (a list). The table
+     link opens a chooser; without the script it downloads the zip. ----- */
   const iesLinks = $$("a[data-ies]");
   if (iesLinks.length) {
     const dlg = document.createElement("dialog");
@@ -353,9 +356,11 @@
       const cell = (w, k) => { const f = d.files.find(x => x[0] === w && x[1] === k); return f ? `<a href="${esc(f[2])}" download="${esc(f[3])}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>${esc(k)}</a>` : "<span>—</span>"; };
       dlg.innerHTML = `<form method="dialog"><button class="x" aria-label="Close">×</button></form>
         <h3 id="ies-dlg-h">IES files</h3><p class="pn">${esc(d.pn)}</p>
-        <p class="hint">One file for each FlexWatt and FlexColor setting. Pick the one you are laying out.</p>
+        ${d.mode === "list" ? `<p class="hint">Pick the file for the part number and voltage you are laying out.</p>
+        <ul class="ies-list">${d.files.map(f => `<li><a href="${esc(f[2])}" download="${esc(f[3])}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>${esc(f[0])}</span><small>${esc(f[1])}</small></a></li>`).join("")}</ul>`
+        : `<p class="hint">One file for each FlexWatt and FlexColor setting. Pick the one you are laying out.</p>
         <table><thead><tr><th scope="col">Wattage</th>${K.map(k => `<th scope="col">${esc(k)}</th>`).join("")}</tr></thead>
-        <tbody>${W.map(w => `<tr><th scope="row">${esc(w)}</th>${K.map(k => `<td>${cell(w, k)}</td>`).join("")}</tr>`).join("")}</tbody></table>
+        <tbody>${W.map(w => `<tr><th scope="row">${esc(w)}</th>${K.map(k => `<td>${cell(w, k)}</td>`).join("")}</tr>`).join("")}</tbody></table>`}
         ${d.zip ? `<a class="btn btn-primary all" href="${esc(d.zip)}" download hidden>Download all ${d.files.length} as one zip</a>` : ""}`;
       dlg.showModal();
       /* Some previews cannot serve zip files, so the button only appears once the zip is known to be there */
