@@ -309,6 +309,7 @@
     const track = $(".tk-track", tk);
     const items = [...track.children];
     if (!items.length) return;
+    if (track.scrollWidth <= tk.clientWidth + 8) { tk.classList.add("still"); return; }  // all fit: no drift, no repeats
     items.forEach(a => { const b = a.cloneNode(true); b.setAttribute("aria-hidden", "true"); b.tabIndex = -1; track.append(b); });
     if (reduce) return;
     let held = false, seen = false, last = 0, pos = 0, resume = 0;

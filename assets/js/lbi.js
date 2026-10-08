@@ -188,7 +188,7 @@
         "Color is unlocked with the optional RGBWW remote (RP-REMOTE-RGB-WC, includes holster, sold separately). One remote adjusts every bar on the job.",
         "Link up to 40 bars from one power feed, in 2, 3 and 4 ft lengths.",
         "0-10V dimming to off, sensor ready, Simple or Networked Lighting Controls.",
-        "Also offered as LBI 65 Palette for IP65-rated and NSF-certified applications."
+        "Also offered as LBI 65 Color Palette + for IP65-rated and NSF-certified applications."
       ],
       apps: ["Theaters and cinemas", "Entertainment venues", "Bars and restaurants", "Bridges and facades", "Retail displays", "Houses of worship"],
       photos: [["plus-theater.jpg", "Cinema lobby"], ["plus-bridge.jpg", "Pedestrian bridge"], ["plus-venue.jpg", "Entertainment venue"], ["plus-bar.jpg", "Hotel bar"]],

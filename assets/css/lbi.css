@@ -286,8 +286,8 @@ input[type="range"] { width: 100%; accent-color: #f4f5f8; }
 .fader .name { font-size: 0.8125rem; font-weight: 700; color: var(--fc, var(--stage-ink)); text-align: center; line-height: 1.15; }
 .dmx-side { display: grid; gap: 12px; align-content: start; }
 .dmx-addr { font-family: var(--font-mono); font-size: 1.5rem; color: #ff5b3a; background: #05060a; border: 1px solid #262a33; border-radius: 8px; padding: 8px 12px; letter-spacing: 0.08em; text-shadow: 0 0 10px #ff5b3a88; }
-.scene-btns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.scene-btns button { border: 1px solid #2f3440; background: #171a21; color: var(--stage-ink); border-radius: 8px; padding: 7px 10px; font-size: 0.8125rem; cursor: pointer; }
+.scene-btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: 8px; }
+.scene-btns button { border: 1px solid #2f3440; background: #171a21; color: var(--stage-ink); border-radius: 8px; padding: 7px 6px; white-space: nowrap; font-size: 0.8125rem; cursor: pointer; }
 .scene-btns button:hover { border-color: #5a6070; }
 .illus { font-size: 0.8125rem; color: var(--stage-muted); border-left: 2px solid var(--stage-line); padding-left: 10px; align-self: start; }
 
