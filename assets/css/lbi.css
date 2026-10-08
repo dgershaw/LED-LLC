@@ -507,3 +507,7 @@ html { scroll-padding-top: calc(var(--safe-top, 0px) + var(--header-h) + var(--s
   .sw-group:last-child { flex-grow: 1.35; }
   .sw-btn { flex: 1 1 0; min-width: 0; padding: 6px 4px; font-size: 0.75rem; line-height: 1.12; text-align: center; text-wrap: balance; }
 }
+
+/* Scroll catch at the configurator (lbi.js): the page is locked for a moment. A stable gutter keeps the layout from shifting when the scrollbar goes away. */
+html { scrollbar-gutter: stable; }
+html.scroll-hold { overflow: hidden; }

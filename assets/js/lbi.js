@@ -795,29 +795,32 @@ ${remoteMode ? remoteHtml : `
   }
 
   // Scroll catch on laptops (David, 2026-10-08): scrolling down with a mouse or trackpad stops the page for a moment
-  // with the configurator framed under the switcher. The rest of that gesture, trackpad momentum included, is absorbed;
-  // the next scroll (or a long steady one) carries on down the page. Only when the whole stage fits the window.
+  // with the configurator framed under the switcher. Browsers only let a page cancel the first wheel event of a
+  // gesture, so instead of cancelling, the page locks scrolling (html.scroll-hold) once the stage reaches its spot.
+  // The lock lasts until that gesture, trackpad momentum included, has ended (at least 0.9 s, at most 2.5 s); the
+  // next scroll carries on, and scrolling up lets go at once. Only when the whole stage fits the window.
   (() => {
-    let armed = true, holding = false, held = 0, last = 0;
-    const edge = () => parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    const root = document.documentElement;
+    let armed = true, holding = false, held = 0, lastWheel = -1e9, prevGap = null, timer = 0;
+    const edge = () => parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
     const gap = () => $(".stage").getBoundingClientRect().top - edge();   // > 0 while the stage is still below its spot
-    const fits = () => matchMedia("(min-width: 900px)").matches && $(".stage").offsetHeight + edge() + 8 <= innerHeight;
-    addEventListener("scroll", () => { if (!holding && gap() > 2) armed = true; }, { passive: true });
-    addEventListener("wheel", (e) => {
-      if (e.ctrlKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-      const now = performance.now();
-      if (holding) {
-        if (e.deltaY < 0 || (now - held > 800 && now - last > 220) || now - held > 2500) { holding = false; return; }
-        last = now; e.preventDefault(); return;
-      }
-      if (!armed || e.deltaY <= 0 || !fits()) return;
-      const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? innerHeight : 1), g = gap();
-      if (g > -1 && g - dy <= 0) {
-        e.preventDefault();
-        armed = false; holding = true; held = last = now;
-        if (g > 0.5) window.scrollBy({ top: g, left: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-      }
-    }, { passive: false });
+    const fits = () => matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine)").matches && $(".stage").offsetHeight + edge() + 8 <= innerHeight;
+    const release = () => { holding = false; clearInterval(timer); root.classList.remove("scroll-hold"); };
+    addEventListener("wheel", (e) => { lastWheel = performance.now(); if (holding && e.deltaY < 0) release(); }, { passive: true });
+    addEventListener("scroll", () => {
+      const g = gap(), was = prevGap;
+      prevGap = g;
+      if (holding) return;
+      if (g > 2) { armed = true; return; }
+      if (!armed || was === null || was <= 0 || performance.now() - lastWheel > 250 || !fits()) return;
+      armed = false; holding = true; held = performance.now();
+      root.classList.add("scroll-hold");
+      if (g < -0.5) window.scrollBy({ top: g, left: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      timer = setInterval(() => {
+        const now = performance.now();
+        if ((now - held > 900 && now - lastWheel > 250) || now - held > 2500) release();
+      }, 50);
+    }, { passive: true });
   })();
 
   document.addEventListener("click", (e) => {
