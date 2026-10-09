@@ -203,6 +203,10 @@ p { margin: 0; }
 .nav-item[aria-expanded="true"] .caret { transform: rotate(180deg); }
 /* The configurator link carries a small lit dot instead of a colour, so only the current page reads as "current". */
 .nav-item.featured::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--remphos); box-shadow: 0 0 8px var(--remphos-2); flex: 0 0 auto; }
+/* The Solera i-Series Overview is the second feature, with a Solera-yellow dot (David, 2026-10-09). */
+.nav-item.featured.solar::before, .mega-col li a.featured.solar::before { background: var(--solera); box-shadow: 0 0 8px rgb(249 198 6 / 0.8); }
+.nav-item .short { display: none; }
+@media (max-width: 1279px) { .nav-item .full { display: none; } .nav-item .short { display: inline; } .hdr-nav .nav-item { padding: 7px 9px; } }
 .hdr-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 .icon-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid transparent; background: transparent; cursor: pointer; display: grid; place-items: center; color: var(--ink); }
 .icon-btn:hover { background: var(--surface-2); }
@@ -257,7 +261,8 @@ p { margin: 0; }
 .drawer .plain { border-top: 1px solid var(--line); }
 .drawer .plain a { display: block; padding: 14px 0; font-size: 1.0625rem; font-weight: 600; color: var(--ink); }
 .drawer .plain a:hover { text-decoration: none; }
-@media (max-width: 960px) {
+/* 980px, not 960: with two featured links and the short labels the header needs about 970px (2026-10-09). */
+@media (max-width: 980px) {
   .hdr-nav, .hdr-cta { display: none; }
   .menu-btn { display: grid; }
 }
