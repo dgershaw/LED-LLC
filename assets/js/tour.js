@@ -6,7 +6,9 @@
 (function () {
   "use strict";
   if (!window.matchMedia) return;
-  const WIDE = window.matchMedia("(min-width: 1024px)");
+  // Phones and tablets too since 2026-10-09 (David: "make that live to work on the iPhone or on a tablet"). NARROW is the
+  // header without its nav (980px and below): the menu stops use the menu drawer and Eddy docks along the bottom.
+  const NARROW = window.matchMedia("(max-width: 980px)");
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const root = document.documentElement.dataset.root || "";
   const here = location.pathname.split("/").pop() || "index.html";
@@ -35,7 +37,7 @@
       say: "Flip the FlexWatt and FlexColor switches, pick a length, and the bar on screen follows along." },
     { key: "glance", page: "shoe-box-wall-pack.html", at: "section.cs-glance",
       say: "Every product page opens with the facts <strong>at a glance</strong>, straight from the spec sheet." },
-    { key: "parts", page: "shoe-box-wall-pack.html", at: "#parts table",
+    { key: "parts", page: "shoe-box-wall-pack.html", at: "#parts table", narrowAt: "#parts table tbody tr",
       say: "Then the <strong>part numbers</strong>, with spec sheets, instructions and IES files right in the table." },
     { key: "next", page: "shoe-box-wall-pack.html", at: ".next-steps", pose: "wave",
       say: "Need a sample, a rebate or your local rep? That's my department, at the bottom of every page." },
@@ -140,8 +142,10 @@
     hush();
     if (st.page !== here) return depart(st);
     mount(false);
+    await wait(0);   // let the tap on Next finish first: site.js closes the menu on any click outside the header
+    if (i !== k) return;
     if (st.do === "menu") { openMenu(); await wait(260); } else closeMenu();
-    const target = $(st.at);
+    const target = targetOf(st);
     if (!target) return next();                                    // the page changed under us: skip the stop
     say.innerHTML = st.say;
     nextBtn.textContent = st.last ? "Finish" : "Next ›";
@@ -177,13 +181,34 @@
     setTimeout(() => { v.remove(); s.remove(); g.remove(); }, 520);
   }
 
-  function openMenu() { const b = $(".nav-item.products"); if (b && b.getAttribute("aria-expanded") !== "true") b.click(); }
-  function closeMenu() { const b = $(".nav-item.products"); if (b && b.getAttribute("aria-expanded") === "true") b.click(); }
+  function openMenu() {
+    if (NARROW.matches) { const d = $("#drawer"); if (d && d.dataset.open !== "true") $("#menu-open")?.click(); return; }
+    const b = $(".nav-item.products"); if (b && b.getAttribute("aria-expanded") !== "true") b.click();
+  }
+  function closeMenu() {
+    const d = $("#drawer"); if (d && d.dataset.open === "true") $("#menu-close")?.click();
+    const b = $(".nav-item.products"); if (b && b.getAttribute("aria-expanded") === "true") b.click();
+  }
+  /* What a stop frames. On narrow screens the Products and Shop by brand stops frame the groups in the menu drawer. */
+  function targetOf(st) {
+    if (NARROW.matches && st.do === "menu") {
+      const accs = [...document.querySelectorAll("#drawer .acc")];
+      if (accs.length < 2) return null;
+      const els = st.key === "brands" ? accs.slice(-1) : accs.slice(0, -1);
+      return { closest: q => els[0].closest(q), getBoundingClientRect: () => {
+        const rs = els.map(e => e.getBoundingClientRect()), l = Math.min(...rs.map(r => r.left)), t = Math.min(...rs.map(r => r.top));
+        const rr = Math.max(...rs.map(r => r.right)), b = Math.max(...rs.map(r => r.bottom));
+        return { left: l, top: t, right: rr, bottom: b, width: rr - l, height: b - t };
+      } };
+    }
+    return $((NARROW.matches && st.narrowAt) || st.at);   // a phone shows the table as tall cards: frame the first one
+  }
 
   /* Scroll the stop into view: centered when it fits under the header, else its top just below the header. */
   async function bring(target) {
-    if (target.closest(".site-header, .mega, .switcher")) return;   // pinned things never need a scroll
-    const r = target.getBoundingClientRect(), vh = innerHeight, hh = headerH();
+    if (target.closest(".site-header, .mega, .switcher, .drawer")) return;   // pinned things never need a scroll
+    const r = target.getBoundingClientRect(), hh = headerH();
+    const vh = innerHeight - (NARROW.matches && guide ? guide.offsetHeight + 20 : 0);   // keep it clear of the docked bubble
     const fits = r.height <= vh - hh - 40;
     const y = Math.max(0, Math.round(scrollY + r.top - (fits ? hh + (vh - hh - r.height) / 2 : hh + 16)));
     if (Math.abs(y - scrollY) < 4) return;
@@ -204,9 +229,16 @@
     const pad = clamp(Math.round(Math.min(r.width, r.height) * 0.12), 6, 14);
     spot.style.left = (r.left - pad) + "px"; spot.style.top = (r.top - pad) + "px";
     spot.style.width = (r.width + 2 * pad) + "px"; spot.style.height = (r.height + 2 * pad) + "px";
-    const p = place(r, guide.offsetWidth, guide.offsetHeight);
-    guide.classList.toggle("flip", p.flip);
-    guide.style.left = p.x + "px"; guide.style.top = p.y + "px";
+    let p;
+    if (NARROW.matches) {                                           // docked along the bottom of the screen
+      guide.classList.add("dock"); guide.classList.remove("flip"); guide.style.left = guide.style.top = "";
+      const g = guide.getBoundingClientRect(); p = { x: g.left, y: g.top, flip: false };
+    } else {
+      guide.classList.remove("dock");
+      p = place(r, guide.offsetWidth, guide.offsetHeight);
+      guide.classList.toggle("flip", p.flip);
+      guide.style.left = p.x + "px"; guide.style.top = p.y + "px";
+    }
     point(r, p);
     if (hop && !reduce) { fig.classList.remove("hop"); void fig.offsetWidth; fig.classList.add("hop"); setTimeout(() => fig && fig.classList.remove("hop"), 720); }
   }
@@ -400,11 +432,11 @@
   const stored = sess.get(STEP);
   if (stored !== null) {
     const k = +stored;
-    if (WIDE.matches && STOPS[k] && STOPS[k].page === here) { mount(true); show(k); }
+    if (STOPS[k] && STOPS[k].page === here) { mount(true); show(k); }
     else sess.del(STEP);
-  } else if (here === "index.html" && WIDE.matches) {
+  } else if (here === "index.html") {
     const w = wantsInvite();
     if (w === "start") setTimeout(begin, 400);
-    else if (w === "ask") setTimeout(() => { if (!veil && WIDE.matches) invite(); }, 2500);
+    else if (w === "ask") setTimeout(() => { if (!veil) invite(); }, 2500);
   }
 })();
