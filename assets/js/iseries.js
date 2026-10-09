@@ -1,5 +1,5 @@
 /* Solera i-Series family page: configure a modular solar lighting system (head, power, pack, optics, program, pole),
-   see the live part number, compare the heads, get a recommendation from project details and check the pole.
+   see the live part numbers with a pole check, and get a recommendation from project details.
    Facts come from the i-Series spec sheets, installation guides, the Pole Offering and the 2026 catalog (pp. 56/58). */
 (() => {
   "use strict";
@@ -29,25 +29,25 @@
 
   const HEADS = [
     { id: "a1", code: "A1", name: "A1 Standard", kind: "Modular Area Light", module: "AL-101", watts: 50, leds: 192, lm: 10000, lmCode: "100", epa: 8.0, tenon: "T2", tenonText: "2-3/8 in (T2)",
-      weight: "99 lb assembly", packs: [600, 1200], hyb: true, optDef: 3, img: "hero-a1.jpg",
-      tagline: "The everyday area light: up to 10,000 lumens from a 50 W head, on a 600 Wh or 1,200 Wh pack, off-grid or hybrid.",
+      weight: "99 lb assembly", packs: [600, 1200], hyb: true, optDef: 3,
+      tagline: "The everyday area light: up to 10,000 lumens, off-grid or hybrid.",
       best: "Parking lots, streets, paths and campuses at 20 to 25 ft", fam: "Up to 10,000 lm · 50 W head",
       spec: DOC.specArea, ies: DOC.iesA1 },
     { id: "a2", code: "A2", name: "A2 High Output", kind: "Modular Area Light", module: "AL-200", watts: 100, leds: 384, lm: 15000, lmCode: "150", epa: 14.0, tenon: "T4", tenonText: "4 in (T4), or a 2-3/8 to 4 in adapter",
-      weight: "124 lb assembly", packs: [1200], hyb: true, optDef: 3, img: "hero-a1.jpg",
-      tagline: "Up to 15,000 lumens from a 100 W head with the 200 W panel and 1,200 Wh battery, for wide lots and taller poles.",
+      weight: "124 lb assembly", packs: [1200], hyb: true, optDef: 3,
+      tagline: "Up to 15,000 lumens for wide lots and taller poles.",
       best: "Wide lots, yards, roadways and intersections at 25 to 30 ft", fam: "Up to 15,000 lm · 100 W head",
       spec: DOC.specArea, ies: DOC.iesA2 },
     { id: "d1", code: "D1", name: "D1 Decorative", kind: "Modular Decorative Light", module: "AL-101 at 20 W", watts: 20, leds: 192, lm: 3000, lmCode: "030", epa: 9.0, tenon: "T2", tenonText: "2-3/8 in (T2)",
-      weight: "111 lb assembly", packs: [600], hyb: false, optDef: 5, img: "deco",
-      tagline: "A gooseneck arm and bell shade for parks, plazas and streetscapes, with up to 3,000 lumens and Type 5 optics.",
+      weight: "111 lb assembly", packs: [600], hyb: false, optDef: 5,
+      tagline: "A gooseneck arm and bell shade for parks, plazas and streetscapes.",
       best: "Parks, plazas, walkways and streetscapes that want a decorative look", fam: "Up to 3,000 lm · gooseneck",
       spec: DOC.specDeco, ies: null }
   ];
   const byId = Object.fromEntries(HEADS.map(v => [v.id, v]));
   const PACKS = {
-    600: { code: "06", wh: 600, ah: 47, panels: "Two 55 W panels", short: "2 × 55 W", dims: "27.1 × 19.2 × 2.2 in each", sub: "Two 55 W panels, 600 Wh / 47 Ah battery" },
-    1200: { code: "12", wh: 1200, ah: 94, panels: "One 200 W panel", short: "1 × 200 W", dims: "46 × 34 × 3 in, 52 lb", sub: "One 200 W panel, 1,200 Wh / 94 Ah battery" }
+    600: { code: "06", wh: 600, ah: 47, panels: "Two 55 W panels", short: "2 × 55 W", dims: "27.1 × 19.2 × 2.2 in each", sub: "Two 55 W panels, 600 Wh LiFePO4 battery" },
+    1200: { code: "12", wh: 1200, ah: 94, panels: "One 200 W panel", short: "1 × 200 W", dims: "46 × 34 × 3 in, 52 lb", sub: "One 200 W panel, 1,200 Wh LiFePO4 battery" }
   };
   const OPTICS = {
     2: { name: "Type 2", best: "Paths, one-row parking and narrow streets: a long, narrow pattern along the way", rx: 250, ry: 46, cy: 72, py: 30 },
@@ -100,25 +100,20 @@
     const v = head();
     document.querySelectorAll("[data-go]").forEach(b => b.hasAttribute("aria-pressed") && b.setAttribute("aria-pressed", String(b.dataset.go === v.id)));
     const i = HEADS.indexOf(v), prev = HEADS[(i + HEADS.length - 1) % HEADS.length], next = HEADS[(i + 1) % HEADS.length];
-    const shot = v.img === "deco" ? "assets/img/cat/i-series/hero-sl-md1.jpg" : `assets/img/iseries/${v.img}`;
     $("#product-head").innerHTML = `
       <div class="ph-text">
-        <div class="tag"><span class="chip">${h(v.kind)}</span><span class="chip">${v.hyb ? "Off-grid or Hybrid" : "Off-grid"}</span></div>
+        <p class="eyebrow brand">Configure your i-Series · ${h(v.kind)}</p>
         <h2>${h(v.name)}</h2>
         <p class="tagline">${h(v.tagline)}</p>
-        <div class="step-nav">
-          <button class="round" data-go="${prev.id}" aria-label="Previous: ${h(prev.name)}">‹</button>
-          <button class="round" data-go="${next.id}" aria-label="Next: ${h(next.name)}">›</button>
-        </div>
       </div>
-      <figure class="shot is-shot"><img src="${shot}" alt="${h(v.name)} installed" style="object-position:center top;object-fit:cover"></figure>`;
+      <div class="step-nav">
+        <button class="round" data-go="${prev.id}" aria-label="Previous: ${h(prev.name)}">‹</button>
+        <button class="round" data-go="${next.id}" aria-label="Next: ${h(next.name)}">›</button>
+      </div>`;
     renderScene();
     renderControls();
     renderReadout();
-    renderDetails();
-    renderCompareHighlight();
-    renderPoles();
-    if (animate) { ["#product-head", "#details"].forEach(s => { const el = $(s); el.classList.remove("fade"); void el.offsetWidth; el.classList.add("fade"); }); }
+    if (animate) { const el = $("#product-head"); el.classList.remove("fade"); void el.offsetWidth; el.classList.add("fade"); }
   }
 
   function renderScene() {
@@ -219,96 +214,41 @@
           </div>
           <p class="hint">Tenon ${h(v.tenonText)}, built into the pole part number${v.tenon === "T4" ? ". Standard Solera poles top out at 2.38 in, so order the T4 tenon or the adapter" : ""}. Poles are made to order and are not returnable.</p>
         </div>
-      </div>`;
-  }
-
-  // ---------- details ----------
-  function renderDetails() {
-    const v = head(), pk = PACKS[state.pack], pole = poleOf(state.pole, v);
-    const inst = v.id === "a1" ? (state.power === "hyb" ? DOC.instA1hyb : DOC.instA1og) : v.id === "a2" ? DOC.instA2 : DOC.instD1;
-    const pnParts = [["SL-M", "Solera modular"], [v.code, v.name.split(" ")[0] + " head"], [state.power === "hyb" ? "HYB" : "OG", state.power === "hyb" ? "Hybrid" : "Off-grid"], [v.lmCode, `${fmt(v.lm)} lm`], [pk.code, `${fmt(pk.wh)} Wh`], [String(state.optic), OPTICS[state.optic].name], ["4", "4G Connect"], ["DB", "Dark bronze"], ["1", "Generation 1"]];
-    $("#details").innerHTML = `
-      <div>
-        <div class="section-head"><h3>Your system</h3><p class="muted">What the configuration above orders, piece by piece.</p></div>
-        <div class="is-sum">
-          <article><span class="k">Fixture</span><span class="v">${h(v.name)}</span><span class="pn">${pnOf()}</span><span class="s">${h(v.module)}, ${v.leds} LEDs, up to ${fmt(v.lm)} lm, ${fmt(state.cct)}K set on site</span></article>
-          <article><span class="k">Solar + battery</span><span class="v">${pk.panels}</span><span class="s">${pk.dims}</span><span class="s">${fmt(pk.wh)} Wh / ${pk.ah} Ah LiFePO4, MPPT controller, replaceable</span></article>
-          <article><span class="k">Power + program</span><span class="v">${state.power === "hyb" ? "Hybrid" : "Off-grid"}</span><span class="s">${h(PROGRAMS[state.program].name)} program${state.power === "hyb" ? "; AC driver for the LED when the battery is low" : ""}</span></article>
-          <article><span class="k">Optics</span><span class="v">${OPTICS[state.optic].name}${state.shield !== "none" ? ` + ${SHIELDS[state.shield].name.toLowerCase()}` : ""}</span>${state.shield !== "none" ? `<span class="pn">${SHIELDS[state.shield].pn}</span>` : `<span class="s">Lens set SL-AL1-LENS-T${state.optic}</span>`}<span class="s">EPA ${v.epa.toFixed(1)}, ${h(v.weight)}</span></article>
-          <article><span class="k">Pole</span><span class="v">${state.pole.h} ft ${state.pole.base === "ab" ? "anchor base" : "direct burial"}</span><span class="pn">${pole.pn}</span><span class="s">${FINISH[state.pole.finish]}, ${h(v.tenon)} tenon, max EPA ${pole.epa.toFixed(1)} at ${state.pole.wind} mph</span></article>
-        </div>
       </div>
-      <div class="is-two">
-        <div>
-          <div class="section-head"><h3>How to read the part number</h3><p class="muted">Each block of the number is one choice above.</p></div>
-          <div class="is-pn">${pnParts.map(([b, s], i) => `<span class="${[1, 2, 3, 4, 5].includes(i) ? "live" : ""}"><b>${h(b)}</b><small>${h(s)}</small></span>`).join("")}</div>
-          <p class="footnotes" style="margin-top:12px">The 2026 Solera catalog adds -TAA for Trade Agreements Act compliant builds. Ask your rep.</p>
-        </div>
-        <div>
-          <div class="section-head"><h3>Documents for this system</h3></div>
-          <div class="is-reslinks">
-            <a class="doc-dl" href="${v.spec}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>${v.id === "d1" ? "i-Series Decorative Light spec sheet" : "i-Series Area Light spec sheet"}</span></a>
-            <a class="doc-dl" href="${inst}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Installation guide: SL-M${v.code}${v.id === "a1" ? (state.power === "hyb" ? "-HYB" : "-OG") : ""}</span></a>
-            ${v.ies ? `<a class="doc-dl" href="${v.ies}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>IES files: SL-M${v.code}</span><small>ZIP</small></a>` : ""}
-            <a class="doc-dl" href="${DOC.poles}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Pole Offering</span></a>
-            <a class="btn btn-primary" href="${DOC.layout}" target="_blank" rel="noopener">Request a free lighting layout</a>
-          </div>
-        </div>
-      </div>`;
+      ${orderHtml()}`;
   }
 
-  // ---------- compare ----------
-  const CMP = [
-    ["Light output", v => `Up to ${fmt(v.lm)} lm`],
-    ["Head", v => v.id === "d1" ? "AL-101 run at 20 W · gooseneck arm and bell shade" : `${v.module} · ${v.watts} W · ${v.leds} LEDs`],
-    ["Solar + battery", v => v.packs.map(w => `${PACKS[w].short} + ${fmt(w)} Wh`).join(" · or ")],
-    ["Power", v => v.hyb ? "Off-grid or Hybrid" : "Off-grid"],
-    ["Optics", v => v.id === "d1" ? "Type 5 standard" : "Type 2, 3 (standard), 4 or 5 · back light or full cutoff shield"],
-    ["Color", () => "3000, 4000 or 5000K by switch · CRI 70+"],
-    ["EPA", v => v.epa.toFixed(1)],
-    ["Tenon", v => v.tenonText],
-    ["Weight", v => v.weight],
-    ["Best for", v => v.best],
-    ["Part numbers", v => v.id === "a1" ? "SL-MA1-OG-10006X4DB1 · SL-MA1-HYB-10006X4DB1 · SL-MA1-OG-10012X4DB1" : v.id === "a2" ? "SL-MA2-OG-15012X4DB1 · SL-MA2-HYB-15012X4DB1" : "SL-MD1-OG-03006X4DB1"]
-  ];
-  function renderCompare() {
-    const headRow = `<tr><th scope="col"><span class="visually-hidden">Spec</span></th>${HEADS.map(v => `<th scope="col" data-col="${v.id}"><button class="colbtn" data-go="${v.id}" data-scroll="1">${G[v.id]}<span class="grp">${h(v.kind)}</span><strong>${h(v.name)}</strong></button></th>`).join("")}</tr>`;
-    const body = CMP.map(([lab, f]) => `<tr><th scope="row">${lab}</th>${HEADS.map(v => `<td data-col="${v.id}"${lab === "Part numbers" ? ' class="pnlist"' : ""}>${h(f(v)).split(" · ").join("<br>")}</td>`).join("")}</tr>`).join("");
-    $("#cmp").innerHTML = `<thead>${headRow}</thead><tbody>${body}</tbody>`;
-    $("#cmp-cards").innerHTML = HEADS.map(v => `<details class="cmp-card" data-col="${v.id}"${v.id === state.head ? " open" : ""}>
-        <summary>${G[v.id]}<span class="t"><span class="grp">${h(v.kind)}</span><strong>${h(v.name)}</strong></span><span class="chev" aria-hidden="true">›</span></summary>
-        <dl>${CMP.map(([lab, f]) => `<div><dt>${lab}</dt><dd>${h(f(v)).split(" · ").join("<br>")}</dd></div>`).join("")}</dl>
-        <button class="btn btn-ghost btn-sm" data-go="${v.id}" data-scroll="1">Open ${h(v.name)}</button>
-      </details>`).join("");
-  }
-  function renderCompareHighlight() {
-    document.querySelectorAll("#cmp [data-col]").forEach(c => c.classList.toggle("cur", c.dataset.col === state.head));
-    document.querySelectorAll("#cmp-cards [data-col]").forEach(c => { const cur = c.dataset.col === state.head; c.classList.toggle("cur", cur); c.open = cur; });
-  }
-
-  // ---------- poles ----------
-  function renderPoles() {
-    const v = head(), cur = poleOf(state.pole, v);
-    const rows = POLES.flatMap(P => ["ab", "emb"].map(base => {
-      const pn = `SL-RPSQ-${P.h}-${P.shaft}-7-${base === "ab" ? "AB" : "EMB"}-${v.tenon}-${state.pole.finish}`;
-      const isCur = pn === cur.pn;
-      return `<tr class="${isCur ? "cur" : ""}"><th scope="row">${P.h} ft${base === "emb" ? `<br><span class="muted" style="font-weight:400;font-size:.8125rem">${P.total} ft overall</span>` : ""}</th><td>${base === "ab" ? "Anchor base" : "Direct burial"}</td><td>${P.shaft}.0 in · 7 GA</td>${P[base].map((e, i) => `<td class="${e >= v.epa ? "y" : "n"}${WINDS[i] === state.pole.wind ? " w" : ""}">${e >= v.epa ? "✓" : "✗"} ${e.toFixed(1)}</td>`).join("")}<td class="pn">${pn}</td></tr>`;
-    })).join("");
-    $("#pole-table").innerHTML = `<thead><tr><th scope="col">Pole</th><th scope="col">Base</th><th scope="col">Shaft</th>${WINDS.map(w => `<th scope="col" class="${w === state.pole.wind ? "w" : ""}">${w} mph</th>`).join("")}<th scope="col">Part number</th></tr></thead><tbody>${rows}</tbody>`;
-    $("#pole-h").textContent = `Poles rated for the ${v.name} (EPA ${v.epa.toFixed(1)})`;
+  // Last step: what to order for this configuration, the next actions and this head's documents
+  function orderHtml() {
+    const v = head(), pk = PACKS[state.pack], pole = poleOf(state.pole, v), ok = pole.epa >= v.epa;
+    const lines = [
+      ["Fixture", pnOf(), `${v.name}, ${state.power === "hyb" ? "hybrid" : "off-grid"}, ${pk.short} + ${fmt(pk.wh)} Wh, ${OPTICS[state.optic].name}`],
+      ...(state.shield !== "none" ? [["Shield", SHIELDS[state.shield].pn, SHIELDS[state.shield].name]] : []),
+      ["Pole", pole.pn, `${state.pole.h} ft ${state.pole.base === "ab" ? "anchor base" : "direct burial"}, ${FINISH[state.pole.finish].toLowerCase()}`, ok]
+    ];
+    const inst = v.id === "a1" ? (state.power === "hyb" ? DOC.instA1hyb : DOC.instA1og) : v.id === "a2" ? DOC.instA2 : DOC.instD1;
+    return `<div class="ctl ctl-full is-order"><span class="lbl">Your system</span>
+      <ul class="is-lines">${lines.map(([k, pn, sub, rated]) => `<li><span class="k">${k}</span><b class="pn">${pn}</b><span class="s">${h(sub)}</span>${rated === false ? `<span class="s bad">✗ Not rated for the ${h(v.name)} at ${state.pole.wind} mph</span>` : ""}</li>`).join("")}</ul>
+      <div class="is-acts">
+        <button class="btn btn-primary" data-copy="${h(lines.map(l => l[1]).join("\n"))}">Copy part numbers</button>
+        <a class="btn btn-ghost" href="contact.html">Request a quote</a>
+        <a class="btn btn-ghost" href="${DOC.layout}" target="_blank" rel="noopener">Free lighting layout</a>
+      </div>
+      <p class="is-doclinks"><a href="${v.spec}" target="_blank" rel="noopener">Spec sheet</a><a href="${inst}" target="_blank" rel="noopener">Installation guide</a>${v.ies ? `<a href="${v.ies}" target="_blank" rel="noopener">IES files</a>` : ""}<a href="${DOC.poles}" target="_blank" rel="noopener">Pole Offering</a></p>
+    </div>`;
   }
 
   // ---------- finder ----------
   const finder = { app: null, size: null, h: null, look: null, grid: null, sky: null, run: null, wind: null };
   const Q = [
-    ["app", "What are you lighting?", [["lot", "Parking lot", "Cars and people, rows and drive aisles"], ["street", "Street or roadway", "A line of poles along the way"], ["path", "Path, trail or park", "Walkers, benches, playgrounds"], ["plaza", "Campus, plaza or streetscape", "Gathering space, often with a decorative look"], ["yard", "Perimeter or storage yard", "Fence lines, laydown areas, lit from the edge"], ["remote", "Remote site", "Trailheads, bus stops, pump stations, nowhere near power"]]],
-    ["size", "How much ground does each pole cover?", [["one", "One row or a path", "Pole spacing along a line"], ["two", "A two-row lot or an intersection", "Light both ways from the pole"], ["wide", "A wide lot or yard", "As much ground as possible per pole"]]],
-    ["h", "Mounting height", [["20", "About 20 ft", "Paths, small lots, decorative poles"], ["25", "About 25 ft", "Most parking lots and streets"], ["30", "About 30 ft", "Wide lots, roadways and yards"]]],
-    ["look", "The look", [["area", "Area light", "A clean shoebox head on an arm"], ["deco", "Decorative", "A gooseneck arm with a bell shade"]]],
-    ["grid", "Power at the pole", [["none", "None, or not worth trenching", "Fully off-grid"], ["grid", "Yes, and it must never go dark", "Hybrid: AC backs up the battery"]]],
-    ["sky", "The sky at the site", [["sunny", "Sunny most of the year", "Southwest, Texas, Florida, California"], ["mixed", "Four seasons", "Midwest, Mid-Atlantic, much of the country"], ["cloudy", "Cloudy, snowy or shaded", "Northern states, mountains, trees or buildings nearby"]]],
-    ["run", "How it should run", [["motion", "Dim between visitors, bright on motion", "The most battery-friendly program"], ["night", "Constant all night", "Full light without motion"]]],
-    ["wind", "Wind at the site", [["normal", "Ordinary", "Rated to 90 mph"], ["high", "Coastal or open plains", "Rated to 100 mph or more"]]]
+    ["app", "What are you lighting?", [["lot", "Parking lot"], ["street", "Street or roadway"], ["path", "Path or park"], ["plaza", "Plaza or campus"], ["yard", "Yard or perimeter"], ["remote", "Remote site"]]],
+    ["size", "Ground per pole", [["one", "One row or a path"], ["two", "Two-row lot or intersection"], ["wide", "Wide lot or yard"]]],
+    ["h", "Mounting height", [["20", "20 ft"], ["25", "25 ft"], ["30", "30 ft"]]],
+    ["look", "Look", [["area", "Area light"], ["deco", "Decorative gooseneck"]]],
+    ["grid", "Power at the pole", [["none", "None"], ["grid", "Yes, and it must never go dark"]]],
+    ["sky", "Sun at the site", [["sunny", "Mostly sunny"], ["mixed", "Four seasons"], ["cloudy", "Cloudy, snowy or shaded"]]],
+    ["run", "Through the night", [["motion", "Dim, bright on motion"], ["night", "Constant all night"]]],
+    ["wind", "Wind", [["normal", "Up to 90 mph"], ["high", "Coastal or plains, 100+ mph"]]]
   ];
   function recommend(f) {
     const deco = f.look === "deco";
@@ -335,7 +275,7 @@
     return { headId, pack, power, optic, shield, program, pole, reasons, warn, p };
   }
   function renderFinder() {
-    const opt = (key, val, title, sub) => `<button class="opt" data-f="${key}" data-v="${val}" aria-pressed="${finder[key] === val}"><span class="dot"></span><span><strong>${h(title)}</strong><span>${h(sub)}</span></span></button>`;
+    const chip = (key, val, label) => `<button class="fchip" data-f="${key}" data-v="${val}" aria-pressed="${finder[key] === val}">${h(label)}</button>`;
     const answered = Object.values(finder).filter(Boolean).length;
     let result = `<p class="is-empty">${answered ? `Answered ${answered} of ${Q.length}. The recommendation appears after the first four.` : "Start with what you are lighting."}</p>`;
     if (finder.app && finder.size && finder.h && finder.look) {
@@ -353,7 +293,7 @@
         </div>
       </div>`;
     }
-    $("#finder").innerHTML = Q.map(([key, title, opts], i) => `<div class="q"><h3>${i + 1}. ${h(title)}</h3><div class="opts${opts.length > 3 ? " row" : ""}">${opts.map(([v, t, s]) => opt(key, v, t, s)).join("")}</div></div>`).join("") + result;
+    $("#finder").innerHTML = `<div class="fq-grid">${Q.map(([key, title, opts]) => `<div class="fq" role="group" aria-label="${h(title)}"><span class="fq-l">${h(title)}</span><div class="fchips">${opts.map(([v, t]) => chip(key, v, t)).join("")}</div></div>`).join("")}</div>` + result;
   }
   function loadRecommendation() {
     const r = recommend(finder);
@@ -363,15 +303,14 @@
   }
 
   // ---------- navigation ----------
-  // Switching heads: if the configurator stage is on screen it stays exactly where it is; at the compare table the page
-  // holds still and the new column lights up; from anywhere else the page goes to the configurator (same as the LBI page).
+  // Switching heads: if the configurator stage is on screen it stays exactly where it is (same as the LBI page); from
+  // anywhere else, or when `open` is set (a hero card, a loaded recommendation), the page goes to the configurator.
   function go(id, open) {
     if (!byId[id]) return;
-    const stage = $(".stage"), before = stage.getBoundingClientRect(), cmp = $("#compare"), cmpBefore = cmp && cmp.getBoundingClientRect();
+    const stage = $(".stage"), before = stage.getBoundingClientRect();
     const topEdge = (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0);
     const seen = (r) => Math.min(r.bottom, innerHeight) - Math.max(r.top, topEdge);
-    const inConfigurator = seen(before) > 120;
-    const inCompare = !inConfigurator && !open && cmpBefore && seen(cmpBefore) > 160;
+    const inConfigurator = !open && seen(before) > 120;
     const from = state.head;
     state.head = id;
     if ((from === "d1") !== (id === "d1")) state.optic = byId[id].optDef;   // area and decorative heads have different standard optics
@@ -382,9 +321,6 @@
       let target = before.top;
       if (target < topEdge && target + after.height < innerHeight) target = Math.min(topEdge, innerHeight - after.height);
       const d = after.top - target;
-      if (Math.abs(d) > 0.5) window.scrollBy({ top: d, left: 0, behavior: "instant" });
-    } else if (inCompare) {
-      const d = cmp.getBoundingClientRect().top - cmpBefore.top;
       if (Math.abs(d) > 0.5) window.scrollBy({ top: d, left: 0, behavior: "instant" });
     } else {
       $("#product").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
@@ -430,7 +366,7 @@
   document.addEventListener("click", (e) => {
     const t = e.target.closest("button, a");
     if (!t) return;
-    if (t.dataset.go) { go(t.dataset.go, !!t.closest("#cmp-cards") || !!t.closest("#is-fam")); return; }
+    if (t.dataset.go) { go(t.dataset.go, !!t.closest("#is-fam")); return; }
     if (t.dataset.set) {
       const key = t.dataset.set, raw = t.dataset.v, val = /^\d+$/.test(raw) ? Number(raw) : raw;
       if (key === "head") { go(raw); return; }
@@ -449,7 +385,8 @@
     if (t.dataset.load) { loadRecommendation(); return; }
     if (t.dataset.copy) {
       const txt = t.dataset.copy, done = () => { const was = t.textContent; t.textContent = "Copied"; setTimeout(() => { t.textContent = was; }, 1400); };
-      try { navigator.clipboard.writeText(txt).then(done, () => selectText(t.previousElementSibling)); } catch (err) { selectText(t.previousElementSibling); }
+      const fallback = () => selectText(t.closest(".is-order")?.querySelector(".is-lines") || t.previousElementSibling);
+      try { navigator.clipboard.writeText(txt).then(done, fallback); } catch (err) { fallback(); }
     }
   });
   function selectText(el) { if (!el) return; const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
@@ -457,7 +394,6 @@
   // ---------- boot ----------
   renderSwitcher();
   renderFamily();
-  renderCompare();
   renderFinder();
   const fromHash = (location.hash || "").slice(1);
   if (byId[fromHash]) { state.head = fromHash; state.optic = byId[fromHash].optDef; }
