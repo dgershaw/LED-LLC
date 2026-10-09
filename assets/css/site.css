@@ -1574,10 +1574,15 @@ details.table-fold[open] .fold-btn::after { content: "Hide part numbers"; }
 .tour-voice { width: 32px; height: 32px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--bg) 40%, transparent); background: transparent; color: inherit; display: grid; place-items: center; cursor: pointer; }
 .tour-voice[aria-pressed="true"] { background: var(--bg); color: var(--ink); border-color: transparent; }
 .tour-voice svg { width: 18px; height: 18px; }
-/* Sound is waiting for a tap (iPhone, iPad): the speaker pulses. */
-.tour-voice.nudge { animation: tour-nudge 1.1s ease-in-out infinite; }
-@keyframes tour-nudge { 50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--led) 55%, transparent); } }
-@media (prefers-reduced-motion: reduce) { .tour-voice.nudge { animation: none; outline: 2px solid var(--led); outline-offset: 2px; } }
+/* Sound is waiting for a tap (iPhone, iPad): a bright button across the top of the bubble (David: the pulsing speaker was not obvious enough). */
+.tour-tap { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin: 0 0 12px; padding: 10px 14px; border: 0; border-radius: 999px;
+  background: #8cc63f; color: #14170f; font: 800 0.9375rem/1 var(--font-ui); cursor: pointer; animation: tour-tap 1.2s ease-in-out infinite; }
+.tour-tap[hidden] { display: none; }
+.tour-tap svg { width: 20px; height: 20px; }
+@keyframes tour-tap { 50% { transform: scale(1.04); box-shadow: 0 0 0 8px rgb(140 198 63 / 0.35); } }
+@media (prefers-reduced-motion: reduce) { .tour-tap { animation: none; } }
+/* Touch screens: the other pages of the tour open in this frame over the home page, so Eddy's voice never stops. */
+.tour-frame { position: fixed; inset: 0; width: 1px; min-width: 100%; height: 100%; border: 0; z-index: 78; background: var(--bg); }
 .tour-bar { height: 3px; margin: 0 -16px; border-radius: 0 0 18px 18px; overflow: hidden; background: color-mix(in srgb, var(--bg) 22%, transparent); }
 .tour-bar i { display: block; height: 100%; width: 0; background: var(--led); }
 .tour-invite .tour-bubble { padding-bottom: 0; }

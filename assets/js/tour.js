@@ -6,6 +6,11 @@
 (function () {
   "use strict";
   if (!window.matchMedia) return;
+  if (/[?&]tourframe\b/.test(location.search)) return;            // a page shown inside the touch-screen tour never runs its own
+  // Touch screens (iPhone, iPad) only let a page start sound after a tap, and every page change locks it again. So there the
+  // tour never leaves the home page: other pages open in a full-screen frame under Eddy, and his voice runs straight through
+  // (David, 2026-10-09: "make this one continuous thing"). Laptops still move from page to page.
+  const FRAME = window.matchMedia("(pointer: coarse)").matches;
   // Phones and tablets too since 2026-10-09 (David: "make that live to work on the iPhone or on a tablet"). NARROW is the
   // header without its nav (980px and below): the menu stops use the menu drawer and Eddy docks along the bottom.
   const NARROW = window.matchMedia("(max-width: 980px)");
@@ -58,7 +63,8 @@
 </svg>`;
   const SPEAKER = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`;
 
-  let veil, spot, guide, fig, say, bar, nextBtn, voiceBtn, cur = null, arriving = false;
+  let veil, spot, guide, fig, say, bar, nextBtn, voiceBtn, tapBtn, cur = null, arriving = false, frame = null;
+  const view = () => (frame && frame.contentWindow) || window;   // the window the current stop lives in
   let i = -1, timer = 0, left = 0, total = 0, lastT = 0, paused = false, pauseCap = 0, poll = 0, quick = 0, lastBox = "";
   // With David's recordings in place (2026-10-09) Eddy talks by default; the speaker button turns him off and that is remembered.
   let voice = store.get(VOICE) !== "off";
@@ -81,7 +87,9 @@
     nextBtn = el("button", "tour-btn sp"); nextBtn.type = "button"; nextBtn.textContent = "Next ›";
     row.append(voiceBtn, endBtn, nextBtn);
     bar = el("div", "tour-bar"); bar.innerHTML = "<i></i>";
-    bub.append(say, row, bar);
+    tapBtn = el("button", "tour-tap"); tapBtn.type = "button"; tapBtn.hidden = true;
+    tapBtn.innerHTML = SPEAKER + "<span>Tap to hear Eddy</span>";      // unlock() runs on this tap like any other
+    bub.append(tapBtn, say, row, bar);
     guide.append(fig, bub);
     if (arrive) guide.classList.add("dash-in");
     document.body.append(veil, spot, guide);
@@ -141,8 +149,9 @@
     i = k; sess.set(STEP, String(k));
     stopTimer(); stopFun();
     hush();
-    if (st.page !== here) return depart(st);
+    if (st.page !== here && !FRAME) return depart(st);
     mount(false);
+    if (FRAME) { await framePage(st.page); if (i !== k) return; }
     await wait(0);   // let the tap on Next finish first: site.js closes the menu on any click outside the header
     if (i !== k) return;
     if (st.do === "menu") { openMenu(); await wait(260); } else closeMenu();
@@ -162,6 +171,25 @@
     try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ }
   }
 
+  /* Touch screens: show another page in the frame (or drop the frame for the home page), with Eddy dashing across. */
+  async function framePage(page) {
+    const want = page === here ? "" : page;
+    if ((frame ? frame.dataset.page : "") === want) return;
+    if (guide) guide.classList.add("dash-out");
+    const out = wait(reduce ? 0 : 470);
+    if (!want) { await out; if (frame) { frame.remove(); frame = null; } }
+    else {
+      if (!frame) { frame = el("iframe", "tour-frame"); frame.title = "Tour page"; frame.setAttribute("tabindex", "-1"); document.body.append(frame); }
+      frame.dataset.page = want;
+      const loaded = new Promise(r => { frame.onload = r; setTimeout(r, 9000); });
+      frame.src = root + want + "?tourframe";
+      await Promise.all([out, loaded]);
+      try { frame.contentWindow.addEventListener("scroll", refit, { passive: true }); frame.contentDocument.documentElement.style.scrollBehavior = "auto"; } catch (e) { /* cross-origin never happens here */ }
+      await wait(250);                                               // let its reveals and fonts settle
+    }
+    if (guide) { guide.classList.remove("dash-out"); guide.classList.add("dash-in"); arriving = true; }
+  }
+
   async function depart(st) {
     if (guide) guide.classList.add("dash-out");
     await wait(reduce || !guide ? 0 : 470);
@@ -177,6 +205,7 @@
     closeMenu();
     document.removeEventListener("keydown", onKey); document.removeEventListener("visibilitychange", onVis);
     window.removeEventListener("resize", refit); window.removeEventListener("scroll", refit);
+    if (frame) { const pg = frame.dataset.page; frame.remove(); frame = null; if (pg) { location.href = root + pg; return; } }   // ended part way: stay on the page being shown
     if (!veil) return;
     veil.classList.remove("on"); spot.classList.remove("on"); guide.classList.add("bye");
     const v = veil, s = spot, g = guide; veil = spot = guide = null;
@@ -203,22 +232,22 @@
         return { left: l, top: t, right: rr, bottom: b, width: rr - l, height: b - t };
       } };
     }
-    return $((NARROW.matches && st.narrowAt) || st.at);   // a phone shows the table as tall cards: frame the first one
+    return $((NARROW.matches && st.narrowAt) || st.at, view().document);   // a phone shows the table as tall cards: frame the first one
   }
 
   /* Scroll the stop into view: centered when it fits under the header, else its top just below the header. */
   async function bring(target) {
     if (target.closest(".site-header, .mega, .switcher, .drawer")) return;   // pinned things never need a scroll
-    const r = target.getBoundingClientRect(), hh = headerH();
+    const w = view(), r = target.getBoundingClientRect(), hh = headerH();
     const vh = innerHeight - (NARROW.matches && guide ? guide.offsetHeight + 20 : 0);   // keep it clear of the docked bubble
     const fits = r.height <= vh - hh - 40;
-    const y = Math.max(0, Math.round(scrollY + r.top - (fits ? hh + (vh - hh - r.height) / 2 : hh + 16)));
-    if (Math.abs(y - scrollY) < 4) return;
-    window.scrollTo({ top: y, behavior: reduce ? "instant" : "smooth" });
+    const y = Math.max(0, Math.round(w.scrollY + r.top - (fits ? hh + (vh - hh - r.height) / 2 : hh + 16)));
+    if (Math.abs(y - w.scrollY) < 4) return;
+    w.scrollTo({ top: y, behavior: reduce ? "instant" : "smooth" });
     let last = -1, same = 0;
-    for (let n = 0; n < 30; n++) { await wait(50); if (Math.abs(scrollY - last) < 1) { if (++same >= 2) break; } else same = 0; last = scrollY; }
+    for (let n = 0; n < 30; n++) { await wait(50); if (Math.abs(w.scrollY - last) < 1) { if (++same >= 2) break; } else same = 0; last = w.scrollY; }
   }
-  function headerH() { const h = $(".site-header"); return h ? h.getBoundingClientRect().bottom : 0; }
+  function headerH() { const h = $(".site-header", view().document); return h ? h.getBoundingClientRect().bottom : 0; }
 
   /* Frame the stop and put Eddy and his bubble beside it. */
   function fit(hop) {
@@ -392,7 +421,7 @@
     if (audio) return;
     p.src = SILENT; p.play().catch(() => {});
   }
-  function nudge(on) { if (voiceBtn) { voiceBtn.classList.toggle("nudge", !!on && voice); voiceBtn.title = on && voice ? "Tap for sound" : "Read aloud"; } }
+  function nudge(on) { if (tapBtn) tapBtn.hidden = !(on && voice); }
   async function sayAloud(text) {
     if (!("speechSynthesis" in window)) return;
     const my = i;
