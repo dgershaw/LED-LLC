@@ -21,25 +21,25 @@
 
   /* The stops. `at` is what the spotlight frames, `do` opens or closes the Products menu first, `pose` adds a wave. */
   const STOPS = [
-    { page: "index.html", at: ".home-hero h1", pose: "wave",
+    { key: "welcome", page: "index.html", at: ".home-hero h1", pose: "wave", fun: "juggle", hold: 7600,
       say: "<strong>Welcome to our new home!</strong> Light Efficient Design, RemPhos and Solera, all under one roof. Let me show you around." },
-    { page: "index.html", at: "#mega-products .mega-cols", do: "menu",
+    { key: "products", page: "index.html", at: "#mega-products .mega-cols", do: "menu",
       say: "Everything we make lives under <strong>Products</strong>, sorted the way the trade thinks: lamps, indoor fixtures, retrofit kits, outdoor and solar, controls." },
-    { page: "index.html", at: "#mega-products .mega-brands", do: "menu",
+    { key: "brands", page: "index.html", at: "#mega-products .mega-brands", do: "menu",
       say: "Or shop by brand. Light Efficient Design, RemPhos and Solera each have a home of their own." },
-    { page: "index.html", at: ".hdr-right [data-open-search]",
+    { key: "search", page: "index.html", at: ".hdr-right [data-open-search]",
       say: "Know the part number? <strong>Search</strong> it and land right on its page. The slash key opens search from anywhere." },
-    { page: "lbi.html", at: ".switcher",
+    { key: "lbi", page: "lbi.html", at: ".switcher",
       say: "This is the <strong>LBI Family Overview</strong>: eight linkable light bars. Pick one up here and the whole page follows." },
-    { page: "lbi.html", at: "#controls",
+    { key: "switches", page: "lbi.html", at: "#controls",
       say: "Flip the FlexWatt and FlexColor switches, pick a length, and the bar on screen follows along." },
-    { page: "shoe-box-wall-pack.html", at: "section.cs-glance",
+    { key: "glance", page: "shoe-box-wall-pack.html", at: "section.cs-glance",
       say: "Every product page opens with the facts <strong>at a glance</strong>, straight from the spec sheet." },
-    { page: "shoe-box-wall-pack.html", at: "#parts table",
+    { key: "parts", page: "shoe-box-wall-pack.html", at: "#parts table",
       say: "Then the <strong>part numbers</strong>, with spec sheets, instructions and IES files right in the table." },
-    { page: "shoe-box-wall-pack.html", at: ".next-steps", pose: "wave",
+    { key: "next", page: "shoe-box-wall-pack.html", at: ".next-steps", pose: "wave",
       say: "Need a sample, a rebate or your local rep? That's my department, at the bottom of every page." },
-    { page: "index.html", at: ".hdr-eddy", pose: "wave", last: true,
+    { key: "home", page: "index.html", at: ".hdr-eddy", pose: "wave", last: true,
       say: "That's the tour! I live in the logo, so whenever I wiggle, click me and I'll lend a hand. <strong>Welcome home.</strong>" },
   ];
 
@@ -73,7 +73,7 @@
     const row = el("div", "tour-row");
     voiceBtn = el("button", "tour-voice"); voiceBtn.type = "button"; voiceBtn.innerHTML = SPEAKER;
     voiceBtn.title = "Read aloud"; voiceBtn.setAttribute("aria-label", "Read aloud"); voiceBtn.setAttribute("aria-pressed", String(voice));
-    if (!("speechSynthesis" in window)) voiceBtn.hidden = true;
+    if (!canTalk()) voiceBtn.hidden = true;
     const endBtn = el("button", "tour-btn quiet"); endBtn.type = "button"; endBtn.textContent = "End tour";
     nextBtn = el("button", "tour-btn sp"); nextBtn.type = "button"; nextBtn.textContent = "Next ›";
     row.append(voiceBtn, endBtn, nextBtn);
@@ -89,7 +89,7 @@
     endBtn.addEventListener("click", () => finish(true));
     voiceBtn.addEventListener("click", () => {
       voice = !voice; store.set(VOICE, voice ? "on" : "off"); voiceBtn.setAttribute("aria-pressed", String(voice));
-      if (voice) { speak(STOPS[i].say); left = Math.max(left, duration(STOPS[i].say) * 0.8); total = Math.max(total, left); } else speechSynthesis.cancel();
+      if (voice) { speak(STOPS[i]); left = Math.max(left, duration(STOPS[i].say) * 0.8); total = Math.max(total, left); } else hush();
     });
     // Hovering the bubble pauses the clock so slow readers can finish, for 10 s at most. Only a pointer that really moves
     // counts: Chrome fakes mouse events when the bubble lands under a still pointer, which would stall the tour.
@@ -104,6 +104,7 @@
     window.addEventListener("resize", refit);
     window.addEventListener("scroll", refit, { passive: true });
     poll = setInterval(() => { if (cur) fit(false); }, 300);          // follow reveals and late layout
+    if (voice) loadClips();
   }
 
   function onKey(e) {
@@ -114,7 +115,10 @@
       e.preventDefault(); next();
     }
   }
-  function onVis() { if (document.hidden && "speechSynthesis" in window) speechSynthesis.pause(); else if ("speechSynthesis" in window) speechSynthesis.resume(); }
+  function onVis() {
+    if (document.hidden) { if (audio) audio.pause(); if ("speechSynthesis" in window) speechSynthesis.pause(); }
+    else { if (audio) audio.play().catch(() => {}); if ("speechSynthesis" in window) speechSynthesis.resume(); }
+  }
   function refit() {
     if (!cur || !guide) return;
     spot.classList.add("quick"); guide.classList.add("quick");
@@ -124,15 +128,15 @@
   }
 
   /* ----- Running the stops ----- */
-  function begin() { store.set(SEEN, JSON.stringify({ state: "done", t: Date.now() })); sess.set(STEP, "0"); mount(false); show(0); }
+  function begin() { store.set(SEEN, JSON.stringify({ state: "done", t: Date.now() })); sess.set(STEP, "0"); JUG.forEach(f => { new Image().src = root + "assets/img/eddy/" + f; }); mount(false); show(0); }
   function next() { if (i < 0) return; if (STOPS[i] && STOPS[i].last) finish(true); else show(i + 1); }
 
   async function show(k) {
     const st = STOPS[k];
     if (!st) return finish(true);
     i = k; sess.set(STEP, String(k));
-    stopTimer();
-    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    stopTimer(); stopFun();
+    hush();
     if (st.page !== here) return depart(st);
     mount(false);
     if (st.do === "menu") { openMenu(); await wait(260); } else closeMenu();
@@ -145,9 +149,9 @@
     cur = target; lastBox = "";
     fit(true);
     if (arriving) { arriving = false; requestAnimationFrame(() => requestAnimationFrame(() => guide && guide.classList.remove("dash-in"))); }
-    if (st.pose === "wave") wave();
-    speak(st.say);
-    startTimer(duration(st.say));
+    if (st.fun === "juggle" && !reduce) funIntro(); else if (st.pose === "wave") wave();
+    speak(st);
+    startTimer(Math.max(duration(st.say), st.hold || 0));
     try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ }
   }
 
@@ -158,8 +162,8 @@
   }
 
   function finish(mark) {
-    stopTimer(); clearInterval(poll); clearTimeout(quick); cur = null; i = -1;
-    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    stopTimer(); stopFun(); clearInterval(poll); clearTimeout(quick); cur = null; i = -1;
+    hush();
     sess.del(STEP);
     if (mark) store.set(SEEN, JSON.stringify({ state: "done", t: Date.now() }));
     closeMenu();
@@ -236,6 +240,31 @@
     const c = fig.dataset.side === "r" ? "wave-l" : "wave-r";       // the arm that is not pointing
     fig.classList.add(c); setTimeout(() => fig && fig.classList.remove(c), 2500);
   }
+  /* The party trick at the first stop (David, 2026-10-09: "wave and be more fun", "juggle some of our products"): after the
+     hop lands, a two-armed wave with a sway, then he juggles a Shoe Box retrofit lamp, an LBI G1 and a Solera flood light. */
+  const JUG = ["jug-lamp.png", "jug-lbi.png", "jug-solar.png"];
+  let funT = [];
+  function stopFun() {
+    funT.forEach(clearTimeout); funT = [];
+    if (!fig) return;
+    fig.classList.remove("wave-l", "wave-r", "sway", "juggling");
+    const j = fig.querySelector(".jug"); if (j) j.remove();
+  }
+  function funIntro() {
+    funT.push(setTimeout(() => {
+      if (!fig) return;
+      fig.classList.add("wave-l", "wave-r", "sway");
+      funT.push(setTimeout(() => fig && fig.classList.remove("wave-l", "wave-r", "sway"), 2150));
+    }, 700));
+    funT.push(setTimeout(() => {
+      if (!fig) return;
+      const j = el("span", "jug"); j.setAttribute("aria-hidden", "true");
+      JUG.forEach(f => { const im = new Image(); im.src = root + "assets/img/eddy/" + f; im.alt = ""; j.append(im); });
+      fig.append(j); fig.classList.add("juggling");
+      requestAnimationFrame(() => j.classList.add("on"));
+      funT.push(setTimeout(() => { j.classList.remove("on"); fig.classList.remove("juggling"); funT.push(setTimeout(() => j.remove(), 450)); }, 4300));
+    }, 2900));
+  }
 
   /* ----- Pace: a line stays up long enough to read, longer when spoken; hovering the bubble pauses it. ----- */
   function duration(s) {
@@ -253,14 +282,62 @@
   }
   function stopTimer() { cancelAnimationFrame(timer); timer = 0; }
 
-  function speak(text) {
-    if (!voice || !("speechSynthesis" in window)) return;
+  /* ----- Eddy's voice (David, 2026-10-09: male, smooth, uplifting, natural and fun). Recorded clips come first: if
+     assets/audio/tour/clips.json exists it maps a stop's key to a file in that folder, and the tour plays it. Without a clip
+     the device's own speech voices are used, preferring natural male US English ones; they vary a lot by device. ----- */
+  const AUDIO = root + "assets/audio/tour/";
+  let clips = null, clipsReq = null, audio = null;
+  const loadClips = () => clipsReq || (clipsReq = fetch(AUDIO + "clips.json").then(r => (r.ok ? r.json() : null)).then(j => (clips = j && typeof j === "object" ? j : null)).catch(() => (clips = null)));
+  const VOICE_PREFS = [
+    /(Guy|Christopher|Eric|Andrew|Brian|Roger|Steffan) Online \(Natural\)/i,   // Edge's natural voices
+    /^Eddy\b/i,                                                                   // Apple's "Eddy", a friendly one, and the name fits
+    /^(Aaron|Alex|Tom|Evan|Nathan|Reed)\b/i,                                      // Apple male voices
+    /Microsoft (David|Mark|Guy|Christopher|Eric)\b/i,                             // Windows male voices
+    /x-(iom|tpd|iod)/i,                                                           // Android male voices
+    /^(Daniel|Oliver|Arthur|Ryan|George)\b/i,                                     // British male voices
+  ];
+  function pickVoice() {
+    const all = speechSynthesis.getVoices();
+    const us = all.filter(v => /^en[-_]US/i.test(v.lang)), en = all.filter(v => /^en/i.test(v.lang));
+    for (const re of VOICE_PREFS) { const v = us.find(x => re.test(x.name)) || en.find(x => re.test(x.name)); if (v) return v; }
+    return us.find(v => v.default) || us[0] || en.find(v => v.default) || en[0] || null;
+  }
+  const voicesReady = () => new Promise(res => {
+    if (!("speechSynthesis" in window)) return res();
+    if (speechSynthesis.getVoices().length) return res();
+    const done = () => { speechSynthesis.removeEventListener("voiceschanged", done); res(); };
+    speechSynthesis.addEventListener("voiceschanged", done); setTimeout(done, 600);
+  });
+  function hush() {
+    if (audio) { audio.pause(); audio.onended = null; audio = null; }
+    if ("speechSynthesis" in window) speechSynthesis.cancel();
+  }
+  const canTalk = () => ("speechSynthesis" in window) || ("Audio" in window);
+  async function speak(st) {
+    if (!voice || !st) return;
+    const my = i; hush();
+    await loadClips();
+    if (!voice || i !== my) return;
+    const text = st.say.replace(/<[^>]+>/g, "");
+    if (clips && clips[st.key] && "Audio" in window) {
+      const a = new Audio(AUDIO + clips[st.key]); audio = a;
+      a.onended = () => { if (audio === a) { audio = null; if (left > 900) left = 900; } };
+      a.play().catch(() => { if (audio === a) { audio = null; sayAloud(text); } });
+      return;
+    }
+    sayAloud(text);
+  }
+  async function sayAloud(text) {
+    if (!("speechSynthesis" in window)) return;
+    const my = i;
+    await voicesReady();
+    if (!voice || i !== my) return;
     const ss = speechSynthesis; ss.cancel();
-    const u = new SpeechSynthesisUtterance(text.replace(/<[^>]+>/g, ""));
-    const vs = ss.getVoices().filter(v => /^en/i.test(v.lang));
-    const pick = vs.find(v => /Samantha|Google US English|Aria|Jenny|Zira/i.test(v.name)) || vs.find(v => v.default) || vs[0];
-    if (pick) u.voice = pick;
-    u.rate = 1.03; u.pitch = 1.2;
+    const u = new SpeechSynthesisUtterance(text);
+    const v = pickVoice();
+    if (v) u.voice = v;
+    const natural = v && /Natural|Online/i.test(v.name);
+    u.rate = 1; u.pitch = natural ? 1 : 1.05;           // smooth, not chirpy; neural voices sound best untouched
     u.onend = () => { if (left > 900) left = 900; };
     setTimeout(() => ss.speak(u), 60);
   }

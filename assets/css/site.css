@@ -1583,3 +1583,19 @@ details.table-fold[open] .fold-btn::after { content: "Hide part numbers"; }
   .tour-eddy .eddy-svg, .tour-eddy.hop, .e-ant, .e-eye, .wave-l .e-arm-l, .wave-r .e-arm-r { animation: none !important; }
   .tour-guide, .tour-spot, .tour-invite, .e-arm-l, .e-arm-r, .e-pupil { transition: none !important; }
 }
+/* Eddy's party trick at the first stop (David, 2026-10-09): a two-armed wave with a sway, then juggling three products
+   on a tall loop above his head. The loop is a circle stretched by scaleY; the pictures undo the stretch. */
+.tour-eddy.sway { animation: e-sway .7s ease-in-out 3; transform-origin: 50% 92%; }
+@keyframes e-sway { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-7deg); } }
+.jug { position: absolute; left: 50%; top: 20px; width: 0; height: 0; transform: scaleY(1.3); opacity: 0; transition: opacity .4s ease; pointer-events: none; }
+.jug.on { opacity: 1; }
+.jug img { position: absolute; left: -24px; top: -24px; width: 48px; height: 48px; max-width: none; object-fit: contain; animation: jug-orbit 1.5s linear infinite; filter: drop-shadow(0 5px 7px rgb(0 0 0 / 0.4)); }
+.jug img:nth-child(2) { width: 66px; height: 66px; left: -33px; top: -33px; animation-delay: -.5s; }
+.jug img:nth-child(3) { animation-delay: -1s; }
+@keyframes jug-orbit { from { transform: rotate(0deg) translateX(42px) rotate(0deg) scaleY(.77); } to { transform: rotate(-360deg) translateX(42px) rotate(360deg) scaleY(.77); } }
+.juggling .e-arm-l { animation: jug-arm-l .75s ease-in-out infinite alternate; }
+.juggling .e-arm-r { animation: jug-arm-r .75s ease-in-out infinite alternate; animation-delay: -.375s; }
+@keyframes jug-arm-l { from { transform: rotate(22deg); } to { transform: rotate(58deg); } }
+@keyframes jug-arm-r { from { transform: rotate(-22deg); } to { transform: rotate(-58deg); } }
+.juggling .e-pupil { --lx: 0px; --ly: -5px; }
+@media (prefers-reduced-motion: reduce) { .tour-eddy.sway, .jug img, .juggling .e-arm-l, .juggling .e-arm-r { animation: none !important; } }
