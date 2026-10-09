@@ -468,6 +468,25 @@
       <div class="brandmark">REMPHOS</div>
     </div>`;
   }
+  // The LBI 65's own remote, drawn after the real one (David, 2026-10-09; spec sheet p. 1 and 7): power and RESET, CCT+/CCT- and
+  // LM+/LM- steps, Q1 and Q2, six color temperature keys and PW1 to PW4, the four FlexWatt wattages of the bar's length.
+  const R65_K = { 2700: "#f26a3c", 3000: "#f6c21c", 3500: "#fbe07c", 4000: "#fdebb0", 5000: "#cdd9f6", 5700: "#5d92e2" };
+  const SUN = c => `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="${c}" stroke="#1b1c20" stroke-width="1.4"/><path d="M12 1.8v3M12 19.2v3M1.8 12h3M19.2 12h3M4.8 4.8l2.1 2.1M17.1 17.1l2.1 2.1M4.8 19.2l2.1-2.1M17.1 6.9l2.1-2.1" stroke="#1b1c20" stroke-width="1.6" stroke-linecap="round"/></svg>`;
+  const LMI = up => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z" fill="#fff" stroke="#1b1c20" stroke-width="1.5"/><path d="${up ? "M12 16V8.5M8.6 11.6 12 8.2l3.4 3.4" : "M12 8v7.5M8.6 12.4 12 15.8l3.4-3.4"}" stroke="#1b1c20" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  function remoteLbi65(v, sz, st) {
+    const key = (k, cls, inner, aria, extra = "") => `<button type="button" class="r65-key ${cls}" data-r65k="${k}" aria-label="${h(aria)}"${extra}>${inner}</button>`;
+    return `<div class="remote r65" role="group" aria-label="LBI 65 remote">
+      <div class="r65-top">${key("power", "pwr", `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v8M7 6.3a7.5 7.5 0 1 0 10 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>`, st.off ? "Turn on" : "Turn off", ` aria-pressed="${!st.off}"`)}${key("reset", "reset", "RESET", "Reset to the factory setting")}</div>
+      <div class="r65-adj">
+        <div class="r65-col lite">${key("cool", "icon", `${SUN("#c6d4f7")}<span>CCT+</span>`, "CCT+: one step cooler")}${key("warm", "icon", `${SUN("#f6c21c")}<span>CCT−</span>`, "CCT−: one step warmer")}</div>
+        <div class="r65-col">${key("q1", "q", "Q1", "Q1", ' aria-disabled="true"')}${key("q2", "q", "Q2", "Q2", ' aria-disabled="true"')}</div>
+        <div class="r65-col grey">${key("up", "icon", `${LMI(true)}<span>LM+</span>`, "LM+: brighter")}${key("down", "icon", `${LMI(false)}<span>LM−</span>`, "LM−: dimmer")}</div>
+      </div>
+      <div class="r65-cct">${v.ccts.map((k, i) => `<button type="button" class="r65-key cct${!st.off && k === st.k ? " sel" : ""}" style="--c:${R65_K[k] || cctToRgb(k)}" data-r65="cct" data-i="${i}" aria-pressed="${k === st.k}" aria-label="${k}K">${k}K</button>`).join("")}</div>
+      <div class="r65-pw">${sz.watts.map((w, i) => `<button type="button" class="r65-key pw${!st.off && i === st.w ? " sel" : ""}" data-r65="watt" data-i="${i}" aria-pressed="${i === st.w}" aria-label="PW${i + 1}: ${w} W">PW${i + 1}</button>`).join("")}</div>
+      <div class="r65-brand">RemPhos</div>
+    </div>`;
+  }
   const REMOTE_NOTE = "No switches on the bar: set it on site with the included remote, or order a factory preset to save install time. Remote layout is illustrative.";
 
   function renderControls(v) {
@@ -477,10 +496,16 @@
       const sz = v.sizes[state.size], st = state.white[v.id];
       if (st.w == null || st.w >= sz.watts.length) st.w = sz.def;
       el.innerHTML = `<div class="remote-layout">
-        ${remote65([
-          { key: "watt", label: "FlexWatt", keys: sz.watts.map((w, i) => ({ label: `${w}W`, sel: i === st.w })) },
-          { key: "cct", label: "FlexColor", keys: v.ccts.map(k => ({ label: `${(k / 1000).toFixed(1).replace(".0", "")}K`, aria: `${k}K`, c: cctToRgb(k), sel: k === st.k })) }])}
-        <p class="illus">${REMOTE_NOTE}</p>
+        ${remoteLbi65(v, sz, st)}
+        <div class="r65-legend">
+          <p class="illus">The included remote. There are no switches on the bar: set it on site, or order a factory preset to save install time. Try the keys.</p>
+          <dl>
+            <div><dt>2700K to 5700K</dt><dd>FlexColor: pick one of six color temperatures. CCT+ and CCT− step cooler or warmer.</dd></div>
+            <div><dt>PW1 to PW4</dt><dd>FlexWatt: ${sz.watts.map((w, i) => `PW${i + 1} ${w} W`).join(", ")} on the ${state.size} ft bar.</dd></div>
+            <div><dt>LM+ and LM−</dt><dd>Brighter or dimmer.</dd></div>
+            <div><dt>Power and RESET</dt><dd>On or off, and back to the factory setting, ${sz.watts[sz.def]} W at 4000K.</dd></div>
+          </dl>
+        </div>
       </div>`;
     } else if (v.id === "palette65") {
       const sz = v.sizes[state.size], st = state.p65;
@@ -617,9 +642,10 @@ ${remoteMode ? remoteHtml : `
       const st = state.white[v.id];
       color = cctToRgb(st.k);
       level = 0.38 + 0.62 * (st.w / (sz.watts.length - 1));
+      if (v.id === "lbi65") level = st.off ? 0 : level * (st.dim || 1);   // the remote's power and LM+/LM- keys
       const w = sz.watts[st.w];
       const lm = sz.lm ? `≈ ${fmt(sz.lm[st.w])} lm` : `${sz.range} lm range`;
-      read = [["Output", `<b>${lm}</b>${sz.lm && v.lmNote ? ` ${v.lmNote}` : ""}`], ["Setting", `<b>${w} W · ${st.k}K</b>`],
+      read = [["Output", `<b>${st.off ? "Off" : lm}</b>${!st.off && sz.lm && v.lmNote ? ` ${v.lmNote}` : ""}`], ["Setting", `<b>${w} W · ${st.k}K${v.id === "lbi65" && !st.off && (st.dim || 1) < 1 ? ` · dimmed to ${Math.round(st.dim * 100)}%` : ""}</b>`],
               ["Part #", `<span class="mono pn">${v.pn(state.size, w, kcode(st.k), st)}</span>`]];
     } else if (v.id === "palette65") {
       const m = PALETTE_MODELS[state.pal.model], c = PALETTE_COLORS[m.colors[state.pal.side]], w = state.p65.w ?? sz.def;
@@ -843,10 +869,26 @@ ${remoteMode ? remoteHtml : `
     }
     if (t.dataset.r65) {
       const i = +t.dataset.i, k = t.dataset.r65;
-      if (v.id === "lbi65") { if (k === "watt") state.white.lbi65.w = i; if (k === "cct") state.white.lbi65.k = v.ccts[i]; }
+      if (v.id === "lbi65") { const st = state.white.lbi65; st.off = false; if (k === "watt") st.w = i; if (k === "cct") st.k = v.ccts[i]; }
       if (v.id === "palette65") { if (k === "watt") state.p65.w = i; if (k === "color") state.pal.side = i; }
       renderControls(v);
       const again = document.querySelector(`[data-r65="${k}"][data-i="${i}"]`); if (again) again.focus();
+      return;
+    }
+    if (t.dataset.r65k) {   // the LBI 65 remote's other keys
+      const k = t.dataset.r65k, st = state.white.lbi65, sz = v.sizes[state.size], i = v.ccts.indexOf(st.k);
+      if (k === "q1" || k === "q2") return;
+      if (k === "power") st.off = !st.off;
+      else if (k === "reset") { st.off = false; st.dim = 1; st.w = sz.def; st.k = v.cctDef; }
+      else {
+        st.off = false;
+        if (k === "cool") st.k = v.ccts[Math.min(v.ccts.length - 1, i + 1)];
+        if (k === "warm") st.k = v.ccts[Math.max(0, i - 1)];
+        if (k === "up") st.dim = Math.min(1, +((st.dim || 1) + 0.2).toFixed(2));
+        if (k === "down") st.dim = Math.max(0.2, +((st.dim || 1) - 0.2).toFixed(2));
+      }
+      renderControls(v);
+      const again = document.querySelector(`[data-r65k="${k}"]`); if (again) again.focus();
       return;
     }
     if (t.dataset.color) {

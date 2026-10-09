@@ -511,3 +511,36 @@ html { scroll-padding-top: calc(var(--safe-top, 0px) + var(--header-h) + var(--s
 /* Scroll catch at the configurator (lbi.js): the page is locked for a moment. A stable gutter keeps the layout from shifting when the scrollbar goes away. */
 html { scrollbar-gutter: stable; }
 html.scroll-hold { overflow: hidden; }
+
+/* The LBI 65's real remote (David, 2026-10-09): white body, power and RESET, a grey adjust panel, a dark color temperature panel,
+   an outlined PW panel and the RemPhos wordmark, after the drawing on the spec sheet. */
+.remote.r65 { width: 232px; padding: 22px 18px 20px; gap: 14px; border-radius: 46px; background: linear-gradient(165deg, #ffffff, #e3e5ea); }
+.r65-key { border: 0; cursor: pointer; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.02em; color: #1b1c20;
+  box-shadow: 0 2px 0 rgb(0 0 0 / 0.25), inset 0 1px 0 rgb(255 255 255 / 0.45); transition: transform .08s; font-family: inherit; padding: 0; }
+.r65-key:active { transform: translateY(1px); box-shadow: none; }
+.r65-key:focus-visible { outline: 3px solid #2a6bff; outline-offset: 2px; }
+.r65-key.sel { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 7px #1b1c20; }
+.r65-top { display: flex; justify-content: space-between; padding: 0 4px; }
+.r65-key.pwr { width: 46px; height: 46px; background: #e3262d; }
+.r65-key.pwr[aria-pressed="false"] { background: #8d1a1f; }
+.r65-key.pwr svg { width: 24px; height: 24px; }
+.r65-key.reset { width: 46px; height: 46px; background: #1e1f23; color: #fff; font-size: 0.75rem; letter-spacing: 0; }
+.r65-adj { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 8px; border-radius: 16px; background: #c4c7ce; }
+.r65-col { display: grid; gap: 10px; justify-items: center; padding: 8px 0; border-radius: 12px; }
+.r65-col.lite { background: #eef0f4; }
+.r65-col.grey { background: #9da1aa; }
+.r65-key.icon { width: 50px; height: 50px; background: #fff; gap: 0; align-content: center; }
+.r65-key.icon svg { width: 24px; height: 24px; }
+.r65-key.icon span { font-size: 0.75rem; line-height: 1; }
+.r65-key.q { width: 42px; height: 42px; margin-block: 4px; background: #55585f; color: #fff; cursor: default; }
+.r65-cct { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 8px; justify-items: center; padding: 14px 8px; border-radius: 16px; background: #55585f; }
+.r65-key.cct { width: 52px; height: 52px; background: var(--c); font-size: 0.75rem; letter-spacing: 0; }
+.r65-pw { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; justify-items: center; padding: 16px 20px; border-radius: 16px; border: 2px solid #8d9099; }
+.r65-key.pw { width: 50px; height: 50px; background: #55585f; color: #fff; }
+.r65-brand { text-align: center; font-weight: 800; font-size: 1.375rem; letter-spacing: -0.01em; color: #1f4f9e; padding-top: 6px; }
+.r65-legend { display: grid; gap: 14px; align-content: start; }
+.r65-legend .illus { margin: 0; }
+.r65-legend dl { margin: 0; display: grid; gap: 10px; }
+.r65-legend dt { font-weight: 700; color: var(--stage-ink); font-size: 0.875rem; }
+.r65-legend dd { margin: 2px 0 0; color: var(--stage-muted); font-size: 0.875rem; }
+@media (max-width: 380px) { .remote.r65 { width: 100%; max-width: 232px; } }
