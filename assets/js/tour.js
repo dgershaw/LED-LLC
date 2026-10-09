@@ -223,6 +223,7 @@
     const b = $(".nav-item.products"); if (b && b.getAttribute("aria-expanded") !== "true") b.click();
   }
   function closeMenu() {
+    const pn = $("#drawer .panel"); if (pn) pn.scrollTop = 0;
     const d = $("#drawer"); if (d && d.dataset.open === "true") $("#menu-close")?.click();
     const bs = document.querySelectorAll("#drawer .acc > button"), bb = bs[bs.length - 1]; if (bb && bb.getAttribute("aria-expanded") === "true") bb.click();
     const b = $(".nav-item.products"); if (b && b.getAttribute("aria-expanded") === "true") b.click();
@@ -239,9 +240,10 @@
         return { left: l, top: t, right: rr, bottom: b, width: rr - l, height: b - t };
       } };
     }
-    if (NARROW.matches && st.narrowSpan) {   // a phone stacks the bar over the switches: frame from the bar down to the FlexColor switch
+    if (NARROW.matches && st.narrowSpan) {
+      view().document.documentElement.classList.add("tour-lean");   // site.css hides the readout so the bar and the switch fit above the bubble   // a phone stacks the bar over the switches: frame from the bar down to the FlexColor switch
       const d = view().document, a = $(st.narrowSpan[0], d), b = $(st.narrowSpan[1], d), c = b && b.closest(".ctl");
-      if (a && c) return { closest: q => a.closest(q), getBoundingClientRect: () => {
+      if (a && c) return { closest: q => a.closest(q), pinBelow: () => ({ el: c, gap: a.offsetHeight + 4 }), getBoundingClientRect: () => {
         const r = a.getBoundingClientRect(), r2 = c.getBoundingClientRect();
         return { left: Math.min(r.left, r2.left), top: r.top, right: Math.max(r.right, r2.right), bottom: r2.bottom, width: Math.max(r.right, r2.right) - Math.min(r.left, r2.left), height: r2.bottom - r.top };
       } };
@@ -251,15 +253,31 @@
 
   /* Scroll the stop into view: centered when it fits under the header, else its top just below the header. */
   async function bring(target) {
+    const panel = NARROW.matches && target.closest(".drawer .panel");
+    if (panel) {                                                   // a menu group under the docked bubble: scroll the menu, not the page
+      const r = target.getBoundingClientRect(), head = panel.querySelector(".panel-head"), top = (head ? head.getBoundingClientRect().bottom : 0) + 8;
+      const below = r.bottom - (innerHeight - (guide ? guide.offsetHeight : 0) - 24);
+      if (below > 0) { panel.scrollTo({ top: panel.scrollTop + Math.min(below, r.top - top), behavior: reduce ? "instant" : "smooth" }); await wait(reduce ? 0 : 420); }
+      return;
+    }
     if (target.closest(".site-header, .mega, .switcher, .drawer")) return;   // pinned things never need a scroll
     const w = view(), r = target.getBoundingClientRect(), hh = headerH();
+    if (target.pinBelow) {                                         // phones: the bar sticks under the switcher, so scroll the switch up to meet it
+      const p = target.pinBelow(), y = Math.max(0, Math.round(w.scrollY + p.el.getBoundingClientRect().top - hh - p.gap));
+      return glide(w, y);
+    }
     const vh = innerHeight - (NARROW.matches && guide ? guide.offsetHeight + 20 : 0);   // keep it clear of the docked bubble
     const fits = r.height <= vh - hh - 40;
     const y = Math.max(0, Math.round(w.scrollY + r.top - (fits ? hh + (vh - hh - r.height) / 2 : hh + 16)));
+    return glide(w, y);
+  }
+  /* Smooth-scroll to y and wait for it. A page still settling (images, fonts) can stall a smooth scroll part way, so finish the job. */
+  async function glide(w, y) {
     if (Math.abs(y - w.scrollY) < 4) return;
     w.scrollTo({ top: y, behavior: reduce ? "instant" : "smooth" });
     let last = -1, same = 0;
     for (let n = 0; n < 30; n++) { await wait(50); if (Math.abs(w.scrollY - last) < 1) { if (++same >= 2) break; } else same = 0; last = w.scrollY; }
+    if (Math.abs(y - w.scrollY) >= 4) w.scrollTo({ top: y, behavior: "instant" });
   }
   function headerH() {   // the header, plus the LBI page's sticky variant switcher under it
     const d = view().document, h = $(".site-header", d), sw = $(".switcher", d);
@@ -328,6 +346,7 @@
   let funT = [], unflip = null;
   function stopFun() {
     funT.forEach(clearTimeout); funT = [];
+    try { view().document.documentElement.classList.remove("tour-lean"); } catch (e) { /* frame gone */ }
     if (unflip) { unflip(); unflip = null; }
     if (!fig) return;
     fig.classList.remove("wave-l", "wave-r", "sway", "juggling");
@@ -357,8 +376,10 @@
     const id = first.dataset.slide, home = +first.dataset.i, n = doc.querySelectorAll(`[data-slide="${id}"]`).length;
     const set = j => {
       const b = doc.querySelector(`[data-slide="${id}"][data-i="${j}"]`); if (!b || b.getAttribute("aria-checked") === "true") return;
-      const had = document.activeElement === nextBtn;
+      const had = document.activeElement === nextBtn, from = +(doc.querySelector(`[data-slide="${id}"][aria-checked="true"]`) || b).dataset.i;
       b.click();                                                    // lbi.js redraws the controls and the bar
+      const sl = doc.querySelector(`[data-slide="${id}"]`)?.closest(".slide");   // the redraw is a new knob: start it at the old spot so it slides
+      if (sl) { sl.style.setProperty("--i", from); void sl.offsetWidth; sl.style.setProperty("--i", j); }
       if (had) try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ }
     };
     const seq = [...Array(n).keys()].filter(j => j !== home).concat(home);   // warm to cool, then back to the visitor's setting

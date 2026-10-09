@@ -1628,3 +1628,5 @@ details.table-fold[open] .fold-btn::after { content: "Hide part numbers"; }
 @keyframes jug-arm-r { from { transform: rotate(-22deg); } to { transform: rotate(-58deg); } }
 .juggling .e-pupil { --lx: 0px; --ly: -5px; }
 @media (prefers-reduced-motion: reduce) { .tour-eddy.sway, .jug img, .juggling .e-arm-l, .juggling .e-arm-r { animation: none !important; } }
+/* Phones, at the tour's switches stop: the readout steps aside so the bar and the FlexColor switch both fit above Eddy's bubble (David, 2026-10-09). */
+@media (max-width: 980px) { html.tour-lean #readout { display: none; } }
