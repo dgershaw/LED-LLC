@@ -1,0 +1,311 @@
+/* Eddy's welcome tour (David, 2026-10-09). On laptops, Eddy pops up on the home page and offers a look around that takes
+   about a minute: he hops from stop to stop across a few pages with a spotlight and a speech bubble, can read his lines
+   aloud, and brings visitors back to the home page at the end. The stop to resume lives in sessionStorage so he survives
+   the page changes; "done" and "not now" are remembered in localStorage. Phones and portrait tablets get nothing.
+   index.html?tour shows the invitation again; index.html?tour=start begins the tour at once (the Meet Eddy page uses it). */
+(function () {
+  "use strict";
+  if (!window.matchMedia) return;
+  const WIDE = window.matchMedia("(min-width: 1024px)");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const root = document.documentElement.dataset.root || "";
+  const here = location.pathname.split("/").pop() || "index.html";
+  const STEP = "eddyTourStep", VOICE = "eddyTourVoice", SEEN = "eddyTour";
+  const DAY = 864e5;
+  const $ = (s, r = document) => r.querySelector(s);
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  const el = (t, c) => { const n = document.createElement(t); if (c) n.className = c; return n; };
+  const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } } };
+  const sess = { get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) { /* private mode */ } }, del(k) { try { sessionStorage.removeItem(k); } catch (e) { /* private mode */ } } };
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+  /* The stops. `at` is what the spotlight frames, `do` opens or closes the Products menu first, `pose` adds a wave. */
+  const STOPS = [
+    { page: "index.html", at: ".home-hero h1", pose: "wave",
+      say: "<strong>Welcome to our new home!</strong> Light Efficient Design, RemPhos and Solera, all under one roof. Let me show you around." },
+    { page: "index.html", at: "#mega-products .mega-cols", do: "menu",
+      say: "Everything we make lives under <strong>Products</strong>, sorted the way the trade thinks: lamps, indoor fixtures, retrofit kits, outdoor and solar, controls." },
+    { page: "index.html", at: "#mega-products .mega-brands", do: "menu",
+      say: "Or shop by brand. Light Efficient Design, RemPhos and Solera each have a home of their own." },
+    { page: "index.html", at: ".hdr-right [data-open-search]",
+      say: "Know the part number? <strong>Search</strong> it and land right on its page. The slash key opens search from anywhere." },
+    { page: "lbi.html", at: ".switcher",
+      say: "This is the <strong>LBI Family Overview</strong>: eight linkable light bars. Pick one up here and the whole page follows." },
+    { page: "lbi.html", at: "#controls",
+      say: "Flip the FlexWatt and FlexColor switches, pick a length, and the bar on screen follows along." },
+    { page: "shoe-box-wall-pack.html", at: "section.cs-glance",
+      say: "Every product page opens with the facts <strong>at a glance</strong>, straight from the spec sheet." },
+    { page: "shoe-box-wall-pack.html", at: "#parts table",
+      say: "Then the <strong>part numbers</strong>, with spec sheets, instructions and IES files right in the table." },
+    { page: "shoe-box-wall-pack.html", at: ".next-steps", pose: "wave",
+      say: "Need a sample, a rebate or your local rep? That's my department, at the bottom of every page." },
+    { page: "index.html", at: ".hdr-eddy", pose: "wave", last: true,
+      say: "That's the tour! I live in the logo, so whenever I wiggle, click me and I'll lend a hand. <strong>Welcome home.</strong>" },
+  ];
+
+  /* Eddy as a drawing, so he can point, wave, blink and hop. Proportions follow Amy George's stickers. */
+  const EDDY = `<svg class="eddy-svg" viewBox="0 0 200 240" aria-hidden="true" focusable="false">
+  <g class="e-ant" fill="none" stroke="#0b4f9b" stroke-width="6" stroke-linecap="round"><path d="M118 38c2-14 8-24 18-32"/><path d="M118 38c7-13 15-20 30-24"/><path d="M118 38c11-9 23-12 37-10"/></g>
+  <path class="e-torso" d="M56 126h88v72h-4v38h-28v-38h-24v38H60v-38h-4z" fill="#0b4f9b"/>
+  <path d="M28 130a72 72 0 0 1 144 0z" fill="#7a9f3c"/>
+  <path d="M100 134v16" stroke="#5a92cd" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="134" r="4.5" fill="#5a92cd"/>
+  <g class="e-eye"><circle cx="100" cy="90" r="26" fill="#fff"/><circle cx="100" cy="90" r="16" fill="none" stroke="#0b4f9b" stroke-width="8"/><circle class="e-pupil" cx="100" cy="90" r="6.5" fill="#0b4f9b"/></g>
+  <path d="M116 117q10-3 16-12" fill="none" stroke="#0b4f9b" stroke-width="3" stroke-linecap="round"/>
+  <g class="e-arm e-arm-l"><path d="M60 150h-40" fill="none" stroke="#0b4f9b" stroke-width="18" stroke-linecap="round"/><circle cx="18" cy="150" r="14" fill="#0b4f9b"/></g>
+  <g class="e-arm e-arm-r"><path d="M140 150h40" fill="none" stroke="#0b4f9b" stroke-width="18" stroke-linecap="round"/><circle cx="182" cy="150" r="14" fill="#0b4f9b"/></g>
+</svg>`;
+  const SPEAKER = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`;
+
+  let veil, spot, guide, fig, say, bar, nextBtn, voiceBtn, cur = null, arriving = false;
+  let i = -1, timer = 0, left = 0, total = 0, lastT = 0, paused = false, pauseCap = 0, poll = 0, quick = 0, lastBox = "";
+  let voice = store.get(VOICE) === "on";
+
+  /* ----- Pieces on the page ----- */
+  function mount(arrive) {
+    if (veil) return;
+    arriving = arrive;
+    veil = el("div", "tour-veil");
+    spot = el("div", "tour-spot");
+    guide = el("div", "tour-guide"); guide.setAttribute("role", "dialog"); guide.setAttribute("aria-label", "Eddy's tour");
+    fig = el("div", "tour-eddy"); fig.innerHTML = EDDY;
+    const bub = el("div", "tour-bubble");
+    say = el("p", "tour-say"); say.setAttribute("aria-live", "polite");
+    const row = el("div", "tour-row");
+    voiceBtn = el("button", "tour-voice"); voiceBtn.type = "button"; voiceBtn.innerHTML = SPEAKER;
+    voiceBtn.title = "Read aloud"; voiceBtn.setAttribute("aria-label", "Read aloud"); voiceBtn.setAttribute("aria-pressed", String(voice));
+    if (!("speechSynthesis" in window)) voiceBtn.hidden = true;
+    const endBtn = el("button", "tour-btn quiet"); endBtn.type = "button"; endBtn.textContent = "End tour";
+    nextBtn = el("button", "tour-btn sp"); nextBtn.type = "button"; nextBtn.textContent = "Next ›";
+    row.append(voiceBtn, endBtn, nextBtn);
+    bar = el("div", "tour-bar"); bar.innerHTML = "<i></i>";
+    bub.append(say, row, bar);
+    guide.append(fig, bub);
+    if (arrive) guide.classList.add("dash-in");
+    document.body.append(veil, spot, guide);
+    requestAnimationFrame(() => { veil.classList.add("on"); spot.classList.add("on"); });
+    // a click on the dimmed page moves on; it must not reach site.js, which would close the menu we are showing
+    veil.addEventListener("click", e => { e.stopPropagation(); setTimeout(next, 0); });
+    nextBtn.addEventListener("click", next);
+    endBtn.addEventListener("click", () => finish(true));
+    voiceBtn.addEventListener("click", () => {
+      voice = !voice; store.set(VOICE, voice ? "on" : "off"); voiceBtn.setAttribute("aria-pressed", String(voice));
+      if (voice) { speak(STOPS[i].say); left = Math.max(left, duration(STOPS[i].say) * 0.8); total = Math.max(total, left); } else speechSynthesis.cancel();
+    });
+    // Hovering the bubble pauses the clock so slow readers can finish, for 10 s at most. Only a pointer that really moves
+    // counts: Chrome fakes mouse events when the bubble lands under a still pointer, which would stall the tour.
+    let px = -1, py = -1;
+    bub.addEventListener("pointermove", e => {
+      if (px >= 0 && Math.hypot(e.clientX - px, e.clientY - py) > 2 && !paused) { paused = true; clearTimeout(pauseCap); pauseCap = setTimeout(() => { paused = false; }, 10000); }
+      px = e.clientX; py = e.clientY;
+    });
+    bub.addEventListener("pointerleave", () => { paused = false; px = py = -1; clearTimeout(pauseCap); });
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("visibilitychange", onVis);
+    window.addEventListener("resize", refit);
+    window.addEventListener("scroll", refit, { passive: true });
+    poll = setInterval(() => { if (cur) fit(false); }, 300);          // follow reveals and late layout
+  }
+
+  function onKey(e) {
+    if (/input|textarea|select/i.test((document.activeElement && document.activeElement.tagName) || "")) return;
+    if (e.key === "Escape") { finish(true); return; }
+    if (e.key === "ArrowRight" || e.key === "Enter" || e.key === " ") {
+      if (e.target && e.target.closest && e.target.closest(".tour-guide button")) return;   // the button's own click handles it
+      e.preventDefault(); next();
+    }
+  }
+  function onVis() { if (document.hidden && "speechSynthesis" in window) speechSynthesis.pause(); else if ("speechSynthesis" in window) speechSynthesis.resume(); }
+  function refit() {
+    if (!cur || !guide) return;
+    spot.classList.add("quick"); guide.classList.add("quick");
+    fit(false);
+    clearTimeout(quick);
+    quick = setTimeout(() => { if (spot) { spot.classList.remove("quick"); guide.classList.remove("quick"); } }, 160);
+  }
+
+  /* ----- Running the stops ----- */
+  function begin() { store.set(SEEN, JSON.stringify({ state: "done", t: Date.now() })); sess.set(STEP, "0"); mount(false); show(0); }
+  function next() { if (i < 0) return; if (STOPS[i] && STOPS[i].last) finish(true); else show(i + 1); }
+
+  async function show(k) {
+    const st = STOPS[k];
+    if (!st) return finish(true);
+    i = k; sess.set(STEP, String(k));
+    stopTimer();
+    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    if (st.page !== here) return depart(st);
+    mount(false);
+    if (st.do === "menu") { openMenu(); await wait(260); } else closeMenu();
+    const target = $(st.at);
+    if (!target) return next();                                    // the page changed under us: skip the stop
+    say.innerHTML = st.say;
+    nextBtn.textContent = st.last ? "Finish" : "Next ›";
+    await bring(target);                                           // the spot rides along with the old stop meanwhile
+    if (i !== k) return;                                           // the visitor moved on while we scrolled
+    cur = target; lastBox = "";
+    fit(true);
+    if (arriving) { arriving = false; requestAnimationFrame(() => requestAnimationFrame(() => guide && guide.classList.remove("dash-in"))); }
+    if (st.pose === "wave") wave();
+    speak(st.say);
+    startTimer(duration(st.say));
+    try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ }
+  }
+
+  async function depart(st) {
+    if (guide) guide.classList.add("dash-out");
+    await wait(reduce || !guide ? 0 : 470);
+    location.href = root + st.page;
+  }
+
+  function finish(mark) {
+    stopTimer(); clearInterval(poll); clearTimeout(quick); cur = null; i = -1;
+    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    sess.del(STEP);
+    if (mark) store.set(SEEN, JSON.stringify({ state: "done", t: Date.now() }));
+    closeMenu();
+    document.removeEventListener("keydown", onKey); document.removeEventListener("visibilitychange", onVis);
+    window.removeEventListener("resize", refit); window.removeEventListener("scroll", refit);
+    if (!veil) return;
+    veil.classList.remove("on"); spot.classList.remove("on"); guide.classList.add("bye");
+    const v = veil, s = spot, g = guide; veil = spot = guide = null;
+    setTimeout(() => { v.remove(); s.remove(); g.remove(); }, 520);
+  }
+
+  function openMenu() { const b = $(".nav-item.products"); if (b && b.getAttribute("aria-expanded") !== "true") b.click(); }
+  function closeMenu() { const b = $(".nav-item.products"); if (b && b.getAttribute("aria-expanded") === "true") b.click(); }
+
+  /* Scroll the stop into view: centered when it fits under the header, else its top just below the header. */
+  async function bring(target) {
+    if (target.closest(".site-header, .mega, .switcher")) return;   // pinned things never need a scroll
+    const r = target.getBoundingClientRect(), vh = innerHeight, hh = headerH();
+    const fits = r.height <= vh - hh - 40;
+    const y = Math.max(0, Math.round(scrollY + r.top - (fits ? hh + (vh - hh - r.height) / 2 : hh + 16)));
+    if (Math.abs(y - scrollY) < 4) return;
+    window.scrollTo({ top: y, behavior: reduce ? "instant" : "smooth" });
+    let last = -1, same = 0;
+    for (let n = 0; n < 30; n++) { await wait(50); if (Math.abs(scrollY - last) < 1) { if (++same >= 2) break; } else same = 0; last = scrollY; }
+  }
+  function headerH() { const h = $(".site-header"); return h ? h.getBoundingClientRect().bottom : 0; }
+
+  /* Frame the stop and put Eddy and his bubble beside it. */
+  function fit(hop) {
+    if (!cur || !spot) return;
+    const r = cur.getBoundingClientRect();
+    if (!r.width && !r.height) return;
+    const box = [r.left, r.top, r.width, r.height].map(Math.round).join(",");
+    if (box === lastBox && !hop) return;
+    lastBox = box;
+    const pad = clamp(Math.round(Math.min(r.width, r.height) * 0.12), 6, 14);
+    spot.style.left = (r.left - pad) + "px"; spot.style.top = (r.top - pad) + "px";
+    spot.style.width = (r.width + 2 * pad) + "px"; spot.style.height = (r.height + 2 * pad) + "px";
+    const p = place(r, guide.offsetWidth, guide.offsetHeight);
+    guide.classList.toggle("flip", p.flip);
+    guide.style.left = p.x + "px"; guide.style.top = p.y + "px";
+    point(r, p);
+    if (hop && !reduce) { fig.classList.remove("hop"); void fig.offsetWidth; fig.classList.add("hop"); setTimeout(() => fig && fig.classList.remove("hop"), 720); }
+  }
+  function place(r, gw, gh) {
+    const vw = innerWidth, vh = innerHeight, m = 14, g = 18;
+    const midY = r.top + r.height / 2 - gh / 2;
+    const cands = [
+      { x: r.right + g, y: midY, flip: false },                   // beside it, on the right
+      { x: r.left - g - gw, y: midY, flip: true },                // beside it, on the left
+      { x: r.left, y: r.bottom + g, flip: false },                // under it
+      { x: r.right - gw, y: r.bottom + g, flip: true },
+      { x: r.left, y: r.top - g - gh, flip: false },              // above it
+      { x: r.right - gw, y: r.top - g - gh, flip: true },
+    ];
+    for (const c of cands) if (c.x >= m && c.y >= m && c.x + gw <= vw - m && c.y + gh <= vh - m) return c;
+    return { x: vw - m - gw, y: vh - m - gh, flip: true };        // too big to sit beside: bottom right corner
+  }
+  /* Eddy points at the stop with the nearer arm and looks at it. */
+  function point(r, p) {
+    const svg = fig.firstElementChild;
+    const fx = p.flip ? p.x + guide.offsetWidth - fig.offsetWidth / 2 : p.x + fig.offsetWidth / 2;   // where he will stand
+    const fy = p.y + guide.offsetHeight - fig.offsetHeight * 0.4;
+    const ang = Math.atan2(r.top + r.height / 2 - fy, r.left + r.width / 2 - fx) * 180 / Math.PI;   // 0 right, -90 up
+    const rightSide = Math.cos(ang * Math.PI / 180) >= 0;
+    if (rightSide) { svg.style.setProperty("--ar", clamp(ang, -95, 60).toFixed(0) + "deg"); svg.style.setProperty("--al", "-42deg"); }
+    else { let a = ang - 180; if (a <= -180) a += 360; svg.style.setProperty("--al", clamp(a, -60, 95).toFixed(0) + "deg"); svg.style.setProperty("--ar", "42deg"); }
+    svg.style.setProperty("--lx", (5 * Math.cos(ang * Math.PI / 180)).toFixed(1) + "px");
+    svg.style.setProperty("--ly", (5 * Math.sin(ang * Math.PI / 180)).toFixed(1) + "px");
+    fig.dataset.side = rightSide ? "r" : "l";
+  }
+  function wave() {
+    if (reduce || !fig) return;
+    const c = fig.dataset.side === "r" ? "wave-l" : "wave-r";       // the arm that is not pointing
+    fig.classList.add(c); setTimeout(() => fig && fig.classList.remove(c), 2500);
+  }
+
+  /* ----- Pace: a line stays up long enough to read, longer when spoken; hovering the bubble pauses it. ----- */
+  function duration(s) {
+    const n = s.replace(/<[^>]+>/g, "").length;
+    const d = clamp(1200 + n * 36, 3200, 9000);
+    return voice ? Math.max(d, 1200 + n * 70) : d;
+  }
+  function startTimer(ms) { total = left = ms; lastT = 0; paused = false; clearTimeout(pauseCap); bar.firstChild.style.width = "0%"; cancelAnimationFrame(timer); timer = requestAnimationFrame(tick); }
+  function tick(t) {
+    if (lastT && !paused && !document.hidden) left -= t - lastT;
+    lastT = t;
+    bar.firstChild.style.width = (100 * (1 - left / total)).toFixed(1) + "%";
+    if (left <= 0) { timer = 0; next(); return; }
+    timer = requestAnimationFrame(tick);
+  }
+  function stopTimer() { cancelAnimationFrame(timer); timer = 0; }
+
+  function speak(text) {
+    if (!voice || !("speechSynthesis" in window)) return;
+    const ss = speechSynthesis; ss.cancel();
+    const u = new SpeechSynthesisUtterance(text.replace(/<[^>]+>/g, ""));
+    const vs = ss.getVoices().filter(v => /^en/i.test(v.lang));
+    const pick = vs.find(v => /Samantha|Google US English|Aria|Jenny|Zira/i.test(v.name)) || vs.find(v => v.default) || vs[0];
+    if (pick) u.voice = pick;
+    u.rate = 1.03; u.pitch = 1.2;
+    u.onend = () => { if (left > 900) left = 900; };
+    setTimeout(() => ss.speak(u), 60);
+  }
+
+  /* ----- The invitation on the home page ----- */
+  function invite() {
+    const box = el("div", "tour-invite"); box.setAttribute("role", "dialog"); box.setAttribute("aria-label", "Eddy offers a tour");
+    const bub = el("div", "tour-bubble");
+    bub.innerHTML = `<p class="tour-say"><strong>Hi, I'm Eddy!</strong> Welcome to our new home. Want a quick look around? It takes about a minute.</p>`;
+    const row = el("div", "tour-row");
+    const later = el("button", "tour-btn quiet"); later.type = "button"; later.textContent = "Not now";
+    const go = el("button", "tour-btn sp"); go.type = "button"; go.textContent = "Show me around";
+    row.append(later, go); bub.append(row);
+    const ed = el("button", "tour-eddy"); ed.type = "button"; ed.setAttribute("aria-label", "Start Eddy's tour"); ed.innerHTML = EDDY;
+    box.append(bub, ed);
+    document.body.append(box);
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      box.classList.add("on");
+      if (!reduce) { ed.classList.add("wave-l"); setTimeout(() => ed.classList.remove("wave-l"), 2600); }
+    }));
+    const close = () => { box.classList.remove("on"); setTimeout(() => box.remove(), 500); };
+    later.addEventListener("click", () => { store.set(SEEN, JSON.stringify({ state: "later", t: Date.now() })); close(); });
+    const start = () => { close(); begin(); };
+    go.addEventListener("click", start); ed.addEventListener("click", start);
+  }
+  function wantsInvite() {
+    const q = new URLSearchParams(location.search);
+    if (q.has("tour")) return q.get("tour") === "start" ? "start" : "ask";
+    let rec = null; try { rec = JSON.parse(store.get(SEEN) || "null"); } catch (e) { rec = null; }
+    if (!rec) return "ask";
+    const age = Date.now() - (rec.t || 0);
+    if (rec.state === "later" && age > 30 * DAY) return "ask";
+    if (rec.state === "done" && age > 180 * DAY) return "ask";
+    return "";
+  }
+
+  /* ----- Boot: resume a tour in flight, or offer one on the home page ----- */
+  const stored = sess.get(STEP);
+  if (stored !== null) {
+    const k = +stored;
+    if (WIDE.matches && STOPS[k] && STOPS[k].page === here) { mount(true); show(k); }
+    else sess.del(STEP);
+  } else if (here === "index.html" && WIDE.matches) {
+    const w = wantsInvite();
+    if (w === "start") setTimeout(begin, 400);
+    else if (w === "ask") setTimeout(() => { if (!veil && WIDE.matches) invite(); }, 2500);
+  }
+})();

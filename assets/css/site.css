@@ -158,10 +158,39 @@ p { margin: 0; }
   border-bottom: 1px solid var(--line);
 }
 .site-header > .wrap { height: 100%; display: flex; align-items: center; gap: 18px; }
-.hdr-logo { display: flex; align-items: center; height: 100%; flex: 0 0 auto; }
-.hdr-logo img { height: 30px; width: auto; }
-@media (max-width: 420px) { .hdr-logo img { height: 25px; } }
-.hdr-logo:hover { text-decoration: none; }
+/* The logo is two links: the LED (Eddy) opens eddy.html, the wordmark goes home. The gap is the artwork's own 20 of 104 px.
+   site.js wiggles the LED now and then at random, and on a mouse hover, unless the visitor prefers reduced motion (David, 2026-10-09). */
+.hdr-logo { --logo-h: 30px; display: flex; align-items: center; gap: calc(var(--logo-h) * 20 / 104); height: 100%; flex: 0 0 auto; }
+.hdr-logo a { display: flex; align-items: center; height: 100%; }
+.hdr-logo a:hover { text-decoration: none; }
+.hdr-logo img { height: var(--logo-h); width: auto; }
+@media (max-width: 420px) { .hdr-logo { --logo-h: 25px; } }
+.hdr-eddy { position: relative; }
+.hdr-eddy::before { content: ""; position: absolute; inset: 0 -3px 0 -10px; }  /* a finger-sized target on phones */
+.hdr-eddy:focus-visible { outline: none; }
+.hdr-eddy:focus-visible img { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.hdr-eddy img { transform-origin: 32% 72%; }
+.hdr-eddy.wiggle img { animation: eddy-wiggle 1s ease-in-out both; }
+.hdr-eddy.wiggle.twice img { animation-iteration-count: 2; }
+@keyframes eddy-wiggle {
+  0%, 100% { transform: none; }
+  12% { transform: rotate(-14deg) scale(1.06); }
+  27% { transform: rotate(11deg) scale(1.05); }
+  42% { transform: rotate(-8deg) scale(1.03); }
+  57% { transform: rotate(5deg) scale(1.01); }
+  72% { transform: rotate(-2.5deg); }
+  86% { transform: rotate(1deg); }
+}
+@media (prefers-reduced-motion: reduce) { .hdr-eddy.wiggle img { animation: none; } }
+.eddy-tip {
+  position: absolute; left: -8px; top: calc(100% + 6px); z-index: 2;
+  padding: 7px 11px; border-radius: 999px; background: var(--ink); color: var(--bg);
+  font-size: 0.8125rem; font-weight: 700; line-height: 1; white-space: nowrap;
+  box-shadow: 0 12px 26px -14px rgb(0 0 0 / 0.55);
+  opacity: 0; transform: translateY(-4px); pointer-events: none; transition: opacity .15s ease, transform .15s ease;
+}
+.hdr-eddy:hover .eddy-tip, .hdr-eddy:focus-visible .eddy-tip { opacity: 1; transform: none; }
+@media (hover: none) { .eddy-tip { display: none; } }
 .hdr-nav { display: flex; align-items: center; gap: 2px; margin: 0 0 0 8px; padding: 0; height: 100%; }
 .hdr-nav > li { list-style: none; height: 100%; display: flex; align-items: center; }
 .nav-item {
@@ -1491,3 +1520,66 @@ details.table-fold[open] .fold-btn::after { content: "Hide part numbers"; }
 .brand-band .bb-link { font-weight: 700; font-size: 0.875rem; color: var(--solera-ink); text-decoration: none; }
 .brand-band .bb-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 560px) { .brand-band .wrap { min-height: 56px; } .brand-band .bb-logo img { height: 34px; } }
+
+/* ---------- Eddy's tour (David, 2026-10-09), laptops only. tour.js builds all of this. The spot cuts a window around the
+   stop and its shadow dims the rest of the page; the veil under it catches clicks. The guide is Eddy plus his speech bubble,
+   hopping from stop to stop. The invitation sits at the bottom right of the home page. ---------- */
+.tour-veil { position: fixed; inset: 0; z-index: 80; }
+.tour-spot { position: fixed; left: 50%; top: 50%; width: 0; height: 0; z-index: 81; pointer-events: none; border-radius: 18px; opacity: 0;
+  box-shadow: 0 0 0 200vmax rgb(8 9 12 / 0.58), inset 0 0 0 2px rgb(255 255 255 / 0.4);
+  transition: left .55s cubic-bezier(.4,.1,.2,1), top .55s cubic-bezier(.4,.1,.2,1), width .55s cubic-bezier(.4,.1,.2,1), height .55s cubic-bezier(.4,.1,.2,1), opacity .4s ease; }
+.tour-spot.on { opacity: 1; }
+.tour-guide { position: fixed; left: 0; top: 0; z-index: 83; display: flex; align-items: flex-end; gap: 10px;
+  transition: left .65s cubic-bezier(.3,.9,.3,1.12), top .65s cubic-bezier(.3,.9,.3,1.12), transform .45s ease, opacity .45s ease; }
+.tour-guide.flip { flex-direction: row-reverse; }
+.tour-guide.dash-out { transform: translateX(60vw) scale(.6); opacity: 0; }
+.tour-guide.dash-in { transform: translateX(-60vw) scale(.6); opacity: 0; transition: none; }
+.tour-guide.bye { transform: translateY(30px) scale(.4); opacity: 0; }
+.tour-spot.quick, .tour-guide.quick { transition: none; }
+.tour-eddy { position: relative; width: 96px; height: 116px; flex: 0 0 auto; }
+.tour-eddy .eddy-svg { width: 100%; height: 100%; display: block; overflow: visible; animation: e-bob 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff) drop-shadow(0 12px 16px rgb(0 0 0 / 0.4)); }
+.tour-eddy.hop { animation: e-hop .7s cubic-bezier(.3,.7,.4,1) 1; }
+@keyframes e-bob { 50% { transform: translateY(-4px); } }
+@keyframes e-hop { 0% { transform: translateY(0) scale(1, 1); } 18% { transform: translateY(5px) scale(1.08, .9); } 50% { transform: translateY(-26px) scale(.95, 1.06) rotate(-4deg); } 78% { transform: translateY(0) scale(1.05, .94) rotate(2deg); } 100% { transform: none; } }
+.e-ant { transform-origin: 118px 38px; animation: e-ant 2.8s ease-in-out infinite; }
+@keyframes e-ant { 50% { transform: rotate(8deg); } }
+.e-eye { transform-origin: 100px 90px; animation: e-blink 4.6s infinite; }
+@keyframes e-blink { 0%, 93%, 100% { transform: scaleY(1); } 96% { transform: scaleY(.08); } }
+.e-pupil { transform: translate(var(--lx, 0px), var(--ly, 0px)); transition: transform .45s ease; }
+.e-arm-l { transform-origin: 60px 150px; transform: rotate(var(--al, -42deg)); transition: transform .55s cubic-bezier(.3,1.3,.5,1); }
+.e-arm-r { transform-origin: 140px 150px; transform: rotate(var(--ar, 42deg)); transition: transform .55s cubic-bezier(.3,1.3,.5,1); }
+.wave-l .e-arm-l { animation: e-wave-l .8s ease-in-out 3; }
+.wave-r .e-arm-r { animation: e-wave-r .8s ease-in-out 3; }
+@keyframes e-wave-l { 0%, 100% { transform: rotate(75deg); } 50% { transform: rotate(115deg); } }
+@keyframes e-wave-r { 0%, 100% { transform: rotate(-75deg); } 50% { transform: rotate(-115deg); } }
+.tour-bubble { position: relative; width: 300px; padding: 14px 16px 0; border-radius: 18px; background: var(--ink); color: var(--bg);
+  font-size: 0.9375rem; line-height: 1.45; box-shadow: 0 20px 44px -18px rgb(0 0 0 / 0.6); }
+.tour-bubble::after { content: ""; position: absolute; bottom: 30px; left: -7px; width: 16px; height: 16px; background: var(--ink); transform: rotate(45deg); border-radius: 3px; }
+.tour-guide.flip .tour-bubble::after, .tour-invite .tour-bubble::after { left: auto; right: -7px; }
+.tour-say { margin: 0 0 12px; }
+.tour-say strong { font-weight: 800; }
+.tour-row { display: flex; align-items: center; gap: 6px; padding-bottom: 14px; }
+.tour-row .sp { margin-left: auto; }
+.tour-btn { border: 0; border-radius: 999px; padding: 8px 14px; font: 700 0.8125rem/1 var(--font-ui); cursor: pointer; background: var(--bg); color: var(--ink); }
+.tour-btn:hover { filter: brightness(1.08); }
+.tour-btn.quiet { background: transparent; color: inherit; opacity: 0.85; padding-inline: 8px; text-decoration: underline; text-underline-offset: 3px; }
+.tour-btn.quiet:hover { opacity: 1; }
+.tour-voice { width: 32px; height: 32px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--bg) 40%, transparent); background: transparent; color: inherit; display: grid; place-items: center; cursor: pointer; }
+.tour-voice[aria-pressed="true"] { background: var(--bg); color: var(--ink); border-color: transparent; }
+.tour-voice svg { width: 18px; height: 18px; }
+.tour-bar { height: 3px; margin: 0 -16px; border-radius: 0 0 18px 18px; overflow: hidden; background: color-mix(in srgb, var(--bg) 22%, transparent); }
+.tour-bar i { display: block; height: 100%; width: 0; background: var(--led); }
+.tour-invite .tour-bubble { padding-bottom: 0; }
+.tour-invite .tour-row { padding-bottom: 14px; }
+.tour-invite { position: fixed; right: 22px; bottom: 20px; z-index: 79; display: flex; align-items: flex-end; gap: 10px; transform: translateY(30px); opacity: 0; transition: transform .5s cubic-bezier(.3,.9,.3,1.12), opacity .4s ease; }
+.tour-invite.on { transform: none; opacity: 1; }
+.tour-invite .tour-eddy { background: none; border: 0; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.tour-invite .tour-eddy:focus-visible { outline: 3px solid var(--accent); outline-offset: 6px; border-radius: 24px; }
+.tour-only { display: none; }
+@media (min-width: 1024px) { .tour-only { display: inline-flex; } }
+@media (max-width: 1023px) { .tour-veil, .tour-spot, .tour-guide, .tour-invite { display: none !important; } }
+@media (prefers-reduced-motion: reduce) {
+  .tour-eddy .eddy-svg, .tour-eddy.hop, .e-ant, .e-eye, .wave-l .e-arm-l, .wave-r .e-arm-r { animation: none !important; }
+  .tour-guide, .tour-spot, .tour-invite, .e-arm-l, .e-arm-r, .e-pupil { transition: none !important; }
+}

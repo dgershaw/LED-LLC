@@ -151,7 +151,7 @@
 
   /* ----- Highlight the current nav item ----- */
   const here = location.pathname.split("/").pop() || "index.html";
-  $$(".hdr-nav a, .drawer a").forEach(a => { if ((a.getAttribute("href") || "").split("#")[0] === here) a.setAttribute("aria-current", "page"); });
+  $$(".hdr-logo a, .hdr-nav a, .drawer a").forEach(a => { if ((a.getAttribute("href") || "").split("#")[0] === here) a.setAttribute("aria-current", "page"); });
 })();
 
 /* 2026-10-08: page-top on arrival, YouTube player, photo lightbox, slideshows, portal note, Eddy's page. */
@@ -440,4 +440,29 @@
     const io2 = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add("awake"); io2.unobserve(en.target); } }), { threshold: 0.2 });
     wake.forEach(el => io2.observe(el));
   }
+})();
+
+/* 2026-10-09: the LED in the header logo is Eddy (David's ask). Now and then, at random, he wiggles, sometimes twice,
+   and a mouse hover wiggles him too; a click opens his page. Reduced motion keeps him still, and a hidden tab skips its turn. */
+(function () {
+  "use strict";
+  const eddy = document.querySelector(".hdr-eddy");
+  if (!eddy || !window.matchMedia) return;
+  const still = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let timer = 0, done = 0;
+  const rest = () => { clearTimeout(done); eddy.classList.remove("wiggle", "twice"); };
+  const wiggle = twice => {
+    if (still.matches || document.hidden || eddy.classList.contains("wiggle")) return;
+    eddy.classList.toggle("twice", twice);
+    eddy.classList.add("wiggle");
+    done = setTimeout(rest, twice ? 2300 : 1300);          // in case animationend never comes
+  };
+  eddy.addEventListener("animationend", rest);
+  const next = (min, max) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { wiggle(Math.random() < 0.3); next(8000, 24000); }, min + Math.random() * (max - min));
+  };
+  next(3000, 7000);
+  document.addEventListener("visibilitychange", () => { if (document.hidden) { clearTimeout(timer); rest(); } else next(3000, 9000); });
+  eddy.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") wiggle(false); });
 })();
