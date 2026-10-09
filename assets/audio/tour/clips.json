@@ -1,1 +1,13 @@
-{}
+{
+ "invite": "invite.mp3",
+ "welcome": "welcome.mp3",
+ "products": "products.mp3",
+ "brands": "brands.mp3",
+ "search": "search.mp3",
+ "lbi": "lbi.mp3",
+ "switches": "switches.mp3",
+ "glance": "glance.mp3",
+ "parts": "parts.mp3",
+ "next": "next.mp3",
+ "home": "home.mp3"
+}

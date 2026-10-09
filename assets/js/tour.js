@@ -58,7 +58,8 @@
 
   let veil, spot, guide, fig, say, bar, nextBtn, voiceBtn, cur = null, arriving = false;
   let i = -1, timer = 0, left = 0, total = 0, lastT = 0, paused = false, pauseCap = 0, poll = 0, quick = 0, lastBox = "";
-  let voice = store.get(VOICE) === "on";
+  // With David's recordings in place (2026-10-09) Eddy talks by default; the speaker button turns him off and that is remembered.
+  let voice = store.get(VOICE) !== "off";
 
   /* ----- Pieces on the page ----- */
   function mount(arrive) {
@@ -322,10 +323,30 @@
     if (clips && clips[st.key] && "Audio" in window) {
       const a = new Audio(AUDIO + clips[st.key]); audio = a;
       a.onended = () => { if (audio === a) { audio = null; if (left > 900) left = 900; } };
-      a.play().catch(() => { if (audio === a) { audio = null; sayAloud(text); } });
+      a.play().then(() => stretch(a)).catch(err => {
+        if (audio !== a) return;
+        if (err && err.name === "NotAllowedError") { onTap(a); return; }   // sound blocked until the visitor clicks: play it then
+        audio = null; sayAloud(text);
+      });
       return;
     }
     sayAloud(text);
+  }
+  // A stop never moves on while Eddy is still talking: it lasts at least the rest of the clip plus a breath.
+  function stretch(a) {
+    const go = () => {
+      if (audio !== a || !isFinite(a.duration)) return;
+      const need = (a.duration - a.currentTime) * 1000 + 700;
+      if (need > left) { total += need - left; left = need; }
+    };
+    if (a.readyState >= 1) go(); else a.addEventListener("loadedmetadata", go, { once: true });
+  }
+  function onTap(a) {
+    const go = () => {
+      removeEventListener("pointerdown", go, true); removeEventListener("keydown", go, true);
+      if (audio === a && voice) a.play().then(() => stretch(a)).catch(() => {});
+    };
+    addEventListener("pointerdown", go, true); addEventListener("keydown", go, true);
   }
   async function sayAloud(text) {
     if (!("speechSynthesis" in window)) return;
