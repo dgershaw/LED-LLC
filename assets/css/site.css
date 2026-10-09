@@ -1574,6 +1574,10 @@ details.table-fold[open] .fold-btn::after { content: "Hide part numbers"; }
 .tour-voice { width: 32px; height: 32px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--bg) 40%, transparent); background: transparent; color: inherit; display: grid; place-items: center; cursor: pointer; }
 .tour-voice[aria-pressed="true"] { background: var(--bg); color: var(--ink); border-color: transparent; }
 .tour-voice svg { width: 18px; height: 18px; }
+/* Sound is waiting for a tap (iPhone, iPad): the speaker pulses. */
+.tour-voice.nudge { animation: tour-nudge 1.1s ease-in-out infinite; }
+@keyframes tour-nudge { 50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--led) 55%, transparent); } }
+@media (prefers-reduced-motion: reduce) { .tour-voice.nudge { animation: none; outline: 2px solid var(--led); outline-offset: 2px; } }
 .tour-bar { height: 3px; margin: 0 -16px; border-radius: 0 0 18px 18px; overflow: hidden; background: color-mix(in srgb, var(--bg) 22%, transparent); }
 .tour-bar i { display: block; height: 100%; width: 0; background: var(--led); }
 .tour-invite .tour-bubble { padding-bottom: 0; }

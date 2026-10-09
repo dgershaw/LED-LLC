@@ -87,6 +87,7 @@
     document.body.append(veil, spot, guide);
     requestAnimationFrame(() => { veil.classList.add("on"); spot.classList.add("on"); });
     // a click on the dimmed page moves on; it must not reach site.js, which would close the menu we are showing
+    ["touchend", "click", "keydown"].forEach(t => document.addEventListener(t, unlock, true));
     veil.addEventListener("click", e => { e.stopPropagation(); setTimeout(next, 0); });
     nextBtn.addEventListener("click", next);
     endBtn.addEventListener("click", () => finish(true));
@@ -131,7 +132,7 @@
   }
 
   /* ----- Running the stops ----- */
-  function begin() { store.set(SEEN, JSON.stringify({ state: "done", t: Date.now() })); sess.set(STEP, "0"); JUG.forEach(f => { new Image().src = root + "assets/img/eddy/" + f; }); mount(false); show(0); }
+  function begin() { unlock(); store.set(SEEN, JSON.stringify({ state: "done", t: Date.now() })); sess.set(STEP, "0"); JUG.forEach(f => { new Image().src = root + "assets/img/eddy/" + f; }); mount(false); show(0); }
   function next() { if (i < 0) return; if (STOPS[i] && STOPS[i].last) finish(true); else show(i + 1); }
 
   async function show(k) {
@@ -170,6 +171,7 @@
   function finish(mark) {
     stopTimer(); stopFun(); clearInterval(poll); clearTimeout(quick); cur = null; i = -1;
     hush();
+    ["touchend", "click", "keydown"].forEach(t => document.removeEventListener(t, unlock, true));
     sess.del(STEP);
     if (mark) store.set(SEEN, JSON.stringify({ state: "done", t: Date.now() }));
     closeMenu();
@@ -354,11 +356,13 @@
     if (!voice || i !== my) return;
     const text = st.say.replace(/<[^>]+>/g, "");
     if (clips && clips[st.key] && "Audio" in window) {
-      const a = new Audio(AUDIO + clips[st.key]); audio = a;
+      const a = getPlayer(); audio = a;
       a.onended = () => { if (audio === a) { audio = null; if (left > 900) left = 900; } };
-      a.play().then(() => stretch(a)).catch(err => {
+      a.src = AUDIO + clips[st.key];
+      a.play().then(() => { nudge(false); stretch(a); }).catch(err => {
         if (audio !== a) return;
-        if (err && err.name === "NotAllowedError") { onTap(a); return; }   // sound blocked until the visitor clicks: play it then
+        if (err && err.name === "AbortError") return;                       // replaced by the next clip
+        if (err && err.name === "NotAllowedError") { unlocked = false; nudge(true); return; }   // blocked until a tap: unlock() plays it
         audio = null; sayAloud(text);
       });
       return;
@@ -374,13 +378,21 @@
     };
     if (a.readyState >= 1) go(); else a.addEventListener("loadedmetadata", go, { once: true });
   }
-  function onTap(a) {
-    const go = () => {
-      removeEventListener("pointerdown", go, true); removeEventListener("keydown", go, true);
-      if (audio === a && voice) a.play().then(() => stretch(a)).catch(() => {});
-    };
-    addEventListener("pointerdown", go, true); addEventListener("keydown", go, true);
+  /* iPhones and iPads only let a page start sound during a tap (David heard nothing on his iPhone, 2026-10-09). So every clip
+     on a page plays through one audio element, and the visitor's first tap on the page (Show me around, Next, anywhere)
+     plays a moment of silence on it, or the clip that was waiting, which unlocks it for the rest of that page. A new page
+     starts locked again; until the next tap the speaker button pulses. */
+  const SILENT = "data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjYwLjE2LjEwMAAAAAAAAAAAAAAA//NwwAAAAAAAAAAAAEluZm8AAAAPAAAABgAAAykAWlpaWlpaWlpaWlpaWlpaWnt7e3t7e3t7e3t7e3t7e3t7nJycnJycnJycnJycnJycnL29vb29vb29vb29vb29vb293t7e3t7e3t7e3t7e3t7e3t7/////////////////////AAAAAExhdmM2MC4zMQAAAAAAAAAAAAAAACQEUQAAAAAAAAMpso/G6AAAAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NCxKMAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NAxKQAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/80LEowAAA0gAAAAAVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU=";
+  let player = null, unlocked = false;
+  function getPlayer() { if (!player) { player = new Audio(); player.preload = "auto"; player.setAttribute("playsinline", ""); } return player; }
+  function unlock() {
+    if (unlocked || !("Audio" in window)) return;
+    const p = getPlayer(); unlocked = true;
+    if (audio === p && voice) { p.play().then(() => { nudge(false); stretch(p); }).catch(() => { unlocked = false; }); return; }
+    if (audio) return;
+    p.src = SILENT; p.play().catch(() => {});
   }
+  function nudge(on) { if (voiceBtn) { voiceBtn.classList.toggle("nudge", !!on && voice); voiceBtn.title = on && voice ? "Tap for sound" : "Read aloud"; } }
   async function sayAloud(text) {
     if (!("speechSynthesis" in window)) return;
     const my = i;
