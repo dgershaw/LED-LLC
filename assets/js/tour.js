@@ -380,30 +380,40 @@
     }, 5000), setTimeout(() => pick(home), 6700));
     undo.push(() => pick(home));
   }
-  /* The switches stop (David, 2026-10-09): on "Flip the FlexWatt and FlexColor switches" Eddy runs the FlexColor switch through
-     every setting so the bar changes color, on "pick a length" he steps through the lengths, then sets both back. */
+  /* The switches stop (David, 2026-10-09), in time with the clip: on "FlexWatt" Eddy steps the wattage from lowest to highest and
+     leaves it on the brightest, on "FlexColor" he runs the color temperature through every setting and back, and on "pick a
+     length" he steps through the lengths. Leaving the stop puts everything back as the visitor had it. */
   function flipSwitches() {
-    const doc = view().document, knob = doc.querySelector('[data-slide="cct"][aria-checked="true"], [data-slide="pk2"][aria-checked="true"]');
-    if (!knob) return;
-    const id = knob.dataset.slide, home = +knob.dataset.i, n = doc.querySelectorAll(`[data-slide="${id}"]`).length;
-    const size0 = doc.querySelector('[data-size][aria-pressed="true"]'), sizes = [...doc.querySelectorAll("[data-size]")].map(b => b.dataset.size);
+    const doc = view().document, on = ids => doc.querySelector(ids.map(k => `[data-slide="${k}"][aria-checked="true"]`).join(", "));
     const keep = fn => { const had = document.activeElement === nextBtn; fn(); if (had) try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ } };
-    const set = j => {
+    const set = (id, j) => {
       const b = doc.querySelector(`[data-slide="${id}"][data-i="${j}"]`); if (!b || b.getAttribute("aria-checked") === "true") return;
       const from = +(doc.querySelector(`[data-slide="${id}"][aria-checked="true"]`) || b).dataset.i;
       keep(() => b.click());                                        // lbi.js redraws the controls and the bar
       const sl = doc.querySelector(`[data-slide="${id}"]`)?.closest(".slide");   // the redraw is a new knob: start it at the old spot so it slides
       if (sl) { sl.style.setProperty("--i", from); void sl.offsetWidth; sl.style.setProperty("--i", j); }
     };
-    const size = v => { const b = doc.querySelector(`[data-size="${v}"]`); if (b && b.getAttribute("aria-pressed") !== "true") keep(() => b.click()); };
-    const seq = [...Array(n).keys()].filter(j => j !== home).concat(home);   // warm to cool, then back to the visitor's setting
-    seq.forEach((j, k) => funT.push(setTimeout(() => set(j), 500 + k * 380)));
+    const count = id => doc.querySelectorAll(`[data-slide="${id}"]`).length;
+    const watt = on(["watt", "pw2"]);
+    if (watt) {
+      const id = watt.dataset.slide, home = +watt.dataset.i;
+      [...Array(count(id)).keys()].forEach((j, k) => funT.push(setTimeout(() => set(id, j), 400 + k * 300)));   // lowest up to the brightest
+      undo.push(() => set(id, home));
+    }
+    const cct = on(["cct", "pk2"]);
+    if (cct) {
+      const id = cct.dataset.slide, home = +cct.dataset.i;
+      const seq = [...Array(count(id)).keys()].filter(j => j !== home).concat(home);   // warm to cool, then back to the visitor's setting
+      seq.forEach((j, k) => funT.push(setTimeout(() => set(id, j), 1450 + k * 270)));
+      undo.push(() => set(id, home));
+    }
+    const size0 = doc.querySelector('[data-size][aria-pressed="true"]');
     if (size0) {
-      const s0 = size0.dataset.size, lens = sizes.filter(v => v !== s0).concat(s0);   // e.g. 2 ft, 3 ft, then back to 4 ft
-      lens.forEach((v, k) => funT.push(setTimeout(() => size(v), 2800 + k * 650)));
+      const size = v => { const b = doc.querySelector(`[data-size="${v}"]`); if (b && b.getAttribute("aria-pressed") !== "true") keep(() => b.click()); };
+      const s0 = size0.dataset.size, lens = [...doc.querySelectorAll("[data-size]")].map(b => b.dataset.size).filter(v => v !== s0).concat(s0);   // e.g. 2 ft, 3 ft, back to 4 ft
+      lens.forEach((v, k) => funT.push(setTimeout(() => size(v), 2900 + k * 600)));
       undo.push(() => size(s0));
     }
-    undo.push(() => set(home));
   }
   /* The last stop: the header LED wiggles as Eddy says "whenever I wiggle", and once more on "click me" (David, 2026-10-09). */
   function wiggleLogo() {
