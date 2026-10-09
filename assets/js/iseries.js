@@ -87,8 +87,9 @@
 
   // ---------- switcher + family ----------
   function renderSwitcher() {
-    $("#switcher-row").innerHTML = `<div class="sw-group" role="group" aria-label="Light heads">${HEADS.map(v => `<button class="sw-btn" data-go="${v.id}" aria-pressed="false">${G[v.id]}${h(v.name)}</button>`).join("")}</div>
-      <span class="sw-divider" aria-hidden="true"></span><a class="sw-btn is-help" href="#finder-band">Help me choose</a>`;
+    // the Solera logo and its divider are already in the row (iseries.html); the head buttons follow them
+    $("#switcher-row").insertAdjacentHTML("beforeend", `<div class="sw-group" role="group" aria-label="Light heads">${HEADS.map(v => `<button class="sw-btn" data-go="${v.id}" aria-pressed="false">${G[v.id]}${h(v.name)}</button>`).join("")}</div>
+      <span class="sw-divider" aria-hidden="true"></span><a class="sw-btn is-help" href="#finder-band">Help me choose</a>`);
   }
   function renderFamily() {
     $("#is-fam").innerHTML = HEADS.map(v => `<button data-go="${v.id}" data-scroll="1" aria-pressed="false"><span class="pic"><img src="${sysImg({ head: v.id, pack: v.packs[0] })}" alt="" loading="lazy"></span><span class="t"><span class="name">${h(v.name)}</span><span class="sub">${h(v.fam)}</span></span></button>`).join("");

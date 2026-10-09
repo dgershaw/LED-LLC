@@ -1482,3 +1482,12 @@ details.table-fold[open] .fold-btn::after { content: "Hide part numbers"; }
   .cs-icons b:empty { display: none; }
   .cs-icons .lb { order: 1; }
 }
+
+/* Solera pages open with a band in Solera yellow carrying the black logo (David, 2026-10-09) */
+.brand-band.solera { background: var(--solera); color: var(--solera-ink); border-bottom: 1px solid rgb(0 0 0 / 0.12); }
+.brand-band .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
+.brand-band .bb-logo { display: block; }
+.brand-band .bb-logo img { height: 44px; width: auto; display: block; }
+.brand-band .bb-link { font-weight: 700; font-size: 0.875rem; color: var(--solera-ink); text-decoration: none; }
+.brand-band .bb-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 560px) { .brand-band .wrap { min-height: 56px; } .brand-band .bb-logo img { height: 34px; } }

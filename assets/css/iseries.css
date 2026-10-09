@@ -205,3 +205,39 @@ details.fold > summary .fold-h { grid-column: 1; font-size: var(--step-1); font-
   .is-result { grid-template-columns: minmax(0, 1fr); }
   .is-result .pic { aspect-ratio: 16 / 9; }
 }
+
+/* ---------- Solera band: the head switcher in Solera yellow, led by the black logo (David, 2026-10-09) ---------- */
+.switcher.is-switch { background: var(--solera); border-bottom: 1px solid rgb(0 0 0 / 0.14); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.is-switch .sw-logo { display: flex; align-items: center; flex: 0 0 auto; padding-inline: 2px 4px; border-radius: 10px; }
+.is-switch .sw-logo img { height: 40px; width: auto; display: block; }
+.is-switch .sw-btn, .is-switch .sw-btn.is-help { color: var(--solera-ink); }
+.is-switch .sw-btn:hover, .is-switch .sw-btn.is-help:hover { color: #1b1c20; background: rgb(255 255 255 / 0.45); }
+.is-switch .sw-btn[aria-pressed="true"] { color: #1b1c20; background: #fff; box-shadow: 0 1px 3px rgb(0 0 0 / 0.14); }
+.is-switch .sw-btn[aria-pressed="true"] .is-g { color: #7d5e00; }
+.is-switch .sw-divider { background: rgb(0 0 0 / 0.2); }
+@media (max-width: 760px) {
+  /* phones: logo, then the three heads on one row (lbi.css stacks the LBI switcher in two rows) */
+  .is-switch .switcher-row { display: flex; align-items: center; gap: 2px; padding: 4px 8px 4px 10px; }
+  .is-switch .sw-logo img { height: 30px; }
+  .is-switch .sw-group { flex: 1 1 auto; }
+}
+
+/* ---------- About i-Series: the spec sheet's overview and icon row (David, 2026-10-09) ---------- */
+.is-about { text-align: center; padding-top: clamp(28px, 4vw, 44px); }
+.is-about h2 { font-size: var(--step-3); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em; max-width: 30ch; margin-inline: auto; }
+.is-about .lead { margin: 14px auto 0; color: var(--muted); max-width: 66ch; }
+.is-glance { margin-top: clamp(28px, 4vw, 44px); display: grid; justify-items: center; gap: 24px; }
+.is-glance .cs-icons { border-top: 0; padding-top: 0; text-align: center; }
+.is-glance .cs-flex { text-align: left; }
+.is-glance .cs-flex b { font-size: 0.875rem; }
+.cs-icons .nc { text-transform: none; }
+@media (min-width: 1320px) {
+  .is-glance { grid-template-columns: auto auto; justify-content: center; align-items: center; gap: 0; }
+  .is-glance .cs-flex { padding-right: 36px; margin-right: 36px; border-right: 1px solid var(--line); }
+}
+@media (max-width: 760px) {
+  .is-about { text-align: left; }
+  .is-about h2, .is-about .lead { margin-inline: 0; }
+  .is-glance { justify-items: stretch; }
+  .is-glance .cs-flex { justify-content: center; }
+}
