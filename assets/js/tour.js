@@ -38,7 +38,7 @@
       say: "Know the part number? <strong>Search</strong> it and land right on its page. The slash key opens search from anywhere." },
     { key: "lbi", page: "lbi.html", at: ".switcher",
       say: "This is the <strong>LBI Family Overview</strong>: eight linkable light bars. Pick one up here and the whole page follows." },
-    { key: "switches", page: "lbi.html", at: "#controls",
+    { key: "switches", page: "lbi.html", at: ".stage", fun: "flip", narrowSpan: ["#stage-view", '[data-slide="cct"], [data-slide="pk2"]'],
       say: "Flip the FlexWatt and FlexColor switches, pick a length, and the bar on screen follows along." },
     { key: "glance", page: "shoe-box-wall-pack.html", at: "section.cs-glance",
       say: "Every product page opens with the facts <strong>at a glance</strong>, straight from the spec sheet." },
@@ -46,7 +46,7 @@
       say: "Then the <strong>part numbers</strong>, with spec sheets, instructions and IES files right in the table." },
     { key: "next", page: "shoe-box-wall-pack.html", at: ".next-steps", pose: "wave",
       say: "Need a sample, a rebate or your local rep? That's my department, at the bottom of every page." },
-    { key: "home", page: "index.html", at: ".hdr-eddy", pose: "wave", last: true,
+    { key: "home", page: "index.html", at: ".hdr-eddy", pose: "wave", fun: "wiggle", last: true,
       say: "That's the tour! I live in the logo, so whenever I wiggle, click me and I'll lend a hand. <strong>Welcome home.</strong>" },
   ];
 
@@ -166,6 +166,7 @@
     fit(true);
     if (arriving) { arriving = false; requestAnimationFrame(() => requestAnimationFrame(() => guide && guide.classList.remove("dash-in"))); }
     if (st.fun === "juggle" && !reduce) funIntro(); else if (st.pose === "wave") wave();
+    if (st.fun === "flip") flipSwitches(); else if (st.fun === "wiggle") wiggleLogo();
     speak(st);
     startTimer(Math.max(duration(st.say), st.hold || 0));
     try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ }
@@ -213,11 +214,17 @@
   }
 
   function openMenu() {
-    if (NARROW.matches) { const d = $("#drawer"); if (d && d.dataset.open !== "true") $("#menu-open")?.click(); return; }
+    if (NARROW.matches) {
+      const d = $("#drawer"); if (d && d.dataset.open !== "true") $("#menu-open")?.click();
+      const accs = document.querySelectorAll("#drawer .acc > button"), b = accs[accs.length - 1];   // Shop by brand: open it on the brands stop so its logos show
+      if (b) { const want = STOPS[i] && STOPS[i].key === "brands"; if ((b.getAttribute("aria-expanded") === "true") !== want) b.click(); }
+      return;
+    }
     const b = $(".nav-item.products"); if (b && b.getAttribute("aria-expanded") !== "true") b.click();
   }
   function closeMenu() {
     const d = $("#drawer"); if (d && d.dataset.open === "true") $("#menu-close")?.click();
+    const bs = document.querySelectorAll("#drawer .acc > button"), bb = bs[bs.length - 1]; if (bb && bb.getAttribute("aria-expanded") === "true") bb.click();
     const b = $(".nav-item.products"); if (b && b.getAttribute("aria-expanded") === "true") b.click();
   }
   /* What a stop frames. On narrow screens the Products and Shop by brand stops frame the groups in the menu drawer. */
@@ -230,6 +237,13 @@
         const rs = els.map(e => e.getBoundingClientRect()), l = Math.min(...rs.map(r => r.left)), t = Math.min(...rs.map(r => r.top));
         const rr = Math.max(...rs.map(r => r.right)), b = Math.max(...rs.map(r => r.bottom));
         return { left: l, top: t, right: rr, bottom: b, width: rr - l, height: b - t };
+      } };
+    }
+    if (NARROW.matches && st.narrowSpan) {   // a phone stacks the bar over the switches: frame from the bar down to the FlexColor switch
+      const d = view().document, a = $(st.narrowSpan[0], d), b = $(st.narrowSpan[1], d), c = b && b.closest(".ctl");
+      if (a && c) return { closest: q => a.closest(q), getBoundingClientRect: () => {
+        const r = a.getBoundingClientRect(), r2 = c.getBoundingClientRect();
+        return { left: Math.min(r.left, r2.left), top: r.top, right: Math.max(r.right, r2.right), bottom: r2.bottom, width: Math.max(r.right, r2.right) - Math.min(r.left, r2.left), height: r2.bottom - r.top };
       } };
     }
     return $((NARROW.matches && st.narrowAt) || st.at, view().document);   // a phone shows the table as tall cards: frame the first one
@@ -247,7 +261,10 @@
     let last = -1, same = 0;
     for (let n = 0; n < 30; n++) { await wait(50); if (Math.abs(w.scrollY - last) < 1) { if (++same >= 2) break; } else same = 0; last = w.scrollY; }
   }
-  function headerH() { const h = $(".site-header", view().document); return h ? h.getBoundingClientRect().bottom : 0; }
+  function headerH() {   // the header, plus the LBI page's sticky variant switcher under it
+    const d = view().document, h = $(".site-header", d), sw = $(".switcher", d);
+    return (h ? h.getBoundingClientRect().bottom : 0) + (sw ? sw.offsetHeight : 0);
+  }
 
   /* Frame the stop and put Eddy and his bubble beside it. */
   function fit(hop) {
@@ -308,9 +325,10 @@
   /* The party trick at the first stop (David, 2026-10-09: "wave and be more fun", "juggle some of our products"): after the
      hop lands, a two-armed wave with a sway, then he juggles a Shoe Box retrofit lamp, an LBI G1 and a Solera flood light. */
   const JUG = ["jug-lamp.png", "jug-lbi.png", "jug-solar.png"];
-  let funT = [];
+  let funT = [], unflip = null;
   function stopFun() {
     funT.forEach(clearTimeout); funT = [];
+    if (unflip) { unflip(); unflip = null; }
     if (!fig) return;
     fig.classList.remove("wave-l", "wave-r", "sway", "juggling");
     const j = fig.querySelector(".jug"); if (j) j.remove();
@@ -329,6 +347,29 @@
       requestAnimationFrame(() => j.classList.add("on"));
       funT.push(setTimeout(() => { j.classList.remove("on"); fig.classList.remove("juggling"); funT.push(setTimeout(() => j.remove(), 450)); }, 4300));
     }, 2900));
+  }
+
+  /* The switches stop (David, 2026-10-09): Eddy flips the FlexColor switch through every setting in time with "Flip the
+     FlexWatt and FlexColor switches", so the bar on screen changes color, then sets it back where the visitor had it. */
+  function flipSwitches() {
+    const doc = view().document, knob = () => doc.querySelector('[data-slide="cct"][aria-checked="true"], [data-slide="pk2"][aria-checked="true"]');
+    const first = knob(); if (!first) return;
+    const id = first.dataset.slide, home = +first.dataset.i, n = doc.querySelectorAll(`[data-slide="${id}"]`).length;
+    const set = j => {
+      const b = doc.querySelector(`[data-slide="${id}"][data-i="${j}"]`); if (!b || b.getAttribute("aria-checked") === "true") return;
+      const had = document.activeElement === nextBtn;
+      b.click();                                                    // lbi.js redraws the controls and the bar
+      if (had) try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ }
+    };
+    const seq = [...Array(n).keys()].filter(j => j !== home).concat(home);   // warm to cool, then back to the visitor's setting
+    seq.forEach((j, s) => funT.push(setTimeout(() => { set(j); if (s === seq.length - 1) unflip = null; }, 1000 + s * 620)));
+    unflip = () => set(home);
+  }
+  /* The last stop: the header LED wiggles as Eddy says "whenever I wiggle", and once more on "click me" (David, 2026-10-09). */
+  function wiggleLogo() {
+    const led = $(".hdr-eddy"); if (!led) return;
+    const go = twice => { led.classList.remove("wiggle", "twice"); void led.offsetWidth; led.classList.toggle("twice", twice); led.classList.add("wiggle"); };
+    funT.push(setTimeout(() => go(true), 2700), setTimeout(() => go(false), 5100));
   }
 
   /* ----- Pace: a line stays up long enough to read, longer when spoken; hovering the bubble pauses it. ----- */
@@ -414,7 +455,8 @@
   const SILENT = "data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjYwLjE2LjEwMAAAAAAAAAAAAAAA//NwwAAAAAAAAAAAAEluZm8AAAAPAAAABgAAAykAWlpaWlpaWlpaWlpaWlpaWnt7e3t7e3t7e3t7e3t7e3t7nJycnJycnJycnJycnJycnL29vb29vb29vb29vb29vb293t7e3t7e3t7e3t7e3t7e3t7/////////////////////AAAAAExhdmM2MC4zMQAAAAAAAAAAAAAAACQEUQAAAAAAAAMpso/G6AAAAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NCxKMAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NAxKQAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/80LEowAAA0gAAAAAVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU=";
   let player = null, unlocked = false;
   function getPlayer() { if (!player) { player = new Audio(); player.preload = "auto"; player.setAttribute("playsinline", ""); } return player; }
-  function unlock() {
+  function unlock(e) {
+    if (e && e.isTrusted === false) return;                         // the tour's own clicks (the switch flips) are not a visitor's tap
     if (unlocked || !("Audio" in window)) return;
     const p = getPlayer(); unlocked = true;
     if (audio === p && voice) { p.play().then(() => { nudge(false); stretch(p); }).catch(() => { unlocked = false; }); return; }

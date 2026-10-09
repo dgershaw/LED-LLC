@@ -980,6 +980,12 @@ a.look:hover .art img { transform: rotate(-5deg) scale(1.05); }
 .mega-brands .all { font-weight: 800; font-size: 0.9375rem; margin-top: 6px; }
 @media (max-width: 1280px) { .mega-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .drawer .acc li a .btag { margin-left: 6px; }
+/* Shop by brand in the phone menu shows the three logos, like the desktop menu (David, 2026-10-09). */
+.drawer-brands { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.drawer-brands .mb { display: grid; grid-template-rows: 44px auto; gap: 6px; align-items: center; padding: 10px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+.drawer-brands .mb:hover { text-decoration: none; border-color: var(--accent); }
+.drawer-brands .mb .logo-eq { --logo-s: 40px; max-height: 44px; justify-self: center; object-position: center; }
+.drawer-brands .mb span { font-size: 0.75rem; font-weight: 700; line-height: 1.25; text-align: center; }
 .drawer .acc > div > a { display: block; padding: 6px 0; }
 
 /* All products page */
