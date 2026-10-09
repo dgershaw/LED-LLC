@@ -36,7 +36,7 @@
       say: "Or shop by brand. Light Efficient Design, RemPhos and Solera each have a home of their own." },
     { key: "search", page: "index.html", at: ".hdr-right [data-open-search]",
       say: "Know the part number? <strong>Search</strong> it and land right on its page. The slash key opens search from anywhere." },
-    { key: "lbi", page: "lbi.html", at: ".switcher",
+    { key: "lbi", page: "lbi.html", at: ".switcher", fun: "pick", hold: 7800,
       say: "This is the <strong>LBI Family Overview</strong>: eight linkable light bars. Pick one up here and the whole page follows." },
     { key: "switches", page: "lbi.html", at: ".stage", fun: "flip", narrowSpan: ["#stage-view", '[data-slide="cct"], [data-slide="pk2"]'],
       say: "Flip the FlexWatt and FlexColor switches, pick a length, and the bar on screen follows along." },
@@ -166,7 +166,7 @@
     fit(true);
     if (arriving) { arriving = false; requestAnimationFrame(() => requestAnimationFrame(() => guide && guide.classList.remove("dash-in"))); }
     if (st.fun === "juggle" && !reduce) funIntro(); else if (st.pose === "wave") wave();
-    if (st.fun === "flip") flipSwitches(); else if (st.fun === "wiggle") wiggleLogo();
+    if (st.fun === "flip") flipSwitches(); else if (st.fun === "pick") pickBar(); else if (st.fun === "wiggle") wiggleLogo();
     speak(st);
     startTimer(Math.max(duration(st.say), st.hold || 0));
     try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ }
@@ -343,11 +343,11 @@
   /* The party trick at the first stop (David, 2026-10-09: "wave and be more fun", "juggle some of our products"): after the
      hop lands, a two-armed wave with a sway, then he juggles a Shoe Box retrofit lamp, an LBI G1 and a Solera flood light. */
   const JUG = ["jug-lamp.png", "jug-lbi.png", "jug-solar.png"];
-  let funT = [], unflip = null;
+  let funT = [], undo = [];
   function stopFun() {
     funT.forEach(clearTimeout); funT = [];
     try { view().document.documentElement.classList.remove("tour-lean"); } catch (e) { /* frame gone */ }
-    if (unflip) { unflip(); unflip = null; }
+    undo.forEach(f => { try { f(); } catch (e) { /* the page moved on */ } }); undo = [];   // leave the page as the visitor had it
     if (!fig) return;
     fig.classList.remove("wave-l", "wave-r", "sway", "juggling");
     const j = fig.querySelector(".jug"); if (j) j.remove();
@@ -368,23 +368,42 @@
     }, 2900));
   }
 
-  /* The switches stop (David, 2026-10-09): Eddy flips the FlexColor switch through every setting in time with "Flip the
-     FlexWatt and FlexColor switches", so the bar on screen changes color, then sets it back where the visitor had it. */
+  /* The LBI stop (David, 2026-10-09): on "Pick one up here and the whole page follows" Eddy picks LBI 65 in the switcher,
+     the page follows, then he picks the visitor's bar again. */
+  function pickBar() {
+    const doc = view().document;
+    let home = "";                                                  // read when it happens: lbi.js may not have drawn the switcher yet
+    const pick = id => { const b = id && doc.querySelector(`.switcher [data-go="${id}"]`); if (b && b.getAttribute("aria-pressed") !== "true") b.click(); };
+    funT.push(setTimeout(() => {
+      const cur = doc.querySelector('.switcher [data-go][aria-pressed="true"]'); if (!cur) return;
+      home = cur.dataset.go; pick(home === "lbi65" ? "g2" : "lbi65");
+    }, 5000), setTimeout(() => pick(home), 6700));
+    undo.push(() => pick(home));
+  }
+  /* The switches stop (David, 2026-10-09): on "Flip the FlexWatt and FlexColor switches" Eddy runs the FlexColor switch through
+     every setting so the bar changes color, on "pick a length" he steps through the lengths, then sets both back. */
   function flipSwitches() {
-    const doc = view().document, knob = () => doc.querySelector('[data-slide="cct"][aria-checked="true"], [data-slide="pk2"][aria-checked="true"]');
-    const first = knob(); if (!first) return;
-    const id = first.dataset.slide, home = +first.dataset.i, n = doc.querySelectorAll(`[data-slide="${id}"]`).length;
+    const doc = view().document, knob = doc.querySelector('[data-slide="cct"][aria-checked="true"], [data-slide="pk2"][aria-checked="true"]');
+    if (!knob) return;
+    const id = knob.dataset.slide, home = +knob.dataset.i, n = doc.querySelectorAll(`[data-slide="${id}"]`).length;
+    const size0 = doc.querySelector('[data-size][aria-pressed="true"]'), sizes = [...doc.querySelectorAll("[data-size]")].map(b => b.dataset.size);
+    const keep = fn => { const had = document.activeElement === nextBtn; fn(); if (had) try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ } };
     const set = j => {
       const b = doc.querySelector(`[data-slide="${id}"][data-i="${j}"]`); if (!b || b.getAttribute("aria-checked") === "true") return;
-      const had = document.activeElement === nextBtn, from = +(doc.querySelector(`[data-slide="${id}"][aria-checked="true"]`) || b).dataset.i;
-      b.click();                                                    // lbi.js redraws the controls and the bar
+      const from = +(doc.querySelector(`[data-slide="${id}"][aria-checked="true"]`) || b).dataset.i;
+      keep(() => b.click());                                        // lbi.js redraws the controls and the bar
       const sl = doc.querySelector(`[data-slide="${id}"]`)?.closest(".slide");   // the redraw is a new knob: start it at the old spot so it slides
       if (sl) { sl.style.setProperty("--i", from); void sl.offsetWidth; sl.style.setProperty("--i", j); }
-      if (had) try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ }
     };
+    const size = v => { const b = doc.querySelector(`[data-size="${v}"]`); if (b && b.getAttribute("aria-pressed") !== "true") keep(() => b.click()); };
     const seq = [...Array(n).keys()].filter(j => j !== home).concat(home);   // warm to cool, then back to the visitor's setting
-    seq.forEach((j, s) => funT.push(setTimeout(() => { set(j); if (s === seq.length - 1) unflip = null; }, 1000 + s * 620)));
-    unflip = () => set(home);
+    seq.forEach((j, k) => funT.push(setTimeout(() => set(j), 500 + k * 380)));
+    if (size0) {
+      const s0 = size0.dataset.size, lens = sizes.filter(v => v !== s0).concat(s0);   // e.g. 2 ft, 3 ft, then back to 4 ft
+      lens.forEach((v, k) => funT.push(setTimeout(() => size(v), 2800 + k * 650)));
+      undo.push(() => size(s0));
+    }
+    undo.push(() => set(home));
   }
   /* The last stop: the header LED wiggles as Eddy says "whenever I wiggle", and once more on "click me" (David, 2026-10-09). */
   function wiggleLogo() {
