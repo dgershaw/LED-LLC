@@ -21,7 +21,7 @@
 
   /* The stops. `at` is what the spotlight frames, `do` opens or closes the Products menu first, `pose` adds a wave. */
   const STOPS = [
-    { key: "welcome", page: "index.html", at: ".home-hero h1", pose: "wave", fun: "juggle", hold: 7600,
+    { key: "welcome", page: "index.html", at: ".home-hero h1", pose: "wave", fun: "juggle", hold: 7600, bare: true,
       say: "<strong>Welcome to our new home!</strong> Light Efficient Design, RemPhos and Solera, all under one roof. Let me show you around." },
     { key: "products", page: "index.html", at: "#mega-products .mega-cols", do: "menu",
       say: "Everything we make lives under <strong>Products</strong>, sorted the way the trade thinks: lamps, indoor fixtures, retrofit kits, outdoor and solar, controls." },
@@ -147,6 +147,7 @@
     nextBtn.textContent = st.last ? "Finish" : "Next ›";
     await bring(target);                                           // the spot rides along with the old stop meanwhile
     if (i !== k) return;                                           // the visitor moved on while we scrolled
+    if (spot) spot.classList.toggle("bare", !!st.bare);   // the welcome has no highlight, just Eddy and his bubble (David, 2026-10-09)
     cur = target; lastBox = "";
     fit(true);
     if (arriving) { arriving = false; requestAnimationFrame(() => requestAnimationFrame(() => guide && guide.classList.remove("dash-in"))); }

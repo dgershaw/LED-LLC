@@ -1534,6 +1534,7 @@ details.table-fold[open] .fold-btn::after { content: "Hide part numbers"; }
   box-shadow: 0 0 0 200vmax rgb(8 9 12 / 0.58), inset 0 0 0 2px rgb(255 255 255 / 0.4);
   transition: left .55s cubic-bezier(.4,.1,.2,1), top .55s cubic-bezier(.4,.1,.2,1), width .55s cubic-bezier(.4,.1,.2,1), height .55s cubic-bezier(.4,.1,.2,1), opacity .4s ease; }
 .tour-spot.on { opacity: 1; }
+.tour-spot.on.bare { opacity: 0; }
 .tour-guide { position: fixed; left: 0; top: 0; z-index: 83; display: flex; align-items: flex-end; gap: 10px;
   transition: left .65s cubic-bezier(.3,.9,.3,1.12), top .65s cubic-bezier(.3,.9,.3,1.12), transform .45s ease, opacity .45s ease; }
 .tour-guide.flip { flex-direction: row-reverse; }
