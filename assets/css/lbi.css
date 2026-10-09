@@ -242,7 +242,7 @@ html { scroll-padding-top: calc(var(--header-h) + var(--switcher-h) + 12px); }
 .app-note { font-size: 0.9375rem; color: var(--stage-ink); max-width: 60ch; line-height: 1.5; }
 .app-note .tagc { color: var(--c); font-weight: 600; }
 
-/* Remote (Palette +) */
+/* Remote (Palette+) */
 .remote-layout { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 28px 40px; align-items: start; }
 @media (max-width: 1279px) { .remote-layout { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 640px) { .remote-layout { justify-items: stretch; } .remote-layout .remote { justify-self: center; } .plus-note { grid-template-columns: minmax(0, 1fr); } .plus-note .pn-ic { display: none; } }
@@ -270,7 +270,7 @@ input[type="range"] { width: 100%; accent-color: #f4f5f8; }
 .hue-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 3px solid #111; cursor: pointer; }
 .hue-slider::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 3px solid #111; cursor: pointer; }
 
-/* DMX console (Palette X) */
+/* DMX console (PaletteX) */
 .console {
   display: grid; grid-template-columns: repeat(5, minmax(52px, 1fr)) minmax(0, 1.5fr); gap: 14px; align-items: stretch;
   background: #101217; border: 1px solid #2a2e38; border-radius: 16px; padding: 16px;
@@ -406,7 +406,7 @@ table.cmp { border-collapse: collapse; width: 100%; min-width: 860px; font-size:
 .taglist { display: flex; flex-wrap: wrap; gap: 6px; }
 
 
-/* Palette +: white light by switch (as shipped) or color by the optional RGBWW remote */
+/* Palette+: white light by switch (as shipped) or color by the optional RGBWW remote */
 .plus-note { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px 16px; border-radius: 12px; background: rgb(255 255 255 / 0.06); border: 1px solid var(--stage-line); font-size: 0.9375rem; line-height: 1.5; color: var(--stage-ink); }
 .plus-note .pn-ic { width: 36px; height: 36px; border-radius: 10px; background: rgb(255 255 255 / 0.08); display: grid; place-items: center; color: var(--stage-ink); }
 .plus-note .pn-ic svg { width: 20px; height: 20px; }
@@ -444,7 +444,7 @@ table.cmp { border-collapse: collapse; width: 100%; min-width: 860px; font-size:
 /* the light wash is wider than a phone screen */
 .stage-room { overflow-x: clip; }
 
-/* long variant notes (Palette + is "RGBWW: white + color, remote") wrap on phones instead of widening the page */
+/* long variant notes (Palette+ is "RGBWW: white + color, remote") wrap on phones instead of widening the page */
 @media (max-width: 480px) { .fam-bar .sub { white-space: normal; } }
 
 /* ---------- Popular accessories (merged from the catalog's LBI family pages, 2026-10-08) ---------- */
@@ -469,7 +469,7 @@ table.cmp { border-collapse: collapse; width: 100%; min-width: 860px; font-size:
 .acc-name { font-size: 0.875rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
 .acc-name small { display: block; font-size: 0.8125rem; font-weight: 500; color: var(--muted); }
 
-/* LBI 65 + LBI 65 Color Palette +: no switches on the bar, everything is set with the included remote */
+/* LBI 65 + LBI 65 Color Palette+: no switches on the bar, everything is set with the included remote */
 .remote.ip65 { width: 264px; gap: 14px; padding: 18px 16px 22px; }
 .remote.ip65 .rgrp { display: grid; gap: 7px; }
 .remote.ip65 .rlab { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #4a4e57; text-align: center; }

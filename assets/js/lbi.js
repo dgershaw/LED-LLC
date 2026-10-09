@@ -1,12 +1,12 @@
 /* LBI family site: variant data + interactive bar stage.
    All product facts come from the spec sheets in assets/docs (revision dates noted per variant).
-   Palette + and Palette X have no spec sheet yet: their values are marked pending. */
+   Palette+ and PaletteX have no spec sheet yet: their values are marked pending. */
 (function () {
   "use strict";
 
   const PALETTE_COLORS = {
     red:    { name: "Red",    hex: "#ff2a1a", note: "Used for reducing eye strain, increasing biological stimulation or wavelength-specific visibility." },
-    orange: { name: "Orange", hex: "#ff7a10", note: "Used for clear signaling, high visibility or wavelength-specific illumination. Measured dominant wavelength 606.3 nm (LBI 65 Color Palette + test report)." },
+    orange: { name: "Orange", hex: "#ff7a10", note: "Used for clear signaling, high visibility or wavelength-specific illumination. Measured dominant wavelength 606.3 nm (LBI 65 Color Palette+ test report)." },
     amber:  { name: "Amber",  hex: "#ffb000", note: "Used where photochemical sensitivity, glare reduction or wavelength-specific signaling is important." },
     green:  { name: "Green",  hex: "#19e05a", note: "Used where enhanced contrast sensitivity, visual clarity or precise color rendering is required." },
     blue:   { name: "Blue",   hex: "#2a6bff", note: "Common in applications that create soothing atmospheres, high-contrast visibility or subtle displays." },
@@ -192,7 +192,7 @@
         "Connect up to 40 from one power feed (30 4 ft units at 120VAC, 40 at 277VAC).",
         "Uses the same accessories as the regular LBI.",
         "Dims to off. Optional sensors and emergency battery backup.",
-        "Also offered as the LBI 65 Color Palette + for wet locations (IP65) and NSF-certified applications."
+        "Also offered as the LBI 65 Color Palette+ for wet locations (IP65) and NSF-certified applications."
       ],
       apps: ["Labs and clean rooms", "Venues and stages", "Aircraft cabins", "Signaling and safety", "Displays", "Wellness spaces"],
       photos: [["color-red.jpg", "Red"], ["color-orange.jpg", "Orange"], ["color-amber.jpg", "Amber"], ["color-green.jpg", "Green"], ["color-blue.jpg", "Blue"], ["color-violet.jpg", "Violet"]],
@@ -208,26 +208,26 @@
         ["Operating temp", "-13°F to 140°F", ""],
         ["Size", "1.2 × 1.2 in", "19.3 in or 43.3 in long"],
         ["Voltage", "120–347V", "347V for Canada"],
-        ["Wet locations", "LBI 65 Color Palette +", "IP65 and NSF"]
+        ["Wet locations", "LBI 65 Color Palette+", "IP65 and NSF"]
       ],
       docs: [["Sell sheet", "LBI-Palette-Sell-Sheet.pdf", "PDF, 2 pages"]],
       parts: [["RP-LBI-G2-2F-6W-RED-WC-ORG", "2 ft, red / orange", "6/9/12 W", "375–600"], ["RP-LBI-G2-2F-6W-AMB-WC-GRN", "2 ft, amber / green", "6/9/12 W", "1,175–2,125"], ["RP-LBI-G2-2F-6W-BLU-WC-VLT", "2 ft, blue / violet", "6/9/12 W", "15–300"], ["RP-LBI-G2-4F-25W-RED-WC-ORG", "4 ft, red / orange", "10/15/25 W", "750–1,200"], ["RP-LBI-G2-4F-25W-AMB-WC-GRN", "4 ft, amber / green", "10/15/25 W", "2,350–4,250"], ["RP-LBI-G2-4F-25W-BLU-WC-VLT", "4 ft, blue / violet", "10/15/25 W", "30–600"]],
       shot: "palette-hero-blue.jpg",
-      closeups: [["palette-bar-blue.jpg", "Same slim housing as LBI G2, shown in blue", "bar"], ["palette-hero.jpg", "LBI 65 Color Palette +, the IP65 version, in orange", "bar"]],
+      closeups: [["palette-bar-blue.jpg", "Same slim housing as LBI G2, shown in blue", "bar"], ["palette-hero.jpg", "LBI 65 Color Palette+, the IP65 version, in orange", "bar"]],
       cmp: { light: "6 fixed wavelengths, 2 per bar", watts: "2 ft: 6–12 W · 4 ft: 10–25 W", lm: "Varies by color: 15–4,250", control: "On-board switch, remote", rating: "Dry and damp", eff: "Varies by color", best: "Labs, signaling, specialty color" }
     },
     {
-      id: "plus", group: "color", name: "LBI Color Palette +", short: "Palette +",
+      id: "plus", group: "color", name: "LBI Color Palette+", short: "Palette+",
       kind: "Linkable RGBWW light bar: white light and limitless color in one", glyph: "conic", profile: "slim",
       tagline: "White light out of the box. Any color from the remote. One bar does both.",
-      lead: "LBI Color Palette + is an LBI G2 that can also mix limitless color. Every bar ships set to white light, with FlexWatt and FlexColor switches identical to LBI G2, so it installs, dims and qualifies for rebates like any white bar. Add the optional RGBWW remote and the same bar becomes a full color tunable fixture. RGBWW means red, green, blue, warm white and cool white LEDs in one bar: any color, and any white from 2700K to 5000K.",
+      lead: "LBI Color Palette+ is an LBI G2 that can also mix limitless color. Every bar ships set to white light, with FlexWatt and FlexColor switches identical to LBI G2, so it installs, dims and qualifies for rebates like any white bar. Add the optional RGBWW remote and the same bar becomes a full color tunable fixture. RGBWW means red, green, blue, warm white and cool white LEDs in one bar: any color, and any white from 2700K to 5000K.",
       features: [
         "Ships in white light mode: the DLC-listed, rebate-eligible configuration, set with switches identical to LBI G2.",
         "RGBWW light engine: red, green, blue, warm white and cool white in one bar, for limitless color mixing plus 2700K to 5000K white. Lumen values are for white light.",
         "Color is unlocked with the optional RGBWW remote (RP-REMOTE-RGB-WC, includes holster, sold separately). One remote adjusts every bar on the job.",
         "Link up to 40 bars from one power feed, in 2, 3 and 4 ft lengths.",
         "0-10V dimming to off, sensor ready, Simple or Networked Lighting Controls.",
-        "Also offered as LBI 65 Color Palette + for IP65-rated and NSF-certified applications."
+        "Also offered as LBI 65 Color Palette+ for IP65-rated and NSF-certified applications."
       ],
       apps: ["Theaters and cinemas", "Entertainment venues", "Bars and restaurants", "Bridges and facades", "Retail displays", "Houses of worship"],
       photos: [["plus-theater.jpg", "Cinema lobby"], ["plus-bridge.jpg", "Pedestrian bridge"], ["plus-venue.jpg", "Entertainment venue"], ["plus-bar.jpg", "Hotel bar"]],
@@ -255,7 +255,7 @@
       cmp: { light: "RGBWW: white 2700–5000K + limitless color", watts: "2 ft: 6–12 W · 3 ft: 10–18 W · 4 ft: 12–25 W", lm: "White: 2 ft 960–1,920 · 3 ft 1,600–2,880 · 4 ft 1,920–4,000", control: "Switches for white (as shipped) · optional RGBWW remote for color", rating: "Dry and damp · IP65 version", eff: "160 lm/W (white)", best: "Hospitality, venues, retail, facades" }
     },
     {
-      id: "x", group: "color", name: "LBI Color Palette X", short: "Palette X",
+      id: "x", group: "color", name: "LBI Color PaletteX", short: "PaletteX",
       kind: "Linkable RGBWW color tunable light bar with DMX", glyph: "conic", profile: "slim", pending: true,
       tagline: "Full RGBWW color under DMX control. Program scenes, cues and shows from the console your venue already runs.",
       lead: "A linkable RGBWW light bar driven over DMX. Red, green, blue, warm white and cool white each have their own channel, so one bar mixes any color and any white from the console, for venues and installations that need programmed scenes and precise control of every run. Full specifications will be added when the spec sheet is ready.",
@@ -275,7 +275,7 @@
       cmp: { light: "RGBWW: full color + tunable white", watts: "Pending spec sheet", lm: "Pending spec sheet", control: "DMX console · RGBWW channels", rating: "Pending spec sheet", eff: "Pending spec sheet", best: "Venues, shows, architectural" }
     },
     {
-      id: "palette65", group: "color", name: "LBI 65 Color Palette +", short: "LBI 65 Color Palette +",
+      id: "palette65", group: "color", name: "LBI 65 Color Palette+", short: "LBI 65 Color Palette+",
       kind: "IP65 linkable precision wavelength light bar, set by remote", glyph: "linear-gradient(90deg,#ff2a1a,#ff7a10,#ffb000,#19e05a,#2a6bff,#8a3dff)", glyphShadow: "#ff7a10", profile: "wet",
       tagline: "The LBI Color Palette, sealed for wet locations. The same six colors, set with the included remote.",
       lead: "An IP65-rated linkable LED bar with an internal driver, delivering precision wavelength selection. Liquid-tight end caps and the same seamless, vapor-tight linking as the LBI 65. There are no switches on the bar: each bar carries two colors and four wattages, chosen with the included remote.",
@@ -581,7 +581,7 @@
           <p class="illus">Interactive preview of the RGBWW remote. The key layout follows the catalog; the spec sheet is the final reference.</p>
         </div>
       </div>
-      <div class="sub-head"><h4>Switches on the back of the bar</h4><span>Identical to LBI G2. This is how every LBI Color Palette + ships.</span></div>
+      <div class="sub-head"><h4>Switches on the back of the bar</h4><span>Identical to LBI G2. This is how every LBI Color Palette+ ships.</span></div>
       <div class="ctl-grid dimmed">
         ${slide("pw2", "FlexWatt switch", sz.watts.map(w => ({ label: `${w}W` })), p.w)}
         ${slide("pk2", "FlexColor switch", v.ccts.map(k => ({ label: `${(k / 1000).toFixed(1).replace(".0", "")}K`, aria: `${k}K` })), kIdx)}
@@ -590,7 +590,7 @@
       el.innerHTML = `
       <div class="plus-note">
         <span class="pn-ic" aria-hidden="true">${ICON.tag}</span>
-        <div><b>Ships in white light mode.</b> Every LBI Color Palette + leaves the factory set to white, with FlexWatt and FlexColor switches identical to LBI G2, so it is DLC listed and rebate eligible as installed. Color is unlocked with the optional RGBWW remote <span class="mono">RP-REMOTE-RGB-WC</span>, sold separately. One remote adjusts every bar on the job.</div>
+        <div><b>Ships in white light mode.</b> Every LBI Color Palette+ leaves the factory set to white, with FlexWatt and FlexColor switches identical to LBI G2, so it is DLC listed and rebate eligible as installed. Color is unlocked with the optional RGBWW remote <span class="mono">RP-REMOTE-RGB-WC</span>, sold separately. One remote adjusts every bar on the job.</div>
       </div>
       <div class="mode-pills" role="group" aria-label="What is controlling the bar">
         <button class="mode-pill" data-pmode="white" aria-pressed="${!remoteMode}" style="--c:#fff4e0"><i></i>White light via switches <small>as shipped</small></button>
@@ -619,7 +619,7 @@ ${remoteMode ? remoteHtml : `
             </div>
           </div>
         </div>
-        <p class="illus">Interactive preview with an example 5-channel RGBWW map: red, green, blue, warm white and cool white, each on its own DMX channel. The final personality and channel order come from the LBI Color Palette X spec sheet.</p>`;
+        <p class="illus">Interactive preview with an example 5-channel RGBWW map: red, green, blue, warm white and cool white, each on its own DMX channel. The final personality and channel order come from the LBI Color PaletteX spec sheet.</p>`;
     }
     applyLight();
   }
