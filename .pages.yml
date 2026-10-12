@@ -12,6 +12,7 @@ content:
     description: The text and part-number tables of each product page. Photos, downloads and layout are set elsewhere.
     type: collection
     path: content/pages
+    filename: "{primary}.json"   # without this Pages CMS only lists .md files
     format: json
     operations:
       create: false
