@@ -1005,10 +1005,17 @@ def page_file_from(d):
         out["tables"].append(x)
     return out
 
+def page_folder(slug):
+    """The admin page's folder for a product page: its first category in the Products menu (David, 2026-10-12)."""
+    for m in PRODUCT_MENU:
+        if any(slug in slugs for _, slugs in m["groups"]):
+            return m["name"].replace(" + ", " and ")
+    return "Other"
+
 def apply_page_file(slug, d):
-    f = PAGES / f"{slug}.json"
+    f = next(PAGES.rglob(f"{slug}.json"), None) or PAGES / page_folder(slug) / f"{slug}.json"
     if not f.is_file():
-        PAGES.mkdir(parents=True, exist_ok=True)
+        f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(json.dumps(page_file_from(d), indent=2, ensure_ascii=False) + "\n")
     p = json.loads(f.read_text())
     for k in PAGE_KEYS:

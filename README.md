@@ -12,7 +12,7 @@ Sign in at https://app.pagescms.org and open this repository (configured by `.pa
 
 ### Product pages
 
-Each product page's title, headline, introduction, key points, "At a glance" features, part-number tables and footnotes can be edited under **Product pages** (the files in `content/pages/`).
+Each product page's title, headline, introduction, key points, "At a glance" features, part-number tables and footnotes can be edited under **Product pages**, in one folder per Products menu category (the files in `content/pages/<category>/`). A page listed under two categories sits in the first one.
 
 - A table row is one line with its cells in column order, separated by `|`. Wrap a value in `**double asterisks**` to mark the factory default. An empty cell is nothing between two `|` marks.
 - Photos, downloads, the LBI configurator and the layout of the spec-sheet-led pages are set in the generator, not on the admin page.
