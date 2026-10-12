@@ -1,0 +1,41 @@
+# Pages CMS (https://app.pagescms.org): the admin page for the site's downloadable files.
+# deploy.sh copies this to .pages.yml at the root of the GitHub Pages repo (dgershaw/LED-LLC).
+# Files keep their exact names (rename: false), because the pages link to them by name.
+# To replace a file: delete the old one, then upload the new one under the same name.
+# (Uploading a second file with a name that already exists saves it as name-1.pdf, which no page links to.)
+
+media:
+  - name: spec-sheets
+    label: Spec sheets
+    input: assets/docs/spec-sheets
+    output: /assets/docs/spec-sheets
+    rename: false
+    extensions: [pdf]
+  - name: instructions
+    label: Installation instructions
+    input: assets/docs/instructions
+    output: /assets/docs/instructions
+    rename: false
+    extensions: [pdf]
+  - name: ies
+    label: IES files
+    input: assets/ies
+    output: /assets/ies
+    rename: false
+    extensions: [ies, zip, pdf, ldt]
+  - name: case-studies
+    label: Case studies
+    input: assets/docs/case-studies
+    output: /assets/docs/case-studies
+    rename: false
+    extensions: [pdf]
+  - name: documents
+    label: All documents (LBI sheets, catalog, flyers)
+    input: assets/docs
+    output: /assets/docs
+    rename: false
+    extensions: [pdf]
+
+settings:
+  commit:
+    identity: user
