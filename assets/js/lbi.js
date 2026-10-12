@@ -20,8 +20,8 @@
     { id: "BV", code: "BLU-WC-VLT", colors: ["blue", "violet"], lm: { "2": "15–300", "4": "30–600" } }
   ];
 
-  // a newer version of a document (V2, rev3, a date) takes over from the name written here; see docmap.js
-  const docUrl = (f) => "assets/docs/" + encodeURI((window.DOC_MAP && window.DOC_MAP[f]) || f);
+  // on the company site, docmap.js gives each document's permanent address (newest version); the standalone page links its own copy
+  const docUrl = (f) => (window.DOC_MAP && window.DOC_MAP[f]) || "assets/docs/" + encodeURI(f);
   const ICON = {
     doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 16.5h5"/></svg>',
     wrench: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L4 16.8V20h3.2l5.3-5.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg>',

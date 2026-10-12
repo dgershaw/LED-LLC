@@ -725,7 +725,7 @@ def abs_url(path):
     path = path.lstrip("/")
     if path.startswith(("assets/docs/", "assets/ies/")):   # a download: wherever it sits now, newest version
         rel, hsh, frag = path.partition("#")
-        path = url_path(newest_path(rel) or rel) + hsh + frag
+        path = public_url(rel) + hsh + frag
     return SITE_URL + path
 
 def clean_text(s):
@@ -1058,6 +1058,11 @@ def _date_num(t):
 
 def doc_key(stem):
     """(base name, (date, version)) for a file stem."""
+    base, key = split_version(stem)
+    return base.lower(), key
+
+def split_version(stem):
+    """(the name without its version or date, (date, version)), keeping the name's own spelling."""
     date, ver = 0, ()
     while True:
         m = VER_TAIL.search(stem)
@@ -1068,7 +1073,7 @@ def doc_key(stem):
         else:
             date = date or _date_num(m.group(2))
         stem = stem[:m.start()]
-    return stem.lower(), (date, ver)
+    return stem, (date, ver)
 
 # Downloads sit in category and product folders (David, 2026-10-12): assets/docs/<kind>/<category>/<product>/<file> and
 # assets/ies/<category>/<product>/<part number>/<file>. The code names a document by its file name alone
@@ -1094,6 +1099,46 @@ def newest_path(rel):
         return None
     return max(same, key=lambda f: (doc_key(f.stem)[1], f.name)).relative_to(ROOT).as_posix()
 
+# Permanent addresses (David, 2026-10-12: printed catalogs carry QR codes, so a document's link must never change).
+# Every download is published at one short address that does not depend on its folder or version:
+#   docs/<name without version>.pdf        e.g. docs/LED-8086_Instructions.pdf
+#   ies/<part number>/<name without version>.<ext>
+# Each build copies the newest version there, so uploading "... V2" replaces what that address serves.
+PUBLIC_DIRS = ("docs", "ies")
+_public = {}
+def public_path(rel):
+    """The permanent address of a file under assets/docs or assets/ies (as found by newest_path)."""
+    f = ROOT / rel
+    top = Path(rel).parts[1]
+    name = split_version(f.stem)[0] + f.suffix.lower()
+    return f"docs/{name}" if top == "docs" else f"ies/{f.parent.name}/{name}"
+
+def publish_downloads():
+    """Copy the newest version of every document and IES file to its permanent address; remove addresses whose file is gone."""
+    want = {}
+    for top in ("docs", "ies"):
+        groups = {}
+        for f in _all_files(top):
+            groups.setdefault(public_path(f.relative_to(ROOT).as_posix()), []).append(f)
+        for pub, fs in groups.items():
+            want[pub] = max(fs, key=lambda f: (doc_key(f.stem)[1], f.name))
+    for pub, src in want.items():
+        dst = ROOT / pub
+        if not dst.is_file() or dst.read_bytes() != src.read_bytes():
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(src, dst)
+    for d in PUBLIC_DIRS:
+        for f in sorted((ROOT / d).rglob("*"), reverse=True) if (ROOT / d).is_dir() else []:
+            if f.is_file() and f.relative_to(ROOT).as_posix() not in want:
+                f.unlink()
+            elif f.is_dir() and not any(f.iterdir()):
+                f.rmdir()
+
+def public_url(rel):
+    """A download link: the permanent address of the newest version, or the path itself if no file matches."""
+    new = newest_path(rel)
+    return url_path(public_path(new) if new else rel)
+
 def url_path(rel):
     """A site path as it goes in a link: spaces and commas in folder names encoded."""
     from urllib.parse import quote, unquote
@@ -1113,20 +1158,18 @@ def newest_only(files):
 def newest_links(html):
     from urllib.parse import unquote
     def sub(m):
-        new = newest_path(unquote(m.group(2))) or m.group(2)
-        return f'"{m.group(1)}{url_path(new)}{m.group(3) or ""}"'
+        return f'"{m.group(1)}{public_url(unquote(m.group(2)))}{m.group(3) or ""}"'
     # href and src attributes, and the absolute URLs in JSON-LD
     return re.sub(r'"((?:' + re.escape(SITE_URL) + r')?)(assets/(?:docs|ies)/[^"#?]+)(#[^"]*)?"', sub, html)
 
 def write_doc_map():
-    """assets/js/docmap.js: where each document named in lbi.js now sits (its folder and newest version), for links built in the browser."""
+    """assets/js/docmap.js: the permanent address of each document named in lbi.js, for links built in the browser."""
     m = {}
     # the document names written into lbi.js, wherever the files now sit and whatever their newest version
     names = set(re.findall(r'"([^"]+\.pdf)"', (ROOT / "assets" / "js" / "lbi.js").read_text()))
     for rel in sorted(names):
-        new = newest_path(f"assets/docs/{rel}")
-        if new and new != f"assets/docs/{rel}":
-            m[rel] = new[len("assets/docs/"):]
+        if newest_path(f"assets/docs/{rel}"):
+            m[rel] = public_url(f"assets/docs/{rel}")
     (ROOT / "assets" / "js" / "docmap.js").write_text("window.DOC_MAP=" + json.dumps(m, separators=(",", ":")) + ";\n")
 
 def make_test_copy():
@@ -1425,7 +1468,7 @@ def ies_label(stem):
 def load_ies(cats):
     """IES files per part number (see IES_DIR). Marks each page whose tables list a part number that has files."""
     ies = {}
-    site = lambda f: url_path(f.relative_to(ROOT).as_posix())
+    site = lambda f: url_path(public_path(f.relative_to(ROOT).as_posix()))
     # every folder holding IES files is named after its part number, at any depth (category/product/part number)
     for d in sorted({f.parent for f in _all_files("ies")}, key=lambda d: d.name):
         files = []
@@ -1757,6 +1800,7 @@ def main():
         sync_from_scratch()
         cover_images()
     brand_logos()
+    publish_downloads()
     write_doc_map()   # before any page links it, so its cache-busting hash is current
     cats = load_categories()
     load_cutsheets(cats)
