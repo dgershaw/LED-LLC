@@ -1,8 +1,6 @@
 {
   "title": "TAA Troffer Retrofit Kits (TRV/TRF) + Fixtures (TV/TF)",
-  "subtitle": "",
-  "headline": "Solutions that meet the requirements of the United States Trade Agreements Act",
-  "intro": "",
+  "headline": "Solutions that meet the requirements of the United States Trade Agreements Act (admin test)",
   "callouts": [
     "Meets the requirements of the United States Trade Agreements Act (TAA)",
     "Simple or networked lighting controls available"
@@ -43,8 +41,7 @@
       "label": "120° beam angle"
     },
     {
-      "label": "Operating temp 0°F to 122°F",
-      "note": ""
+      "label": "Operating temp 0°F to 122°F"
     },
     {
       "label": "1.5kA surge protection"
