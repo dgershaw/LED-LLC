@@ -122,7 +122,7 @@ Highlights:
 - ('Rotatable base directs lumens out of fixture.', 12).
 
 Features:
-- 5-year warranty
+- 500-year warranty
 - UL Type B ballast bypass
 - Active cooling
 - 80+ CRI
