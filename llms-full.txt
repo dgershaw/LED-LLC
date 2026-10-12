@@ -108,7 +108,7 @@ Footnotes:
 - * Excludes 8037-39 models (applies to the Active Cooling feature)
 - DLC: for listing status go to LED-LLC.com
 
-Case study: Pic Quik, Las Cruces, NM: Top-to-bottom store retrofit (https://www.led-llc.com/assets/docs/case-studies/Pic-Quik-Case-Study.pdf). HID gas canopy fixtures were wasting energy and caused a maintenance headache, with bulbs and ballasts constantly being replaced. The gas canopy fixtures were easily retrofitted with the directional, horizontal-mount LED-8090. Ease of install and superior light output immediately led to retrofitting the entire store. A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.
+Case study: Pic Quik, Las Cruces, NM: Top-to-bottom store retrofit (https://www.led-llc.com/assets/docs/case-studies/LED%20Lamps/Shoe%20Box%20and%20Wall%20Pack/Pic-Quik-Case-Study.pdf). HID gas canopy fixtures were wasting energy and caused a maintenance headache, with bulbs and ballasts constantly being replaced. The gas canopy fixtures were easily retrofitted with the directional, horizontal-mount LED-8090. Ease of install and superior light output immediately led to retrofitting the entire store. A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.
 
 ## Shoe Box + Wall Pack (Light Efficient Design › Screw-In Retrofits)
 
@@ -258,7 +258,7 @@ Footnotes:
 
 Video: LED Shoe Box / Wall Pack Retrofits (https://www.youtube.com/watch?v=ypXSpfRoVVA). See how Light Efficient Design LED retrofit lamps turn existing shoe box and wall pack fixtures into efficient LED lighting.
 
-Case study: Pic Quik, Las Cruces, NM: Top-to-bottom store retrofit (https://www.led-llc.com/assets/docs/case-studies/Pic-Quik-Case-Study.pdf). HID gas canopy fixtures were wasting energy and caused a maintenance headache, with bulbs and ballasts constantly being replaced. The gas canopy fixtures were easily retrofitted with the directional, horizontal-mount LED-8090. Ease of install and superior light output immediately led to retrofitting the entire store. A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.
+Case study: Pic Quik, Las Cruces, NM: Top-to-bottom store retrofit (https://www.led-llc.com/assets/docs/case-studies/LED%20Lamps/Shoe%20Box%20and%20Wall%20Pack/Pic-Quik-Case-Study.pdf). HID gas canopy fixtures were wasting energy and caused a maintenance headache, with bulbs and ballasts constantly being replaced. The gas canopy fixtures were easily retrofitted with the directional, horizontal-mount LED-8090. Ease of install and superior light output immediately led to retrofitting the entire store. A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.
 
 ## High Bay + Low Bay (Light Efficient Design › Screw-In Retrofits)
 
@@ -489,7 +489,7 @@ Columns: Part #, LED-EMG-05WCP, LED-EMG-10WCP
 
 The 7316 / 7318 / 7328 lamps have a head that rotates 90° and a base that can be extended by up to 1.0 in
 
-Case study: Pic Quik, Las Cruces, NM: Top-to-bottom store retrofit (https://www.led-llc.com/assets/docs/case-studies/Pic-Quik-Case-Study.pdf). HID gas canopy fixtures were wasting energy and caused a maintenance headache, with bulbs and ballasts constantly being replaced. The gas canopy fixtures were easily retrofitted with the directional, horizontal-mount LED-8090. Ease of install and superior light output immediately led to retrofitting the entire store. A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.
+Case study: Pic Quik, Las Cruces, NM: Top-to-bottom store retrofit (https://www.led-llc.com/assets/docs/case-studies/LED%20Lamps/Shoe%20Box%20and%20Wall%20Pack/Pic-Quik-Case-Study.pdf). HID gas canopy fixtures were wasting energy and caused a maintenance headache, with bulbs and ballasts constantly being replaced. The gas canopy fixtures were easily retrofitted with the directional, horizontal-mount LED-8090. Ease of install and superior light output immediately led to retrofitting the entire store. A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.
 
 ## Linear T5 + T8 (Light Efficient Design › Pin-Base Retrofits)
 
@@ -744,7 +744,7 @@ Economical linkable white light bar. The economical LBI. Up to 146 lumens per wa
 - RP-LBI-G1-3F-10W-27K-WC2: 3 ft linkable bar, warm 2700/3000/3500K; 10/12/15 W; 1,270–1,980
 - RP-LBI-G1-4F-15W-40K-WC: 4 ft linkable bar, standard 3500/4000/5000K; 10/15/25 W; 1,462–3,653
 - RP-LBI-G1-4F-15W-27K-WC2: 4 ft linkable bar, warm 2700/3000/3500K; 10/15/25 W; 1,260–3,400
-- Spec sheet: https://www.led-llc.com/assets/docs/spec-sheets/RP-LBI-Spec_Sheet.pdf (PDF, 15 pages, rev. 06.30.26)
+- Spec sheet: https://www.led-llc.com/assets/docs/spec-sheets/Indoor%20Fixtures/LBI%20G1/RP-LBI-Spec_Sheet.pdf (PDF, 15 pages, rev. 06.30.26)
 
 ### LBI G2
 
@@ -781,7 +781,7 @@ Linkable white light bar. The everyday workhorse. Up to 160 lumens per watt, wit
 - RP-LBI-G2-3F-10W-40K-WC-CN: 3 ft linkable bar, 120–347V (Canada); 10/12/15/18 W; 1,600–2,400
 - RP-LBI-G2-4F-15W-40K-WC: 4 ft linkable bar, 120–277V; 12/15/20/25 W; 1,600–4,000
 - RP-LBI-G2-4F-15W-40K-WC-CN: 4 ft linkable bar, 120–347V (Canada); 12/15/20/25 W; 1,600–4,000
-- Spec sheet: https://www.led-llc.com/assets/docs/LBI-G2-Spec-Sheet.pdf (PDF, 11 pages, rev. 07.28.26)
+- Spec sheet: https://www.led-llc.com/assets/docs/spec-sheets/Indoor%20Fixtures/LBI%20G2/LBI-G2-Spec-Sheet.pdf (PDF, 11 pages, rev. 07.28.26)
 
 ### LBI 65
 
@@ -815,7 +815,7 @@ Linkable white light bar, IP65 for wet locations. The same linkable system, seal
 - RP-LBI65-2F-6W-40K-WC: 2 ft IP65 linkable bar; 4/6/9/12 W; 640–1,920
 - RP-LBI65-3F-10W-40K-WC: 3 ft IP65 linkable bar; 6/10/15/20 W; 960–2,400
 - RP-LBI65-4F-25W-40K-WC: 4 ft IP65 linkable bar; 10/15/20/25 W; 1,920–4,000
-- Spec sheet: https://www.led-llc.com/assets/docs/LBI-65-Spec-Sheet.pdf (PDF, 12 pages, rev. 07.23.26)
+- Spec sheet: https://www.led-llc.com/assets/docs/spec-sheets/Indoor%20Fixtures/LBI%2065/LBI-65-Spec-Sheet.pdf (PDF, 12 pages, rev. 07.23.26)
 
 ### LBI MAX
 
@@ -850,7 +850,7 @@ Linkable strip fixture, high lumens for higher ceilings. More light from the sam
 - RP-LBIMAX-4F-48W-40K-WC: 4 ft linkable strip; 30/35/40/48 W; 3,997–6,365
 - RP-LBIMAX-LR-16W-40K-WC: Right-turn 90° corner; 7/10/13/16 W; 910–2,080
 - RP-LBIMAX-LL-16W-40K-WC: Left-turn 90° corner; 7/10/13/16 W; 910–2,080
-- Spec sheet: https://www.led-llc.com/assets/docs/LBI-MAX-Spec-Sheet.pdf (PDF, 10 pages, rev. 08.25.26)
+- Spec sheet: https://www.led-llc.com/assets/docs/spec-sheets/Indoor%20Fixtures/LBI%20MAX/LBI-MAX-Spec-Sheet.pdf (PDF, 10 pages, rev. 08.25.26)
 
 ### LBI Color Palette
 
@@ -887,7 +887,7 @@ Linkable precision wavelength selection light bar. Six precise colors on the bar
 - RP-LBI-G2-4F-25W-RED-WC-ORG: 4 ft, red / orange; 10/15/25 W; 750–1,200
 - RP-LBI-G2-4F-25W-AMB-WC-GRN: 4 ft, amber / green; 10/15/25 W; 2,350–4,250
 - RP-LBI-G2-4F-25W-BLU-WC-VLT: 4 ft, blue / violet; 10/15/25 W; 30–600
-- Sell sheet: https://www.led-llc.com/assets/docs/LBI-Palette-Sell-Sheet.pdf (PDF, 2 pages)
+- Sell sheet: https://www.led-llc.com/assets/docs/sell-sheets/Indoor%20Fixtures/LBI%20Color%20Palette/LBI-Palette-Sell-Sheet.pdf (PDF, 2 pages)
 
 ### LBI Color Palette+
 
@@ -981,7 +981,7 @@ IP65 linkable precision wavelength light bar, set by remote. The LBI Color Palet
 - RP-LBI65-2F-6W-RED-WC-ORG: 2 ft IP65, red / orange; 4/6/9/12 W; 375–600
 - RP-LBI65-4F-25W-RED-WC-ORG: 4 ft IP65, red / orange; 10/15/20/25 W; 750–1,200
 - Note: Red / orange part numbers from the spec sheet. Amber / green and blue / violet bars: ask sales for part numbers.
-- Spec sheet (red / orange): https://www.led-llc.com/assets/docs/LBI-65-Palette-Red-Orange-Spec-Sheet.pdf (PDF, 4 pages, rev. 08.31.26)
+- Spec sheet (red / orange): https://www.led-llc.com/assets/docs/spec-sheets/Indoor%20Fixtures/LBI%20Color%20Palette/LBI-65-Palette-Red-Orange-Spec-Sheet.pdf (PDF, 4 pages, rev. 08.31.26)
 
 ## Lighting Controls (RemPhos › Lighting Controls)
 

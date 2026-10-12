@@ -269,6 +269,9 @@ ALSO_IN = {"lbi-max": ["Fixtures", "Retrofit Kits"]}
 # Display names for the LBI documents on the Resources page (file names lose the "+" and the "Color")
 DOC_TITLES = {"spec-sheets/RP-LBI-Spec_Sheet.pdf": "LBI G1 Spec Sheet", "LBI-65-Palette-Red-Orange-Spec-Sheet.pdf": "LBI 65 Color Palette+ Red/Orange Spec Sheet",
               "LBI-Palette-Sell-Sheet.pdf": "LBI Color Palette Sell Sheet"}
+# The documents listed on the Resources page (by file name; the build finds each one's folder and newest version)
+RESOURCE_DOCS = ["LBI-65-Palette-Red-Orange-Spec-Sheet.pdf", "LBI-65-Spec-Sheet.pdf", "LBI-Family-Flyer.pdf", "LBI-G2-Spec-Sheet.pdf",
+                 "LBI-MAX-Spec-Sheet.pdf", "LBI-Palette-Sell-Sheet.pdf", "LED-2026-Full-Product-Catalog.pdf"]
 # Hosted LBI documents shown on the product pages that do not have a cut-sheet layout yet
 PAGE_DOCS = {"lbi-g2": ["LBI-G2-Spec-Sheet.pdf"], "lbi-65": ["LBI-65-Spec-Sheet.pdf"], "lbi-max": ["LBI-MAX-Spec-Sheet.pdf"],
              "color-palette": ["LBI-Palette-Sell-Sheet.pdf", "LBI-65-Palette-Red-Orange-Spec-Sheet.pdf"]}
@@ -719,7 +722,11 @@ def page_url(out):
     return SITE_URL if out == "index.html" else SITE_URL + out
 
 def abs_url(path):
-    return SITE_URL + path.lstrip("/")
+    path = path.lstrip("/")
+    if path.startswith(("assets/docs/", "assets/ies/")):   # a download: wherever it sits now, newest version
+        rel, hsh, frag = path.partition("#")
+        path = url_path(newest_path(rel) or rel) + hsh + frag
+    return SITE_URL + path
 
 def clean_text(s):
     """Catalog prose into a plain sentence: no bold marks, footnote stars, ellipses or 'see page' pointers."""
@@ -1063,19 +1070,34 @@ def doc_key(stem):
         stem = stem[:m.start()]
     return stem.lower(), (date, ver)
 
-_listing = {}
+# Downloads sit in category and product folders (David, 2026-10-12): assets/docs/<kind>/<category>/<product>/<file> and
+# assets/ies/<category>/<product>/<part number>/<file>. The code names a document by its file name alone
+# (assets/docs/spec-sheets/X.pdf, assets/ies/<PN>/Y.ies) and the build finds it wherever it sits, so files can be
+# moved between folders without breaking a link. IES files are matched within the folder named after their part number.
+DOWNLOAD_EXTS = {".pdf", ".ies", ".zip", ".ldt"}
+_files = {}
+def _all_files(top):
+    if top not in _files:
+        d = ROOT / "assets" / top
+        _files[top] = [f for f in d.rglob("*") if f.is_file() and f.suffix.lower() in DOWNLOAD_EXTS] if d.is_dir() else []
+    return _files[top]
+
 def newest_path(rel):
-    """The newest existing version of an assets/docs or assets/ies file, as a site path, or None."""
+    """The newest existing version of an assets/docs or assets/ies file, found in any folder, as a site path, or None."""
     rel = rel.partition("#")[0]
-    p = ROOT / rel
-    folder = p.parent
-    if folder not in _listing:
-        _listing[folder] = [f for f in folder.iterdir() if f.is_file()] if folder.is_dir() else []
+    p = Path(rel)
+    top = p.parts[1] if len(p.parts) > 2 else ""
     base, ext = doc_key(p.stem)[0], p.suffix.lower()
-    same = [f for f in _listing[folder] if f.suffix.lower() == ext and doc_key(f.stem)[0] == base]
+    same = [f for f in _all_files(top) if f.suffix.lower() == ext and doc_key(f.stem)[0] == base
+            and (top != "ies" or f.parent.name.lower() == p.parent.name.lower())]
     if not same:
         return None
     return max(same, key=lambda f: (doc_key(f.stem)[1], f.name)).relative_to(ROOT).as_posix()
+
+def url_path(rel):
+    """A site path as it goes in a link: spaces and commas in folder names encoded."""
+    from urllib.parse import quote, unquote
+    return quote(unquote(rel), safe="/-_.~")
 
 def find_doc(rel):
     return newest_path(rel)
@@ -1089,20 +1111,18 @@ def newest_only(files):
     return list(best.values())
 
 def newest_links(html):
-    from urllib.parse import quote, unquote
+    from urllib.parse import unquote
     def sub(m):
-        rel = unquote(m.group(2))
-        new = newest_path(rel)
-        return f'"{m.group(1)}{quote(new, safe="/-_.~")}{m.group(3) or ""}"' if new and new != rel else m.group(0)
+        new = newest_path(unquote(m.group(2))) or m.group(2)
+        return f'"{m.group(1)}{url_path(new)}{m.group(3) or ""}"'
     # href and src attributes, and the absolute URLs in JSON-LD
     return re.sub(r'"((?:' + re.escape(SITE_URL) + r')?)(assets/(?:docs|ies)/[^"#?]+)(#[^"]*)?"', sub, html)
 
 def write_doc_map():
-    """assets/js/docmap.js: document names that now point at a newer version, for links built in the browser (lbi.js)."""
+    """assets/js/docmap.js: where each document named in lbi.js now sits (its folder and newest version), for links built in the browser."""
     m = {}
-    names = {f.relative_to(ROOT / "assets" / "docs").as_posix() for f in (ROOT / "assets" / "docs").rglob("*.pdf")}
-    # names written into lbi.js still resolve after their first version is deleted
-    names |= set(re.findall(r'"([^"]+\.pdf)"', (ROOT / "assets" / "js" / "lbi.js").read_text()))
+    # the document names written into lbi.js, wherever the files now sit and whatever their newest version
+    names = set(re.findall(r'"([^"]+\.pdf)"', (ROOT / "assets" / "js" / "lbi.js").read_text()))
     for rel in sorted(names):
         new = newest_path(f"assets/docs/{rel}")
         if new and new != f"assets/docs/{rel}":
@@ -1359,7 +1379,7 @@ def load_cutsheets(cats):
                         for x in cs.get("slides") or [] if (ROOT / x["src"]).is_file()]
         cs["docs"] = [d for d in cs.get("docs") or [] if find_doc(d["pdf"])]
         for d in cs["docs"]:
-            d["size"] = f"{(ROOT / d['pdf']).stat().st_size / 1e6:.1f} MB"
+            d["size"] = f"{(ROOT / find_doc(d['pdf'])).stat().st_size / 1e6:.1f} MB"
         cs["more"] = [table_prep(dict(t, notes=[t["note"]] if t.get("note") else [])) for t in (cs.get("options"), cs.get("accessories")) if t]
         # the spec sheet sets "Simple" and "Network Lighting Controls" in the two control blues; both open the controls page
         cs["points"] = [Markup(str(escape(b)).replace("Simple &amp; Network Lighting Controls",
@@ -1405,21 +1425,23 @@ def ies_label(stem):
 def load_ies(cats):
     """IES files per part number (see IES_DIR). Marks each page whose tables list a part number that has files."""
     ies = {}
-    for d in sorted(IES_DIR.iterdir()) if IES_DIR.is_dir() else []:
+    site = lambda f: url_path(f.relative_to(ROOT).as_posix())
+    # every folder holding IES files is named after its part number, at any depth (category/product/part number)
+    for d in sorted({f.parent for f in _all_files("ies")}, key=lambda d: d.name):
         files = []
         for f in d.glob("*.ies"):
             m = re.match(r"^(.+)_(\d+W)_(\d+K)$", f.stem)
             if m and m.group(1) == d.name:
-                files.append([m.group(2), m.group(3), f"assets/ies/{d.name}/{f.name}", f"{d.name} {m.group(2)} {m.group(3)}.IES"])
+                files.append([m.group(2), m.group(3), site(f), f"{d.name} {m.group(2)} {m.group(3)}.IES"])
         files.sort(key=lambda x: (int(x[0][:-1]), int(x[1][:-1])))
         mode = "grid"
         if not files:  # files named the factory's own way (and LM-79 reports): a plain list
             mode = "list"
             for f in sorted(newest_only(list(d.glob("*.ies")) + list(d.glob("*.pdf"))), key=lambda f: (f.suffix.lower() == ".pdf", natural(f.stem))):
-                files.append([ies_label(f.stem), "LM-79 report (PDF)" if f.suffix.lower() == ".pdf" else "IES", f"assets/ies/{d.name}/{f.name}", f.name])
+                files.append([ies_label(f.stem), "LM-79 report (PDF)" if f.suffix.lower() == ".pdf" else "IES", site(f), f.name])
         z = d / f"{d.name}_IES.zip"
         if files:
-            ies[d.name.upper()] = dict(pn=d.name, files=files, n=len(files), mode=mode, zip=f"assets/ies/{d.name}/{z.name}" if z.is_file() else None)
+            ies[d.name.upper()] = dict(pn=d.name, files=files, n=len(files), mode=mode, zip=site(z) if z.is_file() else None)
     for c in cats:
         pns = {strip_bold(r[t["pn_col"]]).strip().upper() for t in c.get("tables", []) if t["pn_col"] is not None for r in t["rows"] if len(r) > t["pn_col"]}
         c["has_ies"] = bool(pns & set(ies))
@@ -1834,8 +1856,7 @@ def main():
                ld_webpage("lbi.html", "LBI Family Overview", lbi_desc, kind="CollectionPage", image=lbi_img,
                           **({"mainEntity": {"@id": page_url("lbi.html") + "#variants"}} if variants else {})),
                ld_lbi_products(variants) if variants else None]))
-    docs = sorted({}.fromkeys(min((p for p in (ROOT / "assets" / "docs").glob("*.pdf") if doc_key(p.stem)[0] == b), key=lambda p: doc_key(p.stem)[1]).name
-                              for b in {doc_key(p.stem)[0] for p in (ROOT / "assets" / "docs").glob("*.pdf")}))
+    docs = [d for d in RESOURCE_DOCS if newest_path("assets/docs/" + d)]
     res_desc = compose_description(["Download the 2026 Full Product Catalog and the LBI spec sheets and sell sheets for Light Efficient Design, RemPhos and Solera.",
                                     "Every category page opens the catalog PDF at its own section."])
     render("resources.html", "resources.html", 0.6, page="resources", docs=docs, studies=studies, videos=videos,

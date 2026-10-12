@@ -19,6 +19,7 @@ Each product page's title, headline, introduction, key points, "At a glance" fea
 
 ### Spec sheets, instructions, IES files and case studies
 
+- Each kind of file has one folder per Products menu category and, inside it, one folder per product, for example `Spec sheets › LED Lamps › Shoe Box and Wall Pack`. IES files go one level deeper, in a folder named after the part number. The site finds a file by its name in any folder, so moving a file never breaks a link.
 - To post a newer version of a document, upload it under the same name with a version or date added: `RP-LBI-Spec_Sheet V2.pdf`, `LBI-G2-Spec-Sheet-rev3.pdf` or `LBI-G2-Spec-Sheet-2026-10-12.pdf`. Every link to that document then opens the newest one. The older version can stay as a record or be deleted.
 - Recognized endings: `V2`, `v2`, `ver 2`, `version 2`, `rev3`, `revision 3`, or a date (`2026-10-12`, `10.12.26`, `20261012`), after a space, dash, underscore or dot. A higher version wins; with dates, the latest date wins.
 - Uploading a second file under exactly the same name saves it as `name-1.pdf`, which no page links to, so always add a version or date (or delete the old file first).

@@ -2,7 +2,9 @@
 # Every save is a commit to this repo; .github/workflows/build.yml then rebuilds the pages with tools/build.py
 # and publishes them, so an edit is live a few minutes later.
 #
-# Documents keep their exact names (rename: false). To post a newer version, upload it under the same name with
+# Every kind of download has a folder per Products menu category and, inside it, one per product (IES files go one level
+# deeper, in a folder named after the part number). The site finds a file by its name in any folder, so a file can be
+# moved without breaking a link. Documents keep their exact names (rename: false). To post a newer version, upload it under the same name with
 # V2, rev3 or a date added (RP-LBI-Spec_Sheet V2.pdf, LBI-G2-Spec-Sheet-2026-10-12.pdf): the build points every
 # link at the newest version. The older file can stay or be deleted.
 
@@ -115,14 +117,26 @@ media:
     output: /assets/ies
     rename: false
     extensions: [ies, zip, pdf, ldt]
+  - name: sell-sheets
+    label: Sell sheets and flyers
+    input: assets/docs/sell-sheets
+    output: /assets/docs/sell-sheets
+    rename: false
+    extensions: [pdf]
   - name: case-studies
     label: Case studies
     input: assets/docs/case-studies
     output: /assets/docs/case-studies
     rename: false
     extensions: [pdf]
+  - name: catalog
+    label: Catalog
+    input: assets/docs/catalog
+    output: /assets/docs/catalog
+    rename: false
+    extensions: [pdf]
   - name: documents
-    label: All documents (LBI sheets, catalog, flyers)
+    label: All documents
     input: assets/docs
     output: /assets/docs
     rename: false

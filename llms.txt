@@ -55,8 +55,8 @@ Key facts:
 - [Resources](https://www.led-llc.com/resources.html): The 2026 Full Product Catalog (PDF) and LBI spec sheets and sell sheets.
 - [Contact](https://www.led-llc.com/contact.html): Sales phone and email, both locations, samples, rebates and rep lookup.
 - [Meet Eddy](https://www.led-llc.com/eddy.html): Eddy (short for Edison), the company mascot: a 5 mm LED named after Thomas Edison, created by Senior Creative Director Amy George.
-- [Pic Quik case study: Top-to-bottom store retrofit (PDF)](https://www.led-llc.com/assets/docs/case-studies/Pic-Quik-Case-Study.pdf): Gas station, convenience store and car wash, Las Cruces, NM. A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.
-- [2026 Full Product Catalog (PDF)](https://www.led-llc.com/assets/docs/LED-2026-Full-Product-Catalog.pdf): Every brand and part number in one PDF.
+- [Pic Quik case study: Top-to-bottom store retrofit (PDF)](https://www.led-llc.com/assets/docs/case-studies/LED%20Lamps/Shoe%20Box%20and%20Wall%20Pack/Pic-Quik-Case-Study.pdf): Gas station, convenience store and car wash, Las Cruces, NM. A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.
+- [2026 Full Product Catalog (PDF)](https://www.led-llc.com/assets/docs/catalog/LED-2026-Full-Product-Catalog.pdf): Every brand and part number in one PDF.
 
 ## Optional
 
