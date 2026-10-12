@@ -1630,3 +1630,11 @@ details.table-fold[open] .fold-btn::after { content: "Hide part numbers"; }
 @media (prefers-reduced-motion: reduce) { .tour-eddy.sway, .jug img, .juggling .e-arm-l, .juggling .e-arm-r { animation: none !important; } }
 /* Phones, at the tour's switches stop: the readout steps aside so the bar and the FlexColor switch both fit above Eddy's bubble (David, 2026-10-09). */
 @media (max-width: 980px) { html.tour-lean #readout { display: none; } }
+
+/* Presentation mode (html.calm, set in base.html): for screen sharing in Teams and similar, where moving and blurred layers flicker.
+   Everything holds still and the see-through header and menus become solid. */
+html.calm { scroll-behavior: auto; }
+html.calm *, html.calm *::before, html.calm *::after { animation: none !important; transition: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+html.calm .site-header, html.calm .mega { background: var(--bg) !important; }
+.ft-present { font: inherit; color: inherit; background: none; border: 1px solid currentColor; border-radius: 999px; padding: 4px 12px; cursor: pointer; opacity: 0.85; }
+.ft-present[aria-pressed="true"] { opacity: 1; background: rgb(255 255 255 / 0.12); }

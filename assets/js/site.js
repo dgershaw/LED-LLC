@@ -466,3 +466,14 @@
   document.addEventListener("visibilitychange", () => { if (document.hidden) { clearTimeout(timer); rest(); } else next(3000, 9000); });
   eddy.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") wiggle(false); });
 })();
+
+/* Presentation mode switch in the footer (see base.html): flips the setting and reloads so every script starts still. */
+(() => {
+  const b = document.querySelector("[data-present]");
+  if (!b) return;
+  const on = document.documentElement.classList.contains("calm");
+  b.setAttribute("aria-pressed", String(on));
+  b.textContent = "Presentation mode: " + (on ? "on" : "off");
+  b.title = "For screen sharing: turns off animation and see-through effects in this browser";
+  b.addEventListener("click", () => { try { localStorage.setItem("present", on ? "0" : "1"); } catch (e) {} location.reload(); });
+})();

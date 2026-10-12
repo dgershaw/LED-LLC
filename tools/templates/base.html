@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{#- Presentation mode (David, 2026-10-12): Teams screen sharing made the blurred header and the animations flicker. ?present=1 on any
+    page turns it on and it stays on in that browser until ?present=0 or the footer switch: no animation, no blur, every script
+    sees "reduced motion". #}
+<script>(function(){try{var q=location.search.match(/[?&]present=([01])/);if(q)localStorage.setItem("present",q[1]);if(localStorage.getItem("present")!=="1")return;document.documentElement.classList.add("calm");var mm=window.matchMedia.bind(window);window.matchMedia=function(s){if(/prefers-reduced-motion:\s*reduce/.test(s)){var n=function(){};return{matches:true,media:s,onchange:null,addEventListener:n,removeEventListener:n,addListener:n,removeListener:n,dispatchEvent:function(){return false}}}return mm(s)}}catch(e){}})();</script>
 <title>{{ seo.title }}</title>
 <meta name="description" content="{{ seo.description }}">
 <link rel="canonical" href="{{ seo.canonical }}">
@@ -183,6 +187,7 @@
     <div class="ft-bottom">
       <span>© 2026 Light Efficient Design. All rights reserved.</span>
       <span>Information is subject to change without notice. The spec sheet is the final reference.</span>
+      <button type="button" class="ft-present" data-present aria-pressed="false">Presentation mode: off</button>
       <a href="https://www.led-llc.com/">LED-LLC.com</a>
     </div>
   </div>
