@@ -13,16 +13,16 @@
   "install_photos": {
     "shoe-box-wall-pack": [
       {
-        "src": "assets/img/install/shoe-box-wall-pack/rail-yard-platforms.jpg",
-        "alt": "Rail yard platforms at night lit by pole-mounted LED fixtures",
-        "caption": "Rail yard platforms",
-        "focus": "50% 40%"
-      },
-      {
         "src": "assets/img/install/shoe-box-wall-pack/parking-lot-fog.jpg",
         "alt": "Parking lot poles with LED shoe box fixtures shining down through fog",
         "caption": "Parking lot in fog",
         "focus": "50% 30%"
+      },
+      {
+        "src": "assets/img/install/shoe-box-wall-pack/rail-yard-platforms.jpg",
+        "alt": "Rail yard platforms at night lit by pole-mounted LED fixtures",
+        "caption": "Rail yard platforms",
+        "focus": "50% 40%"
       }
     ]
   },

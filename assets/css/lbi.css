@@ -514,30 +514,34 @@ html.scroll-hold { overflow: hidden; }
 
 /* The LBI 65's real remote (David, 2026-10-09): white body, power and RESET, a grey adjust panel, a dark color temperature panel,
    an outlined PW panel and the RemPhos wordmark, after the drawing on the spec sheet. */
-.remote.r65 { width: 232px; padding: 22px 18px 20px; gap: 14px; border-radius: 46px; background: linear-gradient(165deg, #ffffff, #e3e5ea); }
+.remote.r65 { width: 232px; padding: 24px 16px 18px; gap: 14px; border-radius: 56px 56px 46px 46px; background: #fff; border: 2.5px solid #2b2c30; box-shadow: 0 18px 40px rgb(0 0 0 / 0.35); }
 .r65-key { border: 0; cursor: pointer; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.02em; color: #1b1c20;
-  box-shadow: 0 2px 0 rgb(0 0 0 / 0.25), inset 0 1px 0 rgb(255 255 255 / 0.45); transition: transform .08s; font-family: inherit; padding: 0; }
-.r65-key:active { transform: translateY(1px); box-shadow: none; }
+  transition: transform .08s; font-family: inherit; padding: 0; }
+.r65-key:active { transform: translateY(1px); }
 .r65-key:focus-visible { outline: 3px solid #2a6bff; outline-offset: 2px; }
-.r65-key.sel { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 7px #1b1c20; }
-.r65-top { display: flex; justify-content: space-between; padding: 0 4px; }
-.r65-key.pwr { width: 46px; height: 46px; background: #e3262d; }
-.r65-key.pwr[aria-pressed="false"] { background: #8d1a1f; }
+.r65-key.sel { outline: 3px solid #2a6bff; outline-offset: 3px; }
+.r65-top { display: flex; justify-content: space-between; padding: 0 10px; }
+.r65-key.pwr { width: 46px; height: 46px; background: #e3262d; box-shadow: inset 0 0 0 3px #e3262d, inset 0 0 0 5px #fff; }
+.r65-key.pwr[aria-pressed="false"] { background: #8d1a1f; box-shadow: inset 0 0 0 3px #8d1a1f, inset 0 0 0 5px #fff; }
 .r65-key.pwr svg { width: 24px; height: 24px; }
 .r65-key.reset { width: 46px; height: 46px; background: #1e1f23; color: #fff; font-size: 0.75rem; letter-spacing: 0; }
-.r65-adj { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 8px; border-radius: 16px; background: #c4c7ce; }
-.r65-col { display: grid; gap: 10px; justify-items: center; padding: 8px 0; border-radius: 12px; }
-.r65-col.lite { background: #eef0f4; }
-.r65-col.grey { background: #9da1aa; }
-.r65-key.icon { width: 50px; height: 50px; background: #fff; gap: 0; align-content: center; }
+/* the drawing: CCT keys and LM keys in two outlined grey boxes, Q1 and Q2 between them on the white body */
+.r65-adj { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.r65-col { display: grid; gap: 12px; justify-items: center; align-content: center; padding: 10px 0; border-radius: 10px; }
+.r65-col.lite, .r65-col.grey { background: #c9cacd; border: 2px solid #2b2c30; }
+.r65-key.icon { width: 50px; height: 50px; background: #dfe0e3; border: 2px solid #2b2c30; gap: 0; align-content: center; }
+.r65-key.icon[data-r65k="cool"] { background: #c5d3f0; }
+.r65-key.icon[data-r65k="warm"] { background: #f5c518; }
 .r65-key.icon svg { width: 24px; height: 24px; }
 .r65-key.icon span { font-size: 0.75rem; line-height: 1; }
 .r65-key.q { width: 42px; height: 42px; margin-block: 4px; background: #55585f; color: #fff; cursor: default; }
-.r65-cct { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 8px; justify-items: center; padding: 14px 8px; border-radius: 16px; background: #55585f; }
-.r65-key.cct { width: 52px; height: 52px; background: var(--c); font-size: 0.75rem; letter-spacing: 0; }
-.r65-pw { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; justify-items: center; padding: 16px 20px; border-radius: 16px; border: 2px solid #8d9099; }
-.r65-key.pw { width: 50px; height: 50px; background: #55585f; color: #fff; }
-.r65-brand { text-align: center; font-weight: 800; font-size: 1.375rem; letter-spacing: -0.01em; color: #1f4f9e; padding-top: 6px; }
+.r65-cct { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 8px; justify-items: center; padding: 14px 8px; border-radius: 12px; background: #5d5e62; border: 2px solid #2b2c30; }
+.r65-key.cct { width: 50px; height: 50px; background: var(--c); border: 2.5px solid #f4f4f5; font-size: 0.75rem; letter-spacing: 0; }
+.r65-key.cct.sel { outline-color: #fff; }
+.r65-pw { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; justify-items: center; padding: 16px 20px; border-radius: 12px; border: 2px solid #2b2c30; background: #fff; }
+.r65-key.pw { width: 50px; height: 50px; background: #55585f; color: #fff; border: 2.5px solid #d4d5d9; }
+.r65-brand { text-align: center; padding-top: 4px; line-height: 0; }
+.r65-brand img { width: 120px; height: auto; display: inline-block; }
 .r65-legend { display: grid; gap: 14px; align-content: start; }
 .r65-legend .illus { margin: 0; }
 .r65-legend dl { margin: 0; display: grid; gap: 10px; }

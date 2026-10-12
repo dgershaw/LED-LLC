@@ -486,7 +486,7 @@
       </div>
       <div class="r65-cct">${v.ccts.map((k, i) => `<button type="button" class="r65-key cct${!st.off && k === st.k ? " sel" : ""}" style="--c:${R65_K[k] || cctToRgb(k)}" data-r65="cct" data-i="${i}" aria-pressed="${k === st.k}" aria-label="${k}K">${k}K</button>`).join("")}</div>
       <div class="r65-pw">${sz.watts.map((w, i) => `<button type="button" class="r65-key pw${!st.off && i === st.w ? " sel" : ""}" data-r65="watt" data-i="${i}" aria-pressed="${i === st.w}" aria-label="PW${i + 1}: ${w} W">PW${i + 1}</button>`).join("")}</div>
-      <div class="r65-brand">RemPhos</div>
+      <div class="r65-brand"><img src="assets/img/brand/remphos-wordmark.png" alt="RemPhos" width="120" height="18"></div>
     </div>`;
   }
   const REMOTE_NOTE = "No switches on the bar: set it on site with the included remote, or order a factory preset to save install time. Remote layout is illustrative.";
