@@ -1,0 +1,76 @@
+{
+  "title": "Simple + Networked Lighting Controls",
+  "subtitle": "",
+  "headline": "You have a choice between simplicity or high-capability systems...",
+  "intro": "",
+  "callouts": [
+    "Simple lighting controls — the easiest way to make a luminaire smart",
+    "Networked lighting controls — go beyond smart lighting",
+    "Add basic control capabilities to specific luminaires...",
+    "Add high value control capabilities at room, building, or even campus levels...",
+    "Controlled by the IR23 remote",
+    "Connect and control lighting fixtures via Bluetooth mesh w/ the Silvair app — available for iOS and Android on the App Store and Google Play"
+  ],
+  "features": [
+    {
+      "label": "Simple lighting controls",
+      "note": "occupancy (microwave or passive infrared) and daylight sensors added to a specific luminaire; all are controlled by the IR23 remote (RC-REMOTE-IR23 on the product pages)"
+    },
+    {
+      "label": "Networked lighting controls",
+      "note": "Silvair™ Bluetooth mesh sensors and control nodes, set up and controlled with the Silvair app (iOS and Android)"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Simple Lighting Controls",
+      "leadIn": "Add basic control capabilities to specific luminaires...",
+      "columns": [
+        "Product family",
+        "Control"
+      ],
+      "rows": [
+        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ | In-line microwave occupancy and daylight harvesting sensor",
+        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65 | In-line passive infrared occupancy and daylight harvesting sensor",
+        "LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 | Microwave occupancy and daylight hold-off sensor",
+        "DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 | Limited-range microwave occupancy and daylight hold-off sensor",
+        "TTV / TTF | Passive infrared occupancy and daylight harvesting sensor",
+        "TRV / TRF / TV / TF | Passive infrared occupancy and daylight hold-off sensor"
+      ],
+      "notes": [
+        "Controlled by the IR23 remote — a dotted bracket beside the table ties every row to the IR23 handheld remote pictured at the right (sold as RC-REMOTE-IR23 on the luminaire pages)",
+        "Catalog prints the control descriptions in all caps; product names are kept exactly as printed"
+      ],
+      "pdfPage": 14
+    },
+    {
+      "title": "Networked Lighting Controls",
+      "leadIn": "Add high value control capabilities at room, building, or even campus levels...",
+      "columns": [
+        "Product family",
+        "Control"
+      ],
+      "rows": [
+        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ | In-line Silvair™ Bluetooth microwave motion and daylight harvesting sensor",
+        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65 | In-line Silvair™ Bluetooth control node",
+        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65 | In-line Silvair™ Bluetooth passive infrared motion and daylight harvesting sensor",
+        "LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 | Silvair™ Bluetooth microwave motion and daylight harvesting sensor",
+        "LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 | Silvair™ Bluetooth node w/ external antenna",
+        "DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 / TTV / TTF | Silvair™ Bluetooth control node",
+        "LBE / TYPE C T5 & T8 | Silvair™ Bluetooth passive infrared motion and daylight harvesting sensor",
+        "LBE / TYPE C T5 & T8 | Silvair™ Bluetooth passive infrared external arm sensor",
+        "TTV / TTF / TRV / TRF / TV / TF | Silvair™ passive infrared motion and daylight harvesting sensor"
+      ],
+      "notes": [
+        "Connect and control lighting fixtures via Bluetooth mesh w/ the Silvair app — available for iOS and Android on the App Store and Google Play (statement printed under the table beside the RemPhos x Silvair robot logo)",
+        "Merged product cells repeated: 'LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65' spans two rows, 'LBI MAX / LIVC / ...' spans two rows, 'LBE / TYPE C T5 & T8' spans two rows",
+        "Catalog prints the control descriptions in all caps and marks Silvair with a ™"
+      ],
+      "pdfPage": 14
+    }
+  ],
+  "footnotes": [
+    "PDF page 14 is a two-page spread; only the left half carries a printed page number (24), the right half (tables) is unnumbered and taken as 25",
+    "No part numbers, wattages or listings appear on this spread; it is a compatibility matrix of control options per luminaire family"
+  ]
+}

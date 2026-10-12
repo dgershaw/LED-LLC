@@ -1,0 +1,2277 @@
+# Light Efficient Design: full product digest
+
+> Plain-text edition of led-llc.com, generated from the same catalog data as the site on 2026-10-12. Values are as printed in the 2026 Full Product Catalog; the spec sheet is the final reference.
+
+Sales: 847.380.3540, sales@led-llc.com. Corporate HQ & Training Center: 188 S. Northwest Highway, Cary, IL 60013. Innovation & Manufacturing Center: 30 Log Bridge Road, Building 200, Middleton, MA 01949.
+
+# Light Efficient Design
+
+Retrofit lamps that turn any HID or fluorescent fixture into LED. Screw-in and pin-base LED retrofits for the fixtures already on the job, plus temporary work lights. Keep the fixture, swap the lamp, cut the energy.
+
+Page: https://www.led-llc.com/light-efficient-design.html
+
+- Keep the fixture: Ballast-bypass and ballast-compatible lamps fit the sockets you already have.
+- FlexWatt + FlexColor: Pick wattage and color temperature on the lamp, so one SKU covers many jobs.
+- 5-year warranty: Long rated life and surge protection built for parking lots, high bays and hazardous areas.
+
+## Bollard + Post Top (Light Efficient Design › Screw-In Retrofits)
+
+Page: https://www.led-llc.com/bollard-post-top.html · Catalog p. 2–4
+
+Replaces up to 1000W HID.
+
+Keep the look and feel of your existing fixture, while saving energy and maintenance costs. Several models feature FlexWatt and FlexColor allowing for substantial sku reduction and in-field adjustability.
+
+Highlights:
+- ('LED-8000 — multiple voltage options & longer neck for a better fit.', 3).
+- ('Smaller because size does matter.', 3).
+- ('Frosted lens', 3).
+- ('Available in 2200K, 4000K & 5000K.', 3).
+
+Features:
+- 5-year warranty
+- UL Type B ballast bypass
+- Active cooling
+- 80+ CRI
+- Enclosed fixtures
+- Operating temp -40°F to 113°F (8029 / 8024 / 8027 / 8028)
+- Operating temp -40°F to 122°F (8037 / 8038 / 8039 / 8000 / 8075)
+- Damp location environment
+- L70 50,000hrs rated life
+- Frosted lens (801X and 802X models (LED-8017E345-G3 to LED-8021M345-G3))
+- HV = 277-480V including 347V
+- MV = 208-347V
+- DLC (For listing status go to LED-LLC.com)
+
+### Bollard + Post Top | Ballast Bypass | Type B | FlexWatt + FlexColor
+
+Columns: Part #, Voltage, Replaces, Wattage, Lumens, CCT, Base, Features, Dimensions, Listings
+
+- LED-8037E345-A — Voltage: 120-277V; Replaces: 50W; Wattage: 11W; Lumens: 1550/1610/1650; CCT: FlexColor 3000K/4000K/5000K; Base: E26; Dimensions: 2.6 in x 5.3 in; Listings: cULus Listed, cULus Classified
+- LED-8038E345-A — Voltage: 120-277V; Replaces: 70W; Wattage: 14W; Lumens: 1850/1950/1990; CCT: FlexColor 3000K/4000K/5000K; Base: E26; Dimensions: 2.6 in x 5.3 in; Listings: cULus Listed, cULus Classified
+- LED-8038E345C-A — Voltage: 220-347V; Replaces: 70W; Wattage: 14W; Lumens: 1850/1950/1990; CCT: FlexColor 3000K/4000K/5000K; Base: E26; Dimensions: 2.6 in x 5.3 in; Listings: cULus Listed, cULus Classified
+- LED-8039E345D-A — Voltage: 120-277V; Replaces: 100W; Wattage: 18W; Lumens: 2450/2560/2610; CCT: FlexColor 3000K/4000K/5000K; Base: E26; Dimensions: 2.6 in x 6.3 in; Listings: cULus Listed, cULus Classified
+- LED-8039E345C-A — Voltage: 220-347V; Replaces: 100W; Wattage: 18W; Lumens: 2450/2560/2610; CCT: FlexColor 3000K/4000K/5000K; Base: E26; Dimensions: 2.6 in x 6.3 in; Listings: cULus Listed, cULus Classified
+- LED-8039M345D-A — Voltage: 120-277V; Replaces: 100W; Wattage: 18W; Lumens: 2450/2560/2610; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Dimensions: 2.6 in x 7.0 in; Listings: cULus Listed, cULus Classified
+- LED-8039M345C-A — Voltage: 220-347V; Replaces: 100W; Wattage: 18W; Lumens: 2450/2560/2610; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Dimensions: 2.6 in x 7.0 in; Listings: cULus Listed, cULus Classified
+- LED-8029E345-A-FW — Voltage: 120-277V; Replaces: Up to 150W; Wattage: FlexWatt 12W/18W/24W; Lumens: 1550-3360; CCT: FlexColor 3000K/4000K/5000K; Base: E26; Dimensions: 3.0 in x 6.6 in; Listings: cULus Listed, cULus Classified
+- LED-8029E345C-A-FW — Voltage: 220-347V; Replaces: Up to 150W; Wattage: FlexWatt 12W/18W/24W; Lumens: 1550-3360; CCT: FlexColor 3000K/4000K/5000K; Base: E26; Dimensions: 3.0 in x 6.6 in; Listings: cULus Listed, cULus Classified
+- LED-8029M345-A-FW — Voltage: 120-277V; Replaces: Up to 150W; Wattage: FlexWatt 12W/18W/24W; Lumens: 1550-3360; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Dimensions: 3.0 in x 6.9 in; Listings: cULus Listed, cULus Classified
+- LED-8029M345C-A-FW — Voltage: 220-347V; Replaces: Up to 150W; Wattage: FlexWatt 12W/18W/24W; Lumens: 1550-3360; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Dimensions: 3.0 in x 6.9 in; Listings: cULus Listed, cULus Classified
+- LED-8024E345-G7-FW — Voltage: 120-277V; Replaces: Up to 320W; Wattage: FlexWatt 35W/45W/60W; Lumens: 5140-8870; CCT: FlexColor 3000K/4000K/5000K; Base: E26; Dimensions: 3.4 in x 7.4 in; Listings: cULus Listed, cULus Classified
+- LED-8024E345C-G7-FW — Voltage: 220-347V; Replaces: Up to 320W; Wattage: FlexWatt 35W/45W/60W; Lumens: 5140-8870; CCT: FlexColor 3000K/4000K/5000K; Base: E26; Dimensions: 3.4 in x 7.4 in; Listings: cULus Listed, cULus Classified
+- LED-8024M345-G7-FW — Voltage: 120-277V; Replaces: Up to 320W; Wattage: FlexWatt 35W/45W/60W; Lumens: 5140-8870; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Dimensions: 3.4 in x 7.8 in; Listings: cULus Listed, cULus Classified
+- LED-8024M345-G7-FW-HV — Voltage: 277-480V; Replaces: Up to 320W; Wattage: FlexWatt 35W/45W/60W; Lumens: 5140-8870; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Features: 277-480V incl. 347V; Dimensions: 3.4 in x 7.8 in; Listings: cULus Listed, cULus Classified
+- LED-8027M345-G7-FW — Voltage: 120-277V; Replaces: Up to 400W; Wattage: FlexWatt 80W/100W/110W; Lumens: 11370-15730; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Dimensions: 3.8 in x 9.5 in; Listings: cULus Listed, cULus Classified
+- LED-8027M345-G7-FW-HV — Voltage: 277-480V; Replaces: Up to 400W; Wattage: FlexWatt 80W/100W/110W; Lumens: 11370-15730; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Features: 277-480V incl. 347V; Dimensions: 3.8 in x 9.5 in; Listings: cULus Listed, cULus Classified
+- LED-8028M345-G7-FW — Voltage: 120-277V; Replaces: Up to 400W; Wattage: FlexWatt 110W/135W/150W; Lumens: 15000-21000; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Dimensions: 4.0 in x 8.3 in; Listings: Pending
+- LED-8075M345-FW — Voltage: 120-277V; Replaces: Up to 750W; Wattage: FlexWatt 150W/200W/270W; Lumens: 21700-39000; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Dimensions: 5.6 in x 12.3 in; Listings: cULus Listed, cULus Classified
+- LED-8075M345-FW-HV — Voltage: 277-480V; Replaces: Up to 750W; Wattage: FlexWatt 150W/200W/270W; Lumens: 21700-39000; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Features: 277-480V incl. 347V; Dimensions: 5.6 in x 12.3 in; Listings: cULus Listed, cULus Classified
+- LED-8000M345-FW-MV — Voltage: 208-347V; Replaces: Up to 1000W; Wattage: FlexWatt 300W/360W/450W; Lumens: 50100-73300; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Features: 208-347V; Dimensions: 5.6 in x 12.3 in; Listings: cULus Listed, cULus Classified
+- LED-8000M345-FW-HV — Voltage: 277-480V; Replaces: Up to 1000W; Wattage: FlexWatt 300W/360W/450W; Lumens: 50100-73300; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Features: 277-480V incl. 347V; Dimensions: 5.6 in x 12.3 in; Listings: cULus Listed, cULus Classified
+
+### Bollard + Post Top | Ballast Bypass | Type B | Frosted-lens + filament
+
+Columns: Part #, Voltage, Replaces, Wattage, Lumens, CCT, Base, Features, Dimensions, Listings
+
+- LED-8017E345-G3 — Voltage: 120-277V; Replaces: 100W (150W INC); Wattage: 20W; Lumens: 2400/2700/2600; CCT: FlexColor 3000K/4000K/5000K; Base: E26; Features: Frosted lens; Dimensions: 2.6 in x 5.5 in; Listings: cULus Listed, cULus Classified
+- LED-8018E345-G3 — Voltage: 120-277V; Replaces: 150W (200W INC); Wattage: 25W; Lumens: 3000/3375/3250; CCT: FlexColor 3000K/4000K/5000K; Base: E26; Features: Frosted lens; Dimensions: 2.6 in x 5.5 in; Listings: cULus Listed, cULus Classified
+- LED-8019E345-G3 — Voltage: 120-277V; Replaces: 175W (300W INC); Wattage: 35W; Lumens: 4200/4725/4550; CCT: FlexColor 3000K/4000K/5000K; Base: E26; Features: Frosted lens; Dimensions: 3.4 in x 6.8 in; Listings: cULus Listed, cULus Classified
+- LED-8019M345-G3 — Voltage: 120-277V; Replaces: 175W; Wattage: 35W; Lumens: 4200/4725/4550; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Features: Frosted lens; Dimensions: 3.4 in x 7.1 in; Listings: cULus Listed, cULus Classified
+- LED-8020M345-G3 — Voltage: 120-277V; Replaces: 250W; Wattage: 45W; Lumens: 5400/6075/5850; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Features: Frosted lens; Dimensions: 3.9 in x 7.9 in; Listings: cULus Listed, cULus Classified
+- LED-8021M345-G3 — Voltage: 120-277V; Replaces: 320W; Wattage: 65W; Lumens: 7800/8775/8450; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Features: Frosted lens; Dimensions: 4.7 in x 9.2 in; Listings: cULus Listed, cULus Classified
+- LED-8060E22 — Voltage: 120-277V; Replaces: 100W; Wattage: 15W; Lumens: 2250; CCT: 2200K; Base: E26; Dimensions: 2.2 in x 6.4 in; Listings: cETLus (Intertek), FCC
+- LED-8060E40 — Voltage: 120-277V; Replaces: 100W; Wattage: 15W; Lumens: 2700; CCT: 4000K; Base: E26; Dimensions: 2.2 in x 6.4 in; Listings: cETLus (Intertek), FCC
+- LED-8060E50 — Voltage: 120-277V; Replaces: 100W; Wattage: 15W; Lumens: 2700; CCT: 5000K; Base: E26; Dimensions: 2.2 in x 6.4 in; Listings: cETLus (Intertek), FCC
+- LED-8061E22 — Voltage: 120-277V; Replaces: 150W; Wattage: 28W; Lumens: 3500; CCT: 2200K; Base: E26; Dimensions: 3.0 in x 7.6 in; Listings: cETLus (Intertek), FCC
+- LED-8061E40 — Voltage: 120-277V; Replaces: 150W; Wattage: 28W; Lumens: 4000; CCT: 4000K; Base: E26; Dimensions: 3.0 in x 7.6 in; Listings: cETLus (Intertek), FCC
+- LED-8061E50 — Voltage: 120-277V; Replaces: 150W; Wattage: 28W; Lumens: 4000; CCT: 5000K; Base: E26; Dimensions: 3.0 in x 7.6 in; Listings: cETLus (Intertek), FCC
+- LED-8062M22 — Voltage: 120-277V; Replaces: 175W; Wattage: 32W; Lumens: 4500; CCT: 2200K; Base: EX39; Dimensions: 3.5 in x 9.4 in; Listings: cETLus (Intertek), FCC
+- LED-8062M40 — Voltage: 120-277V; Replaces: 175W; Wattage: 32W; Lumens: 5500; CCT: 4000K; Base: EX39; Dimensions: 3.5 in x 9.4 in; Listings: cETLus (Intertek), FCC
+- LED-8062M50 — Voltage: 120-277V; Replaces: 175W; Wattage: 32W; Lumens: 5500; CCT: 5000K; Base: EX39; Dimensions: 3.5 in x 9.4 in; Listings: cETLus (Intertek), FCC
+- LED-8063M22 — Voltage: 120-277V; Replaces: 250W; Wattage: 45W; Lumens: 6000; CCT: 2200K; Base: EX39; Dimensions: 3.5 in x 9.4 in; Listings: cETLus (Intertek), FCC
+- LED-8063M40 — Voltage: 120-277V; Replaces: 250W; Wattage: 45W; Lumens: 7500; CCT: 4000K; Base: EX39; Dimensions: 3.5 in x 9.4 in; Listings: cETLus (Intertek), FCC
+- LED-8063M50 — Voltage: 120-277V; Replaces: 250W; Wattage: 45W; Lumens: 7500; CCT: 5000K; Base: EX39; Dimensions: 3.5 in x 9.4 in; Listings: cETLus (Intertek), FCC
+- LED-8064M22 — Voltage: 120-277V; Replaces: 320W; Wattage: 54W; Lumens: 8000; CCT: 2200K; Base: EX39; Dimensions: 4.9 in x 9.4 in; Listings: cETLus (Intertek), FCC
+- LED-8064M40 — Voltage: 120-277V; Replaces: 320W; Wattage: 54W; Lumens: 10000; CCT: 4000K; Base: EX39; Dimensions: 4.9 in x 9.4 in; Listings: cETLus (Intertek), FCC
+- LED-8064M50 — Voltage: 120-277V; Replaces: 320W; Wattage: 54W; Lumens: 10000; CCT: 5000K; Base: EX39; Dimensions: 4.9 in x 9.4 in; Listings: cETLus (Intertek), FCC
+- LED-8065M22 — Voltage: 120-277V; Replaces: 400W; Wattage: 85W; Lumens: 13600; CCT: 2200K; Base: EX39; Dimensions: 4.8 in x 11.5 in; Listings: cETLus (Intertek), FCC
+- LED-8065M40 — Voltage: 120-277V; Replaces: 400W; Wattage: 85W; Lumens: 15725; CCT: 4000K; Base: EX39; Dimensions: 4.8 in x 11.5 in; Listings: cETLus (Intertek), FCC
+- LED-8065M50 — Voltage: 120-277V; Replaces: 400W; Wattage: 85W; Lumens: 15725; CCT: 5000K; Base: EX39; Dimensions: 4.8 in x 11.5 in; Listings: cETLus (Intertek), FCC
+
+### Size comparison
+
+Smaller because size does matter. Each triplet shows the HID lamp being replaced, our retrofit and a typical competitor LED corn lamp of the same wattage class; overall lengths are marked for the HID lamp and the competitor.
+
+Footnotes:
+- 120-277V also works on 208V & 240V
+- * Excludes 8037-39 models (applies to the Active Cooling feature)
+- DLC: for listing status go to LED-LLC.com
+
+Case study: Pic Quik, Las Cruces, NM: Top-to-bottom store retrofit (https://www.led-llc.com/assets/docs/case-studies/Pic-Quik-Case-Study.pdf). HID gas canopy fixtures were wasting energy and caused a maintenance headache, with bulbs and ballasts constantly being replaced. The gas canopy fixtures were easily retrofitted with the directional, horizontal-mount LED-8090. Ease of install and superior light output immediately led to retrofitting the entire store. A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.
+
+## Shoe Box + Wall Pack (Light Efficient Design › Screw-In Retrofits)
+
+Page: https://www.led-llc.com/shoe-box-wall-pack.html · Catalog p. 6–7
+
+Replaces up to 400W HID.
+
+Retrofit almost any shoe box or wall pack fixture to energy & maintenance saving LEDs. Eliminate ballast failures. FlexColor on several models allows for less stocked inventory as well as field adjustability.
+
+Highlights:
+- ('Rotatable base directs lumens out of fixture.', 12).
+
+Features:
+- 5-year warranty
+- UL Type B ballast bypass
+- Active cooling
+- 80+ CRI
+- Enclosed fixtures
+- -40°F to 122°F operating temp
+- Damp location environment
+- L70 50,000 hrs rated life
+- FlexColor selectable CCT 3000K/4000K/5000K (All models; factory default 4000K)
+- Rotatable base directs lumens out of fixture
+- 277-480V incl. 347V (HV) (LED-8090M345D-G4-HV only)
+- DLC (For listing status go to LED-LLC.com)
+
+### Models and downloads
+
+Columns: Model, Wattage, Replaces, Color temperature, Base
+
+- LED-8087-FC — Wattage: 30W; Replaces: 100W HID; Color temperature: FlexColor 3000K/4000K/5000K; Base: E26 or EX39
+- LED-8088-FC — Wattage: 50W; Replaces: 175W HID; Color temperature: FlexColor 3000K/4000K/5000K; Base: E26 or EX39
+- LED-8089-FC — Wattage: 80W; Replaces: 250W HID; Color temperature: FlexColor 3000K/4000K/5000K; Base: EX39
+- LED-8090-FC — Wattage: 110W; Replaces: 400W HID; Color temperature: FlexColor 3000K/4000K/5000K; Base: EX39
+- LED-8086 — Wattage: 20W; Replaces: up to 70W HID; Color temperature: 3000K/4000K/5000K; Base: E26
+- LED-8087 — Wattage: 30W; Replaces: up to 100W HID; Color temperature: 3000K/4000K/5000K; Base: E26 or EX39
+- LED-8088 — Wattage: 50W; Replaces: up to 175W HID; Color temperature: 3000K/4000K/5000K; Base: E26 or EX39
+- LED-8089 — Wattage: 80W; Replaces: up to 250W HID; Color temperature: 3000K/4000K/5000K; Base: EX39
+- LED-8090 — Wattage: 110W; Replaces: up to 400W HID; Color temperature: 3000K/4000K/5000K; Base: EX39
+- LED-8091 — Wattage: 320W; Replaces: up to 1000W HID; Color temperature: 4000K/5000K (3000K special order); Base: EX39
+- Note: FlexColor (-FC) models switch between 3000K, 4000K and 5000K on the lamp, with 4000K as the factory default.
+- Note: 120-277V models also work on 208V and 240V. -HV models run on 277-480V (can be used on 347V).
+- Note: CRI 80+ (LED-8091: 70+). LED-8091 3000K is a special order, minimum order 100 pieces.
+
+### FlexColor part numbers | LED-8087 to LED-8090-FC
+
+Columns: Part #, Replaces, Wattage, Lumens, CCT, Base, DLC code
+
+- LED-8087E345D-G4 — Replaces: 100W HID; Wattage: 30W; Lumens: 3500/4200/4300; CCT: 3000K/4000K/5000K; Base: E26; DLC code: N/A
+- LED-8087M345D-G4 — Replaces: 100W HID; Wattage: 30W; Lumens: 3500/4200/4300; CCT: 3000K/4000K/5000K; Base: EX39; DLC code: P1CK54P3
+- LED-8088E345D-G4 — Replaces: 175W HID; Wattage: 50W; Lumens: 6400/6900/7200; CCT: 3000K/4000K/5000K; Base: E26; DLC code: N/A
+- LED-8088M345D-G4 — Replaces: 175W HID; Wattage: 50W; Lumens: 6400/6900/7200; CCT: 3000K/4000K/5000K; Base: EX39; DLC code: P6YHOJXP
+- LED-8089M345D-G4 — Replaces: 250W HID; Wattage: 80W; Lumens: 10600/10700/10800; CCT: 3000K/4000K/5000K; Base: EX39; DLC code: PE1R64EU
+- LED-8090M345D-G4 — Replaces: 400W HID; Wattage: 110W; Lumens: 14500/15400/15700; CCT: 3000K/4000K/5000K; Base: EX39; DLC code: PTGQIRSF
+- LED-8090M345D-G4-HV — Replaces: 400W HID; Wattage: 110W; Lumens: 14500/15400/15700; CCT: 3000K/4000K/5000K; Base: EX39; DLC code: PLQZ2S2U
+- LED-8087E345CD-G4 — Replaces: 100W HID; Wattage: 30W; Lumens: 3500/4200/4300; CCT: 3000K/4000K/5000K; Base: E26; DLC code: N/A
+- LED-8087M345CD-G4 — Replaces: 100W HID; Wattage: 30W; Lumens: 3500/4200/4300; CCT: 3000K/4000K/5000K; Base: EX39; DLC code: PNARUA94
+- LED-8088E345CD-G4 — Replaces: 175W HID; Wattage: 50W; Lumens: 6400/6900/7200; CCT: 3000K/4000K/5000K; Base: E26; DLC code: N/A
+- LED-8088M345CD-G4 — Replaces: 175W HID; Wattage: 50W; Lumens: 6400/6900/7200; CCT: 3000K/4000K/5000K; Base: EX39; DLC code: PLK1XZP2
+- LED-8089M345CD-G4 — Replaces: 250W HID; Wattage: 80W; Lumens: 10600/10700/10800; CCT: 3000K/4000K/5000K; Base: EX39; DLC code: PF34RTPP
+- Note: C models (for example LED-8087E345CD-G4) are the 347V options for Canada.
+- Note: "D" models dim to 50% when the switch on top of the lamp is set to LO (30W to 15W, 50W to 25W, 80W to 40W, 110W to 55W).
+
+### LED-8086 to LED-8090 part numbers | 3000K, 4000K or 5000K
+
+Columns: Part #, Replaces, Wattage, Lumens, CCT, Base, DLC code
+
+- LED-8086E30-G4 — Replaces: up to 70W HID; Wattage: 20W; Lumens: 2800; CCT: 3000K; Base: E26; DLC code: N/A
+- LED-8086E40-G4 — Replaces: up to 70W HID; Wattage: 20W; Lumens: 2800; CCT: 4000K; Base: E26; DLC code: N/A
+- LED-8086E50-G4 — Replaces: up to 70W HID; Wattage: 20W; Lumens: 2880; CCT: 5000K; Base: E26; DLC code: N/A
+- LED-8087E30-G4 — Replaces: up to 100W HID; Wattage: 30W; Lumens: 3534; CCT: 3000K; Base: E26; DLC code: N/A
+- LED-8087E40-G4 — Replaces: up to 100W HID; Wattage: 30W; Lumens: 4260; CCT: 4000K; Base: E26; DLC code: N/A
+- LED-8087E50-G4 — Replaces: up to 100W HID; Wattage: 30W; Lumens: 4255; CCT: 5000K; Base: E26; DLC code: N/A
+- LED-8087M30-G4 — Replaces: up to 100W HID; Wattage: 30W; Lumens: 3534; CCT: 3000K; Base: EX39; DLC code: N/A
+- LED-8087M40-G4 — Replaces: up to 100W HID; Wattage: 30W; Lumens: 4260; CCT: 4000K; Base: EX39; DLC code: PDOT0PWM
+- LED-8087M50-G4 — Replaces: up to 100W HID; Wattage: 30W; Lumens: 4255; CCT: 5000K; Base: EX39; DLC code: PVFMGJKF
+- LED-8088E30-G4 — Replaces: up to 175W HID; Wattage: 50W; Lumens: 6915; CCT: 3000K; Base: E26; DLC code: N/A
+- LED-8088E40-G4 — Replaces: up to 175W HID; Wattage: 50W; Lumens: 6460; CCT: 4000K; Base: E26; DLC code: N/A
+- LED-8088E50-G4 — Replaces: up to 175W HID; Wattage: 50W; Lumens: 7250; CCT: 5000K; Base: E26; DLC code: N/A
+- LED-8088M30-G4 — Replaces: up to 175W HID; Wattage: 50W; Lumens: 6915; CCT: 3000K; Base: EX39; DLC code: PQUKT9XB
+- LED-8088M40-G4 — Replaces: up to 175W HID; Wattage: 50W; Lumens: 6460; CCT: 4000K; Base: EX39; DLC code: P49GKR40
+- LED-8088M50-G4 — Replaces: up to 175W HID; Wattage: 50W; Lumens: 7250; CCT: 5000K; Base: EX39; DLC code: PGIUKDDZ
+- LED-8089M30D-G5 — Replaces: up to 250W HID; Wattage: 80W; Lumens: 10670; CCT: 3000K; Base: EX39; DLC code: S-QLV5O6
+- LED-8089M40D-G5 — Replaces: up to 250W HID; Wattage: 80W; Lumens: 10760; CCT: 4000K; Base: EX39; DLC code: S-85HEUL
+- LED-8089M50D-G5 — Replaces: up to 250W HID; Wattage: 80W; Lumens: 10850; CCT: 5000K; Base: EX39; DLC code: S-ZXV3TR
+- LED-8090M30-G4 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 15745; CCT: 3000K; Base: EX39; DLC code: P4AIACGH
+- LED-8090M40-G4 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 15430; CCT: 4000K; Base: EX39; DLC code: P2TFMJ5G
+- LED-8090M50-G4 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 14570; CCT: 5000K; Base: EX39; DLC code: PDLI2RJC
+- LED-8090M40-G4-T3 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 12630; CCT: 4000K; Base: EX39; DLC code: PSPXBHZ5
+- LED-8090M40-G4-T4 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 12165; CCT: 4000K; Base: EX39; DLC code: PA18YDOM
+- LED-8090M50-G4-T3 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 12840; CCT: 5000K; Base: EX39; DLC code: PZF9RH41
+- LED-8090M50-G4-T4 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 12780; CCT: 5000K; Base: EX39; DLC code: PDO0ZLSD
+- LED-8090M30-G4-OCC — Replaces: up to 400W HID; Wattage: 110W; Lumens: 15745; CCT: 3000K; Base: EX39; DLC code: PBRCQBOX
+- LED-8090M40-G4-OCC — Replaces: up to 400W HID; Wattage: 110W; Lumens: 15430; CCT: 4000K; Base: EX39; DLC code: PGR3PSL4
+- LED-8090M50-G4-OCC — Replaces: up to 400W HID; Wattage: 110W; Lumens: 14570; CCT: 5000K; Base: EX39; DLC code: PHW4B08P
+- LED-8090M30-G4-HV — Replaces: up to 400W HID; Wattage: 110W; Lumens: 14620; CCT: 3000K; Base: EX39; DLC code: N/A
+- LED-8090M40-G4-HV — Replaces: up to 400W HID; Wattage: 110W; Lumens: 15180; CCT: 4000K; Base: EX39; DLC code: PRUB9Q89
+- LED-8090M50-G4-HV — Replaces: up to 400W HID; Wattage: 110W; Lumens: 15390; CCT: 5000K; Base: EX39; DLC code: PWQ9P2SP
+- LED-8089M50-G5 — Replaces: up to 250W HID; Wattage: 80W; Lumens: 10850; CCT: 5000K; Base: EX39
+- LED-8086E40C-G4 — Replaces: up to 70W; Wattage: 20W; Lumens: 2880; CCT: 4000K; Base: E26; DLC code: N/A
+- LED-8086E50C-G4 — Replaces: up to 70W; Wattage: 20W; Lumens: 2940; CCT: 5000K; Base: E26; DLC code: N/A
+- LED-8087E40C-G4 — Replaces: up to 100W HID; Wattage: 30W; Lumens: 4260; CCT: 4000K; Base: E26; DLC code: N/A
+- LED-8087E50C-G4 — Replaces: up to 100W HID; Wattage: 30W; Lumens: 4255; CCT: 5000K; Base: E26; DLC code: N/A
+- LED-8087M40C-G4 — Replaces: up to 100W HID; Wattage: 30W; Lumens: 4260; CCT: 4000K; Base: EX39; DLC code: PNJMWW8L
+- LED-8087M50C-G4 — Replaces: up to 100W HID; Wattage: 30W; Lumens: 4255; CCT: 5000K; Base: EX39; DLC code: PAT9UZ67
+- LED-8088E40C-G4 — Replaces: up to 175W HID; Wattage: 50W; Lumens: 7250; CCT: 4000K; Base: E26; DLC code: N/A
+- LED-8088E50C-G4 — Replaces: up to 175W HID; Wattage: 50W; Lumens: 6915; CCT: 5000K; Base: E26; DLC code: N/A
+- LED-8088M40C-G4 — Replaces: up to 175W HID; Wattage: 50W; Lumens: 6460; CCT: 4000K; Base: EX39; DLC code: PZVJVR6X
+- LED-8088M50C-G4 — Replaces: up to 175W HID; Wattage: 50W; Lumens: 7250; CCT: 5000K; Base: EX39; DLC code: PX2AKTYG
+- LED-8089M30CD-G5 — Replaces: up to 175W HID; Wattage: 50W; Lumens: 7250; CCT: 5000K; Base: EX39; DLC code: S-J2PX1N
+- LED-8089M40CD-G5 — Replaces: up to 250W HID; Wattage: 80W; Lumens: 10500; CCT: 4000K; Base: EX39; DLC code: S-8M3GFZ
+- LED-8089M50CD-G5 — Replaces: up to 250W HID; Wattage: 80W; Lumens: 10675; CCT: 5000K; Base: EX39; DLC code: S-7CFRKG
+- LED-8090M40C-G4 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 15430; CCT: 4000K; Base: EX39; DLC code: PGYLLCXX
+- LED-8090M50C-G4 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 14570; CCT: 5000K; Base: EX39; DLC code: P3U9L46N
+- LED-8090M40C-G4-T3 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 12630; CCT: 4000K; Base: EX39; DLC code: P7OWSLYH
+- LED-8090M40C-G4-T4 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 12165; CCT: 4000K; Base: EX39; DLC code: PQ1BR41U
+- LED-8090M50C-G4-T3 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 12840; CCT: 5000K; Base: EX39; DLC code: P929E8A1
+- LED-8090M50C-G4-T4 — Replaces: up to 400W HID; Wattage: 110W; Lumens: 12780; CCT: 5000K; Base: EX39; DLC code: PFCVP0WP
+- LED-8090M40C-G4-OCC — Replaces: up to 400W HID; Wattage: 110W; Lumens: 15430; CCT: 4000K; Base: EX39; DLC code: PH62YGO2
+- Note: C models are the 347V options for Canada.
+- Note: LED-8089D dims to 50% when the switch on top of the lamp is set to LO. LED-8090-OCC is dimmable.
+- Note: LED-8089 and LED-8090 include support feet to prevent socket sag.
+
+### LED-8091 part numbers | 320W, replaces 1000W HID
+
+Columns: Part #, Replaces, Wattage, Lumens, CCT, Base, DLC code
+
+- LED-8091M30D* — Replaces: up to 1000W HID; Wattage: 320W; Lumens: 43090; CCT: 3000K*; Base: EX39; DLC code: S-IHEWFN
+- LED-8091M40D — Replaces: up to 1000W HID; Wattage: 320W; Lumens: 43380; CCT: 4000K; Base: EX39; DLC code: S-38E4T9
+- LED-8091M50D — Replaces: up to 1000W HID; Wattage: 320W; Lumens: 44610; CCT: 5000K; Base: EX39; DLC code: S-I0TZBH
+- LED-8091M40D-HV — Replaces: up to 1000W HID; Wattage: 320W; Lumens: 43380; CCT: 4000K; Base: EX39; DLC code: S-24I3PX
+- LED-8091M50D-HV — Replaces: up to 1000W HID; Wattage: 320W; Lumens: 44610; CCT: 5000K; Base: EX39; DLC code: S-BL4W5K
+- Note: * 3000K special order only, minimum order 100 pieces.
+- Note: The LED panel is adhered to the fixture lens, which must be flat glass. Enclosed fixture required. Type V optic.
+- Note: Recommended for shoe box fixtures with horizontal sockets. Not recommended for high bays, sports lighters or other fixtures with vertical sockets.
+
+### Size comparison
+
+Our compact shoe box retrofits next to the HID lamps they replace and typical LED corn lamps of the same wattage: ED17 HID vs LED-8087E (ours, 30W) vs a 30W corn lamp; ED37 HID vs LED-8090M (ours, 110W) vs a 110W corn lamp.
+
+### Light distribution / foot candle comparison / DLC pole-mounted fixtures
+
+Footnotes:
+- 120-277V also works on 208V & 240V
+- HV = 277-480V including 347V
+- For listing status go to LED-LLC.com (DLC)
+
+Video: LED Shoe Box / Wall Pack Retrofits (https://www.youtube.com/watch?v=ypXSpfRoVVA). See how Light Efficient Design LED retrofit lamps turn existing shoe box and wall pack fixtures into efficient LED lighting.
+
+Case study: Pic Quik, Las Cruces, NM: Top-to-bottom store retrofit (https://www.led-llc.com/assets/docs/case-studies/Pic-Quik-Case-Study.pdf). HID gas canopy fixtures were wasting energy and caused a maintenance headache, with bulbs and ballasts constantly being replaced. The gas canopy fixtures were easily retrofitted with the directional, horizontal-mount LED-8090. Ease of install and superior light output immediately led to retrofitting the entire store. A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.
+
+## High Bay + Low Bay (Light Efficient Design › Screw-In Retrofits)
+
+Page: https://www.led-llc.com/high-bay-low-bay.html · Catalog p. 8–9
+
+Replaces up to 1000W HID.
+
+Ultra-bright LED retrofits for high ceiling environments. Models without active cooling for open fixtures & silent operation. Models with active cooling are safe to install in enclosed fixtures. Low bay retrofits are ideal for ceiling fixtures that require light to be pushed down and out. Angled LED panels help direct light exactly where it is needed.
+
+Highlights:
+- ('Powerful performance – for high bay environments.', 6).
+- ('10kA surge protection', 6).
+
+Features:
+- 5-year warranty
+- UL Type B ballast bypass
+- 0-10V dimming (Excludes 8030 and 8035 models)
+- 12V aux port (Excludes 8030 and 8035 models)
+- 80+ CRI
+- -40°F to 122°F operating temp
+- Active cooling (Excludes 8100 models)
+- L70 50,000 hrs rated life
+- 10kA surge protection (Excludes 8035 models)
+- Open fixture only (LED-8130 and LED-8242 models)
+- Enclosed fixtures (LED-8236 and LED-8232 high bay models and LED-8056 low bay models)
+- Includes uplight (LED-8130 and LED-8035 models)
+- FlexColor selectable CCT 3000K/4000K/5000K (LED-8236 and LED-8232 models; factory default 4000K)
+- 277-480V incl. 347V (HV) (LED-8232M345D-HV and LED-8242M50D-HV)
+- DLC (For listing status go to LED-LLC.com)
+
+### High Bay | Ballast Bypass | Type B
+
+Columns: Part #, Voltage, Replaces, Wattage, Lumens, CCT, Base, Fixture, Features, Dimensions, Listings
+
+- LED-8130M40D — Voltage: 120-277V; Replaces: 400W; Wattage: 150W; Lumens: 20900; CCT: 4000K; Base: EX39; Fixture: Open fixture only; Features: Includes uplight; Dimensions: 8.7 in x 10 in; Listings: cUL Listed, cUL Classified
+- LED-8130M40CD — Voltage: 220-347V; Replaces: 400W; Wattage: 150W; Lumens: 20900; CCT: 4000K; Base: EX39; Fixture: Open fixture only; Features: Includes uplight; Dimensions: 8.7 in x 10 in; Listings: cUL Listed, cUL Classified
+- LED-8130M50D — Voltage: 120-277V; Replaces: 400W; Wattage: 150W; Lumens: 21200; CCT: 5000K; Base: EX39; Fixture: Open fixture only; Features: Includes uplight; Dimensions: 8.7 in x 10 in; Listings: cUL Listed, cUL Classified
+- LED-8130M50CD — Voltage: 220-347V; Replaces: 400W; Wattage: 150W; Lumens: 21200; CCT: 5000K; Base: EX39; Fixture: Open fixture only; Features: Includes uplight; Dimensions: 8.7 in x 10 in; Listings: cUL Listed, cUL Classified
+- LED-8236M345D — Voltage: 120-277V; Replaces: 250W; Wattage: 95W; Lumens: 13700/14400/14600; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Fixture: Enclosed fixtures; Dimensions: 8.7 in x 9.7 in; Listings: cUL Listed, cUL Classified
+- LED-8236M345CD — Voltage: 220-347V; Replaces: 250W; Wattage: 95W; Lumens: 13700/14400/14600; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Fixture: Enclosed fixtures; Dimensions: 8.7 in x 9.7 in; Listings: cUL Listed, cUL Classified
+- LED-8232M345D — Voltage: 120-277V; Replaces: 400W; Wattage: 140W; Lumens: 19900/20900/21100; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Fixture: Enclosed fixtures; Dimensions: 8.7 in x 10.5 in; Listings: cUL Listed, cUL Classified
+- LED-8232M345D-HV — Voltage: 277-480V; Replaces: 400W; Wattage: 140W; Lumens: 19900/20900/21100; CCT: FlexColor 3000K/4000K/5000K; Base: EX39; Fixture: Enclosed fixtures; Features: 277-480V incl. 347V; Dimensions: 10.3 in x 12.5 in; Listings: cUL Listed, cUL Classified
+- LED-8242M50D — Voltage: 120-277V; Replaces: 1000W; Wattage: 270W; Lumens: 38700; CCT: 5000K; Base: EX39; Fixture: Open fixture only; Dimensions: 10.3 in x 12.5 in; Listings: cUL Listed, cUL Classified
+- LED-8242M50D-HV — Voltage: 277-480V; Replaces: 1000W; Wattage: 270W; Lumens: 38700; CCT: 5000K; Base: EX39; Fixture: Open fixture only; Features: 277-480V incl. 347V; Dimensions: 10.3 in x 12.5 in; Listings: cUL Listed, cUL Classified
+
+### Low Bay | Ballast Bypass | Type B
+
+Columns: Part #, Voltage, Replaces, Wattage, Lumens, CCT, Base, Fixture, Features, Dimensions, Listings
+
+- LED-8056E50D-A — Voltage: 120-277V; Replaces: 175W; Wattage: 45W; Lumens: 5560; CCT: 5000K; Base: E26; Fixture: Enclosed fixtures; Dimensions: 5.7 in x 6.9 in; Listings: cUL Listed, cUL Classified
+- LED-8056M50D-A — Voltage: 120-277V; Replaces: 175W; Wattage: 45W; Lumens: 5560; CCT: 5000K; Base: EX39; Fixture: Enclosed fixtures; Dimensions: 5.7 in x 7.4 in; Listings: cUL Listed, cUL Classified
+- LED-8035E57-A — Voltage: 120-277V; Replaces: 175W; Wattage: 60W; Lumens: 7062; CCT: 5700K; Base: E26; Features: Includes uplight; Dimensions: 7.9 in x 6.0 in; Listings: cUL Listed, cUL Classified
+
+### Light distribution / foot candle comparison / DLC ceiling-mounted high bay fixtures
+
+The diagram marks a 32" dimension beside the fixtures.
+
+### Surge protection
+
+10kA surge protection* (*excludes 8035 models)
+
+Footnotes:
+- 120-277V also works on 208V & 240V
+- HV = 277/480V including 347V
+- For listing status go to LED-LLC.com (DLC)
+- * Excludes 8035 models (surge protection)
+- ** Excludes 8030 and 8035 models (dimming, aux port)
+- *** Excludes 8100 models (active cooling)
+
+## Hazardous Location (Light Efficient Design › Screw-In Retrofits)
+
+Page: https://www.led-llc.com/hazardous-location.html · Catalog p. 10
+
+Replaces up to 400W HID.
+
+Hazardous location fixtures are expensive, retrofitting them with UL approved lamps is NOT. Three wattages to choose from. Available in 5000K and 5700K for brighter, safer environments.
+
+Highlights:
+- ('Class 1 Div 2 Certified', 6).
+- ('E26 to E39 Adapter', 6).
+
+Features:
+- 5-year warranty
+- UL Type B ballast bypass (* Excludes 8990 models)
+- 80+ CRI
+- Active cooling
+- Operating temp -40°F to 113°F (8929 / 8924)
+- Operating temp -13°F to 113°F (8990)
+- L70 50,000hrs rated life
+- Enclosed fixtures
+- Listed for Class 1, Div 2 hazardous locations (See our website for a list of approved fixtures)
+- HV = 277/480V including 347V
+- cULus Listed
+
+### Hazardous Location | Ballast Bypass | Type B
+
+Columns: Part #, Voltage, Replaces, Wattage, Lumens, CCT, Base, Fixture, Features, Dimensions, Listings
+
+- LED-8929U57-HAZ — Voltage: 120-277V; Replaces: 150W; Wattage: 24W; Lumens: 3425; CCT: 5700K; Base: E26*; Fixture: Enclosed fixtures; Features: Hazardous location listed (Class 1, Div 2); Dimensions: 3.0 in x 6.6 in; Listings: cULus Listed
+- LED-8929U57C-HAZ — Voltage: 220-347V; Replaces: 150W; Wattage: 24W; Lumens: 3425; CCT: 5700K; Base: E26*; Fixture: Enclosed fixtures; Features: Hazardous location listed (Class 1, Div 2); Dimensions: 3.0 in x 6.6 in; Listings: cULus Listed
+- LED-8924U50-HAZ — Voltage: 120-277V; Replaces: 250W; Wattage: 45W; Lumens: 6620; CCT: 5000K; Base: E26*; Fixture: Enclosed fixtures; Features: Hazardous location listed (Class 1, Div 2); Dimensions: 3.4 in x 7.4 in; Listings: cULus Listed
+- LED-8924U50C-HAZ — Voltage: 220-347V; Replaces: 250W; Wattage: 45W; Lumens: 6620; CCT: 5000K; Base: E26*; Fixture: Enclosed fixtures; Features: Hazardous location listed (Class 1, Div 2); Dimensions: 3.4 in x 7.4 in; Listings: cULus Listed
+- LED-8990M50-HAZ — Voltage: 120-277V; Replaces: 400W; Wattage: 110W; Lumens: 14570; CCT: 5000K; Base: EX39; Fixture: Enclosed fixtures; Features: Hazardous location listed (Class 1, Div 2); Dimensions: 4.3 in x 11.4 in; Listings: cULus Listed
+- LED-8990M50-HV-HAZ — Voltage: 277-480V; Replaces: 400W; Wattage: 110W; Lumens: 14570; CCT: 5000K; Base: EX39; Fixture: Enclosed fixtures; Features: Hazardous location listed (Class 1, Div 2); 277-480V incl. 347V; Dimensions: 4.3 in x 11.4 in; Listings: cULus Listed
+- Note: * Edison to Mogul (E26 to E39) adapter included
+
+### Surge Arrestors
+
+Columns: Part #, Description, Enclosure, Nominal Discharge Current, Strike Rating, Dimensions
+
+- SPD-277P-10KA-EC-1 — Description: 10kA Surge Arrestor, 120-277V, Parallel; Enclosure: Round IP65; Nominal Discharge Current: 10,000A; Strike Rating: 1@10kA, 2@6.5kA; 15@5kA, 110@1.5kA; Dimensions: 2.5 in x 1.4 in
+- SPD-347P-10KA — Description: 10kA Surge Arrestor, 120-347V, Parallel; Enclosure: Round IP67; Nominal Discharge Current: 10,000A; Strike Rating: 1@10kA, 2@6.5kA; 15@5kA, 110@1.5kA; Dimensions: 2.5 in x 1.4 in
+
+### Step-Down Transformers
+
+Columns: Part #, Description, Max Wattage, Voltage, THD, Power Factor, Dimensions
+
+- MTM04506224C-LW — Description: 450VA Step-Down Transformer; Max Wattage: 400W; Voltage: 480/347V in / 240V out; THD: 3.4% / 3.8%; Power Factor: 0.99; Dimensions: 4.1 in x 2.6 in x 2.2 in
+- MTM01606224C-LW — Description: 160VA Step-Down Transformer; Max Wattage: 140W; Voltage: 480/347V in / 240V out; THD: 4.3% / 4.1%; Power Factor: 0.99; Dimensions: 4.3 in x 1.9 in x 1.6 in
+- MTM00506224C-LW — Description: 50VA Step-Down Transformer; Max Wattage: 45W; Voltage: 480/347V in / 240V out; THD: 6.2% / 6.7%; Power Factor: 0.98 / 0.97; Dimensions: 3.0 in x 1.7 in x 1.3 in
+
+Footnotes:
+- 120-277V also works on 208V & 240V
+- * Excludes 8990 models
+- Listed for Class 1, Div 2 haz locations (see our website for a list of approved fixtures)
+- HV = 277/480V including 347V
+
+## PL + PLL (Light Efficient Design › Pin-Base Retrofits)
+
+Page: https://www.led-llc.com/pl-pll.html · Catalog p. 12–14
+
+Over a dozen models for the perfect solution.
+
+Our latest pin-based LED retrofits now feature FlexColor allowing for substantial sku reduction and in-field adjustability. Ideal for PL applications, these lamps provide a long-lasting LED replacement for offices, hotels, lobbies, schools, and other commercial spaces.
+
+Highlights:
+- ('90° Rotatable Head', 6).
+- ('Now with FlexColor — Extendable End Cap.', 6).
+
+Features:
+- 5-year warranty
+- 80+ CRI
+- 120° beam angle (7311 / 7312 / 7313 / 7314 / 7322 / 7324 / 7334)
+- 140° beam angle (7340 / 7343 / 7344 / 7345)
+- 200° beam angle (7316 / 7318 / 7328)
+- 360° beam angle (7300 / 7310 / 7320 / 7330 / 7350 / 7351)
+- L70 50,000hrs rated life
+- UL Type A+B universal (ballast compatible or ballast bypass)
+- UL Type A ballast compatible (LED-7330-xxK-G2 / LED-7334-xxK-G2)
+- UL Type B ballast bypass (LED-7340 / 7343 / 7344 / 7345 (PLL, 2G11) and LED-7350 / 7351 (GX24q))
+- FlexColor selectable CCT (All models except the fixed-CCT Type A lamps LED-7330 / LED-7334)
+- 90° rotatable head (7316 / 7318 / 7328)
+- Extendable end cap (Base can be extended by up to 1.0 in — 7316 / 7318 / 7328)
+- Open fixture only
+- Enclosed fixture rated (may also be used in open fixture)
+- Mounting: omni-directional / vertical / horizontal
+- Emergency back up >90 min (LED-EMG-05WCP (5W) and LED-EMG-10WCP (10W) kits)
+- 120-277V also works on 208V & 240V
+
+### PL | Universal | Type A+B
+
+Columns: Part #, Voltage, Replaces up to, Wattage, Lumens, CCT, Base, Mounting, Features, Dimensions, Listings
+
+- LED-7300-FC-G4 — Voltage: 120-277V; Replaces up to: 13W / 2-pin CFL; Wattage: 5.5W; Lumens: 720-800; CCT: FlexColor 2700K/3000K/3500K/4000K; Base: GX23; Mounting: Omni-directional; Features: Open fixture only; Dimensions: 5.0 in x 1.4 in; Listings: cULus Listed, cULus Classified
+- LED-7310-FC-G5 — Voltage: 120-277V; Replaces up to: 26W / 2-pin CFL; Wattage: 5.5W; Lumens: 800; CCT: FlexColor 2700K/3000K/3500K/4000K; Base: G24d; Mounting: Omni-directional; Features: Open fixture only; Dimensions: 5.0 in x 1.4 in; Listings: cULus Listed, cULus Classified
+- LED-7311-FC1-G4 — Voltage: 120-277V; Replaces up to: 26W / 2-pin CFL; Wattage: 7W; Lumens: 900-950; CCT: FlexColor 3000K/3500K/4000K; Base: G23-2; Mounting: Horizontal; Features: Open fixture only; Dimensions: 5.5 in x 1.4 in; Listings: cULus Listed, cULus Classified
+- LED-7312-FC1-G4 — Voltage: 120-277V; Replaces up to: 26W / 2-pin CFL; Wattage: 7W; Lumens: 900-950; CCT: FlexColor 3000K/3500K/4000K; Base: GX23-2; Mounting: Horizontal; Features: Open fixture only; Dimensions: 5.5 in x 1.4 in; Listings: cULus Listed, cULus Classified
+- LED-7313-FC-G4 — Voltage: 120-277V; Replaces up to: 9W / 2-pin CFL; Wattage: 3.5W; Lumens: 389-428; CCT: FlexColor 2700K/3000K/3500K/4000K; Base: G23; Mounting: Horizontal + vertical (down arrow only); Features: Open fixture only; Dimensions: 5.3 in x 1.3 in; Listings: cULus Listed, cULus Classified
+- LED-7314-FC-G4 — Voltage: 120-277V; Replaces up to: 13W / 2-pin CFL; Wattage: 5.5W; Lumens: 628-696; CCT: FlexColor 2700K/3000K/3500K/4000K; Base: GX23; Mounting: Horizontal + vertical (down arrow only); Features: Open fixture only; Dimensions: 7.0 in x 1.4 in; Listings: cULus Listed, cULus Classified
+- LED-7322-FC1-G4 — Voltage: 120-277V; Replaces up to: 26W / 2-pin CFL; Wattage: 7W; Lumens: 900-950; CCT: FlexColor 3000K/3500K/4000K; Base: G24d; Mounting: Horizontal; Features: Open fixture only; Dimensions: 5.5 in x 1.4 in; Listings: cULus Listed, cULus Classified
+- LED-7316-FC-G2 — Voltage: 120-277V; Replaces up to: 32W / 2-pin CFL; Wattage: 9W; Lumens: 1050-1100; CCT: FlexColor 2700/3000K/3500K/4000K/5000K; Base: G24d; Mounting: Horizontal + vertical (up arrow only); Features: Open fixture only; Dimensions: 6.8 in x 2.4 in (upright); 5.4 in x 3.1 in (rotated); base can be extended by up to 1.0 in; Listings: cULus Listed, cULus Classified
+- LED-7318-FC-G2 — Voltage: 120-277V; Replaces up to: 32W / 4-pin CFL; Wattage: 9W; Lumens: 1050-1100; CCT: FlexColor 2700/3000K/3500K/4000K/5000K; Base: G24q/GX24q; Mounting: Horizontal + vertical (up arrow only); Features: Open fixture only; Dimensions: 6.8 in x 2.4 in (upright); 5.4 in x 3.1 in (rotated); base can be extended by up to 1.0 in; Listings: cULus Listed, cULus Classified
+- LED-7328-FC-G2 — Voltage: 120-277V; Replaces up to: 42W / 4-pin CFL; Wattage: 16W; Lumens: 1750-1850; CCT: FlexColor 2700/3000K/3500K/4000K/5000K; Base: G24q/GX24q; Mounting: Horizontal + vertical (up arrow only); Features: Open fixture only; Dimensions: 6.8 in x 2.4 in (upright); 5.4 in x 3.1 in (rotated); base can be extended by up to 1.0 in; Listings: cULus Listed, cULus Classified
+- LED-7320-FC1-G4 — Voltage: 120-277V; Replaces up to: 42W / 4-pin CFL; Wattage: 10W; Lumens: 1320-1460; CCT: FlexColor 3000K/3500K/4000K; Base: G24q/GX24q; Mounting: Omni-directional; Features: Open fixture only; Dimensions: 6.6 in x 1.4 in; Listings: cULus Listed, cULus Classified
+- LED-7320-FC2-G4 — Voltage: 120-277V; Replaces up to: 42W / 4-pin CFL; Wattage: 10W; Lumens: 1320-1460; CCT: FlexColor 2700K/4000K/5000K; Base: G24q/GX24q; Mounting: Omni-directional; Features: Open fixture only; Dimensions: 6.6 in x 1.4 in; Listings: cULus Listed, cULus Classified
+- LED-7324-FC1-G4 — Voltage: 120-277V; Replaces up to: 42W / 4-pin CFL; Wattage: 9W; Lumens: 1230-1360; CCT: FlexColor 3000K/3500K/4000K; Base: G24q/GX24q; Mounting: Horizontal; Features: Open fixture only; Dimensions: 5.7 in x 1.3 in; Listings: cULus Listed, cULus Classified
+- LED-7324-FC2-G4 — Voltage: 120-277V; Replaces up to: 42W / 4-pin CFL; Wattage: 9W; Lumens: 1230-1360; CCT: FlexColor 2700K/4000K/5000K; Base: G24q/GX24q; Mounting: Horizontal; Features: Open fixture only; Dimensions: 5.7 in x 1.3 in; Listings: cULus Listed, cULus Classified
+- Note: 120-277V also works on 208V & 240V
+
+### PL | Ballast Compatible | Type A
+
+Columns: Part #, Voltage, Replaces up to, Wattage, Lumens, CCT, Base, Mounting, Features, Dimensions, Listings
+
+- LED-7330-27K-G2 — Voltage: 120-277V; Replaces up to: 26W / 4-pin CFL; Wattage: 10W; Lumens: 760; CCT: 2700K; Base: G24q/GX24q; Mounting: Omni-directional; Features: Open fixture only; Dimensions: 6.8 in x 1.3 in; Listings: cULus Listed, cULus Classified
+- LED-7330-35K-G2 — Voltage: 120-277V; Replaces up to: 26W / 4-pin CFL; Wattage: 10W; Lumens: 850; CCT: 3500K; Base: G24q/GX24q; Mounting: Omni-directional; Features: Open fixture only; Dimensions: 6.8 in x 1.3 in; Listings: cULus Listed, cULus Classified
+- LED-7330-40K-G2 — Voltage: 120-277V; Replaces up to: 26W / 4-pin CFL; Wattage: 10W; Lumens: 916; CCT: 4000K; Base: G24q/GX24q; Mounting: Omni-directional; Features: Open fixture only; Dimensions: 6.8 in x 1.3 in; Listings: cULus Listed, cULus Classified
+- LED-7334-27K-G2 — Voltage: 120-277V; Replaces up to: 32W / 4-pin CFL; Wattage: 12W; Lumens: 1100; CCT: 2700K; Base: G24q/GX24q; Mounting: Horizontal; Features: Open fixture only; Dimensions: 5.8 in x 1.4 in; Listings: cULus Listed, cULus Classified
+- LED-7334-35K-G2 — Voltage: 120-277V; Replaces up to: 32W / 4-pin CFL; Wattage: 12W; Lumens: 1100; CCT: 3500K; Base: G24q/GX24q; Mounting: Horizontal; Features: Open fixture only; Dimensions: 5.8 in x 1.4 in; Listings: cULus Listed, cULus Classified
+- LED-7334-40K-G2 — Voltage: 120-277V; Replaces up to: 32W / 4-pin CFL; Wattage: 12W; Lumens: 1100; CCT: 4000K; Base: G24q/GX24q; Mounting: Horizontal; Features: Open fixture only; Dimensions: 5.8 in x 1.4 in; Listings: cULus Listed, cULus Classified
+- Note: Fixed-CCT lamps (no FlexColor)
+- Note: 120-277V also works on 208V & 240V
+
+### PL + PLL | Ballast Bypass | Type B
+
+Columns: Part #, Voltage, Replaces up to, Wattage, Lumens, CCT, Base, Mounting, Features, Dimensions, Listings
+
+- LED-7340-FC-G3 — Voltage: 120-277V; Replaces up to: 40W / 4-pin CFL; Wattage: 17W; Lumens: 2024-2228; CCT: FlexColor 3000K/3500K/4000K/5000K/6500K; Base: 2G11; Mounting: Omni-directional; Features: Enclosed fixture rated (may also be used in open fixture); Dimensions: 22.0 in x 1.7 in; Listings: cULus Listed, cULus Classified
+- LED-7343-FC-G3 — Voltage: 120-277V; Replaces up to: 36W / 4-pin CFL; Wattage: 16W; Lumens: 1900-2000; CCT: FlexColor 3000K/3500K/4000K/5000K/6500K; Base: 2G11; Mounting: Omni-directional; Features: Enclosed fixture rated (may also be used in open fixture); Dimensions: 16.0 in x 1.7 in; Listings: cULus Listed, cULus Classified
+- LED-7344-FC-G3 — Voltage: 120-277V; Replaces up to: 24W / 4-pin CFL; Wattage: 10W; Lumens: 1180-1250; CCT: FlexColor 3000K/3500K/4000K/5000K/6500K; Base: 2G11; Mounting: Omni-directional; Features: Enclosed fixture rated (may also be used in open fixture); Dimensions: 12.0 in x 1.7 in; Listings: cULus Listed, cULus Classified
+- LED-7345-FC-G3 — Voltage: 120-277V; Replaces up to: 18W / 4-pin CFL; Wattage: 8.5W; Lumens: 930-980; CCT: FlexColor 3000K/3500K/4000K/5000K/6500K; Base: 2G11; Mounting: Omni-directional; Features: Enclosed fixture rated (may also be used in open fixture); Dimensions: 8.5 in x 1.7 in; Listings: cULus Listed, cULus Classified
+- LED-7350-FC-G4 — Voltage: 120-277V; Replaces up to: 32W / 2-pin CFL; Wattage: 15W; Lumens: 2000-2200; CCT: FlexColor 3000K/3500K/4000K/5000K; Base: GX24q; Mounting: Omni-directional; Features: Enclosed fixture rated (may also be used in open fixture); Dimensions: 6.3 in x 2.0 in; Listings: cULus Listed, cULus Classified
+- LED-7351-FC-G4 — Voltage: 120-277V; Replaces up to: 42W / 2-pin CFL; Wattage: 17W; Lumens: 2300-2500; CCT: FlexColor 3000K/3500K/4000K/5000K; Base: GX24q; Mounting: Omni-directional; Features: Enclosed fixture rated (may also be used in open fixture); Dimensions: 6.7 in x 2.0 in; Listings: cULus Listed, cULus Classified
+- Note: 120-277V also works on 208V & 240V
+
+### Emergency Back Up Kit
+
+Columns: Part #, Wattage, EMG time, Dimensions, Listings
+
+- LED-EMG-05WCP — Wattage: 5W; EMG time: >90 min; Dimensions: 9.5 in x 1.3 in x 1.5 in; Listings: cULus Listed
+- LED-EMG-10WCP — Wattage: 10W; EMG time: >90 min; Dimensions: 12.75 in x 1.6 in x 1.5 in; Listings: cULus Listed
+
+### Compatible Products
+
+Columns: Part #, LED-EMG-05WCP, LED-EMG-10WCP
+
+- LED-7320-XXK-G3 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-7324-XXK-G3 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-7340-XXK-G2 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-7320-FC1-G4 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-7320-FC2-G4 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-7316-FC-G2 — LED-EMG-05WCP: Yes
+- LED-7318-FC-G2 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-7328-FC-G2 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+
+### Beam angle by model
+
+### 90° rotatable head
+
+The 7316 / 7318 / 7328 lamps have a head that rotates 90° and a base that can be extended by up to 1.0 in
+
+Case study: Pic Quik, Las Cruces, NM: Top-to-bottom store retrofit (https://www.led-llc.com/assets/docs/case-studies/Pic-Quik-Case-Study.pdf). HID gas canopy fixtures were wasting energy and caused a maintenance headache, with bulbs and ballasts constantly being replaced. The gas canopy fixtures were easily retrofitted with the directional, horizontal-mount LED-8090. Ease of install and superior light output immediately led to retrofitting the entire store. A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.
+
+## Linear T5 + T8 (Light Efficient Design › Pin-Base Retrofits)
+
+Page: https://www.led-llc.com/linear-t5-t8.html · Catalog p. 16–18
+
+Energy saving replacements for fluorescent T8 and T5.
+
+Every size and installation method you need — in the highest quality, best light output design. Install our retrofits to get worry-free operation for years to come.
+
+Highlights:
+- ('8 ft, 2-piece design for cost-effective shipping & storing.', 3).
+- ('Type A + B — FlexColor T8 (G13) and T5 (G5 mini bi-pin).', 3).
+- ('Type B — T8 (G13), FlexColor 8 ft T8 (FA8) and FlexColor T5 (G5 mini bi-pin).', 3).
+- ('EMG options — T8 lamp with integrated emergency back up, 5W and 10W emergency back up kits.', 3).
+
+Features:
+- 5-year warranty
+- 80+ CRI
+- 170° beam angle (T5 FC (LED-12/18/25T5HO-FCDS Type B lamps))
+- 180° beam angle (T5 AB (LED-12/18/25T5HO-8xxAB Type A+B lamps) / 42T8-FC)
+- 210° beam angle (FCAB (LED-10/11/12/15T8-FCAB) / 8.5T8)
+- UL Type A+B ballast bypass or compatible (FCAB / T5 AB)
+- UL Type B ballast bypass (8.5T8 / 42T8-FC / T5 FC)
+- Single or double-ended power input (FCAB / T5 AB / 8.5T8 / T5 FC)
+- Double-ended power input (42T8-FC)
+- Operating temp -40°F to 104°F (FCAB)
+- Operating temp -4°F to 113°F (8.5T8 / T5 AB / T5 FC)
+- Operating temp -40°F to 113°F (42T8-FC)
+- L70 50,000hrs rated life
+- Glass construction
+- Shatter-resistant glass lens
+- FlexColor selectable CCT (LED-xxT8-FCAB (3000K/3500K/4000K/5000K/6500K), LED-42T8-FC-96-G5 (3000K/3500K/4000K/5000K/6500K), LED-xxT5HO-FCDS (3000K/3500K/4000K/5000K), LED-15T8-FC48-EMG (3000K/3500K/4000K/5000K/6500K); default 4000K)
+- Emergency back up >90 min (LED-15T8-FC48-EMG lamp (500 EMG lumens) and LED-EMG-05WCP / LED-EMG-10WCP kits)
+- DLC (For listing status go to LED-LLC.com)
+- 120-277V also works on 208V & 240V
+
+### T8 | Ballast Compatible + Ballast Bypass | Type A+B
+
+Columns: Part #, Voltage, Replaces, Wattage, Lumens, CCT, Base, Features, Dimensions, Listings
+
+- LED-10T8-FCAB24-G4 — Voltage: 120-277V; Replaces: 17W; Wattage: 10W; Lumens: 1450; CCT: FlexColor 3000K/3500K/4000K/5000K/6500K; Base: G13; Features: Glass construction; Dimensions: 24.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-11T8-FCAB36-G4 — Voltage: 120-277V; Replaces: 25W; Wattage: 11W; Lumens: 1650; CCT: FlexColor 3000K/3500K/4000K/5000K/6500K; Base: G13; Features: Glass construction; Dimensions: 36.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-12T8-FCAB48-G4 — Voltage: 120-277V; Replaces: 32W; Wattage: 12W; Lumens: 1800; CCT: FlexColor 3000K/3500K/4000K/5000K/6500K; Base: G13; Features: Glass construction; Dimensions: 48.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-15T8-FCAB48-G4 — Voltage: 120-277V; Replaces: 32W; Wattage: 15W; Lumens: 2200; CCT: FlexColor 3000K/3500K/4000K/5000K/6500K; Base: G13; Features: Glass construction; Dimensions: 48.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- Note: 120-277V also works on 208V & 240V
+
+### T5 | Ballast Compatible + Ballast Bypass | Type A+B
+
+Columns: Part #, Voltage, Replaces, Wattage, Lumens, CCT, Base, Features, Dimensions, Listings
+
+- LED-12T5HO-835AB24-G5 — Voltage: 120-277V; Replaces: 24W; Wattage: 12W; Lumens: 1600; CCT: 3500K; Base: G5 Mini Bi-Pin; Features: Shatter-resistant glass lens; Dimensions: 23.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-12T5HO-840AB24-G5 — Voltage: 120-277V; Replaces: 24W; Wattage: 12W; Lumens: 1600; CCT: 4000K; Base: G5 Mini Bi-Pin; Features: Shatter-resistant glass lens; Dimensions: 23.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-12T5HO-850AB24-G5 — Voltage: 120-277V; Replaces: 24W; Wattage: 12W; Lumens: 1600; CCT: 5000K; Base: G5 Mini Bi-Pin; Features: Shatter-resistant glass lens; Dimensions: 23.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-18T5HO-835AB36-G5 — Voltage: 120-277V; Replaces: 39W; Wattage: 18W; Lumens: 2500; CCT: 3500K; Base: G5 Mini Bi-Pin; Features: Shatter-resistant glass lens; Dimensions: 34.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-18T5HO-840AB36-G5 — Voltage: 120-277V; Replaces: 39W; Wattage: 18W; Lumens: 2500; CCT: 4000K; Base: G5 Mini Bi-Pin; Features: Shatter-resistant glass lens; Dimensions: 34.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-18T5HO-850AB36-G5 — Voltage: 120-277V; Replaces: 39W; Wattage: 18W; Lumens: 2500; CCT: 5000K; Base: G5 Mini Bi-Pin; Features: Shatter-resistant glass lens; Dimensions: 34.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-25T5HO-835AB48-G5 — Voltage: 120-277V; Replaces: 54W; Wattage: 24W; Lumens: 3500; CCT: 3500K; Base: G5 Mini Bi-Pin; Features: Shatter-resistant glass lens; Dimensions: 46.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-25T5HO-840AB48-G5 — Voltage: 120-277V; Replaces: 54W; Wattage: 24W; Lumens: 3500; CCT: 4000K; Base: G5 Mini Bi-Pin; Features: Shatter-resistant glass lens; Dimensions: 46.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-25T5HO-850AB48-G5 — Voltage: 120-277V; Replaces: 54W; Wattage: 24W; Lumens: 3500; CCT: 5000K; Base: G5 Mini Bi-Pin; Features: Shatter-resistant glass lens; Dimensions: 46.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- Note: 120-277V also works on 208V & 240V
+
+### T8 | Ballast Bypass | Type B
+
+Columns: Part #, Voltage, Replaces, Wattage, Lumens, CCT, Base, Features, Dimensions, Listings
+
+- LED-8.5T8-835DS48-G4 — Voltage: 120-277V; Replaces: 32W; Wattage: 8.5W; Lumens: 1600; CCT: 3500K; Base: G13; Features: Glass construction; Dimensions: 48.0 in x 1.0 in; Listings: cULus Listed
+- LED-8.5T8-840DS48-G4 — Voltage: 120-277V; Replaces: 32W; Wattage: 8.5W; Lumens: 1650; CCT: 4000K; Base: G13; Features: Glass construction; Dimensions: 48.0 in x 1.0 in; Listings: cULus Listed
+- LED-8.5T8-850DS48-G4 — Voltage: 120-277V; Replaces: 32W; Wattage: 8.5W; Lumens: 1650; CCT: 5000K; Base: G13; Features: Glass construction; Dimensions: 48.0 in x 1.0 in; Listings: cULus Listed
+- LED-42T8-FC-96-G5 — Voltage: 120-277V; Replaces: 86W; Wattage: 42W; Lumens: 5000; CCT: FlexColor 3000K/3500K/4000K/5000K/6500K; Base: FA8*; Features: Glass construction; Dimensions: 93.0 in x 1.0 in; Listings: cULus Listed
+- Note: * R17D base end cap available
+- Note: 120-277V also works on 208V & 240V
+
+### T5 | Ballast Bypass | Type B
+
+Columns: Part #, Voltage, Replaces, Wattage, Lumens, CCT, Base, Features, Dimensions, Listings
+
+- LED-12T5HO-FCDS24-G4 — Voltage: 120-277V; Replaces: 24W; Wattage: 12W; Lumens: 1600; CCT: FlexColor 3000K/3500K/4000K/5000K; Base: G5 Mini Bi-Pin; Features: Shatter-resistant glass lens; Dimensions: 23.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-18T5HO-FCDS36-G4 — Voltage: 120-277V; Replaces: 39W; Wattage: 18W; Lumens: 2370; CCT: FlexColor 3000K/3500K/4000K/5000K; Base: G5 Mini Bi-Pin; Features: Shatter-resistant glass lens; Dimensions: 34.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- LED-25T5HO-FCDS48-G4 — Voltage: 120-277V; Replaces: 54W; Wattage: 25W; Lumens: 3330; CCT: FlexColor 3000K/3500K/4000K/5000K; Base: G5 Mini Bi-Pin; Features: Shatter-resistant glass lens; Dimensions: 46.0 in x 1.0 in; Listings: cULus Classified, cULus Listed
+- Note: 120-277V also works on 208V & 240V
+
+### T8 Lamp w/ Integrated Emergency Back Up
+
+Columns: Part #, Wattage, Lumens, EMG Lumens, CCT, EMG Time, Dimensions, Listings
+
+- LED-15T8-FC48-EMG — Wattage: 15W; Lumens: 1900-2000; EMG Lumens: 500; CCT: FlexColor 3000K/3500K/4000K/5000K/6500K; EMG Time: >90 min; Dimensions: 47.7 in x 1.3 in; Listings: cULus Classified
+- Note: LED 15T8-EMG is a lamp w/ integrated EMG function. It can generally be used in any 4 ft T8 fixture that has had the ballast bypassed.
+
+### Emergency Back Up Kit
+
+Columns: Part #, Wattage, Lumens, EMG Lumens, CCT, EMG Time, Dimensions, Listings
+
+- LED-EMG-05WCP — Wattage: 5W; Lumens: N/A; EMG Lumens: N/A; CCT: N/A; EMG Time: >90 min; Dimensions: 9.5 in x 1.3 in x 1.5 in; Listings: cULus Listed
+- LED-EMG-10WCP — Wattage: 10W; Lumens: N/A; EMG Lumens: N/A; CCT: N/A; EMG Time: >90 min; Dimensions: 12.75 in x 1.6 in x 1.5 in; Listings: cULus Listed
+
+### Compatible Products
+
+Columns: Part #, LED-15T8-FC48-EMG, LED-EMG-05WCP, LED-EMG-10WCP
+
+- LED-10T8-FCAB24-G4 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-11T8-FCAB36-G4 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-12T8-FCAB48-G4 — LED-15T8-FC48-EMG: Yes; LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-15T8-FCAB48-G4 — LED-15T8-FC48-EMG: Yes; LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-12T5HO-8XXAB24-G5 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-18T5HO-8XXAB36-G5 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-25T5HO-8XXAB48-G5 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-8.5T8-8XX-DS48-G4 — LED-15T8-FC48-EMG: Yes; LED-EMG-05WCP: Yes
+- LED-42T8-FC-96-G5 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-12T5HO-FCDS24-G4 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-18T5HO-FCDS36-G4 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- LED-25T5HO-FCDS48-G4 — LED-EMG-05WCP: Yes; LED-EMG-10WCP: Yes
+- Note: LED 15T8-EMG is a lamp w/ integrated EMG function. It can generally be used in any 4 ft T8 fixture that has had the ballast bypassed.
+
+### 8 ft, 2-piece design
+
+The LED-42T8-FC 8 ft T8 ships as a 2-piece design for cost-effective shipping & storing (93.0 in x 1.0 in assembled, FA8 base, R17D base end cap available).
+
+Footnotes:
+- For listing status go to LED-LLC.com (DLC)
+
+## Work Lights (Light Efficient Design › Work Lights)
+
+Page: https://www.led-llc.com/work-lights.html · Catalog p. 20
+
+Replaces up to 400W HID.
+
+Super bright and durable, our LED work site lights reduce costs and labor with integrated power cord and daisy-chain feature. Several wattages and connection options to choose from will make lighting any work site easier than ever.
+
+Highlights:
+- ('35 ft power cord', 6).
+- ('Connect up to 4 strings / 400 ft.', 6).
+
+Features:
+- 5-year warranty (* 9003 models have a 3 year warranty)
+- 80+ CRI
+- Daisy-chain (** Excludes model 9210)
+- Operating temp -40°F to 113°F (9003)
+- Operating temp -40°F to 122°F (All other models)
+- IP65 rated ingress protection (9003)
+- IP64 rated ingress protection (All other models)
+- L70 50,000hrs rated life
+- 2-prong plug (NEMA 1-15P)
+- 3-prong plug (NEMA 5-15P / grounded outlet)
+- Approved for use in Canada
+- UL Type B ballast bypass (LED-9210-50K-G2 only)
+
+### Temporary Work Site Lights
+
+Columns: Part #, Voltage, Pwr Cord, Daisy-Chain, Replaces, Wattage, Lumens, CCT, Features, Dimensions, Listings
+
+- LED-9010-50K-G3 — Voltage: 120V; Pwr Cord: 35 ft 18/3 SJTW; Daisy-Chain: Up to 8 lights; Replaces: 400W HID; Wattage: 100W; Lumens: 15,000; CCT: 5000K; Features: 3-prong plug; Dimensions: 6.0 in x 10.1 in; Listings: cETLus (Intertek)
+- LED-9011-50K-G3 — Voltage: 120V; Pwr Cord: 35 ft 14/3 SJTW; Daisy-Chain: Up to 12 lights; Replaces: 400W HID; Wattage: 100W; Lumens: 15,000; CCT: 5000K; Features: 3-prong plug; Approved for use in Canada; Dimensions: 6.0 in x 10.1 in; Listings: cETLus (Intertek)
+- LED-9012-50K-G3 — Voltage: 120V; Pwr Cord: 35 ft 16/3 SJTW; Daisy-Chain: Up to 10 lights; Replaces: 400W HID; Wattage: 100W; Lumens: 15,000; CCT: 5000K; Features: 3-prong plug; Dimensions: 6.0 in x 10.1 in; Listings: cETLus (Intertek)
+- LED-9016-50K-G3 — Voltage: 120V; Pwr Cord: 35 ft 16/3 SJTW; Daisy-Chain: Up to 6 lights; Replaces: 600W HID; Wattage: 150W; Lumens: 22,500; CCT: 5000K; Features: 3-prong plug; Dimensions: 6.0 in x 12.0 in; Listings: cETLus (Intertek)
+
+### High Bay Work Site Lights | Ballast Bypass | Type B
+
+Columns: Part #, Voltage, Pwr Cord, Daisy-Chain, Replaces, Wattage, Lumens, CCT, Dimensions, Listings
+
+- LED-9210-50K-G2 — Voltage: 120-277V*; Pwr Cord: 6 ft power cord w/ stripped leads; Daisy-Chain: N/A; Replaces: 400W HID; Wattage: 100W; Lumens: 12000; CCT: 5000K; Dimensions: 6.5 in x 12.7 in; Listings: cULus Listed
+- Note: * 9210 UL Listed for 120-277VAC, also works on 208V & 240V
+
+### Temporary Work Site String Lights
+
+Columns: Part #, Voltage, Pwr Cord, Daisy-Chain, Replaces, Wattage, Lumens, CCT, Features, Dimensions, Listings
+
+- LED-9003-50K-10PK-163-G3 — Voltage: 120V; Pwr Cord: 100 ft 16/3 SJTW; Daisy-Chain: Up to 6 strings; Replaces: 900W INC; Wattage: 130W (10 x 13W); Lumens: 16000/string; CCT: 5000K; Features: 3-prong plug; Approved for use in Canada; Dimensions: 4.4 in x 3.1 in; Listings: cETLus (Intertek)
+- LED-9003-50K-10PK-182-G3 — Voltage: 120V; Pwr Cord: 100 ft 18/2 SJTW; Daisy-Chain: Up to 4 strings; Replaces: 900W INC; Wattage: 130W (10 x 13W); Lumens: 16000/string; CCT: 5000K; Features: 2-prong plug; Dimensions: 4.4 in x 3.1 in; Listings: cETLus (Intertek)
+
+Footnotes:
+- 2-prong plug (NEMA 1-15P)
+- 3-prong plug (NEMA 5-15P / grounded outlet)
+- Approved for use in Canada
+- * 9003 models have a 3 year warranty
+- ** Excludes model 9210
+- Listings: cETLus (Intertek) marks on LED-9010/9011/9012/9016-50K-G3 and both LED-9003 strings; LED-9210-50K-G2 carries the cULus Listed mark
+
+## Gondolas, Shippers + Displays (Light Efficient Design › Merchandising)
+
+Page: https://www.led-llc.com/gondolas-shippers-displays.html · Catalog p. 70–71
+
+Catalog title: Gondolas + Shippers + Displays
+
+### Gondolas + Shippers + Displays
+
+Columns: Part #, Item, Size, Notes
+
+- LED-9902 — Item: 2 ft Gondola w/ LED Card; Size: 24 in x 14 in x 78 in; Notes: Product(s) ordered separately
+- LED-9903 — Item: 3 ft Gondola w/ LED Card; Size: 36 in x 14 in x 78 in; Notes: Product(s) ordered separately
+- LED-FCT8-M — Item: FlexColor T8 Shipper; Size: 17 in x 13.5 in x 17 in; Notes: Product(s) ordered separately; Product qty - 50 LED-XXT8
+- LED-9800 — Item: Screw-in Retrofit w/ FlexColor (countertop display); Size: 8 in x 10 in x 4 in; Notes: Product(s) ordered separately
+- LED-9900 — Item: Screw-in Retrofit w/ Horizontal & Base-down Socket Positions (countertop display); Size: 6 in x 10 in x 16 in; Notes: Product(s) ordered separately
+- LED-9750-G2 — Item: Pin-base Retrofits (countertop display); Size: 9.5 in x 8 in x 10 in; Notes: Product(s) ordered separately
+- RP-LBI-G1-1F-2X-DISPLAY — Item: LBI – Linkable Bar / Internal Driver (display); Size: 10 in x 9 in x 22 in; Notes: Product(s) included w/ display
+- SL-9101 — Item: Solar Multifunctional Flood Light (display); Size: 9 in x 9 in x 16 in; Notes: Product(s) included w/ display
+
+### What the gondola holds
+
+The gondola renders show boxed Bollard Retrofit and Post Top Retrofit lamps (3 ft gondola: one shelf of Bollard Retrofit then two of Post Top Retrofit; 2 ft gondola: two shelves of Bollard Retrofit then two of Post Top Retrofit); the 3 ft gondola's bottom shelf shows six LED Work Site String Light boxes. Boxes are illustrative merchandising; products are ordered separately.
+
+Footnotes:
+- Ordered separately: LED-9902, LED-9903, LED-FCT8-M, LED-9800, LED-9900, LED-9750-G2
+- Included with the display: RP-LBI-G1-1F-2X-DISPLAY, SL-9101
+- Holds 50 LED-XXT8 tubes (FlexColor T8 shipper)
+
+# RemPhos
+
+Fixtures, retrofit kits and linkable light bars engineered to install fast. Innovatively engineered LED fixtures and retrofits that make installation as fast and easy as possible, with controls and color that maximize the lighting experience for end users.
+
+Page: https://www.led-llc.com/remphos.html
+
+- 1. Innovatively engineered: LED fixtures and retrofits making installation as fast and easy as possible.
+- 2. Controllable and customizable: Fixtures and retrofits that maximize the lighting experience for end users.
+- 3. The name: Derived from the remote layer of phosphor that converts blue LED light to white.
+
+## LBI Family (linkable light bars with internal drivers)
+
+Page: https://www.led-llc.com/lbi.html
+
+### LBI G1
+
+Economical linkable white light bar. The economical LBI. Up to 146 lumens per watt, with wattage and color temperature you set on the bar. The economical Linkable Bar with Internal Driver, in the same 1.2 in profile and lengths as LBI G2. Three wattages and three color temperatures on the bar, in standard or warm models. A direct replacement for fluorescent strips, troffers, vapor tights, low and high bays, coves and stairwells.
+
+- Lengths: 2 ft (19.3 in) / 3 ft (31.3 in) / 4 ft (43.3 in)
+- Light: White, 2700–5000K
+- Wattage: 2 ft: 6–12 W · 3 ft: 10–15 W · 4 ft: 10–25 W
+- Lumens: 2 ft: 696–1,560 · 3 ft: 1,270–2,100 · 4 ft: 1,260–3,653
+- Control: On-board switches, Simple or Silvair sensors
+- Locations: Dry and damp
+- Efficacy: Up to 146 lm/W
+- Best for: Economical retrofits, fluorescent strip replacement
+- SuperFLEX: switch between 3 wattages and 3 color temperatures on the bar.
+- Standard models (WC) set 3500K, 4000K or 5000K. Warm models (WC2) set 2700K, 3000K or 3500K.
+- Link 33 four-foot bars at 120VAC or 40 at 277VAC from one power feed.
+- Pass-through 0-10V dimming and auxiliary 12V output, so a whole run dims together.
+- Simple Lighting Control (in-line microwave or PIR occupancy with daylight harvesting) or Silvair Bluetooth mesh network control. Optional sensors link right to the bars.
+- Mounting clips with rare-earth magnets, plus T-bar, blade, suspended and 45° options. Suitable for dry and damp locations.
+- Efficacy: Up to 146 (lm/W (light engine))
+- Lumens: 696–3,653 (Across 2, 3 and 4 ft)
+- Wattage: 6–25 W (FlexWatt, 3 settings)
+- Color temp: 2700–5000K (FlexColor, 3 settings per model)
+- CRI: 80+
+- Beam: 120°
+- Power factor: >0.9 (THD <20%)
+- Operating temp: -13°F to 140°F
+- Size: 1.2 × 1.2 in (19.3, 31.3 or 43.3 in long)
+- Warranty: 10 years (120–277V)
+- Applications: Fluorescent strip replacement, Troffers and vapor tights, Low and high bays, Cove lighting, Stairwells
+- RP-LBI-G1-2F-6W-40K-WC: 2 ft linkable bar, standard 3500/4000/5000K; 6/9/12 W; 780–1,560
+- RP-LBI-G1-2F-6W-27K-WC2: 2 ft linkable bar, warm 2700/3000/3500K; 6/9/12 W; 696–1,524
+- RP-LBI-G1-3F-10W-40K-WC: 3 ft linkable bar, standard 3500/4000/5000K; 10/12/15 W; 1,400–2,100
+- RP-LBI-G1-3F-10W-27K-WC2: 3 ft linkable bar, warm 2700/3000/3500K; 10/12/15 W; 1,270–1,980
+- RP-LBI-G1-4F-15W-40K-WC: 4 ft linkable bar, standard 3500/4000/5000K; 10/15/25 W; 1,462–3,653
+- RP-LBI-G1-4F-15W-27K-WC2: 4 ft linkable bar, warm 2700/3000/3500K; 10/15/25 W; 1,260–3,400
+- Spec sheet: https://www.led-llc.com/assets/docs/spec-sheets/RP-LBI-Spec_Sheet.pdf (PDF, 15 pages, rev. 06.30.26)
+
+### LBI G2
+
+Linkable white light bar. The everyday workhorse. Up to 160 lumens per watt, with wattage and color temperature you set on site. The new generation of the Linkable Bar with Internal Driver. A sleek, control-ready bar with a protective housing that links end to end into continuous runs, from offices and break rooms to retail aisles.
+
+- Lengths: 2 ft (19.3 in) / 3 ft (31.3 in) / 4 ft (43.3 in)
+- Light: White, 2700–5700K
+- Wattage: 2 ft: 6–12 W · 3 ft: 10–18 W · 4 ft: 12–25 W
+- Lumens: 2 ft: 960–1,920 · 3 ft: 1,600–2,400 · 4 ft: 1,600–4,000
+- Control: On-board switches, IR remote, Silvair
+- Locations: Dry and damp
+- Efficacy: Up to 160 lm/W
+- Best for: Offices, retail, general ambient
+- SuperFLEX: switch between 4 wattages and 6 color temperatures.
+- Link up to 40 bars (160 ft) from one power feed with seamless connectors or linking cables.
+- Pass-through 0-10V dimming and auxiliary 12V output, so a whole run dims together.
+- Simple Lighting Control (in-line microwave or PIR occupancy with daylight harvesting) or Silvair Bluetooth mesh network control.
+- Mounting clips with rare-earth magnets, plus T-bar, blade, suspended and 45° options.
+- Suitable for dry and damp locations. UL 1598 fixture or UL 1598C retrofit kit.
+- Efficacy: Up to 160 (lm/W (light engine))
+- Lumens: 960–4,000 (Across 2, 3 and 4 ft)
+- Wattage: 6–25 W (FlexWatt, 4 settings)
+- Color temp: 2700–5700K (FlexColor, 6 settings)
+- CRI: 80+
+- Beam: 120°
+- Rated life: 50,000 h (L70)
+- Operating temp: -13°F to 140°F
+- Size: 1.2 × 1.2 in (19.3, 31.3 or 43.3 in long)
+- Voltage: 120–277V (120–347V Canada)
+- Applications: Offices, Break rooms, Retail aisles, Cove and display, Retrofit of existing fixtures
+- RP-LBI-G2-2F-6W-40K-WC: 2 ft linkable bar, 120–277V; 6/8/10/12 W; 960–1,920
+- RP-LBI-G2-2F-6W-40K-WC-CN: 2 ft linkable bar, 120–347V (Canada); 6/8/10/12 W; 960–1,920
+- RP-LBI-G2-3F-10W-40K-WC: 3 ft linkable bar, 120–277V; 10/12/15/18 W; 1,600–2,400
+- RP-LBI-G2-3F-10W-40K-WC-CN: 3 ft linkable bar, 120–347V (Canada); 10/12/15/18 W; 1,600–2,400
+- RP-LBI-G2-4F-15W-40K-WC: 4 ft linkable bar, 120–277V; 12/15/20/25 W; 1,600–4,000
+- RP-LBI-G2-4F-15W-40K-WC-CN: 4 ft linkable bar, 120–347V (Canada); 12/15/20/25 W; 1,600–4,000
+- Spec sheet: https://www.led-llc.com/assets/docs/LBI-G2-Spec-Sheet.pdf (PDF, 11 pages, rev. 07.28.26)
+
+### LBI 65
+
+Linkable white light bar, IP65 for wet locations. The same linkable system, sealed for wet and outdoor locations. Liquid-tight end caps keep the IP65 rating even with accessories. An IP65-rated linkable fixture or retrofit kit with a polycarbonate housing over an inner metal structure and heat sink. Built for parking garages, coolers, outdoor canopies, tunnels and walkways.
+
+- Lengths: 2 ft (20.7 in) / 3 ft (32.7 in) / 4 ft (43.3 in)
+- Light: White, 2700–5700K
+- Wattage: 2 ft: 4–12 W · 3 ft: 6–20 W · 4 ft: 10–25 W
+- Lumens: 2 ft: 640–1,920 · 3 ft: 960–2,400 · 4 ft: 1,920–4,000
+- Control: Included remote, PIR, Silvair
+- Locations: IP65, wet locations
+- Efficacy: Up to 160 lm/W
+- Best for: Garages, coolers, canopies, tunnels
+- IP65 rated and UL listed for wet locations, with vapor-tight linking.
+- SuperFLEX: 4 wattages and 6 color temperatures, adjustable with the included remote.
+- Ships with a waterproof end cap and a 1-way moisture valve already installed.
+- Liquid-tight conduit adapter and stainless steel aircraft suspension cable available.
+- IP65 in-line PIR occupancy and daylight sensor, or Silvair Bluetooth sensor and node.
+- Wet-location emergency LED driver with a hand-replaceable battery pack.
+- Ingress: IP65 (Wet location)
+- Efficacy: Up to 160 (lm/W (light engine))
+- Lumens: 640–4,000 (Across 2, 3 and 4 ft)
+- Wattage: 4–25 W (FlexWatt, 4 settings)
+- Color temp: 2700–5700K (FlexColor, 6 settings)
+- CRI: 80+
+- Rated life: >100,000 h (L70, calculated)
+- Operating temp: -22°F to 122°F
+- Size: 1.6 × 1.7 in (20.7, 32.7 or 43.3 in long)
+- In the box: Remote (Brackets, SS screws, end cap)
+- Applications: Parking garages, Coolers and freezers, Outdoor canopies, Tunnels and walkways, Food processing
+- RP-LBI65-2F-6W-40K-WC: 2 ft IP65 linkable bar; 4/6/9/12 W; 640–1,920
+- RP-LBI65-3F-10W-40K-WC: 3 ft IP65 linkable bar; 6/10/15/20 W; 960–2,400
+- RP-LBI65-4F-25W-40K-WC: 4 ft IP65 linkable bar; 10/15/20/25 W; 1,920–4,000
+- Spec sheet: https://www.led-llc.com/assets/docs/LBI-65-Spec-Sheet.pdf (PDF, 12 pages, rev. 07.23.26)
+
+### LBI MAX
+
+Linkable strip fixture, high lumens for higher ceilings. More light from the same linkable system. Up to 6,365 lumens from a 4 ft strip, with corner pieces for seamless 90° runs. A linkable linear strip fixture or retrofit kit for commercial, retail, manufacturing, warehouse and display applications. Wattage and color temperature are set with switches inside the unit.
+
+- Lengths: 2 ft (24 in) / 4 ft (48 in)
+- Light: White, 3000–5000K
+- Wattage: 2 ft: 15–30 W · 4 ft: 30–48 W
+- Lumens: 2 ft: 1,950–3,900 · 4 ft: 3,997–6,365
+- Control: On-board switches, IR remote, Silvair
+- Locations: Dry and damp
+- Efficacy: 146 lm/W
+- Best for: Warehouses, manufacturing, high ceilings
+- SuperFLEX: switch between 4 wattages and 4 color temperatures.
+- Right- and left-turn 90° corner pieces. Use four of the same direction to make a square.
+- Link 20 units at 120VAC or 40 units at 277VAC. Works with all LBI wiring accessories.
+- Surface mount on wall or ceiling, or suspend with the included V-hooks. Pendant, aircraft cable and in-line brackets available.
+- Optional emergency battery backup.
+- Optional built-in microwave occupancy sensor and Silvair-ready configurations.
+- Lumens: Up to 6,365 (4 ft at 48 W)
+- Efficacy: 146 (lm/W (light engine))
+- Wattage: 15–48 W (FlexWatt, 4 settings)
+- Color temp: 3000–5000K (FlexColor, 4 settings)
+- Corners: 90° (Right and left turn, 7–16 W)
+- CRI: 80+
+- Rated life: >100,000 h (L70 calc. · L90 51,000 h)
+- Operating temp: -4°F to 113°F
+- Lengths: 24 in · 48 in
+- Voltage: 120–277V
+- Applications: Warehouses, Manufacturing, Retail, Grocery and display, High ceilings
+- RP-LBIMAX-2F-25W-40K-WC: 2 ft linkable strip; 15/20/25/30 W; 1,950–3,900
+- RP-LBIMAX-4F-48W-40K-WC: 4 ft linkable strip; 30/35/40/48 W; 3,997–6,365
+- RP-LBIMAX-LR-16W-40K-WC: Right-turn 90° corner; 7/10/13/16 W; 910–2,080
+- RP-LBIMAX-LL-16W-40K-WC: Left-turn 90° corner; 7/10/13/16 W; 910–2,080
+- Spec sheet: https://www.led-llc.com/assets/docs/LBI-MAX-Spec-Sheet.pdf (PDF, 10 pages, rev. 08.25.26)
+
+### LBI Color Palette
+
+Linkable precision wavelength selection light bar. Six precise colors on the bar you already know. Pick the wavelength the job calls for and switch between two colors on site. Our linkable bar with an internal driver, delivering precision wavelength selection. Each bar carries two colors on a switch: red or orange, amber or green, blue or violet. It uses the same accessories as the regular LBI.
+
+- Lengths: 2 ft (19.3 in) / 4 ft (43.3 in)
+- Light: 6 fixed wavelengths, 2 per bar
+- Wattage: 2 ft: 6–12 W · 4 ft: 10–25 W
+- Lumens: Varies by color: 15–4,250
+- Control: On-board switch, remote
+- Locations: Dry and damp
+- Efficacy: Varies by color
+- Best for: Labs, signaling, specialty color
+- Choose from 6 colors: red, orange, amber, green, blue and violet.
+- Each bar holds 2 colors and 3 wattages with FlexWatt and LBI Color Palette technology, controllable from the remote.
+- Connect up to 40 from one power feed (30 4 ft units at 120VAC, 40 at 277VAC).
+- Uses the same accessories as the regular LBI.
+- Dims to off. Optional sensors and emergency battery backup.
+- Also offered as the LBI 65 Color Palette+ for wet locations (IP65) and NSF-certified applications.
+- Colors: 6 (Red, orange, amber, green, blue, violet)
+- Per bar: 2 colors (Selected by switch or remote)
+- Wattage: 6–25 W (FlexWatt, 3 settings)
+- Power factor: >0.9 (<20% THD)
+- Beam: 120°
+- Dimming: Dim to off
+- Operating temp: -13°F to 140°F
+- Size: 1.2 × 1.2 in (19.3 in or 43.3 in long)
+- Voltage: 120–347V (347V for Canada)
+- Wet locations: LBI 65 Color Palette+ (IP65 and NSF)
+- Applications: Labs and clean rooms, Venues and stages, Aircraft cabins, Signaling and safety, Displays, Wellness spaces
+- RP-LBI-G2-2F-6W-RED-WC-ORG: 2 ft, red / orange; 6/9/12 W; 375–600
+- RP-LBI-G2-2F-6W-AMB-WC-GRN: 2 ft, amber / green; 6/9/12 W; 1,175–2,125
+- RP-LBI-G2-2F-6W-BLU-WC-VLT: 2 ft, blue / violet; 6/9/12 W; 15–300
+- RP-LBI-G2-4F-25W-RED-WC-ORG: 4 ft, red / orange; 10/15/25 W; 750–1,200
+- RP-LBI-G2-4F-25W-AMB-WC-GRN: 4 ft, amber / green; 10/15/25 W; 2,350–4,250
+- RP-LBI-G2-4F-25W-BLU-WC-VLT: 4 ft, blue / violet; 10/15/25 W; 30–600
+- Sell sheet: https://www.led-llc.com/assets/docs/LBI-Palette-Sell-Sheet.pdf (PDF, 2 pages)
+
+### LBI Color Palette+
+
+Linkable RGBWW light bar: white light and limitless color in one. White light out of the box. Any color from the remote. One bar does both. LBI Color Palette+ is an LBI G2 that can also mix limitless color. Every bar ships set to white light, with FlexWatt and FlexColor switches identical to LBI G2, so it installs, dims and qualifies for rebates like any white bar. Add the optional RGBWW remote and the same bar becomes a full color tunable fixture. RGBWW means red, green, blue, warm white and cool white LEDs in one bar: any color, and any white from 2700K to 5000K.
+
+- Lengths: 2 ft (19.3 in) / 3 ft (31.3 in) / 4 ft (43.3 in)
+- Light: RGBWW: white 2700–5000K + limitless color
+- Wattage: 2 ft: 6–12 W · 3 ft: 10–18 W · 4 ft: 12–25 W
+- Lumens: White: 2 ft 960–1,920 · 3 ft 1,600–2,880 · 4 ft 1,920–4,000
+- Control: Switches for white (as shipped) · optional RGBWW remote for color
+- Locations: Dry and damp · IP65 version
+- Efficacy: 160 lm/W (white)
+- Best for: Hospitality, venues, retail, facades
+- Ships in white light mode: the DLC-listed, rebate-eligible configuration, set with switches identical to LBI G2.
+- RGBWW light engine: red, green, blue, warm white and cool white in one bar, for limitless color mixing plus 2700K to 5000K white. Lumen values are for white light.
+- Color is unlocked with the optional RGBWW remote (RP-REMOTE-RGB-WC, includes holster, sold separately). One remote adjusts every bar on the job.
+- Link up to 40 bars from one power feed, in 2, 3 and 4 ft lengths.
+- 0-10V dimming to off, sensor ready, Simple or Networked Lighting Controls.
+- Also offered as LBI 65 Color Palette+ for IP65-rated and NSF-certified applications.
+- Light: RGBWW (Red, green, blue, warm white and cool white: 2700–5000K white plus limitless color)
+- Lumens: 960–4,000 (White light, across 2, 3 and 4 ft)
+- Wattage: 6–25 W (FlexWatt, 4 settings)
+- Efficacy: 160 lm/W (Light engine, white light)
+- Beam: 120°
+- Rated life: >100,000 h (L70 · L90 51,000 h)
+- Operating temp: -13°F to 140°F
+- Dimming: 0-10V to off (Sensor ready)
+- Remote: RP-REMOTE-RGB-WC (RGBWW remote with holster, sold separately)
+- Warranty: 10 years
+- Applications: Theaters and cinemas, Entertainment venues, Bars and restaurants, Bridges and facades, Retail displays, Houses of worship
+- RP-LBI-G2-2F-12W-RGBWW-WC: 2 ft, RGBWW (white + color), 120–277V, ships in white mode; 6/8/10/12 W; 960–1,920
+- RP-LBI-G2-3F-18W-RGBWW-WC: 3 ft, RGBWW (white + color), 120–277V, ships in white mode; 10/12/15/18 W; 1,600–2,880
+- RP-LBI-G2-4F-25W-RGBWW-WC: 4 ft, RGBWW (white + color), 120–277V, ships in white mode; 12/15/20/25 W; 1,920–4,000
+- RP-REMOTE-RGB-WC: RGBWW remote with holster. Optional, sold separately; one remote adjusts every bar
+- Note: Add -CN when ordering 120–347V models. Lumen values are for white CCTs.
+
+### LBI Color PaletteX
+
+Linkable RGBWW color tunable light bar with DMX. Full RGBWW color under DMX control. Program scenes, cues and shows from the console your venue already runs. A linkable RGBWW light bar driven over DMX. Red, green, blue, warm white and cool white each have their own channel, so one bar mixes any color and any white from the console, for venues and installations that need programmed scenes and precise control of every run. Full specifications will be added when the spec sheet is ready.
+
+- Lengths: 2 ft (19.3 in) / 4 ft (43.3 in)
+- Light: RGBWW: full color + tunable white
+- Wattage: Pending spec sheet
+- Lumens: Pending spec sheet
+- Control: DMX console · RGBWW channels
+- Locations: Pending spec sheet
+- Efficacy: Pending spec sheet
+- Best for: Venues, shows, architectural
+- RGBWW light engine: red, green, blue, warm white and cool white.
+- Two white channels on DMX, warm and cool, so tunable white is programmed like any other color.
+- DMX control for consoles, show controllers and building systems.
+- Built on the linkable LBI bar with an internal driver, in 2 ft and 4 ft.
+- Spec sheet, DMX channel map, IES files and installation instructions are coming soon.
+- Color: RGBWW (Red, green, blue, warm white, cool white)
+- Control: DMX (Separate warm white and cool white channels)
+- Lengths: 2 ft · 4 ft
+- Spec sheet: Coming soon
+- Applications: Venues and stages, Architectural facades, Theme and attractions, Broadcast, Arenas
+
+### LBI 65 Color Palette+
+
+IP65 linkable precision wavelength light bar, set by remote. The LBI Color Palette, sealed for wet locations. The same six colors, set with the included remote. An IP65-rated linkable LED bar with an internal driver, delivering precision wavelength selection. Liquid-tight end caps and the same seamless, vapor-tight linking as the LBI 65. There are no switches on the bar: each bar carries two colors and four wattages, chosen with the included remote.
+
+- Lengths: 2 ft (20.7 in) / 4 ft (43.3 in)
+- Light: 6 fixed wavelengths, 2 per bar
+- Wattage: 2 ft: 4–12 W · 4 ft: 10–25 W
+- Lumens: Red / orange: 375–1,200
+- Control: Included remote (no switches)
+- Locations: IP65, wet locations
+- Efficacy: Varies by color
+- Best for: Venues, oceanfronts, wet-area signaling
+- IP65 rated, with liquid-tight end caps and waterproof linking.
+- Each bar holds 2 colors and 4 wattages (FlexWatt), set with the included remote.
+- Offered in the same color pairs as the LBI Color Palette: red or orange, amber or green, blue or violet.
+- Connect up to 40 from one power feed (30 4 ft units at 120VAC, 40 at 277VAC).
+- Dims to off. Sensor ready, with optional IP65 PIR or Silvair Bluetooth sensors and an optional wet-location emergency driver.
+- Ships with a waterproof end cap and 1-way moisture valve installed, plus brackets for 45° and 90° mounting.
+- Ingress: IP65 (Wet locations)
+- Colors: 6 (Same pairs as LBI Color Palette)
+- Per bar: 2 colors (Set with the remote)
+- Wattage: 4–25 W (FlexWatt, 4 settings)
+- Lumens: 375–1,200 (Red / orange, 2 ft and 4 ft)
+- Power factor: >0.9 (<20% THD)
+- Beam: 120°
+- Dimming: Dim to off (Sensor ready)
+- Operating temp: -13°F to 140°F
+- Size: 1.6 × 1.7 in (20.7 in or 43.3 in long)
+- Canada: 240–347V (Canada-only models)
+- In the box: Remote (Brackets, SS screws, end cap)
+- Applications: Venues, Oceanfronts, Signaling, High visibility, Wet and outdoor areas
+- RP-LBI65-2F-6W-RED-WC-ORG: 2 ft IP65, red / orange; 4/6/9/12 W; 375–600
+- RP-LBI65-4F-25W-RED-WC-ORG: 4 ft IP65, red / orange; 10/15/20/25 W; 750–1,200
+- Note: Red / orange part numbers from the spec sheet. Amber / green and blue / violet bars: ask sales for part numbers.
+- Spec sheet (red / orange): https://www.led-llc.com/assets/docs/LBI-65-Palette-Red-Orange-Spec-Sheet.pdf (PDF, 4 pages, rev. 08.31.26)
+
+## Lighting Controls (RemPhos › Lighting Controls)
+
+Page: https://www.led-llc.com/lighting-controls.html · Catalog p. 24–25
+
+Catalog title: Simple + Networked Lighting Controls
+
+You have a choice between simplicity or high-capability systems.
+
+Highlights:
+- ('Simple lighting controls — the easiest way to make a luminaire smart.', 4).
+- ('Networked lighting controls — go beyond smart lighting.', 4).
+- ('Add basic control capabilities to specific luminaires.', 4).
+- ('Add high value control capabilities at room, building, or even campus levels.', 4).
+- ('Controlled by the IR23 remote.', 4).
+- ('Connect and control lighting fixtures via Bluetooth mesh with the Silvair app — available for iOS and Android on the App Store and Google Play.', 4).
+
+Features:
+- Simple lighting controls (Occupancy (microwave or passive infrared) and daylight sensors added to a specific luminaire; all are controlled by the IR23 remote)
+- Networked lighting controls (Silvair™ Bluetooth mesh sensors and control nodes, set up and controlled with the Silvair app (iOS and Android))
+
+### Simple Lighting Controls
+
+Columns: Product family, Control
+
+- Product family: LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+; Control: In-line microwave occupancy and daylight harvesting sensor
+- Product family: LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65; Control: In-line passive infrared occupancy and daylight harvesting sensor
+- Product family: LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8; Control: Microwave occupancy and daylight hold-off sensor
+- Product family: DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8; Control: Limited-range microwave occupancy and daylight hold-off sensor
+- Product family: TTV / TTF; Control: Passive infrared occupancy and daylight harvesting sensor
+- Product family: TRV / TRF / TV / TF; Control: Passive infrared occupancy and daylight hold-off sensor
+
+### Networked Lighting Controls
+
+Columns: Product family, Control
+
+- Product family: LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+; Control: In-line Silvair™ Bluetooth microwave motion and daylight harvesting sensor
+- Product family: LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65; Control: In-line Silvair™ Bluetooth control node
+- Product family: LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65; Control: In-line Silvair™ Bluetooth passive infrared motion and daylight harvesting sensor
+- Product family: LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8; Control: Silvair™ Bluetooth microwave motion and daylight harvesting sensor
+- Product family: LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8; Control: Silvair™ Bluetooth node w/ external antenna
+- Product family: DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 / TTV / TTF; Control: Silvair™ Bluetooth control node
+- Product family: LBE / TYPE C T5 & T8; Control: Silvair™ Bluetooth passive infrared motion and daylight harvesting sensor
+- Product family: LBE / TYPE C T5 & T8; Control: Silvair™ Bluetooth passive infrared external arm sensor
+- Product family: TTV / TTF / TRV / TRF / TV / TF; Control: Silvair™ passive infrared motion and daylight harvesting sensor
+- Note: Connect and control lighting fixtures via Bluetooth mesh w/ the Silvair app — available for iOS and Android on the App Store and Google Play
+
+### Silvair app
+
+Connect and control lighting fixtures via Bluetooth mesh w/ the Silvair app. Available for iOS and Android on the App Store and Google Play.
+
+### Product family key
+
+## LBI G1 (RemPhos › Linkable Light Bars)
+
+Page: https://www.led-llc.com/lbi-g1.html · Catalog p. 28–29
+
+Catalog title: Linkable Bar / Internal Driver (LBI G1)
+
+The economical LBI, up to 146 lumens per watt.
+
+### LBI G1 Linkable Bar / Internal Driver
+
+Columns: Part #, UPC, Description, Lumens, FlexWatt, FlexColor, Dimensions
+
+- RP-LBI-G1-2F-6W-40K-WC — UPC: 844006023867; Description: 2 ft linkable bar, standard color temperatures; Lumens: 780-1560; FlexWatt: 6W/9W/12W; FlexColor: 3500K/4000K/5000K; Dimensions: 19.3 in x 1.2 in x 1.2 in
+- RP-LBI-G1-2F-6W-27K-WC2 — UPC: 844006024826; Description: 2 ft linkable bar, warm color temperatures; Lumens: 696-1524; FlexWatt: 6W/9W/12W; FlexColor: 2700K/3000K/3500K; Dimensions: 19.3 in x 1.2 in x 1.2 in
+- RP-LBI-G1-3F-10W-40K-WC — UPC: 844006023959; Description: 3 ft linkable bar, standard color temperatures; Lumens: 1400-2100; FlexWatt: 10W/12W/15W; FlexColor: 3500K/4000K/5000K; Dimensions: 31.3 in x 1.2 in x 1.2 in
+- RP-LBI-G1-3F-10W-27K-WC2 — UPC: 844006024833; Description: 3 ft linkable bar, warm color temperatures; Lumens: 1270-1980; FlexWatt: 10W/12W/15W; FlexColor: 2700K/3000K/3500K; Dimensions: 31.3 in x 1.2 in x 1.2 in
+- RP-LBI-G1-4F-15W-40K-WC — UPC: 844006024079; Description: 4 ft linkable bar, standard color temperatures; Lumens: 1462-3653; FlexWatt: 10W/15W/25W; FlexColor: 3500K/4000K/5000K; Dimensions: 43.3 in x 1.2 in x 1.2 in
+- RP-LBI-G1-4F-15W-27K-WC2 — UPC: 844006024840; Description: 4 ft linkable bar, warm color temperatures; Lumens: 1260-3400; FlexWatt: 10W/15W/25W; FlexColor: 2700K/3000K/3500K; Dimensions: 43.3 in x 1.2 in x 1.2 in
+
+## LBI G2 (RemPhos › Linkable Light Bars)
+
+Page: https://www.led-llc.com/lbi-g2.html · Catalog p. 28–29
+
+Catalog title: Linkable Bar / Internal Driver (LBI G2)
+
+LBI G2 — More CCTs. More lumens per watt. Connect up to 40 from one power feed.
+
+Highlights:
+- ('Tunable white control on the LBI G2 with IRWC remote — RC-REMOTE-IRWC.', 4).
+- ('Simple Lighting Controls and Networked Lighting Controls.', 4).
+- ('Optional remote emergency battery backup (RP-LBI-EMG2-8W-DIM, RP-LBI-EMG2-25W-DIM) and optional built-in emergency battery backup (-EMG, G2 models only).', 4).
+
+Features:
+- 10-year warranty
+- ETL listed (Intertek)
+- FCC
+- DLC (See spec sheet on LED-LLC.com for DLC listing status)
+- Sensor ready (0-10V dim to off)
+- 12V aux output
+- 160 LPW efficacy (light engine)
+- 80+ CRI
+- White tuning (FlexColor selectable CCT; tunable white control on the LBI G2 with the RC-REMOTE-IRWC remote (sold separately))
+- 120° beam angle
+- Operating temp -13°F to 140°F
+- Power factor >0.9 / THD <20%
+- L70 >100,000hrs rated life (** Calculated)
+- L90 51,000hrs rated life
+- Linkable (Connect up to 30 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC)
+- Simple Lighting Controls / Networked Lighting Controls (See the Lighting Controls page or the product spec sheet on LED-LLC.com)
+- Emergency battery backup options (Optional remote (external, dimmable, 8W or 25W) or built-in -EMG (internal, 90 min, 500 lm; G2 models only))
+- 120-347V models available (Add (-CN) when ordering 120-347V models)
+
+### LBI G2 – Linkable Bar / Internal Driver
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-LBI-G2-2F-6W-40K-WC — Voltage: 120-277V; FlexWatt: 6W/8W/10W/12W; Lumens: 960-1920; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 19.3 in x 1.2 in x 1.2 in
+- RP-LBI-G2-3F-10W-40K-WC — Voltage: 120-277V; FlexWatt: 10W/12W/15W/18W; Lumens: 1600-2400; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 31.3 in x 1.2 in x 1.2 in
+- RP-LBI-G2-4F-15W-40K-WC — Voltage: 120-277V; FlexWatt: 12W/15W/20W/25W; Lumens: 1600-4000; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 43.3 in x 1.2 in x 1.2 in
+- Note: Add (-CN) when ordering 120-347V models
+
+### Emergency Battery Backup Options
+
+Columns: Part #, Option, Type, Rating, Notes
+
+- RP-LBI-EMG2-8W-DIM — Option: Optional remote emergency battery backup; Type: External; Rating: 8W; Notes: Dimmable
+- RP-LBI-EMG2-25W-DIM — Option: Optional remote emergency battery backup; Type: External; Rating: 25W; Notes: Dimmable
+- -EMG (part number suffix) — Option: Optional built-in emergency battery backup**; Type: Internal; Rating: 90 min / 500 lm; Notes: ** Only available for G2 models
+- Note: ** Only available for G2 models
+
+### Remote Control
+
+Columns: Part #, Description, Notes
+
+- RC-REMOTE-IRWC — Description: Tunable white control on the LBI G2 w/ IRWC remote. Keys on the remote: power, RESET, G1, G2, CCT+ / CCT- step keys, LM+ / LM- brightness keys, six CCT preset keys (2700K/3000K/3500K/4000K/5000K/5700K) and PW1-PW4; Notes: * Sold separately
+- Note: * Sold separately
+
+### LBI G1 vs LBI G2
+
+### Linking
+
+Connect up to 30 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC.
+
+Footnotes:
+- * Connect up to 30 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC
+- ** Calculated (L70 >100,000hrs rated life)
+- See spec sheet on LED-LLC.com for DLC listing status
+- Simple Lighting Controls | Networked Lighting Controls: see the Lighting Controls page for more information or check out the product spec sheet on our website LED-LLC.com
+
+## LBI 65 (RemPhos › Linkable Light Bars)
+
+Page: https://www.led-llc.com/lbi-65.html · Catalog p. 30–31
+
+Catalog title: Linkable Bar / Internal Driver IP65 (LBI65)
+
+Waterproof linking — Connect up to 40 from one power feed.
+
+Highlights:
+- ('Peace of mind, built in — waterproof and shatterproof for demanding environments.', 3).
+- ('Order a vapor tight bundle — one SKU solution.', 3).
+- ('Simple Lighting Controls and Networked Lighting Controls.', 3).
+- ('Seamless connector(s) incoming power conduit adapter included with every bundle.', 3).
+
+Features:
+- 7-year warranty
+- ETL listed (Intertek)
+- NSF
+- FCC
+- DLC (See spec sheet on LED-LLC.com for DLC listing status)
+- Sensor ready (0-10V dim to off)
+- 12V aux output
+- 160 LPW efficacy (light engine)
+- White tuning (FlexColor selectable CCT 2700K/3000K/3500K/4000K/5000K/5700K)
+- 80+ CRI
+- 120° beam angle
+- Operating temp -22°F to 122°F
+- IK08 impact resistance
+- IP65 ingress protection
+- L70 >100,000hrs rated life (** Calculated)
+- Waterproof and shatterproof (For demanding environments)
+- Linkable (Connect up to 30 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC)
+- Simple Lighting Controls / Networked Lighting Controls (See the Lighting Controls page or the product spec sheet on LED-LLC.com; RC-REMOTE-IR23 remote for Simple Lighting Controls)
+- Optional remote emergency battery backup (RP-LBI65-EMG-40W-DIM (40W / dimmable))
+
+### LBI 65 – Linkable Bar / Internal Driver IP65
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-LBI65-2F-6W-40K-WC — Voltage: 120-277V; FlexWatt: 4W/6W/9W/12W; Lumens: 640-1920; FlexColor: 2700K/3000K/3500K/4000K/5000K/5700K; Dimensions: 20.7 in x 1.6 in x 1.7 in
+- RP-LBI65-3F-10W-40K-WC — Voltage: 120-277V; FlexWatt: 6W/10W/15W/20W; Lumens: 960-2400; FlexColor: 2700K/3000K/3500K/4000K/5000K/5700K; Dimensions: 32.7 in x 1.6 in x 1.7 in
+- RP-LBI65-4F-25W-40K-WC — Voltage: 120-277V; FlexWatt: 10W/15W/20W/25W; Lumens: 1920-4000; FlexColor: 2700K/3000K/3500K/4000K/5000K/5700K; Dimensions: 43.3 in x 1.6 in x 1.7 in
+
+### 4 ft Slim Vapor-Tight Bundle
+
+Columns: Part #, Description
+
+- RP-LBI65-4FT-25W-40K-WC-VT — Description: 4 ft Slim Vapor-Tight
+- RP-LBI65-4F-25W-40K-WC-OCC-VT — Description: 4 ft Slim Vapor-Tight w/ PIR Sensor
+- RP-LBI65-4FT-25W-40K-WC-OCCBT-VT — Description: 4 ft Slim Vapor-Tight w/ Bluetooth PIR Sensor
+- Note: Order a vapor tight bundle — one SKU solution
+- Note: Seamless connector(s) incoming power conduit adapter included w/ every bundle
+
+### 8 ft Slim Vapor-Tight Bundle
+
+Columns: Part #, Description
+
+- RP-LBI65-8FT-50W-40K-WC-VT — Description: 8 ft Slim Vapor-Tight
+- RP-LBI65-8F-50W-40K-WC-OCC-VT — Description: 8 ft Slim Vapor-Tight w/ PIR Sensor
+- RP-LBI65-8FT-50W-40K-WC-OCCBT-VT — Description: 8 ft Slim Vapor-Tight w/ Bluetooth PIR Sensor
+- Note: Order a vapor tight bundle — one SKU solution
+- Note: Seamless connector(s) incoming power conduit adapter included w/ every bundle
+
+### Optional Remote Emergency Battery Backup
+
+Columns: Part #, Wattage, Dimming
+
+- RP-LBI65-EMG-40W-DIM — Wattage: 40W; Dimming: Dimmable
+
+### Remote Control
+
+Columns: Part #, Description
+
+- RC-REMOTE-IR23 — Description: For Simple Lighting Controls
+
+### Vapor-tight bundles — one SKU solution
+
+Each bundle is a single SKU combining the LBI65 bar in a 4 ft (25W) or 8 ft (50W) slim vapor-tight configuration, optionally with a PIR occupancy sensor (-OCC) or a Bluetooth PIR sensor (-OCCBT). Seamless connector(s) and an incoming power conduit adapter are included with every bundle.
+
+### Linking
+
+Waterproof linking: connect up to 30 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC.
+
+Footnotes:
+- * Connect up to 30 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC
+- ** Calculated (L70 >100,000hrs rated life)
+- See spec sheet on LED-LLC.com for DLC listing status
+- Simple Lighting Controls | Networked Lighting Controls: see the Lighting Controls page for more information or check out the product spec sheet on our website LED-LLC.com
+
+## LBI MAX (RemPhos › Linkable Light Bars)
+
+Page: https://www.led-llc.com/lbi-max.html · Catalog p. 32
+
+Catalog title: Linkable Strip Retrofit Kit + Fixture (LBI MAX)
+
+Higher lumen — linkable fixture. Connect up to 40 from one power feed.
+
+Highlights:
+- ('Create seamless 90° angles with corner pieces.', 3).
+- ('Optional internal emergency battery backup — -EM1 / Emergency Battery Backup (90 min / 500 lm).', 3).
+- ('Remote control — RC-REMOTE-IR23 (for Simple Lighting Controls).', 3).
+- ('Simple Lighting Controls and Networked Lighting Controls.', 3).
+
+Features:
+- 10-year warranty
+- ETL listed (Intertek)
+- FCC
+- DLC (See spec sheet on LED-LLC.com for DLC listing status)
+- Sensor ready (0-10V dim to off)
+- 12V aux output
+- 146 LPW efficacy (light engine)
+- 80+ CRI
+- 120° beam angle
+- Operating temp -4°F to 113°F
+- L70 >100,000hrs rated life (Calculated)
+- L90 51,000hrs rated life
+- Linkable (Connect up to 20 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC)
+- Optional internal emergency battery backup (-EM1 suffix, 90 min / 500 lm)
+- Simple Lighting Controls / Networked Lighting Controls compatible (See the Lighting Controls page or the product spec sheet on LED-LLC.com)
+
+### LBI MAX – Linkable Strip Retrofit Kit + Fixture
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-LBIMAX-2F-25W-40K-WC — Voltage: 120-277V; FlexWatt: 15W/20W/25W/30W; Lumens: 1950-3900; FlexColor: 3000K/3500K/4000K/5000K; Dimensions: 24.0 in x 2.5 in x 3.0 in
+- RP-LBIMAX-4F-48W-40K-WC — Voltage: 120-277V; FlexWatt: 30W/35W/40W/48W; Lumens: 3997-6365; FlexColor: 3000K/3500K/4000K/5000K; Dimensions: 4.0 in x 2.5 in x 3.0 in
+
+### LBI MAX – Linkable Strip Retrofit Kit + Fixture (Corner Pieces)
+
+Columns: Part #, Description, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-LBIMAX-LR-16W-40K-WC — Description: Right-turn 90° corner; Voltage: 120-277V; FlexWatt: 7W/10W/13W/16W; Lumens: 910-2080; FlexColor: 3000K/3500K/4000K/5000K; Dimensions: 6.0 in x 2.5 in x 3.0 in
+- RP-LBIMAX-LL-16W-40K-WC — Description: Left-turn 90° corner; Voltage: 120-277V; FlexWatt: 7W/10W/13W/16W; Lumens: 910-2080; FlexColor: 3000K/3500K/4000K/5000K; Dimensions: 6.0 in x 2.5 in x 3.0 in
+
+### Optional internal emergency battery backup
+
+-EM1 / Emergency Battery Backup (90 min / 500 lm)
+
+### Remote control
+
+RC-REMOTE-IR23 (for Simple Lighting Controls)
+
+### Lighting controls
+
+Simple Lighting Controls | Networked Lighting Controls — see the Lighting Controls page for more information or check out the product spec sheet on our website LED-LLC.com
+
+### Linking limit
+
+Connect up to 20 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC
+
+Footnotes:
+- * Connect up to 20 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC
+- ** Calculated (L70 >100,000hrs rated life)
+- See spec sheet on LED-LLC.com for DLC listing status
+
+## LBI Color Palette (RemPhos › LBI Color Palette)
+
+Page: https://www.led-llc.com/color-palette.html · Catalog p. 36–38
+
+Transforming light into a medium of precision and possibility.
+
+LBI Color Palette is a RemPhos spectral lighting family offering precision wavelength selection and limitless RGB color mixing through RemPhos technology.
+
+Highlights:
+- ('LBI Color Palette — linkable light bar with an internal driver delivering precision wavelength selection.', 3).
+- ('LBI Color Palette+ — linkable light bar with an internal driver delivering limitless RGB color mixing.', 3).
+- ('Stay tuned. DMX is stepping up to the light bar. More control. More possibilities.', 3).
+- ('Designed for applications where color accuracy matters most.', 3).
+- ('Endless creativity, from subtle accents to dramatic effects.', 4).
+- ('Select color via remote or switch on bar.', 4).
+- ('LBI 65 Palette is also offered for IP65-rated and NSF-certified applications.', 4).
+
+Features:
+- 10-year warranty
+- ETL listed (Intertek)
+- FCC
+- DLC (See spec sheet on LED-LLC.com for DLC listing status)
+- >0.9 power factor / <20% THD
+- Sensor ready (0-10V dim to off)
+- 120° beam angle
+- Operating temp -13°F to 140°F
+- 160 LPW efficacy (light engine) (LBI Color Palette+ only; applies to white CCTs only)
+- L70 >100,000hrs rated life (LBI Color Palette+ only; calculated)
+- L90 51,000hrs rated life (LBI Color Palette+ only; applies to white CCTs only)
+- Linkable light bar with internal driver
+- Canada 120-347V models (Add (-CN) when ordering 120-347V models)
+- IP65 / NSF option (LBI 65 Palette is also offered for IP65-rated and NSF-certified applications)
+- Simple Lighting Controls / Networked Lighting Controls compatible (See the Lighting Controls page or the product spec sheet on LED-LLC.com)
+
+### 2 ft LBI Color Palette / Precision Wavelength Selection
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-LBI-G2-2F-6W-RED-WC-ORG — Voltage: 120-277V; FlexWatt: 6W/9W/12W; Lumens: 375-600; FlexColor: Red / Orange; Dimensions: 19.3 in x 1.2 in x 1.2 in
+- RP-LBI-G2-2F-6W-AMB-WC-GRN — Voltage: 120-277V; FlexWatt: 6W/9W/12W; Lumens: 1175-2125; FlexColor: Amber / Green; Dimensions: 19.3 in x 1.2 in x 1.2 in
+- RP-LBI-G2-2F-6W-BLU-WC-VLT — Voltage: 120-277V; FlexWatt: 6W/9W/12W; Lumens: 15-300; FlexColor: Blue / Violet; Dimensions: 19.3 in x 1.2 in x 1.2 in
+- Note: Add (-CN) when ordering 120-347V models
+
+### 4 ft LBI Color Palette / Precision Wavelength Selection
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-LBI-G2-4F-15W-RED-WC-ORG — Voltage: 120-277V; FlexWatt: 10W/15W/25W; Lumens: 750-1200; FlexColor: Red / Orange; Dimensions: 43.3 in x 1.2 in x 1.2 in
+- RP-LBI-G2-4F-15W-AMB-WC-GRN — Voltage: 120-277V; FlexWatt: 10W/15W/25W; Lumens: 2350-4250; FlexColor: Amber / Green; Dimensions: 43.3 in x 1.2 in x 1.2 in
+- RP-LBI-G2-4F-15W-BLU-WC-VLT — Voltage: 120-277V; FlexWatt: 10W/15W/25W; Lumens: 30-600; FlexColor: Blue / Violet; Dimensions: 43.3 in x 1.2 in x 1.2 in
+- Note: Add (-CN) when ordering 120-347V models
+
+### LBI Color Palette+ / Limitless RGB Color Mixing
+
+Columns: Part #, Voltage, FlexWatt, Lumens*, FlexColor, Dimensions
+
+- RP-LBI-G2-2F-12W-RGBWW-WC — Voltage: 120-277V; FlexWatt: 6W/8W/10W/12W; Lumens*: 960-1920; FlexColor: RGB color mixing and 2700K/3000K/3500K/4000K/5000K; Dimensions: 19.3 in x 1.2 in x 1.2 in
+- RP-LBI-G2-3F-18W-RGBWW-WC — Voltage: 120-277V; FlexWatt: 10W/12W/15W/18W; Lumens*: 1600-2880; FlexColor: RGB color mixing and 2700K/3000K/3500K/4000K/5000K; Dimensions: 31.3 in x 1.2 in x 1.2 in
+- RP-LBI-G2-4F-25W-RGBWW-WC — Voltage: 120-277V; FlexWatt: 12W/15W/20W/25W; Lumens*: 1920-4000; FlexColor: RGB color mixing and 2700K/3000K/3500K/4000K/5000K; Dimensions: 43.3 in x 1.2 in x 1.2 in
+- Note: * Lumen values are for white CCTs only
+- Note: Add (-CN) when ordering 120-347V models
+
+### LBI Color PaletteX with DMX
+
+DMX is stepping up to the light bar. More control. More possibilities.
+
+### RGBWW remote
+
+The optional RP-REMOTE-RGB-WC remote (holster included) adjusts every LBI Color Palette+ bar in range: white presets, full RGB color, dimming and scenes. Try it in the LBI Family Overview.
+
+### LBI Color Palette+ default mode and on-bar switches
+
+LBI Color Palette+ ships in white light mode and carries G2-style on-bar switches (FlexWatt wattage and FlexColor CCT, as on the standard RP-LBI-G2 bar). Color is selected with the optional RP-REMOTE-RGB-WC remote; one remote adjusts every bar in range.
+
+### Lighting controls
+
+Simple Lighting Controls | Networked Lighting Controls — see the Lighting Controls page for more information or check out the product spec sheet on our website LED-LLC.com
+
+### IP65 / NSF
+
+LBI 65 Palette is also offered for IP65-rated and NSF-certified applications
+
+Footnotes:
+- * Calculated (LBI Color Palette+ L70 rated life)
+- ** Applies to white CCTs only (LBI Color Palette+ efficacy and L90 rated life)
+- See spec sheet on LED-LLC.com for DLC listing status
+- LBI 65 Palette is also offered for IP65-rated and NSF-certified applications
+
+## LIVC Stairwell, Vanity + Wrap (RemPhos › Fixtures)
+
+Page: https://www.led-llc.com/livc.html · Catalog p. 40–41
+
+Catalog title: Stairwell / Vanity / Wraparound (LIVC)
+
+Slimmer. Sleeker. Stairwell, vanity and wraparound fixtures that link like an LBI.
+
+Highlights:
+- ('Uses the same seamless connector and linking cable as our LBI.', 6).
+- ('Simple Lighting Controls and Networked Lighting Controls.', 6).
+
+Features:
+- 10-year warranty
+- 12V aux output
+- 130 LPW efficacy
+- 80+ CRI
+- -4°F to 140°F operating temp
+- L70 100,000 hrs rated life
+- ADA compliant when wall mounted
+- FlexWatt selectable wattage (10W/15W/20W/30W on 2 ft and 3 ft models, 10W/15W/30W/40W on 4 ft models; factory default 15W)
+- FlexColor selectable CCT 2700K/3000K/3500K/4000K/5000K (Factory default 4000K)
+- Linkable from one power feed (Connect up to 20 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC; same seamless connector and linking cable as the LBI)
+- Optional internal emergency battery backup (-EMG suffix; 90 min / 500 lm)
+- Simple Lighting Controls / Networked Lighting Controls ready (See the Lighting Controls page or the product spec sheet on LED-LLC.com; RC-REMOTE-IR23 remote for microwave occ sensors)
+- cETLus listed (Intertek)
+- FCC
+- DLC (See spec sheet on LED-LLC.com for DLC listing status)
+
+### LIVC – Stairwell / Vanity / Wraparound (Rounded Endcaps)
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-LIVC-G3-RD-2FT-15W-40K-WC — Voltage: 120-277V; FlexWatt: 10W/15W/20W/30W; Lumens: 1580-4740; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 24.0 in x 6.0 in x 3.5 in
+- RP-LIVC-G3-RD-3FT-15W-40K-WC — Voltage: 120-277V; FlexWatt: 10W/15W/20W/30W; Lumens: 1580-4740; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 36.0 in x 6.0 in x 3.5 in
+- RP-LIVC-G3-RD-4FT-15W-40K-WC — Voltage: 120-277V; FlexWatt: 10W/15W/30W/40W; Lumens: 1580-6320; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 48.0 in x 6.0 in x 3.5 in
+
+### LIVC – Stairwell / Vanity / Wraparound (Square Endcaps)
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-LIVC-G3-SQ-2FT-15W-40K-WC — Voltage: 120-277V; FlexWatt: 10W/15W/20W/30W; Lumens: 1580-4740; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 24 in x 6.0 in x 3.0 in
+- RP-LIVC-G3-SQ-3FT-15W-40K-WC — Voltage: 120-277V; FlexWatt: 10W/15W/20W/30W; Lumens: 1580-4740; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 36 in x 6.0 in x 3.0 in
+- RP-LIVC-G3-SQ-4FT-15W-40K-WC — Voltage: 120-277V; FlexWatt: 10W/15W/30W/40W; Lumens: 1580-6320; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 48 in x 6.0 in x 3.0 in
+
+### Options
+
+### Endcap profiles
+
+### Lighting controls
+
+Simple Lighting Controls | Networked Lighting Controls — see the Lighting Controls page for more information or check out the product spec sheet on our website LED-LLC.com
+
+Footnotes:
+- * Connect up to 20 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC
+- See spec sheet on LED-LLC.com for DLC listing status
+
+## Wall + Ceiling Fixtures (RemPhos › Fixtures)
+
+Page: https://www.led-llc.com/wall-ceiling-fixtures.html · Catalog p. 42–43
+
+An ideal choice for sophisticated, refined spaces.
+
+Highlights:
+- ('Surface or pendant mount — 4 to 48 inches.', 3).
+- ('Standard finish – Brushed Nickel; Bronze and Brass also available.', 3).
+- ('IP65 / IK08 (RP-DOT Outdoor Tough Drum).', 3).
+- ('Simple Lighting Controls and Networked Lighting Controls.', 3).
+
+Features:
+- 10-year warranty
+- Sensor ready (0-10V dim to off)
+- 12V aux output
+- 130 LPW efficacy (Light engine)
+- 120° beam angle (DOT / DRD / SCD)
+- 160° beam angle (DAL)
+- 80+ CRI
+- -4°F to 140°F operating temp (DOT / DRD / SCD)
+- -4°F to 113°F operating temp (DAL)
+- L70 100,000 hrs rated life
+- IP65 (RP-DOT Outdoor Tough Drum)
+- IK08 (RP-DOT Outdoor Tough Drum)
+- Surface or pendant mount, 4 to 48 inches
+- Standard finish brushed nickel; bronze and brass also available
+- FlexWatt selectable wattage (6W/10W/16W/22W on DRD, DOT and DAL (factory default 22W); 6W/10W/12W/15W on SCD (factory default 15W))
+- FlexColor selectable CCT 2700K/3000K/3500K/4000K/5000K (Factory default 4000K)
+- Optional field installable emergency backup (-EM1 suffix; 90 min / 500 lm)
+- Simple Lighting Controls / Networked Lighting Controls ready (See the Lighting Controls page or the product spec sheet on LED-LLC.com; RC-REMOTE-IR23 remote for Simple Lighting Controls)
+- cETLus listed (Intertek)
+- FCC
+- DLC (See spec sheet on LED-LLC.com for DLC listing status)
+
+### Designer Drum (DRD)
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-DRD-14IN-22W-40K-WC-G3 — Voltage: 120-277V; FlexWatt: 6W/10W/16W/22W; Lumens: 750-2750; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 14.5 in x 3.5 in
+- RP-DRD-18IN-22W-40K-WC-G3 — Voltage: 120-277V; FlexWatt: 6W/10W/16W/22W; Lumens: 750-2750; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 18.0 in x 3.5 in
+
+### Outdoor Tough Drum (DOT)
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-DOT-14IN-22W-40K-WC-G3 — Voltage: 120-277V; FlexWatt: 6W/10W/16W/22W; Lumens: 750-2750; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 13.8 in x 4.0 in
+- Note: IP65 / IK08
+
+### Sconce (SCD)
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-SCD-11IN-15W-40K-WC-G3 — Voltage: 120-277V; FlexWatt: 6W/10W/12W/15W; Lumens: 745-1860; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 13.0 in x 3.8 in
+
+### Architectural Linen Drum (DAL)
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-DAL-18IN-22W-40K-WC-G3 — Voltage: 120-277V; FlexWatt: 6W/10W/16W/22W; Lumens: 750-2750; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 15.7 in x 5.3 in
+- RP-DAL-18IN-22W-40K-WC-G3-4S — Voltage: 120-277V; FlexWatt: 6W/10W/16W/22W; Lumens: 750-2750; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 16.9 in x 5.6 in
+
+### Accessories
+
+Columns: Part #, Description
+
+- RP-DAL-4S — Description: Optional spokes
+- RP-DAL-PM — Description: Long + short pendant mounting kit
+
+### Options
+
+### DAL mounting + finishes
+
+Surface or pendant mount, 4 to 48 inches. Standard finish – brushed nickel; bronze and brass also available.
+
+### Lighting controls
+
+Simple Lighting Controls | Networked Lighting Controls — see the Lighting Controls page for more information or check out the product spec sheet on our website LED-LLC.com
+
+Footnotes:
+- See spec sheet on LED-LLC.com for DLC listing status
+
+## Wall + Ceiling Retrofit Kits (RemPhos › Retrofit Kits)
+
+Page: https://www.led-llc.com/wall-ceiling-retrofit-kits.html · Catalog p. 44
+
+Catalog title: Wall + Ceiling Retrofit Kits (LEDSR, LEDCR)
+
+Keep the fixture. Upgrade the performance.
+
+Highlights:
+- ('Expanded coverage with fisheye optics.', 4).
+- ('Next generation LEDCR — more CCTs. More lumens per watt.', 4).
+- ('Simple Lighting Controls and Networked Lighting Controls.', 4).
+
+Features:
+- 10-year warranty
+- 120-277V
+- Sensor ready (0-10V dim to off)
+- 12V aux output
+- 160 LPW efficacy (light engine)
+- 120° beam angle
+- 80+ CRI
+- Operating temp -4°F to 140°F
+- L70 100,000hrs rated life
+- FlexWatt selectable wattage (LEDSR 6W/10W/12W/15W (15W default); LEDCR 6W/10W/16W/22W (22W default))
+- FlexColor selectable CCT (2700K/3000K/3500K/4000K/5000K, 4000K default)
+- Optional field installable emergency backup (ships separately) (-EMG / Emergency battery backup (90 min / 500 lm))
+- Remote control (RC-REMOTE-IR23 (for Simple Lighting Controls))
+- Simple Lighting Controls / Networked Lighting Controls options (See the Lighting Controls page or the product spec sheet on LED-LLC.com)
+- ETL listed (Intertek, cETLus)
+- FCC
+- DLC (See spec sheet on LED-LLC.com for DLC listing status)
+
+### LEDSR – Sconce Retrofit Kit
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-LEDSR-G3-4IN-15W-40K-WC — Voltage: 120-277V; FlexWatt: 6W/10W/12W/15W; Lumens: 930-2325; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 8.0 in x 4.0 in x 1.0 in
+
+### LEDCR – Circular Retrofit Kit
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-LEDCR-G3-9IN-22W-40K-WC — Voltage: 120-277V; FlexWatt: 6W/10W/16W/22W; Lumens: 930-3410; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 8.7 in x 1.4 in
+
+### Optional field installable emergency backup (ships separately)
+
+### Remote control
+
+### Lighting controls
+
+Simple Lighting Controls | Networked Lighting Controls — see the Lighting Controls page for more information or check out the product spec sheet on our website LED-LLC.com.
+
+Footnotes:
+- See spec sheet on LED-LLC.com for DLC listing status
+- Optional field installable emergency backup (-EMG, 90 min / 500 lm) ships separately
+- RC-REMOTE-IR23 remote control is for Simple Lighting Controls
+
+## Type C Kits + Linear Barkits (RemPhos › Retrofit Kits)
+
+Page: https://www.led-llc.com/type-c-kits-lbe.html · Catalog p. 46
+
+Catalog title: Type C T5 & T8 Kits + Linear Barkits (LBE) — External Driver (LBE)
+
+Traditional look of fluorescent tubes or higher efficiency of a barkit.
+
+Highlights:
+- ('Type C U-bend kits also available.', 6).
+- ('Simple Lighting Controls and Networked Lighting Controls.', 6).
+
+Features:
+- 10-year warranty
+- 120-277V (Add (-HV) when ordering 120-347V models)
+- Sensor ready (0-10V dim to off)
+- 12V aux output
+- 146 LPW efficacy (light engine)
+- 120° beam angle
+- 80+ CRI
+- Operating temp -4°F to 122°F
+- L70 100,000hrs rated life
+- Wattage options (12W (6/8/10/12), 25W (15/18/20/25), 45W (30/35/40/45), 80W (50/60/70/80))
+- Standard dimming 0-10V (10V)
+- Optional dimming (LVD (120-277V TRIAC), 1 STEP (single switch), 2 STEP (double switch))
+- Optional field installable emergency backup (See spec on LED-LLC.com for ordering information)
+- Simple Lighting Controls / Networked Lighting Controls options (See the Lighting Controls page or the product spec sheet on LED-LLC.com)
+- ETL listed (Intertek, cETLus)
+- FCC
+- DLC (See spec sheet on LED-LLC.com for DLC listing status)
+
+### Build Your Type C Kit | RP-T5C-G2-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[HV*] / RP-T8C-G2-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[HV*]
+
+Columns: Option group, Choice 1, Choice 2, Choice 3, Choice 4
+
+- Option group: Wattage; Choice 1: 12W (6/8/10/12); Choice 2: 25W (15/18/20/25); Choice 3: 45W (30/35/40/45); Choice 4: 80W (50/60/70/80)
+- Option group: Length; Choice 1: 2 ft; Choice 2: 3 ft; Choice 3: 4 ft
+- Option group: # of lamps; Choice 1: 1L (1 lamp); Choice 2: 2L (2 lamps); Choice 3: 3L (3 lamps); Choice 4: 4L (4 lamps)
+- Option group: Color (8+COLOR); Choice 1: 30 (3000K); Choice 2: 35 (3500K); Choice 3: 40 (4000K); Choice 4: 50 (5000K)
+- Option group: Standard dimming; Choice 1: 10V (0-10V dim)
+- Option group: Optional dimming; Choice 1: LVD (120-277V TRIAC); Choice 2: 1 STEP (single switch); Choice 3: 2 STEP (double switch)
+- Option group: HV*; Choice 1: -HV (add when ordering 120-347V models)
+- Note: Two part-number patterns share this option set: RP-T5C-G2-... (T5 kit) and RP-T8C-G2-... (T8 kit)
+- Note: Optional field installable emergency backup (see spec on LED-LLC.com for ordering information)
+- Note: * Add (-HV) when ordering 120-347V models
+
+### Build Your LBE | RP-LBE-G2-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[HV*]
+
+Columns: Option group, Choice 1, Choice 2, Choice 3, Choice 4, Choice 5
+
+- Option group: Wattage; Choice 1: 12W (6/8/10/12); Choice 2: 25W (15/18/20/25); Choice 3: 45W (30/35/40/45); Choice 4: 80W (50/60/70/80)
+- Option group: Length; Choice 1: 1 ft; Choice 2: 2 ft; Choice 3: 3 ft; Choice 4: 4 ft; Choice 5: 5 ft
+- Option group: # of lamps; Choice 1: 1L (1 lamp); Choice 2: 2L (2 lamps); Choice 3: 3L (3 lamps); Choice 4: 4L (4 lamps)
+- Option group: Color (8+COLOR); Choice 1: 30 (3000K); Choice 2: 35 (3500K); Choice 3: 40 (4000K); Choice 4: 50 (5000K)
+- Option group: Standard dimming; Choice 1: 10V (0-10V dim)
+- Option group: Optional dimming; Choice 1: LVD (120-277V TRIAC); Choice 2: 1 STEP (single switch); Choice 3: 2 STEP (double switch)
+- Option group: HV*; Choice 1: -HV (add when ordering 120-347V models)
+- Note: Optional field installable emergency backup (see spec on LED-LLC.com for ordering information)
+- Note: * Add (-HV) when ordering 120-347V models
+
+### Type C U-bend kits also available
+
+### Lighting controls
+
+Simple Lighting Controls | Networked Lighting Controls — see the Lighting Controls page for more information or check out the product spec sheet on our website LED-LLC.com.
+
+Footnotes:
+- See spec sheet on LED-LLC.com for DLC listing status
+- Type C U-bend kits also available: RP-U6-G2 and RP-U158-G2
+
+## TAA Type C Kits + Barkits (RemPhos › Retrofit Kits)
+
+Page: https://www.led-llc.com/taa-type-c-kits-lbe.html · Catalog p. 48
+
+Catalog title: TAA Type C T5 & T8 Kits + Linear Barkits (LBE) — External Driver (LBE)
+
+Trusted for federal projects.
+
+Highlights:
+- ('TAA — Meets the requirements of the United States Trade Agreements Act (TAA).', 6).
+- ('Simple Lighting Controls and Networked Lighting Controls.', 6).
+
+Features:
+- 10-year warranty
+- TAA compliant (Meets the requirements of the United States Trade Agreements Act (TAA))
+- 120/347V
+- Sensor ready (0-10V dim to off)
+- 12V aux output
+- 146 LPW efficacy (light engine)
+- 120° beam angle
+- 80+ CRI
+- Operating temp -4°F to 122°F
+- L70 100,000hrs rated life
+- Wattage options (12W (6-8-10-12), 25W (15-18-20-25), 45W (30-35-40-45), 80W (50-60-70-80))
+- Standard dimming 0-10V (10V)
+- Optional dimming (LVD (120-277V TRIAC), 1 STEP (single switch), 2 STEP (2 switch))
+- Optional field installable emergency backup (See spec on LED-LLC.com for ordering information)
+- Simple Lighting Controls / Networked Lighting Controls options (See the Lighting Controls page or the product spec sheet on LED-LLC.com)
+- ETL listed (Intertek, cETLus)
+- FCC
+- DLC (See spec sheet on LED-LLC.com for DLC listing status)
+
+### Build Your TAA Type C Kit | RP-T5C-G3-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[CONTROLS]-[EM#]-[TAA] / RP-T8C-G3-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[CONTROLS]-[EM#]-[TAA]
+
+Columns: Option group, Choice 1, Choice 2, Choice 3, Choice 4
+
+- Option group: Wattage; Choice 1: 12W (6-8-10-12); Choice 2: 25W (15-18-20-25); Choice 3: 45W (30-35-40-45); Choice 4: 80W (50-60-70-80)
+- Option group: Length; Choice 1: 2 ft; Choice 2: 3 ft; Choice 3: 4 ft
+- Option group: # of lamps; Choice 1: 1L (1 lamp); Choice 2: 2L (2 lamps); Choice 3: 3L (3 lamps); Choice 4: 4L (4 lamps)
+- Option group: Color (8+COLOR); Choice 1: 30 (3000K); Choice 2: 35 (3500K); Choice 3: 40 (4000K); Choice 4: 50 (5000K)
+- Option group: Standard dimming; Choice 1: 10V (0-10V dim)
+- Option group: Optional dimming; Choice 1: LVD (120-277V TRIAC); Choice 2: 1 STEP (single switch); Choice 3: 2 STEP (2 switch)
+- Note: Two part-number patterns share this option set: RP-T5C-G3-... (T5 kit) and RP-T8C-G3-... (T8 kit)
+- Note: Optional field installable emergency backup (see spec on LED-LLC.com for ordering information)
+- Note: Controls, EM#, TAA: ordering codes are on the product spec sheet at LED-LLC.com.
+
+### Build Your TAA LBE | RP-LBE-G3-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[CONTROLS]-[EM#]-[TAA]
+
+Columns: Option group, Choice 1, Choice 2, Choice 3, Choice 4
+
+- Option group: Wattage; Choice 1: 12W (6-8-10-12); Choice 2: 25W (15-18-20-25); Choice 3: 45W (30-35-40-45); Choice 4: 80W (50-60-70-80)
+- Option group: Length; Choice 1: 2 ft; Choice 2: 3 ft; Choice 3: 4 ft
+- Option group: # of lamps; Choice 1: 1L (1 lamp); Choice 2: 2L (2 lamps); Choice 3: 3L (3 lamps); Choice 4: 4L (4 lamps)
+- Option group: Color (8+COLOR); Choice 1: 30 (3000K); Choice 2: 35 (3500K); Choice 3: 40 (4000K); Choice 4: 50 (5000K)
+- Option group: Standard dimming; Choice 1: 10V (0-10V dim)
+- Option group: Optional dimming; Choice 1: LVD (120-277V TRIAC); Choice 2: 1 STEP (single switch); Choice 3: 2 STEP (2 switch)
+- Note: Optional field installable emergency backup (see spec on LED-LLC.com for ordering information)
+- Note: TAA LBE length options are 2, 3 and 4 ft only
+- Note: Controls, EM#, TAA: ordering codes are on the product spec sheet at LED-LLC.com.
+
+### TAA
+
+Meets the requirements of the United States Trade Agreements Act (TAA). Footer marks: TAA, ETL (Intertek), FCC, DLC (see spec sheet on LED-LLC.com for DLC listing status).
+
+### Lighting controls
+
+Simple Lighting Controls | Networked Lighting Controls — see the Lighting Controls page for more information or check out the product spec sheet on our website LED-LLC.com.
+
+Footnotes:
+- See spec sheet on LED-LLC.com for DLC listing status
+
+## Troffer Kits + Fixtures (RemPhos › Retrofit Kits)
+
+Page: https://www.led-llc.com/troffer-retrofit-kits-fixtures.html · Catalog p. 50–51
+
+Catalog title: Troffer Retrofit Kit + Fixture (TTV/TTF)
+
+Use as a retrofit kit or a fixture. One piece design — 2X faster install.
+
+Highlights:
+- ('Need air return, add -AIR to part number when ordering.', 6).
+- ('Simple Lighting Controls and Networked Lighting Controls.', 6).
+
+Features:
+- 10-year warranty
+- cETLus Listed (Intertek)
+- FCC
+- DLC (See spec sheet on LED-LLC.com for DLC listing status)
+- Sensor ready (0-10V dim to off)
+- 12V aux output
+- 130 LPW efficacy
+- 80+ CRI
+- 110° beam angle
+- Operating temp -4°F to 122°F
+- 6kA surge protection
+- L70 100,000hrs rated life
+- FlexWatt selectable wattage (4 wattage settings per model)
+- FlexColor selectable CCT (3500K/4000K/5000K; default 4000K)
+- One piece design — use as a retrofit kit or a fixture (2X faster install)
+- Optional internal emergency battery backup (-EMG suffix, 90 min / 500 lm)
+- Remote control (RC-REMOTE-IR23 (for simple lighting controls))
+- Air return option (Add -AIR to part number when ordering)
+- Simple lighting controls / networked lighting controls available (See the Lighting Controls page or the product spec sheet on LED-LLC.com)
+
+### Troffer Retrofit Kits & Fixtures
+
+Columns: Part #, Voltage, FlexWatt, Lumens, FlexColor, Dimensions
+
+- RP-TTV-G1-2X2-20L-840-FWFC-SR — Voltage: 120-277V; FlexWatt: 16W/20W/24W/28W; Lumens: 2000-3640; FlexColor: 3500K/4000K/5000K; Dimensions: 23.7 in x 23.7 in x 1.6 in
+- RP-TTV-G1-1X4-25L-840-FWFC-SR — Voltage: 120-277V; FlexWatt: 16W/20W/24W/28W; Lumens: 1968-3556; FlexColor: 3500K/4000K/5000K; Dimensions: 11.9 in x 47.8 in x 1.5 in
+- RP-TTV-G1-2X4-33L-840-FWFC-SR — Voltage: 120-277V; FlexWatt: 20W/26W/34W/40W; Lumens: 2540-5300; FlexColor: 3500K/4000K/5000K; Dimensions: 23.7 in x 47.8 in x 1.6 in
+- RP-TTF-G1-2X2-20L-840-FWFC-SR — Voltage: 120-277V; FlexWatt: 16W/20W/24W/28W; Lumens: 2000-3640; FlexColor: 3500K/4000K/5000K; Dimensions: 23.7 in x 23.7 in x 1.7 in
+- RP-TTF-G1-1X4-25L-840-FWFC-SR — Voltage: 120-277V; FlexWatt: 16W/20W/24W/28W; Lumens: 1968-3556; FlexColor: 3500K/4000K/5000K; Dimensions: 11.9 in x 47.8 in x 1.7 in
+- RP-TTF-G1-2X4-33L-840-FWFC-SR — Voltage: 120-277V; FlexWatt: 20W/26W/34W/40W; Lumens: 2540-5300; FlexColor: 3500K/4000K/5000K; Dimensions: 23.7 in x 47.8 in x 1.7 in
+- Note: RP-TTV = volumetric, RP-TTF = flat panel
+- Note: Need air return... add -AIR to part number when ordering
+- Note: Optional internal emergency battery backup: -EMG (90 min / 500 lm)
+- Note: Remote control: RC-REMOTE-IR23 (for simple lighting controls)
+
+### Accessories | Surface Mount Kit + Flange Kit
+
+Columns: Part #, Accessory, Size, Notes
+
+- RPT-LEDPANEL-SMK-2X2 — Accessory: Surface Mount Kit; Size: 2X2
+- RPT-LEDPANEL-SMK-1X4 — Accessory: Surface Mount Kit; Size: 1X4; Notes: * Not compatible w/ 1X4 TTF
+- RPT-LEDPANEL-SMK-2X4 — Accessory: Surface Mount Kit; Size: 2X4
+- RPT-LEDPANEL-FMK-2X2-A — Accessory: Flange Kit; Size: 2X2
+- RPT-LEDPANEL-FMK-1X4-A — Accessory: Flange Kit; Size: 1X4
+- RPT-LEDPANEL-FMK-2X4-A — Accessory: Flange Kit; Size: 2X4
+- Note: * Not compatible w/ 1X4 TTF
+
+### Options
+
+### Lighting controls
+
+Simple Lighting Controls | Networked Lighting Controls. See the Lighting Controls page for more information or check out the product spec sheet on our website LED-LLC.com.
+
+### Models
+
+RP-TTF (flat panel) and RP-TTV (volumetric), each in 2X2, 1X4 and 2X4 sizes. One piece design that can be used as a retrofit kit or a fixture — 2X faster install.
+
+Footnotes:
+- See spec sheet on LED-LLC.com for DLC listing status
+- See the Lighting Controls page for more information on simple / networked lighting controls or check out the product spec sheet on our website LED-LLC.com
+
+## TAA Troffer Kits + Fixtures (RemPhos › Retrofit Kits)
+
+Page: https://www.led-llc.com/taa-troffers.html · Catalog p. 52–53
+
+Catalog title: TAA Troffer Retrofit Kits (TRV/TRF) + Fixtures (TV/TF)
+
+Solutions that meet the requirements of the United States Trade Agreements Act.
+
+Highlights:
+- ('Meets the requirements of the United States Trade Agreements Act (TAA).', 6).
+- ('Simple or networked lighting controls available.', 6).
+
+Features:
+- 5-year warranty
+- TAA compliant (Meets the requirements of the United States Trade Agreements Act (TAA))
+- cULus Listed
+- FCC
+- DLC (See spec sheet on LED-LLC.com for DLC listing status)
+- Sensor ready (0-10V dim to off)
+- 12V control ready port
+- 130 LPW efficacy (** Troffer retrofit kits have an efficacy of 125 LPW)
+- 80+ CRI
+- 120° beam angle
+- Operating temp 0°F to 122°F
+- 1.5kA surge protection
+- L70 50,000hrs rated life
+- FlexWatt selectable wattage
+- FlexColor selectable CCT (Fixtures (TV/TF) and TRV kits: 3500K/4000K/5000K; TRF kits: 2700K/3000K/3500K/4000K/5000K; default 4000K)
+- Optional internal emergency battery backup (-EMG1 suffix, 90 min / 500 lm)
+- Remote control (RC-REMOTE-IR23 (for microwave occ sensors))
+- Compatible w/ surface mount kit and flange kit (Troffer fixtures (TV/TF))
+- Simple lighting controls / networked lighting controls available (See the Lighting Controls page or the product spec sheet on LED-LLC.com)
+
+### Troffer Fixtures
+
+Columns: Part #, UPC, Description, Lumens, FlexWatt, FlexColor, DLC code
+
+- RP-TV-G1-1X4-35W-40K-WC-TAA — UPC: 197810035671; Description: 1X4 volumetric fixture; Lumens: 2200/3300/4400; FlexWatt: 18W/26W/35W; FlexColor: 3500K/4000K/5000K; DLC code: S-1M5XK9
+- RP-TV-G1-2X2-35W-40K-WC-TAA — UPC: 197810035701; Description: 2X2 volumetric fixture; Lumens: 2200/3300/4400; FlexWatt: 18W/26W/35W; FlexColor: 3500K/4000K/5000K; DLC code: S-VGPK1B
+- RP-TV-G1-2X4-44W-40K-WC-TAA — UPC: 197810016304; Description: 2X4 volumetric fixture; Lumens: 3300/4400/5500; FlexWatt: 26W/35W/44W; FlexColor: 3500K/4000K/5000K; DLC code: S-Q67KQX
+- RP-TF-G1-1X4-40W-40K-WC-TAA — UPC: 844006009847; Description: 1X4 flat panel fixture; Lumens: 2600/3900/5200; FlexWatt: 20W/30W/40W; FlexColor: 3500K/4000K/5000K; DLC code: S-WQ239X
+- RP-TF-G1-2X2-40W-40K-WC-TAA — UPC: 844006009793; Description: 2X2 flat panel fixture; Lumens: 2600/3900/5200; FlexWatt: 20W/30W/40W; FlexColor: 3500K/4000K/5000K; DLC code: S-G5ZQY8
+- RP-TF-G1-2X4-50W-40K-WC-TAA — UPC: 844006009786; Description: 2X4 flat panel fixture; Lumens: 3900/5200/6500; FlexWatt: 30W/40W/50W; FlexColor: 3500K/4000K/5000K; DLC code: S-N155V0
+- Note: All fixtures run on 120-277V
+- Note: RP-TV = volumetric, RP-TF = flat panel
+- Note: Surface mount and flange kits are listed under More details
+
+### Troffer Retrofit Kits
+
+Columns: Part #, Voltage, FlexWatt, Lumens*, FlexColor, Dimensions
+
+- RP-TRV-G2-1X4-37W-40K-WC-TAA — Voltage: 120-277V; FlexWatt: 16W/30W/37W; Lumens*: 2100-5000; FlexColor: 3500K/4000K/5000K; Dimensions: 47.8 in x 11.9 in x 3.3 in
+- RP-TRV-G2-2X2-37W-40K-WC-TAA — Voltage: 120-277V; FlexWatt: 16W/30W/37W; Lumens*: 2100-5000; FlexColor: 3500K/4000K/5000K; Dimensions: 47.8 in x 23.9 in x 3.3 in
+- RP-TRV-G2-2X4-41W-40K-WC-TAA — Voltage: 120-277V; FlexWatt: 23W/30W/41W; Lumens*: 3100-5500; FlexColor: 3500K/4000K/5000K; Dimensions: 23.9 in x 23.9 in x 3.3 in
+- RP-TRF-G2-1X4-40W-40K-WC-TAA — Voltage: 120-277V; FlexWatt: 16W/24W/30W/35W/40W; Lumens*: 2160-5400; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 47.0 in x 11.4 in x 1.3 in
+- RP-TRF-G2-2X2-40W-40K-WC-TAA — Voltage: 120-277V; FlexWatt: 16W/24W/30W/35W/40W; Lumens*: 2160-5400; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 22.9 in x 22.9 in x 1.3 in
+- RP-TRF-G2-2X4-50W-40K-WC-TAA — Voltage: 120-277V; FlexWatt: 24W/30W/35W/40W/50W; Lumens*: 3240-6750; FlexColor: 2700K/3000K/3500K/4000K/5000K; Dimensions: 46.9 in x 22.9 in x 1.3 in
+- Note: * Lumens are calculated
+- Note: ** Troffer retrofit kits have an efficacy of 125 LPW
+- Note: RP-TRV = volumetric, RP-TRF = flat panel
+
+### Options
+
+### TAA
+
+Meets the requirements of the United States Trade Agreements Act (TAA).
+
+### Lighting controls
+
+Simple Lighting Controls | Networked Lighting Controls. See the Lighting Controls page for more information or check out the product spec sheet on our website LED-LLC.com.
+
+### Models
+
+Troffer fixtures: RP-TV (volumetric) and RP-TF (flat panel), G1, in 1X4, 2X2 and 2X4 sizes, compatible with the surface mount kit and flange kit (see the Troffer Retrofit Kits page). Troffer retrofit kits: RP-TRV (volumetric) and RP-TRF (flat panel), G2, in 1X4, 2X2 and 2X4 sizes.
+
+Footnotes:
+- * Calculated
+- ** Troffer retrofit kits have an efficacy of 125LPW
+- See spec sheet on LED-LLC.com for DLC listing status
+- See the Lighting Controls page for more information on simple / networked lighting controls or check out the product spec sheet on our website LED-LLC.com
+
+# Solera
+
+Off-grid lighting with no trenching, no wiring and no energy bill. Solar area, bollard, flood and display lights with poles to match. Set it and go: seasonal output optimization, professional-grade construction and remote monitoring with i-Series.
+
+Page: https://www.led-llc.com/solera.html
+
+- Municipal and government: Off-grid, on-budget. Safer streets, smaller budgets, cleaner communities. Quick install for urgent needs and underserved areas.
+- Facilities and operations: Set it and go. Seasonal output optimization, lower maintenance, remote monitoring with i-Series for fewer site visits.
+- Commercial real estate: On your schedule. Zero energy costs, maximum visibility, no utility connections and no disruptive construction.
+
+## Solera i-Series Overview (Solera › Solar Lighting)
+
+Page: https://www.led-llc.com/i-series.html · Catalog p. 56–58
+
+Catalog title: i-Series Modular Area + Decorative Lights
+
+Modular Solar Lighting System.
+
+Solera Solar Lighting sets a new standard in solar lighting performance. i-Series delivers a year-round, configurable solar-powered lighting system engineered to provide bright, reliable illumination wherever you need it.
+
+Highlights:
+- ('Meet i‑Series with Solera Connect.', 4).
+- ('Configure the intelligent modular system to fit your application.', 4).
+- ("It's not just lighting — it's visibility. Control. Data.", 4).
+- ('Recommended mounting height: Modular Area + Decorative Lights 20 ft – 30 ft.', 6).
+- ('See the Poles page for pole recommendations.', 6).
+
+Features:
+- 5-year warranty (Standard)
+- 10-year warranty (Optional; available at an additional cost)
+- Year-round lighting
+- LiFePO4 battery
+- Battery charge time 6 hrs
+- Battery life up to 30 hrs
+- Battery charge temp -4°F to 140°F
+- Operating temp -40°F to 140°F
+- Replaceable battery
+- 4G Connect software + app (Solera CONNECT)
+- Optional motion sensing
+- L70 100,000hrs rated life
+- Hybrid
+- X = Optics (The X in the part number: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5)
+
+### Modular Solar Area Light
+
+Columns: Part #, Features, Lumens, FlexColor, EPA, Configuration: Light Head, Configuration: Solar Panels, Configuration: Battery
+
+- SL-MA1-OG-10006X4DB1 — Lumens: Adjustable up to 10,000; FlexColor: 3000K/4000K/5000K; EPA: 8.0; Configuration: Light Head: Standard; Configuration: Solar Panels: (2) 55W; Configuration: Battery: 600Wh
+- SL-MA1-HYB-10006X4DB1 — Features: Hybrid; Lumens: Adjustable up to 10,000; FlexColor: 3000K/4000K/5000K; EPA: 8.0; Configuration: Light Head: Standard; Configuration: Solar Panels: (2) 55W; Configuration: Battery: 600Wh
+- SL-MA2-OG-15012X4DB1 — Lumens: Adjustable up to 15,000; FlexColor: 3000K/4000K/5000K; EPA: 14.0; Configuration: Light Head: High Output; Configuration: Solar Panels: (1) 200W; Configuration: Battery: 1200Wh
+- SL-MA2-HYB-15012X4DB1 — Features: Hybrid; Lumens: Adjustable up to 15,000; FlexColor: 3000K/4000K/5000K; EPA: 14.0; Configuration: Light Head: High Output; Configuration: Solar Panels: (1) 200W; Configuration: Battery: 1200Wh
+- Note: X in the part number = optics: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5.
+
+### Modular Solar Decorative Light
+
+Columns: Part #, Lumens, FlexColor, EPA, Configuration: Light Head, Configuration: Solar Panels, Configuration: Battery
+
+- SL-MD1-OG-03006X4-DB1 — Lumens: Adjustable up to 3,000; FlexColor: 3000K/4000K/5000K; EPA: 9.0; Configuration: Light Head: Standard; Configuration: Solar Panels: (2) 55W; Configuration: Battery: 600Wh
+- Note: X in the part number = optics: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5.
+
+### Modular Solar Lighting System — configuration key
+
+### It's not just lighting — it's visibility. Control. Data.
+
+Designed for intelligent control, each i-Series product integrates seamlessly to Solera CONNECT. Through 4G connectivity and intuitive web and mobile access, remotely program, manage and monitor performance — adjust operating schedules, customize lighting profiles, and respond to alerts across your entire portfolio — anytime, from anywhere.
+
+### Solera Connect app
+
+Monitor light head, solar panel + battery performance · Manage projects · View real-time system data · And more...
+
+### Recommended mounting height
+
+See the Poles page for pole recommendations.
+
+Footnotes:
+- * 10-year warranty available at an additional cost.
+- Hybrid = -HYB part numbers; X in the part number = optics: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5
+- Recommended mounting height, Modular Area + Decorative Lights: 20 ft – 30 ft. See the Poles page for pole recommendations.
+
+## Area Lights (Solera › Solar Lighting)
+
+Page: https://www.led-llc.com/solar-area-lights.html · Catalog p. 60
+
+All-in-one design with solar panel, light engine and battery built-in.
+
+Highlights:
+- ('All-in-one design with solar panel, light engine and battery built in (SL-AIO).', 4).
+- ('A sleek design, easy installation and great performance (SL-SAL).', 4).
+- ('Exclusive long-lasting battery.', 4).
+
+Features:
+- 5-year warranty
+- Battery charge time 7 hrs (SL-AIO; SL-SAL 6 hrs)
+- Battery life up to 50 hrs
+- Battery charge temp 32°F to 149°F (SL-AIO; SL-SAL -4°F to 140°F)
+- Fixture operating temp -4°F to 122°F (SL-AIO; SL-SAL -40°F to 140°F)
+- Replaceable battery
+- Type III optics
+- L70 50,000hrs rated life
+- Exclusive long-lasting battery
+- Turtle friendly
+- Operating modes: Timer / Motion sensing
+- Color: Gray
+- Color: Dark Bronze
+
+### Off-Grid Area Lights | All-In-One (SL-AIO)
+
+Columns: Part #, Compares To, Lumens, FlexColor, EPA, Color, Dimensions, Listings
+
+- SL-AIO-40L-FC-SF-GY — Compares To: 20W HID; Lumens: 4000; FlexColor: 3000K/4000K/5000K; EPA: 1.5; Color: Gray; Dimensions: 31.5 in x 10.6 in x 8.4 in; Listings: CE, FCC, RoHS
+- SL-AIO-40L-FC-SF-DB — Compares To: 20W HID; Lumens: 4000; FlexColor: 3000K/4000K/5000K; EPA: 1.5; Color: Dark Bronze; Dimensions: 31.5 in x 10.6 in x 8.4 in; Listings: CE, FCC, RoHS
+- SL-AIO-70L-FC-SF-GY — Compares To: 40W HID; Lumens: 7000; FlexColor: 3000K/4000K/5000K; EPA: 2.85; Color: Gray; Dimensions: 39.2 in x 14.6 in x 10.2 in; Listings: CE, FCC, RoHS
+- SL-AIO-70L-FC-SF-DB — Compares To: 40W HID; Lumens: 7000; FlexColor: 3000K/4000K/5000K; EPA: 2.85; Color: Dark Bronze; Dimensions: 39.2 in x 14.6 in x 10.2 in; Listings: CE, FCC, RoHS
+- SL-AIO-70L-FC2-SF-GY — Compares To: 40W HID; Lumens: 7000; FlexColor: 2200K/2700K/3000K; EPA: 2.85; Color: Gray; Dimensions: 39.2 in x 14.6 in x 10.2 in; Listings: CE, FCC, RoHS
+- SL-AIO-70L-FC2-SF-DB — Compares To: 40W HID; Lumens: 7000; FlexColor: 2200K/2700K/3000K; EPA: 2.85; Color: Dark Bronze; Dimensions: 39.2 in x 14.6 in x 10.2 in; Listings: CE, FCC, RoHS
+- Note: Operating modes: Timer | Motion sensing.
+
+### Off-Grid Area Lights | SL-SAL
+
+Columns: Part #, Features, Compares To, Wattage, Lumens, FlexColor, EPA, Dimensions*, Listings
+
+- SL-SAL-60L-FC-T3-BK-G3 — Features: Exclusive long-lasting battery; Compares To: 250W HID; Wattage: 30W; Lumens: 6000; FlexColor: 3000K/4000K/5000K; EPA: 4.5; Dimensions*: 36.0 in x 26.0 in x 32.0 in; Listings: Coming soon
+- SL-SAL-100L-FC-T3-BK-G3 — Features: Exclusive long-lasting battery; Compares To: 400W HID; Wattage: 50W; Lumens: 10,000; FlexColor: 3000K/4000K/5000K; EPA: 6.5; Dimensions*: 40.0 in x 39.0 in x 35.0 in; Listings: Coming soon
+- Note: * Dimensions based on popular configuration.
+- Note: Operating modes: Timer | Motion sensing.
+
+### Recommended mounting height
+
+Pole recommendations are on the Poles page.
+
+### Operating modes
+
+Timer or motion sensing (SL-AIO and SL-SAL)
+
+### Finish options (SL-AIO)
+
+Gray (-GY) and Dark Bronze (-DB)
+
+Footnotes:
+- * Based on popular configuration (SL-SAL dimensions).
+- See the Poles page for pole recommendations.
+
+## Bollard + Post Tops (Solera › Solar Lighting)
+
+Page: https://www.led-llc.com/solar-bollard-post-tops.html · Catalog p. 62–63
+
+Improve pedestrian safety. Three unique models, perfect for pathways, piers and more.
+
+Highlights:
+- ('Improve pedestrian safety.', 6).
+- ('Three unique models, perfect for pathways, piers and more.', 6).
+
+Features:
+- 3-year warranty
+- Battery charge time 6 hrs (SBL (Off-Grid Bollard Light))
+- Battery charge time 7 hrs (SPT (Off-Grid Post Top Light) and CPT (Off-Grid Pathway Light))
+- Battery life up to 12 hrs (SBL)
+- Battery life up to 30 hrs (SPT)
+- Battery life up to 36 hrs (CPT; * based on 2hr + sensor mode)
+- Battery charge temp 32°F to 149°F (SBL and SPT)
+- Battery charge temp -4°F to 122°F (CPT)
+- Fixture operating temp -4°F to 140°F (SBL)
+- Fixture operating temp -4°F to 149°F (SPT)
+- Fixture operating temp -4°F to 122°F (CPT)
+- Replaceable battery
+- 360° beam angle
+- L70 50,000hrs rated life
+- L70 100,000hrs rated life
+- Operating modes: Dusk to Dawn, Motion Sensing (SL-SBL-5L-FC-BK-G2 / -DB-G2)
+- Operating modes: Dusk to Dawn, Timer, Motion Sensing (SL-SPT-20W-30K-SF-G2 / -40K-SF-G2)
+- Operating modes: Constant Brightness, Timer, Motion Sensing (SL-CPT-30L-FC-BK-G2 / -DB-G2)
+- FlexColor selectable CCT 3000K/4000K/5000K/Amber (SL-SBL-5L-FC)
+- FlexColor selectable CCT 3000K/4000K/5000K (SL-CPT-30L-FC)
+- Finish: Black (BK) or Dark Bronze (DB)
+- Pole recommendations on the Poles page (SPT and CPT)
+
+### Off-Grid Bollard Light
+
+Columns: Part #, Compares To, Lumens, FlexColor, Dimensions, Listings
+
+- SL-SBL-5L-FC-BK-G2 — Compares To: 40W Halogen; Lumens: 500; FlexColor: 3000K/4000K/5000K/Amber; Dimensions: 10.0 in x 42.0 in; Listings: CE, FCC
+- SL-SBL-5L-FC-DB-G2 — Compares To: 40W Halogen; Lumens: 500; FlexColor: 3000K/4000K/5000K/Amber; Dimensions: 10.0 in x 42.0 in; Listings: CE, FCC
+- Note: Operating modes: Dusk to Dawn | Motion Sensing
+
+### Off-Grid Post Top Light
+
+Columns: Part #, Compares To, Lumens, CCT, Dimensions, EPA, Listings
+
+- SL-SPT-20W-30K-SF-G2 — Compares To: 150W HID; Lumens: 2000; CCT: 3000K; Dimensions: 16.0 in x 32.0 in; EPA: 2.2; Listings: CE, FCC
+- SL-SPT-20W-40K-SF-G2 — Compares To: 150W HID; Lumens: 2000; CCT: 4000K; Dimensions: 16.0 in x 32.0 in; EPA: 2.2; Listings: CE, FCC
+- Note: Operating modes: Dusk to Dawn | Timer | Motion Sensing
+- Note: See the Poles page for pole recommendations
+
+### Off-Grid Pathway Light
+
+Columns: Part #, Compares To, Lumens, FlexColor, Dimensions, EPA, Listings
+
+- SL-CPT-30L-FC-BK-G2 — Compares To: 150W; Lumens: 3000; FlexColor: 3000K/4000K/5000K; Dimensions: 18.5 in x 17.3 in; EPA: 1.0; Listings: RoHS, FCC
+- SL-CPT-30L-FC-DB-G2 — Compares To: 150W; Lumens: 3000; FlexColor: 3000K/4000K/5000K; Dimensions: 18.5 in x 17.3 in; EPA: 1.0; Listings: RoHS, FCC
+- Note: Operating modes: Constant Brightness | Timer | Motion Sensing
+- Note: See the Poles page for pole recommendations
+
+Footnotes:
+- * Based on 2hr + sensor mode (applies to the CPT battery life of up to 36 hrs)
+
+## Flood + Multifunctional (Solera › Solar Lighting)
+
+Page: https://www.led-llc.com/solar-flood-multifunctional.html · Catalog p. 64–65
+
+Catalog title: Flood + Multifunctional Lights
+
+Adjustable – light exactly where you need it. Public safety. Low maintenance.
+
+Highlights:
+- ('Adjustable – light exactly where you need it.', 3).
+- ('Public safety. Low maintenance.', 3).
+- ('Use light engine as a power bank with USB port.', 3).
+- ('16 ft cable connects panel and light engine.', 3).
+
+Features:
+- 3-year warranty
+- Battery charge time 8 hrs (Both models)
+- Battery life up to 50 hrs (SL-SFL-20W-40K-BK-G2 (Off-Grid Flood Light))
+- Battery life up to 24 hrs (SL-SMFL-10W-40K-BK-G1 (Off-Grid Multifunctional Flood Light))
+- Battery charge temp 32°F to 115°F (SL-SFL-20W-40K-BK-G2)
+- Battery charge temp 32°F to 140°F (SL-SMFL-10W-40K-BK-G1)
+- Operating temp -4°F to 140°F (Both models)
+- Replaceable battery (Both models)
+- 120° beam angle (SL-SFL-20W-40K-BK-G2)
+- 90° beam angle (SL-SMFL-10W-40K-BK-G1)
+- L70 50,000hrs rated life (Both models)
+- Adjustable height 16 in to 21 in (SL-SFL-20W-40K-BK-G2)
+- Operating modes: Constant Brightness, Timer (SL-SFL-20W-40K-BK-G2)
+- Operating modes: Constant Brightness, Timer, Motion Sensing (SL-SMFL-10W-40K-BK-G1)
+- Use light engine as a power bank w/ USB port (SL-SMFL-10W-40K-BK-G1)
+- 16 ft cable connects panel and light engine (SL-SMFL-10W-40K-BK-G1 (separate solar panel))
+- Garden stake accessory RP-SFL-MS-G1 (SL-SFL-20W-40K-BK-G2; * garden stake is an accessory and is sold separately)
+
+### Off-Grid Flood Light
+
+Columns: Part #, Compares To, Lumens, CCT, Dimensions, Adj Height, Listings
+
+- SL-SFL-20W-40K-BK-G2 — Compares To: 150W HID; Lumens: 2000; CCT: 4000K; Dimensions: 26.0 in x 11.0 in (panel w/ light); Adj Height: 16 in to 21 in; Listings: CE, FCC
+- Note: Accessories: RP-SFL-MS-G1* (Garden Stake); * garden stake is an accessory and is sold separately
+- Note: Operating modes: Constant Brightness | Timer
+
+### Off-Grid Multifunctional Flood Light
+
+Columns: Part #, Compares To, Lumens, CCT, Dimensions, Listings
+
+- SL-SMFL-10W-40K-BK-G1 — Compares To: 70W HID; Lumens: 1100; CCT: 4000K; Dimensions: 9.1 in x 6.5 in (light) / 13.6 in x 9.3 in (panel); Listings: CE, FCC
+- Note: Operating modes: Constant Brightness | Timer | Motion Sensing
+
+### Accessories
+
+Footnotes:
+- * Garden stake is an accessory and is sold separately (RP-SFL-MS-G1)
+
+## Display + Wall Pack (Solera › Solar Lighting)
+
+Page: https://www.led-llc.com/solar-display-wall-pack.html · Catalog p. 66–67
+
+Catalog title: Display + Wall Pack Lights
+
+All-in-one design. Built to withstand cold climates.
+
+Highlights:
+- ('All-in-one design', 4).
+- ('Built to withstand cold climates.', 4).
+- ('Surface mount bracket included.', 4).
+- ('Optional clamp mount bracket available.', 4).
+- ('Adjustable and detachable panel with a 6 ft cord.', 4).
+- ('Make it magnetic', 4).
+
+Features:
+- 3-year warranty
+- Battery charge time 8 hrs (SL-SDL-4FT-40K-BK-G2 (Off-Grid Display Light))
+- Battery charge time 7 hrs (SL-SWL-16L-FC-BK-G3 / -G3-M (Off-Grid FlexColor Wall Pack))
+- Battery life up to 24 hrs (SL-SDL-4FT-40K-BK-G2)
+- Battery life up to 25 hrs (SL-SWL-16L-FC-BK-G3 / -G3-M)
+- Battery charge temp 32°F to 113°F (SL-SDL-4FT-40K-BK-G2)
+- Battery charge temp -4°F to 140°F (SL-SWL-16L-FC-BK-G3 / -G3-M)
+- Operating temp -4°F to 140°F (SL-SDL-4FT-40K-BK-G2)
+- Operating temp -40°F to 140°F (SL-SWL-16L-FC-BK-G3 / -G3-M)
+- Replaceable battery (SL-SDL-4FT-40K-BK-G2 only)
+- 120° beam angle (Both models)
+- L70 50,000hrs rated life (Both models)
+- Operating modes: Constant Brightness, Timer (SL-SDL-4FT-40K-BK-G2)
+- Operating modes: Constant Brightness, Motion Sensing (SL-SWL-16L-FC-BK-G3 / -G3-M)
+- Surface mount bracket included (SL-SDL-4FT-40K-BK-G2)
+- Optional clamp mount bracket available (RP-SDL-BK-LB, 7 in clamp mount bracket (2 pk), for SL-SDL-4FT-40K-BK-G2)
+- All-in-one design (SL-SDL-4FT-40K-BK-G2: solar panel and light bar in one 4 ft housing)
+- Adjustable and detachable panel w/ a 6 ft cord (SL-SWL-16L-FC wall pack)
+- Magnetic mounting (SL-SWL-16L-FC-BK-G3-M)
+- FlexColor selectable CCT 3000K/4000K/5000K (SL-SWL-16L-FC wall pack)
+
+### Off-Grid Display Light
+
+Columns: Part #, Compares To, Lumens, CCT, Dimensions, Listings
+
+- SL-SDL-4FT-40K-BK-G2 — Compares To: 150W HID; Lumens: 2000; CCT: 4000K; Dimensions: 47.2 in x 4.3 in x 4.3 in; Listings: CE, FCC
+- Note: Accessories: RP-SDL-BK-LB (7 in clamp mount brkt (2 pk))
+- Note: Operating modes: Constant Brightness | Timer
+
+### Off-Grid FlexColor Wall Pack
+
+Columns: Part #, Compares To, Lumens, FlexColor, Dimensions, Listings
+
+- SL-SWL-16L-FC-BK-G3 — Compares To: 100W HID; Lumens: 1600; FlexColor: 3000K/4000K/5000K; Dimensions: 13.0 in x 12.0 in x 5.0 in; Listings: CE, FCC
+- SL-SWL-16L-FC-BK-G3-M — Compares To: 100W HID; Lumens: 1600; FlexColor: 3000K/4000K/5000K; Dimensions: 13.0 in x 12.0 in x 5.0 in; Listings: CE, FCC
+- Note: Operating modes: Constant Brightness | Motion Sensing
+
+### Accessories
+
+Footnotes:
+- Surface mount bracket is included with the display light; the clamp mount bracket RP-SDL-BK-LB is an optional accessory
+
+## Poles (Solera › Solar Lighting)
+
+Page: https://www.led-llc.com/poles.html · Catalog p. 68–69
+
+Catalog title: Pole Offering
+
+Round and square straight poles sized for Solera solar area lights.
+
+Anchor-base and direct-burial poles from 10 to 30 ft, rated by EPA at 80 to 120 mph, with the mounting tenon and finish built into the part number.
+
+### Round Straight | Anchor Base
+
+Columns: Part #, Mounting Ht, Max EPA (80 mph), Max EPA (90 mph), Max EPA (100 mph), Max EPA (120 mph), Shaft Diameter, Wall Thickness (ga), Anchor Bolt Dia, Bolt Circle, Product(s)
+
+- SL-RSP-8-3-11-AB-XX-YY — Mounting Ht: 8 ft; Max EPA (80 mph): 11.2; Max EPA (90 mph): 8.4; Max EPA (100 mph): 6.2; Max EPA (120 mph): 3.7; Shaft Diameter: 3.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-SPT, SL-CPT
+- SL-RSP-10-3-11-AB-XX-YY — Mounting Ht: 10 ft; Max EPA (80 mph): 9.0; Max EPA (90 mph): 6.7; Max EPA (100 mph): 5.0; Max EPA (120 mph): 3.0; Shaft Diameter: 3.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-SPT, SL-CPT
+- SL-RSP-12-3-11-AB-XX-YY — Mounting Ht: 12 ft; Max EPA (80 mph): 6.9; Max EPA (90 mph): 5.0; Max EPA (100 mph): 3.9; Max EPA (120 mph): 2.1; Shaft Diameter: 3.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-SPT, SL-CPT, SL-AIO-40L
+- SL-RSP-14-3-11-AB-XX-YY — Mounting Ht: 14 ft; Max EPA (80 mph): 5.5; Max EPA (90 mph): 3.9; Max EPA (100 mph): 2.9; Max EPA (120 mph): 1.4; Shaft Diameter: 3.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-AIO-40L, SL-AIO-70L
+- SL-RSP-14-4-11-AB-XX-YY — Mounting Ht: 14 ft; Max EPA (80 mph): 11.7; Max EPA (90 mph): 8.9; Max EPA (100 mph): 7.1; Max EPA (120 mph): 4.0; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-AIO-70L, SL-SAL-60L, SL-AIO-40L
+- SL-RSP-16-4-11-AB-XX-YY — Mounting Ht: 16 ft; Max EPA (80 mph): 9.0; Max EPA (90 mph): 6.8; Max EPA (100 mph): 5.3; Max EPA (120 mph): 2.9; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-AIO-40L, SL-AIO-70L
+- SL-RSP-18-4-11-AB-XX-YY — Mounting Ht: 18 ft; Max EPA (80 mph): 7.1; Max EPA (90 mph): 5.2; Max EPA (100 mph): 4.0; Max EPA (120 mph): 2.2; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-AIO-40L, SL-AIO-70L
+- SL-RSP-20-4-11-AB-XX-YY — Mounting Ht: 20 ft; Max EPA (80 mph): 5.6; Max EPA (90 mph): 4.1; Max EPA (100 mph): 3.1; Max EPA (120 mph): 1.7; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-AIO-70L
+- SL-RSP-25-5-11-AB-XX-YY — Mounting Ht: 25 ft; Max EPA (80 mph): 6.7; Max EPA (90 mph): 5.0; Max EPA (100 mph): 3.7; Max EPA (120 mph): 2.0; Shaft Diameter: 5.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in
+- SL-RSP-25-5-7-AB-XX-YY — Mounting Ht: 25 ft; Max EPA (80 mph): 12.0; Max EPA (90 mph): 9.2; Max EPA (100 mph): 7.5; Max EPA (120 mph): 4.2; Shaft Diameter: 5.0 in; Wall Thickness (ga): 7; Anchor Bolt Dia: 1.00 in; Bolt Circle: 10.0 in; Product(s): SL-AIO-70L, SL-SAL-60L
+- SL-RSP-30-5-11-AB-XX-YY — Mounting Ht: 30 ft; Max EPA (80 mph): 4.0; Max EPA (90 mph): 2.8; Max EPA (100 mph): 2.0; Max EPA (120 mph): N/A; Shaft Diameter: 5.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in
+- SL-RSP-30-5-7-AB-XX-YY — Mounting Ht: 30 ft; Max EPA (80 mph): 7.9; Max EPA (90 mph): 6.6; Max EPA (100 mph): 4.8; Max EPA (120 mph): 2.7; Shaft Diameter: 5.0 in; Wall Thickness (ga): 7; Anchor Bolt Dia: 1.00 in; Bolt Circle: 10.0 in
+- Note: Max EPA is the largest effective projected area, in square feet, the pole carries at that wind speed.
+
+### Square Straight | Anchor Base
+
+Columns: Part #, Mounting Ht, Max EPA (80 mph), Max EPA (90 mph), Max EPA (100 mph), Max EPA (120 mph), Shaft Diameter, Wall Thickness (ga), Anchor Bolt Dia, Bolt Circle, Product(s)
+
+- SL-RPSQ-10-4-11-AB-XX-YY — Mounting Ht: 10 ft; Max EPA (80 mph): 25.7; Max EPA (90 mph): 20.8; Max EPA (100 mph): 16.8; Max EPA (120 mph): 11.8; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-SPT, SL-CPT
+- SL-RPSQ-12-4-11-AB-XX-YY — Mounting Ht: 12 ft; Max EPA (80 mph): 20.5; Max EPA (90 mph): 16.6; Max EPA (100 mph): 13.4; Max EPA (120 mph): 9.4; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-SPT, SL-CPT, SL-AIO-40L
+- SL-RPSQ-14-4-11-AB-XX-YY — Mounting Ht: 14 ft; Max EPA (80 mph): 16.6; Max EPA (90 mph): 13.5; Max EPA (100 mph): 10.9; Max EPA (120 mph): 7.7; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-AIO-40L, SL-AIO-70L
+- SL-RPSQ-15-4-11-AB-XX-YY — Mounting Ht: 15 ft; Max EPA (80 mph): 15.1; Max EPA (90 mph): 12.3; Max EPA (100 mph): 9.8; Max EPA (120 mph): 7.0; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-SPT, SL-AIO-40L, SL-AIO-70L, SL-SAL-60L
+- SL-RPSQ-16-4-11-AB-XX-YY — Mounting Ht: 16 ft; Max EPA (80 mph): 13.6; Max EPA (90 mph): 11.0; Max EPA (100 mph): 8.9; Max EPA (120 mph): 6.3; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-AIO-40L, SL-AIO-70L
+- SL-RPSQ-18-4-11-AB-XX-YY — Mounting Ht: 18 ft; Max EPA (80 mph): 11.1; Max EPA (90 mph): 9.0; Max EPA (100 mph): 7.2; Max EPA (120 mph): 5.1; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-AIO-40L, SL-AIO-70L
+- SL-RPSQ-20-4-11-AB-XX-YY — Mounting Ht: 20 ft; Max EPA (80 mph): 9.0; Max EPA (90 mph): 7.3; Max EPA (100 mph): 5.9; Max EPA (120 mph): 4.2; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-AIO-70L
+- SL-RPSQ-20-4-7-AB-XX-YY — Mounting Ht: 20 ft; Max EPA (80 mph): 15.9; Max EPA (90 mph): 12.5; Max EPA (100 mph): 10.1; Max EPA (120 mph): 7.1; Shaft Diameter: 4.0 in; Wall Thickness (ga): 7; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-AIO-70L, SL-SAL-60L
+- SL-RPSQ-20-5-11-AB-XX-YY — Mounting Ht: 20 ft; Max EPA (80 mph): 16.0; Max EPA (90 mph): 12.9; Max EPA (100 mph): 10.4; Max EPA (120 mph): 7.4; Shaft Diameter: 5.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 11.0 in; Product(s): SL-AIO-70L, SL-SAL-100L
+- SL-RPSQ-20-5-7-AB-XX-YY — Mounting Ht: 20 ft; Max EPA (80 mph): 26.4; Max EPA (90 mph): 21.3; Max EPA (100 mph): 17.2; Max EPA (120 mph): 12.1; Shaft Diameter: 5.0 in; Wall Thickness (ga): 7; Anchor Bolt Dia: 1.00 in; Bolt Circle: 11.0 in; Product(s): SL-MA1/SL-MA2, SL-MD1
+- SL-RPSQ-25-4-11-AB-XX-YY — Mounting Ht: 25 ft; Max EPA (80 mph): 4.1; Max EPA (90 mph): 3.3; Max EPA (100 mph): 2.6; Max EPA (120 mph): 1.8; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in
+- SL-RPSQ-25-4-7-AB-XX-YY — Mounting Ht: 25 ft; Max EPA (80 mph): 9.7; Max EPA (90 mph): 7.8; Max EPA (100 mph): 6.3; Max EPA (120 mph): 4.5; Shaft Diameter: 4.0 in; Wall Thickness (ga): 7; Anchor Bolt Dia: 0.75 in; Bolt Circle: 8.5 in; Product(s): SL-AIO-70L
+- SL-RPSQ-25-5-11-AB-XX-YY — Mounting Ht: 25 ft; Max EPA (80 mph): 8.5; Max EPA (90 mph): 6.9; Max EPA (100 mph): 5.6; Max EPA (120 mph): 4.0; Shaft Diameter: 5.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 11.0 in; Product(s): SL-AIO-70L
+- SL-RPSQ-25-5-7-AB-XX-YY — Mounting Ht: 25 ft; Max EPA (80 mph): 17.5; Max EPA (90 mph): 14.2; Max EPA (100 mph): 11.4; Max EPA (120 mph): 8.1; Shaft Diameter: 5.0 in; Wall Thickness (ga): 7; Anchor Bolt Dia: 1.00 in; Bolt Circle: 11.0 in; Product(s): SL-SAL-60L, SL-SAL-100L
+- SL-RPSQ-25-6-7-AB-XX-YY — Mounting Ht: 25 ft; Max EPA (80 mph): 27.5; Max EPA (90 mph): 22.3; Max EPA (100 mph): 18.0; Max EPA (120 mph): 12.6; Shaft Diameter: 6.0 in; Wall Thickness (ga): 7; Anchor Bolt Dia: 1.00 in; Bolt Circle: 11.5 in; Product(s): SL-MA1/SL-MA2, SL-MD1
+- SL-RPSQ-30-5-11-AB-XX-YY — Mounting Ht: 30 ft; Max EPA (80 mph): 4.2; Max EPA (90 mph): 3.4; Max EPA (100 mph): 2.7; Max EPA (120 mph): 1.9; Shaft Diameter: 5.0 in; Wall Thickness (ga): 11; Anchor Bolt Dia: 0.75 in; Bolt Circle: 11.0 in
+- SL-RPSQ-30-5-7-AB-XX-YY — Mounting Ht: 30 ft; Max EPA (80 mph): 10.6; Max EPA (90 mph): 8.6; Max EPA (100 mph): 6.9; Max EPA (120 mph): 4.9; Shaft Diameter: 5.0 in; Wall Thickness (ga): 7; Anchor Bolt Dia: 1.00 in; Bolt Circle: 11.0 in
+- SL-RPSQ-30-6-7-AB-XX-YY — Mounting Ht: 30 ft; Max EPA (80 mph): 17.9; Max EPA (90 mph): 14.5; Max EPA (100 mph): 11.7; Max EPA (120 mph): 8.3; Shaft Diameter: 6.0 in; Wall Thickness (ga): 7; Anchor Bolt Dia: 1.00 in; Bolt Circle: 11.5 in; Product(s): SL-SAL-100L, SL-MA1/SL-MA2, SL-MD1
+- Note: Max EPA is the largest effective projected area, in square feet, the pole carries at that wind speed.
+
+### Round Straight | Direct Burial
+
+Columns: Part #, Mounting Ht, Total Ht, Max EPA (80 mph), Max EPA (90 mph), Max EPA (100 mph), Max EPA (120 mph), Shaft Diameter, Wall Thickness (ga), Product(s)
+
+- SL-RSP-8-3-11-EMB-XX-YY — Mounting Ht: 8 ft; Total Ht: 11 ft; Max EPA (80 mph): 11.2; Max EPA (90 mph): 8.4; Max EPA (100 mph): 6.2; Max EPA (120 mph): 3.7; Shaft Diameter: 3.0 in; Wall Thickness (ga): 11; Product(s): SL-SPT, SL-CPT
+- SL-RSP-10-4-11-EMB-XX-YY — Mounting Ht: 10 ft; Total Ht: 13 ft; Max EPA (80 mph): 9.0; Max EPA (90 mph): 6.7; Max EPA (100 mph): 5.0; Max EPA (120 mph): 3.0; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Product(s): SL-SPT, SL-CPT
+- SL-RSP-12-4-11-EMB-XX-YY — Mounting Ht: 12 ft; Total Ht: 15 ft; Max EPA (80 mph): 6.9; Max EPA (90 mph): 5.0; Max EPA (100 mph): 3.9; Max EPA (120 mph): 2.1; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Product(s): SL-SPT, SL-CPT, SL-AIO-40L
+- SL-RSP-14-4-11-EMB-XX-YY — Mounting Ht: 14 ft; Total Ht: 18 ft; Max EPA (80 mph): 11.7; Max EPA (90 mph): 8.9; Max EPA (100 mph): 7.1; Max EPA (120 mph): 4.0; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Product(s): SL-AIO-40L, SL-AIO-70L, SL-SAL-60L
+- SL-RSP-16-4-11-EMB-XX-YY — Mounting Ht: 16 ft; Total Ht: 20 ft; Max EPA (80 mph): 9.0; Max EPA (90 mph): 6.8; Max EPA (100 mph): 5.3; Max EPA (120 mph): 2.9; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Product(s): SL-AIO-40L
+- SL-RSP-18-5-11-EMB-XX-YY — Mounting Ht: 18 ft; Total Ht: 22 ft; Max EPA (80 mph): 7.1; Max EPA (90 mph): 5.2; Max EPA (100 mph): 4.0; Max EPA (120 mph): 2.2; Shaft Diameter: 5.0 in; Wall Thickness (ga): 11; Product(s): SL-AIO-40L
+- SL-RSP-20-5-7-EMB-XX-YY — Mounting Ht: 20 ft; Total Ht: 24 ft; Max EPA (80 mph): 16.4; Max EPA (90 mph): 12.6; Max EPA (100 mph): 10.0; Max EPA (120 mph): 6.6; Shaft Diameter: 5.0 in; Wall Thickness (ga): 7; Product(s): SL-AIO-70L, SL-SAL-60L, SL-SAL-100L
+- SL-RSP-20-5-11-EMB-XX-YY — Mounting Ht: 20 ft; Total Ht: 24 ft; Max EPA (80 mph): 9.0; Max EPA (90 mph): 7.3; Max EPA (100 mph): 5.9; Max EPA (120 mph): 4.2; Shaft Diameter: 5.0 in; Wall Thickness (ga): 11; Product(s): SL-AIO-70L
+- SL-RSP-25-5-11-EMB-XX-YY — Mounting Ht: 25 ft; Total Ht: 30 ft; Max EPA (80 mph): 6.7; Max EPA (90 mph): 5.0; Max EPA (100 mph): 3.7; Max EPA (120 mph): 2.0; Shaft Diameter: 5.0 in; Wall Thickness (ga): 11
+- SL-RSP-25-5-7-EMB-XX-YY — Mounting Ht: 25 ft; Total Ht: 30 ft; Max EPA (80 mph): 12.0; Max EPA (90 mph): 9.2; Max EPA (100 mph): 7.5; Max EPA (120 mph): 4.2; Shaft Diameter: 5.0 in; Wall Thickness (ga): 7; Product(s): SL-AIO-70L, SL-SAL-60L
+- Note: Max EPA is the largest effective projected area, in square feet, the pole carries at that wind speed.
+- Note: Direct-burial part numbers use the EMB suffix in place of AB; Total Ht is the pole length including the embedded section
+
+### Square Straight | Direct Burial
+
+Columns: Part #, Mounting Ht, Total Ht, Max EPA (80 mph), Max EPA (90 mph), Max EPA (100 mph), Max EPA (120 mph), Shaft Diameter, Wall Thickness (ga), Product(s)
+
+- SL-RPSQ-10-4-11-EMB-XX-YY — Mounting Ht: 10 ft; Total Ht: 13 ft; Max EPA (80 mph): 25.7; Max EPA (90 mph): 20.8; Max EPA (100 mph): 16.8; Max EPA (120 mph): 11.8; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Product(s): SL-SPT, SL-CPT
+- SL-RPSQ-12-4-11-EMB-XX-YY — Mounting Ht: 12 ft; Total Ht: 15 ft; Max EPA (80 mph): 20.5; Max EPA (90 mph): 16.6; Max EPA (100 mph): 13.4; Max EPA (120 mph): 9.4; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Product(s): SL-SPT, SL-CPT, SL-AIO-40L
+- SL-RPSQ-14-4-11-EMB-XX-YY — Mounting Ht: 14 ft; Total Ht: 18 ft; Max EPA (80 mph): 16.6; Max EPA (90 mph): 13.5; Max EPA (100 mph): 10.9; Max EPA (120 mph): 7.7; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Product(s): SL-AIO-40L, SL-AIO-70L
+- SL-RPSQ-15-4-11-EMB-XX-YY — Mounting Ht: 15 ft; Total Ht: 19 ft; Max EPA (80 mph): 15.1; Max EPA (90 mph): 12.3; Max EPA (100 mph): 9.8; Max EPA (120 mph): 7.0; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Product(s): SL-SPT, SL-AIO-40L, SL-AIO-70L, SL-SAL-60L
+- SL-RPSQ-16-4-11-EMB-XX-YY — Mounting Ht: 16 ft; Total Ht: 20 ft; Max EPA (80 mph): 13.6; Max EPA (90 mph): 11.0; Max EPA (100 mph): 8.9; Max EPA (120 mph): 6.3; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Product(s): SL-AIO-40L, SL-AIO-70L
+- SL-RPSQ-18-4-11-EMB-XX-YY — Mounting Ht: 18 ft; Total Ht: 22 ft; Max EPA (80 mph): 11.1; Max EPA (90 mph): 9.0; Max EPA (100 mph): 7.2; Max EPA (120 mph): 5.1; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Product(s): SL-AIO-40L, SL-AIO-70L
+- SL-RPSQ-20-4-11-EMB-XX-YY — Mounting Ht: 20 ft; Total Ht: 24 ft; Max EPA (80 mph): 9.0; Max EPA (90 mph): 7.3; Max EPA (100 mph): 5.9; Max EPA (120 mph): 4.2; Shaft Diameter: 4.0 in; Wall Thickness (ga): 11; Product(s): SL-AIO-70L
+- SL-RPSQ-20-4-7-EMB-XX-YY — Mounting Ht: 20 ft; Total Ht: 24 ft; Max EPA (80 mph): 15.9; Max EPA (90 mph): 12.5; Max EPA (100 mph): 10.1; Max EPA (120 mph): 7.1; Shaft Diameter: 4.0 in; Wall Thickness (ga): 7; Product(s): SL-AIO-70L, SL-SAL-60L
+- SL-RPSQ-20-5-11-EMB-XX-YY — Mounting Ht: 20 ft; Total Ht: 24 ft; Max EPA (80 mph): 16.0; Max EPA (90 mph): 12.9; Max EPA (100 mph): 10.4; Max EPA (120 mph): 7.4; Shaft Diameter: 5.0 in; Wall Thickness (ga): 11; Product(s): SL-AIO-70L, SL-SAL-100L
+- SL-RPSQ-20-5-7-EMB-XX-YY — Mounting Ht: 20 ft; Total Ht: 24 ft; Max EPA (80 mph): 26.4; Max EPA (90 mph): 21.3; Max EPA (100 mph): 17.2; Max EPA (120 mph): 12.1; Shaft Diameter: 5.0 in; Wall Thickness (ga): 7; Product(s): SL-MA1/SL-MA2, SL-MD1
+- SL-RPSQ-25-5-11-EMB-XX-YY — Mounting Ht: 25 ft; Total Ht: 30 ft; Max EPA (80 mph): 8.5; Max EPA (90 mph): 6.9; Max EPA (100 mph): 5.6; Max EPA (120 mph): 4.0; Shaft Diameter: 5.0 in; Wall Thickness (ga): 11; Product(s): SL-AIO-70L
+- SL-RPSQ-25-5-7-EMB-XX-YY — Mounting Ht: 25 ft; Total Ht: 30 ft; Max EPA (80 mph): 17.5; Max EPA (90 mph): 14.2; Max EPA (100 mph): 11.4; Max EPA (120 mph): 8.1; Shaft Diameter: 5.0 in; Wall Thickness (ga): 7; Product(s): SL-AIO-70L, SL-SAL-60L, SL-SAL-100L
+- SL-RPSQ-25-6-7-EMB-XX-YY — Mounting Ht: 25 ft; Total Ht: 30 ft; Max EPA (80 mph): 27.5; Max EPA (90 mph): 22.3; Max EPA (100 mph): 18.0; Max EPA (120 mph): 12.6; Shaft Diameter: 6.0 in; Wall Thickness (ga): 7; Product(s): SL-MA1/SL-MA2, SL-MD1
+- SL-RPSQ-30-5-7-EMB-XX-YY — Mounting Ht: 30 ft; Total Ht: 35 ft; Max EPA (80 mph): 10.6; Max EPA (90 mph): 8.6; Max EPA (100 mph): 6.9; Max EPA (120 mph): 4.9; Shaft Diameter: 5.0 in; Wall Thickness (ga): 7
+- SL-RPSQ-30-6-7-EMB-XX-YY — Mounting Ht: 30 ft; Total Ht: 35 ft; Max EPA (80 mph): 17.9; Max EPA (90 mph): 11.7; Max EPA (100 mph): 8.3; Max EPA (120 mph): 8.3; Shaft Diameter: 6.0 in; Wall Thickness (ga): 7; Product(s): SL-SAL-100L, SL-MA1/SL-MA2, SL-MD1
+- Note: Max EPA is the largest effective projected area, in square feet, the pole carries at that wind speed.
+
+### How to read a pole part number
+
+SL-RSP = round straight pole, SL-RPSQ = square straight pole; the following segments are mounting height in feet, shaft diameter in inches and wall thickness gauge (11 or 7); AB = anchor base, EMB = direct burial (embedded); XX = mounting option (T2 / T2.5 / T3 tenon); YY = finish color (BK / DB / GR). Example: SL-RSP-20-4-11-AB-T2-DB.
+
+Footnotes:
+- Anchor base poles: XX = mounting option, T2 = 2 3/8 in tenon, T2.5 = 2 7/8 in tenon, T3 = 3 in tenon
+- Direct burial poles: XX = mounting option, T2 = 2 3/8 in tenon, T2.5 = 2 7/8 in tenon (no T3 option for direct-burial poles)
+- YY = finish color: BK = Black, DB = Dark Bronze, GR = Gray
+- Max EPA headings (80), (90), (100) and (120) are wind speeds in mph

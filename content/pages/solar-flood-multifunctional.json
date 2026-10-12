@@ -1,0 +1,125 @@
+{
+  "title": "Flood + Multifunctional Lights",
+  "subtitle": "",
+  "headline": "Adjustable – light exactly where you need it... Public safety. Low maintenance...",
+  "intro": "",
+  "callouts": [
+    "Adjustable – light exactly where you need it...",
+    "Public safety. Low maintenance...",
+    "Use light engine as a power bank w/ USB port",
+    "16 ft cable connects panel and light engine"
+  ],
+  "features": [
+    {
+      "label": "3-year warranty"
+    },
+    {
+      "label": "Battery charge time 8 hrs",
+      "note": "both models"
+    },
+    {
+      "label": "Battery life up to 50 hrs",
+      "note": "SL-SFL-20W-40K-BK-G2 (Off-Grid Flood Light)"
+    },
+    {
+      "label": "Battery life up to 24 hrs",
+      "note": "SL-SMFL-10W-40K-BK-G1 (Off-Grid Multifunctional Flood Light)"
+    },
+    {
+      "label": "Battery charge temp 32°F to 115°F",
+      "note": "SL-SFL-20W-40K-BK-G2"
+    },
+    {
+      "label": "Battery charge temp 32°F to 140°F",
+      "note": "SL-SMFL-10W-40K-BK-G1"
+    },
+    {
+      "label": "Operating temp -4°F to 140°F",
+      "note": "both models"
+    },
+    {
+      "label": "Replaceable battery",
+      "note": "both models"
+    },
+    {
+      "label": "120° beam angle",
+      "note": "SL-SFL-20W-40K-BK-G2"
+    },
+    {
+      "label": "90° beam angle",
+      "note": "SL-SMFL-10W-40K-BK-G1"
+    },
+    {
+      "label": "L70 50,000hrs rated life",
+      "note": "both models"
+    },
+    {
+      "label": "Adjustable height 16 in to 21 in",
+      "note": "SL-SFL-20W-40K-BK-G2 (Adj Height column)"
+    },
+    {
+      "label": "Operating modes: Constant Brightness, Timer",
+      "note": "SL-SFL-20W-40K-BK-G2"
+    },
+    {
+      "label": "Operating modes: Constant Brightness, Timer, Motion Sensing",
+      "note": "SL-SMFL-10W-40K-BK-G1"
+    },
+    {
+      "label": "Use light engine as a power bank w/ USB port",
+      "note": "SL-SMFL-10W-40K-BK-G1"
+    },
+    {
+      "label": "16 ft cable connects panel and light engine",
+      "note": "SL-SMFL-10W-40K-BK-G1 (separate solar panel)"
+    },
+    {
+      "label": "Garden stake accessory RP-SFL-MS-G1",
+      "note": "SL-SFL-20W-40K-BK-G2; * garden stake is an accessory and is sold separately"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Off-Grid Flood Light",
+      "columns": [
+        "Part #",
+        "Compares To",
+        "Lumens",
+        "CCT",
+        "Dimensions",
+        "Adj Height",
+        "Listings"
+      ],
+      "rows": [
+        "SL-SFL-20W-40K-BK-G2 | 150W HID | 2000 | 4000K | 26.0 in x 11.0 in (panel w/ light) | 16 in to 21 in | CE, FCC"
+      ],
+      "notes": [
+        "Accessories: RP-SFL-MS-G1* (Garden Stake); * garden stake is an accessory and is sold separately",
+        "Operating modes: Constant Brightness | Timer",
+        "Dimensions are printed on two lines: '26.0 IN x 11.0 IN' / '(PANEL w/ LIGHT)'"
+      ]
+    },
+    {
+      "title": "Off-Grid Multifunctional Flood Light",
+      "columns": [
+        "Part #",
+        "Compares To",
+        "Lumens",
+        "CCT",
+        "Dimensions",
+        "Listings"
+      ],
+      "rows": [
+        "SL-SMFL-10W-40K-BK-G1 | 70W HID | 1100 | 4000K | 9.1 in x 6.5 in (light) / 13.6 in x 9.3 in (panel) | CE, FCC"
+      ],
+      "notes": [
+        "Operating modes: Constant Brightness | Timer | Motion Sensing"
+      ]
+    }
+  ],
+  "footnotes": [
+    "* Garden stake is an accessory and is sold separately (RP-SFL-MS-G1)",
+    "Headline dash: the catalog prints 'ADJUSTABLE – LIGHT EXACTLY WHERE YOU NEED IT...' with an en dash",
+    "Page footer: SOLERA SOLAR / OFF-GRID"
+  ]
+}

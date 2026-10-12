@@ -1,0 +1,160 @@
+{
+  "title": "Bollard + Post Top",
+  "subtitle": "",
+  "headline": "Replaces up to 1000W HID.",
+  "intro": "Keep the look and feel of your existing fixture, while saving energy and maintenance costs. Several models feature FlexWatt and FlexColor allowing for substantial sku reduction and in-field adjustability.",
+  "callouts": [
+    "LED-8000 — multiple voltage options & longer neck for a better fit",
+    "Smaller because size does matter",
+    "Frosted lens",
+    "Available in 2200K, 4000K & 5000K"
+  ],
+  "features": [
+    {
+      "label": "5-year warranty"
+    },
+    {
+      "label": "UL Type B ballast bypass"
+    },
+    {
+      "label": "Active cooling",
+      "note": "page 3 corn lamps; excludes 8037-39 models (not shown for the page 4 LED-801x/802x/806x lamps)"
+    },
+    {
+      "label": "80+ CRI"
+    },
+    {
+      "label": "Enclosed fixtures"
+    },
+    {
+      "label": "Operating temp -40°F to 113°F",
+      "note": "8029 / 8024 / 8027 / 8028 on page 3; all page 4 models (LED-8017 to LED-8021, LED-8060 to LED-8065)"
+    },
+    {
+      "label": "Operating temp -40°F to 122°F",
+      "note": "8037 / 8038 / 8039 / 8000 / 8075"
+    },
+    {
+      "label": "Damp location environment",
+      "note": "shown on the page 3 (corn lamp) icon strip"
+    },
+    {
+      "label": "L70 50,000hrs rated life"
+    },
+    {
+      "label": "Frosted lens",
+      "note": "801X and 802X models (LED-8017E345-G3 to LED-8021M345-G3)"
+    },
+    {
+      "label": "HV = 277-480V including 347V",
+      "note": "feature glyph key (-HV part numbers)"
+    },
+    {
+      "label": "MV = 208-347V",
+      "note": "feature glyph key (-MV part number)"
+    },
+    {
+      "label": "DLC",
+      "note": "for listing status go to LED-LLC.com"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Bollard + Post Top | Ballast Bypass | Type B | FlexWatt + FlexColor",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "Replaces",
+        "Wattage",
+        "Lumens",
+        "CCT",
+        "Base",
+        "Features",
+        "Dimensions",
+        "Listings"
+      ],
+      "rows": [
+        "LED-8037E345-A | 120-277V | 50W | 11W | 1550/**1610**/1650 | FlexColor 3000K/**4000K**/5000K | E26 |  | 2.6 in x 5.3 in | cULus Listed, cULus Classified",
+        "LED-8038E345-A | 120-277V | 70W | 14W | 1850/**1950**/1990 | FlexColor 3000K/**4000K**/5000K | E26 |  | 2.6 in x 5.3 in | cULus Listed, cULus Classified",
+        "LED-8038E345C-A | 220-347V | 70W | 14W | 1850/**1950**/1990 | FlexColor 3000K/**4000K**/5000K | E26 |  | 2.6 in x 5.3 in | cULus Listed, cULus Classified",
+        "LED-8039E345D-A | 120-277V | 100W | 18W | 2450/**2560**/2610 | FlexColor 3000K/**4000K**/5000K | E26 |  | 2.6 in x 6.3 in | cULus Listed, cULus Classified",
+        "LED-8039E345C-A | 220-347V | 100W | 18W | 2450/**2560**/2610 | FlexColor 3000K/**4000K**/5000K | E26 |  | 2.6 in x 6.3 in | cULus Listed, cULus Classified",
+        "LED-8039M345D-A | 120-277V | 100W | 18W | 2450/**2560**/2610 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 2.6 in x 7.0 in | cULus Listed, cULus Classified",
+        "LED-8039M345C-A | 220-347V | 100W | 18W | 2450/**2560**/2610 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 2.6 in x 7.0 in | cULus Listed, cULus Classified",
+        "LED-8029E345-A-FW | 120-277V | Up to 150W | FlexWatt 12W/**18W**/24W | 1550-3360 | FlexColor 3000K/**4000K**/5000K | E26 |  | 3.0 in x 6.6 in | cULus Listed, cULus Classified",
+        "LED-8029E345C-A-FW | 220-347V | Up to 150W | FlexWatt 12W/**18W**/24W | 1550-3360 | FlexColor 3000K/**4000K**/5000K | E26 |  | 3.0 in x 6.6 in | cULus Listed, cULus Classified",
+        "LED-8029M345-A-FW | 120-277V | Up to 150W | FlexWatt 12W/**18W**/24W | 1550-3360 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 3.0 in x 6.9 in | cULus Listed, cULus Classified",
+        "LED-8029M345C-A-FW | 220-347V | Up to 150W | FlexWatt 12W/**18W**/24W | 1550-3360 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 3.0 in x 6.9 in | cULus Listed, cULus Classified",
+        "LED-8024E345-G7-FW | 120-277V | Up to 320W | FlexWatt 35W/**45W**/60W | 5140-8870 | FlexColor 3000K/**4000K**/5000K | E26 |  | 3.4 in x 7.4 in | cULus Listed, cULus Classified",
+        "LED-8024E345C-G7-FW | 220-347V | Up to 320W | FlexWatt 35W/**45W**/60W | 5140-8870 | FlexColor 3000K/**4000K**/5000K | E26 |  | 3.4 in x 7.4 in | cULus Listed, cULus Classified",
+        "LED-8024M345-G7-FW | 120-277V | Up to 320W | FlexWatt 35W/**45W**/60W | 5140-8870 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 3.4 in x 7.8 in | cULus Listed, cULus Classified",
+        "LED-8024M345-G7-FW-HV | 277-480V | Up to 320W | FlexWatt 35W/**45W**/60W | 5140-8870 | FlexColor 3000K/**4000K**/5000K | EX39 | 277-480V incl. 347V | 3.4 in x 7.8 in | cULus Listed, cULus Classified",
+        "LED-8027M345-G7-FW | 120-277V | Up to 400W | FlexWatt 80W/**100W**/110W | 11370-15730 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 3.8 in x 9.5 in | cULus Listed, cULus Classified",
+        "LED-8027M345-G7-FW-HV | 277-480V | Up to 400W | FlexWatt 80W/**100W**/110W | 11370-15730 | FlexColor 3000K/**4000K**/5000K | EX39 | 277-480V incl. 347V | 3.8 in x 9.5 in | cULus Listed, cULus Classified",
+        "LED-8028M345-G7-FW | 120-277V | Up to 400W | FlexWatt 110W/**135W**/150W | 15000-21000 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 4.0 in x 8.3 in | Pending",
+        "LED-8075M345-FW | 120-277V | Up to 750W | FlexWatt 150W/**200W**/270W | 21700-39000 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 5.6 in x 12.3 in | cULus Listed, cULus Classified",
+        "LED-8075M345-FW-HV | 277-480V | Up to 750W | FlexWatt 150W/**200W**/270W | 21700-39000 | FlexColor 3000K/**4000K**/5000K | EX39 | 277-480V incl. 347V | 5.6 in x 12.3 in | cULus Listed, cULus Classified",
+        "LED-8000M345-FW-MV | 208-347V | Up to 1000W | FlexWatt 300W/**360W**/450W | 50100-73300 | FlexColor 3000K/**4000K**/5000K | EX39 | 208-347V | 5.6 in x 12.3 in | cULus Listed, cULus Classified",
+        "LED-8000M345-FW-HV | 277-480V | Up to 1000W | FlexWatt 300W/**360W**/450W | 50100-73300 | FlexColor 3000K/**4000K**/5000K | EX39 | 277-480V incl. 347V | 5.6 in x 12.3 in | cULus Listed, cULus Classified"
+      ],
+      "notes": [
+        "Default wattage and CCT for SuperFlex lamps are shown in bold",
+        "Three rule-separated row groups on the page: LED-8037/8038/8039 fixed-wattage FlexColor lamps; LED-8029/8024/8027/8028 FlexWatt + FlexColor lamps; LED-8075/8000 high-output FlexWatt + FlexColor lamps"
+      ],
+      "pdfPage": 3
+    },
+    {
+      "title": "Bollard + Post Top | Ballast Bypass | Type B | Frosted-lens + filament",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "Replaces",
+        "Wattage",
+        "Lumens",
+        "CCT",
+        "Base",
+        "Features",
+        "Dimensions",
+        "Listings"
+      ],
+      "rows": [
+        "LED-8017E345-G3 | 120-277V | 100W (150W INC) | 20W | 2400/**2700**/2600 | FlexColor 3000K/**4000K**/5000K | E26 | Frosted lens | 2.6 in x 5.5 in | cULus Listed, cULus Classified",
+        "LED-8018E345-G3 | 120-277V | 150W (200W INC) | 25W | 3000/**3375**/3250 | FlexColor 3000K/**4000K**/5000K | E26 | Frosted lens | 2.6 in x 5.5 in | cULus Listed, cULus Classified",
+        "LED-8019E345-G3 | 120-277V | 175W (300W INC) | 35W | 4200/**4725**/4550 | FlexColor 3000K/**4000K**/5000K | E26 | Frosted lens | 3.4 in x 6.8 in | cULus Listed, cULus Classified",
+        "LED-8019M345-G3 | 120-277V | 175W | 35W | 4200/**4725**/4550 | FlexColor 3000K/**4000K**/5000K | EX39 | Frosted lens | 3.4 in x 7.1 in | cULus Listed, cULus Classified",
+        "LED-8020M345-G3 | 120-277V | 250W | 45W | 5400/**6075**/5850 | FlexColor 3000K/**4000K**/5000K | EX39 | Frosted lens | 3.9 in x 7.9 in | cULus Listed, cULus Classified",
+        "LED-8021M345-G3 | 120-277V | 320W | 65W | 7800/**8775**/8450 | FlexColor 3000K/**4000K**/5000K | EX39 | Frosted lens | 4.7 in x 9.2 in | cULus Listed, cULus Classified",
+        "LED-8060E22 | 120-277V | 100W | 15W | 2250 | 2200K | E26 |  | 2.2 in x 6.4 in | cETLus (Intertek), FCC",
+        "LED-8060E40 | 120-277V | 100W | 15W | 2700 | 4000K | E26 |  | 2.2 in x 6.4 in | cETLus (Intertek), FCC",
+        "LED-8060E50 | 120-277V | 100W | 15W | 2700 | 5000K | E26 |  | 2.2 in x 6.4 in | cETLus (Intertek), FCC",
+        "LED-8061E22 | 120-277V | 150W | 28W | 3500 | 2200K | E26 |  | 3.0 in x 7.6 in | cETLus (Intertek), FCC",
+        "LED-8061E40 | 120-277V | 150W | 28W | 4000 | 4000K | E26 |  | 3.0 in x 7.6 in | cETLus (Intertek), FCC",
+        "LED-8061E50 | 120-277V | 150W | 28W | 4000 | 5000K | E26 |  | 3.0 in x 7.6 in | cETLus (Intertek), FCC",
+        "LED-8062M22 | 120-277V | 175W | 32W | 4500 | 2200K | EX39 |  | 3.5 in x 9.4 in | cETLus (Intertek), FCC",
+        "LED-8062M40 | 120-277V | 175W | 32W | 5500 | 4000K | EX39 |  | 3.5 in x 9.4 in | cETLus (Intertek), FCC",
+        "LED-8062M50 | 120-277V | 175W | 32W | 5500 | 5000K | EX39 |  | 3.5 in x 9.4 in | cETLus (Intertek), FCC",
+        "LED-8063M22 | 120-277V | 250W | 45W | 6000 | 2200K | EX39 |  | 3.5 in x 9.4 in | cETLus (Intertek), FCC",
+        "LED-8063M40 | 120-277V | 250W | 45W | 7500 | 4000K | EX39 |  | 3.5 in x 9.4 in | cETLus (Intertek), FCC",
+        "LED-8063M50 | 120-277V | 250W | 45W | 7500 | 5000K | EX39 |  | 3.5 in x 9.4 in | cETLus (Intertek), FCC",
+        "LED-8064M22 | 120-277V | 320W | 54W | 8000 | 2200K | EX39 |  | 4.9 in x 9.4 in | cETLus (Intertek), FCC",
+        "LED-8064M40 | 120-277V | 320W | 54W | 10000 | 4000K | EX39 |  | 4.9 in x 9.4 in | cETLus (Intertek), FCC",
+        "LED-8064M50 | 120-277V | 320W | 54W | 10000 | 5000K | EX39 |  | 4.9 in x 9.4 in | cETLus (Intertek), FCC",
+        "LED-8065M22 | 120-277V | 400W | 85W | 13600 | 2200K | EX39 |  | 4.8 in x 11.5 in | cETLus (Intertek), FCC",
+        "LED-8065M40 | 120-277V | 400W | 85W | 15725 | 4000K | EX39 |  | 4.8 in x 11.5 in | cETLus (Intertek), FCC",
+        "LED-8065M50 | 120-277V | 400W | 85W | 15725 | 5000K | EX39 |  | 4.8 in x 11.5 in | cETLus (Intertek), FCC"
+      ],
+      "notes": [
+        "Default lumens and CCT for FlexColor lamps are shown in bold",
+        "Two rule-separated row groups on the page: LED-8017 to LED-8021 frosted-lens FlexColor lamps (E26/EX39), and LED-8060 to LED-8065 filament-style lamps in fixed 2200K/4000K/5000K versions (part-number suffix 22/40/50); the 806x lamps have no bold defaults and carry cETLus/FCC marks instead of UL"
+      ],
+      "pdfPage": 4
+    }
+  ],
+  "footnotes": [
+    "120-277V also works on 208V & 240V",
+    "* Excludes 8037-39 models (applies to the Active Cooling feature)",
+    "DLC: for listing status go to LED-LLC.com",
+    "Listings icons on both pages are the cULus Listed and cULus Classified marks; the LED-806x filament lamps show the cETLus (Intertek) and FCC marks; LED-8028M345-G7-FW is marked PENDING",
+    "Page 4 printed heading for the first column is '120-277V PART #'"
+  ]
+}

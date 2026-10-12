@@ -1,0 +1,282 @@
+{
+ "slug": "work-lights",
+ "brand": "led",
+ "group": "Work Lights",
+ "title": "Work Lights",
+ "subtitle": "",
+ "pdfPages": [
+  12
+ ],
+ "catalogPages": [
+  20
+ ],
+ "headline": "Replaces up to 400W HID.",
+ "intro": "Super bright and durable, our LED work site lights reduce costs and labor with integrated power cord and daisy-chain feature. Several wattages and connection options to choose from will make lighting any work site easier than ever.",
+ "callouts": [
+  "35 ft power cord",
+  "Connect up to 4 strings / 400 ft"
+ ],
+ "features": [
+  {
+   "label": "5-year warranty",
+   "note": "* 9003 models have a 3 year warranty"
+  },
+  {
+   "label": "80+ CRI"
+  },
+  {
+   "label": "Daisy-chain",
+   "note": "** excludes model 9210"
+  },
+  {
+   "label": "Operating temp -40°F to 113°F",
+   "note": "9003"
+  },
+  {
+   "label": "Operating temp -40°F to 122°F",
+   "note": "all other models"
+  },
+  {
+   "label": "IP65 rated ingress protection",
+   "note": "9003"
+  },
+  {
+   "label": "IP64 rated ingress protection",
+   "note": "all other models"
+  },
+  {
+   "label": "L70 50,000hrs rated life"
+  },
+  {
+   "label": "2-prong plug (NEMA 1-15P)",
+   "note": "feature glyph key; LED-9003-50K-10PK-182-G3"
+  },
+  {
+   "label": "3-prong plug (NEMA 5-15P / grounded outlet)",
+   "note": "feature glyph key; LED-9010/9011/9012/9016-50K-G3 and LED-9003-50K-10PK-163-G3"
+  },
+  {
+   "label": "Approved for use in Canada",
+   "note": "Canadian flag beside the table; its bracket arrows point at the LED-9011-50K-G3 and LED-9003-50K-10PK-163-G3 rows"
+  },
+  {
+   "label": "UL Type B ballast bypass",
+   "note": "LED-9210-50K-G2 only (High Bay Work Site Lights | Ballast Bypass | Type B table)"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Temporary Work Site Lights",
+   "pdfPage": 12,
+   "columns": [
+    "Part #",
+    "Voltage",
+    "Pwr Cord",
+    "Daisy-Chain",
+    "Replaces",
+    "Wattage",
+    "Lumens",
+    "CCT",
+    "Features",
+    "Dimensions",
+    "Listings"
+   ],
+   "rows": [
+    [
+     "LED-9010-50K-G3",
+     "120V",
+     "35 ft 18/3 SJTW",
+     "Up to 8 lights",
+     "400W HID",
+     "100W",
+     "15,000",
+     "5000K",
+     "3-prong plug",
+     "6.0 in x 10.1 in",
+     "cETLus (Intertek)"
+    ],
+    [
+     "LED-9011-50K-G3",
+     "120V",
+     "35 ft 14/3 SJTW",
+     "Up to 12 lights",
+     "400W HID",
+     "100W",
+     "15,000",
+     "5000K",
+     "3-prong plug; Approved for use in Canada",
+     "6.0 in x 10.1 in",
+     "cETLus (Intertek)"
+    ],
+    [
+     "LED-9012-50K-G3",
+     "120V",
+     "35 ft 16/3 SJTW",
+     "Up to 10 lights",
+     "400W HID",
+     "100W",
+     "15,000",
+     "5000K",
+     "3-prong plug",
+     "6.0 in x 10.1 in",
+     "cETLus (Intertek)"
+    ],
+    [
+     "LED-9016-50K-G3",
+     "120V",
+     "35 ft 16/3 SJTW",
+     "Up to 6 lights",
+     "600W HID",
+     "150W",
+     "22,500",
+     "5000K",
+     "3-prong plug",
+     "6.0 in x 12.0 in",
+     "cETLus (Intertek)"
+    ]
+   ],
+   "notes": [
+    "Merged cells: 120V spans all four rows; 400W HID / 100W / 15,000 / 6.0 in x 10.1 in span the 9010-9012 rows; 5000K and the 3-prong plug glyph span all four rows; the ETL mark is printed for row 1, for rows 2-3 (merged) and for row 4",
+    "The 'Approved for use in Canada' flag sits outside the table with arrows at the LED-9011 and LED-9003-...-163 rows; see footnotes"
+   ]
+  },
+  {
+   "title": "High Bay Work Site Lights | Ballast Bypass | Type B",
+   "pdfPage": 12,
+   "columns": [
+    "Part #",
+    "Voltage",
+    "Pwr Cord",
+    "Daisy-Chain",
+    "Replaces",
+    "Wattage",
+    "Lumens",
+    "CCT",
+    "Features",
+    "Dimensions",
+    "Listings"
+   ],
+   "rows": [
+    [
+     "LED-9210-50K-G2",
+     "120-277V*",
+     "6 ft power cord w/ stripped leads",
+     "N/A",
+     "400W HID",
+     "100W",
+     "12000",
+     "5000K",
+     "",
+     "6.5 in x 12.7 in",
+     "cULus Listed"
+    ]
+   ],
+   "notes": [
+    "* 9210 UL Listed for 120-277VAC, also works on 208V & 240V",
+    "Features cell is shaded grey with no plug glyph (hardwired, stripped leads); daisy-chain N/A"
+   ]
+  },
+  {
+   "title": "Temporary Work Site String Lights",
+   "pdfPage": 12,
+   "columns": [
+    "Part #",
+    "Voltage",
+    "Pwr Cord",
+    "Daisy-Chain",
+    "Replaces",
+    "Wattage",
+    "Lumens",
+    "CCT",
+    "Features",
+    "Dimensions",
+    "Listings"
+   ],
+   "rows": [
+    [
+     "LED-9003-50K-10PK-163-G3",
+     "120V",
+     "100 ft 16/3 SJTW",
+     "Up to 6 strings",
+     "900W INC",
+     "130W (10 x 13W)",
+     "16000/string",
+     "5000K",
+     "3-prong plug; Approved for use in Canada",
+     "4.4 in x 3.1 in",
+     "cETLus (Intertek)"
+    ],
+    [
+     "LED-9003-50K-10PK-182-G3",
+     "120V",
+     "100 ft 18/2 SJTW",
+     "Up to 4 strings",
+     "900W INC",
+     "130W (10 x 13W)",
+     "16000/string",
+     "5000K",
+     "2-prong plug",
+     "4.4 in x 3.1 in",
+     "cETLus (Intertek)"
+    ]
+   ],
+   "notes": [
+    "Merged cells: 120V, 900W INC, 130W (10 X 13W), 16000/STRING, 5000K and 4.4 in x 3.1 in span both rows; the plug glyph differs per row (3-prong for the 16/3 cord, 2-prong for the 18/2 cord)",
+    "Wattage is printed on two lines: '130W' and '(10 X 13W)'; lumens printed as '16000/STRING'"
+   ]
+  }
+ ],
+ "footnotes": [
+  "2-prong plug (NEMA 1-15P)",
+  "3-prong plug (NEMA 5-15P / grounded outlet)",
+  "Approved for use in Canada (Canadian flag glyph beside the table; bracket arrows point at the LED-9011-50K-G3 and LED-9003-50K-10PK-163-G3 rows)",
+  "* 9210 UL Listed for 120-277VAC, also works on 208V & 240V",
+  "* 9003 models have a 3 year warranty",
+  "** Excludes model 9210 (footnote on the Daisy-Chain icon)",
+  "Listings: cETLus (Intertek) marks on LED-9010/9011/9012/9016-50K-G3 and both LED-9003 strings; LED-9210-50K-G2 carries the cULus Listed mark"
+ ],
+ "images": [
+  {
+   "file": "p12-b1.jpg",
+   "kind": "application",
+   "shows": "LED-9010 caged temporary work light hanging by its hook from scaffolding, black power cord draped across, concrete wall and yellow formwork behind; block includes the 'LED-9010' caption and the '35 FT POWER CORD' callout, and its bottom edge clips the very bottom of the cage",
+   "products": [
+    "LED-9010"
+   ],
+   "use": "none",
+   "caption": "LED-9010 work light on scaffolding (catalog)"
+  },
+  {
+   "file": "p12-b2.jpg",
+   "kind": "application",
+   "shows": "LED-9003-182 string light head (round black UFO-style lamp with hanging hook) on a yellow cord under a scaffold / sidewalk shed with chain-link fence; clean photo, no caption",
+   "products": [
+    "LED-9003-50K-10PK-182-G3"
+   ],
+   "use": "gallery",
+   "caption": "LED-9003-182 string light under sidewalk shed"
+  },
+  {
+   "file": "custom/work-lights-hero.jpg",
+   "kind": "hero",
+   "shows": "Catalog composite: LED-9010 caged work light with hook and 35 ft cord in front of a scaffolding / concrete-wall site; caption and callout whited out of the white margin, lamp kept whole",
+   "products": [
+    "LED-9010"
+   ],
+   "use": "hero",
+   "caption": "LED-9010 caged work light with 35 ft cord"
+  },
+  {
+   "file": "custom/work-lights-hero-extended.jpg",
+   "kind": "application",
+   "shows": "Both catalog photos side by side: LED-9010 caged work light on scaffolding (left) and LED-9003-182 string light head under a sidewalk shed (right); captions and callouts removed",
+   "products": [
+    "LED-9010",
+    "LED-9003-50K-10PK-182-G3"
+   ],
+   "use": "gallery",
+   "caption": "LED-9010 and LED-9003 string light on site"
+  }
+ ],
+ "extras": []
+}

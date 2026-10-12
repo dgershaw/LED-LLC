@@ -1,0 +1,240 @@
+{
+ "slug": "wall-ceiling-retrofit-kits",
+ "brand": "remphos",
+ "group": "Retrofit Kits",
+ "title": "Wall + Ceiling Retrofit Kits (LEDSR, LEDCR)",
+ "subtitle": "",
+ "pdfPages": [
+  24
+ ],
+ "catalogPages": [
+  44
+ ],
+ "headline": "Keep the fixture. Upgrade the performance",
+ "intro": "",
+ "callouts": [
+  "Expanded coverage w/ fisheye optics",
+  "Next generation LEDCR — more CCTs. More lumens per watt",
+  "Simple Lighting Controls | Networked Lighting Controls"
+ ],
+ "features": [
+  {
+   "label": "10-year warranty"
+  },
+  {
+   "label": "120-277V"
+  },
+  {
+   "label": "Sensor ready",
+   "note": "0-10V dim to off"
+  },
+  {
+   "label": "12V aux output"
+  },
+  {
+   "label": "160 LPW efficacy (light engine)"
+  },
+  {
+   "label": "120° beam angle"
+  },
+  {
+   "label": "80+ CRI"
+  },
+  {
+   "label": "Operating temp -4°F to 140°F"
+  },
+  {
+   "label": "L70 100,000hrs rated life"
+  },
+  {
+   "label": "FlexWatt selectable wattage",
+   "note": "LEDSR 6W/10W/12W/15W (15W default); LEDCR 6W/10W/16W/22W (22W default)"
+  },
+  {
+   "label": "FlexColor selectable CCT",
+   "note": "2700K/3000K/3500K/4000K/5000K, 4000K default"
+  },
+  {
+   "label": "Optional field installable emergency backup (ships separately)",
+   "note": "-EMG / Emergency battery backup (90 min / 500 lm)"
+  },
+  {
+   "label": "Remote control",
+   "note": "RC-REMOTE-IR23 (for Simple Lighting Controls)"
+  },
+  {
+   "label": "Simple Lighting Controls / Networked Lighting Controls options",
+   "note": "see catalog page 25 or the product spec sheet on LED-LLC.com"
+  },
+  {
+   "label": "ETL listed (Intertek, cETLus)"
+  },
+  {
+   "label": "FCC"
+  },
+  {
+   "label": "DLC",
+   "note": "see spec sheet on LED-LLC.com for DLC listing status"
+  }
+ ],
+ "tables": [
+  {
+   "title": "LEDSR – Sconce Retrofit Kit",
+   "pdfPage": 24,
+   "columns": [
+    "Part #",
+    "Voltage",
+    "FlexWatt",
+    "Lumens",
+    "FlexColor",
+    "Dimensions"
+   ],
+   "rows": [
+    [
+     "RP-LEDSR-G3-4IN-15W-40K-WC",
+     "120-277V",
+     "6W/10W/12W/**15W**",
+     "930-2325",
+     "2700K/3000K/3500K/**4000K**/5000K",
+     "8.0 in x 4.0 in x 1.0 in"
+    ]
+   ],
+   "notes": [
+    "Factory set wattage and CCT are shown in bold"
+   ]
+  },
+  {
+   "title": "LEDCR – Circular Retrofit Kit",
+   "pdfPage": 24,
+   "columns": [
+    "Part #",
+    "Voltage",
+    "FlexWatt",
+    "Lumens",
+    "FlexColor",
+    "Dimensions"
+   ],
+   "rows": [
+    [
+     "RP-LEDCR-G3-9IN-22W-40K-WC",
+     "120-277V",
+     "6W/10W/16W/**22W**",
+     "930-3410",
+     "2700K/3000K/3500K/**4000K**/5000K",
+     "8.7 in x 1.4 in"
+    ]
+   ],
+   "notes": [
+    "Factory set wattage and CCT are shown in bold"
+   ]
+  }
+ ],
+ "footnotes": [
+  "Factory set wattage and CCT are shown in bold",
+  "See spec sheet on LED-LLC.com for DLC listing status",
+  "Interpretation: the lumen cells are ranges (930-2325 for LEDSR, 930-3410 for LEDCR), presumably spanning the FlexWatt settings; the catalog does not say so explicitly",
+  "The LEDSR dimension is printed in the catalog as '8.0 IN x 4.0 IN  1.0 IN' with no separator before 1.0 IN (interpretation: 8.0 in x 4.0 in x 1.0 in)",
+  "Optional field installable emergency backup (-EMG, 90 min / 500 lm) ships separately",
+  "RC-REMOTE-IR23 remote control is for Simple Lighting Controls",
+  "Only the left-hand printed page number (44) appears on this spread"
+ ],
+ "images": [
+  {
+   "file": "p24-b1.jpg",
+   "kind": "application",
+   "shows": "Hotel corridor with two decorative wall sconces lit (LEDSR sconce retrofit application), wood doors at the end of the hall",
+   "products": [
+    "RP-LEDSR-G3-4IN-15W-40K-WC"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "p24-b2.jpg",
+   "kind": "hero",
+   "shows": "Pre-cropped block that merges the blue 'Expanded coverage w/ fisheye optics' panel (with LEDSR and LEDCR modules), the cafe and lobby application photos, the large LEDCR disc overhanging onto white, and the 'NEXT GENERATION LEDCR —' / 'MORE CCTs. MORE LUMENS PER WATT' captions",
+   "products": [
+    "RP-LEDSR-G3-4IN-15W-40K-WC",
+    "RP-LEDCR-G3-9IN-22W-40K-WC"
+   ],
+   "use": "superseded by custom/wall-ceiling-retrofit-kits-hero.jpg and custom/wall-ceiling-retrofit-kits-fisheye-panel.jpg"
+  },
+  {
+   "file": "custom/wall-ceiling-retrofit-kits-hero.jpg",
+   "kind": "hero",
+   "shows": "Catalog composite: man on the phone with a laptop in a cafe (left) and a daylit hotel lobby atrium with pendant drums (right), with the round LEDCR retrofit module in front overhanging onto white; the two captions in the white margin were painted out",
+   "products": [
+    "RP-LEDCR-G3-9IN-22W-40K-WC"
+   ],
+   "use": "hero"
+  },
+  {
+   "file": "custom/wall-ceiling-retrofit-kits-hero-banner.jpg",
+   "kind": "application",
+   "shows": "Photo-bounded crop of the same composite (cafe + lobby atrium) with the top of the LEDCR disc visible at the bottom edge; no text",
+   "products": [
+    "RP-LEDCR-G3-9IN-22W-40K-WC"
+   ],
+   "use": "hero-alt (banner crop; the disc is cut at the bottom edge)"
+  },
+  {
+   "file": "custom/wall-ceiling-retrofit-kits-fisheye-panel.jpg",
+   "kind": "callout",
+   "shows": "Blue panel with concentric-ring pattern, 'EXPANDED COVERAGE W/ FISHEYE OPTICS' text and the rectangular LEDSR module and round LEDCR module side by side",
+   "products": [
+    "RP-LEDSR-G3-4IN-15W-40K-WC",
+    "RP-LEDCR-G3-9IN-22W-40K-WC"
+   ],
+   "use": "callout"
+  },
+  {
+   "file": "custom/wall-ceiling-retrofit-kits-ledsr-module.jpg",
+   "kind": "product",
+   "shows": "Rectangular LEDSR sconce retrofit light engine (fisheye lens array, centre mounting hole, connector) on the blue panel background; small (185 x 360 px)",
+   "products": [
+    "RP-LEDSR-G3-4IN-15W-40K-WC"
+   ],
+   "use": "cutout (on blue, not white; low resolution)"
+  },
+  {
+   "file": "custom/wall-ceiling-retrofit-kits-ledcr-module.jpg",
+   "kind": "product",
+   "shows": "Round LEDCR circular retrofit light engine with central driver housing and fisheye lens array on the blue panel background; small (365 x 360 px)",
+   "products": [
+    "RP-LEDCR-G3-9IN-22W-40K-WC"
+   ],
+   "use": "cutout (on blue, not white; low resolution)"
+  }
+ ],
+ "extras": [
+  {
+   "title": "Optional field installable emergency backup (ships separately)",
+   "columns": [
+    "Option",
+    "Description"
+   ],
+   "rows": [
+    [
+     "-EMG",
+     "Emergency battery backup (90 min / 500 lm)"
+    ]
+   ]
+  },
+  {
+   "title": "Remote control",
+   "columns": [
+    "Part #",
+    "Description"
+   ],
+   "rows": [
+    [
+     "RC-REMOTE-IR23",
+     "For Simple Lighting Controls"
+    ]
+   ]
+  },
+  {
+   "title": "Lighting controls",
+   "text": "Simple Lighting Controls | Networked Lighting Controls — see page 25 (catalog printed page) for more information or check out the product spec sheet on our website LED-LLC.com."
+  }
+ ]
+}

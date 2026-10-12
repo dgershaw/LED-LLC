@@ -1,0 +1,1 @@
+window.DOC_MAP={};

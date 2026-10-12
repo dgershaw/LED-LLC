@@ -1,0 +1,270 @@
+{
+ "slug": "livc",
+ "brand": "remphos",
+ "group": "Fixtures",
+ "title": "Stairwell / Vanity / Wraparound (LIVC)",
+ "subtitle": "",
+ "pdfPages": [
+  22
+ ],
+ "catalogPages": [
+  40,
+  41
+ ],
+ "headline": "Slimmer. Sleeker. Stairwell, vanity and wraparound fixtures that link like an LBI.",
+ "intro": "",
+ "callouts": [
+  "Uses the same seamless connector and linking cable as our LBI",
+  "Simple Lighting Controls | Networked Lighting Controls"
+ ],
+ "features": [
+  {
+   "label": "10-year warranty"
+  },
+  {
+   "label": "12V aux output"
+  },
+  {
+   "label": "130 LPW efficacy"
+  },
+  {
+   "label": "80+ CRI"
+  },
+  {
+   "label": "-4°F to 140°F operating temp"
+  },
+  {
+   "label": "L70 100,000 hrs rated life"
+  },
+  {
+   "label": "ADA compliant when wall mounted"
+  },
+  {
+   "label": "FlexWatt selectable wattage",
+   "note": "10W/15W/20W/30W on 2 ft and 3 ft models, 10W/15W/30W/40W on 4 ft models; factory default 15W"
+  },
+  {
+   "label": "FlexColor selectable CCT 2700K/3000K/3500K/4000K/5000K",
+   "note": "factory default 4000K"
+  },
+  {
+   "label": "Linkable from one power feed",
+   "note": "connect up to 20 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC; same seamless connector and linking cable as the LBI"
+  },
+  {
+   "label": "Optional internal emergency battery backup",
+   "note": "-EMG suffix; 90 min / 500 lm"
+  },
+  {
+   "label": "Simple Lighting Controls / Networked Lighting Controls ready",
+   "note": "see catalog page 25 or the product spec sheet on LED-LLC.com; RC-REMOTE-IR23 remote for microwave occ sensors"
+  },
+  {
+   "label": "cETLus listed (Intertek)"
+  },
+  {
+   "label": "FCC"
+  },
+  {
+   "label": "DLC",
+   "note": "see spec sheet on LED-LLC.com for DLC listing status"
+  }
+ ],
+ "tables": [
+  {
+   "title": "LIVC – Stairwell / Vanity / Wraparound (Rounded Endcaps)",
+   "pdfPage": 22,
+   "columns": [
+    "Part #",
+    "Voltage",
+    "FlexWatt",
+    "Lumens",
+    "FlexColor",
+    "Dimensions"
+   ],
+   "rows": [
+    [
+     "RP-LIVC-G3-RD-2FT-15W-40K-WC",
+     "120-277V",
+     "10W/**15W**/20W/30W",
+     "1580-4740",
+     "2700K/3000K/3500K/**4000K**/5000K",
+     "24.0 in x 6.0 in x 3.5 in"
+    ],
+    [
+     "RP-LIVC-G3-RD-3FT-15W-40K-WC",
+     "120-277V",
+     "10W/**15W**/20W/30W",
+     "1580-4740",
+     "2700K/3000K/3500K/**4000K**/5000K",
+     "36.0 in x 6.0 in x 3.5 in"
+    ],
+    [
+     "RP-LIVC-G3-RD-4FT-15W-40K-WC",
+     "120-277V",
+     "10W/**15W**/30W/40W",
+     "1580-6320",
+     "2700K/3000K/3500K/**4000K**/5000K",
+     "48.0 in x 6.0 in x 3.5 in"
+    ]
+   ],
+   "notes": [
+    "Factory set wattage and CCT are shown in bold"
+   ]
+  },
+  {
+   "title": "LIVC – Stairwell / Vanity / Wraparound (Square Endcaps)",
+   "pdfPage": 22,
+   "columns": [
+    "Part #",
+    "Voltage",
+    "FlexWatt",
+    "Lumens",
+    "FlexColor",
+    "Dimensions"
+   ],
+   "rows": [
+    [
+     "RP-LIVC-G3-SQ-2FT-15W-40K-WC",
+     "120-277V",
+     "10W/**15W**/20W/30W",
+     "1580-4740",
+     "2700K/3000K/3500K/**4000K**/5000K",
+     "24 in x 6.0 in x 3.0 in"
+    ],
+    [
+     "RP-LIVC-G3-SQ-3FT-15W-40K-WC",
+     "120-277V",
+     "10W/**15W**/20W/30W",
+     "1580-4740",
+     "2700K/3000K/3500K/**4000K**/5000K",
+     "36 in x 6.0 in x 3.0 in"
+    ],
+    [
+     "RP-LIVC-G3-SQ-4FT-15W-40K-WC",
+     "120-277V",
+     "10W/**15W**/30W/40W",
+     "1580-6320",
+     "2700K/3000K/3500K/**4000K**/5000K",
+     "48 in x 6.0 in x 3.0 in"
+    ]
+   ],
+   "notes": [
+    "Factory set wattage and CCT are shown in bold"
+   ]
+  }
+ ],
+ "footnotes": [
+  "* Connect up to 20 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC",
+  "Factory set wattage and CCT are shown in bold",
+  "See spec sheet on LED-LLC.com for DLC listing status",
+  "The spec tables have no Listings column; the page-footer listing marks are cETLus (Intertek), FCC and DLC Listed",
+  "Merged cells: on both tables Voltage and FlexColor span all three rows; FlexWatt '10W/15W/20W/30W' and Lumens '1580-4740' span the 2 ft and 3 ft rows, the 4 ft row has its own '10W/15W/30W/40W' and '1580-6320'",
+  "Square-endcap lengths are printed without a decimal ('24 IN', '36 IN', '48 IN'); rounded-endcap lengths are printed '24.0 IN' etc. - transcribed as printed",
+  "Printed page number 40 appears on the left-hand page only; the right-hand page carries no printed number (41 inferred)"
+ ],
+ "images": [
+  {
+   "file": "p22-b1.jpg",
+   "kind": "application",
+   "shows": "School children running down a locker-lined corridor lit by ceiling-mounted LIVC wraparound fixtures; no captions",
+   "products": [
+    "LIVC"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "p22-b2.jpg",
+   "kind": "callout",
+   "shows": "Blue panel 'Slimmer. Sleeker. ADA compliant when wall mounted' with a side view of the LIVC fixture and end-profile drawings of LIVC-RD (3.5 in) and LIVC-SQ (3.0 in)",
+   "products": [
+    "LIVC-RD",
+    "LIVC-SQ"
+   ],
+   "use": "callout (split into custom/livc-fixture.jpg and custom/livc-profiles.jpg)"
+  },
+  {
+   "file": "p22-b3.jpg",
+   "kind": "application",
+   "shows": "Tiled commercial washroom with four mirrors, each topped by a wall-mounted LIVC vanity light; no captions",
+   "products": [
+    "LIVC"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "p22-b4.jpg",
+   "kind": "hero",
+   "shows": "Students climbing a concrete stairwell with a rounded-endcap LIVC fixture composited large in the lower-right foreground, overlapping the white page below the photo; no captions",
+   "products": [
+    "LIVC-RD"
+   ],
+   "use": "hero"
+  },
+  {
+   "file": "custom/livc-fixture.jpg",
+   "kind": "product",
+   "shows": "Side view of the LIVC wraparound fixture, cut from the blue callout panel (blue background, not white)",
+   "products": [
+    "LIVC"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/livc-profiles.jpg",
+   "kind": "diagram",
+   "shows": "End-profile line drawings of the two endcap styles with heights: LIVC-RD 3.5 in (rounded) and LIVC-SQ 3.0 in (square)",
+   "products": [
+    "LIVC-RD",
+    "LIVC-SQ"
+   ],
+   "use": "callout"
+  }
+ ],
+ "extras": [
+  {
+   "title": "Options",
+   "columns": [
+    "Option",
+    "Part # / suffix",
+    "Description"
+   ],
+   "rows": [
+    [
+     "Optional internal emergency battery backup",
+     "-EMG",
+     "Emergency battery backup (90 min / 500 lm)"
+    ],
+    [
+     "Remote control",
+     "RC-REMOTE-IR23",
+     "For microwave occ sensors"
+    ]
+   ]
+  },
+  {
+   "title": "Endcap profiles",
+   "columns": [
+    "Style",
+    "Model code",
+    "Height"
+   ],
+   "rows": [
+    [
+     "Rounded endcaps",
+     "LIVC-RD",
+     "3.5 in"
+    ],
+    [
+     "Square endcaps",
+     "LIVC-SQ",
+     "3.0 in"
+    ]
+   ]
+  },
+  {
+   "title": "Lighting controls",
+   "text": "Simple Lighting Controls | Networked Lighting Controls — see page 25 for more information or check out the product spec sheet on our website LED-LLC.com"
+  }
+ ]
+}

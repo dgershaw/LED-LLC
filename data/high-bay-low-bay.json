@@ -1,0 +1,390 @@
+{
+ "slug": "high-bay-low-bay",
+ "brand": "led",
+ "group": "Screw-In Retrofits",
+ "title": "High Bay + Low Bay",
+ "subtitle": "",
+ "pdfPages": [
+  6
+ ],
+ "catalogPages": [
+  8,
+  9
+ ],
+ "headline": "Replaces up to 1000W HID.",
+ "intro": "Ultra-bright LED retrofits for high ceiling environments. Models w/o active cooling for open fixtures & silent operation. Models w/ active cooling are safe to install in enclosed fixtures. Low bay retrofits are ideal for ceiling fixtures that require light to be pushed down and out. Angled LED panels help direct light exactly where it is needed.",
+ "callouts": [
+  "Powerful performance – for high bay environments",
+  "10kA surge protection*"
+ ],
+ "features": [
+  {
+   "label": "5-year warranty"
+  },
+  {
+   "label": "UL Type B ballast bypass"
+  },
+  {
+   "label": "0-10V dimming",
+   "note": "excludes 8030 and 8035 models"
+  },
+  {
+   "label": "12V aux port",
+   "note": "excludes 8030 and 8035 models"
+  },
+  {
+   "label": "80+ CRI"
+  },
+  {
+   "label": "-40°F to 122°F operating temp"
+  },
+  {
+   "label": "Active cooling",
+   "note": "excludes 8100 models"
+  },
+  {
+   "label": "L70 50,000 hrs rated life"
+  },
+  {
+   "label": "10kA surge protection",
+   "note": "excludes 8035 models"
+  },
+  {
+   "label": "Open fixture only",
+   "note": "LED-8130 and LED-8242 models"
+  },
+  {
+   "label": "Enclosed fixtures",
+   "note": "LED-8236 and LED-8232 high bay models and LED-8056 low bay models (the LED-8035E57-A fixture cell is blank in the catalog)"
+  },
+  {
+   "label": "Includes uplight",
+   "note": "LED-8130 and LED-8035 models"
+  },
+  {
+   "label": "FlexColor selectable CCT 3000K/4000K/5000K",
+   "note": "LED-8236 and LED-8232 models; factory default 4000K"
+  },
+  {
+   "label": "277-480V incl. 347V (HV)",
+   "note": "LED-8232M345D-HV and LED-8242M50D-HV"
+  },
+  {
+   "label": "DLC",
+   "note": "for listing status go to LED-LLC.com"
+  }
+ ],
+ "tables": [
+  {
+   "title": "High Bay | Ballast Bypass | Type B",
+   "columns": [
+    "Part #",
+    "Voltage",
+    "Replaces",
+    "Wattage",
+    "Lumens",
+    "CCT",
+    "Base",
+    "Fixture",
+    "Features",
+    "Dimensions",
+    "Listings"
+   ],
+   "rows": [
+    [
+     "LED-8130M40D",
+     "120-277V",
+     "400W",
+     "150W",
+     "20900",
+     "4000K",
+     "EX39",
+     "Open fixture only",
+     "Includes uplight",
+     "8.7 in x 10 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8130M40CD",
+     "220-347V",
+     "400W",
+     "150W",
+     "20900",
+     "4000K",
+     "EX39",
+     "Open fixture only",
+     "Includes uplight",
+     "8.7 in x 10 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8130M50D",
+     "120-277V",
+     "400W",
+     "150W",
+     "21200",
+     "5000K",
+     "EX39",
+     "Open fixture only",
+     "Includes uplight",
+     "8.7 in x 10 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8130M50CD",
+     "220-347V",
+     "400W",
+     "150W",
+     "21200",
+     "5000K",
+     "EX39",
+     "Open fixture only",
+     "Includes uplight",
+     "8.7 in x 10 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8236M345D",
+     "120-277V",
+     "250W",
+     "95W",
+     "13700/**14400**/14600",
+     "FlexColor 3000K/**4000K**/5000K",
+     "EX39",
+     "Enclosed fixtures",
+     "",
+     "8.7 in x 9.7 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8236M345CD",
+     "220-347V",
+     "250W",
+     "95W",
+     "13700/**14400**/14600",
+     "FlexColor 3000K/**4000K**/5000K",
+     "EX39",
+     "Enclosed fixtures",
+     "",
+     "8.7 in x 9.7 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8232M345D",
+     "120-277V",
+     "400W",
+     "140W",
+     "19900/**20900**/21100",
+     "FlexColor 3000K/**4000K**/5000K",
+     "EX39",
+     "Enclosed fixtures",
+     "",
+     "8.7 in x 10.5 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8232M345D-HV",
+     "277-480V",
+     "400W",
+     "140W",
+     "19900/**20900**/21100",
+     "FlexColor 3000K/**4000K**/5000K",
+     "EX39",
+     "Enclosed fixtures",
+     "277-480V incl. 347V",
+     "10.3 in x 12.5 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8242M50D",
+     "120-277V",
+     "1000W",
+     "270W",
+     "38700",
+     "5000K",
+     "EX39",
+     "Open fixture only",
+     "",
+     "10.3 in x 12.5 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8242M50D-HV",
+     "277-480V",
+     "1000W",
+     "270W",
+     "38700",
+     "5000K",
+     "EX39",
+     "Open fixture only",
+     "277-480V incl. 347V",
+     "10.3 in x 12.5 in",
+     "cUL Listed, cUL Classified"
+    ]
+   ],
+   "notes": [
+    "Default lumens and CCT for FlexColor lamps are shown in bold"
+   ]
+  },
+  {
+   "title": "Low Bay | Ballast Bypass | Type B",
+   "columns": [
+    "Part #",
+    "Voltage",
+    "Replaces",
+    "Wattage",
+    "Lumens",
+    "CCT",
+    "Base",
+    "Fixture",
+    "Features",
+    "Dimensions",
+    "Listings"
+   ],
+   "rows": [
+    [
+     "LED-8056E50D-A",
+     "120-277V",
+     "175W",
+     "45W",
+     "5560",
+     "5000K",
+     "E26",
+     "Enclosed fixtures",
+     "",
+     "5.7 in x 6.9 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8056M50D-A",
+     "120-277V",
+     "175W",
+     "45W",
+     "5560",
+     "5000K",
+     "EX39",
+     "Enclosed fixtures",
+     "",
+     "5.7 in x 7.4 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8035E57-A",
+     "120-277V",
+     "175W",
+     "60W",
+     "7062",
+     "5700K",
+     "E26",
+     "",
+     "Includes uplight",
+     "7.9 in x 6.0 in",
+     "cUL Listed, cUL Classified"
+    ]
+   ],
+   "notes": []
+  }
+ ],
+ "footnotes": [
+  "120-277V also works on 208V & 240V",
+  "HV = 277/480V including 347V",
+  "For listing status go to LED-LLC.com (DLC)",
+  "Default lumens and CCT for FlexColor lamps are shown in bold",
+  "* Excludes 8035 models (surge protection)",
+  "** Excludes 8030 and 8035 models (dimming, aux port)",
+  "*** Excludes 8100 models (active cooling)",
+  "LAYOUT NOTE: the printed merged dimension cell '10.3 IN x 12.5 IN' spans LED-8232M345D-HV as well as the two LED-8242 rows, while '8.7 IN x 10.5 IN' covers only LED-8232M345D; transcribed as printed (10.3 in x 12.5 in for the HV model). Every other HV variant in the catalog shares its sibling's dimensions, so this may be a catalog layout slip - verify against the LED-8232M345D-HV spec sheet",
+  "The LED-8035E57-A row has no fixture icon (blank FIXTURE cell); it carries only the 'includes uplight' feature icon"
+ ],
+ "images": [
+  {
+   "file": "p06-b1.jpg",
+   "kind": "hero",
+   "shows": "Raw catalog block: LED-8236 high bay retrofit (centre) and LED-8056 low bay retrofit (right) in front of a warehouse aisle with a forklift (left) and an indoor sports hall (right); includes the 'LED-8236' / 'LED-8056' captions and the 'POWERFUL PERFORMANCE - FOR HIGH BAY ENVIRONMENTS' callout - superseded by custom/high-bay-low-bay-hero-extended.jpg",
+   "products": [
+    "LED-8236",
+    "LED-8056"
+   ],
+   "use": "none",
+   "caption": "LED-8236 and LED-8056 with catalog captions"
+  },
+  {
+   "file": "custom/high-bay-low-bay-hero-extended.jpg",
+   "kind": "hero",
+   "shows": "The composite with both lamps complete (bodies over the photo, lower parts overhanging onto white below); the two captions and the callout line in the white margin were painted out",
+   "products": [
+    "LED-8236",
+    "LED-8056"
+   ],
+   "use": "hero",
+   "caption": "LED-8236 and LED-8056 in warehouse and gym"
+  },
+  {
+   "file": "custom/high-bay-low-bay-hero.jpg",
+   "kind": "hero",
+   "shows": "Photo-bounded crop of the same composite (no text); both lamps are cut at the photo bottom edge (LED-8056 loses its lower LED section) - fragment, superseded by the extended hero",
+   "products": [
+    "LED-8236",
+    "LED-8056"
+   ],
+   "use": "none",
+   "caption": "High bay composite, banner crop"
+  },
+  {
+   "file": "custom/high-bay-low-bay-light-distribution.jpg",
+   "kind": "diagram",
+   "shows": "Light distribution / foot candle comparison on DLC ceiling-mounted high bay fixtures: LED-8232 (140W high bay), LED-8236 (95W high bay) and LED-8027 (100W post top) with foot candles, delivered lumens, LPW and a 32 in dimension; re-cropped so the fixture housings are complete",
+   "products": [
+    "LED-8232",
+    "LED-8236",
+    "LED-8027"
+   ],
+   "use": "gallery",
+   "caption": "Foot candle comparison, ceiling-mounted"
+  },
+  {
+   "file": "custom/high-bay-low-bay-surge-protection.jpg",
+   "kind": "callout",
+   "shows": "10kA badge with 'SURGE PROTECTION*' callout text - badge/callout graphic, text already captured in callouts and extras",
+   "products": [],
+   "use": "none",
+   "caption": "10kA surge protection badge"
+  }
+ ],
+ "extras": [
+  {
+   "title": "Light distribution / foot candle comparison / DLC ceiling-mounted high bay fixtures",
+   "text": "The diagram marks a 32\" dimension beside the fixtures.",
+   "columns": [
+    "",
+    "LED-8232 / 140W High Bay",
+    "LED-8236 / 95W High Bay",
+    "LED-8027 / 100W Post Top"
+   ],
+   "rows": [
+    [
+     "Foot candles",
+     "6.9",
+     "4.7",
+     "1.8"
+    ],
+    [
+     "Delivered lumens",
+     "20998",
+     "14010",
+     "11146"
+    ],
+    [
+     "LPW",
+     "150",
+     "147",
+     "105"
+    ]
+   ]
+  },
+  {
+   "title": "Surge protection",
+   "text": "10kA surge protection* (*excludes 8035 models)"
+  }
+ ]
+}

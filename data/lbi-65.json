@@ -1,0 +1,186 @@
+{
+  "slug": "lbi-65",
+  "brand": "remphos",
+  "group": "Linkable Light Bars",
+  "title": "Linkable Bar / Internal Driver IP65 (LBI65)",
+  "subtitle": "Internal Driver IP65 (LBI65)",
+  "pdfPages": [17],
+  "catalogPages": [30, 31],
+  "headline": "Waterproof linking — Connect up to 40 from one power feed*",
+  "intro": "",
+  "callouts": [
+    "Peace of mind, built in — waterproof and shatterproof for demanding environments",
+    "Order a vapor tight bundle — one SKU solution",
+    "Simple Lighting Controls | Networked Lighting Controls — see page 25 for more information or check out the product spec sheet on our website LED-LLC.com",
+    "Seamless connector(s) incoming power conduit adapter included w/ every bundle"
+  ],
+  "features": [
+    {"label": "7-year warranty"},
+    {"label": "ETL listed (Intertek)"},
+    {"label": "NSF"},
+    {"label": "FCC"},
+    {"label": "DLC", "note": "see spec sheet on LED-LLC.com for DLC listing status"},
+    {"label": "Sensor ready", "note": "0-10V dim to off"},
+    {"label": "12V aux output"},
+    {"label": "160 LPW efficacy (light engine)"},
+    {"label": "White tuning", "note": "FlexColor selectable CCT 2700K/3000K/3500K/4000K/5000K/5700K"},
+    {"label": "80+ CRI"},
+    {"label": "120° beam angle"},
+    {"label": "Operating temp -22°F to 122°F"},
+    {"label": "IK08 impact resistance"},
+    {"label": "IP65 ingress protection"},
+    {"label": "L70 >100,000hrs rated life", "note": "** calculated"},
+    {"label": "Waterproof and shatterproof", "note": "for demanding environments"},
+    {"label": "Linkable", "note": "connect up to 30 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC"},
+    {"label": "Simple Lighting Controls | Networked Lighting Controls", "note": "see page 25 or the product spec sheet on LED-LLC.com; RC-REMOTE-IR23 remote for Simple Lighting Controls"},
+    {"label": "Optional remote emergency battery backup", "note": "RP-LBI65-EMG-40W-DIM (40W / dimmable)"}
+  ],
+  "tables": [
+    {
+      "title": "LBI 65 – Linkable Bar / Internal Driver IP65",
+      "pdfPage": 17,
+      "catalogPage": 30,
+      "columns": ["Part #", "Voltage", "FlexWatt", "Lumens", "FlexColor", "Dimensions"],
+      "rows": [
+        ["RP-LBI65-2F-6W-40K-WC", "120-277V", "4W/**6W**/9W/12W", "640-1920", "2700K/3000K/3500K/**4000K**/5000K/5700K", "20.7 in x 1.6 in x 1.7 in"],
+        ["RP-LBI65-3F-10W-40K-WC", "120-277V", "6W/**10W**/15W/20W", "960-2400", "2700K/3000K/3500K/**4000K**/5000K/5700K", "32.7 in x 1.6 in x 1.7 in"],
+        ["RP-LBI65-4F-25W-40K-WC", "120-277V", "10W/15W/20W/**25W**", "1920-4000", "2700K/3000K/3500K/**4000K**/5000K/5700K", "43.3 in x 1.6 in x 1.7 in"]
+      ],
+      "notes": [
+        "Factory set wattage and CCT are shown in bold",
+        "The 4 ft lumen range is printed '1920- 4000' (stray space) in the catalog"
+      ]
+    },
+    {
+      "title": "4 ft Slim Vapor-Tight Bundle",
+      "pdfPage": 17,
+      "catalogPage": 31,
+      "columns": ["Part #", "Description"],
+      "rows": [
+        ["RP-LBI65-4FT-25W-40K-WC-VT", "4 ft Slim Vapor-Tight"],
+        ["RP-LBI65-4F-25W-40K-WC-OCC-VT", "4 ft Slim Vapor-Tight w/ PIR Sensor"],
+        ["RP-LBI65-4FT-25W-40K-WC-OCCBT-VT", "4 ft Slim Vapor-Tight w/ Bluetooth PIR Sensor"]
+      ],
+      "notes": [
+        "Order a vapor tight bundle — one SKU solution",
+        "Seamless connector(s) incoming power conduit adapter included w/ every bundle",
+        "The PIR-sensor bundle is printed with '4F' while the other two use '4FT'; transcribed as printed"
+      ]
+    },
+    {
+      "title": "8 ft Slim Vapor-Tight Bundle",
+      "pdfPage": 17,
+      "catalogPage": 31,
+      "columns": ["Part #", "Description"],
+      "rows": [
+        ["RP-LBI65-8FT-50W-40K-WC-VT", "8 ft Slim Vapor-Tight"],
+        ["RP-LBI65-8F-50W-40K-WC-OCC-VT", "8 ft Slim Vapor-Tight w/ PIR Sensor"],
+        ["RP-LBI65-8FT-50W-40K-WC-OCCBT-VT", "8 ft Slim Vapor-Tight w/ Bluetooth PIR Sensor"]
+      ],
+      "notes": [
+        "Order a vapor tight bundle — one SKU solution",
+        "Seamless connector(s) incoming power conduit adapter included w/ every bundle",
+        "The PIR-sensor bundle is printed with '8F' while the other two use '8FT'; transcribed as printed"
+      ]
+    },
+    {
+      "title": "Optional Remote Emergency Battery Backup",
+      "pdfPage": 17,
+      "catalogPage": 30,
+      "columns": ["Part #", "Wattage", "Dimming"],
+      "rows": [
+        ["RP-LBI65-EMG-40W-DIM", "40W", "Dimmable"]
+      ],
+      "notes": []
+    },
+    {
+      "title": "Remote Control",
+      "pdfPage": 17,
+      "catalogPage": 30,
+      "columns": ["Part #", "Description"],
+      "rows": [
+        ["RC-REMOTE-IR23", "For Simple Lighting Controls"]
+      ],
+      "notes": []
+    }
+  ],
+  "footnotes": [
+    "* Connect up to 30 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC",
+    "** Calculated (L70 >100,000hrs rated life)",
+    "Factory set wattage and CCT are shown in bold",
+    "See spec sheet on LED-LLC.com for DLC listing status",
+    "Simple Lighting Controls | Networked Lighting Controls: see page 25 for more information or check out the product spec sheet on our website LED-LLC.com",
+    "Seamless connector(s) incoming power conduit adapter included w/ every bundle",
+    "Only the left page number (30) is printed on the spread; the right page (vapor-tight bundles) is 31",
+    "Vapor-tight bundle part numbers mix '4FT'/'8FT' (plain and OCCBT bundles) with '4F'/'8F' (OCC bundles); transcribed as printed",
+    "The 4 ft LBI65 lumen range is printed '1920- 4000' (stray space); written as 1920-4000"
+  ],
+  "images": [
+    {
+      "file": "p17-b1.jpg",
+      "kind": "application",
+      "shows": "Chef in a commercial kitchen wiping a plate, with the NSF certification badge overlaid on the photo",
+      "products": ["RP-LBI65"],
+      "use": "gallery"
+    },
+    {
+      "file": "p17-b2.jpg",
+      "kind": "hero",
+      "shows": "Merged block: blue 'Peace of mind, built in — waterproof and shatterproof for demanding environments' panel with water-splash graphic and the RemPhos mascot, then the building-entrance and salmon-processing application photos with the vapor-tight LBI65 bar covered in water droplets along the bottom",
+      "products": ["RP-LBI65"],
+      "use": "superseded by the custom crops below (split into panels)"
+    },
+    {
+      "file": "custom/lbi-65-hero.jpg",
+      "kind": "hero",
+      "shows": "Right-page composite: office building entrance at dusk with linear soffit lighting and a salmon processing line under vapor-tight fixtures, with the LBI65 vapor-tight bar covered in water droplets across the bottom; cropped above the 'Order a vapor tight bundle' headline",
+      "products": ["RP-LBI65-2F-6W-40K-WC", "RP-LBI65-3F-10W-40K-WC", "RP-LBI65-4F-25W-40K-WC"],
+      "use": "hero"
+    },
+    {
+      "file": "custom/lbi-65-hero-kitchen.jpg",
+      "kind": "hero",
+      "shows": "Left-page composite: chef in a commercial kitchen (NSF badge) beside the blue 'Peace of mind, built in — waterproof and shatterproof for demanding environments' panel with the RemPhos mascot",
+      "products": ["RP-LBI65"],
+      "use": "hero-alt"
+    },
+    {
+      "file": "custom/lbi-65-callout-waterproof.jpg",
+      "kind": "callout",
+      "shows": "Blue panel with water-splash graphic: 'Peace of mind, built in — waterproof and shatterproof for demanding environments' and the RemPhos mascot holding an LBI65 bar",
+      "products": ["RP-LBI65"],
+      "use": "callout"
+    },
+    {
+      "file": "custom/lbi-65-app-entrance.jpg",
+      "kind": "application",
+      "shows": "Stone-and-glass office building entrance at dusk with linear LED lighting under the canopy soffit; cropped above the overlapping bar",
+      "products": ["RP-LBI65"],
+      "use": "gallery"
+    },
+    {
+      "file": "custom/lbi-65-app-food.jpg",
+      "kind": "application",
+      "shows": "Salmon fillets on a wet food-processing line under vapor-tight linear fixtures with water spray; cropped above the overlapping bar",
+      "products": ["RP-LBI65"],
+      "use": "gallery"
+    },
+    {
+      "file": "custom/lbi-65-bundle-connectors.png",
+      "kind": "product",
+      "shows": "Seamless connector + incoming power conduit adapter (with leads) included with every vapor-tight bundle, on white",
+      "products": ["RP-LBI65-4FT-25W-40K-WC-VT", "RP-LBI65-4F-25W-40K-WC-OCC-VT", "RP-LBI65-4FT-25W-40K-WC-OCCBT-VT", "RP-LBI65-8FT-50W-40K-WC-VT", "RP-LBI65-8F-50W-40K-WC-OCC-VT", "RP-LBI65-8FT-50W-40K-WC-OCCBT-VT"],
+      "use": "cutout"
+    }
+  ],
+  "extras": [
+    {
+      "title": "Vapor-tight bundles — one SKU solution",
+      "text": "Each bundle is a single SKU combining the LBI65 bar in a 4 ft (25W) or 8 ft (50W) slim vapor-tight configuration, optionally with a PIR occupancy sensor (-OCC) or a Bluetooth PIR sensor (-OCCBT). Seamless connector(s) and an incoming power conduit adapter are included with every bundle."
+    },
+    {
+      "title": "Linking",
+      "text": "Waterproof linking: connect up to 30 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC."
+    }
+  ]
+}

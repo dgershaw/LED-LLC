@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block brand %}remphos{% endblock %}
+{% block main %}
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span aria-current="page">Contact</span></nav>
+  <section class="page-hero" style="grid-template-columns:minmax(0,1fr)">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h1>Talk to sales</h1>
+      <p class="intro">Get a sample, check rebates or find your local rep. One sales team covers Light Efficient Design, RemPhos and Solera. Send a fixture photo, a part number or a lighting layout and we will come back with the right fit.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:sales@led-llc.com">Email sales</a>
+        <a class="btn btn-ghost" href="tel:+18473803540">Call 847.380.3540</a>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="wrap stack" style="padding-top:0">
+  <section aria-labelledby="loc-h">
+    <div class="section-head"><h2 id="loc-h">Locations</h2></div>
+    <div class="locations">
+      <div class="loc"><h3>Corporate HQ &amp; Training Center</h3><p>188 S. Northwest Highway<br>Cary, IL 60013</p></div>
+      <div class="loc"><h3>Innovation &amp; Manufacturing Center</h3><p>30 Log Bridge Road, Building 200<br>Middleton, MA 01949</p></div>
+      <div class="loc"><h3>Sales</h3>
+        <div class="copy-row"><span>847.380.3540</span><button class="copy" data-copy="847.380.3540">Copy</button></div>
+        <div class="copy-row"><span>sales@led-llc.com</span><button class="copy" data-copy="sales@led-llc.com">Copy</button></div>
+        <p style="margin-top:6px">led-llc.com</p>
+      </div>
+    </div>
+  </section>
+  <section aria-labelledby="help-h">
+    <div class="section-head"><h2 id="help-h">How Eddy can help</h2><p>Three things we do for every job, whichever brand you are buying.</p><a href="eddy.html">Who is Eddy? ›</a></div>
+    <div class="help-cards">
+      <article class="help-card" id="sample">
+        <img src="assets/img/eddy/eddy-sample.png" alt="Eddy holding an LED lamp topped like an ice cream cone"{{ dims('assets/img/eddy/eddy-sample.png') }}>
+        <div>
+          <h3>Get a sample</h3>
+          <p>Tell us the part number or the fixture you are replacing and where to ship it. Try it on the job before you order.</p>
+          <div class="actions"><a class="btn btn-primary" href="mailto:{{ EMAIL }}?subject=Sample%20request&amp;body=Part%20number%20or%20fixture%3A%0AQuantity%3A%0AShip%20to%3A%0A">Request a sample</a></div>
+        </div>
+      </article>
+      <article class="help-card" id="rebates">
+        <img src="assets/img/eddy/eddy-rebates.png" alt="Eddy giving a thumbs up and holding rebate cash"{{ dims('assets/img/eddy/eddy-rebates.png') }}>
+        <div>
+          <h3>Find rebates</h3>
+          <p>DLC-listed products qualify for utility rebates in many areas. Send the job's zip code and utility and we will look up what applies and help with the paperwork.</p>
+          <div class="actions"><a class="btn btn-primary" href="mailto:{{ EMAIL }}?subject=Rebate%20lookup&amp;body=Job%20zip%20code%3A%0AUtility%3A%0AProducts%3A%0A">Check rebates</a></div>
+        </div>
+      </article>
+      <article class="help-card" id="rep">
+        <img src="assets/img/eddy/eddy-rep-finder.png" alt="Eddy looking through a magnifying glass"{{ dims('assets/img/eddy/eddy-rep-finder.png') }}>
+        <div>
+          <h3>Rep finder</h3>
+          <p>Local representatives carry stock, pricing and samples for Light Efficient Design, RemPhos and Solera. Tell us where the job is and we will connect you.</p>
+          <div class="actions"><a class="btn btn-primary" href="mailto:{{ EMAIL }}?subject=Find%20my%20local%20rep&amp;body=City%20and%20state%3A%0ACompany%3A%0A">Find your rep</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,266 @@
+{
+ "slug": "solar-flood-multifunctional",
+ "brand": "solera",
+ "group": "Solar Lighting",
+ "title": "Flood + Multifunctional Lights",
+ "subtitle": "",
+ "pdfPages": [
+  34
+ ],
+ "catalogPages": [
+  64,
+  65
+ ],
+ "headline": "Adjustable – light exactly where you need it... Public safety. Low maintenance...",
+ "intro": "",
+ "callouts": [
+  "Adjustable – light exactly where you need it...",
+  "Public safety. Low maintenance...",
+  "Use light engine as a power bank w/ USB port",
+  "16 ft cable connects panel and light engine"
+ ],
+ "features": [
+  {
+   "label": "3-year warranty"
+  },
+  {
+   "label": "Battery charge time 8 hrs",
+   "note": "both models"
+  },
+  {
+   "label": "Battery life up to 50 hrs",
+   "note": "SL-SFL-20W-40K-BK-G2 (Off-Grid Flood Light)"
+  },
+  {
+   "label": "Battery life up to 24 hrs",
+   "note": "SL-SMFL-10W-40K-BK-G1 (Off-Grid Multifunctional Flood Light)"
+  },
+  {
+   "label": "Battery charge temp 32°F to 115°F",
+   "note": "SL-SFL-20W-40K-BK-G2"
+  },
+  {
+   "label": "Battery charge temp 32°F to 140°F",
+   "note": "SL-SMFL-10W-40K-BK-G1"
+  },
+  {
+   "label": "Operating temp -4°F to 140°F",
+   "note": "both models"
+  },
+  {
+   "label": "Replaceable battery",
+   "note": "both models"
+  },
+  {
+   "label": "120° beam angle",
+   "note": "SL-SFL-20W-40K-BK-G2"
+  },
+  {
+   "label": "90° beam angle",
+   "note": "SL-SMFL-10W-40K-BK-G1"
+  },
+  {
+   "label": "L70 50,000hrs rated life",
+   "note": "both models"
+  },
+  {
+   "label": "Adjustable height 16 in to 21 in",
+   "note": "SL-SFL-20W-40K-BK-G2 (Adj Height column)"
+  },
+  {
+   "label": "Operating modes: Constant Brightness, Timer",
+   "note": "SL-SFL-20W-40K-BK-G2"
+  },
+  {
+   "label": "Operating modes: Constant Brightness, Timer, Motion Sensing",
+   "note": "SL-SMFL-10W-40K-BK-G1"
+  },
+  {
+   "label": "Use light engine as a power bank w/ USB port",
+   "note": "SL-SMFL-10W-40K-BK-G1"
+  },
+  {
+   "label": "16 ft cable connects panel and light engine",
+   "note": "SL-SMFL-10W-40K-BK-G1 (separate solar panel)"
+  },
+  {
+   "label": "Garden stake accessory RP-SFL-MS-G1",
+   "note": "SL-SFL-20W-40K-BK-G2; * garden stake is an accessory and is sold separately"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Off-Grid Flood Light",
+   "columns": [
+    "Part #",
+    "Compares To",
+    "Lumens",
+    "CCT",
+    "Dimensions",
+    "Adj Height",
+    "Listings"
+   ],
+   "rows": [
+    [
+     "SL-SFL-20W-40K-BK-G2",
+     "150W HID",
+     "2000",
+     "4000K",
+     "26.0 in x 11.0 in (panel w/ light)",
+     "16 in to 21 in",
+     "CE, FCC"
+    ]
+   ],
+   "notes": [
+    "Accessories: RP-SFL-MS-G1* (Garden Stake); * garden stake is an accessory and is sold separately",
+    "Operating modes: Constant Brightness | Timer",
+    "Dimensions are printed on two lines: '26.0 IN x 11.0 IN' / '(PANEL w/ LIGHT)'"
+   ]
+  },
+  {
+   "title": "Off-Grid Multifunctional Flood Light",
+   "columns": [
+    "Part #",
+    "Compares To",
+    "Lumens",
+    "CCT",
+    "Dimensions",
+    "Listings"
+   ],
+   "rows": [
+    [
+     "SL-SMFL-10W-40K-BK-G1",
+     "70W HID",
+     "1100",
+     "4000K",
+     "9.1 in x 6.5 in (light) / 13.6 in x 9.3 in (panel)",
+     "CE, FCC"
+    ]
+   ],
+   "notes": [
+    "Operating modes: Constant Brightness | Timer | Motion Sensing"
+   ]
+  }
+ ],
+ "footnotes": [
+  "* Garden stake is an accessory and is sold separately (RP-SFL-MS-G1)",
+  "Headline dash: the catalog prints 'ADJUSTABLE – LIGHT EXACTLY WHERE YOU NEED IT...' with an en dash",
+  "Page footer: SOLERA SOLAR / OFF-GRID"
+ ],
+ "images": [
+  {
+   "file": "p34-b1.jpg",
+   "kind": "application",
+   "shows": "Catalog composite: SL-SFL-20W solar flood light (tilted solar panel over a twin-module LED head on an adjustable square post with base plate) in front of a resort wayfinding sign among palm trees; the product overhangs onto white below the photo and the block also includes slivers of the spec table ('PART #', 'SL-SFL-20W-40K-BK-G2', 'RP-SFL-', '* GARDEN STAKE IS AN ACCESSORY')",
+   "products": [
+    "SL-SFL-20W-40K-BK-G2"
+   ],
+   "use": "superseded by custom/solar-flood-multifunctional-hero-sfl.jpg (table slivers painted out)"
+  },
+  {
+   "file": "custom/solar-flood-multifunctional-hero-sfl.jpg",
+   "kind": "hero",
+   "shows": "The flood-light composite with the table slivers whited out: SL-SFL-20W-40K-BK-G2 on its adjustable post, complete down to the base plate, in front of the resort signage photo (portrait format, 939 x 1291 px)",
+   "products": [
+    "SL-SFL-20W-40K-BK-G2"
+   ],
+   "use": "hero"
+  },
+  {
+   "file": "p34-b2.jpg",
+   "kind": "application",
+   "shows": "Two application photos merged in one block: illuminated garden interpretive sign panels along a stone path (left) and a bus shelter with a backlit transit map (right)",
+   "products": [
+    "SL-SFL-20W-40K-BK-G2",
+    "SL-SMFL-10W-40K-BK-G1"
+   ],
+   "use": "superseded by the two custom splits"
+  },
+  {
+   "file": "custom/solar-flood-multifunctional-app-garden-signs.jpg",
+   "kind": "application",
+   "shows": "Garden interpretive sign panels on posts lit from below along a stone path at dusk (flood-light application; the drawn light cone from the SFL composite fades in at the left edge)",
+   "products": [
+    "SL-SFL-20W-40K-BK-G2"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "custom/solar-flood-multifunctional-app-bus-shelter.jpg",
+   "kind": "application",
+   "shows": "Modern bus shelter with a backlit transit-map display and canopy downlights beside a city street at dawn (multifunctional flood-light application); no product shown",
+   "products": [
+    "SL-SMFL-10W-40K-BK-G1"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "p34-b3.jpg",
+   "kind": "callout",
+   "shows": "Yellow callout panel: SL-SMFL-10W light engine (50-LED array, PIR sensor, USB port with cap and power button) on its bracket in front of the separate solar panel, with the texts 'USE LIGHT ENGINE AS A POWER BANK W/ USB PORT' (dotted pointer to the USB port) and '16 FT CABLE CONNECTS PANEL AND LIGHT ENGINE'",
+   "products": [
+    "SL-SMFL-10W-40K-BK-G1"
+   ],
+   "use": "callout (keeps the catalog's callout text)"
+  },
+  {
+   "file": "custom/solar-flood-multifunctional-smfl-product.jpg",
+   "kind": "product",
+   "shows": "SL-SMFL-10W-40K-BK-G1 light engine and separate solar panel on the yellow panel background with the callout text and dotted pointer removed (product on yellow, not a white cutout)",
+   "products": [
+    "SL-SMFL-10W-40K-BK-G1"
+   ],
+   "use": "gallery (product shot on yellow)"
+  }
+ ],
+ "extras": [
+  {
+   "title": "Accessories",
+   "columns": [
+    "Part #",
+    "Description",
+    "For"
+   ],
+   "rows": [
+    [
+     "RP-SFL-MS-G1",
+     "Garden stake (accessory, sold separately)",
+     "SL-SFL-20W-40K-BK-G2"
+    ]
+   ]
+  },
+  {
+   "title": "Spec icons by model",
+   "text": "Both models: 3-year warranty, 8 hrs battery charge time, -4°F to 140°F operating temp, replaceable battery, L70 50,000hrs rated life.",
+   "columns": [
+    "Model",
+    "Battery charge time",
+    "Battery life",
+    "Battery charge temp",
+    "Operating temp",
+    "Beam angle",
+    "Operating modes"
+   ],
+   "rows": [
+    [
+     "SL-SFL-20W-40K-BK-G2 (Off-Grid Flood Light)",
+     "8 hrs",
+     "up to 50 hrs",
+     "32°F to 115°F",
+     "-4°F to 140°F",
+     "120°",
+     "Constant Brightness | Timer"
+    ],
+    [
+     "SL-SMFL-10W-40K-BK-G1 (Off-Grid Multifunctional Flood Light)",
+     "8 hrs",
+     "up to 24 hrs",
+     "32°F to 140°F",
+     "-4°F to 140°F",
+     "90°",
+     "Constant Brightness | Timer | Motion Sensing"
+    ]
+   ]
+  }
+ ]
+}

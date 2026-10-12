@@ -1,0 +1,232 @@
+{
+  "title": "PL + PLL",
+  "subtitle": "",
+  "headline": "Over a dozen models for the perfect solution.",
+  "intro": "Our latest pin-based LED retrofits now feature FlexColor allowing for substantial sku reduction and in-field adjustability. Ideal for PL applications, these lamps provide a long-lasting LED replacement for offices, hotels, lobbies, schools, and other commercial spaces.",
+  "callouts": [
+    "90° Rotatable Head",
+    "Now w/ FlexColor — Extendable End Cap"
+  ],
+  "features": [
+    {
+      "label": "5-year warranty"
+    },
+    {
+      "label": "80+ CRI"
+    },
+    {
+      "label": "120° beam angle",
+      "note": "7311 / 7312 / 7313 / 7314 / 7322 / 7324 / 7334"
+    },
+    {
+      "label": "140° beam angle",
+      "note": "7340 / 7343 / 7344 / 7345"
+    },
+    {
+      "label": "200° beam angle",
+      "note": "7316 / 7318 / 7328"
+    },
+    {
+      "label": "360° beam angle",
+      "note": "7300 / 7310 / 7320 / 7330 / 7350 / 7351"
+    },
+    {
+      "label": "L70 50,000hrs rated life"
+    },
+    {
+      "label": "UL Type A+B universal (ballast compatible or ballast bypass)",
+      "note": "all 14 part numbers in the page 14 'PL | Universal | Type A+B' table: 7300 / 7310 / 7311 / 7312 / 7313 / 7314 / 7322 / 7316 / 7318 / 7328 / 7320 (FC1, FC2) / 7324 (FC1, FC2); page 12 line-up heading 'TYPE A + B'"
+    },
+    {
+      "label": "UL Type A ballast compatible",
+      "note": "LED-7330-xxK-G2 / LED-7334-xxK-G2"
+    },
+    {
+      "label": "UL Type B ballast bypass",
+      "note": "LED-7340 / 7343 / 7344 / 7345 (PLL, 2G11) and LED-7350 / 7351 (GX24q)"
+    },
+    {
+      "label": "FlexColor selectable CCT",
+      "note": "all models except the fixed-CCT Type A lamps LED-7330 / LED-7334; CCT options per model are in the tables (no factory default is marked in bold in this catalog spread)"
+    },
+    {
+      "label": "90° rotatable head",
+      "note": "7316 / 7318 / 7328 (shown on LED-7318-FC2)"
+    },
+    {
+      "label": "Extendable end cap",
+      "note": "base can be extended by up to 1.0 in — 7316 / 7318 / 7328"
+    },
+    {
+      "label": "Open fixture only",
+      "note": "features glyph on all Type A+B lamps (LED-7300 to LED-7324) and Type A lamps (LED-7330 / LED-7334)"
+    },
+    {
+      "label": "Enclosed fixture rated (may also be used in open fixture)",
+      "note": "features glyph on all Type B lamps (LED-7340 / 7343 / 7344 / 7345 / 7350 / 7351)"
+    },
+    {
+      "label": "Mounting: omni-directional / vertical / horizontal",
+      "note": "per-model mounting glyph in the tables; see Mounting column"
+    },
+    {
+      "label": "Emergency back up >90 min",
+      "note": "LED-EMG-05WCP (5W) and LED-EMG-10WCP (10W) kits; see Compatible Products table"
+    },
+    {
+      "label": "120-277V also works on 208V & 240V"
+    }
+  ],
+  "tables": [
+    {
+      "title": "PL | Universal | Type A+B",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "Replaces up to",
+        "Wattage",
+        "Lumens",
+        "CCT",
+        "Base",
+        "Mounting",
+        "Features",
+        "Dimensions",
+        "Listings"
+      ],
+      "rows": [
+        "LED-7300-FC-G4 | 120-277V | 13W / 2-pin CFL | 5.5W | 720-800 | FlexColor 2700K/3000K/3500K/4000K | GX23 | Omni-directional | Open fixture only | 5.0 in x 1.4 in | cULus Listed, cULus Classified",
+        "LED-7310-FC-G5 | 120-277V | 26W / 2-pin CFL | 5.5W | 800 | FlexColor 2700K/3000K/3500K/4000K | G24d | Omni-directional | Open fixture only | 5.0 in x 1.4 in | cULus Listed, cULus Classified",
+        "LED-7311-FC1-G4 | 120-277V | 26W / 2-pin CFL | 7W | 900-950 | FlexColor 3000K/3500K/4000K | G23-2 | Horizontal | Open fixture only | 5.5 in x 1.4 in | cULus Listed, cULus Classified",
+        "LED-7312-FC1-G4 | 120-277V | 26W / 2-pin CFL | 7W | 900-950 | FlexColor 3000K/3500K/4000K | GX23-2 | Horizontal | Open fixture only | 5.5 in x 1.4 in | cULus Listed, cULus Classified",
+        "LED-7313-FC-G4 | 120-277V | 9W / 2-pin CFL | 3.5W | 389-428 | FlexColor 2700K/3000K/3500K/4000K | G23 | Horizontal + vertical (down arrow only) | Open fixture only | 5.3 in x 1.3 in | cULus Listed, cULus Classified",
+        "LED-7314-FC-G4 | 120-277V | 13W / 2-pin CFL | 5.5W | 628-696 | FlexColor 2700K/3000K/3500K/4000K | GX23 | Horizontal + vertical (down arrow only) | Open fixture only | 7.0 in x 1.4 in | cULus Listed, cULus Classified",
+        "LED-7322-FC1-G4 | 120-277V | 26W / 2-pin CFL | 7W | 900-950 | FlexColor 3000K/3500K/4000K | G24d | Horizontal | Open fixture only | 5.5 in x 1.4 in | cULus Listed, cULus Classified",
+        "LED-7316-FC-G2 | 120-277V | 32W / 2-pin CFL | 9W | 1050-1100 | FlexColor 2700/3000K/3500K/4000K/5000K | G24d | Horizontal + vertical (up arrow only) | Open fixture only | 6.8 in x 2.4 in (upright); 5.4 in x 3.1 in (rotated); base can be extended by up to 1.0 in | cULus Listed, cULus Classified",
+        "LED-7318-FC-G2 | 120-277V | 32W / 4-pin CFL | 9W | 1050-1100 | FlexColor 2700/3000K/3500K/4000K/5000K | G24q/GX24q | Horizontal + vertical (up arrow only) | Open fixture only | 6.8 in x 2.4 in (upright); 5.4 in x 3.1 in (rotated); base can be extended by up to 1.0 in | cULus Listed, cULus Classified",
+        "LED-7328-FC-G2 | 120-277V | 42W / 4-pin CFL | 16W | 1750-1850 | FlexColor 2700/3000K/3500K/4000K/5000K | G24q/GX24q | Horizontal + vertical (up arrow only) | Open fixture only | 6.8 in x 2.4 in (upright); 5.4 in x 3.1 in (rotated); base can be extended by up to 1.0 in | cULus Listed, cULus Classified",
+        "LED-7320-FC1-G4 | 120-277V | 42W / 4-pin CFL | 10W | 1320-1460 | FlexColor 3000K/3500K/4000K | G24q/GX24q | Omni-directional | Open fixture only | 6.6 in x 1.4 in | cULus Listed, cULus Classified",
+        "LED-7320-FC2-G4 | 120-277V | 42W / 4-pin CFL | 10W | 1320-1460 | FlexColor 2700K/4000K/5000K | G24q/GX24q | Omni-directional | Open fixture only | 6.6 in x 1.4 in | cULus Listed, cULus Classified",
+        "LED-7324-FC1-G4 | 120-277V | 42W / 4-pin CFL | 9W | 1230-1360 | FlexColor 3000K/3500K/4000K | G24q/GX24q | Horizontal | Open fixture only | 5.7 in x 1.3 in | cULus Listed, cULus Classified",
+        "LED-7324-FC2-G4 | 120-277V | 42W / 4-pin CFL | 9W | 1230-1360 | FlexColor 2700K/4000K/5000K | G24q/GX24q | Horizontal | Open fixture only | 5.7 in x 1.3 in | cULus Listed, cULus Classified"
+      ],
+      "notes": [
+        "No factory-default CCT is marked in bold in this table (all FlexColor CCT values are printed in the same weight)",
+        "The 'Replaces up to' cell '26W / 2-PIN CFL' is one merged cell spanning LED-7310-FC-G5, LED-7311-FC1-G4 and LED-7312-FC1-G4 in the catalog, so it is repeated on the LED-7310 row as printed",
+        "CCT for LED-7316 / 7318 / 7328 is printed as '2700/3000K/3500K/4000K/5000K' (first value without a K) and is kept as printed",
+        "Dimensions cell for LED-7316 / 7318 / 7328 is one merged cell: 6.8 IN x 2.4 IN (UPRIGHT), 5.4 IN x 3.1 IN (ROTATED), BASE CAN BE EXTENDED BY UP TO 1.0 IN",
+        "Mounting glyphs for 7313 / 7314 (left, right and down arrows) and for 7316 / 7318 / 7328 (left, right and up arrows) are three-arrow variants that the page key does not define; the key defines only omni-directional (4 arrows), vertical and horizontal",
+        "Voltage (120-277V), Features (open fixture only) and Listings are single merged cells spanning the whole table",
+        "120-277V also works on 208V & 240V"
+      ],
+      "pdfPage": 9
+    },
+    {
+      "title": "PL | Ballast Compatible | Type A",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "Replaces up to",
+        "Wattage",
+        "Lumens",
+        "CCT",
+        "Base",
+        "Mounting",
+        "Features",
+        "Dimensions",
+        "Listings"
+      ],
+      "rows": [
+        "LED-7330-27K-G2 | 120-277V | 26W / 4-pin CFL | 10W | 760 | 2700K | G24q/GX24q | Omni-directional | Open fixture only | 6.8 in x 1.3 in | cULus Listed, cULus Classified",
+        "LED-7330-35K-G2 | 120-277V | 26W / 4-pin CFL | 10W | 850 | 3500K | G24q/GX24q | Omni-directional | Open fixture only | 6.8 in x 1.3 in | cULus Listed, cULus Classified",
+        "LED-7330-40K-G2 | 120-277V | 26W / 4-pin CFL | 10W | 916 | 4000K | G24q/GX24q | Omni-directional | Open fixture only | 6.8 in x 1.3 in | cULus Listed, cULus Classified",
+        "LED-7334-27K-G2 | 120-277V | 32W / 4-pin CFL | 12W | 1100 | 2700K | G24q/GX24q | Horizontal | Open fixture only | 5.8 in x 1.4 in | cULus Listed, cULus Classified",
+        "LED-7334-35K-G2 | 120-277V | 32W / 4-pin CFL | 12W | 1100 | 3500K | G24q/GX24q | Horizontal | Open fixture only | 5.8 in x 1.4 in | cULus Listed, cULus Classified",
+        "LED-7334-40K-G2 | 120-277V | 32W / 4-pin CFL | 12W | 1100 | 4000K | G24q/GX24q | Horizontal | Open fixture only | 5.8 in x 1.4 in | cULus Listed, cULus Classified"
+      ],
+      "notes": [
+        "Fixed-CCT lamps (no FlexColor); lumens for LED-7330 are listed per CCT (760 / 850 / 916), lumens for LED-7334 are one merged cell (1100)",
+        "Voltage, Features (open fixture only) and Listings are single merged cells spanning the whole table",
+        "120-277V also works on 208V & 240V"
+      ],
+      "pdfPage": 9
+    },
+    {
+      "title": "PL + PLL | Ballast Bypass | Type B",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "Replaces up to",
+        "Wattage",
+        "Lumens",
+        "CCT",
+        "Base",
+        "Mounting",
+        "Features",
+        "Dimensions",
+        "Listings"
+      ],
+      "rows": [
+        "LED-7340-FC-G3 | 120-277V | 40W / 4-pin CFL | 17W | 2024-2228 | FlexColor 3000K/3500K/4000K/5000K/6500K | 2G11 | Omni-directional | Enclosed fixture rated (may also be used in open fixture) | 22.0 in x 1.7 in | cULus Listed, cULus Classified",
+        "LED-7343-FC-G3 | 120-277V | 36W / 4-pin CFL | 16W | 1900-2000 | FlexColor 3000K/3500K/4000K/5000K/6500K | 2G11 | Omni-directional | Enclosed fixture rated (may also be used in open fixture) | 16.0 in x 1.7 in | cULus Listed, cULus Classified",
+        "LED-7344-FC-G3 | 120-277V | 24W / 4-pin CFL | 10W | 1180-1250 | FlexColor 3000K/3500K/4000K/5000K/6500K | 2G11 | Omni-directional | Enclosed fixture rated (may also be used in open fixture) | 12.0 in x 1.7 in | cULus Listed, cULus Classified",
+        "LED-7345-FC-G3 | 120-277V | 18W / 4-pin CFL | 8.5W | 930-980 | FlexColor 3000K/3500K/4000K/5000K/6500K | 2G11 | Omni-directional | Enclosed fixture rated (may also be used in open fixture) | 8.5 in x 1.7 in | cULus Listed, cULus Classified",
+        "LED-7350-FC-G4 | 120-277V | 32W / 2-pin CFL | 15W | 2000-2200 | FlexColor 3000K/3500K/4000K/5000K | GX24q | Omni-directional | Enclosed fixture rated (may also be used in open fixture) | 6.3 in x 2.0 in | cULus Listed, cULus Classified",
+        "LED-7351-FC-G4 | 120-277V | 42W / 2-pin CFL | 17W | 2300-2500 | FlexColor 3000K/3500K/4000K/5000K | GX24q | Omni-directional | Enclosed fixture rated (may also be used in open fixture) | 6.7 in x 2.0 in | cULus Listed, cULus Classified"
+      ],
+      "notes": [
+        "No factory-default CCT is marked in bold in this table",
+        "Mounting (omni-directional), Voltage and Listings are single merged cells spanning all six rows; the enclosed-fixture glyph appears once for the 2G11 lamps and once for the GX24q lamps",
+        "The page 12 line-up labels the LED-7350 / LED-7351 base as 'GX24d/GX24q'; the spec table prints 'GX24q' only",
+        "120-277V also works on 208V & 240V"
+      ],
+      "pdfPage": 9
+    },
+    {
+      "title": "Emergency Back Up Kit",
+      "columns": [
+        "Part #",
+        "Wattage",
+        "EMG time",
+        "Dimensions",
+        "Listings"
+      ],
+      "rows": [
+        "LED-EMG-05WCP | 5W | >90 min | 9.5 in x 1.3 in x 1.5 in | cULus Listed",
+        "LED-EMG-10WCP | 10W | >90 min | 12.75 in x 1.6 in x 1.5 in | cULus Listed"
+      ],
+      "notes": [
+        "EMG time and Listings are merged cells spanning both rows"
+      ],
+      "pdfPage": 9
+    },
+    {
+      "title": "Compatible Products",
+      "columns": [
+        "Part #",
+        "LED-EMG-05WCP",
+        "LED-EMG-10WCP"
+      ],
+      "rows": [
+        "LED-7320-XXK-G3 | Yes | Yes",
+        "LED-7324-XXK-G3 | Yes | Yes",
+        "LED-7340-XXK-G2 | Yes | Yes",
+        "LED-7320-FC1-G4 | Yes | Yes",
+        "LED-7320-FC2-G4 | Yes | Yes",
+        "LED-7316-FC-G2 | Yes | ",
+        "LED-7318-FC-G2 | Yes | Yes",
+        "LED-7328-FC-G2 | Yes | Yes"
+      ],
+      "notes": [
+        "Check marks in the catalog are written as 'Yes'; an empty cell means no check mark (LED-7316-FC-G2 is compatible with the 5W kit only)",
+        "LED-7320-XXK-G3, LED-7324-XXK-G3 and LED-7340-XXK-G2 are fixed-CCT part numbers (XXK = CCT code) that do not appear in this spread's spec tables"
+      ],
+      "pdfPage": 9
+    }
+  ],
+  "footnotes": [
+    "120-277V also works on 208V & 240V",
+    "Page 12 (PDF page 8) is the lamp line-up: TYPE A + B (2-pin: LED-7300-G4, 7310-G5, 7311-G4, 7312-G4, 7313-G4, 7314-G4, 7322-G4, 7316-G2; 4-pin: LED-7318-G2, 7328-G2, 7320-G4, 7324-G4), TYPE A (4-pin: LED-7330-G2, 7334-G2) and TYPE B (2-pin: LED-7350-G4, 7351-G4; 4-pin: LED-7340-G3/7343-G3/7344-G3/7345-G3); FlexColor dotted lines run over the Type A+B and Type B groups only",
+    "The 'NOW W/ FLEXCOLOR —' and 'EXTENDABLE END CAP' statements sit on one line under the 90° rotatable head panel (LED-7318-FC2) and read as a single callout; the LED-7320 lamp to the right carries only an arrow caption '← LED-7320'",
+    "Catalog page numbers: 12 (line-up) and 14 (spec tables)"
+  ]
+}

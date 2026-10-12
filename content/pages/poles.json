@@ -1,0 +1,169 @@
+{
+  "title": "Pole Offering",
+  "subtitle": "",
+  "headline": "Round and square straight poles sized for Solera solar area lights.",
+  "intro": "Anchor-base and direct-burial poles from 10 to 30 ft, rated by EPA at 80 to 120 mph, with the mounting tenon and finish built into the part number.",
+  "callouts": [],
+  "features": [],
+  "tables": [
+    {
+      "title": "Round Straight | Anchor Base",
+      "columns": [
+        "Part #",
+        "Mounting Ht",
+        "Max EPA (80 mph)",
+        "Max EPA (90 mph)",
+        "Max EPA (100 mph)",
+        "Max EPA (120 mph)",
+        "Shaft Diameter",
+        "Wall Thickness (ga)",
+        "Anchor Bolt Dia",
+        "Bolt Circle",
+        "Product(s)"
+      ],
+      "rows": [
+        "SL-RSP-8-3-11-AB-XX-YY | 8 FT | 11.2 | 8.4 | 6.2 | 3.7 | 3.0 IN | 11 | 0.75 IN | 8.5 IN | SL-SPT, SL-CPT",
+        "SL-RSP-10-3-11-AB-XX-YY | 10 FT | 9.0 | 6.7 | 5.0 | 3.0 | 3.0 IN | 11 | 0.75 IN | 8.5 IN | SL-SPT, SL-CPT",
+        "SL-RSP-12-3-11-AB-XX-YY | 12 FT | 6.9 | 5.0 | 3.9 | 2.1 | 3.0 IN | 11 | 0.75 IN | 8.5 IN | SL-SPT, SL-CPT, SL-AIO-40L",
+        "SL-RSP-14-3-11-AB-XX-YY | 14 FT | 5.5 | 3.9 | 2.9 | 1.4 | 3.0 IN | 11 | 0.75 IN | 8.5 IN | SL-AIO-40L, SL-AIO-70L",
+        "SL-RSP-14-4-11-AB-XX-YY | 14 FT | 11.7 | 8.9 | 7.1 | 4.0 | 4.0 IN | 11 | 0.75 IN | 8.5 IN | SL-AIO-70L, SL-SAL-60L, SL-AIO-40L",
+        "SL-RSP-16-4-11-AB-XX-YY | 16 FT | 9.0 | 6.8 | 5.3 | 2.9 | 4.0 IN | 11 | 0.75 IN | 8.5 IN | SL-AIO-40L, SL-AIO-70L",
+        "SL-RSP-18-4-11-AB-XX-YY | 18 FT | 7.1 | 5.2 | 4.0 | 2.2 | 4.0 IN | 11 | 0.75 IN | 8.5 IN | SL-AIO-40L, SL-AIO-70L",
+        "SL-RSP-20-4-11-AB-XX-YY | 20 FT | 5.6 | 4.1 | 3.1 | 1.7 | 4.0 IN | 11 | 0.75 IN | 8.5 IN | SL-AIO-70L",
+        "SL-RSP-25-5-11-AB-XX-YY | 25 FT | 6.7 | 5.0 | 3.7 | 2.0 | 5.0 IN | 11 | 0.75 IN | 8.5 IN | ",
+        "SL-RSP-25-5-7-AB-XX-YY | 25 FT | 12.0 | 9.2 | 7.5 | 4.2 | 5.0 IN | 7 | 1.00 IN | 10.0 IN | SL-AIO-70L, SL-SAL-60L",
+        "SL-RSP-30-5-11-AB-XX-YY | 30 FT | 4.0 | 2.8 | 2.0 | N/A | 5.0 IN | 11 | 0.75 IN | 8.5 IN | ",
+        "SL-RSP-30-5-7-AB-XX-YY | 30 FT | 7.9 | 6.6 | 4.8 | 2.7 | 5.0 IN | 7 | 1.00 IN | 10.0 IN | "
+      ],
+      "notes": [
+        "Max EPA is the largest effective projected area, in square feet, the pole carries at that wind speed.",
+        "Product(s) column translated from the catalog's colour-coded symbols using the key printed at the foot of the right-hand page (see extras 'Product symbol key'); codes are listed in the order the symbols appear; an empty cell means no symbol is printed for that pole",
+        "Merged cells: 14 FT spans SL-RSP-14-3-11 and SL-RSP-14-4-11; 25 FT spans both 25-5 rows; 30 FT spans both 30-5 rows; Shaft Diameter 3.0 IN spans rows 8 FT through 14-3, 4.0 IN spans 14-4 through 20 FT, 5.0 IN spans all 25 FT and 30 FT rows; Wall Thickness 11 / Anchor Bolt 0.75 IN / Bolt Circle 8.5 IN span 8 FT through SL-RSP-25-5-11 and recur on SL-RSP-30-5-11; the 7-gauge rows (25-5-7, 30-5-7) carry 1.00 IN anchor bolts and a 10.0 IN bolt circle"
+      ],
+      "pdfPage": 36
+    },
+    {
+      "title": "Square Straight | Anchor Base",
+      "columns": [
+        "Part #",
+        "Mounting Ht",
+        "Max EPA (80 mph)",
+        "Max EPA (90 mph)",
+        "Max EPA (100 mph)",
+        "Max EPA (120 mph)",
+        "Shaft Diameter",
+        "Wall Thickness (ga)",
+        "Anchor Bolt Dia",
+        "Bolt Circle",
+        "Product(s)"
+      ],
+      "rows": [
+        "SL-RPSQ-10-4-11-AB-XX-YY | 10 FT | 25.7 | 20.8 | 16.8 | 11.8 | 4.0 IN | 11 | 0.75 IN | 8.5 IN | SL-SPT, SL-CPT",
+        "SL-RPSQ-12-4-11-AB-XX-YY | 12 FT | 20.5 | 16.6 | 13.4 | 9.4 | 4.0 IN | 11 | 0.75 IN | 8.5 IN | SL-SPT, SL-CPT, SL-AIO-40L",
+        "SL-RPSQ-14-4-11-AB-XX-YY | 14 FT | 16.6 | 13.5 | 10.9 | 7.7 | 4.0 IN | 11 | 0.75 IN | 8.5 IN | SL-AIO-40L, SL-AIO-70L",
+        "SL-RPSQ-15-4-11-AB-XX-YY | 15 FT | 15.1 | 12.3 | 9.8 | 7.0 | 4.0 IN | 11 | 0.75 IN | 8.5 IN | SL-SPT, SL-AIO-40L, SL-AIO-70L, SL-SAL-60L",
+        "SL-RPSQ-16-4-11-AB-XX-YY | 16 FT | 13.6 | 11.0 | 8.9 | 6.3 | 4.0 IN | 11 | 0.75 IN | 8.5 IN | SL-AIO-40L, SL-AIO-70L",
+        "SL-RPSQ-18-4-11-AB-XX-YY | 18 FT | 11.1 | 9.0 | 7.2 | 5.1 | 4.0 IN | 11 | 0.75 IN | 8.5 IN | SL-AIO-40L, SL-AIO-70L",
+        "SL-RPSQ-20-4-11-AB-XX-YY | 20 FT | 9.0 | 7.3 | 5.9 | 4.2 | 4.0 IN | 11 | 0.75 IN | 8.5 IN | SL-AIO-70L",
+        "SL-RPSQ-20-4-7-AB-XX-YY | 20 FT | 15.9 | 12.5 | 10.1 | 7.1 | 4.0 IN | 7 | 0.75 IN | 8.5 IN | SL-AIO-70L, SL-SAL-60L",
+        "SL-RPSQ-20-5-11-AB-XX-YY | 20 FT | 16.0 | 12.9 | 10.4 | 7.4 | 5.0 IN | 11 | 0.75 IN | 11.0 IN | SL-AIO-70L, SL-SAL-100L",
+        "SL-RPSQ-20-5-7-AB-XX-YY | 20 FT | 26.4 | 21.3 | 17.2 | 12.1 | 5.0 IN | 7 | 1.00 IN | 11.0 IN | SL-MA1/SL-MA2, SL-MD1",
+        "SL-RPSQ-25-4-11-AB-XX-YY | 25 FT | 4.1 | 3.3 | 2.6 | 1.8 | 4.0 IN | 11 | 0.75 IN | 8.5 IN | ",
+        "SL-RPSQ-25-4-7-AB-XX-YY | 25 FT | 9.7 | 7.8 | 6.3 | 4.5 | 4.0 IN | 7 | 0.75 IN | 8.5 IN | SL-AIO-70L",
+        "SL-RPSQ-25-5-11-AB-XX-YY | 25 FT | 8.5 | 6.9 | 5.6 | 4.0 | 5.0 IN | 11 | 0.75 IN | 11.0 IN | SL-AIO-70L",
+        "SL-RPSQ-25-5-7-AB-XX-YY | 25 FT | 17.5 | 14.2 | 11.4 | 8.1 | 5.0 IN | 7 | 1.00 IN | 11.0 IN | SL-SAL-60L, SL-SAL-100L",
+        "SL-RPSQ-25-6-7-AB-XX-YY | 25 FT | 27.5 | 22.3 | 18.0 | 12.6 | 6.0 IN | 7 | 1.00 IN | 11.5 IN | SL-MA1/SL-MA2, SL-MD1",
+        "SL-RPSQ-30-5-11-AB-XX-YY | 30 FT | 4.2 | 3.4 | 2.7 | 1.9 | 5.0 IN | 11 | 0.75 IN | 11.0 IN | ",
+        "SL-RPSQ-30-5-7-AB-XX-YY | 30 FT | 10.6 | 8.6 | 6.9 | 4.9 | 5.0 IN | 7 | 1.00 IN | 11.0 IN | ",
+        "SL-RPSQ-30-6-7-AB-XX-YY | 30 FT | 17.9 | 14.5 | 11.7 | 8.3 | 6.0 IN | 7 | 1.00 IN | 11.5 IN | SL-SAL-100L, SL-MA1/SL-MA2, SL-MD1"
+      ],
+      "notes": [
+        "Max EPA is the largest effective projected area, in square feet, the pole carries at that wind speed.",
+        "Product(s) column translated from the catalog's colour-coded symbols using the key printed at the foot of the right-hand page (see extras 'Product symbol key'); codes are listed in the order the symbols appear; an empty cell means no symbol is printed for that pole",
+        "Merged cells: 20 FT spans the four SL-RPSQ-20 rows, 25 FT the five SL-RPSQ-25 rows, 30 FT the three SL-RPSQ-30 rows; Shaft Diameter 4.0 IN spans 10 FT through SL-RPSQ-20-4-7, 5.0 IN spans 20-5-11 and 20-5-7, 4.0 IN spans 25-4-11 and 25-4-7, 5.0 IN spans 25-5-11 and 25-5-7, 6.0 IN is 25-6-7, 5.0 IN spans 30-5-11 and 30-5-7, 6.0 IN is 30-6-7; Wall Thickness 11 spans 10 FT through 20-4-11, then alternates per row as listed, with 7 spanning 25-5-7 and 25-6-7 and 7 spanning 30-5-7 and 30-6-7; Anchor Bolt Dia 0.75 IN spans 10 FT through 20-5-11, 1.00 IN is 20-5-7, 0.75 IN spans 25-4-11 through 25-5-11, 1.00 IN spans 25-5-7 and 25-6-7, 0.75 IN is 30-5-11, 1.00 IN spans 30-5-7 and 30-6-7; Bolt Circle 8.5 IN spans 10 FT through 20-4-7, 11.0 IN spans 20-5-11 and 20-5-7, 8.5 IN spans 25-4-11 and 25-4-7, 11.0 IN spans 25-5-11 and 25-5-7, 11.5 IN is 25-6-7, 11.0 IN spans 30-5-11 and 30-5-7, 11.5 IN is 30-6-7"
+      ],
+      "pdfPage": 36
+    },
+    {
+      "title": "Round Straight | Direct Burial",
+      "columns": [
+        "Part #",
+        "Mounting Ht",
+        "Total Ht",
+        "Max EPA (80 mph)",
+        "Max EPA (90 mph)",
+        "Max EPA (100 mph)",
+        "Max EPA (120 mph)",
+        "Shaft Diameter",
+        "Wall Thickness (ga)",
+        "Product(s)"
+      ],
+      "rows": [
+        "SL-RSP-8-3-11-EMB-XX-YY | 8 FT | 11 FT | 11.2 | 8.4 | 6.2 | 3.7 | 3.0 IN | 11 | SL-SPT, SL-CPT",
+        "SL-RSP-10-4-11-EMB-XX-YY | 10 FT | 13 FT | 9.0 | 6.7 | 5.0 | 3.0 | 4.0 IN | 11 | SL-SPT, SL-CPT",
+        "SL-RSP-12-4-11-EMB-XX-YY | 12 FT | 15 FT | 6.9 | 5.0 | 3.9 | 2.1 | 4.0 IN | 11 | SL-SPT, SL-CPT, SL-AIO-40L",
+        "SL-RSP-14-4-11-EMB-XX-YY | 14 FT | 18 FT | 11.7 | 8.9 | 7.1 | 4.0 | 4.0 IN | 11 | SL-AIO-40L, SL-AIO-70L, SL-SAL-60L",
+        "SL-RSP-16-4-11-EMB-XX-YY | 16 FT | 20 FT | 9.0 | 6.8 | 5.3 | 2.9 | 4.0 IN | 11 | SL-AIO-40L",
+        "SL-RSP-18-5-11-EMB-XX-YY | 18 FT | 22 FT | 7.1 | 5.2 | 4.0 | 2.2 | 5.0 IN | 11 | SL-AIO-40L",
+        "SL-RSP-20-5-7-EMB-XX-YY | 20 FT | 24 FT | 16.4 | 12.6 | 10.0 | 6.6 | 5.0 IN | 7 | SL-AIO-70L, SL-SAL-60L, SL-SAL-100L",
+        "SL-RSP-20-5-11-EMB-XX-YY | 20 FT | 24 FT | 9.0 | 7.3 | 5.9 | 4.2 | 5.0 IN | 11 | SL-AIO-70L",
+        "SL-RSP-25-5-11-EMB-XX-YY | 25 FT | 30 FT | 6.7 | 5.0 | 3.7 | 2.0 | 5.0 IN | 11 | ",
+        "SL-RSP-25-5-7-EMB-XX-YY | 25 FT | 30 FT | 12.0 | 9.2 | 7.5 | 4.2 | 5.0 IN | 7 | SL-AIO-70L, SL-SAL-60L"
+      ],
+      "notes": [
+        "Max EPA is the largest effective projected area, in square feet, the pole carries at that wind speed.",
+        "Product(s) column translated from the catalog's colour-coded symbols using the key printed at the foot of the right-hand page (see extras 'Product symbol key'); codes are listed in the order the symbols appear; an empty cell means no symbol is printed for that pole",
+        "Direct-burial part numbers use the EMB suffix in place of AB; Total Ht is the pole length including the embedded section",
+        "Merged cells: 20 FT / 24 FT spans SL-RSP-20-5-7 and SL-RSP-20-5-11; 25 FT / 30 FT spans both 25-5 rows; Shaft Diameter 3.0 IN is the 8 FT row only, 4.0 IN spans 10 FT through 16 FT, 5.0 IN spans 18 FT through 25 FT; Wall Thickness 11 spans 8 FT through 18 FT, 7 is 20-5-7, 11 spans 20-5-11 and 25-5-11, 7 is 25-5-7"
+      ],
+      "pdfPage": 36
+    },
+    {
+      "title": "Square Straight | Direct Burial",
+      "columns": [
+        "Part #",
+        "Mounting Ht",
+        "Total Ht",
+        "Max EPA (80 mph)",
+        "Max EPA (90 mph)",
+        "Max EPA (100 mph)",
+        "Max EPA (120 mph)",
+        "Shaft Diameter",
+        "Wall Thickness (ga)",
+        "Product(s)"
+      ],
+      "rows": [
+        "SL-RPSQ-10-4-11-EMB-XX-YY | 10 FT | 13 FT | 25.7 | 20.8 | 16.8 | 11.8 | 4.0 IN | 11 | SL-SPT, SL-CPT",
+        "SL-RPSQ-12-4-11-EMB-XX-YY | 12 FT | 15 FT | 20.5 | 16.6 | 13.4 | 9.4 | 4.0 IN | 11 | SL-SPT, SL-CPT, SL-AIO-40L",
+        "SL-RPSQ-14-4-11-EMB-XX-YY | 14 FT | 18 FT | 16.6 | 13.5 | 10.9 | 7.7 | 4.0 IN | 11 | SL-AIO-40L, SL-AIO-70L",
+        "SL-RPSQ-15-4-11-EMB-XX-YY | 15 FT | 19 FT | 15.1 | 12.3 | 9.8 | 7.0 | 4.0 IN | 11 | SL-SPT, SL-AIO-40L, SL-AIO-70L, SL-SAL-60L",
+        "SL-RPSQ-16-4-11-EMB-XX-YY | 16 FT | 20 FT | 13.6 | 11.0 | 8.9 | 6.3 | 4.0 IN | 11 | SL-AIO-40L, SL-AIO-70L",
+        "SL-RPSQ-18-4-11-EMB-XX-YY | 18 FT | 22 FT | 11.1 | 9.0 | 7.2 | 5.1 | 4.0 IN | 11 | SL-AIO-40L, SL-AIO-70L",
+        "SL-RPSQ-20-4-11-EMB-XX-YY | 20 FT | 24 FT | 9.0 | 7.3 | 5.9 | 4.2 | 4.0 IN | 11 | SL-AIO-70L",
+        "SL-RPSQ-20-4-7-EMB-XX-YY | 20 FT | 24 FT | 15.9 | 12.5 | 10.1 | 7.1 | 4.0 IN | 7 | SL-AIO-70L, SL-SAL-60L",
+        "SL-RPSQ-20-5-11-EMB-XX-YY | 20 FT | 24 FT | 16.0 | 12.9 | 10.4 | 7.4 | 5.0 IN | 11 | SL-AIO-70L, SL-SAL-100L",
+        "SL-RPSQ-20-5-7-EMB-XX-YY | 20 FT | 24 FT | 26.4 | 21.3 | 17.2 | 12.1 | 5.0 IN | 7 | SL-MA1/SL-MA2, SL-MD1",
+        "SL-RPSQ-25-5-11-EMB-XX-YY | 25 FT | 30 FT | 8.5 | 6.9 | 5.6 | 4.0 | 5.0 IN | 11 | SL-AIO-70L",
+        "SL-RPSQ-25-5-7-EMB-XX-YY | 25 FT | 30 FT | 17.5 | 14.2 | 11.4 | 8.1 | 5.0 IN | 7 | SL-AIO-70L, SL-SAL-60L, SL-SAL-100L",
+        "SL-RPSQ-25-6-7-EMB-XX-YY | 25 FT | 30 FT | 27.5 | 22.3 | 18.0 | 12.6 | 6.0 IN | 7 | SL-MA1/SL-MA2, SL-MD1",
+        "SL-RPSQ-30-5-7-EMB-XX-YY | 30 FT | 35 FT | 10.6 | 8.6 | 6.9 | 4.9 | 5.0 IN | 7 | ",
+        "SL-RPSQ-30-6-7-EMB-XX-YY | 30 FT | 35 FT | 17.9 | 11.7 | 8.3 | 8.3 | 6.0 IN | 7 | SL-SAL-100L, SL-MA1/SL-MA2, SL-MD1"
+      ],
+      "notes": [
+        "Max EPA is the largest effective projected area, in square feet, the pole carries at that wind speed.",
+        "Product(s) column translated from the catalog's colour-coded symbols using the key printed at the foot of the right-hand page (see extras 'Product symbol key'); codes are listed in the order the symbols appear; an empty cell means no symbol is printed for that pole",
+        "Merged cells: 20 FT / 24 FT spans the four SL-RPSQ-20 rows, 25 FT / 30 FT the three SL-RPSQ-25 rows, 30 FT / 35 FT the two SL-RPSQ-30 rows; Shaft Diameter 4.0 IN spans 10 FT through 20-4-7, 5.0 IN spans 20-5-11 through 25-5-7, 6.0 IN is 25-6-7, 5.0 IN is 30-5-7, 6.0 IN is 30-6-7; Wall Thickness 11 spans 10 FT through 20-4-11, 7 is 20-4-7, 11 is 20-5-11, 7 is 20-5-7, 11 is 25-5-11, 7 spans 25-5-7 through 30-6-7",
+        "SL-RPSQ-30-6-7-EMB-XX-YY Max EPA is transcribed exactly as printed (17.9 / 11.7 / 8.3 / 8.3); the anchor-base equivalent SL-RPSQ-30-6-7-AB prints 17.9 / 14.5 / 11.7 / 8.3, so the EMB row looks like a catalog typo"
+      ],
+      "pdfPage": 36
+    }
+  ],
+  "footnotes": [
+    "Anchor base poles: XX = mounting option, T2 = 2 3/8 in tenon, T2.5 = 2 7/8 in tenon, T3 = 3 in tenon",
+    "Direct burial poles: XX = mounting option, T2 = 2 3/8 in tenon, T2.5 = 2 7/8 in tenon (no T3 option for direct-burial poles)",
+    "YY = finish color: BK = Black, DB = Dark Bronze, GR = Gray",
+    "Product symbol key (foot of catalog page 69): dark square = OFF-GRID POST TOP LIGHT (SL-SPT); dark circle = OFF-GRID PATHWAY LIGHT (SL-CPT); dark triangle = OFF-GRID ALL-IN-ONE AREA LIGHT (SL-AIO-40L); yellow triangle = OFF-GRID ALL-IN-ONE AREA LIGHT (SL-AIO-70L); dark five-point star = OFF-GRID AREA LIGHT (SL-SAL-60L); yellow five-point star = OFF-GRID AREA LIGHT (SL-SAL-100L); dark cross = INTELLIGENT MODULAR AREA LIGHT (SL-MA1/SL-MA2); yellow cross = INTELLIGENT MODULAR DECORATIVE LIGHT (SL-MD1)",
+    "Max EPA headings (80), (90), (100) and (120) are wind speeds in mph",
+    "AS PRINTED (possible typo): SL-RPSQ-30-6-7-EMB-XX-YY Max EPA 17.9 / 11.7 / 8.3 / 8.3 versus 17.9 / 14.5 / 11.7 / 8.3 for the anchor-base version of the same pole"
+  ]
+}

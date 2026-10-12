@@ -20,6 +20,8 @@
     { id: "BV", code: "BLU-WC-VLT", colors: ["blue", "violet"], lm: { "2": "15–300", "4": "30–600" } }
   ];
 
+  // a newer version of a document (V2, rev3, a date) takes over from the name written here; see docmap.js
+  const docUrl = (f) => "assets/docs/" + encodeURI((window.DOC_MAP && window.DOC_MAP[f]) || f);
   const ICON = {
     doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 16.5h5"/></svg>',
     wrench: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L4 16.8V20h3.2l5.3-5.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg>',
@@ -692,7 +694,7 @@ ${remoteMode ? remoteHtml : `
   }
 
   function resCard(icon, title, meta, href) {
-    if (href) return `<a class="res" href="assets/docs/${href}" target="_blank" rel="noopener"><span class="ic">${ICON[icon]}</span><span><h4>${h(title)}</h4><p>${h(meta)}</p><span class="state ready">Available</span></span></a>`;
+    if (href) return `<a class="res" href="${docUrl(href)}" target="_blank" rel="noopener"><span class="ic">${ICON[icon]}</span><span><h4>${h(title)}</h4><p>${h(meta)}</p><span class="state ready">Available</span></span></a>`;
     return `<div class="res soon"><span class="ic">${ICON[icon]}</span><span><h4>${h(title)}</h4><p>${h(meta)}</p><span class="state soon">Coming soon</span></span></div>`;
   }
 
@@ -722,7 +724,7 @@ ${remoteMode ? remoteHtml : `
         </div>
       </section>
       <section aria-labelledby="sp-h">
-        <div class="section-head"><h3 id="sp-h">At a glance</h3>${v.docs[0] ? `<a href="assets/docs/${v.docs[0][1]}" target="_blank" rel="noopener">Full ${h(v.docs[0][0].toLowerCase())} ›</a>` : ""}</div>
+        <div class="section-head"><h3 id="sp-h">At a glance</h3>${v.docs[0] ? `<a href="${docUrl(v.docs[0][1])}" target="_blank" rel="noopener">Full ${h(v.docs[0][0].toLowerCase())} ›</a>` : ""}</div>
         <div class="spec-tiles" style="--cols:${v.specs.length % 5 === 0 ? 5 : 4}">${v.specs.map(([k, val, n]) => `<div><div class="k">${h(k)}</div><div class="v${/^RP-[A-Z0-9-]+$/.test(val) ? " mono" : ""}">${h(val)}</div>${n ? `<div class="n">${h(n)}</div>` : ""}</div>`).join("")}</div>
       </section>
       <section aria-labelledby="pn-h">

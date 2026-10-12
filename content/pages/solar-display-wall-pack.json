@@ -1,0 +1,142 @@
+{
+  "title": "Display + Wall Pack Lights",
+  "subtitle": "",
+  "headline": "...All-in-one design. Built to withstand cold climates...",
+  "intro": "",
+  "callouts": [
+    "...All-in-one design",
+    "Built to withstand cold climates...",
+    "Surface mount bracket included",
+    "Optional clamp mount bracket available",
+    "Adjustable and detachable panel w/ a 6 ft cord",
+    "Make it magnetic"
+  ],
+  "features": [
+    {
+      "label": "3-year warranty"
+    },
+    {
+      "label": "Battery charge time 8 hrs",
+      "note": "SL-SDL-4FT-40K-BK-G2 (Off-Grid Display Light)"
+    },
+    {
+      "label": "Battery charge time 7 hrs",
+      "note": "SL-SWL-16L-FC-BK-G3 / -G3-M (Off-Grid FlexColor Wall Pack)"
+    },
+    {
+      "label": "Battery life up to 24 hrs",
+      "note": "SL-SDL-4FT-40K-BK-G2"
+    },
+    {
+      "label": "Battery life up to 25 hrs",
+      "note": "SL-SWL-16L-FC-BK-G3 / -G3-M"
+    },
+    {
+      "label": "Battery charge temp 32°F to 113°F",
+      "note": "SL-SDL-4FT-40K-BK-G2"
+    },
+    {
+      "label": "Battery charge temp -4°F to 140°F",
+      "note": "SL-SWL-16L-FC-BK-G3 / -G3-M"
+    },
+    {
+      "label": "Operating temp -4°F to 140°F",
+      "note": "SL-SDL-4FT-40K-BK-G2"
+    },
+    {
+      "label": "Operating temp -40°F to 140°F",
+      "note": "SL-SWL-16L-FC-BK-G3 / -G3-M"
+    },
+    {
+      "label": "Replaceable battery",
+      "note": "SL-SDL-4FT-40K-BK-G2 only; the wall pack icon strip has no replaceable-battery icon"
+    },
+    {
+      "label": "120° beam angle",
+      "note": "both models"
+    },
+    {
+      "label": "L70 50,000hrs rated life",
+      "note": "both models"
+    },
+    {
+      "label": "Operating modes: Constant Brightness, Timer",
+      "note": "SL-SDL-4FT-40K-BK-G2"
+    },
+    {
+      "label": "Operating modes: Constant Brightness, Motion Sensing",
+      "note": "SL-SWL-16L-FC-BK-G3 / -G3-M"
+    },
+    {
+      "label": "Surface mount bracket included",
+      "note": "SL-SDL-4FT-40K-BK-G2"
+    },
+    {
+      "label": "Optional clamp mount bracket available",
+      "note": "RP-SDL-BK-LB, 7 in clamp mount bracket (2 pk), for SL-SDL-4FT-40K-BK-G2"
+    },
+    {
+      "label": "All-in-one design",
+      "note": "SL-SDL-4FT-40K-BK-G2: solar panel and light bar in one 4 ft housing"
+    },
+    {
+      "label": "Adjustable and detachable panel w/ a 6 ft cord",
+      "note": "SL-SWL-16L-FC wall pack"
+    },
+    {
+      "label": "Magnetic mounting",
+      "note": "SL-SWL-16L-FC-BK-G3-M (magnet glyph before the part number; footer key 'MAGNETIC MOUNTING')"
+    },
+    {
+      "label": "FlexColor selectable CCT 3000K/4000K/5000K",
+      "note": "SL-SWL-16L-FC wall pack; no factory default is marked in bold"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Off-Grid Display Light",
+      "columns": [
+        "Part #",
+        "Compares To",
+        "Lumens",
+        "CCT",
+        "Dimensions",
+        "Listings"
+      ],
+      "rows": [
+        "SL-SDL-4FT-40K-BK-G2 | 150W HID | 2000 | 4000K | 47.2 in x 4.3 in x 4.3 in | CE, FCC"
+      ],
+      "notes": [
+        "Accessories: RP-SDL-BK-LB (7 in clamp mount brkt (2 pk)); a dotted leader links it to the clamp-bracket photo in the callout panel",
+        "Operating modes: Constant Brightness | Timer"
+      ]
+    },
+    {
+      "title": "Off-Grid FlexColor Wall Pack",
+      "columns": [
+        "Part #",
+        "Compares To",
+        "Lumens",
+        "FlexColor",
+        "Dimensions",
+        "Listings"
+      ],
+      "rows": [
+        "SL-SWL-16L-FC-BK-G3 | 100W HID | 1600 | 3000K/4000K/5000K | 13.0 in x 12.0 in x 5.0 in | CE, FCC",
+        "SL-SWL-16L-FC-BK-G3-M | 100W HID | 1600 | 3000K/4000K/5000K | 13.0 in x 12.0 in x 5.0 in | CE, FCC"
+      ],
+      "notes": [
+        "Magnet glyph before SL-SWL-16L-FC-BK-G3-M = magnetic mounting (footer key 'MAGNETIC MOUNTING'); a dotted leader links it to the 'MAKE IT MAGNETIC' callout",
+        "Merged cells: 100W HID, 1600, 3000K/4000K/5000K, 13.0 in x 12.0 in x 5.0 in and the CE/FCC marks span both rows",
+        "Dimensions are printed as '13.0 IN X 12.0 IN X 5.0 IN' (capital X)",
+        "Operating modes: Constant Brightness | Motion Sensing",
+        "No factory-default CCT is marked in bold"
+      ]
+    }
+  ],
+  "footnotes": [
+    "Magnetic mounting: magnet glyph beside SL-SWL-16L-FC-BK-G3-M (footer key 'MAGNETIC MOUNTING')",
+    "Surface mount bracket is included with the display light; the clamp mount bracket RP-SDL-BK-LB is an optional accessory",
+    "Page footer: SOLERA SOLAR / OFF-GRID"
+  ]
+}

@@ -1,0 +1,5 @@
+# Private working notes and caches stay out of the public repo
+notes/
+cms/
+tools/__pycache__/
+__pycache__/

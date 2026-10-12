@@ -1,0 +1,120 @@
+{
+  "title": "i-Series Modular Area + Decorative Lights",
+  "subtitle": "",
+  "headline": "Modular Solar Lighting System",
+  "intro": "Solera Solar Lighting sets a new standard in solar lighting performance. i-Series delivers a year-round, configurable solar-powered lighting system engineered to provide bright, reliable illumination wherever you need it.",
+  "callouts": [
+    "Meet i-Series w/ Solera Connect",
+    "Configure the intelligent modular system to fit your application",
+    "It's not just lighting — it's visibility. Control. Data.",
+    "Recommended mounting height: Modular Area + Decorative Lights 20 ft – 30 ft",
+    "See pages 68 + 69 for pole recommendations"
+  ],
+  "features": [
+    {
+      "label": "5-year warranty",
+      "note": "standard"
+    },
+    {
+      "label": "10-year warranty",
+      "note": "optional; available at an additional cost"
+    },
+    {
+      "label": "Year-round lighting",
+      "note": "365 icon"
+    },
+    {
+      "label": "LiFePO4 battery"
+    },
+    {
+      "label": "Battery charge time 6 hrs"
+    },
+    {
+      "label": "Battery life up to 30 hrs"
+    },
+    {
+      "label": "Battery charge temp -4°F to 140°F"
+    },
+    {
+      "label": "Operating temp -40°F to 140°F"
+    },
+    {
+      "label": "Replaceable battery"
+    },
+    {
+      "label": "4G Connect software + app",
+      "note": "Solera CONNECT"
+    },
+    {
+      "label": "Optional motion sensing"
+    },
+    {
+      "label": "L70 100,000hrs rated life"
+    },
+    {
+      "label": "Hybrid",
+      "note": "feature glyph key (yellow sun icon beside the part number) — marks the -HYB part numbers SL-MA1-HYB-10006X4DB1 and SL-MA2-HYB-15012X4DB1"
+    },
+    {
+      "label": "X = Optics",
+      "note": "the X in the part number: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Modular Solar Area Light",
+      "columns": [
+        "Part #",
+        "Features",
+        "Lumens",
+        "FlexColor",
+        "EPA",
+        "Configuration: Light Head",
+        "Configuration: Solar Panels",
+        "Configuration: Battery"
+      ],
+      "rows": [
+        "SL-MA1-OG-10006X4DB1 |  | Adjustable up to 10,000 | 3000K/4000K/5000K | 8.0 | Standard | (2) 55W | 600Wh",
+        "SL-MA1-HYB-10006X4DB1 | Hybrid | Adjustable up to 10,000 | 3000K/4000K/5000K | 8.0 | Standard | (2) 55W | 600Wh",
+        "SL-MA2-OG-15012X4DB1 |  | Adjustable up to 15,000 | 3000K/4000K/5000K | 14.0 | High Output | (1) 200W | 1200Wh",
+        "SL-MA2-HYB-15012X4DB1 | Hybrid | Adjustable up to 15,000 | 3000K/4000K/5000K | 14.0 | High Output | (1) 200W | 1200Wh"
+      ],
+      "notes": [
+        "The catalog's CONFIGURATION column is one merged cell per model holding three labelled values (LIGHT HEAD / SOLAR PANELS / BATTERY); they are split into three columns here.",
+        "X in the part number = optics: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5.",
+        "Hybrid (sun glyph) marks the -HYB part numbers. -OG is not expanded anywhere on pages 56/58; the page 56 footer reads HYBRID + OFF-GRID, so -OG presumably = off-grid (inferred, not printed).",
+        "No bold (factory-default) CCT is marked in the FlexColor cells.",
+        "Battery is printed 600WH / 1200WH in this table and 600Wh / 1200Wh in the page 56 configuration key.",
+        "This table has no Listings column."
+      ],
+      "pdfPage": 31
+    },
+    {
+      "title": "Modular Solar Decorative Light",
+      "columns": [
+        "Part #",
+        "Features",
+        "Lumens",
+        "FlexColor",
+        "EPA",
+        "Configuration: Light Head",
+        "Configuration: Solar Panels",
+        "Configuration: Battery"
+      ],
+      "rows": [
+        "SL-MD1-OG-03006X4-DB1 |  | Adjustable up to 3,000 | 3000K/4000K/5000K | 9.0 | Standard | (2) 55W | 600Wh"
+      ],
+      "notes": [
+        "Part number printed with a hyphen before DB1 (03006X4-DB1), unlike the area-light part numbers (…X4DB1); transcribed as printed.",
+        "X in the part number = optics: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5."
+      ],
+      "pdfPage": 31
+    }
+  ],
+  "footnotes": [
+    "* 10-year warranty available at an additional cost.",
+    "Hybrid = -HYB part numbers; X in the part number = optics: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5",
+    "Recommended mounting height, Modular Area + Decorative Lights: 20 ft – 30 ft. See pages 68 + 69 for pole recommendations.",
+    "Page footer: SOLERA SOLAR / HYBRID + OFF-GRID (page 56) and SOLERA SOLAR / i-SERIES (page 58)."
+  ]
+}

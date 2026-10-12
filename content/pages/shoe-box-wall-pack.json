@@ -1,0 +1,91 @@
+{
+  "title": "Shoe Box + Wall Pack",
+  "subtitle": "",
+  "headline": "Replaces up to 400W HID.",
+  "intro": "Retrofit almost any shoe box or wall pack fixture to energy & maintenance saving LEDs. Eliminate ballast failures. FlexColor on several models allows for less stocked inventory as well as field adjustability.",
+  "callouts": [
+    "Rotatable base directs lumens out of fixture"
+  ],
+  "features": [
+    {
+      "label": "5-year warranty"
+    },
+    {
+      "label": "UL Type B ballast bypass"
+    },
+    {
+      "label": "Active cooling"
+    },
+    {
+      "label": "80+ CRI"
+    },
+    {
+      "label": "Enclosed fixtures"
+    },
+    {
+      "label": "-40°F to 122°F operating temp"
+    },
+    {
+      "label": "Damp location environment"
+    },
+    {
+      "label": "L70 50,000 hrs rated life"
+    },
+    {
+      "label": "FlexColor selectable CCT 3000K/4000K/5000K",
+      "note": "all models; factory default 4000K"
+    },
+    {
+      "label": "Rotatable base directs lumens out of fixture"
+    },
+    {
+      "label": "277-480V incl. 347V (HV)",
+      "note": "LED-8090M345D-G4-HV only"
+    },
+    {
+      "label": "DLC",
+      "note": "for listing status go to LED-LLC.com"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Shoe Box + Wall Pack | Ballast Bypass | Type B",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "Replaces",
+        "Wattage",
+        "Lumens",
+        "CCT",
+        "Base",
+        "Features",
+        "Dimensions",
+        "Listings"
+      ],
+      "rows": [
+        "LED-8087E345D-G4 | 120-277V | 100W | 30W | 3500/**4200**/4300 | FlexColor 3000K/**4000K**/5000K | E26 |  | 3.0 in x 6.4 in | cUL Listed, cUL Classified",
+        "LED-8087E345CD-G4 | 220-347V | 100W | 30W | 3500/**4200**/4300 | FlexColor 3000K/**4000K**/5000K | E26 |  | 3.0 in x 6.4 in | cUL Listed, cUL Classified",
+        "LED-8087M345D-G4 | 120-277V | 100W | 30W | 3500/**4200**/4300 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 3.0 in x 6.9 in | cUL Listed, cUL Classified",
+        "LED-8087M345CD-G4 | 220-347V | 100W | 30W | 3500/**4200**/4300 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 3.0 in x 6.9 in | cUL Listed, cUL Classified",
+        "LED-8088E345D-G4 | 120-277V | 175W | 50W | 6400/**6900**/7200 | FlexColor 3000K/**4000K**/5000K | E26 |  | 3.8 in x 7.9 in | cUL Listed, cUL Classified",
+        "LED-8088E345CD-G4 | 220-347V | 175W | 50W | 6400/**6900**/7200 | FlexColor 3000K/**4000K**/5000K | E26 |  | 3.8 in x 7.9 in | cUL Listed, cUL Classified",
+        "LED-8088M345D-G4 | 120-277V | 175W | 50W | 6400/**6900**/7200 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 3.8 in x 8.5 in | cUL Listed, cUL Classified",
+        "LED-8088M345CD-G4 | 220-347V | 175W | 50W | 6400/**6900**/7200 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 3.8 in x 8.5 in | cUL Listed, cUL Classified",
+        "LED-8089M345D-G4 | 120-277V | 250W | 80W | 10600/**10700**/10800 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 4.3 in x 10.0 in | cUL Listed, cUL Classified",
+        "LED-8089M345CD-G4 | 220-347V | 250W | 80W | 10600/**10700**/10800 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 4.3 in x 10.0 in | cUL Listed, cUL Classified",
+        "LED-8090M345D-G4 | 120-277V | 400W | 110W | 14500/**15400**/15700 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 4.3 in x 11.4 in | cUL Listed, cUL Classified",
+        "LED-8090M345D-G4-HV | 277-480V | 400W | 110W | 14500/**15400**/15700 | FlexColor 3000K/**4000K**/5000K | EX39 | 277-480V incl. 347V | 4.3 in x 11.4 in | cUL Listed, cUL Classified"
+      ],
+      "notes": [
+        "Default lumens and CCT for FlexColor lamps are shown in bold"
+      ]
+    }
+  ],
+  "footnotes": [
+    "120-277V also works on 208V & 240V",
+    "HV = 277-480V including 347V",
+    "For listing status go to LED-LLC.com (DLC)",
+    "Default lumens and CCT for FlexColor lamps are shown in bold",
+    "Size comparison height labels: 5.5 in = ED17, 8.1 in = 30W corn lamp, 11.5 in = ED37, 11.2 in = 110W corn lamp (assigned from dimension-line position and drawing scale; the graphic prints no heights for LED-8087E or LED-8090M, whose table dimensions are 6.4 in and 11.4 in long)"
+  ]
+}

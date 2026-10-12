@@ -1,8 +1,99 @@
-# Pages CMS (https://app.pagescms.org): the admin page for the site's downloadable files.
-# deploy.sh copies this to .pages.yml at the root of the GitHub Pages repo (dgershaw/LED-LLC).
-# Files keep their exact names (rename: false), because the pages link to them by name.
-# To replace a file: delete the old one, then upload the new one under the same name.
-# (Uploading a second file with a name that already exists saves it as name-1.pdf, which no page links to.)
+# Pages CMS (https://app.pagescms.org): the admin page for this site.
+# Every save is a commit to this repo; .github/workflows/build.yml then rebuilds the pages with tools/build.py
+# and publishes them, so an edit is live a few minutes later.
+#
+# Documents keep their exact names (rename: false). To post a newer version, upload it under the same name with
+# V2, rev3 or a date added (RP-LBI-Spec_Sheet V2.pdf, LBI-G2-Spec-Sheet-2026-10-12.pdf): the build points every
+# link at the newest version. The older file can stay or be deleted.
+
+content:
+  - name: pages
+    label: Product pages
+    description: The text and part-number tables of each product page. Photos, downloads and layout are set elsewhere.
+    type: collection
+    path: content/pages
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    view:
+      primary: title
+      fields: [title, headline]
+      sort: [title]
+      search: [title, headline, intro]
+    fields:
+      - name: title
+        label: Page title
+        type: string
+        required: true
+      - name: subtitle
+        label: Subtitle
+        type: string
+      - name: headline
+        label: Headline
+        type: string
+      - name: intro
+        label: Introduction
+        type: text
+      - name: callouts
+        label: Key points
+        description: Short lines shown near the top of the page.
+        type: string
+        list: true
+      - name: features
+        label: At a glance
+        description: One feature per item, with an optional note shown after it.
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Feature
+            type: string
+          - name: note
+            label: Note
+            type: string
+      - name: tables
+        label: Part-number and spec tables
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Table title
+            type: string
+          - name: leadIn
+            label: Line above the table
+            type: string
+          - name: columns
+            label: Column headings
+            description: One heading per column, left to right.
+            type: string
+            list: true
+          - name: rows
+            label: Rows
+            description: "One row per item: the cells in column order, separated by |. Wrap a value in **double asterisks** to mark it as the factory default. Leave a cell empty with nothing between two | marks."
+            type: string
+            list: true
+          - name: notes
+            label: Notes under the table
+            type: string
+            list: true
+          - name: pdfPage
+            label: Catalog PDF page
+            type: number
+            hidden: true
+          - name: catalogPage
+            label: Catalog page
+            type: number
+            hidden: true
+          - name: source
+            label: Source
+            type: string
+            hidden: true
+      - name: footnotes
+        label: Footnotes
+        type: string
+        list: true
 
 media:
   - name: spec-sheets
@@ -37,5 +128,7 @@ media:
     extensions: [pdf]
 
 settings:
+  content:
+    merge: true
   commit:
     identity: user

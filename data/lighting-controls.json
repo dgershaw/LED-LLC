@@ -1,0 +1,266 @@
+{
+ "slug": "lighting-controls",
+ "brand": "remphos",
+ "group": "Lighting Controls",
+ "title": "Simple + Networked Lighting Controls",
+ "subtitle": "",
+ "pdfPages": [
+  14
+ ],
+ "catalogPages": [
+  24,
+  25
+ ],
+ "headline": "You have a choice between simplicity or high-capability systems...",
+ "intro": "",
+ "callouts": [
+  "Simple lighting controls — the easiest way to make a luminaire smart",
+  "Networked lighting controls — go beyond smart lighting",
+  "Add basic control capabilities to specific luminaires...",
+  "Add high value control capabilities at room, building, or even campus levels...",
+  "Controlled by the IR23 remote",
+  "Connect and control lighting fixtures via Bluetooth mesh w/ the Silvair app — available for iOS and Android on the App Store and Google Play"
+ ],
+ "features": [
+  {
+   "label": "Simple lighting controls",
+   "note": "occupancy (microwave or passive infrared) and daylight sensors added to a specific luminaire; all are controlled by the IR23 remote (RC-REMOTE-IR23 on the product pages)"
+  },
+  {
+   "label": "Networked lighting controls",
+   "note": "Silvair™ Bluetooth mesh sensors and control nodes, set up and controlled with the Silvair app (iOS and Android)"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Simple Lighting Controls",
+   "pdfPage": 14,
+   "leadIn": "Add basic control capabilities to specific luminaires...",
+   "columns": [
+    "Product family",
+    "Control"
+   ],
+   "rows": [
+    [
+     "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+",
+     "In-line microwave occupancy and daylight harvesting sensor"
+    ],
+    [
+     "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65",
+     "In-line passive infrared occupancy and daylight harvesting sensor"
+    ],
+    [
+     "LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8",
+     "Microwave occupancy and daylight hold-off sensor"
+    ],
+    [
+     "DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8",
+     "Limited-range microwave occupancy and daylight hold-off sensor"
+    ],
+    [
+     "TTV / TTF",
+     "Passive infrared occupancy and daylight harvesting sensor"
+    ],
+    [
+     "TRV / TRF / TV / TF",
+     "Passive infrared occupancy and daylight hold-off sensor"
+    ]
+   ],
+   "notes": [
+    "Controlled by the IR23 remote — a dotted bracket beside the table ties every row to the IR23 handheld remote pictured at the right (sold as RC-REMOTE-IR23 on the luminaire pages)",
+    "Catalog prints the control descriptions in all caps; product names are kept exactly as printed"
+   ]
+  },
+  {
+   "title": "Networked Lighting Controls",
+   "pdfPage": 14,
+   "leadIn": "Add high value control capabilities at room, building, or even campus levels...",
+   "columns": [
+    "Product family",
+    "Control"
+   ],
+   "rows": [
+    [
+     "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+",
+     "In-line Silvair™ Bluetooth microwave motion and daylight harvesting sensor"
+    ],
+    [
+     "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65",
+     "In-line Silvair™ Bluetooth control node"
+    ],
+    [
+     "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65",
+     "In-line Silvair™ Bluetooth passive infrared motion and daylight harvesting sensor"
+    ],
+    [
+     "LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8",
+     "Silvair™ Bluetooth microwave motion and daylight harvesting sensor"
+    ],
+    [
+     "LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8",
+     "Silvair™ Bluetooth node w/ external antenna"
+    ],
+    [
+     "DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 / TTV / TTF",
+     "Silvair™ Bluetooth control node"
+    ],
+    [
+     "LBE / TYPE C T5 & T8",
+     "Silvair™ Bluetooth passive infrared motion and daylight harvesting sensor"
+    ],
+    [
+     "LBE / TYPE C T5 & T8",
+     "Silvair™ Bluetooth passive infrared external arm sensor"
+    ],
+    [
+     "TTV / TTF / TRV / TRF / TV / TF",
+     "Silvair™ passive infrared motion and daylight harvesting sensor"
+    ]
+   ],
+   "notes": [
+    "Connect and control lighting fixtures via Bluetooth mesh w/ the Silvair app — available for iOS and Android on the App Store and Google Play (statement printed under the table beside the RemPhos x Silvair robot logo)",
+    "Merged product cells repeated: 'LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65' spans two rows, 'LBI MAX / LIVC / ...' spans two rows, 'LBE / TYPE C T5 & T8' spans two rows",
+    "Catalog prints the control descriptions in all caps and marks Silvair with a ™"
+   ]
+  }
+ ],
+ "footnotes": [
+  "PDF page 14 is a two-page spread; only the left half carries a printed page number (24), the right half (tables) is unnumbered and taken as 25",
+  "No part numbers, wattages or listings appear on this spread; it is a compatibility matrix of control options per luminaire family"
+ ],
+ "images": [
+  {
+   "file": "p14-b1.jpg",
+   "kind": "application",
+   "shows": "White wall-mounted single-button switch / wall controller on a grey wall with a blurred open-plan office behind; clean stock photo, no caption",
+   "products": [],
+   "use": "gallery (illustrates Simple Lighting Controls)"
+  },
+  {
+   "file": "p14-b2.jpg",
+   "kind": "callout",
+   "shows": "Light-blue panel with a running-figure PIR icon and the text 'SIMPLE LIGHTING CONTROLS / THE EASIEST WAY TO MAKE A LUMINAIRE SMART'",
+   "products": [],
+   "use": "callout"
+  },
+  {
+   "file": "p14-b3.jpg",
+   "kind": "callout",
+   "shows": "Dark-blue panel: businessman in a grey suit holding a smartphone (left), Bluetooth-phone icon and the text 'NETWORKED LIGHTING CONTROLS / GO BEYOND SMART LIGHTING'",
+   "products": [],
+   "use": "callout"
+  },
+  {
+   "file": "p14-b4.jpg",
+   "kind": "application",
+   "shows": "Hand holding a smartphone running the Silvair app ('Corridor' zone: A scene / B scene, On / Off / Auto, dimming sliders for All luminaires, Luminaire 1, Luminaire 2) in a dim open-plan office; clean photo, no caption",
+   "products": [
+    "Silvair app"
+   ],
+   "use": "hero"
+  },
+  {
+   "file": "custom/lighting-controls-composite.jpg",
+   "kind": "callout",
+   "shows": "The catalog's own four-panel left-page composite: wall switch photo + 'Simple Lighting Controls' panel over 'Networked Lighting Controls' panel + Silvair-app phone photo",
+   "products": [],
+   "use": "gallery (wide banner alternative to the hero)"
+  },
+  {
+   "file": "custom/lighting-controls-ir23-remote.png",
+   "kind": "product",
+   "shows": "RemPhos IR23 handheld infrared remote cutout on white (power, Auto, Reset, DIM +/- arrows; scene setting Start / Mem-ory / Apply; detection range 100/75/50/25%; lux level L-1 to L-6 + Ambient Learn / Disable; hold time 3S TEST / 30S / 90S / 5 MIN / 10 MIN / 30 MIN; dim off 10S / 5 MIN / 10 MIN / 30 MIN / 1H / infinity; dim level 0/10/30/50%; CCT adjust Mas-ter / Cool / Neu-tral / Warm); caption removed",
+   "products": [
+    "RC-REMOTE-IR23"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lighting-controls-silvair-logo.png",
+   "kind": "logo",
+   "shows": "RemPhos x Silvair robot mascot logo (green one-eyed robot with a blue 'RemPhos / SILVAIR' banner) on white",
+   "products": [
+    "Silvair app"
+   ],
+   "use": "callout"
+  },
+  {
+   "file": "custom/lighting-controls-icon-simple.png",
+   "kind": "logo",
+   "shows": "White running-figure PIR motion icon on the light-blue panel colour (Simple Lighting Controls section icon)",
+   "products": [],
+   "use": "callout (section icon)"
+  },
+  {
+   "file": "custom/lighting-controls-icon-networked.png",
+   "kind": "logo",
+   "shows": "White smartphone-with-Bluetooth-symbol and signal-waves icon on the dark-blue panel colour (Networked Lighting Controls section icon)",
+   "products": [],
+   "use": "callout (section icon)"
+  }
+ ],
+ "extras": [
+  {
+   "title": "IR23 remote",
+   "text": "Every simple lighting control on this page (in-line and standalone microwave / passive infrared occupancy sensors with daylight harvesting or daylight hold-off) is controlled by the IR23 handheld remote pictured beside the table. The luminaire pages list it as RC-REMOTE-IR23 (for simple lighting controls / for microwave occ sensors).",
+   "image": "custom/lighting-controls-ir23-remote.png"
+  },
+  {
+   "title": "Silvair app",
+   "text": "Connect and control lighting fixtures via Bluetooth mesh w/ the Silvair app. Available for iOS and Android on the App Store and Google Play.",
+   "image": "custom/lighting-controls-silvair-logo.png"
+  },
+  {
+   "title": "Product family key",
+   "columns": [
+    "Abbreviation",
+    "Catalog product family (name used on that family's own pages)"
+   ],
+   "rows": [
+    [
+     "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65 / LBI MAX",
+     "Linkable light bars: LBI, LBI G2, LBI Color Palette / LBI Color Palette+, LBI 65 (IP65), LBI MAX"
+    ],
+    [
+     "LIVC",
+     "Stairwell / Vanity / Wraparound (LIVC)"
+    ],
+    [
+     "DRUMS",
+     "Designer Drum (DRD), Architectural Linen Drum (DAL), Outdoor Tough Drum (DOT)"
+    ],
+    [
+     "SCONCE",
+     "Sconce (SCD)"
+    ],
+    [
+     "LEDCR",
+     "LEDCR – Circular Retrofit Kit"
+    ],
+    [
+     "LEDSR",
+     "LEDSR – Sconce Retrofit Kit"
+    ],
+    [
+     "LBE",
+     "Linear Barkits / External Driver (LBE)"
+    ],
+    [
+     "TYPE C T5 & T8",
+     "Type C T5 & T8 Kits (external driver)"
+    ],
+    [
+     "TTV / TTF",
+     "Troffer Retrofit Kit + Fixture (TTV volumetric / TTF flat panel)"
+    ],
+    [
+     "TRV / TRF / TV / TF",
+     "TAA Troffer Retrofit Kits (TRV / TRF) + Fixtures (TV / TF)"
+    ]
+   ],
+   "notes": [
+    "CROSS-PAGE: the second column is not printed on this spread; it is taken from the headings of each family's own product pages elsewhere in the catalog. Abbreviations are transcribed exactly as printed here."
+   ]
+  }
+ ]
+}

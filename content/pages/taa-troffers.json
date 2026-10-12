@@ -1,0 +1,150 @@
+{
+  "title": "TAA Troffer Retrofit Kits (TRV/TRF) + Fixtures (TV/TF)",
+  "subtitle": "",
+  "headline": "Solutions that meet the requirements of the United States Trade Agreements Act",
+  "intro": "",
+  "callouts": [
+    "Meets the requirements of the United States Trade Agreements Act (TAA)",
+    "Simple or networked lighting controls available"
+  ],
+  "features": [
+    {
+      "label": "5-year warranty"
+    },
+    {
+      "label": "TAA compliant",
+      "note": "meets the requirements of the United States Trade Agreements Act (TAA)"
+    },
+    {
+      "label": "cULus Listed"
+    },
+    {
+      "label": "FCC"
+    },
+    {
+      "label": "DLC",
+      "note": "see spec sheet on LED-LLC.com for DLC listing status"
+    },
+    {
+      "label": "Sensor ready",
+      "note": "0-10V dim to off"
+    },
+    {
+      "label": "12V control ready port"
+    },
+    {
+      "label": "130 LPW efficacy",
+      "note": "** troffer retrofit kits have an efficacy of 125 LPW"
+    },
+    {
+      "label": "80+ CRI"
+    },
+    {
+      "label": "120° beam angle"
+    },
+    {
+      "label": "Operating temp 0°F to 122°F",
+      "note": ""
+    },
+    {
+      "label": "1.5kA surge protection"
+    },
+    {
+      "label": "L70 50,000hrs rated life"
+    },
+    {
+      "label": "FlexWatt selectable wattage",
+      "note": "factory default in bold in the tables"
+    },
+    {
+      "label": "FlexColor selectable CCT",
+      "note": "fixtures (TV/TF) and TRV kits: 3500K/4000K/5000K; TRF kits: 2700K/3000K/3500K/4000K/5000K; default 4000K"
+    },
+    {
+      "label": "Optional internal emergency battery backup",
+      "note": "-EMG1 suffix, 90 min / 500 lm"
+    },
+    {
+      "label": "Remote control",
+      "note": "RC-REMOTE-IR23 (for microwave occ sensors)"
+    },
+    {
+      "label": "Compatible w/ surface mount kit and flange kit",
+      "note": "troffer fixtures (TV/TF); catalog says 'see page 45'"
+    },
+    {
+      "label": "Simple lighting controls / networked lighting controls available",
+      "note": "see catalog page 25 or the product spec sheet on LED-LLC.com"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Troffer Fixtures",
+      "columns": [
+        "Part #",
+        "UPC",
+        "Description",
+        "Lumens",
+        "FlexWatt",
+        "FlexColor",
+        "DLC code"
+      ],
+      "rows": [
+        "RP-TV-G1-1X4-35W-40K-WC-TAA | 197810035671 | 1X4 volumetric fixture | 2200/3300/**4400** | 18W/26W/**35W** | 3500K/**4000K**/5000K | S-1M5XK9",
+        "RP-TV-G1-2X2-35W-40K-WC-TAA | 197810035701 | 2X2 volumetric fixture | 2200/3300/**4400** | 18W/26W/**35W** | 3500K/**4000K**/5000K | S-VGPK1B",
+        "RP-TV-G1-2X4-44W-40K-WC-TAA | 197810016304 | 2X4 volumetric fixture | 3300/4400/**5500** | 26W/35W/**44W** | 3500K/**4000K**/5000K | S-Q67KQX",
+        "RP-TF-G1-1X4-40W-40K-WC-TAA | 844006009847 | 1X4 flat panel fixture | 2600/3900/**5200** | 20W/30W/**40W** | 3500K/**4000K**/5000K | S-WQ239X",
+        "RP-TF-G1-2X2-40W-40K-WC-TAA | 844006009793 | 2X2 flat panel fixture | 2600/3900/**5200** | 20W/30W/**40W** | 3500K/**4000K**/5000K | S-G5ZQY8",
+        "RP-TF-G1-2X4-50W-40K-WC-TAA | 844006009786 | 2X4 flat panel fixture | 3900/5200/**6500** | 30W/40W/**50W** | 3500K/**4000K**/5000K | S-N155V0"
+      ],
+      "notes": [
+        "Factory set wattage and CCT are shown in bold",
+        "All fixtures run on 120-277V",
+        "RP-TV = volumetric, RP-TF = flat panel",
+        "Surface mount and flange kits are listed under More details"
+      ],
+      "pdfPage": 28,
+      "source": "RP-TV-TF-G1-TAA spec sheet, 08.25.26"
+    },
+    {
+      "title": "Troffer Retrofit Kits",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "FlexWatt",
+        "Lumens*",
+        "FlexColor",
+        "Dimensions"
+      ],
+      "rows": [
+        "RP-TRV-G2-1X4-37W-40K-WC-TAA | 120-277V | 16W/30W/**37W** | 2100-5000 | 3500K/**4000K**/5000K | 47.8 in x 11.9 in x 3.3 in",
+        "RP-TRV-G2-2X2-37W-40K-WC-TAA | 120-277V | 16W/30W/**37W** | 2100-5000 | 3500K/**4000K**/5000K | 47.8 in x 23.9 in x 3.3 in",
+        "RP-TRV-G2-2X4-41W-40K-WC-TAA | 120-277V | 23W/30W/**41W** | 3100-5500 | 3500K/**4000K**/5000K | 23.9 in x 23.9 in x 3.3 in",
+        "RP-TRF-G2-1X4-40W-40K-WC-TAA | 120-277V | 16W/24W/30W/35W/**40W** | 2160-5400 | 2700K/3000K/3500K/**4000K**/5000K | 47.0 in x 11.4 in x 1.3 in",
+        "RP-TRF-G2-2X2-40W-40K-WC-TAA | 120-277V | 16W/24W/30W/35W/**40W** | 2160-5400 | 2700K/3000K/3500K/**4000K**/5000K | 22.9 in x 22.9 in x 1.3 in",
+        "RP-TRF-G2-2X4-50W-40K-WC-TAA | 120-277V | 24W/30W/35W/40W/**50W** | 3240-6750 | 2700K/3000K/3500K/**4000K**/5000K | 46.9 in x 22.9 in x 1.3 in"
+      ],
+      "notes": [
+        "Factory set wattage, lumens and CCT are shown in bold",
+        "* Lumens are calculated",
+        "** Troffer retrofit kits have an efficacy of 125 LPW",
+        "RP-TRV = volumetric, RP-TRF = flat panel",
+        "The catalog prints the first four Dimensions cells without the second 'x' (e.g. '47.8 IN x 11.9 IN 3.3 IN'); the separator was added here",
+        "The table has no Listings column; the page-footer listing marks are TAA, cULus Listed, FCC and DLC (see spec sheet on LED-LLC.com for DLC listing status)",
+        "RP-TRV-G2-2X2 and RP-TRV-G2-2X4 dimensions are transcribed as printed (47.8 x 23.9 and 23.9 x 23.9) although they appear transposed in the catalog"
+      ],
+      "pdfPage": 28
+    }
+  ],
+  "footnotes": [
+    "Factory set wattage, lumens and CCT are shown in bold",
+    "* Calculated (Lumens column of the Troffer Retrofit Kits table)",
+    "** Troffer retrofit kits have an efficacy of 125LPW (the icon strip shows 130 LPW)",
+    "Compatible w/ surface mount kit and flange kit (see page 45) — troffer fixtures table",
+    "See spec sheet on LED-LLC.com for DLC listing status",
+    "See page 25 for more information on simple / networked lighting controls or check out the product spec sheet on our website LED-LLC.com",
+    "Lumens are printed as a range (min-max across the FlexWatt settings) in bold weight for every row; no single lumen value is marked as the factory default",
+    "Operating temp is printed as '-0°F TO 122°F' in the catalog icon strip",
+    "CATALOG AS PRINTED: RP-TRV-G2-2X2 dimensions read 47.8 in x 23.9 in x 3.3 in and RP-TRV-G2-2X4 read 23.9 in x 23.9 in x 3.3 in; the two appear transposed in the catalog (a 2X2 should be ~24 x 24) but are transcribed exactly as printed"
+  ]
+}

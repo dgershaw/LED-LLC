@@ -1,0 +1,461 @@
+{
+ "slug": "i-series",
+ "brand": "solera",
+ "group": "Solar Lighting",
+ "title": "i-Series Modular Area + Decorative Lights",
+ "subtitle": "",
+ "pdfPages": [
+  30,
+  31
+ ],
+ "catalogPages": [
+  56,
+  58
+ ],
+ "headline": "Modular Solar Lighting System",
+ "intro": "Solera Solar Lighting sets a new standard in solar lighting performance. i-Series delivers a year-round, configurable solar-powered lighting system engineered to provide bright, reliable illumination wherever you need it.",
+ "callouts": [
+  "Meet i-Series w/ Solera Connect",
+  "Configure the intelligent modular system to fit your application",
+  "It's not just lighting — it's visibility. Control. Data.",
+  "Recommended mounting height: Modular Area + Decorative Lights 20 ft – 30 ft",
+  "See pages 68 + 69 for pole recommendations"
+ ],
+ "features": [
+  {
+   "label": "5-year warranty",
+   "note": "standard"
+  },
+  {
+   "label": "10-year warranty",
+   "note": "optional; available at an additional cost"
+  },
+  {
+   "label": "Year-round lighting",
+   "note": "365 icon"
+  },
+  {
+   "label": "LiFePO4 battery"
+  },
+  {
+   "label": "Battery charge time 6 hrs"
+  },
+  {
+   "label": "Battery life up to 30 hrs"
+  },
+  {
+   "label": "Battery charge temp -4°F to 140°F"
+  },
+  {
+   "label": "Operating temp -40°F to 140°F"
+  },
+  {
+   "label": "Replaceable battery"
+  },
+  {
+   "label": "4G Connect software + app",
+   "note": "Solera CONNECT"
+  },
+  {
+   "label": "Optional motion sensing"
+  },
+  {
+   "label": "L70 100,000hrs rated life"
+  },
+  {
+   "label": "Hybrid",
+   "note": "feature glyph key (yellow sun icon beside the part number) — marks the -HYB part numbers SL-MA1-HYB-10006X4DB1 and SL-MA2-HYB-15012X4DB1"
+  },
+  {
+   "label": "X = Optics",
+   "note": "the X in the part number: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Modular Solar Area Light",
+   "pdfPage": 31,
+   "columns": [
+    "Part #",
+    "Features",
+    "Lumens",
+    "FlexColor",
+    "EPA",
+    "Configuration: Light Head",
+    "Configuration: Solar Panels",
+    "Configuration: Battery"
+   ],
+   "rows": [
+    [
+     "SL-MA1-OG-10006X4DB1",
+     "",
+     "Adjustable up to 10,000",
+     "3000K/4000K/5000K",
+     "8.0",
+     "Standard",
+     "(2) 55W",
+     "600Wh"
+    ],
+    [
+     "SL-MA1-HYB-10006X4DB1",
+     "Hybrid",
+     "Adjustable up to 10,000",
+     "3000K/4000K/5000K",
+     "8.0",
+     "Standard",
+     "(2) 55W",
+     "600Wh"
+    ],
+    [
+     "SL-MA2-OG-15012X4DB1",
+     "",
+     "Adjustable up to 15,000",
+     "3000K/4000K/5000K",
+     "14.0",
+     "High Output",
+     "(1) 200W",
+     "1200Wh"
+    ],
+    [
+     "SL-MA2-HYB-15012X4DB1",
+     "Hybrid",
+     "Adjustable up to 15,000",
+     "3000K/4000K/5000K",
+     "14.0",
+     "High Output",
+     "(1) 200W",
+     "1200Wh"
+    ]
+   ],
+   "notes": [
+    "The catalog's CONFIGURATION column is one merged cell per model holding three labelled values (LIGHT HEAD / SOLAR PANELS / BATTERY); they are split into three columns here.",
+    "X in the part number = optics: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5.",
+    "Hybrid (sun glyph) marks the -HYB part numbers. -OG is not expanded anywhere on pages 56/58; the page 56 footer reads HYBRID + OFF-GRID, so -OG presumably = off-grid (inferred, not printed).",
+    "No bold (factory-default) CCT is marked in the FlexColor cells.",
+    "Battery is printed 600WH / 1200WH in this table and 600Wh / 1200Wh in the page 56 configuration key.",
+    "This table has no Listings column."
+   ]
+  },
+  {
+   "title": "Modular Solar Decorative Light",
+   "pdfPage": 31,
+   "columns": [
+    "Part #",
+    "Features",
+    "Lumens",
+    "FlexColor",
+    "EPA",
+    "Configuration: Light Head",
+    "Configuration: Solar Panels",
+    "Configuration: Battery"
+   ],
+   "rows": [
+    [
+     "SL-MD1-OG-03006X4-DB1",
+     "",
+     "Adjustable up to 3,000",
+     "3000K/4000K/5000K",
+     "9.0",
+     "Standard",
+     "(2) 55W",
+     "600Wh"
+    ]
+   ],
+   "notes": [
+    "Part number printed with a hyphen before DB1 (03006X4-DB1), unlike the area-light part numbers (…X4DB1); transcribed as printed.",
+    "X in the part number = optics: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5."
+   ]
+  }
+ ],
+ "footnotes": [
+  "* 10-year warranty available at an additional cost.",
+  "Hybrid = -HYB part numbers; X in the part number = optics: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5",
+  "Recommended mounting height, Modular Area + Decorative Lights: 20 ft – 30 ft. See pages 68 + 69 for pole recommendations.",
+  "Page footer: SOLERA SOLAR / HYBRID + OFF-GRID (page 56) and SOLERA SOLAR / i-SERIES (page 58)."
+ ],
+ "images": [
+  {
+   "file": "p30-b1.jpg",
+   "kind": "application",
+   "shows": "Full-width sunset banner: the i-Series intro statement on the left and the four modular configurations (A1 standard, A2 high-output, A1 with high-output panel/battery, D1 decorative) with their battery/panel/light-head icons on the right; the bottom edge includes the top of the configuration key table. Split into custom crops below.",
+   "products": [
+    "SL-MA1",
+    "SL-MA2",
+    "SL-MD1"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "p30-b2.jpg",
+   "kind": "callout",
+   "shows": "Yellow panel reading MEET i-SERIES W/ SOLERA CONNECT",
+   "products": [],
+   "use": "callout"
+  },
+  {
+   "file": "p30-b3.jpg",
+   "kind": "diagram",
+   "shows": "Solera Connect app screen: Light Fixture Parameters (voltage, current, power, brightness graph and extreme statistics)",
+   "products": [],
+   "use": "none (the five screens are combined in custom/i-series-connect-app.jpg)"
+  },
+  {
+   "file": "p30-b4.jpg",
+   "kind": "diagram",
+   "shows": "Solera Connect app screen: Solar Panel Data (voltage, current, power graph and extreme statistics)",
+   "products": [],
+   "use": "none (the five screens are combined in custom/i-series-connect-app.jpg)"
+  },
+  {
+   "file": "p30-b5.jpg",
+   "kind": "diagram",
+   "shows": "Solera Connect app screen: Battery Data (voltage, current, temperature graph and extreme statistics)",
+   "products": [],
+   "use": "none (the five screens are combined in custom/i-series-connect-app.jpg)"
+  },
+  {
+   "file": "p30-b6.jpg",
+   "kind": "diagram",
+   "shows": "Solera Connect app screen: All Projects overview with device status ring, power generation graph and totals",
+   "products": [],
+   "use": "none (the five screens are combined in custom/i-series-connect-app.jpg)"
+  },
+  {
+   "file": "p30-b7.jpg",
+   "kind": "diagram",
+   "shows": "Solera Connect app screen: project statistical data (Cary IL) for light fixture, solar panel and battery",
+   "products": [],
+   "use": "none (the five screens are combined in custom/i-series-connect-app.jpg)"
+  },
+  {
+   "file": "p31-b1.jpg",
+   "kind": "hero",
+   "shows": "SL-MA1 modular solar area light (two 55W panels, pole-mounted battery box, standard area light head) in front of a lit parking lot at night. Includes the page's yellow sun icon at top-left; use custom/i-series-hero.jpg instead.",
+   "products": [
+    "SL-MA1"
+   ],
+   "use": "hero"
+  },
+  {
+   "file": "p31-b2.jpg",
+   "kind": "hero",
+   "shows": "SL-MD1 modular solar decorative light (two panels, battery box, gooseneck arm with bell-shaped lamp) in front of a garden path at sunset. Includes the SL-MD1 caption; use custom/i-series-hero-sl-md1.jpg instead.",
+   "products": [
+    "SL-MD1"
+   ],
+   "use": "hero"
+  },
+  {
+   "file": "p31-b3.jpg",
+   "kind": "diagram",
+   "shows": "Yellow panel with line drawings of the modular area light and the modular decorative light with Recommended Mounting Height 20 ft – 30 ft and the pole-recommendation note. Split into custom crops below.",
+   "products": [
+    "SL-MA1",
+    "SL-MD1"
+   ],
+   "use": "callout"
+  },
+  {
+   "file": "custom/i-series-hero.jpg",
+   "kind": "hero",
+   "shows": "SL-MA1 modular solar area light composite over the night-time parking lot photo, page icon removed (recommended category hero)",
+   "products": [
+    "SL-MA1"
+   ],
+   "use": "hero"
+  },
+  {
+   "file": "custom/i-series-hero-sl-md1.jpg",
+   "kind": "hero",
+   "shows": "SL-MD1 modular solar decorative light composite over the sunset garden photo, caption removed",
+   "products": [
+    "SL-MD1"
+   ],
+   "use": "hero"
+  },
+  {
+   "file": "custom/i-series-banner.jpg",
+   "kind": "callout",
+   "shows": "Sunset banner with the statement: Solera Solar Lighting sets a new standard in solar lighting performance…",
+   "products": [],
+   "use": "callout"
+  },
+  {
+   "file": "custom/i-series-configurations.jpg",
+   "kind": "product",
+   "shows": "The four modular configurations side by side on the sunset background with their battery, solar panel and light head icons (A1, A2, A1, D1)",
+   "products": [
+    "SL-MA1",
+    "SL-MA2",
+    "SL-MD1"
+   ],
+   "use": "none (the four configurations are shown as separate cutouts)"
+  },
+  {
+   "file": "custom/i-series-config-a1-standard.jpg",
+   "kind": "product",
+   "shows": "Configuration 1: 600Wh battery + (2) 55W panels + A1 standard area light head",
+   "products": [
+    "SL-MA1"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "custom/i-series-config-a2-high-output.jpg",
+   "kind": "product",
+   "shows": "Configuration 2: 1200Wh battery + (1) 200W panel + A2 high-output area light head",
+   "products": [
+    "SL-MA2"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "custom/i-series-config-a1-high-output.jpg",
+   "kind": "product",
+   "shows": "Configuration 3: 1200Wh battery + (1) 200W panel + A1 standard area light head",
+   "products": [
+    "SL-MA1"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "custom/i-series-config-d1-decorative.jpg",
+   "kind": "product",
+   "shows": "Configuration 4: 600Wh battery + (2) 55W panels + D1 standard decorative light head",
+   "products": [
+    "SL-MD1"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "custom/i-series-connect-app.jpg",
+   "kind": "diagram",
+   "shows": "The five Solera Connect app screens in a row (light fixture parameters, solar panel data, battery data, all projects, project statistics) without captions",
+   "products": [],
+   "use": "gallery"
+  },
+  {
+   "file": "custom/i-series-diagram-area.jpg",
+   "kind": "diagram",
+   "shows": "Line drawing of the modular solar area light on a pole with Recommended Mounting Height, Modular Area + Decorative Lights 20 ft – 30 ft",
+   "products": [
+    "SL-MA1",
+    "SL-MA2"
+   ],
+   "use": "callout"
+  },
+  {
+   "file": "custom/i-series-diagram-decorative.jpg",
+   "kind": "diagram",
+   "shows": "Line drawing of the modular solar decorative light on a pole with the note See pages 68 + 69 for pole recommendations",
+   "products": [
+    "SL-MD1"
+   ],
+   "use": "callout"
+  }
+ ],
+ "extras": [
+  {
+   "title": "Modular Solar Lighting System — configuration key",
+   "columns": [
+    "Component",
+    "Option",
+    "Catalog icon"
+   ],
+   "rows": [
+    [
+     "Solar panel(s)",
+     "(2) 55W",
+     "sun"
+    ],
+    [
+     "Solar panel(s)",
+     "(1) 200W",
+     "sun with lightning bolt"
+    ],
+    [
+     "Battery",
+     "600Wh",
+     "battery"
+    ],
+    [
+     "Battery",
+     "1200Wh",
+     "battery with lightning bolt"
+    ],
+    [
+     "Light head",
+     "A1 — Standard Area Light Style 1",
+     "A1"
+    ],
+    [
+     "Light head",
+     "A2 — High-Output Area Light Style 2",
+     "A2"
+    ],
+    [
+     "Light head",
+     "D1 — Standard Decorative Light Style 1",
+     "D1"
+    ]
+   ]
+  },
+  {
+   "title": "Configurations pictured on page 56",
+   "columns": [
+    "Configuration",
+    "Battery",
+    "Solar panel(s)",
+    "Light head"
+   ],
+   "rows": [
+    [
+     "1",
+     "600Wh",
+     "(2) 55W",
+     "A1 Standard Area Light Style 1"
+    ],
+    [
+     "2",
+     "1200Wh",
+     "(1) 200W",
+     "A2 High-Output Area Light Style 2"
+    ],
+    [
+     "3",
+     "1200Wh",
+     "(1) 200W",
+     "A1 Standard Area Light Style 1"
+    ],
+    [
+     "4",
+     "600Wh",
+     "(2) 55W",
+     "D1 Standard Decorative Light Style 1"
+    ]
+   ]
+  },
+  {
+   "title": "It's not just lighting — it's visibility. Control. Data.",
+   "text": "Designed for intelligent control, each i-Series product integrates seamlessly to Solera CONNECT. Through 4G connectivity and intuitive web and mobile access, remotely program, manage and monitor performance — adjust operating schedules, customize lighting profiles, and respond to alerts across your entire portfolio — anytime, from anywhere."
+  },
+  {
+   "title": "Solera Connect app",
+   "text": "Monitor light head, solar panel + battery performance · Manage projects · View real-time system data · And more..."
+  },
+  {
+   "title": "Recommended mounting height",
+   "columns": [
+    "Product",
+    "Mounting height"
+   ],
+   "rows": [
+    [
+     "Modular Area + Decorative Lights (SL-MA1, SL-MA2, SL-MD1)",
+     "20 ft – 30 ft"
+    ]
+   ],
+   "text": "See pages 68 + 69 for pole recommendations."
+  }
+ ]
+}

@@ -1,0 +1,298 @@
+{
+ "slug": "taa-type-c-kits-lbe",
+ "brand": "remphos",
+ "group": "Retrofit Kits",
+ "title": "TAA Type C T5 & T8 Kits + Linear Barkits (LBE)",
+ "subtitle": "External Driver (LBE)",
+ "pdfPages": [
+  26
+ ],
+ "catalogPages": [
+  48
+ ],
+ "headline": "Trusted for federal projects",
+ "intro": "",
+ "callouts": [
+  "TAA — Meets the requirements of the United States Trade Agreements Act (TAA)",
+  "Simple Lighting Controls | Networked Lighting Controls"
+ ],
+ "features": [
+  {
+   "label": "10-year warranty"
+  },
+  {
+   "label": "TAA compliant",
+   "note": "meets the requirements of the United States Trade Agreements Act (TAA)"
+  },
+  {
+   "label": "120/347V"
+  },
+  {
+   "label": "Sensor ready",
+   "note": "0-10V dim to off"
+  },
+  {
+   "label": "12V aux output"
+  },
+  {
+   "label": "146 LPW efficacy (light engine)"
+  },
+  {
+   "label": "120° beam angle"
+  },
+  {
+   "label": "80+ CRI"
+  },
+  {
+   "label": "Operating temp -4°F to 122°F"
+  },
+  {
+   "label": "L70 100,000hrs rated life"
+  },
+  {
+   "label": "Wattage options",
+   "note": "12W (6-8-10-12), 25W (15-18-20-25), 45W (30-35-40-45), 80W (50-60-70-80)"
+  },
+  {
+   "label": "Standard dimming 0-10V (10V)"
+  },
+  {
+   "label": "Optional dimming",
+   "note": "LVD (120-277V TRIAC), 1 STEP (single switch), 2 STEP (2 switch)"
+  },
+  {
+   "label": "Optional field installable emergency backup",
+   "note": "see spec on LED-LLC.com for ordering information"
+  },
+  {
+   "label": "Simple Lighting Controls / Networked Lighting Controls options",
+   "note": "see catalog page 25 or the product spec sheet on LED-LLC.com"
+  },
+  {
+   "label": "ETL listed (Intertek, cETLus)"
+  },
+  {
+   "label": "FCC"
+  },
+  {
+   "label": "DLC",
+   "note": "see spec sheet on LED-LLC.com for DLC listing status"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Build Your TAA Type C Kit | RP-T5C-G3-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[CONTROLS]-[EM#]-[TAA] / RP-T8C-G3-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[CONTROLS]-[EM#]-[TAA]",
+   "pdfPage": 26,
+   "columns": [
+    "Option group",
+    "Choice 1",
+    "Choice 2",
+    "Choice 3",
+    "Choice 4"
+   ],
+   "rows": [
+    [
+     "Wattage",
+     "12W (6-8-10-12)",
+     "25W (15-18-20-25)",
+     "45W (30-35-40-45)",
+     "80W (50-60-70-80)"
+    ],
+    [
+     "Length",
+     "2 FT",
+     "3 FT",
+     "4 FT",
+     ""
+    ],
+    [
+     "# of lamps",
+     "1L (1 lamp)",
+     "2L (2 lamps)",
+     "3L (3 lamps)",
+     "4L (4 lamps)"
+    ],
+    [
+     "Color (8+COLOR)",
+     "30 (3000K)",
+     "35 (3500K)",
+     "40 (4000K)",
+     "50 (5000K)"
+    ],
+    [
+     "Standard dimming",
+     "10V (0-10V dim)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Optional dimming",
+     "LVD (120-277V TRIAC)",
+     "1 STEP (single switch)",
+     "2 STEP (2 switch)",
+     ""
+    ]
+   ],
+   "notes": [
+    "Two part-number patterns share this option set: RP-T5C-G3-... (T5 kit) and RP-T8C-G3-... (T8 kit)",
+    "Optional field installable emergency backup (see spec on LED-LLC.com for ordering information)",
+    "Controls, EM#, TAA: ordering codes are on the product spec sheet at LED-LLC.com."
+   ]
+  },
+  {
+   "title": "Build Your TAA LBE | RP-LBE-G3-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[CONTROLS]-[EM#]-[TAA]",
+   "pdfPage": 26,
+   "columns": [
+    "Option group",
+    "Choice 1",
+    "Choice 2",
+    "Choice 3",
+    "Choice 4"
+   ],
+   "rows": [
+    [
+     "Wattage",
+     "12W (6-8-10-12)",
+     "25W (15-18-20-25)",
+     "45W (30-35-40-45)",
+     "80W (50-60-70-80)"
+    ],
+    [
+     "Length",
+     "2 FT",
+     "3 FT",
+     "4 FT",
+     ""
+    ],
+    [
+     "# of lamps",
+     "1L (1 lamp)",
+     "2L (2 lamps)",
+     "3L (3 lamps)",
+     "4L (4 lamps)"
+    ],
+    [
+     "Color (8+COLOR)",
+     "30 (3000K)",
+     "35 (3500K)",
+     "40 (4000K)",
+     "50 (5000K)"
+    ],
+    [
+     "Standard dimming",
+     "10V (0-10V dim)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Optional dimming",
+     "LVD (120-277V TRIAC)",
+     "1 STEP (single switch)",
+     "2 STEP (2 switch)",
+     ""
+    ]
+   ],
+   "notes": [
+    "Optional field installable emergency backup (see spec on LED-LLC.com for ordering information)",
+    "TAA LBE length options are 2, 3 and 4 FT only (the non-TAA LBE on catalog page 46 also offers 1 FT and 5 FT)",
+    "Controls, EM#, TAA: ordering codes are on the product spec sheet at LED-LLC.com."
+   ]
+  }
+ ],
+ "footnotes": [
+  "Optional field installable emergency backup (see spec on LED-LLC.com for ordering information)",
+  "See spec sheet on LED-LLC.com for DLC listing status",
+  "TAA builders are generation G3 (RP-T5C-G3, RP-T8C-G3, RP-LBE-G3); the non-TAA kits on catalog page 46 are G2",
+  "No -HV suffix is shown for the TAA builders; the feature strip voltage icon reads 120/347V",
+  "The [CONTROLS], [EM#] and [TAA] option values are not enumerated on the page; the row values given for them are interpretations",
+  "Interpretation: wattage choices are codes with their selectable settings in parentheses, e.g. 12W (6-8-10-12); the catalog prints only the heading WATTAGE with these values",
+  "The catalog lists no lumen values for these configurable kits; the feature strip gives 146 LPW light-engine efficacy",
+  "Only the left-hand printed page number (48) appears on this spread"
+ ],
+ "images": [
+  {
+   "file": "p26-b1.jpg",
+   "kind": "callout",
+   "shows": "Blue TAA panel: large 'TAA' wordmark with stripe motif and 'MEETS THE REQUIREMENTS OF THE UNITED STATES TRADE AGREEMENTS ACT (TAA)'; the retrofit tubes intrude at the bottom-right edge",
+   "products": [],
+   "use": "superseded by custom/taa-type-c-kits-lbe-taa-panel.jpg (tube sliver removed)"
+  },
+  {
+   "file": "p26-b2.jpg",
+   "kind": "application",
+   "shows": "Pre-cropped block that merges the laboratory photo (glassware on a steel bench, researchers) with the aircraft hangar photo (fighter jet under linear lights) across the page gutter",
+   "products": [],
+   "use": "superseded by custom/taa-type-c-kits-lbe-lab.jpg and custom/taa-type-c-kits-lbe-hangar.jpg"
+  },
+  {
+   "file": "p26-b3.jpg",
+   "kind": "application",
+   "shows": "Soldier in camouflage using a laptop in a dim warehouse under linear lights; the LBE barkit intrudes at the bottom-left edge",
+   "products": [],
+   "use": "superseded by custom/taa-type-c-kits-lbe-soldier.jpg (bar sliver removed)"
+  },
+  {
+   "file": "custom/taa-type-c-kits-lbe-hero-typec.jpg",
+   "kind": "hero",
+   "shows": "Catalog composite for the TAA Type C kits: blue TAA panel (left) and laboratory photo (right) with two Type C T5/T8 tubes laid across the bottom edge overhanging onto white; no captions",
+   "products": [
+    "RP-T5C-G3",
+    "RP-T8C-G3"
+   ],
+   "use": "hero"
+  },
+  {
+   "file": "custom/taa-type-c-kits-lbe-hero-lbe.jpg",
+   "kind": "hero",
+   "shows": "Catalog composite for the TAA LBE: fighter jet in a hangar lit by linear fixtures (left) and a soldier with a laptop in a warehouse (right) with the LBE linear barkit and its lead wire laid across the bottom edge overhanging onto white; no captions",
+   "products": [
+    "RP-LBE-G3"
+   ],
+   "use": "hero-alt"
+  },
+  {
+   "file": "custom/taa-type-c-kits-lbe-taa-panel.jpg",
+   "kind": "logo",
+   "shows": "Blue TAA panel with the 'TAA' wordmark and 'MEETS THE REQUIREMENTS OF THE UNITED STATES TRADE AGREEMENTS ACT (TAA)' statement; cropped above the tubes",
+   "products": [],
+   "use": "callout"
+  },
+  {
+   "file": "custom/taa-type-c-kits-lbe-lab.jpg",
+   "kind": "application",
+   "shows": "Laboratory with glassware on a stainless bench, researchers at the back and troffer ceiling lights; cropped above the tubes",
+   "products": [],
+   "use": "gallery"
+  },
+  {
+   "file": "custom/taa-type-c-kits-lbe-hangar.jpg",
+   "kind": "application",
+   "shows": "Fighter jet parked in an aircraft hangar at dusk, linear strip lights along the curved roof; cropped above the LBE bar",
+   "products": [],
+   "use": "gallery"
+  },
+  {
+   "file": "custom/taa-type-c-kits-lbe-soldier.jpg",
+   "kind": "application",
+   "shows": "Soldier in camouflage holding a laptop in a warehouse lit by linear fixtures; cropped above the LBE bar",
+   "products": [],
+   "use": "gallery"
+  }
+ ],
+ "extras": [
+  {
+   "title": "TAA",
+   "text": "Meets the requirements of the United States Trade Agreements Act (TAA). Footer marks: TAA, ETL (Intertek), FCC, DLC (see spec sheet on LED-LLC.com for DLC listing status)."
+  },
+  {
+   "title": "Part-number builder key",
+   "text": "Interpretation of the builder diagram (not catalog text): RP-T5C-G3 / RP-T8C-G3 (TAA Type C T5 / T8 kit) and RP-LBE-G3 (TAA linear barkit, external driver) are built as PREFIX-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[CONTROLS]-[EM#]-[TAA]. WATTAGE: 12W, 25W, 45W or 80W (each selectable within the settings shown in parentheses). LENGTH: 2, 3 or 4 FT. #LAMPS: 1L to 4L. 8+COLOR: color code 30 (3000K), 35 (3500K), 40 (4000K) or 50 (5000K) following the '8' prefix of the pattern (interpretation: 8 = 80+ CRI). DIMMING: 10V standard (0-10V dim); LVD (120-277V TRIAC), 1 STEP (single switch) or 2 STEP (2 switch) optional. CONTROLS and EM# (optional field installable emergency backup): see spec on LED-LLC.com for ordering information. TAA: TAA suffix."
+  },
+  {
+   "title": "Lighting controls",
+   "text": "Simple Lighting Controls | Networked Lighting Controls — see page 25 (catalog printed page) for more information or check out the product spec sheet on our website LED-LLC.com."
+  }
+ ]
+}

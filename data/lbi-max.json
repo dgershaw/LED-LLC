@@ -1,0 +1,232 @@
+{
+ "slug": "lbi-max",
+ "brand": "remphos",
+ "group": "Linkable Light Bars",
+ "title": "Linkable Strip Retrofit Kit + Fixture (LBI MAX)",
+ "subtitle": "LBI MAX",
+ "pdfPages": [
+  18
+ ],
+ "catalogPages": [
+  32
+ ],
+ "headline": "Higher lumen — linkable fixture. Connect up to 40 from one power feed*",
+ "intro": "",
+ "callouts": [
+  "Create seamless 90° angles w/ corner pieces",
+  "Optional internal emergency battery backup — -EM1 / Emergency Battery Backup (90 min / 500 lm)",
+  "Remote control — RC-REMOTE-IR23 (for Simple Lighting Controls)",
+  "Simple Lighting Controls | Networked Lighting Controls — see page 25 for more information or check out the product spec sheet on our website LED-LLC.com"
+ ],
+ "features": [
+  {
+   "label": "10-year warranty"
+  },
+  {
+   "label": "ETL listed (Intertek)"
+  },
+  {
+   "label": "FCC"
+  },
+  {
+   "label": "DLC",
+   "note": "see spec sheet on LED-LLC.com for DLC listing status"
+  },
+  {
+   "label": "Sensor ready",
+   "note": "0-10V dim to off"
+  },
+  {
+   "label": "12V aux output"
+  },
+  {
+   "label": "146 LPW efficacy (light engine)"
+  },
+  {
+   "label": "80+ CRI"
+  },
+  {
+   "label": "120° beam angle"
+  },
+  {
+   "label": "Operating temp -4°F to 113°F"
+  },
+  {
+   "label": "L70 >100,000hrs rated life",
+   "note": "calculated"
+  },
+  {
+   "label": "L90 51,000hrs rated life"
+  },
+  {
+   "label": "Linkable",
+   "note": "connect up to 20 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC"
+  },
+  {
+   "label": "Optional internal emergency battery backup",
+   "note": "-EM1 suffix, 90 min / 500 lm"
+  },
+  {
+   "label": "Simple Lighting Controls / Networked Lighting Controls compatible",
+   "note": "see catalog page 25 or the product spec sheet on LED-LLC.com"
+  }
+ ],
+ "tables": [
+  {
+   "title": "LBI MAX – Linkable Strip Retrofit Kit + Fixture",
+   "pdfPage": 18,
+   "columns": [
+    "Part #",
+    "Voltage",
+    "FlexWatt",
+    "Lumens",
+    "FlexColor",
+    "Dimensions"
+   ],
+   "rows": [
+    [
+     "RP-LBIMAX-2F-25W-40K-WC",
+     "120-277V",
+     "15W/20W/**25W**/30W",
+     "1950-3900",
+     "3000K/3500K/**4000K**/5000K",
+     "24.0 in x 2.5 in x 3.0 in"
+    ],
+    [
+     "RP-LBIMAX-4F-48W-40K-WC",
+     "120-277V",
+     "30W/35W/40W/**48W**",
+     "3997-6365",
+     "3000K/3500K/**4000K**/5000K",
+     "4.0 in x 2.5 in x 3.0 in"
+    ]
+   ],
+   "notes": [
+    "Factory set wattage and CCT are shown in bold"
+   ]
+  },
+  {
+   "title": "LBI MAX – Linkable Strip Retrofit Kit + Fixture (Corner Pieces)",
+   "pdfPage": 18,
+   "columns": [
+    "Part #",
+    "Description",
+    "Voltage",
+    "FlexWatt",
+    "Lumens",
+    "FlexColor",
+    "Dimensions"
+   ],
+   "rows": [
+    [
+     "RP-LBIMAX-LR-16W-40K-WC",
+     "Right-turn 90° corner",
+     "120-277V",
+     "7W/10W/13W/**16W**",
+     "910-2080",
+     "3000K/3500K/**4000K**/5000K",
+     "6.0 in x 2.5 in x 3.0 in"
+    ],
+    [
+     "RP-LBIMAX-LL-16W-40K-WC",
+     "Left-turn 90° corner",
+     "120-277V",
+     "7W/10W/13W/**16W**",
+     "910-2080",
+     "3000K/3500K/**4000K**/5000K",
+     "6.0 in x 2.5 in x 3.0 in"
+    ]
+   ],
+   "notes": [
+    "Factory set wattage and CCT are shown in bold"
+   ]
+  }
+ ],
+ "footnotes": [
+  "* Connect up to 20 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC",
+  "** Calculated (L70 >100,000hrs rated life)",
+  "See spec sheet on LED-LLC.com for DLC listing status",
+  "CHECK: RP-LBIMAX-4F-48W-40K-WC dimensions are printed in the catalog as \"4.0 IN x 2.5 IN x 3.0 IN\" (verified by zoom); this is almost certainly a typo for 48.0 in since it is the 4 ft model. Transcribed as printed.",
+  "Factory defaults (bold) cross-checked against the LBI MAX spec sheet text: 'Factory ships 2 ft at 25W/4000K, and 4 ft at 48W/4000K'"
+ ],
+ "images": [
+  {
+   "file": "p18-b1.jpg",
+   "kind": "application",
+   "shows": "Man on an exercise bike in a gym; LBI MAX strips run as continuous lines and rectangles across the dark ceiling",
+   "products": [
+    "LBI MAX"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "p18-b2.jpg",
+   "kind": "application",
+   "shows": "Merged block: hotel lobby with wood-slat ceiling and LBI MAX strips (left) + blue 'Create seamless 90° angles w/ corner pieces' callout panel (right). Split into custom/lbi-max-lobby.jpg and custom/lbi-max-corner-callout.jpg",
+   "products": [
+    "LBI MAX"
+   ],
+   "use": "split (use the two custom crops instead)"
+  },
+  {
+   "file": "custom/lbi-max-lobby.jpg",
+   "kind": "application",
+   "shows": "Lobby lounge with wood-slat ceiling and feature wall, blue sofas; LBI MAX linear strips run as parallel lines across the ceiling",
+   "products": [
+    "LBI MAX"
+   ],
+   "use": "hero"
+  },
+  {
+   "file": "custom/lbi-max-corner-callout.jpg",
+   "kind": "callout",
+   "shows": "Blue patterned panel with a white LBI MAX strip square joined by corner pieces (one corner piece highlighted); text 'Create seamless 90° angles w/ corner pieces'",
+   "products": [
+    "RP-LBIMAX-LR-16W-40K-WC",
+    "RP-LBIMAX-LL-16W-40K-WC"
+   ],
+   "use": "callout"
+  },
+  {
+   "file": "p18-b3.jpg",
+   "kind": "application",
+   "shows": "Glass-walled office meeting area, two people working at a desk under suspended LBI MAX linear strips",
+   "products": [
+    "LBI MAX"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "custom/lbi-max-strip-cutout.png",
+   "kind": "product",
+   "shows": "LBI MAX linkable strip fixture, white housing with frosted lens, side view on white",
+   "products": [
+    "RP-LBIMAX-4F-48W-40K-WC",
+    "RP-LBIMAX-2F-25W-40K-WC"
+   ],
+   "use": "cutout"
+  }
+ ],
+ "extras": [
+  {
+   "title": "Optional internal emergency battery backup",
+   "text": "-EM1 / Emergency Battery Backup (90 min / 500 lm)"
+  },
+  {
+   "title": "Remote control",
+   "text": "RC-REMOTE-IR23 (for Simple Lighting Controls)"
+  },
+  {
+   "title": "Lighting controls",
+   "text": "Simple Lighting Controls | Networked Lighting Controls — see page 25 for more information or check out the product spec sheet on our website LED-LLC.com"
+  },
+  {
+   "title": "Linking limit",
+   "text": "Connect up to 20 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC"
+  },
+  {
+   "title": "Catalog section",
+   "text": "RemPhos / Retrofit Kits + Fixtures"
+  }
+ ]
+}

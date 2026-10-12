@@ -1,0 +1,64 @@
+# Light Efficient Design
+
+> Light Efficient Design (led-llc.com) designs and sells commercial LED lighting under three brands: Light Efficient Design LED retrofit lamps for HID and fluorescent fixtures, RemPhos linkable light bars, fixtures, retrofit kits and lighting controls, and Solera solar lighting and poles. This site is the web edition of the 2026 Full Product Catalog: part numbers with specifications, one page per product category.
+
+Key facts:
+
+- Brands: Light Efficient Design (screw-in and pin-base LED retrofit lamps, work lights, merchandising displays), RemPhos (LBI linkable light bars with internal drivers, LBI Color Palette color bars, lighting controls, fixtures, retrofit kits), Solera (solar area, bollard, flood, display and wall-pack lights, poles).
+- Part numbers: every category page lists its part numbers in tables with wattage, lumens, CCT, base, voltage and dimensions as printed in the catalog; factory defaults for selectable (FlexWatt / FlexColor) lamps are shown in bold. The full digest is in llms-full.txt.
+- Corporate HQ & Training Center: 188 S. Northwest Highway, Cary, IL 60013. Innovation & Manufacturing Center: 30 Log Bridge Road, Building 200, Middleton, MA 01949.
+- Sales: 847.380.3540, sales@led-llc.com. Samples, utility rebate help and local representatives for all three brands.
+- Information is subject to change without notice; the spec sheet is the final reference for any part number.
+
+## Light Efficient Design
+
+- [Light Efficient Design overview](https://www.led-llc.com/light-efficient-design.html): Retrofit lamps that turn any HID or fluorescent fixture into LED. Screw-in and pin-base LED retrofits for the fixtures already on the job, plus temporary work lights. Keep the fixture, swap the lamp, cut the energy.
+- [Bollard + Post Top](https://www.led-llc.com/bollard-post-top.html): Screw-In Retrofits. Replaces up to 1000W HID.
+- [Shoe Box + Wall Pack](https://www.led-llc.com/shoe-box-wall-pack.html): Screw-In Retrofits. Replaces up to 400W HID.
+- [High Bay + Low Bay](https://www.led-llc.com/high-bay-low-bay.html): Screw-In Retrofits. Replaces up to 1000W HID.
+- [Hazardous Location](https://www.led-llc.com/hazardous-location.html): Screw-In Retrofits. Replaces up to 400W HID.
+- [PL + PLL](https://www.led-llc.com/pl-pll.html): Pin-Base Retrofits. Over a dozen models for the perfect solution.
+- [Linear T5 + T8](https://www.led-llc.com/linear-t5-t8.html): Pin-Base Retrofits. Energy saving replacements for fluorescent T8 and T5.
+- [Work Lights](https://www.led-llc.com/work-lights.html): Work Lights. Replaces up to 400W HID.
+- [Gondolas, Shippers + Displays](https://www.led-llc.com/gondolas-shippers-displays.html): Merchandising. Gondolas, shippers and counter displays that put the Light Efficient Design lamp line on the distributor's floor, with part number and size for each.
+
+## RemPhos
+
+- [RemPhos overview](https://www.led-llc.com/remphos.html): Fixtures, retrofit kits and linkable light bars engineered to install fast. Innovatively engineered LED fixtures and retrofits that make installation as fast and easy as possible, with controls and color that maximize the lighting experience for end users.
+- [LBI Family Overview](https://www.led-llc.com/lbi.html): The eight LBI linkable light bar variants (LBI G1, LBI G2, LBI 65, LBI MAX, LBI Color Palette, LBI Color Palette+, LBI Color PaletteX, LBI 65 Color Palette+) with lengths, wattage, lumens, color, controls and example part numbers.
+- [Lighting Controls](https://www.led-llc.com/lighting-controls.html): Lighting Controls. You have a choice between simplicity or high-capability systems.
+- [LBI G1](https://www.led-llc.com/lbi-g1.html): Linkable Light Bars. The economical LBI, up to 146 lumens per watt.
+- [LBI G2](https://www.led-llc.com/lbi-g2.html): Linkable Light Bars. LBI G2 — More CCTs. More lumens per watt. Connect up to 40 from one power feed.
+- [LBI 65](https://www.led-llc.com/lbi-65.html): Linkable Light Bars. Waterproof linking — Connect up to 40 from one power feed.
+- [LBI MAX](https://www.led-llc.com/lbi-max.html): Linkable Light Bars. Higher lumen — linkable fixture. Connect up to 40 from one power feed.
+- [LBI Color Palette](https://www.led-llc.com/color-palette.html): LBI Color Palette. Transforming light into a medium of precision and possibility.
+- [LIVC Stairwell, Vanity + Wrap](https://www.led-llc.com/livc.html): Fixtures. Slimmer. Sleeker. Stairwell, vanity and wraparound fixtures that link like an LBI.
+- [Wall + Ceiling Fixtures](https://www.led-llc.com/wall-ceiling-fixtures.html): Fixtures. An ideal choice for sophisticated, refined spaces.
+- [Wall + Ceiling Retrofit Kits](https://www.led-llc.com/wall-ceiling-retrofit-kits.html): Retrofit Kits. Keep the fixture. Upgrade the performance.
+- [Type C Kits + Linear Barkits](https://www.led-llc.com/type-c-kits-lbe.html): Retrofit Kits. Traditional look of fluorescent tubes or higher efficiency of a barkit.
+- [TAA Type C Kits + Barkits](https://www.led-llc.com/taa-type-c-kits-lbe.html): Retrofit Kits. Trusted for federal projects.
+- [Troffer Kits + Fixtures](https://www.led-llc.com/troffer-retrofit-kits-fixtures.html): Retrofit Kits. Use as a retrofit kit or a fixture. One piece design — 2X faster install.
+- [TAA Troffer Kits + Fixtures](https://www.led-llc.com/taa-troffers.html): Retrofit Kits. Solutions that meet the requirements of the United States Trade Agreements Act.
+
+## Solera
+
+- [Solera overview](https://www.led-llc.com/solera.html): Off-grid lighting with no trenching, no wiring and no energy bill. Solar area, bollard, flood and display lights with poles to match. Set it and go: seasonal output optimization, professional-grade construction and remote monitoring with i-Series.
+- [Solera i-Series Overview](https://www.led-llc.com/i-series.html): Solar Lighting. Modular Solar Lighting System.
+- [Area Lights](https://www.led-llc.com/solar-area-lights.html): Solar Lighting. All-in-one design with solar panel, light engine and battery built-in.
+- [Bollard + Post Tops](https://www.led-llc.com/solar-bollard-post-tops.html): Solar Lighting. Improve pedestrian safety. Three unique models, perfect for pathways, piers and more.
+- [Flood + Multifunctional](https://www.led-llc.com/solar-flood-multifunctional.html): Solar Lighting. Adjustable – light exactly where you need it. Public safety. Low maintenance.
+- [Display + Wall Pack](https://www.led-llc.com/solar-display-wall-pack.html): Solar Lighting. All-in-one design. Built to withstand cold climates.
+- [Poles](https://www.led-llc.com/poles.html): Solar Lighting. Round and square straight poles sized for Solera solar area lights.
+
+## Company
+
+- [Resources](https://www.led-llc.com/resources.html): The 2026 Full Product Catalog (PDF) and LBI spec sheets and sell sheets.
+- [Contact](https://www.led-llc.com/contact.html): Sales phone and email, both locations, samples, rebates and rep lookup.
+- [Meet Eddy](https://www.led-llc.com/eddy.html): Eddy (short for Edison), the company mascot: a 5 mm LED named after Thomas Edison, created by Senior Creative Director Amy George.
+- [Pic Quik case study: Top-to-bottom store retrofit (PDF)](https://www.led-llc.com/assets/docs/case-studies/Pic-Quik-Case-Study.pdf): Gas station, convenience store and car wash, Las Cruces, NM. A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.
+- [2026 Full Product Catalog (PDF)](https://www.led-llc.com/assets/docs/LED-2026-Full-Product-Catalog.pdf): Every brand and part number in one PDF.
+
+## Optional
+
+- [Full text digest](https://www.led-llc.com/llms-full.txt): Every category's headline, features and every part number with its specifications, in plain text.
+- [Part number search index (JSON)](https://www.led-llc.com/assets/js/search-index.json): Every part number with its page and brand.

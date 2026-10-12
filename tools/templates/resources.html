@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% import "_parts.html" as P %}
+{% block brand %}remphos{% endblock %}
+{% block main %}
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span aria-current="page">Resources</span></nav>
+  <section class="page-hero" style="grid-template-columns:minmax(0,1fr)">
+    <div>
+      <p class="eyebrow">Resources</p>
+      <h1>Catalog, spec sheets and files</h1>
+      <p class="intro">Everything here is a direct download. Category pages link to their own catalog pages; spec sheets and IES files are added as each category is published.</p>
+    </div>
+  </section>
+</div>
+<div class="wrap stack" style="padding-top:0">
+  <section aria-labelledby="cat-h">
+    <div class="section-head"><h2 id="cat-h">Catalog</h2><p>The full catalog, then each category's own pages.</p></div>
+    <div class="resources four">
+      <a class="res" href="{{ CATALOG_PDF }}" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><div><h4>2026 Full Product Catalog</h4><p>Every product from all three brands.</p><span class="state ready">PDF</span></div></a>
+      {% for c in cats %}
+      <a class="res" href="{{ c.pdf_href }}" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><div><h4>{{ c.nav_title }}</h4><p>{{ c.brand.name }} · {{ c.pages_label or 'catalog section' }}</p><span class="state ready">PDF</span></div></a>
+      {% endfor %}
+    </div>
+  </section>
+  {% if studies %}
+  <section aria-labelledby="cs-h">
+    <div class="section-head"><h2 id="cs-h">Case studies</h2><p>Real jobs and real results, each with a PDF you can share with your customer.</p></div>
+    <div class="cases compact-grid">{% for cs in studies %}{{ P.case_study(cs, compact=True) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+  {% if videos %}
+  <section aria-labelledby="vid-h">
+    <div class="section-head"><h2 id="vid-h">Product videos</h2><p>Short videos from our YouTube channel. Play them here or open them on YouTube.</p></div>
+    <div class="video-grid">{% for v in videos %}<div>{{ P.video(v) }}<a class="video-page" href="{{ v.page }}">{{ v.page_title }} product page ›</a></div>{% endfor %}</div>
+  </section>
+  {% endif %}
+  <section aria-labelledby="doc-h">
+    <div class="section-head"><h2 id="doc-h">Spec sheets and sell sheets</h2><p>LBI family documents. More categories follow as their sheets are published.</p></div>
+    <div class="resources">
+      {% for d in docs if 'Catalog' not in d %}
+      <a class="res" href="assets/docs/{{ d }}" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><h4>{{ DOC_TITLES.get(d) or d|replace('.pdf', '')|replace('-', ' ') }}</h4><p>RemPhos LBI family</p><span class="state ready">PDF</span></div></a>
+      {% endfor %}
+      <div class="res res-later"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><h4>IES files, installation instructions, videos</h4><p>Added per category.</p><span class="state later">Coming soon</span></div></div>
+    </div>
+  </section>
+</div>
+{% endblock %}

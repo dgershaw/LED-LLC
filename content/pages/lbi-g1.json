@@ -1,0 +1,33 @@
+{
+  "title": "Linkable Bar / Internal Driver (LBI G1)",
+  "subtitle": "",
+  "headline": "The economical LBI, up to 146 lumens per watt",
+  "intro": "",
+  "callouts": [],
+  "features": [],
+  "tables": [
+    {
+      "title": "LBI G1 Linkable Bar / Internal Driver",
+      "columns": [
+        "Part #",
+        "UPC",
+        "Description",
+        "Lumens",
+        "FlexWatt",
+        "FlexColor",
+        "Dimensions"
+      ],
+      "rows": [
+        "RP-LBI-G1-2F-6W-40K-WC | 844006023867 | 2 ft linkable bar, standard color temperatures | 780-1560 | **6W**/9W/12W | 3500K/**4000K**/5000K | 19.3 in x 1.2 in x 1.2 in",
+        "RP-LBI-G1-2F-6W-27K-WC2 | 844006024826 | 2 ft linkable bar, warm color temperatures | 696-1524 | **6W**/9W/12W | **2700K**/3000K/3500K | 19.3 in x 1.2 in x 1.2 in",
+        "RP-LBI-G1-3F-10W-40K-WC | 844006023959 | 3 ft linkable bar, standard color temperatures | 1400-2100 | **10W**/12W/15W | 3500K/**4000K**/5000K | 31.3 in x 1.2 in x 1.2 in",
+        "RP-LBI-G1-3F-10W-27K-WC2 | 844006024833 | 3 ft linkable bar, warm color temperatures | 1270-1980 | **10W**/12W/15W | **2700K**/3000K/3500K | 31.3 in x 1.2 in x 1.2 in",
+        "RP-LBI-G1-4F-15W-40K-WC | 844006024079 | 4 ft linkable bar, standard color temperatures | 1462-3653 | 10W/**15W**/25W | 3500K/**4000K**/5000K | 43.3 in x 1.2 in x 1.2 in",
+        "RP-LBI-G1-4F-15W-27K-WC2 | 844006024840 | 4 ft linkable bar, warm color temperatures | 1260-3400 | 10W/**15W**/25W | **2700K**/3000K/3500K | 43.3 in x 1.2 in x 1.2 in"
+      ]
+    }
+  ],
+  "footnotes": [
+    "Factory set wattage and CCT are shown in bold"
+  ]
+}

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% import "_parts.html" as P %}
+{% block brand %}remphos{% endblock %}
+{% block main %}
+<section class="home-hero wrap" aria-labelledby="h1">
+  <p class="eyebrow">Leading Thru Innovation</p>
+  <h1 id="h1">Innovation you can install, <span class="since">since 2008.</span></h1>
+  <p class="values"><span>Customer first.</span> <span>Quality first.</span></p>
+  <p class="lede">Retrofit lamps that keep the fixture, linkable bars and kits that install in minutes, and solar lighting that never sees a utility bill. From Light Efficient Design, RemPhos and Solera.</p>
+  <div class="hero-actions">
+    <button class="btn btn-primary" data-open-search>Find a part number</button>
+    <a class="btn btn-ghost" href="#brands">Browse by brand</a>
+  </div>
+  <div class="mosaic" aria-label="Product photography">
+    {% for m in mosaic %}<figure class="{{ m.cls }}"><a href="{{ m.href }}" aria-label="{{ m.cap }}"><span class="ph"><img src="assets/img/{{ m.file }}" alt="{{ m.alt }}"{{ dims('assets/img/' ~ m.file) }}{% if m.pos %} style="object-position: {{ m.pos }}"{% endif %}>{% for g in m.lights %}<span class="glow{% if g.kind != 'glow' %} {{ g.kind }}{% endif %}" data-g="{{ g.g }}" style="--gd:-{{ g.delay }}s" aria-hidden="true">{% if g.kind == 'beam' %}<i></i>{% endif %}</span>{% endfor %}</span><figcaption>{{ m.cap }} <span aria-hidden="true">›</span></figcaption></a></figure>{% endfor %}
+  </div>
+</section>
+
+<section class="band" id="brands" aria-labelledby="brands-h">
+  <div class="wrap">
+    <div class="band-head"><h2 id="brands-h">Three brands, built for the job in front of you</h2><p>Pick the brand that matches the fixture, the site and the budget. Everything ships from the same company with the same support.</p></div>
+    <div class="brand-cards">
+      {% for n in nav %}
+      {% set b = n.brand %}
+      <a class="brand-card" href="{{ b.slug }}.html">
+        {% set pic = brand_pics[b.key] %}
+        {#- The RemPhos card shows the LBI 65 with rain falling on it (David, 2026-10-09); rain.js picks up data-rain. #}
+        <div class="pic{% if pic[1] %} {{ pic[1] }}{% endif %}"{% if pic[0] in RAIN %} data-rain="{{ RAIN[pic[0]] }}"{% endif %}><img src="{{ pic[0] }}" alt=""{{ dims(pic[0]) }}></div>
+        <div class="band-strip" style="--c:{{ b.color }}"></div>
+        <div class="body">
+          <div class="logo-row">{{ P.brand_logo(b) }}</div>
+          <h3>{{ b.h1 }}</h3>
+          <p>{{ b.blurb }}</p>
+          <div class="cats">{% for g in n.groups %}<span class="chip">{{ g.name }}</span>{% endfor %}</div>
+          <span class="more">Explore {{ b.name }} ›</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="band alt" aria-labelledby="lbi-h">
+  <div class="wrap feature">
+    <div>
+      <p class="eyebrow brand">RemPhos · Linkable Light Bars</p>
+      <h2 id="lbi-h">One linkable bar. Eight ways to light the job.</h2>
+      <p>LBI bars in 2, 3 and 4 ft with the driver inside. Link up to 40 from one feed, then set wattage and color on site. Compare all eight and try each one live in the LBI Family Overview.</p>
+      <div class="glyphs">
+        <div class="glyph-row"><i style="--g:#fff8ec"></i><span><b>LBI G1</b><small>The economical white bar, dry and damp</small></span></div>
+        <div class="glyph-row"><i style="--g:#fff3dc"></i><span><b>LBI G2</b><small>FlexWatt and FlexColor white, dry and damp</small></span></div>
+        <div class="glyph-row"><i style="--g:#dbe9ff"></i><span><b>LBI 65</b><small>IP65 for wet locations and wash-down</small></span></div>
+        <div class="glyph-row"><i style="--g:#fff8ea"></i><span><b>LBI MAX</b><small>High-lumen strip for higher ceilings</small></span></div>
+        <div class="glyph-row"><i class="spectrum"></i><span><b>LBI Color Palette</b><small>Six precision wavelengths, set on the bar</small></span></div>
+        <div class="glyph-row"><i class="spectrum"></i><span><b>LBI Color Palette+ and LBI Color PaletteX</b><small>RGBWW white plus color, by remote or over DMX</small></span></div>
+        <div class="glyph-row"><i class="spectrum"></i><span><b>LBI 65 Color Palette+</b><small>Six precision wavelengths, IP65 for wet locations</small></span></div>
+      </div>
+      <div class="hero-actions" style="justify-content:flex-start">
+        <a class="btn btn-primary" href="lbi.html">See the LBI Family Overview</a>
+        <a class="btn btn-ghost" href="remphos.html#linkable-light-bars">LBI part numbers</a>
+      </div>
+    </div>
+    <figure class="shot photo"><img src="assets/img/product/palette-hero-rainbow.jpg" alt="LBI Color Palette+ light bar"{{ dims('assets/img/product/palette-hero-rainbow.jpg') }}></figure>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="find-h">
+  <div class="wrap">
+    <div class="band-head"><h2 id="find-h">What are you replacing?</h2><p>Start from the fixture on the ceiling or the pole in the lot. Each card opens the part numbers that fit.</p></div>
+    <div class="finder-grid">
+      {% for f in finder %}{% if f.href == 'search' %}<button class="find" data-open-search><strong>{{ f.q }}</strong><span>{{ f.strong }}</span></button>{% else %}<a class="find" href="{{ f.href }}"><strong>{{ f.q }}</strong><span>{{ f.strong }}</span></a>{% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="next-h">
+  <div class="wrap">{{ P.next_steps("Samples, rebates and your local rep", "Eddy, our 5 mm LED with a big personality, is here to help on every job.") }}</div>
+</section>
+
+<section class="band alt" aria-labelledby="res-h">
+  <div class="wrap">
+    <div class="band-head"><h2 id="res-h">For everyone on the project</h2><p>Specifiers, distributors, contractors and facilities teams find what they need in the same place.</p></div>
+    <div class="resources">
+      <a class="res" href="{{ CATALOG_PDF }}" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><div><h4>2026 Full Product Catalog</h4><p>Every brand and part number in one PDF.</p><span class="state ready">Download</span></div></a>
+      <a class="res" href="resources.html"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><h4>Spec sheets and sell sheets</h4><p>LBI family documents today, more categories as they are published.</p><span class="state ready">Browse</span></div></a>
+      <a class="res" href="contact.html"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><div><h4>Samples, rebates and reps</h4><p>Talk to sales about a sample, local rebates or your rep.</p><span class="state ready">Contact</span></div></a>
+    </div>
+  </div>
+</section>
+{% endblock %}

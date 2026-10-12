@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% import "_parts.html" as P %}
+{% block brand %}{{ c.brand_key }}{% endblock %}
+{% block main %}
+{%- if c.brand_key == "solera" %}
+{#- Every Solera page opens with a band in Solera yellow carrying the black logo (David, 2026-10-09). #}
+<div class="brand-band solera"><div class="wrap"><a class="bb-logo" href="solera.html" aria-label="Solera, all solar lighting"><img src="assets/img/brand/solera-logo-dark.png" alt="Solera"{{ dims('assets/img/brand/solera-logo-dark.png') }}></a><a class="bb-link" href="solera.html">All Solera products ›</a></div></div>
+{%- endif %}
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <span class="crumb"><a href="index.html">Home</a><span class="sep">›</span></span>
+    <span class="crumb"><a href="{{ c.brand.slug }}.html">{{ c.brand.name }}</a><span class="sep">›</span></span>
+    {% if c.group != c.nav_title %}<span class="crumb"><a href="{{ c.brand.slug }}.html#{{ c.group|lower|replace(' ', '-')|replace('+', 'and') }}">{{ c.group }}</a><span class="sep">›</span></span>{% endif %}
+    <span class="crumb"><span aria-current="page">{{ c.nav_title }}</span></span>
+  </nav>
+
+  {% set cs = c.cs %}
+  {% set sheet = (cs.docs|selectattr('kind', 'equalto', 'Spec sheet')|first) if cs else none %}
+  <section class="page-hero{% if cs %} cs-hero{% endif %}" aria-labelledby="h1">
+    <div>
+      <p class="eyebrow brand">{{ c.brand.name }} · {{ c.group }}</p>
+      <h1 id="h1">{{ c.h1_html }}{% if c.subtitle %}<small>{{ c.subtitle }}</small>{% endif %}</h1>
+      {% if c.headline %}<p class="headline"><span class="lead-in">{{ c.headline }}</span></p>{% endif %}
+      {% if c.intro and not cs %}<p class="intro">{{ c.intro }}</p>{% endif %}
+      {% if cs %}<ul class="cs-points">{% for b in cs.points %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+      <div class="actions">
+        {% if cs and cs.models %}<a class="btn btn-primary" href="#parts"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Spec sheets + IES files</a>{% elif sheet %}<a class="btn btn-primary" href="{{ sheet.pdf }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Spec sheet (PDF)</a>{% endif %}
+        {% set pcls = 'btn btn-ghost' if sheet else 'btn btn-primary' %}
+        {% if c.rowcount %}<a class="{{ pcls }}" href="#parts">Part numbers</a>{% elif c.tables %}<a class="{{ pcls }}" href="#parts">Specifications</a>{% endif %}
+        {% if c.videos %}<a class="btn btn-ghost" href="#media"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Video</a>{% endif %}
+        {% if not sheet %}<a class="btn btn-ghost" href="{{ c.pdf_href }}" target="_blank" rel="noopener">Catalog (PDF)</a>{% endif %}
+        <a class="btn btn-ghost" href="contact.html">Request a quote</a>
+      </div>
+    </div>
+    {% if cs and cs.slides %}
+    <div class="cs-slider">{{ P.slideshow(cs.slides, c.nav_title ~ " photos", "4/3", dots=True) }}</div>
+    {% else %}
+    <figure class="shot photo{% if c.hero_fit %} {{ c.hero_fit }}{% endif %}{% if c.hero_tall %} tall{% endif %}"{% if c.hero and c.hero.web in RAIN %} data-rain="{{ RAIN[c.hero.web] }}"{% endif %}>
+      {% if c.hero %}<img src="{{ c.hero.web }}" alt="{{ c.hero.shows }}"{{ dims(c.hero.web) }}>{% else %}<div class="shot-ph">Photography coming soon</div>{% endif %}
+    </figure>
+    {% endif %}
+  </section>
+</div>
+
+<div class="wrap stack">
+  {% if c.videos or c.install %}
+  <section id="media" aria-labelledby="media-h">
+    <div class="section-head"><h2 id="media-h">See it in action</h2><p>{% if c.videos %}The product video{% if c.install %} and photos from real installations{% endif %}{% else %}Photos from real installations{% endif %}. Select a photo to see it larger.</p></div>
+    {% set n = c.install|length %}
+    <div class="media-grid{% if c.videos %} has-video{% endif %} n{{ n if n < 3 else 'm' }}">
+      {% for v in c.videos %}{{ P.video(v, "lead" if loop.first else "") }}{% endfor %}
+      {% for p in c.install %}<a class="install{% if loop.index > 2 %} more{% endif %}" href="{{ p.src }}" data-lightbox data-caption="{{ p.caption }}"><img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy"{{ dims(p.src) }}{% if p.focus %} style="object-position:{{ p.focus }}"{% endif %}><span class="cap">{{ p.caption }}</span></a>{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% set photos = (c.gallery or [])|rejectattr('cls', 'in', ['diagram', 'diagram tall', 'strip'])|list %}
+  {% set strips = (c.gallery or [])|selectattr('cls', 'equalto', 'strip')|list %}
+  {% if (photos or strips or c.cutouts) and not cs %}
+  <section id="photos" aria-labelledby="gal-h">
+    <div class="section-head"><h2 id="gal-h">In the field and on the bench</h2>{% if photos|length > 1 %}<p>Swipe or use the arrows to see more.</p>{% endif %}</div>
+    <div class="gal-grid{% if photos and c.cutouts %} two{% endif %}"{% if photos and c.ss_ar %} style="--ss-ar:{{ c.ss_ar }}"{% endif %}>
+      {% if photos %}{{ P.slideshow(photos, c.nav_title ~ " photos", c.ss_ar) }}{% endif %}
+      {% if c.cutouts %}
+      {% set chips = c.cutouts|length >= 5 and c.cutouts|selectattr('cls', 'equalto', 'cut long')|list|length == c.cutouts|length %}
+      <div class="gallery cutouts{% if chips %} chips{% elif c.cutouts_spans %} spans{% endif %}">
+        {% for im in c.cutouts %}<figure class="{{ im.cls }}"{% if im.span and not chips %} style="--span:{{ im.span }}"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}><figcaption>{{ im.label|chip if chips else im.label }}</figcaption></figure>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% for im in strips if not photos or im.web in RAIN %}<figure class="strip-fig"{% if im.web in RAIN %} data-rain="{{ RAIN[im.web] }}"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}></figure>{% endfor %}
+  </section>
+  {% endif %}
+
+  {% if c.callouts and not cs %}
+  <section aria-label="Highlights">
+    <div class="callouts">
+      {% for text, span in c.callouts %}<div class="callout plain s{{ span }}" style="--span:{{ span }}"><p class="text">{{ text }}</p></div>{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if c.case_studies %}
+  <section id="case-studies" aria-labelledby="cs-h">
+    <div class="section-head"><h2 id="cs-h">Case {{ 'study' if c.case_studies|length == 1 else 'studies' }}</h2><p>Real jobs, real results. Each case study opens as a PDF you can share with your customer.</p></div>
+    <div class="cases">{% for cs in c.case_studies %}{{ P.case_study(cs) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  {% if cs %}
+  <section class="cs-glance" aria-labelledby="feat-h">
+    <div class="section-head"><h2 id="feat-h">At a glance</h2><p>From the {{ cs.sheet }} spec sheet{% if cs.models %}s{% endif %}.</p></div>
+    <div class="cs-card">
+      <div class="cs-top">
+        <ul class="cs-marks" aria-label="Listings and warranty">{% for m in cs.marks %}<li><span class="mk" role="img" aria-label="{{ m.alt }}" style="-webkit-mask-image:url({{ m.src }});mask-image:url({{ m.src }});--h:{{ m.h or 36 }}px;aspect-ratio:{{ dims_ratio(m.src) }}"></span></li>{% endfor %}</ul>
+        {% if cs.superflex %}{% set fimg = 'assets/img/icons/' ~ (cs.flex_img or 'superflex.png') %}<div class="cs-flex"><img src="{{ fimg }}" alt="{{ cs.flex_alt or 'SuperFlex' }}"{{ dims(fimg) }}><p><b>{{ cs.superflex }}</b>{% if not cs.flex_img %}<span class="fx"><span class="fw">Flex<em>Watt</em></span> <span class="fc">Flex<em>Color</em></span></span>{% endif %}{% if cs.superflex_note %}<small>{{ cs.superflex_note }}</small>{% endif %}</p></div>{% endif %}
+      </div>
+      <ul class="cs-icons" style="--n:{{ cs.icons|length }};--half:{{ (cs.icons|length + 1) // 2 }};--ph:{{ 3 if cs.icons|length in [3, 6, 9] else 4 }}">
+        {% for ic in cs.icons %}<li><span class="ic" role="img" aria-label="{{ ic.alt or ic.label }}" style="-webkit-mask-image:url({{ ic.src }});mask-image:url({{ ic.src }});aspect-ratio:{{ dims_ratio(ic.src) }}{% if ic.scale %};--s:{{ ic.scale }}{% endif %}"></span><b>{{ ic.value or "" }}</b><span class="lb">{{ ic.label }}</span></li>{% endfor %}
+      </ul>
+      {% if cs.plug %}
+      <div class="cs-ctl">
+        <a href="lighting-controls.html" class="ctl-s"><span class="ic" style="-webkit-mask-image:url(assets/img/icons/ctl-simple.png);mask-image:url(assets/img/icons/ctl-simple.png);aspect-ratio:{{ dims_ratio('assets/img/icons/ctl-simple.png') }}" aria-hidden="true"></span>Simple lighting controls</a>
+        <a href="lighting-controls.html" class="ctl-n"><span class="ic" style="-webkit-mask-image:url(assets/img/icons/ctl-network.png);mask-image:url(assets/img/icons/ctl-network.png);aspect-ratio:{{ dims_ratio('assets/img/icons/ctl-network.png') }}" aria-hidden="true"></span>Network lighting controls</a>
+        <p>{{ cs.plug }}.</p>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% elif c.features %}
+  <section aria-labelledby="feat-h">
+    <div class="section-head"><h2 id="feat-h">At a glance</h2><p>Warranty, listings and construction.</p></div>
+    <div class="spec-tiles" style="--cols:{{ c.feature_cols }}">
+      {% for f in c.features %}<div><div class="v">{{ f.label }}</div>{% if f.note %}<div class="n">{{ f.note }}</div>{% endif %}</div>{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if c.eddy %}{{ P.eddy_spot(c.eddy) }}{% endif %}
+
+  {% if c.tables %}
+  <section id="parts" aria-labelledby="parts-h">
+    <div class="section-head">
+      <h2 id="parts-h">{% if c.rowcount %}Part numbers and specifications{% else %}Specifications{% endif %}</h2>
+      <p>{% if cs and cs.parts_intro %}{{ cs.parts_intro }} {% elif cs %}Factory defaults are shown in bold. Each part number has its own IES files, one for each wattage and color temperature. {% elif c.has_bold %}Factory defaults for selectable lamps are shown in bold. {% endif %}{% if c.rowcount %}Filter by part number or any value in the tables.{% else %}Filter by any option or value.{% endif %}</p>
+    </div>
+    <div class="table-tools">
+      <label class="filter"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="pn-filter" type="search" placeholder="Filter these tables" aria-label="Filter part numbers"></label>
+      <span class="filter-count" id="pn-count"></span>
+    </div>
+    {% for t in c.tables %}
+    {% if t.fold %}
+    <details class="fold table-block table-fold">
+      <summary><h3>{{ t.title_parts[0] }}</h3>{% if t.title_parts|length > 1 %}<span class="fold-sub">{{ t.title_parts[1:]|join(' · ') }}</span>{% endif %}<span class="fold-btn" aria-hidden="true"></span></summary>
+      {{ P.parts_table(t, t.title) }}
+      {% if t.notes %}<div class="table-notes">{% for n in t.notes %}<span>{{ n|refs }}</span>{% endfor %}</div>{% endif %}
+    </details>
+    {% else %}
+    <div class="table-block">
+      <h3>{{ t.title_parts[0] }}</h3>
+      {% if t.title_parts|length > 1 %}<p class="table-sub">{{ t.title_parts[1:]|join(' · ') }}</p>{% endif %}
+      {{ P.parts_table(t, t.title, ies=IES if (cs or c.has_ies) and not t.no_ies else none) }}
+      {% if t.notes %}<div class="table-notes">{% for n in t.notes %}<span>{{ n|refs }}</span>{% endfor %}</div>{% endif %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% if c.footnotes and not cs %}<div class="footnotes">{% for f in c.footnotes %}<span>{{ f|refs }}</span>{% endfor %}</div>{% endif %}
+  </section>
+  {% endif %}
+
+  {% set diagrams = (c.gallery or [])|selectattr('cls', 'in', ['diagram', 'diagram tall'])|list %}
+  {% if diagrams %}
+  <section aria-labelledby="diag-h">
+    <div class="section-head"><h2 id="diag-h">Diagrams</h2></div>
+    <div class="diagrams n{{ diagrams|length if diagrams|length < 4 else 'm' }}">
+      {% for im in diagrams %}<figure class="diagram-fig"><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{{ natmax(im.web) }}>{% if im.caption %}<figcaption>{{ im.caption }}</figcaption>{% endif %}</figure>{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if cs and cs.more %}
+  <section aria-labelledby="more-h">
+    <div class="section-head"><h2 id="more-h">More details</h2></div>
+    <div class="extras cs-more">
+      {% for e in cs.more %}
+      <article class="extra">
+        <h3>{{ e.title }}</h3>
+        {{ P.parts_table(e, e.title) }}
+        {% for n in e.notes %}<p class="extra-note">{{ n }}</p>{% endfor %}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% elif c.extras %}
+  <section aria-labelledby="more-h">
+    <div class="section-head"><h2 id="more-h">More details</h2></div>
+    <div class="extras">
+      {% for e in c.extras %}
+      <article class="extra{% if e.columns and e.rows %} wide{% endif %}">
+        {% if e.thumb %}<img class="thumb" src="{{ e.thumb }}" alt="{{ e.title }}" loading="lazy"{{ dims(e.thumb) }}>{% endif %}
+        {% if e.title %}<h3>{{ e.title }}</h3>{% endif %}
+        {% if e.text %}<p>{{ e.text|refs }}</p>{% endif %}
+        {% if e.bullets %}<ul>{% for it in e.bullets %}<li>{{ it|refs }}</li>{% endfor %}</ul>{% endif %}
+        {% if e.columns and e.rows %}{{ P.parts_table(e, e.title) }}{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section aria-labelledby="res-h">
+    <div class="section-head"><h2 id="res-h">Documents</h2></div>
+    {% if cs and cs.docs %}
+    <div class="docs">
+      {% for d in cs.docs %}<a class="doc" href="{{ d.pdf }}" target="_blank" rel="noopener"><span class="cover"><img src="{{ d.cover }}" alt="" loading="lazy"{{ dims(d.cover) }}></span><span class="body"><small>{{ d.kind }}</small><strong>{{ d.title }}</strong><span class="meta">PDF, {{ d.size }} · {{ d.meta }}</span><span class="state ready">Download</span></span></a>{% endfor %}
+      <a class="doc" href="{{ c.pdf_href }}" target="_blank" rel="noopener"><span class="cover cat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><span class="body"><small>Catalog</small><strong>Catalog pages</strong><span class="meta">{{ c.pages_label or "2026 Full Product Catalog" }}</span><span class="state ready">Open</span></span></a>
+    </div>
+    {% if cs.soon %}<p class="soon-line"><span class="state soon">Coming soon</span><span>{{ cs.soon }}</span></p>{% endif %}
+    {% else %}
+    <div class="resources">
+      <a class="res" href="{{ c.pdf_href }}" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><div><h4>Catalog pages</h4><p>{{ c.pages_label or "2026 Full Product Catalog" }}, opens the PDF at this section.</p><span class="state ready">Download</span></div></a>
+      {% for d in PAGE_DOCS.get(c.slug, []) %}<a class="res" href="assets/docs/{{ d }}" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><h4>{{ DOC_TITLES.get(d) or d|replace('.pdf', '')|replace('-', ' ') }}</h4><p>{{ c.brand.name }} · {{ 'sell sheet' if 'Sell' in d else 'spec sheet' }}</p><span class="state ready">PDF</span></div></a>{% endfor %}
+    </div>
+    <p class="soon-line"><span class="state soon">Coming soon</span><span>{% if PAGE_DOCS.get(c.slug) %}Submittals, IES files and installation instructions.{% else %}Spec sheets and submittals, IES files and installation instructions.{% endif %}</span></p>
+    {% endif %}
+  </section>
+
+  {% if related %}
+  <section aria-labelledby="rel-h">
+    <div class="section-head"><h2 id="rel-h">More from {{ c.brand.name }}</h2><a href="{{ c.brand.slug }}.html">All {{ c.brand.name }} ›</a></div>
+    <div class="ticker" data-ticker>
+      <div class="tk-track">{% for r in related %}<a class="tk" href="{{ r.href }}"><span class="tk-pic{% if not r.hero or r.hero_fit != 'cover' %} contain{% endif %}">{% if r.hero %}<img src="{{ r.hero.web }}" alt="" loading="lazy"{{ dims(r.hero.web) }}>{% else %}<img src="assets/img/brand/{{ r.brand.logo }}" alt=""{{ dims('assets/img/brand/' ~ r.brand.logo) }}>{% endif %}</span><span class="tk-name">{{ r.nav_title }}</span></a>{% endfor %}</div>
+    </div>
+  </section>
+  {% endif %}
+
+  <nav class="pager" aria-label="Catalog order">
+    {% if prev %}<a href="{{ prev.href }}"><small>Previous</small><strong>‹ {{ prev.nav_title }}</strong></a>{% else %}<span></span>{% endif %}
+    {% if nxt %}<a href="{{ nxt.href }}"><small>Next</small><strong>{{ nxt.nav_title }} ›</strong></a>{% endif %}
+  </nav>
+
+  {% set lighting = c.slug not in NO_REBATES %}
+  {{ P.next_steps("Next steps, with a little help from Eddy", "Try it on your own job, check the rebates in your area, or talk to your local rep." if lighting else "Your local rep has stock, pricing and answers, and can send a sample.", skip=([] if lighting else ['rebates'])) }}
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% import "_parts.html" as P %}
+{% block brand %}remphos{% endblock %}
+{% block head %}<link rel="stylesheet" href="assets/css/lbi.css">{% endblock %}
+{% block main %}
+{{ lbi_body }}
+{% if glance %}
+  <section class="band" id="glance" aria-labelledby="glance-h">
+    <div class="wrap">
+      <details class="fold" id="glance-table">
+        <summary><h2 id="glance-h">All eight variants in one table</h2><span class="fold-sub">Lengths, wattage, lumens, light, controls, locations and example part numbers, from the spec sheets.</span><span class="fold-btn" aria-hidden="true"></span></summary>
+      {{ P.parts_table(glance, "LBI family at a glance") }}
+      <div class="extras" style="margin-top:20px">
+        {% for n in glance_notes %}
+        <article class="extra" id="glance-{{ n.id }}">
+          <h3>{{ n.name }}</h3>
+          <p>{{ n.kind }}. {{ n.text }}</p>
+          {% if n.apps %}<p>Applications: {{ n.apps|join(', ') }}.</p>{% endif %}
+          {% if n.docs %}<p>{% for d in n.docs %}<a href="assets/docs/{{ d }}" target="_blank" rel="noopener">{{ DOC_TITLES.get(d) or d|replace('.pdf', '')|replace('-', ' ') }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
+        </article>
+        {% endfor %}
+      </div>
+      </details>
+    </div>
+  </section>
+{% endif %}
+<div class="wrap" style="padding-block:clamp(40px,6vw,64px)">{{ P.next_steps("Ready to put LBI on your next job?", "Request a sample, check rebates in your area, or reach your local rep.") }}</div>
+{{ lbi_tail }}
+{% if lbi_fine %}<div class="wrap"><p class="footnotes" style="margin-bottom:40px">{{ lbi_fine }}</p></div>{% endif %}
+{% endblock %}
+{% block scripts %}<script src="assets/js/lbi.js"></script>{% endblock %}
