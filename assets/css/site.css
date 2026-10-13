@@ -1554,13 +1554,13 @@ details.table-fold[open] .fold-btn::after { content: "Hide part numbers"; }
 .tour-eddy.hop { animation: e-hop .7s cubic-bezier(.3,.7,.4,1) 1; }
 @keyframes e-bob { 50% { transform: translateY(-4px); } }
 @keyframes e-hop { 0% { transform: translateY(0) scale(1, 1); } 18% { transform: translateY(5px) scale(1.08, .9); } 50% { transform: translateY(-26px) scale(.95, 1.06) rotate(-4deg); } 78% { transform: translateY(0) scale(1.05, .94) rotate(2deg); } 100% { transform: none; } }
-.e-ant { transform-origin: 118px 38px; animation: e-ant 2.8s ease-in-out infinite; }
+.e-ant { transform-origin: 146px 66px; animation: e-ant 2.8s ease-in-out infinite; }
 @keyframes e-ant { 50% { transform: rotate(8deg); } }
-.e-eye { transform-origin: 100px 90px; animation: e-blink 4.6s infinite; }
+.e-eye { transform-origin: 100px 95px; animation: e-blink 4.6s infinite; }
 @keyframes e-blink { 0%, 93%, 100% { transform: scaleY(1); } 96% { transform: scaleY(.08); } }
 .e-pupil { transform: translate(var(--lx, 0px), var(--ly, 0px)); transition: transform .45s ease; }
-.e-arm-l { transform-origin: 60px 150px; transform: rotate(var(--al, -42deg)); transition: transform .55s cubic-bezier(.3,1.3,.5,1); }
-.e-arm-r { transform-origin: 140px 150px; transform: rotate(var(--ar, 42deg)); transition: transform .55s cubic-bezier(.3,1.3,.5,1); }
+.e-arm-l { transform-origin: 38px 152px; transform: rotate(var(--al, -42deg)); transition: transform .55s cubic-bezier(.3,1.3,.5,1); }
+.e-arm-r { transform-origin: 162px 152px; transform: rotate(var(--ar, 42deg)); transition: transform .55s cubic-bezier(.3,1.3,.5,1); }
 .wave-l .e-arm-l { animation: e-wave-l .8s ease-in-out 3; }
 .wave-r .e-arm-r { animation: e-wave-r .8s ease-in-out 3; }
 @keyframes e-wave-l { 0%, 100% { transform: rotate(75deg); } 50% { transform: rotate(115deg); } }
