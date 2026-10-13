@@ -1,6 +1,6 @@
 # Light Efficient Design: full product digest
 
-> Plain-text edition of led-llc.com, generated from the same catalog data as the site on 2026-10-12. Values are as printed in the 2026 Full Product Catalog; the spec sheet is the final reference.
+> Plain-text edition of led-llc.com, generated from the same catalog data as the site on 2026-10-13. Values are as printed in the 2026 Full Product Catalog; the spec sheet is the final reference.
 
 Sales: 847.380.3540, sales@led-llc.com. Corporate HQ & Training Center: 188 S. Northwest Highway, Cary, IL 60013. Innovation & Manufacturing Center: 30 Log Bridge Road, Building 200, Middleton, MA 01949.
 
