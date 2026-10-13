@@ -58,6 +58,7 @@
   <path d="M38 126a66 66 0 1 1 124 0z" fill="#79983d"/>
   <path d="M100 138v18" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="133" r="4.5" fill="#fff"/>
   <g class="e-eye"><circle cx="100" cy="84" r="29" fill="#fff"/><circle cx="100" cy="84" r="15" fill="none" stroke="#154f91" stroke-width="8"/><circle class="e-pupil" cx="100" cy="84" r="5.6" fill="#154f91"/></g>
+  <path class="e-jaw" d="M115 110.5Q126.5 111 137.5 104.5C137 122 119 129 115 110.5z" fill="#0f3d73" stroke="#154f91" stroke-width="2.5" stroke-linejoin="round"/>
   <path d="M117 113c6 4 13 2 18-6" fill="none" stroke="#154f91" stroke-width="3.5" stroke-linecap="round"/>
   <g class="e-arm e-arm-l"><path d="M44 130H14" fill="none" stroke="#fff" stroke-width="25" stroke-linecap="round"/><g transform="translate(12 130) scale(-1 1)"><rect x="-10" y="-14" width="28" height="28" rx="11" fill="#fff" stroke="#fff" stroke-width="7"/><rect x="1" y="-30" width="12" height="23" rx="6" fill="#fff" stroke="#fff" stroke-width="7"/></g><path d="M44 130H14" fill="none" stroke="#154f91" stroke-width="18" stroke-linecap="round"/><g transform="translate(12 130) scale(-1 1)"><rect x="-10" y="-14" width="28" height="28" rx="11" fill="#154f91"/><rect x="1" y="-30" width="12" height="23" rx="6" fill="#154f91"/><path d="M-1-5h11M-1 4h11" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".7"/></g></g>
   <g class="e-arm e-arm-r"><path d="M156 130h30" fill="none" stroke="#fff" stroke-width="25" stroke-linecap="round"/><g transform="translate(188 130)"><rect x="-10" y="-14" width="28" height="28" rx="11" fill="#fff" stroke="#fff" stroke-width="7"/><rect x="1" y="-30" width="12" height="23" rx="6" fill="#fff" stroke="#fff" stroke-width="7"/></g><path d="M156 130h30" fill="none" stroke="#154f91" stroke-width="18" stroke-linecap="round"/><g transform="translate(188 130)"><rect x="-10" y="-14" width="28" height="28" rx="11" fill="#154f91"/><rect x="1" y="-30" width="12" height="23" rx="6" fill="#154f91"/><path d="M-1-5h11M-1 4h11" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".7"/></g></g>
@@ -465,7 +466,22 @@
     const done = () => { speechSynthesis.removeEventListener("voiceschanged", done); res(); };
     speechSynthesis.addEventListener("voiceschanged", done); setTimeout(done, 600);
   });
+  /* Eddy's mouth moves while his voice plays (David, 2026-10-13: "make it look like he's speaking"). A loose syllable
+     rhythm, not real lip sync: the jaw opens to a random height every 90 to 170 ms and now and then closes for a beat. */
+  let talkTimer = 0;
+  function talk(on) {
+    clearTimeout(talkTimer); talkTimer = 0;
+    const root = document.documentElement;
+    if (!on || reduce) { root.style.setProperty("--jaw", "0"); return; }
+    const step = () => {
+      const shut = Math.random() < 0.18;
+      root.style.setProperty("--jaw", shut ? "0.1" : (0.35 + Math.random() * 0.65).toFixed(2));
+      talkTimer = setTimeout(step, shut ? 140 + Math.random() * 120 : 90 + Math.random() * 80);
+    };
+    step();
+  }
   function hush() {
+    talk(false);
     if (audio) { audio.pause(); audio.onended = null; audio = null; }
     if ("speechSynthesis" in window) speechSynthesis.cancel();
   }
@@ -505,7 +521,14 @@
      starts locked again; until the next tap the speaker button pulses. */
   const SILENT = "data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjYwLjE2LjEwMAAAAAAAAAAAAAAA//NwwAAAAAAAAAAAAEluZm8AAAAPAAAABgAAAykAWlpaWlpaWlpaWlpaWlpaWnt7e3t7e3t7e3t7e3t7e3t7nJycnJycnJycnJycnJycnL29vb29vb29vb29vb29vb293t7e3t7e3t7e3t7e3t7e3t7/////////////////////AAAAAExhdmM2MC4zMQAAAAAAAAAAAAAAACQEUQAAAAAAAAMpso/G6AAAAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NCxKMAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NAxKQAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/80LEowAAA0gAAAAAVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU=";
   let player = null, unlocked = false;
-  function getPlayer() { if (!player) { player = new Audio(); player.preload = "auto"; player.setAttribute("playsinline", ""); } return player; }
+  function getPlayer() {
+    if (!player) {
+      player = new Audio(); player.preload = "auto"; player.setAttribute("playsinline", "");
+      player.addEventListener("playing", () => talk(audio === player && !player.src.startsWith("data:")));
+      for (const ev of ["pause", "ended", "emptied", "waiting"]) player.addEventListener(ev, () => talk(false));
+    }
+    return player;
+  }
   function unlock(e) {
     if (e && e.isTrusted === false) return;                         // the tour's own clicks (the switch flips) are not a visitor's tap
     if (unlocked || !("Audio" in window)) return;
@@ -526,7 +549,9 @@
     if (v) u.voice = v;
     const natural = v && /Natural|Online/i.test(v.name);
     u.rate = 1; u.pitch = natural ? 1 : 1.05;           // smooth, not chirpy; neural voices sound best untouched
-    u.onend = () => { if (left > 900) left = 900; };
+    u.onstart = () => talk(true);
+    u.onerror = () => talk(false);
+    u.onend = () => { talk(false); if (left > 900) left = 900; };
     setTimeout(() => ss.speak(u), 60);
   }
 
