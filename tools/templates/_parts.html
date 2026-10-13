@@ -1,0 +1,159 @@
+{# Shared table and card macros #}
+{% macro parts_table(t, caption=None, ies=None) %}
+{% if t.dense %}<p class="swipe-hint" aria-hidden="true">Swipe the table sideways for every spec ›</p>{% endif %}
+<div class="table-scroll{% if t.dense %} wide-table{% endif %}">
+  <table class="parts{% if t.dense %} dense{% endif %}{% if t.phone_compact %} compact{% endif %}">
+    {% if caption %}<caption class="visually-hidden">{{ caption }}</caption>{% endif %}
+    {% set ies = ies if ies is not none and t.pn_col is not none else none %}
+    <thead><tr>{% for col in t.columns %}<th scope="col" class="{% if loop.index0 == t.pn_col %}pn-head{% elif t.num and t.num[loop.index0] %}num{% endif %}">{{ col }}</th>{% endfor %}{% for dc in t.doc_cols or [] %}<th scope="col" class="doc-head">{{ dc.label }}</th>{% endfor %}{% if ies is not none %}<th scope="col" class="ies-head">IES files</th>{% endif %}</tr></thead>
+    <tbody>
+      {% for r in t.rows %}
+      <tr>
+        {% for cell in r %}
+        {% set i = loop.index0 %}
+        {% set plain = cell|strip_bold|trim %}
+        {% set iswide = t.wide and i < t.wide|length and t.wide[i] %}
+        {% if i == 0 and (t.rowhead or not t.columns[0]) %}
+        <th scope="row">{{ cell|bold }}</th>
+        {% else %}
+        <td data-label="{{ t.columns[i] if i < t.columns|length else '' }}" class="{% if i == t.pn_col %}pn{% elif not plain %}empty{% elif iswide %}wide{% elif t.num and t.num[i] %}num nw{% elif plain|length <= 18 %}nw{% endif %}{% if t.columns[i]|lower == 'description' %} desc{% endif %}">{% if plain %}{{ cell|cellhtml }}{% else %}—{% endif %}</td>
+        {% endif %}
+        {% endfor %}
+        {% if t.doc_cols %}{% set rd = t.row_docs[loop.index0] %}{% for dc in t.doc_cols %}{% set d = rd.get(dc.key) %}
+        {% if dc.merge %}{% if d and d.span %}<td class="dl-cell grp" rowspan="{{ d.span }}">{{ doc_link(d) }}</td>{% endif %}<td class="dl-cell m-only" data-label="{{ dc.label }}">{% if d %}{{ doc_link(d) }}{% else %}—{% endif %}</td>
+        {% else %}<td class="dl-cell" data-label="{{ dc.label }}">{% if d %}{{ doc_link(d) }}{% else %}<span class="ies-soon">Coming soon</span>{% endif %}</td>{% endif %}
+        {% endfor %}{% endif %}
+        {% if ies is not none %}{% set pn = (r[t.pn_col]|strip_bold|trim|upper) %}<td data-label="IES files" class="ies">{% set e = ies[pn] %}{% if e %}<a class="ies-dl" href="{{ e.zip or e.files[0][2] }}" download data-ies='{{ e|tojson }}' aria-label="IES files for {{ pn }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>IES files</a>{% else %}<span class="ies-soon">Coming soon</span>{% endif %}</td>{% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endmacro %}
+
+{% macro doc_link(d) %}<a class="doc-dl" href="{{ d.href }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>{{ d.text }}</span>{% if d.sub %}<small>{{ d.sub }}</small>{% endif %}</a>{% endmacro %}
+
+{% macro cat_card(c, span=None, wide=False) %}
+<a class="card{% if wide %} wide{% endif %}" href="{{ c.href }}"{% if span %} style="--span:{{ span }}"{% endif %}>
+  <div class="pic{% if not c.hero or c.hero_fit != 'cover' %} contain{% endif %}{% if c.hero and '/product/' in c.hero.web %} bottom{% endif %}"{% if c.hero and c.hero.web in RAIN %} data-rain="{{ RAIN[c.hero.web] }}"{% endif %}>
+    {% if c.hero %}<img src="{{ c.hero.web }}" alt="{{ c.hero.shows }}" loading="lazy"{{ dims(c.hero.web) }}>{% else %}<img src="assets/img/brand/{{ c.brand.logo }}" alt=""{{ dims('assets/img/brand/' ~ c.brand.logo) }}>{% endif %}
+  </div>
+  <div class="body">
+    <h3>{{ c.nav_title }}</h3>
+    <p>{{ c.headline }}</p>
+    <div class="meta">{% if c.pages_label %}<span>{{ c.pages_label }}</span>{% endif %}</div>
+  </div>
+</a>
+{% endmacro %}
+
+{% macro link_card(href, title, text, img=None, meta=None, span=None, wide=False) %}
+<a class="card{% if wide %} wide{% endif %}" href="{{ href }}"{% if span %} style="--span:{{ span }}"{% endif %}>
+  <div class="pic{% if img and '/product/' in img %} bottom{% endif %}">{% if img %}<img src="{{ img }}" alt="" loading="lazy"{{ dims(img) }}>{% endif %}</div>
+  <div class="body"><h3>{{ title }}</h3><p>{{ text }}</p>{% if meta %}<div class="meta"><span>{{ meta }}</span></div>{% endif %}</div>
+</a>
+{% endmacro %}
+
+{% macro brand_logo(b, cls='') %}
+<img class="logo-eq theme-light-only {{ cls }}" src="assets/img/brand/{{ b.logo }}" alt="{{ b.name }}"{{ logo_style(b.logo) }}{{ dims('assets/img/brand/' ~ b.logo) }}>
+<img class="logo-eq theme-dark-only {{ cls }}" src="assets/img/brand/{{ b.logo_white }}" alt="{{ b.name }}"{{ logo_style(b.logo_white) }}{{ dims('assets/img/brand/' ~ b.logo_white) }}>
+{% endmacro %}
+
+{# Samples, rebates and the rep finder, each with its Eddy sticker #}
+{% macro next_steps(heading="Next steps, with a little help from Eddy", sub="Samples, rebates and your local rep, for every product on this site.", hid="next-h", who=True, skip=[]) %}
+<section class="next-steps" aria-labelledby="{{ hid }}">
+  <div class="section-head"><h2 id="{{ hid }}">{{ heading }}</h2><p>{{ sub }}</p>{% if who %}<a href="eddy.html">Who is Eddy? ›</a>{% endif %}</div>
+  <div class="eddy-trio" style="--n:{{ NEXT_STEPS|length - skip|length }}">
+    {% for s in NEXT_STEPS if s.key not in skip %}
+    <a class="eddy-card {{ s.key }}" href="{{ s.href }}">
+      <span class="sticker"><img src="{{ s.img }}" alt="" loading="lazy"{{ dims(s.img) }}></span>
+      <span class="txt"><strong>{{ s.title }}</strong><span>{{ s.text }}</span><span class="go">{{ s.cta }} ›</span></span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endmacro %}
+
+{# A short Eddy cameo with a speech bubble, linked to his page #}
+{% macro eddy_spot(e) %}
+<aside class="eddy-spot{% if e.peek %} peek{% endif %}{% if e.wide %} wide{% endif %}" aria-label="Eddy says">
+  <img class="eddy-img" src="{{ e.img }}" alt="Eddy, the Light Efficient Design mascot" loading="lazy"{{ dims(e.img) }}>
+  <div class="bubble"><strong>{{ e.title }}</strong><p>{{ e.text }}</p><a href="eddy.html">Meet Eddy ›</a></div>
+</aside>
+{% endmacro %}
+
+{# YouTube video: a poster that loads the player on click, with a plain link for anyone who prefers YouTube #}
+{% macro video(v, cls="") %}
+<figure class="video {{ cls }}">
+  <a class="video-frame" href="{{ v.watch }}" data-yt="{{ v.youtube }}" data-title="{{ v.title }}" target="_blank" rel="noopener" aria-label="Play video: {{ v.title }}">
+    <img class="poster local" src="{{ v.poster }}" alt="" loading="lazy">
+    <img class="poster yt" src="{{ v.thumb }}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
+    <span class="play" aria-hidden="true"><svg viewBox="0 0 68 48"><path d="M66.5 7.7A8.5 8.5 0 0 0 60.5 1.7C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4A8.5 8.5 0 0 0 1.5 7.7C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#e5211e"/><path d="M27 34.3 44.8 24 27 13.7z" fill="#fff"/></svg></span>
+    <span class="vtitle">{{ v.title }}</span>
+  </a>
+  <figcaption><span><strong>{{ v.title }}</strong>{% if v.channel %} · {{ v.channel }}{% endif %}</span><a href="{{ v.watch }}" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption>
+</figure>
+{% endmacro %}
+
+{# Case study card: photography and the title from the PDF, the story in three lines, a quote and the PDF #}
+{% macro case_study(cs, compact=False) %}
+<article class="case{% if compact %} compact{% endif %}">
+  <div class="case-media">
+    <img class="main" src="{{ cs.image }}" alt="{{ cs.image_alt }}" loading="lazy"{{ dims(cs.image) }}>
+    <span class="tag">Case study</span>
+    {% if cs.thumbs and not compact %}<div class="thumbs">{% for t, alt in cs.thumbs %}<img src="{{ t }}" alt="{{ alt }}" loading="lazy"{{ dims(t) }}>{% endfor %}</div>{% endif %}
+  </div>
+  <div class="case-body">
+    <div class="case-a">
+    <p class="eyebrow brand">{{ cs.client }} · {{ cs.location }}</p>
+    <h3>{{ cs.title }}</h3>
+    <p class="seg">{{ cs.segment }}</p>
+    {% if cs.stat %}<p class="stat"><b>{{ cs.stat[0] }}</b><span>{{ cs.stat[1] }}</span></p>{% endif %}
+    {% if not compact %}
+    <dl class="story">
+      <div><dt>Situation</dt><dd>{{ cs.situation }}</dd></div>
+      <div><dt>Solution</dt><dd>{{ cs.solution }}</dd></div>
+      <div><dt>Result</dt><dd>{{ cs.result }}</dd></div>
+    </dl>
+    {% endif %}
+    </div>
+    <div class="case-b">
+    {% if not compact %}
+    {% if cs.quote %}<blockquote><p>“{{ cs.quote }}”</p><footer>{{ cs.quote_by }}</footer></blockquote>{% endif %}
+    {% if cs.products %}<div class="used"><span class="lbl">Products used</span>{% for p in cs.products %}{% if p.href %}<a class="chip" href="{{ p.href }}"><b>{{ p.pn }}</b> {{ p.label }}</a>{% else %}<span class="chip"><b>{{ p.pn }}</b> {{ p.label }}</span>{% endif %}{% endfor %}</div>{% endif %}
+    {% endif %}
+    <a class="pdf" href="{{ cs.pdf }}" target="_blank" rel="noopener">
+      {% if cs.page_preview %}<img src="{{ cs.page_preview }}" alt="" loading="lazy"{{ dims(cs.page_preview) }}>{% endif %}
+      <span><strong>Read the case study</strong><small>PDF{% if cs.pdf_pages %} · {{ cs.pdf_pages }} pages{% endif %}</small></span>
+    </a>
+    </div>
+  </div>
+</article>
+{% endmacro %}
+
+{# Photo slideshow: one photo at a time at a sensible size, arrows, swipe and thumbnails. rain.js picks up data-rain slides. #}
+{% macro slideshow(items, label="Photos", ar=None, dots=False) %}
+<div class="slideshow{% if dots %} dotted{% endif %}" data-slideshow aria-roledescription="carousel" aria-label="{{ label }}"{% if ar %} style="--ss-ar:{{ ar }}"{% endif %}>
+  <div class="ss-stage">
+    {% for im in items %}
+    <figure class="ss-slide{% if loop.first %} is-on{% endif %}{% if im.contain %} contain{% endif %}" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ items|length }}"{% if not loop.first %} aria-hidden="true"{% endif %}{% if im.web in RAIN %} data-rain="{{ RAIN[im.web] }}"{% endif %}>
+      <img src="{{ im.web }}" alt="{{ im.shows }}"{% if not loop.first %} loading="lazy"{% endif %}{{ dims(im.web) }}{% if im.focus %} style="object-position:{{ im.focus }}"{% endif %}>
+      {% if im.caption %}<figcaption>{{ im.caption }}</figcaption>{% endif %}
+    </figure>
+    {% endfor %}
+    {% if items|length > 1 %}
+    <button class="ss-btn prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="ss-btn next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    {% if not dots %}<span class="ss-count" aria-hidden="true"><b>1</b> / {{ items|length }}</span>{% endif %}
+    {% endif %}
+  </div>
+  {% if items|length > 1 and dots %}
+  <div class="ss-dots" aria-label="Choose a photo">
+    {% for im in items %}<button type="button" class="ss-thumb dot" aria-current="{{ 'true' if loop.first else 'false' }}" aria-label="Photo {{ loop.index }}: {{ im.caption or im.shows }}"></button>{% endfor %}
+  </div>
+  {% elif items|length > 1 %}
+  <div class="ss-thumbs" aria-label="Choose a photo">
+    {% for im in items %}<button type="button" class="ss-thumb" aria-current="{{ 'true' if loop.first else 'false' }}" aria-label="Photo {{ loop.index }}: {{ im.caption or im.shows }}"><img src="{{ im.web }}" alt="" loading="lazy"></button>{% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endmacro %}

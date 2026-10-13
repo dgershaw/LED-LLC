@@ -1,0 +1,313 @@
+{
+  "slug": "lbi-g2",
+  "brand": "remphos",
+  "group": "Linkable Light Bars",
+  "title": "Linkable Bar / Internal Driver (LBI G2)",
+  "subtitle": "Internal Driver (LBI G2)",
+  "pdfPages": [
+    16
+  ],
+  "catalogPages": [
+    28,
+    29
+  ],
+  "headline": "LBI G2 — More CCTs. More lumens per watt. Connect up to 40 from one power feed*",
+  "intro": "",
+  "callouts": [
+    "Tunable white control on the LBI G2 w/ IRWC remote — RC-REMOTE-IRWC*",
+    "Simple Lighting Controls | Networked Lighting Controls — see page 25 for more information or check out the product spec sheet on our website LED-LLC.com",
+    "Optional remote emergency battery backup (RP-LBI-EMG2-8W-DIM, RP-LBI-EMG2-25W-DIM) and optional built-in emergency battery backup (-EMG, G2 models only)"
+  ],
+  "features": [
+    {
+      "label": "10-year warranty"
+    },
+    {
+      "label": "ETL listed (Intertek)"
+    },
+    {
+      "label": "FCC"
+    },
+    {
+      "label": "DLC",
+      "note": "see spec sheet on LED-LLC.com for DLC listing status"
+    },
+    {
+      "label": "Sensor ready",
+      "note": "0-10V dim to off"
+    },
+    {
+      "label": "12V aux output"
+    },
+    {
+      "label": "160 LPW efficacy (light engine)"
+    },
+    {
+      "label": "80+ CRI"
+    },
+    {
+      "label": "White tuning",
+      "note": "FlexColor selectable CCT; tunable white control on the LBI G2 with the RC-REMOTE-IRWC remote (sold separately)"
+    },
+    {
+      "label": "120° beam angle"
+    },
+    {
+      "label": "Operating temp -13°F to 140°F"
+    },
+    {
+      "label": "Power factor >0.9 / THD <20%"
+    },
+    {
+      "label": "L70 >100,000hrs rated life",
+      "note": "** calculated"
+    },
+    {
+      "label": "L90 51,000hrs rated life"
+    },
+    {
+      "label": "Linkable",
+      "note": "connect up to 30 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC"
+    },
+    {
+      "label": "Simple Lighting Controls | Networked Lighting Controls",
+      "note": "see page 25 or the product spec sheet on LED-LLC.com"
+    },
+    {
+      "label": "Emergency battery backup options",
+      "note": "optional remote (external, dimmable, 8W or 25W) or built-in -EMG (internal, 90 min, 500 lm; G2 models only)"
+    },
+    {
+      "label": "120-347V models available",
+      "note": "add (-CN) when ordering 120-347V models (LBI G2 table)"
+    }
+  ],
+  "tables": [
+    {
+      "title": "LBI G2 – Linkable Bar / Internal Driver",
+      "pdfPage": 16,
+      "catalogPage": 29,
+      "columns": [
+        "Part #",
+        "Voltage",
+        "FlexWatt",
+        "Lumens",
+        "FlexColor",
+        "Dimensions"
+      ],
+      "rows": [
+        [
+          "RP-LBI-G2-2F-6W-40K-WC",
+          "120-277V",
+          "**6W**/8W/10W/12W",
+          "960-1920",
+          "2700K/3000K/3500K/**4000K**/5000K",
+          "19.3 in x 1.2 in x 1.2 in"
+        ],
+        [
+          "RP-LBI-G2-3F-10W-40K-WC",
+          "120-277V",
+          "**10W**/12W/15W/18W",
+          "1600-2400",
+          "2700K/3000K/3500K/**4000K**/5000K",
+          "31.3 in x 1.2 in x 1.2 in"
+        ],
+        [
+          "RP-LBI-G2-4F-15W-40K-WC",
+          "120-277V",
+          "12W/**15W**/20W/25W",
+          "1600-4000",
+          "2700K/3000K/3500K/**4000K**/5000K",
+          "43.3 in x 1.2 in x 1.2 in"
+        ]
+      ],
+      "notes": [
+        "Factory set wattage and CCT are shown in bold",
+        "Add (-CN) when ordering 120-347V models"
+      ]
+    },
+    {
+      "title": "Emergency Battery Backup Options",
+      "pdfPage": 16,
+      "catalogPage": 28,
+      "columns": [
+        "Part #",
+        "Option",
+        "Type",
+        "Rating",
+        "Notes"
+      ],
+      "rows": [
+        [
+          "RP-LBI-EMG2-8W-DIM",
+          "Optional remote emergency battery backup",
+          "External",
+          "8W",
+          "Dimmable"
+        ],
+        [
+          "RP-LBI-EMG2-25W-DIM",
+          "Optional remote emergency battery backup",
+          "External",
+          "25W",
+          "Dimmable"
+        ],
+        [
+          "-EMG (part number suffix)",
+          "Optional built-in emergency battery backup**",
+          "Internal",
+          "90 min / 500 lm",
+          "** Only available for G2 models"
+        ]
+      ],
+      "notes": [
+        "** Only available for G2 models"
+      ]
+    },
+    {
+      "title": "Remote Control",
+      "pdfPage": 16,
+      "catalogPage": 28,
+      "columns": [
+        "Part #",
+        "Description",
+        "Notes"
+      ],
+      "rows": [
+        [
+          "RC-REMOTE-IRWC",
+          "Tunable white control on the LBI G2 w/ IRWC remote. Keys on the remote: power, RESET, G1, G2, CCT+ / CCT- step keys, LM+ / LM- brightness keys, six CCT preset keys (2700K/3000K/3500K/4000K/5000K/5700K) and PW1-PW4",
+          "* Sold separately"
+        ]
+      ],
+      "notes": [
+        "* Sold separately",
+        "Key labels (CCT+/CCT-, LM+/LM-, G1/G2, PW1-PW4) are read from the remote illustration; the catalog text does not describe their functions"
+      ]
+    }
+  ],
+  "footnotes": [
+    "* Sold separately (RC-REMOTE-IRWC)",
+    "* Connect up to 30 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC",
+    "** Calculated (L70 >100,000hrs rated life)",
+    "** Only available for G2 models (built-in -EMG emergency battery backup)",
+    "Factory set wattage and CCT are shown in bold",
+    "Add (-CN) when ordering 120-347V models",
+    "See spec sheet on LED-LLC.com for DLC listing status",
+    "Simple Lighting Controls | Networked Lighting Controls: see page 25 for more information or check out the product spec sheet on our website LED-LLC.com",
+    "Only the left page number (28) is printed on the spread; the right page (LBI G2 table) is 29"
+  ],
+  "images": [
+    {
+      "file": "p16-b1.jpg",
+      "kind": "hero",
+      "shows": "Full-spread banner composite: electrician installing an LBI bar in a ceiling (far left), blue 'Tunable white control on the LBI G2 w/ IRWC remote' panel with the RC-REMOTE-IRWC remote, modern office lobby and retail clothing store application photos, with linked LBI bars running along the bottom edge and one angled LBI bar showing the end cap",
+      "products": [
+        "RP-LBI-G2",
+        "RC-REMOTE-IRWC"
+      ],
+      "use": "superseded by the custom crops below (split into panels)"
+    },
+    {
+      "file": "custom/lbi-g2-hero.jpg",
+      "kind": "hero",
+      "shows": "Right-page composite: office lobby and retail store photos lit by LBI G2 bars, with an angled LBI bar (end cap visible) in front and linked bars along the bottom; no captions",
+      "products": [
+        "RP-LBI-G2-2F-6W-40K-WC",
+        "RP-LBI-G2-3F-10W-40K-WC",
+        "RP-LBI-G2-4F-15W-40K-WC"
+      ],
+      "use": "hero"
+    },
+    {
+      "file": "custom/lbi-g2-hero-controls.jpg",
+      "kind": "hero",
+      "shows": "Left-page composite: electrician installing an LBI bar plus the blue 'Tunable white control on the LBI G2 w/ IRWC remote / RC-REMOTE-IRWC*' panel with the remote, linked bars along the bottom",
+      "products": [
+        "RP-LBI-G2",
+        "RC-REMOTE-IRWC"
+      ],
+      "use": "hero-alt"
+    },
+    {
+      "file": "custom/lbi-g2-app-install.jpg",
+      "kind": "application",
+      "shows": "Electrician in gloves installing a linkable LBI bar into a ceiling grid with other LBI bars lit",
+      "products": [
+        "RP-LBI-G2"
+      ],
+      "use": "gallery"
+    },
+    {
+      "file": "custom/lbi-g2-callout-irwc.jpg",
+      "kind": "callout",
+      "shows": "Blue panel: tunable-white icon, 'Tunable white control on the LBI G2 w/ IRWC remote — RC-REMOTE-IRWC*' with a photo of the RemPhos IRWC handheld remote",
+      "products": [
+        "RC-REMOTE-IRWC"
+      ],
+      "use": "callout"
+    },
+    {
+      "file": "custom/lbi-g2-remote-irwc.jpg",
+      "kind": "product",
+      "shows": "RemPhos RC-REMOTE-IRWC handheld remote (power, RESET, G1/G2, CCT+/CCT- and LM+/LM- keys, six CCT buttons 2700K-5700K, PW1-PW4) on the blue panel background",
+      "products": [
+        "RC-REMOTE-IRWC"
+      ],
+      "use": "cutout (blue background, not white)"
+    },
+    {
+      "file": "custom/lbi-g2-app-office.jpg",
+      "kind": "application",
+      "shows": "Modern office lobby with blue sofas and recessed linear lighting, an angled LBI bar with its end cap overlapping the lower left corner",
+      "products": [
+        "RP-LBI-G2"
+      ],
+      "use": "gallery"
+    },
+    {
+      "file": "custom/lbi-g2-app-retail.jpg",
+      "kind": "application",
+      "shows": "Woman with shopping bags in a clothing store lit by linear LED bars on the ceiling",
+      "products": [
+        "RP-LBI-G2"
+      ],
+      "use": "gallery"
+    }
+  ],
+  "extras": [
+    {
+      "title": "LBI G1 vs LBI G2",
+      "columns": [
+        "Model",
+        "FlexWatt options",
+        "FlexColor options",
+        "Efficacy (light engine)",
+        "Built-in EMG (-EMG)",
+        "Tunable white via RC-REMOTE-IRWC"
+      ],
+      "rows": [
+        [
+          "LBI G1 (economical)",
+          "3 wattage settings per length (6/9/12W, 10/12/15W, 10/15/25W)",
+          "3500K/4000K/5000K (WC) or 2700K/3000K/3500K (WC2)",
+          "146 LPW",
+          "No (remote EMG only)",
+          "Not listed"
+        ],
+        [
+          "LBI G2",
+          "4 wattage settings per length (6/8/10/12W, 10/12/15/18W, 12/15/20/25W)",
+          "2700K/3000K/3500K/4000K/5000K",
+          "160 LPW",
+          "Yes (** only available for G2 models)",
+          "Yes"
+        ]
+      ]
+    },
+    {
+      "title": "Linking",
+      "text": "Connect up to 30 4 ft units together @ 120VAC or 40 4 ft units @ 277VAC."
+    }
+  ]
+}

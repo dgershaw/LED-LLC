@@ -1,0 +1,196 @@
+{
+  "title": "Wall + Ceiling Fixtures",
+  "subtitle": "",
+  "headline": "An ideal choice for sophisticated, refined spaces",
+  "intro": "",
+  "callouts": [
+    "Surface or pendant mount — 4 to 48 inches",
+    "Standard finish – Brushed Nickel; Bronze and Brass also available",
+    "IP65 / IK08 (RP-DOT Outdoor Tough Drum)",
+    "Simple Lighting Controls | Networked Lighting Controls"
+  ],
+  "features": [
+    {
+      "label": "10-year warranty"
+    },
+    {
+      "label": "Sensor ready",
+      "note": "0-10V dim to off"
+    },
+    {
+      "label": "12V aux output"
+    },
+    {
+      "label": "130 LPW efficacy",
+      "note": "light engine"
+    },
+    {
+      "label": "120° beam angle",
+      "note": "DOT / DRD / SCD"
+    },
+    {
+      "label": "160° beam angle",
+      "note": "DAL"
+    },
+    {
+      "label": "80+ CRI"
+    },
+    {
+      "label": "-4°F to 140°F operating temp",
+      "note": "DOT / DRD / SCD"
+    },
+    {
+      "label": "-4°F to 113°F operating temp",
+      "note": "DAL"
+    },
+    {
+      "label": "L70 100,000 hrs rated life"
+    },
+    {
+      "label": "IP65",
+      "note": "RP-DOT Outdoor Tough Drum (shown on the RP-DOT-BZ photo)"
+    },
+    {
+      "label": "IK08",
+      "note": "RP-DOT Outdoor Tough Drum (shown on the RP-DOT-BZ photo)"
+    },
+    {
+      "label": "Surface or pendant mount, 4 to 48 inches",
+      "note": "Blue panel beside the DAL pendant drawing; attribution to the DAL Architectural Linen Drum and to the RP-DAL-PM long + short pendant mounting kit is inferred from placement, not stated"
+    },
+    {
+      "label": "Standard finish brushed nickel; bronze and brass also available",
+      "note": "Same blue panel; attribution to the DAL Architectural Linen Drum is inferred from placement, not stated (the RP-DOT-BZ photo shows a bronze Outdoor Tough Drum)"
+    },
+    {
+      "label": "FlexWatt selectable wattage",
+      "note": "6W/10W/16W/22W on DRD, DOT and DAL (factory default 22W); 6W/10W/12W/15W on SCD (factory default 15W)"
+    },
+    {
+      "label": "FlexColor selectable CCT 2700K/3000K/3500K/4000K/5000K",
+      "note": "factory default 4000K"
+    },
+    {
+      "label": "Optional field installable emergency backup",
+      "note": "-EM1 suffix; 90 min / 500 lm"
+    },
+    {
+      "label": "Simple Lighting Controls / Networked Lighting Controls ready",
+      "note": "see catalog page 25 or the product spec sheet on LED-LLC.com; RC-REMOTE-IR23 remote for Simple Lighting Controls"
+    },
+    {
+      "label": "cETLus listed (Intertek)"
+    },
+    {
+      "label": "FCC"
+    },
+    {
+      "label": "DLC",
+      "note": "see spec sheet on LED-LLC.com for DLC listing status"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Designer Drum (DRD)",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "FlexWatt",
+        "Lumens",
+        "FlexColor",
+        "Dimensions"
+      ],
+      "rows": [
+        "RP-DRD-14IN-22W-40K-WC-G3 | 120-277V | 6W/10W/16W/**22W** | 750-2750 | 2700K/3000K/3500K/**4000K**/5000K | 14.5 in x 3.5 in",
+        "RP-DRD-18IN-22W-40K-WC-G3 | 120-277V | 6W/10W/16W/**22W** | 750-2750 | 2700K/3000K/3500K/**4000K**/5000K | 18.0 in x 3.5 in"
+      ],
+      "notes": [
+        "Factory set wattage and CCT are shown in bold"
+      ],
+      "pdfPage": 23
+    },
+    {
+      "title": "Outdoor Tough Drum (DOT)",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "FlexWatt",
+        "Lumens",
+        "FlexColor",
+        "Dimensions"
+      ],
+      "rows": [
+        "RP-DOT-14IN-22W-40K-WC-G3 | 120-277V | 6W/10W/16W/**22W** | 750-2750 | 2700K/3000K/3500K/**4000K**/5000K | 13.8 in x 4.0 in"
+      ],
+      "notes": [
+        "Factory set wattage and CCT are shown in bold",
+        "IP65 / IK08 (from the RP-DOT-BZ photo callout)"
+      ],
+      "pdfPage": 23
+    },
+    {
+      "title": "Sconce (SCD)",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "FlexWatt",
+        "Lumens",
+        "FlexColor",
+        "Dimensions"
+      ],
+      "rows": [
+        "RP-SCD-11IN-15W-40K-WC-G3 | 120-277V | 6W/10W/12W/**15W** | 745-1860 | 2700K/3000K/3500K/**4000K**/5000K | 13.0 in x 3.8 in"
+      ],
+      "notes": [
+        "Factory set wattage and CCT are shown in bold"
+      ],
+      "pdfPage": 23
+    },
+    {
+      "title": "Architectural Linen Drum (DAL)",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "FlexWatt",
+        "Lumens",
+        "FlexColor",
+        "Dimensions"
+      ],
+      "rows": [
+        "RP-DAL-18IN-22W-40K-WC-G3 | 120-277V | 6W/10W/16W/**22W** | 750-2750 | 2700K/3000K/3500K/**4000K**/5000K | 15.7 in x 5.3 in",
+        "RP-DAL-18IN-22W-40K-WC-G3-4S | 120-277V | 6W/10W/16W/**22W** | 750-2750 | 2700K/3000K/3500K/**4000K**/5000K | 16.9 in x 5.6 in"
+      ],
+      "notes": [
+        "Factory set wattage and CCT are shown in bold",
+        "-4S suffix read as the version supplied with the RP-DAL-4S optional spokes (inferred from the accessory part number and the RP-DAL-4S photo caption; not stated in the catalog)"
+      ],
+      "pdfPage": 23
+    },
+    {
+      "title": "Accessories",
+      "columns": [
+        "Part #",
+        "Description"
+      ],
+      "rows": [
+        "RP-DAL-4S | Optional spokes",
+        "RP-DAL-PM | Long + short pendant mounting kit"
+      ],
+      "notes": [],
+      "pdfPage": 23
+    }
+  ],
+  "footnotes": [
+    "The catalog heading on this spread reads only 'WALL + CEILING'; 'Fixtures' in the title comes from the section footer 'Remphos / Fixtures'",
+    "Factory set wattage and CCT are shown in bold",
+    "See spec sheet on LED-LLC.com for DLC listing status",
+    "The spec tables have no Listings column; the page-footer listing marks are cETLus (Intertek), FCC and DLC Listed",
+    "Merged cells: in the DRD and DAL tables Voltage, FlexWatt, Lumens and FlexColor each span both rows; only Part # and Dimensions differ",
+    "SCD lumens are printed '745 -1860' (stray space); transcribed as 745-1860",
+    "Beam angle and operating temp icons are split by family: 120° and -4°F to 140°F for DOT / DRD / SCD, 160° and -4°F to 113°F for DAL",
+    "The 'Surface or pendant mount 4 to 48 inches' and 'Standard finish – brushed nickel, bronze and brass also available' panel sits beside the DAL pendant drawing and is attributed to the DAL here; the catalog does not say so explicitly",
+    "RP-DOT-BZ (photo caption) is read as the bronze-finish Outdoor Tough Drum; the BZ finish code does not appear in the spec table",
+    "No photo of the Sconce (SCD) appears on this spread",
+    "Printed page number 42 appears on the left-hand page only; the right-hand page carries no printed number (43 inferred)"
+  ]
+}

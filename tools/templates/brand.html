@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import "_parts.html" as P %}
+{% block brand %}{{ brand.key }}{% endblock %}
+{% block main %}
+<section class="brand-hero" aria-labelledby="h1">
+  <div class="wrap">
+    <div>
+      {% set hero_logo = brand.logo_dark or brand.logo_white %}
+      <img class="logo-eq" src="assets/img/brand/{{ hero_logo }}" alt="{{ brand.name }}"{{ logo_style(hero_logo) }}{{ dims('assets/img/brand/' ~ hero_logo) }}>
+      <h1 id="h1">{{ brand.h1 }}</h1>
+      <p class="lede">{{ brand.blurb }}</p>
+      <div class="actions">
+        <a class="btn btn-light" href="#{{ groups[0].name|lower|replace(' ', '-')|replace('+', 'and') if groups else 'products' }}">Browse products</a>
+        <button class="btn btn-outline" data-open-search>Search part numbers</button>
+      </div>
+    </div>
+    <div class="points">
+      {% for b, s in brand.points %}<div><b>{{ b }}</b><span>{{ s }}</span></div>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<div class="wrap stack">
+  {% for g in groups %}
+  {% set n = g.entries|length %}
+  {% set sp = [3] * n %}
+  <section class="group" id="{{ g.name|lower|replace(' ', '-')|replace('+', 'and') }}" aria-labelledby="g-{{ loop.index }}">
+    <div class="group-head">
+      <h2 id="g-{{ loop.index }}">{{ g.name }}</h2>
+      {% if g.blurb %}<p>{{ g.blurb }}</p>{% endif %}
+    </div>
+    <div class="cards spans tight">
+      {% for it in g.entries %}
+        {% if it.slug %}{{ P.cat_card(it, span=sp[loop.index0], wide=false) }}
+        {% else %}{{ P.link_card(it.href, it.nav_title, it.headline, 'assets/img/product/palette-hero-rainbow.jpg' if 'palette' in it.href else 'assets/img/product/g2-hero.jpg', 'Interactive', span=sp[loop.index0], wide=false) }}{% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+
+  {{ P.next_steps("Need a hand choosing?", "Send a fixture photo or a spec and we will point you to the right part number. Or let Eddy help:") }}
+</div>
+{% endblock %}

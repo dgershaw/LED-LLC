@@ -1,0 +1,320 @@
+{
+ "slug": "solar-bollard-post-tops",
+ "brand": "solera",
+ "group": "Solar Lighting",
+ "title": "Bollard + Post Tops",
+ "subtitle": "",
+ "pdfPages": [
+  33
+ ],
+ "catalogPages": [
+  62,
+  63
+ ],
+ "headline": "Improve pedestrian safety... Three unique models, perfect for pathways, piers and more...",
+ "intro": "",
+ "callouts": [
+  "Improve pedestrian safety...",
+  "Three unique models, perfect for pathways, piers and more..."
+ ],
+ "features": [
+  {
+   "label": "3-year warranty"
+  },
+  {
+   "label": "Battery charge time 6 hrs",
+   "note": "SBL (Off-Grid Bollard Light)"
+  },
+  {
+   "label": "Battery charge time 7 hrs",
+   "note": "SPT (Off-Grid Post Top Light) and CPT (Off-Grid Pathway Light)"
+  },
+  {
+   "label": "Battery life up to 12 hrs",
+   "note": "SBL"
+  },
+  {
+   "label": "Battery life up to 30 hrs",
+   "note": "SPT"
+  },
+  {
+   "label": "Battery life up to 36 hrs",
+   "note": "CPT; * based on 2hr + sensor mode"
+  },
+  {
+   "label": "Battery charge temp 32°F to 149°F",
+   "note": "SBL and SPT"
+  },
+  {
+   "label": "Battery charge temp -4°F to 122°F",
+   "note": "CPT"
+  },
+  {
+   "label": "Fixture operating temp -4°F to 140°F",
+   "note": "SBL"
+  },
+  {
+   "label": "Fixture operating temp -4°F to 149°F",
+   "note": "SPT"
+  },
+  {
+   "label": "Fixture operating temp -4°F to 122°F",
+   "note": "CPT"
+  },
+  {
+   "label": "Replaceable battery"
+  },
+  {
+   "label": "360° beam angle"
+  },
+  {
+   "label": "L70 50,000hrs rated life",
+   "note": "the icon strip prints a 50,000hrs and a 100,000hrs rated-life icon side by side with no model labels; the page does not say which model each applies to"
+  },
+  {
+   "label": "L70 100,000hrs rated life",
+   "note": "see note on the 50,000hrs icon"
+  },
+  {
+   "label": "Operating modes: Dusk to Dawn, Motion Sensing",
+   "note": "SL-SBL-5L-FC-BK-G2 / -DB-G2"
+  },
+  {
+   "label": "Operating modes: Dusk to Dawn, Timer, Motion Sensing",
+   "note": "SL-SPT-20W-30K-SF-G2 / -40K-SF-G2"
+  },
+  {
+   "label": "Operating modes: Constant Brightness, Timer, Motion Sensing",
+   "note": "SL-CPT-30L-FC-BK-G2 / -DB-G2"
+  },
+  {
+   "label": "FlexColor selectable CCT 3000K/4000K/5000K/Amber",
+   "note": "SL-SBL-5L-FC; no factory default is marked in bold"
+  },
+  {
+   "label": "FlexColor selectable CCT 3000K/4000K/5000K",
+   "note": "SL-CPT-30L-FC; no factory default is marked in bold"
+  },
+  {
+   "label": "Finish: Black (BK) or Dark Bronze (DB)",
+   "note": "colour-dot key under the bollard table; the CPT part numbers carry the same BK/DB suffixes"
+  },
+  {
+   "label": "Pole recommendations on pages 68 + 69",
+   "note": "SPT and CPT"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Off-Grid Bollard Light",
+   "columns": [
+    "Part #",
+    "Compares To",
+    "Lumens",
+    "FlexColor",
+    "Dimensions",
+    "Listings"
+   ],
+   "rows": [
+    [
+     "SL-SBL-5L-FC-BK-G2",
+     "40W Halogen",
+     "500",
+     "3000K/4000K/5000K/Amber",
+     "10.0 in x 42.0 in",
+     "CE, FCC"
+    ],
+    [
+     "SL-SBL-5L-FC-DB-G2",
+     "40W Halogen",
+     "500",
+     "3000K/4000K/5000K/Amber",
+     "10.0 in x 42.0 in",
+     "CE, FCC"
+    ]
+   ],
+   "notes": [
+    "Colour dots beside the part numbers: ● Black (-BK), ● Dark Bronze (-DB)",
+    "Merged cells: 40W Halogen, 500, 3000K/4000K/5000K/Amber, 10.0 in x 42.0 in and the CE/FCC marks span both rows",
+    "Operating modes: Dusk to Dawn | Motion Sensing",
+    "No factory-default CCT is marked in bold"
+   ]
+  },
+  {
+   "title": "Off-Grid Post Top Light",
+   "columns": [
+    "Part #",
+    "Compares To",
+    "Lumens",
+    "CCT",
+    "Dimensions",
+    "EPA",
+    "Listings"
+   ],
+   "rows": [
+    [
+     "SL-SPT-20W-30K-SF-G2",
+     "150W HID",
+     "2000",
+     "3000K",
+     "16.0 in x 32.0 in",
+     "2.2",
+     "CE, FCC"
+    ],
+    [
+     "SL-SPT-20W-40K-SF-G2",
+     "150W HID",
+     "2000",
+     "4000K",
+     "16.0 in x 32.0 in",
+     "2.2",
+     "CE, FCC"
+    ]
+   ],
+   "notes": [
+    "Merged cells: 150W HID, 2000, 16.0 in x 32.0 in, 2.2 and the CE/FCC marks span both rows; CCT is per row (3000K / 4000K)",
+    "Operating modes: Dusk to Dawn | Timer | Motion Sensing",
+    "See pages 68 + 69 for pole recommendations"
+   ]
+  },
+  {
+   "title": "Off-Grid Pathway Light",
+   "columns": [
+    "Part #",
+    "Compares To",
+    "Lumens",
+    "FlexColor",
+    "Dimensions",
+    "EPA",
+    "Listings"
+   ],
+   "rows": [
+    [
+     "SL-CPT-30L-FC-BK-G2",
+     "150W",
+     "3000",
+     "3000K/4000K/5000K",
+     "18.5 in x 17.3 in",
+     "1.0",
+     "RoHS, FCC"
+    ],
+    [
+     "SL-CPT-30L-FC-DB-G2",
+     "150W",
+     "3000",
+     "3000K/4000K/5000K",
+     "18.5 in x 17.3 in",
+     "1.0",
+     "RoHS, FCC"
+    ]
+   ],
+   "notes": [
+    "Merged cells: 150W, 3000, 3000K/4000K/5000K, 18.5 in x 17.3 in, 1.0 and the listing marks span both rows",
+    "Compares To is printed as '150W' only (no lamp type given)",
+    "Listings icons are the RoHS Compliant mark and FCC (no CE mark on this model)",
+    "Operating modes: Constant Brightness | Timer | Motion Sensing",
+    "See pages 68 + 69 for pole recommendations",
+    "No factory-default CCT is marked in bold"
+   ]
+  }
+ ],
+ "footnotes": [
+  "* Based on 2hr + sensor mode (applies to the CPT battery life of up to 36 hrs)",
+  "See pages 68 + 69 for pole recommendations (Off-Grid Post Top Light and Off-Grid Pathway Light)",
+  "Colour key under the bollard table: ● Black, ● Dark Bronze",
+  "Rated life: the icon strip shows both an L70 50,000hrs and an L70 100,000hrs icon without model labels (SBL/SPT/CPT are labelled on the battery and temperature icons only)",
+  "Page footer: SOLERA SOLAR / OFF-GRID"
+ ],
+ "images": [
+  {
+   "file": "p33-b2.jpg",
+   "kind": "application",
+   "shows": "Catalog composite: SL-SBL-5L-FC bollard light (flat round head on a slim post, light cone drawn downward) in front of a garden path lit by bollard lights at dusk; the block includes the headline 'IMPROVE PEDESTRIAN SAFETY...' in the white margin above the photo",
+   "products": [
+    "SL-SBL-5L-FC-BK-G2",
+    "SL-SBL-5L-FC-DB-G2"
+   ],
+   "use": "superseded by custom/solar-bollard-post-tops-hero-sbl.jpg (same composite, headline painted out)"
+  },
+  {
+   "file": "custom/solar-bollard-post-tops-hero-sbl.jpg",
+   "kind": "application",
+   "shows": "The bollard-light composite with the headline whited out of the margin; the bollard head stays whole above the photo edge",
+   "products": [
+    "SL-SBL-5L-FC-BK-G2",
+    "SL-SBL-5L-FC-DB-G2"
+   ],
+   "use": "gallery (hero alternative for the Off-Grid Bollard Light)"
+  },
+  {
+   "file": "p33-b1.jpg",
+   "kind": "application",
+   "shows": "Catalog composite: SL-SPT-20W solar post top lantern (clear acorn-style lantern with solar cap and finial) in front of a lamp-lined pier promenade at dusk; the block includes the first words of the headline 'THREE UNIQUE MODELS,' in the white margin",
+   "products": [
+    "SL-SPT-20W-30K-SF-G2",
+    "SL-SPT-20W-40K-SF-G2"
+   ],
+   "use": "superseded by custom/solar-bollard-post-tops-hero-spt.jpg (headline painted out)"
+  },
+  {
+   "file": "custom/solar-bollard-post-tops-hero-spt.jpg",
+   "kind": "application",
+   "shows": "The post-top composite with the headline fragment whited out; the lantern cap and finial stay whole above the photo edge",
+   "products": [
+    "SL-SPT-20W-30K-SF-G2",
+    "SL-SPT-20W-40K-SF-G2"
+   ],
+   "use": "gallery (hero alternative for the Off-Grid Post Top Light)"
+  },
+  {
+   "file": "p33-b3.jpg",
+   "kind": "hero",
+   "shows": "Catalog composite: SL-CPT-30L-FC pathway light (wide shallow round head on three arms over a slim pole, light cone drawn downward) in front of a tree-lined park path lit by pole lights at night; no caption or text in the block",
+   "products": [
+    "SL-CPT-30L-FC-BK-G2",
+    "SL-CPT-30L-FC-DB-G2"
+   ],
+   "use": "hero"
+  }
+ ],
+ "extras": [
+  {
+   "title": "Spec icons by model",
+   "text": "All three models: 3-year warranty, replaceable battery, 360° beam angle. The rated-life icons (L70 50,000hrs and L70 100,000hrs) are printed without model labels. * Based on 2hr + sensor mode.",
+   "columns": [
+    "Model",
+    "Battery charge time",
+    "Battery life",
+    "Battery charge temp",
+    "Fixture operating temp",
+    "Operating modes"
+   ],
+   "rows": [
+    [
+     "SBL - Off-Grid Bollard Light (SL-SBL-5L-FC)",
+     "6 hrs",
+     "up to 12 hrs",
+     "32°F to 149°F",
+     "-4°F to 140°F",
+     "Dusk to Dawn | Motion Sensing"
+    ],
+    [
+     "SPT - Off-Grid Post Top Light (SL-SPT-20W)",
+     "7 hrs",
+     "up to 30 hrs",
+     "32°F to 149°F",
+     "-4°F to 149°F",
+     "Dusk to Dawn | Timer | Motion Sensing"
+    ],
+    [
+     "CPT - Off-Grid Pathway Light (SL-CPT-30L-FC)",
+     "7 hrs",
+     "up to 36 hrs*",
+     "-4°F to 122°F",
+     "-4°F to 122°F",
+     "Constant Brightness | Timer | Motion Sensing"
+    ]
+   ]
+  }
+ ]
+}

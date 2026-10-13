@@ -1,0 +1,147 @@
+{
+  "title": "LBI Color Palette",
+  "subtitle": "",
+  "headline": "Transforming light into a medium of precision and possibility...",
+  "intro": "LBI Color Palette is a RemPhos spectral lighting family offering precision wavelength selection and limitless RGB color mixing through RemPhos technology.",
+  "callouts": [
+    "LBI Color Palette — linkable light bar w/ an internal driver delivering precision wavelength selection",
+    "LBI Color Palette+ — linkable light bar w/ an internal driver delivering limitless RGB color mixing",
+    "Stay tuned... DMX is stepping up to the light bar. More control. More possibilities.",
+    "Designed for applications where color accuracy matters most",
+    "Endless creativity...from subtle accents to dramatic effects",
+    "Select color via remote or switch on bar",
+    "LBI 65 Palette is also offered for IP65-rated and NSF-certified applications"
+  ],
+  "features": [
+    {
+      "label": "10-year warranty"
+    },
+    {
+      "label": "ETL listed (Intertek)"
+    },
+    {
+      "label": "FCC"
+    },
+    {
+      "label": "DLC",
+      "note": "see spec sheet on LED-LLC.com for DLC listing status"
+    },
+    {
+      "label": ">0.9 power factor / <20% THD"
+    },
+    {
+      "label": "Sensor ready",
+      "note": "0-10V dim to off"
+    },
+    {
+      "label": "120° beam angle"
+    },
+    {
+      "label": "Operating temp -13°F to 140°F"
+    },
+    {
+      "label": "160 LPW efficacy (light engine)",
+      "note": "LBI Color Palette+ only; applies to white CCTs only"
+    },
+    {
+      "label": "L70 >100,000hrs rated life",
+      "note": "LBI Color Palette+ only; calculated"
+    },
+    {
+      "label": "L90 51,000hrs rated life",
+      "note": "LBI Color Palette+ only; applies to white CCTs only"
+    },
+    {
+      "label": "Linkable light bar with internal driver"
+    },
+    {
+      "label": "Canada 120-347V models",
+      "note": "add (-CN) when ordering 120-347V models"
+    },
+    {
+      "label": "IP65 / NSF option",
+      "note": "LBI 65 Palette is also offered for IP65-rated and NSF-certified applications"
+    },
+    {
+      "label": "Simple Lighting Controls / Networked Lighting Controls compatible",
+      "note": "see catalog page 25 or the product spec sheet on LED-LLC.com"
+    }
+  ],
+  "tables": [
+    {
+      "title": "2 ft LBI Color Palette / Precision Wavelength Selection",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "FlexWatt",
+        "Lumens",
+        "FlexColor",
+        "Dimensions"
+      ],
+      "rows": [
+        "RP-LBI-G2-2F-6W-RED-WC-ORG | 120-277V | **6W**/9W/12W | 375-600 | Red / Orange | 19.3 in x 1.2 in x 1.2 in",
+        "RP-LBI-G2-2F-6W-AMB-WC-GRN | 120-277V | **6W**/9W/12W | 1175-2125 | Amber / Green | 19.3 in x 1.2 in x 1.2 in",
+        "RP-LBI-G2-2F-6W-BLU-WC-VLT | 120-277V | **6W**/9W/12W | 15-300 | Blue / Violet | 19.3 in x 1.2 in x 1.2 in"
+      ],
+      "notes": [
+        "Factory set wattage shown in bold (each bar contains 2 color options)",
+        "Add (-CN) when ordering 120-347V models"
+      ],
+      "pdfPage": 20
+    },
+    {
+      "title": "4 ft LBI Color Palette / Precision Wavelength Selection",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "FlexWatt",
+        "Lumens",
+        "FlexColor",
+        "Dimensions"
+      ],
+      "rows": [
+        "RP-LBI-G2-4F-15W-RED-WC-ORG | 120-277V | 10W/**15W**/25W | 750-1200 | Red / Orange | 43.3 in x 1.2 in x 1.2 in",
+        "RP-LBI-G2-4F-15W-AMB-WC-GRN | 120-277V | 10W/**15W**/25W | 2350-4250 | Amber / Green | 43.3 in x 1.2 in x 1.2 in",
+        "RP-LBI-G2-4F-15W-BLU-WC-VLT | 120-277V | 10W/**15W**/25W | 30-600 | Blue / Violet | 43.3 in x 1.2 in x 1.2 in"
+      ],
+      "notes": [
+        "Factory set wattage shown in bold (each bar contains 2 color options)",
+        "Add (-CN) when ordering 120-347V models"
+      ],
+      "pdfPage": 20
+    },
+    {
+      "title": "LBI Color Palette+ / Limitless RGB Color Mixing",
+      "columns": [
+        "Part #",
+        "Voltage",
+        "FlexWatt",
+        "Lumens*",
+        "FlexColor",
+        "Dimensions"
+      ],
+      "rows": [
+        "RP-LBI-G2-2F-12W-RGBWW-WC | 120-277V | 6W/8W/10W/**12W** | 960-1920 | RGB color mixing and 2700K/3000K/3500K/**4000K**/5000K | 19.3 in x 1.2 in x 1.2 in",
+        "RP-LBI-G2-3F-18W-RGBWW-WC | 120-277V | 10W/12W/15W/**18W** | 1600-2880 | RGB color mixing and 2700K/3000K/3500K/**4000K**/5000K | 31.3 in x 1.2 in x 1.2 in",
+        "RP-LBI-G2-4F-25W-RGBWW-WC | 120-277V | 12W/15W/20W/**25W** | 1920-4000 | RGB color mixing and 2700K/3000K/3500K/**4000K**/5000K | 43.3 in x 1.2 in x 1.2 in"
+      ],
+      "notes": [
+        "Factory set wattage and CCT are shown in bold",
+        "* Lumen values are for white CCTs only",
+        "Add (-CN) when ordering 120-347V models"
+      ],
+      "pdfPage": 21
+    }
+  ],
+  "footnotes": [
+    "Add (-CN) when ordering 120-347V models (Canada)",
+    "* Lumen values are for white CCTs only (LBI Color Palette+ table)",
+    "* Calculated (LBI Color Palette+ L70 rated life)",
+    "** Applies to white CCTs only (LBI Color Palette+ efficacy and L90 rated life)",
+    "See spec sheet on LED-LLC.com for DLC listing status",
+    "LBI 65 Palette is also offered for IP65-rated and NSF-certified applications",
+    "The divider page (PDF page 19) carries no printed catalog page number; LBI Color Palette is catalog page 36 and LBI Color Palette+ is catalog page 38",
+    "CHECK: the catalog prints the 4 ft LBI Color Palette part numbers as RP-LBI-G2-4F-15W-… (FlexWatt 10W/15W/25W, 15W default); the LBI Color Palette sell sheet text in the project's pdf folder prints the same models as RP-LBI-G2-4F-25W-…. Transcribed as printed in the catalog.",
+    "UNREADABLE: RP-REMOTE-RGB-WC remote key labels on PDF page 21 — the two two-line ON/OFF-style keys in row 1, the row-4 right pair, the four round keys in the right pair of rows 5-6, the fourth key of row 7 and the tiny text above row 1 are illegible (135 x 226 px source image); marked ? in the remote key-layout extra."
+  ]
+}

@@ -1,0 +1,420 @@
+{
+ "slug": "shoe-box-wall-pack",
+ "brand": "led",
+ "group": "Screw-In Retrofits",
+ "title": "Shoe Box + Wall Pack",
+ "subtitle": "",
+ "pdfPages": [
+  5
+ ],
+ "catalogPages": [
+  6,
+  7
+ ],
+ "headline": "Replaces up to 400W HID.",
+ "intro": "Retrofit almost any shoe box or wall pack fixture to energy & maintenance saving LEDs. Eliminate ballast failures. FlexColor on several models allows for less stocked inventory as well as field adjustability.",
+ "callouts": [
+  "Rotatable base directs lumens out of fixture"
+ ],
+ "features": [
+  {
+   "label": "5-year warranty"
+  },
+  {
+   "label": "UL Type B ballast bypass"
+  },
+  {
+   "label": "Active cooling"
+  },
+  {
+   "label": "80+ CRI"
+  },
+  {
+   "label": "Enclosed fixtures"
+  },
+  {
+   "label": "-40°F to 122°F operating temp"
+  },
+  {
+   "label": "Damp location environment"
+  },
+  {
+   "label": "L70 50,000 hrs rated life"
+  },
+  {
+   "label": "FlexColor selectable CCT 3000K/4000K/5000K",
+   "note": "all models; factory default 4000K"
+  },
+  {
+   "label": "Rotatable base directs lumens out of fixture"
+  },
+  {
+   "label": "277-480V incl. 347V (HV)",
+   "note": "LED-8090M345D-G4-HV only"
+  },
+  {
+   "label": "DLC",
+   "note": "for listing status go to LED-LLC.com"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Shoe Box + Wall Pack | Ballast Bypass | Type B",
+   "columns": [
+    "Part #",
+    "Voltage",
+    "Replaces",
+    "Wattage",
+    "Lumens",
+    "CCT",
+    "Base",
+    "Features",
+    "Dimensions",
+    "Listings"
+   ],
+   "rows": [
+    [
+     "LED-8087E345D-G4",
+     "120-277V",
+     "100W",
+     "30W",
+     "3500/**4200**/4300",
+     "FlexColor 3000K/**4000K**/5000K",
+     "E26",
+     "",
+     "3.0 in x 6.4 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8087E345CD-G4",
+     "220-347V",
+     "100W",
+     "30W",
+     "3500/**4200**/4300",
+     "FlexColor 3000K/**4000K**/5000K",
+     "E26",
+     "",
+     "3.0 in x 6.4 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8087M345D-G4",
+     "120-277V",
+     "100W",
+     "30W",
+     "3500/**4200**/4300",
+     "FlexColor 3000K/**4000K**/5000K",
+     "EX39",
+     "",
+     "3.0 in x 6.9 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8087M345CD-G4",
+     "220-347V",
+     "100W",
+     "30W",
+     "3500/**4200**/4300",
+     "FlexColor 3000K/**4000K**/5000K",
+     "EX39",
+     "",
+     "3.0 in x 6.9 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8088E345D-G4",
+     "120-277V",
+     "175W",
+     "50W",
+     "6400/**6900**/7200",
+     "FlexColor 3000K/**4000K**/5000K",
+     "E26",
+     "",
+     "3.8 in x 7.9 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8088E345CD-G4",
+     "220-347V",
+     "175W",
+     "50W",
+     "6400/**6900**/7200",
+     "FlexColor 3000K/**4000K**/5000K",
+     "E26",
+     "",
+     "3.8 in x 7.9 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8088M345D-G4",
+     "120-277V",
+     "175W",
+     "50W",
+     "6400/**6900**/7200",
+     "FlexColor 3000K/**4000K**/5000K",
+     "EX39",
+     "",
+     "3.8 in x 8.5 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8088M345CD-G4",
+     "220-347V",
+     "175W",
+     "50W",
+     "6400/**6900**/7200",
+     "FlexColor 3000K/**4000K**/5000K",
+     "EX39",
+     "",
+     "3.8 in x 8.5 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8089M345D-G4",
+     "120-277V",
+     "250W",
+     "80W",
+     "10600/**10700**/10800",
+     "FlexColor 3000K/**4000K**/5000K",
+     "EX39",
+     "",
+     "4.3 in x 10.0 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8089M345CD-G4",
+     "220-347V",
+     "250W",
+     "80W",
+     "10600/**10700**/10800",
+     "FlexColor 3000K/**4000K**/5000K",
+     "EX39",
+     "",
+     "4.3 in x 10.0 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8090M345D-G4",
+     "120-277V",
+     "400W",
+     "110W",
+     "14500/**15400**/15700",
+     "FlexColor 3000K/**4000K**/5000K",
+     "EX39",
+     "",
+     "4.3 in x 11.4 in",
+     "cUL Listed, cUL Classified"
+    ],
+    [
+     "LED-8090M345D-G4-HV",
+     "277-480V",
+     "400W",
+     "110W",
+     "14500/**15400**/15700",
+     "FlexColor 3000K/**4000K**/5000K",
+     "EX39",
+     "277-480V incl. 347V",
+     "4.3 in x 11.4 in",
+     "cUL Listed, cUL Classified"
+    ]
+   ],
+   "notes": [
+    "Default lumens and CCT for FlexColor lamps are shown in bold"
+   ]
+  }
+ ],
+ "footnotes": [
+  "120-277V also works on 208V & 240V",
+  "HV = 277-480V including 347V",
+  "For listing status go to LED-LLC.com (DLC)",
+  "Default lumens and CCT for FlexColor lamps are shown in bold",
+  "Size comparison height labels: 5.5 in = ED17, 8.1 in = 30W corn lamp, 11.5 in = ED37, 11.2 in = 110W corn lamp (assigned from dimension-line position and drawing scale; the graphic prints no heights for LED-8087E or LED-8090M, whose table dimensions are 6.4 in and 11.4 in long)"
+ ],
+ "images": [
+  {
+   "file": "p05-b1.jpg",
+   "kind": "hero",
+   "shows": "Raw catalog block: LED-8088 shoe box retrofit lamp in front of a night-time parking lot (left) and a loading-dock facade with wall packs (right); includes the 'LED-8088' caption and the 'ROTATABLE BASE / DIRECTS LUMENS OUT OF FIXTURE' callout text - superseded by custom/shoe-box-wall-pack-hero-extended.jpg",
+   "products": [
+    "LED-8088"
+   ],
+   "use": "none",
+   "caption": "LED-8088 composite with catalog captions"
+  },
+  {
+   "file": "custom/shoe-box-wall-pack-hero-extended.jpg",
+   "kind": "hero",
+   "shows": "The composite with the complete LED-8088 lamp (body over the photo, screw base overhanging onto white below); the 'LED-8088' caption and the two callout lines in the white margin were painted out",
+   "products": [
+    "LED-8088"
+   ],
+   "use": "hero",
+   "caption": "LED-8088 over a parking lot and wall packs"
+  },
+  {
+   "file": "custom/shoe-box-wall-pack-hero.jpg",
+   "kind": "hero",
+   "shows": "Photo-bounded crop of the same composite (no text); the lamp is cut at the photo bottom edge just above the screw base - fragment, superseded by the extended hero",
+   "products": [
+    "LED-8088"
+   ],
+   "use": "none",
+   "caption": "LED-8088 composite, banner crop"
+  },
+  {
+   "file": "p05-b2.jpg",
+   "kind": "product",
+   "shows": "Generic 110W LED corn lamp from the size comparison (competitor reference); auto-crop clips the lamp top and bottom - superseded by custom/shoe-box-wall-pack-110w-corn-lamp.png",
+   "products": [],
+   "use": "none",
+   "caption": "110W corn lamp, clipped auto-crop"
+  },
+  {
+   "file": "custom/shoe-box-wall-pack-ed17.png",
+   "kind": "product",
+   "shows": "ED17 metal halide HID lamp (5.5 in), the lamp being replaced by LED-8087; cutout on white",
+   "products": [],
+   "use": "cutout",
+   "caption": "ED17 HID lamp (5.5 in)"
+  },
+  {
+   "file": "custom/shoe-box-wall-pack-led-8087e.png",
+   "kind": "product",
+   "shows": "LED-8087E shoe box / wall pack retrofit lamp, E26 base, labelled OURS; cutout on white",
+   "products": [
+    "LED-8087E"
+   ],
+   "use": "cutout",
+   "caption": "LED-8087E retrofit lamp, E26 base"
+  },
+  {
+   "file": "custom/shoe-box-wall-pack-30w-corn-lamp.png",
+   "kind": "product",
+   "shows": "Generic 30W LED corn lamp (8.1 in) used as a competitor size reference; cutout on white",
+   "products": [],
+   "use": "cutout",
+   "caption": "Generic 30W LED corn lamp (8.1 in)"
+  },
+  {
+   "file": "custom/shoe-box-wall-pack-ed37.png",
+   "kind": "product",
+   "shows": "ED37 metal halide HID lamp (11.5 in), the lamp being replaced by LED-8090; cutout on white",
+   "products": [],
+   "use": "cutout",
+   "caption": "ED37 HID lamp (11.5 in)"
+  },
+  {
+   "file": "custom/shoe-box-wall-pack-led-8090m.png",
+   "kind": "product",
+   "shows": "LED-8090M shoe box retrofit lamp, EX39 base, labelled OURS; cutout on white",
+   "products": [
+    "LED-8090M"
+   ],
+   "use": "cutout",
+   "caption": "LED-8090M retrofit lamp, EX39 base"
+  },
+  {
+   "file": "custom/shoe-box-wall-pack-110w-corn-lamp.png",
+   "kind": "product",
+   "shows": "Generic 110W LED corn lamp (11.2 in) used as a competitor size reference; cutout on white",
+   "products": [],
+   "use": "cutout",
+   "caption": "Generic 110W LED corn lamp (11.2 in)"
+  },
+  {
+   "file": "custom/shoe-box-wall-pack-size-comparison.jpg",
+   "kind": "diagram",
+   "shows": "Size comparison strip with labels: ED17 (5.5 in), LED-8087E (OURS), 30W corn lamp (8.1 in), ED37 (11.5 in), LED-8090M (OURS), 110W corn lamp (11.2 in)",
+   "products": [
+    "LED-8087E",
+    "LED-8090M"
+   ],
+   "use": "gallery",
+   "caption": "Size comparison vs HID and corn lamps"
+  },
+  {
+   "file": "custom/shoe-box-wall-pack-light-distribution.jpg",
+   "kind": "diagram",
+   "shows": "Light distribution / foot candle comparison on DLC pole-mounted fixtures: LED-8090 (110W shoe box), LED-8089 (80W shoe box) and LED-8027 (100W post top) with foot candles, delivered lumens and LPW; re-cropped without the green page rule and section divider",
+   "products": [
+    "LED-8090",
+    "LED-8089",
+    "LED-8027"
+   ],
+   "use": "gallery",
+   "caption": "Foot candle comparison, pole-mounted"
+  }
+ ],
+ "extras": [
+  {
+   "title": "Size comparison",
+   "text": "Our compact shoe box retrofits next to the HID lamps they replace and typical LED corn lamps of the same wattage: ED17 HID vs LED-8087E (ours, 30W) vs a 30W corn lamp; ED37 HID vs LED-8090M (ours, 110W) vs a 110W corn lamp.",
+   "columns": [
+    "Lamp",
+    "Height shown",
+    "Note"
+   ],
+   "rows": [
+    [
+     "ED17",
+     "5.5 in",
+     "HID lamp replaced"
+    ],
+    [
+     "LED-8087E",
+     "(6.4 in per table)",
+     "OURS, 30W"
+    ],
+    [
+     "30W",
+     "8.1 in",
+     "generic 30W LED corn lamp"
+    ],
+    [
+     "ED37",
+     "11.5 in",
+     "HID lamp replaced"
+    ],
+    [
+     "LED-8090M",
+     "(11.4 in per table)",
+     "OURS, 110W"
+    ],
+    [
+     "110W",
+     "11.2 in",
+     "generic 110W LED corn lamp"
+    ]
+   ]
+  },
+  {
+   "title": "Light distribution / foot candle comparison / DLC pole-mounted fixtures",
+   "columns": [
+    "",
+    "LED-8090 / 110W Shoe Box",
+    "LED-8089 / 80W Shoe Box",
+    "LED-8027 / 100W Post Top"
+   ],
+   "rows": [
+    [
+     "Foot candles",
+     "4.7",
+     "3.7",
+     "1.9"
+    ],
+    [
+     "Delivered lumens",
+     "13016",
+     "10051",
+     "5728"
+    ],
+    [
+     "LPW",
+     "127",
+     "125",
+     "55"
+    ]
+   ]
+  }
+ ]
+}

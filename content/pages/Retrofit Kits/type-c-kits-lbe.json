@@ -1,0 +1,131 @@
+{
+  "title": "Type C T5 & T8 Kits + Linear Barkits (LBE)",
+  "subtitle": "External Driver (LBE)",
+  "headline": "Traditional look of fluorescent tubes or higher efficiency of a barkit",
+  "intro": "",
+  "callouts": [
+    "Type C U-bend kits also available",
+    "Simple Lighting Controls | Networked Lighting Controls"
+  ],
+  "features": [
+    {
+      "label": "10-year warranty"
+    },
+    {
+      "label": "120-277V",
+      "note": "add (-HV) when ordering 120-347V models"
+    },
+    {
+      "label": "Sensor ready",
+      "note": "0-10V dim to off"
+    },
+    {
+      "label": "12V aux output"
+    },
+    {
+      "label": "146 LPW efficacy (light engine)"
+    },
+    {
+      "label": "120° beam angle"
+    },
+    {
+      "label": "80+ CRI"
+    },
+    {
+      "label": "Operating temp -4°F to 122°F"
+    },
+    {
+      "label": "L70 100,000hrs rated life"
+    },
+    {
+      "label": "Wattage options",
+      "note": "12W (6/8/10/12), 25W (15/18/20/25), 45W (30/35/40/45), 80W (50/60/70/80)"
+    },
+    {
+      "label": "Standard dimming 0-10V (10V)"
+    },
+    {
+      "label": "Optional dimming",
+      "note": "LVD (120-277V TRIAC), 1 STEP (single switch), 2 STEP (double switch)"
+    },
+    {
+      "label": "Optional field installable emergency backup",
+      "note": "see spec on LED-LLC.com for ordering information"
+    },
+    {
+      "label": "Simple Lighting Controls / Networked Lighting Controls options",
+      "note": "see catalog page 25 or the product spec sheet on LED-LLC.com"
+    },
+    {
+      "label": "ETL listed (Intertek, cETLus)"
+    },
+    {
+      "label": "FCC"
+    },
+    {
+      "label": "DLC",
+      "note": "see spec sheet on LED-LLC.com for DLC listing status"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Build Your Type C Kit | RP-T5C-G2-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[HV*] / RP-T8C-G2-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[HV*]",
+      "columns": [
+        "Option group",
+        "Choice 1",
+        "Choice 2",
+        "Choice 3",
+        "Choice 4"
+      ],
+      "rows": [
+        "Wattage | 12W (6/8/10/12) | 25W (15/18/20/25) | 45W (30/35/40/45) | 80W (50/60/70/80)",
+        "Length | 2 FT | 3 FT | 4 FT | ",
+        "# of lamps | 1L (1 lamp) | 2L (2 lamps) | 3L (3 lamps) | 4L (4 lamps)",
+        "Color (8+COLOR) | 30 (3000K) | 35 (3500K) | 40 (4000K) | 50 (5000K)",
+        "Standard dimming | 10V (0-10V dim) |  |  | ",
+        "Optional dimming | LVD (120-277V TRIAC) | 1 STEP (single switch) | 2 STEP (double switch) | ",
+        "HV* | -HV (add when ordering 120-347V models) |  |  | "
+      ],
+      "notes": [
+        "Two part-number patterns share this option set: RP-T5C-G2-... (T5 kit) and RP-T8C-G2-... (T8 kit)",
+        "Optional field installable emergency backup (see spec on LED-LLC.com for ordering information)",
+        "* Add (-HV) when ordering 120-347V models"
+      ],
+      "pdfPage": 25
+    },
+    {
+      "title": "Build Your LBE | RP-LBE-G2-[WATTAGE]-[LENGTH]-[#LAMPS]-[8+COLOR]-[DIMMING]-[HV*]",
+      "columns": [
+        "Option group",
+        "Choice 1",
+        "Choice 2",
+        "Choice 3",
+        "Choice 4",
+        "Choice 5"
+      ],
+      "rows": [
+        "Wattage | 12W (6/8/10/12) | 25W (15/18/20/25) | 45W (30/35/40/45) | 80W (50/60/70/80) | ",
+        "Length | 1 FT | 2 FT | 3 FT | 4 FT | 5 FT",
+        "# of lamps | 1L (1 lamp) | 2L (2 lamps) | 3L (3 lamps) | 4L (4 lamps) | ",
+        "Color (8+COLOR) | 30 (3000K) | 35 (3500K) | 40 (4000K) | 50 (5000K) | ",
+        "Standard dimming | 10V (0-10V dim) |  |  |  | ",
+        "Optional dimming | LVD (120-277V TRIAC) | 1 STEP (single switch) | 2 STEP (double switch) |  | ",
+        "HV* | -HV (add when ordering 120-347V models) |  |  |  | "
+      ],
+      "notes": [
+        "Optional field installable emergency backup (see spec on LED-LLC.com for ordering information)",
+        "* Add (-HV) when ordering 120-347V models"
+      ],
+      "pdfPage": 25
+    }
+  ],
+  "footnotes": [
+    "* Add (-HV) when ordering 120-347V models",
+    "Optional field installable emergency backup (see spec on LED-LLC.com for ordering information)",
+    "See spec sheet on LED-LLC.com for DLC listing status",
+    "Type C U-bend kits also available: RP-U6-G2 (dimension shown 1.63 in) and RP-U158-G2 (dimension shown 6.0 in); interpretation: the dimension arrows span the U-bend's overall leg-to-leg height",
+    "The catalog lists no lumen values for these configurable kits; the feature strip gives 146 LPW light-engine efficacy",
+    "Interpretation: wattage choices are codes with their selectable settings in parentheses, e.g. 12W (6/8/10/12); the catalog prints only the heading WATTAGE with these values",
+    "Only the left-hand printed page number (46) appears on this spread"
+  ]
+}

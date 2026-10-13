@@ -1,0 +1,165 @@
+# Pages CMS (https://app.pagescms.org): the admin page for this site.
+# Every save is a commit to this repo; .github/workflows/deploy.yml then rebuilds the sandbox copy of the site
+# (/sandbox/). The live site only changes when someone approves (actions below).
+#
+# Every kind of download has a folder per Products menu category and, inside it, one per product (IES files go one level
+# deeper, in a folder named after the part number). The site finds a file by its name in any folder, so a file can be
+# moved without breaking a link. Documents keep their exact names (rename: false). To post a newer version, upload it under the same name with
+# V2, rev3 or a date added (RP-LBI-Spec_Sheet V2.pdf, LBI-G2-Spec-Sheet-2026-10-12.pdf): the build points every
+# link at the newest version. The older file can stay or be deleted.
+
+# "Approve and publish to live" (under Actions in the admin page): everything on the sandbox goes live, in the name of
+# whoever clicks it. The portal at /admin/ lists every change, who made it, when, and each approval.
+actions:
+  - name: publish
+    label: Approve and publish to live
+    workflow: approve.yml
+    ref: main
+    cancelable: false
+    confirm:
+      title: Publish everything now on the sandbox to the live site?
+      button: Approve and publish
+    fields:
+      - name: note
+        label: Note (optional, shown in the history)
+        type: text
+
+content:
+  - name: pages
+    label: Product pages
+    description: The text and part-number tables of each product page, in one folder per Products menu category. Photos, downloads and layout are set elsewhere.
+    type: collection
+    path: content/pages
+    filename: "{primary}.json"   # without this Pages CMS only lists .md files
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    view:
+      primary: title
+      fields: [title, headline]
+      sort: [title]
+      search: [title, headline, intro]
+    fields:
+      - name: title
+        label: Page title
+        type: string
+        required: true
+      - name: subtitle
+        label: Subtitle
+        type: string
+      - name: headline
+        label: Headline
+        type: string
+      - name: intro
+        label: Introduction
+        type: text
+      - name: callouts
+        label: Key points
+        description: Short lines shown near the top of the page.
+        type: string
+        list: true
+      - name: features
+        label: At a glance
+        description: One feature per item, with an optional note shown after it.
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Feature
+            type: string
+          - name: note
+            label: Note
+            type: string
+      - name: tables
+        label: Part-number and spec tables
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Table title
+            type: string
+          - name: leadIn
+            label: Line above the table
+            type: string
+          - name: columns
+            label: Column headings
+            description: One heading per column, left to right.
+            type: string
+            list: true
+          - name: rows
+            label: Rows
+            description: "One row per item: the cells in column order, separated by |. Wrap a value in **double asterisks** to mark it as the factory default. Leave a cell empty with nothing between two | marks."
+            type: string
+            list: true
+          - name: notes
+            label: Notes under the table
+            type: string
+            list: true
+          - name: pdfPage
+            label: Catalog PDF page
+            type: number
+            hidden: true
+          - name: catalogPage
+            label: Catalog page
+            type: number
+            hidden: true
+          - name: source
+            label: Source
+            type: string
+            hidden: true
+      - name: footnotes
+        label: Footnotes
+        type: string
+        list: true
+
+media:
+  - name: spec-sheets
+    label: Spec sheets
+    input: assets/docs/spec-sheets
+    output: /assets/docs/spec-sheets
+    rename: false
+    extensions: [pdf]
+  - name: instructions
+    label: Installation instructions
+    input: assets/docs/instructions
+    output: /assets/docs/instructions
+    rename: false
+    extensions: [pdf]
+  - name: ies
+    label: IES files
+    input: assets/ies
+    output: /assets/ies
+    rename: false
+    extensions: [ies, zip, pdf, ldt]
+  - name: sell-sheets
+    label: Sell sheets and flyers
+    input: assets/docs/sell-sheets
+    output: /assets/docs/sell-sheets
+    rename: false
+    extensions: [pdf]
+  - name: case-studies
+    label: Case studies
+    input: assets/docs/case-studies
+    output: /assets/docs/case-studies
+    rename: false
+    extensions: [pdf]
+  - name: catalog
+    label: Catalog
+    input: assets/docs/catalog
+    output: /assets/docs/catalog
+    rename: false
+    extensions: [pdf]
+  - name: documents
+    label: All documents
+    input: assets/docs
+    output: /assets/docs
+    rename: false
+    extensions: [pdf]
+
+settings:
+  content:
+    merge: true
+  commit:
+    identity: user

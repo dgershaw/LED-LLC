@@ -1,0 +1,1364 @@
+{
+ "_about": "Hand-edited. A product page laid out from its spec sheet (cut sheet): key points, icon strip, listing marks, a top slider (product shots first, then photos in use), and downloads. IES files are found automatically in assets/ies/<part number>/ (see IES_DIR in build.py). tools/build.py reads this on every build; keys are category slugs. Icons live in assets/img/icons (cropped from the spec sheets). Add a page here only once David has sent its spec sheet.",
+ "taa-troffers": {
+  "sheet": "TAA Troffer Fixtures (TV/TF)",
+  "bullets": [
+   "Slim design makes it easier to replace a wide range of existing fixtures",
+   "Constant current driver is flicker free in accordance with IEEE-PAR1789, conforms to GSA P100",
+   "Emergency battery backup option available",
+   "Choose from a volumetric or a flat panel design",
+   "Field installable Simple & Network Lighting Controls options"
+  ],
+  "superflex": "Switch between 3 wattages & 3 CCTs",
+  "superflex_note": "Fixtures (TV/TF). The retrofit kits switch between up to 5 wattages and 5 CCTs.",
+  "plug": "Simply remove the cap and plug in the sensor",
+  "marks": [
+   {
+    "img": "taa.png",
+    "alt": "TAA: meets the requirements of the United States Trade Agreements Act",
+    "h": 30
+   },
+   {
+    "img": "warranty-5.png",
+    "alt": "5-year warranty",
+    "h": 54
+   },
+   {
+    "img": "culus.png",
+    "alt": "cULus Listed",
+    "h": 40
+   },
+   {
+    "img": "dlc-premium.png",
+    "alt": "DLC Listed Premium",
+    "h": 52
+   }
+  ],
+  "icons": [
+   {
+    "img": "volt-120-277.png",
+    "label": "Voltage",
+    "alt": "120-277V"
+   },
+   {
+    "img": "dim-to-off.png",
+    "label": "Sensor ready",
+    "alt": "0-10V dim to off"
+   },
+   {
+    "img": "emg.png",
+    "label": "Optional EMG battery backup",
+    "alt": "Emergency battery"
+   },
+   {
+    "img": "cri-80.png",
+    "label": "CRI",
+    "alt": "80+ CRI"
+   },
+   {
+    "img": "beam-120.png",
+    "label": "Beam angle",
+    "alt": "120 degree beam angle"
+   },
+   {
+    "img": "temp.png",
+    "value": "0°F to 122°F",
+    "label": "Operating temp",
+    "alt": "Thermometer"
+   },
+   {
+    "img": "surge-2-5ka.png",
+    "label": "Surge protection",
+    "alt": "2.5kA surge protection"
+   },
+   {
+    "img": "life-l70.png",
+    "value": "50,000 hrs",
+    "label": "Rated life (L70)",
+    "alt": "L70 rated life"
+   }
+  ],
+  "slides": [
+   {
+    "src": "assets/img/cutsheet/taa-troffers/rp-tv.jpg",
+    "caption": "RP-TV volumetric fixture",
+    "alt": "RemPhos RP-TV volumetric troffer fixture",
+    "fit": "contain"
+   },
+   {
+    "src": "assets/img/cutsheet/taa-troffers/rp-tf.jpg",
+    "caption": "RP-TF flat panel fixture",
+    "alt": "RemPhos RP-TF flat panel troffer fixture",
+    "fit": "contain"
+   },
+   {
+    "src": "assets/img/cat/taa-troffers/p28-b5.jpg",
+    "caption": "RP-TRV volumetric retrofit kit",
+    "alt": "RemPhos RP-TRV volumetric troffer retrofit kit",
+    "fit": "contain"
+   },
+   {
+    "src": "assets/img/cat/taa-troffers/p28-b6.jpg",
+    "caption": "RP-TRF flat panel retrofit kit",
+    "alt": "RemPhos RP-TRF flat panel troffer retrofit kit",
+    "fit": "contain"
+   },
+   {
+    "src": "assets/img/cutsheet/taa-troffers/classroom.jpg",
+    "caption": "Classroom",
+    "alt": "Students studying in a classroom lit by ceiling troffers",
+    "focus": "50% 22%"
+   },
+   {
+    "src": "assets/img/cat/taa-troffers/hero.jpg",
+    "caption": "Laboratory",
+    "alt": "A laboratory with the RP-TRV volumetric retrofit kit",
+    "focus": "88% 50%"
+   },
+   {
+    "src": "assets/img/cat/taa-troffers/hero-trf.jpg",
+    "caption": "Control room",
+    "alt": "A control room with the RP-TRF flat panel retrofit kit",
+    "focus": "8% 50%"
+   },
+   {
+    "src": "assets/img/cat/taa-troffers/p28-b1.jpg",
+    "caption": "Office",
+    "alt": "A woman working at a laptop in a bright office",
+    "focus": "50% 40%"
+   }
+  ],
+  "docs": [
+   {
+    "kind": "Spec sheet",
+    "title": "TAA Troffer Fixtures (TV/TF)",
+    "pdf": "assets/docs/spec-sheets/RP-TV-TF-G1-TAA-Spec_Sheet.pdf",
+    "cover": "assets/img/docs/RP-TV-TF-G1-TAA-Spec_Sheet-p1.jpg",
+    "meta": "10 pages, updated 08.25.26"
+   },
+   {
+    "kind": "Installation instructions",
+    "title": "Flat panel fixture (TF)",
+    "pdf": "assets/docs/instructions/RP-TF_Instruction-Sheet.pdf",
+    "cover": "assets/img/docs/RP-TF_Instruction-Sheet-p1.jpg",
+    "meta": "2 pages, updated 10.02.26"
+   }
+  ],
+  "soon": "IES files for the other part numbers, installation instructions for the volumetric fixture (TV), and the retrofit kit (TRV/TRF) documents.",
+  "options": {
+   "title": "Options",
+   "columns": [
+    "Suffix",
+    "What it adds"
+   ],
+   "rows": [
+    [
+     "-OCC",
+     "Simple lighting control: passive infrared occupancy and daylight hold-off sensor, set with the IR23 remote"
+    ],
+    [
+     "-OCCBT",
+     "Network lighting control: Silvair passive infrared motion and daylight harvesting sensor, set in the Silvair app"
+    ],
+    [
+     "-EMG1",
+     "Emergency battery backup: 4W, 500 lumens, 90 minutes"
+    ]
+   ],
+   "note": "Example part number: RP-TV-G1-1X4-35W-40K-WC-OCC-TAA-EMG1"
+  },
+  "accessories": {
+   "title": "Surface mount and flange kits",
+   "columns": [
+    "Part #",
+    "Description"
+   ],
+   "rows": [
+    [
+     "RPT-LEDPANEL-SMK-2X2",
+     "2X2 surface mount kit"
+    ],
+    [
+     "RPT-LEDPANEL-SMK-1X4",
+     "1X4 surface mount kit"
+    ],
+    [
+     "RPT-LEDPANEL-SMK-2X4",
+     "2X4 surface mount kit"
+    ],
+    [
+     "RPT-LEDPANEL-FMK-2X2-A",
+     "2X2 flange kit"
+    ],
+    [
+     "RPT-LEDPANEL-FMK-1X4-A",
+     "1X4 flange kit"
+    ],
+    [
+     "RPT-LEDPANEL-FMK-2X4-A",
+     "2X4 flange kit"
+    ]
+   ],
+   "note": "Surface mount kits do not work with EMG kits. Contact us for other options."
+  },
+  "spec_in_tables": [
+   "Troffer Fixtures"
+  ]
+ },
+ "shoe-box-wall-pack": {
+  "sheet": "Shoe Box + Wall Pack",
+  "bullets": [
+   "20W to 110W models replace up to 400W HID, and the 320W LED-8091 replaces 1000W HID",
+   "Light panel can rotate once the base is tightened to direct light out of the fixture",
+   "Includes a fan and thermal sensor to run cool and ensure a long and bright life",
+   "Enclosed fixture safe and approved for damp locations",
+   "HV models run on 277-480V (can be used on 347V)"
+  ],
+  "superflex": "Switch between 3000K, 4000K and 5000K",
+  "superflex_note": "FlexColor (-FC) models, set on the lamp. Factory default 4000K.",
+  "flex_img": "flexcolor.png",
+  "flex_alt": "FlexColor",
+  "marks": [
+   {
+    "img": "warranty-5.png",
+    "alt": "5-year warranty",
+    "h": 54
+   },
+   {
+    "img": "culus.png",
+    "alt": "cULus Listed",
+    "h": 40
+   },
+   {
+    "img": "culus-classified.png",
+    "alt": "cULus Classified: mogul or 120V medium base only",
+    "h": 40
+   },
+   {
+    "img": "dlc-listed.png",
+    "alt": "DLC Listed",
+    "h": 52
+   }
+  ],
+  "icons": [
+   {
+    "img": "volt-120-277.png",
+    "label": "Voltage",
+    "alt": "120-277V, also works on 208V and 240V"
+   },
+   {
+    "img": "base-med-mogul.png",
+    "label": "Medium + mogul base",
+    "alt": "Screw base"
+   },
+   {
+    "img": "ballast-bypass.png",
+    "label": "Ballast bypass",
+    "alt": "UL Type B ballast bypass"
+   },
+   {
+    "img": "active-cooling.png",
+    "label": "Active cooling",
+    "alt": "Fan"
+   },
+   {
+    "img": "cri-80.png",
+    "label": "CRI",
+    "alt": "80+ CRI"
+   },
+   {
+    "img": "surge-10ka.png",
+    "label": "Surge protection",
+    "alt": "10kA surge protection"
+   },
+   {
+    "img": "temp.png",
+    "value": "-40°F to 122°F",
+    "label": "Operating temp",
+    "alt": "Thermometer"
+   },
+   {
+    "img": "life-l70-l90.png",
+    "value": "50,000 hrs",
+    "label": "Rated life",
+    "alt": "L70 and L90 rated life"
+   }
+  ],
+  "slides": [
+   {
+    "src": "assets/img/cutsheet/shoe-box-wall-pack/flexcolor-shoebox.jpg",
+    "caption": "FlexColor shoe box retrofit (-FC)",
+    "alt": "FlexColor shoe box and wall pack LED retrofit lamp with its rotatable screw base",
+    "fit": "contain"
+   },
+   {
+    "src": "assets/img/cutsheet/shoe-box-wall-pack/led-8089m.jpg",
+    "caption": "LED-8089M with a mogul base",
+    "alt": "LED-8089M shoe box retrofit lamp with a fan housing and mogul base",
+    "fit": "contain"
+   },
+   {
+    "src": "assets/img/cutsheet/shoe-box-wall-pack/led-8091.jpg",
+    "caption": "LED-8091: LED panel and driver",
+    "alt": "LED-8091 320W retrofit: a flat LED panel that mounts on the fixture lens, wired to its driver with a mogul base",
+    "fit": "contain"
+   },
+   {
+    "src": "assets/img/cat/shoe-box-wall-pack/hero.jpg",
+    "caption": "Parking lot and loading dock",
+    "alt": "Shoe box retrofit lamp over a parking lot lit at night and a loading dock lit by wall packs"
+   },
+   {
+    "src": "assets/img/cutsheet/shoe-box-wall-pack/street-night.jpg",
+    "caption": "Street and parking lot",
+    "alt": "Parking lot and street lit by shoe box fixtures at night",
+    "focus": "50% 45%"
+   }
+  ],
+  "docs": [
+   {
+    "kind": "Spec sheet",
+    "title": "FlexColor Shoe Box + Wall Pack (-FC)",
+    "pdf": "assets/docs/spec-sheets/LED-8087-8088-8089-8090-FC_Spec_Sheet.pdf",
+    "cover": "assets/img/docs/LED-8087-8088-8089-8090-FC_Spec_Sheet-p1.jpg",
+    "meta": "3 pages, dated 08.11.26"
+   },
+   {
+    "kind": "Spec sheet",
+    "title": "Shoe Box + Wall Pack (LED-8086 to LED-8090)",
+    "pdf": "assets/docs/spec-sheets/LED-8086-8087-8088-8089-8090_Spec_Sheet.pdf",
+    "cover": "assets/img/docs/LED-8086-8087-8088-8089-8090_Spec_Sheet-p1.jpg",
+    "meta": "3 pages, dated 12.15.23"
+   },
+   {
+    "kind": "Spec sheet",
+    "title": "Shoe Box + Wall Pack (LED-8091, 320W)",
+    "pdf": "assets/docs/spec-sheets/LED-8091_Spec_Sheet.pdf",
+    "cover": "assets/img/docs/LED-8091_Spec_Sheet-p1.jpg",
+    "meta": "2 pages, dated 10.04.24"
+   }
+  ],
+  "parts_intro": "Each group of models shares one spec sheet. Installation instructions and IES files are per model, and factory defaults are in bold. Open a group below for every part number.",
+  "models": {
+   "title": "Models and downloads",
+   "columns": [
+    "Model",
+    "Wattage",
+    "Replaces",
+    "Color temperature",
+    "Base"
+   ],
+   "groups": [
+    {
+     "label": "FlexColor",
+     "sheet": "assets/docs/spec-sheets/LED-8087-8088-8089-8090-FC_Spec_Sheet.pdf",
+     "rows": [
+      [
+       "LED-8087-FC",
+       "30W",
+       "100W HID",
+       "FlexColor 3000K/**4000K**/5000K",
+       "E26 or EX39"
+      ],
+      [
+       "LED-8088-FC",
+       "50W",
+       "175W HID",
+       "FlexColor 3000K/**4000K**/5000K",
+       "E26 or EX39"
+      ],
+      [
+       "LED-8089-FC",
+       "80W",
+       "250W HID",
+       "FlexColor 3000K/**4000K**/5000K",
+       "EX39"
+      ],
+      [
+       "LED-8090-FC",
+       "110W",
+       "400W HID",
+       "FlexColor 3000K/**4000K**/5000K",
+       "EX39"
+      ]
+     ]
+    },
+    {
+     "label": "LED-8086 to LED-8090",
+     "sheet": "assets/docs/spec-sheets/LED-8086-8087-8088-8089-8090_Spec_Sheet.pdf",
+     "rows": [
+      [
+       "LED-8086",
+       "20W",
+       "up to 70W HID",
+       "3000K/4000K/5000K",
+       "E26"
+      ],
+      [
+       "LED-8087",
+       "30W",
+       "up to 100W HID",
+       "3000K/4000K/5000K",
+       "E26 or EX39"
+      ],
+      [
+       "LED-8088",
+       "50W",
+       "up to 175W HID",
+       "3000K/4000K/5000K",
+       "E26 or EX39"
+      ],
+      [
+       "LED-8089",
+       "80W",
+       "up to 250W HID",
+       "3000K/4000K/5000K",
+       "EX39"
+      ],
+      [
+       "LED-8090",
+       "110W",
+       "up to 400W HID",
+       "3000K/4000K/5000K",
+       "EX39"
+      ]
+     ]
+    },
+    {
+     "label": "LED-8091",
+     "sheet": "assets/docs/spec-sheets/LED-8091_Spec_Sheet.pdf",
+     "rows": [
+      [
+       "LED-8091",
+       "320W",
+       "up to 1000W HID",
+       "4000K/5000K (3000K special order)",
+       "EX39"
+      ]
+     ]
+    }
+   ],
+   "notes": [
+    "FlexColor (-FC) models switch between 3000K, 4000K and 5000K on the lamp, with 4000K as the factory default.",
+    "120-277V models also work on 208V and 240V. -HV models run on 277-480V (can be used on 347V).",
+    "CRI 80+ (LED-8091: 70+). LED-8091 3000K is a special order, minimum order 100 pieces."
+   ]
+  },
+  "part_tables": [
+   {
+    "title": "FlexColor part numbers | LED-8087 to LED-8090-FC",
+    "columns": [
+     "Part #",
+     "Replaces",
+     "Wattage",
+     "Lumens",
+     "CCT",
+     "Base",
+     "DLC code"
+    ],
+    "rows": [
+     [
+      "LED-8087E345D-G4",
+      "100W HID",
+      "30W",
+      "3500/**4200**/4300",
+      "3000K/**4000K**/5000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8087M345D-G4",
+      "100W HID",
+      "30W",
+      "3500/**4200**/4300",
+      "3000K/**4000K**/5000K",
+      "EX39",
+      "P1CK54P3"
+     ],
+     [
+      "LED-8088E345D-G4",
+      "175W HID",
+      "50W",
+      "6400/**6900**/7200",
+      "3000K/**4000K**/5000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8088M345D-G4",
+      "175W HID",
+      "50W",
+      "6400/**6900**/7200",
+      "3000K/**4000K**/5000K",
+      "EX39",
+      "P6YHOJXP"
+     ],
+     [
+      "LED-8089M345D-G4",
+      "250W HID",
+      "80W",
+      "10600/**10700**/10800",
+      "3000K/**4000K**/5000K",
+      "EX39",
+      "PE1R64EU"
+     ],
+     [
+      "LED-8090M345D-G4",
+      "400W HID",
+      "110W",
+      "14500/**15400**/15700",
+      "3000K/**4000K**/5000K",
+      "EX39",
+      "PTGQIRSF"
+     ],
+     [
+      "LED-8090M345D-G4-HV",
+      "400W HID",
+      "110W",
+      "14500/**15400**/15700",
+      "3000K/**4000K**/5000K",
+      "EX39",
+      "PLQZ2S2U"
+     ],
+     [
+      "LED-8087E345CD-G4",
+      "100W HID",
+      "30W",
+      "3500/**4200**/4300",
+      "3000K/**4000K**/5000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8087M345CD-G4",
+      "100W HID",
+      "30W",
+      "3500/**4200**/4300",
+      "3000K/**4000K**/5000K",
+      "EX39",
+      "PNARUA94"
+     ],
+     [
+      "LED-8088E345CD-G4",
+      "175W HID",
+      "50W",
+      "6400/**6900**/7200",
+      "3000K/**4000K**/5000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8088M345CD-G4",
+      "175W HID",
+      "50W",
+      "6400/**6900**/7200",
+      "3000K/**4000K**/5000K",
+      "EX39",
+      "PLK1XZP2"
+     ],
+     [
+      "LED-8089M345CD-G4",
+      "250W HID",
+      "80W",
+      "10600/**10700**/10800",
+      "3000K/**4000K**/5000K",
+      "EX39",
+      "PF34RTPP"
+     ]
+    ],
+    "notes": [
+     "Lumens and CCT: min/default/max FlexColor settings, default in bold.",
+     "C models (for example LED-8087E345CD-G4) are the 347V options for Canada.",
+     "\"D\" models dim to 50% when the switch on top of the lamp is set to LO (30W to 15W, 50W to 25W, 80W to 40W, 110W to 55W)."
+    ]
+   },
+   {
+    "title": "LED-8086 to LED-8090 part numbers | 3000K, 4000K or 5000K",
+    "columns": [
+     "Part #",
+     "Replaces",
+     "Wattage",
+     "Lumens",
+     "CCT",
+     "Base",
+     "DLC code"
+    ],
+    "rows": [
+     [
+      "LED-8086E30-G4",
+      "up to 70W HID",
+      "20W",
+      "2800",
+      "3000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8086E40-G4",
+      "up to 70W HID",
+      "20W",
+      "2800",
+      "4000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8086E50-G4",
+      "up to 70W HID",
+      "20W",
+      "2880",
+      "5000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8087E30-G4",
+      "up to 100W HID",
+      "30W",
+      "3534",
+      "3000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8087E40-G4",
+      "up to 100W HID",
+      "30W",
+      "4260",
+      "4000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8087E50-G4",
+      "up to 100W HID",
+      "30W",
+      "4255",
+      "5000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8087M30-G4",
+      "up to 100W HID",
+      "30W",
+      "3534",
+      "3000K",
+      "EX39",
+      "N/A"
+     ],
+     [
+      "LED-8087M40-G4",
+      "up to 100W HID",
+      "30W",
+      "4260",
+      "4000K",
+      "EX39",
+      "PDOT0PWM"
+     ],
+     [
+      "LED-8087M50-G4",
+      "up to 100W HID",
+      "30W",
+      "4255",
+      "5000K",
+      "EX39",
+      "PVFMGJKF"
+     ],
+     [
+      "LED-8088E30-G4",
+      "up to 175W HID",
+      "50W",
+      "6915",
+      "3000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8088E40-G4",
+      "up to 175W HID",
+      "50W",
+      "6460",
+      "4000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8088E50-G4",
+      "up to 175W HID",
+      "50W",
+      "7250",
+      "5000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8088M30-G4",
+      "up to 175W HID",
+      "50W",
+      "6915",
+      "3000K",
+      "EX39",
+      "PQUKT9XB"
+     ],
+     [
+      "LED-8088M40-G4",
+      "up to 175W HID",
+      "50W",
+      "6460",
+      "4000K",
+      "EX39",
+      "P49GKR40"
+     ],
+     [
+      "LED-8088M50-G4",
+      "up to 175W HID",
+      "50W",
+      "7250",
+      "5000K",
+      "EX39",
+      "PGIUKDDZ"
+     ],
+     [
+      "LED-8089M30D-G5",
+      "up to 250W HID",
+      "80W",
+      "10670",
+      "3000K",
+      "EX39",
+      "S-QLV5O6"
+     ],
+     [
+      "LED-8089M40D-G5",
+      "up to 250W HID",
+      "80W",
+      "10760",
+      "4000K",
+      "EX39",
+      "S-85HEUL"
+     ],
+     [
+      "LED-8089M50D-G5",
+      "up to 250W HID",
+      "80W",
+      "10850",
+      "5000K",
+      "EX39",
+      "S-ZXV3TR"
+     ],
+     [
+      "LED-8090M30-G4",
+      "up to 400W HID",
+      "110W",
+      "15745",
+      "3000K",
+      "EX39",
+      "P4AIACGH"
+     ],
+     [
+      "LED-8090M40-G4",
+      "up to 400W HID",
+      "110W",
+      "15430",
+      "4000K",
+      "EX39",
+      "P2TFMJ5G"
+     ],
+     [
+      "LED-8090M50-G4",
+      "up to 400W HID",
+      "110W",
+      "14570",
+      "5000K",
+      "EX39",
+      "PDLI2RJC"
+     ],
+     [
+      "LED-8090M40-G4-T3",
+      "up to 400W HID",
+      "110W",
+      "12630",
+      "4000K",
+      "EX39",
+      "PSPXBHZ5"
+     ],
+     [
+      "LED-8090M40-G4-T4",
+      "up to 400W HID",
+      "110W",
+      "12165",
+      "4000K",
+      "EX39",
+      "PA18YDOM"
+     ],
+     [
+      "LED-8090M50-G4-T3",
+      "up to 400W HID",
+      "110W",
+      "12840",
+      "5000K",
+      "EX39",
+      "PZF9RH41"
+     ],
+     [
+      "LED-8090M50-G4-T4",
+      "up to 400W HID",
+      "110W",
+      "12780",
+      "5000K",
+      "EX39",
+      "PDO0ZLSD"
+     ],
+     [
+      "LED-8090M30-G4-OCC",
+      "up to 400W HID",
+      "110W",
+      "15745",
+      "3000K",
+      "EX39",
+      "PBRCQBOX"
+     ],
+     [
+      "LED-8090M40-G4-OCC",
+      "up to 400W HID",
+      "110W",
+      "15430",
+      "4000K",
+      "EX39",
+      "PGR3PSL4"
+     ],
+     [
+      "LED-8090M50-G4-OCC",
+      "up to 400W HID",
+      "110W",
+      "14570",
+      "5000K",
+      "EX39",
+      "PHW4B08P"
+     ],
+     [
+      "LED-8090M30-G4-HV",
+      "up to 400W HID",
+      "110W",
+      "14620",
+      "3000K",
+      "EX39",
+      "N/A"
+     ],
+     [
+      "LED-8090M40-G4-HV",
+      "up to 400W HID",
+      "110W",
+      "15180",
+      "4000K",
+      "EX39",
+      "PRUB9Q89"
+     ],
+     [
+      "LED-8090M50-G4-HV",
+      "up to 400W HID",
+      "110W",
+      "15390",
+      "5000K",
+      "EX39",
+      "PWQ9P2SP"
+     ],
+     [
+      "LED-8089M50-G5",
+      "up to 250W HID",
+      "80W",
+      "10850",
+      "5000K",
+      "EX39",
+      ""
+     ],
+     [
+      "LED-8086E40C-G4",
+      "up to 70W",
+      "20W",
+      "2880",
+      "4000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8086E50C-G4",
+      "up to 70W",
+      "20W",
+      "2940",
+      "5000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8087E40C-G4",
+      "up to 100W HID",
+      "30W",
+      "4260",
+      "4000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8087E50C-G4",
+      "up to 100W HID",
+      "30W",
+      "4255",
+      "5000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8087M40C-G4",
+      "up to 100W HID",
+      "30W",
+      "4260",
+      "4000K",
+      "EX39",
+      "PNJMWW8L"
+     ],
+     [
+      "LED-8087M50C-G4",
+      "up to 100W HID",
+      "30W",
+      "4255",
+      "5000K",
+      "EX39",
+      "PAT9UZ67"
+     ],
+     [
+      "LED-8088E40C-G4",
+      "up to 175W HID",
+      "50W",
+      "7250",
+      "4000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8088E50C-G4",
+      "up to 175W HID",
+      "50W",
+      "6915",
+      "5000K",
+      "E26",
+      "N/A"
+     ],
+     [
+      "LED-8088M40C-G4",
+      "up to 175W HID",
+      "50W",
+      "6460",
+      "4000K",
+      "EX39",
+      "PZVJVR6X"
+     ],
+     [
+      "LED-8088M50C-G4",
+      "up to 175W HID",
+      "50W",
+      "7250",
+      "5000K",
+      "EX39",
+      "PX2AKTYG"
+     ],
+     [
+      "LED-8089M30CD-G5",
+      "up to 175W HID",
+      "50W",
+      "7250",
+      "5000K",
+      "EX39",
+      "S-J2PX1N"
+     ],
+     [
+      "LED-8089M40CD-G5",
+      "up to 250W HID",
+      "80W",
+      "10500",
+      "4000K",
+      "EX39",
+      "S-8M3GFZ"
+     ],
+     [
+      "LED-8089M50CD-G5",
+      "up to 250W HID",
+      "80W",
+      "10675",
+      "5000K",
+      "EX39",
+      "S-7CFRKG"
+     ],
+     [
+      "LED-8090M40C-G4",
+      "up to 400W HID",
+      "110W",
+      "15430",
+      "4000K",
+      "EX39",
+      "PGYLLCXX"
+     ],
+     [
+      "LED-8090M50C-G4",
+      "up to 400W HID",
+      "110W",
+      "14570",
+      "5000K",
+      "EX39",
+      "P3U9L46N"
+     ],
+     [
+      "LED-8090M40C-G4-T3",
+      "up to 400W HID",
+      "110W",
+      "12630",
+      "4000K",
+      "EX39",
+      "P7OWSLYH"
+     ],
+     [
+      "LED-8090M40C-G4-T4",
+      "up to 400W HID",
+      "110W",
+      "12165",
+      "4000K",
+      "EX39",
+      "PQ1BR41U"
+     ],
+     [
+      "LED-8090M50C-G4-T3",
+      "up to 400W HID",
+      "110W",
+      "12840",
+      "5000K",
+      "EX39",
+      "P929E8A1"
+     ],
+     [
+      "LED-8090M50C-G4-T4",
+      "up to 400W HID",
+      "110W",
+      "12780",
+      "5000K",
+      "EX39",
+      "PFCVP0WP"
+     ],
+     [
+      "LED-8090M40C-G4-OCC",
+      "up to 400W HID",
+      "110W",
+      "15430",
+      "4000K",
+      "EX39",
+      "PH62YGO2"
+     ]
+    ],
+    "notes": [
+     "C models are the 347V options for Canada.",
+     "LED-8089D dims to 50% when the switch on top of the lamp is set to LO. LED-8090-OCC is dimmable.",
+     "LED-8089 and LED-8090 include support feet to prevent socket sag."
+    ]
+   },
+   {
+    "title": "LED-8091 part numbers | 320W, replaces 1000W HID",
+    "columns": [
+     "Part #",
+     "Replaces",
+     "Wattage",
+     "Lumens",
+     "CCT",
+     "Base",
+     "DLC code"
+    ],
+    "rows": [
+     [
+      "LED-8091M30D*",
+      "up to 1000W HID",
+      "320W",
+      "43090",
+      "3000K*",
+      "EX39",
+      "S-IHEWFN"
+     ],
+     [
+      "LED-8091M40D",
+      "up to 1000W HID",
+      "320W",
+      "43380",
+      "4000K",
+      "EX39",
+      "S-38E4T9"
+     ],
+     [
+      "LED-8091M50D",
+      "up to 1000W HID",
+      "320W",
+      "44610",
+      "5000K",
+      "EX39",
+      "S-I0TZBH"
+     ],
+     [
+      "LED-8091M40D-HV",
+      "up to 1000W HID",
+      "320W",
+      "43380",
+      "4000K",
+      "EX39",
+      "S-24I3PX"
+     ],
+     [
+      "LED-8091M50D-HV",
+      "up to 1000W HID",
+      "320W",
+      "44610",
+      "5000K",
+      "EX39",
+      "S-BL4W5K"
+     ]
+    ],
+    "notes": [
+     "* 3000K special order only, minimum order 100 pieces.",
+     "The LED panel is adhered to the fixture lens, which must be flat glass. Enclosed fixture required. Type V optic.",
+     "Recommended for shoe box fixtures with horizontal sockets. Not recommended for high bays, sports lighters or other fixtures with vertical sockets."
+    ]
+   }
+  ],
+  "options": {
+   "title": "Options",
+   "columns": [
+    "Suffix",
+    "What it adds"
+   ],
+   "rows": [
+    [
+     "D",
+     "Light output switch on top of the lamp: LO runs it at 50%"
+    ],
+    [
+     "-OCC",
+     "Microwave motion sensor, set with the IR12 remote"
+    ],
+    [
+     "-HV",
+     "277-480V (can be used on 347V)"
+    ],
+    [
+     "C",
+     "347V option for Canada"
+    ]
+   ],
+   "note": "Example part number: LED-8090M40-G4-OCC"
+  }
+ },
+ "lbi-g1": {
+  "sheet": "LBI G1 Linkable Bar / Internal Driver",
+  "bullets": [
+   "Up to 146 lumens per watt, the economical replacement for fluorescent lamps",
+   "Link 33 four-foot bars together at 120VAC, or 40 at 277VAC",
+   "Replaces linear and general purpose strips, troffers, vapor tight fixtures, low and high bays, cove lighting and stairwells",
+   "Many accessories let the LBI mount in a wide variety of applications",
+   "Your choice of Simple & Network Lighting Controls"
+  ],
+  "superflex": "Switch between 3 wattages & 3 CCTs",
+  "superflex_note": "Standard models (WC): 3500K, 4000K or 5000K. Warm models (WC2): 2700K, 3000K or 3500K.",
+  "plug": "Optional sensors link right to the bars, no wiring needed",
+  "marks": [
+   {
+    "img": "warranty-10.png",
+    "alt": "10-year warranty",
+    "h": 54
+   },
+   {
+    "img": "etl-listed.png",
+    "alt": "cETLus Listed (Intertek): UL 1598 listed fixture and UL 1598C listed retrofit kit",
+    "h": 44
+   },
+   {
+    "img": "fcc.png",
+    "alt": "FCC Class A",
+    "h": 34
+   },
+   {
+    "img": "rohs.png",
+    "alt": "RoHS compliant",
+    "h": 46
+   },
+   {
+    "img": "dlc-listed.png",
+    "alt": "DLC Listed",
+    "h": 52
+   }
+  ],
+  "icons": [
+   {
+    "img": "volt-120-277.png",
+    "label": "Voltage",
+    "alt": "120-277V"
+   },
+   {
+    "img": "lpw-146.png",
+    "scale": 1.2,
+    "label": "Efficacy (light engine)",
+    "alt": "146 lumens per watt"
+   },
+   {
+    "img": "pf-thd.png",
+    "label": "Power factor / THD",
+    "alt": "Power factor above 0.9, total harmonic distortion below 20%"
+   },
+   {
+    "img": "cri-80.png",
+    "label": "CRI",
+    "alt": "80+ CRI"
+   },
+   {
+    "img": "dim-to-off.png",
+    "label": "Sensor ready",
+    "alt": "0-10V dim to off"
+   },
+   {
+    "img": "occ-simple.png",
+    "label": "Optional simple OCC",
+    "alt": "Occupancy sensor"
+   },
+   {
+    "img": "beam-120.png",
+    "label": "Beam angle",
+    "alt": "120 degree beam angle"
+   },
+   {
+    "img": "emg.png",
+    "label": "Optional EMG battery backup",
+    "alt": "Emergency battery"
+   },
+   {
+    "img": "temp.png",
+    "value": "-13°F to 140°F",
+    "label": "Operating temp",
+    "alt": "Thermometer"
+   }
+  ],
+  "slides": [
+   {
+    "src": "assets/img/cutsheet/lbi-g1/lbi-g1.jpg",
+    "caption": "LBI G1 linkable bar",
+    "alt": "RemPhos LBI G1 linkable light bar with its end cap",
+    "fit": "contain"
+   },
+   {
+    "src": "assets/img/cat/lbi-g2/app-install.jpg",
+    "caption": "Installing linkable bars",
+    "alt": "An electrician installing a linkable LBI bar in a ceiling grid",
+    "focus": "30% 50%"
+   },
+   {
+    "src": "assets/img/cutsheet/lbi-g1/pool.jpg",
+    "caption": "Indoor pool and fitness center",
+    "alt": "An indoor pool with a fitness center on the floor above"
+   }
+  ],
+  "docs": [
+   {
+    "kind": "Spec sheet",
+    "title": "LBI G1 Linkable Bar / Internal Driver",
+    "pdf": "assets/docs/spec-sheets/RP-LBI-Spec_Sheet.pdf",
+    "cover": "assets/img/docs/RP-LBI-Spec_Sheet-p1.jpg",
+    "meta": "15 pages, updated 06.30.26"
+   }
+  ],
+  "soon": "Installation instructions and IES files.",
+  "parts_intro": "Each length comes with standard (WC) or warm (WC2) color temperatures. Factory defaults are in bold: change wattage and color temperature on site with the switches on the bar, or have them factory set.",
+  "options": {
+   "title": "Lighting controls",
+   "columns": [
+    "Part #",
+    "What it adds"
+   ],
+   "rows": [
+    [
+     "RP-LBI-OC2-A",
+     "Simple control: in-line microwave occupancy and daylight harvesting sensor with a wide detection pattern, set with the IR23 remote"
+    ],
+    [
+     "RP-LBI-OC3-A",
+     "Simple control: in-line microwave occupancy and daylight harvesting sensor with a narrow detection pattern, set with the IR23 remote"
+    ],
+    [
+     "RP-LBI-PIR-A",
+     "Simple control: in-line passive infrared occupancy and daylight harvesting sensor, set with the IR23 remote"
+    ],
+    [
+     "RP-LBI-BLE-OC",
+     "Network control: in-line Silvair Bluetooth microwave motion and daylight harvesting sensor, set in the Silvair app"
+    ],
+    [
+     "RP-LBI-BLE-PIR-A",
+     "Network control: in-line Silvair Bluetooth passive infrared motion and daylight harvesting sensor, set in the Silvair app"
+    ],
+    [
+     "RP-LBI-BLE-A",
+     "Network control: in-line Silvair Bluetooth control node, for wireless switches and sensor groups"
+    ]
+   ],
+   "note": "Order the sensor in addition to the LBI part number. Each sensor controls up to 15 bars."
+  },
+  "accessories": {
+   "title": "Popular accessories",
+   "columns": [
+    "Part #",
+    "Description"
+   ],
+   "rows": [
+    [
+     "RP-LBI-LC-xxIN-DIM-10P",
+     "Linking cables, 3 in to 72 in, 10 pack (NODIM for non-dimming runs)"
+    ],
+    [
+     "RP-LBI-SSC-DIM-10P",
+     "Seamless connector, 10 pack (NODIM for non-dimming runs)"
+    ],
+    [
+     "RP-LBI-G1-IP-3F-DIM",
+     "3 ft incoming power kit, for hardwiring into a fixture or junction box"
+    ],
+    [
+     "RP-LBI-G1-IP-7F-120V-SW",
+     "Plug-in power cable with on/off switch for 120V outlets, 7 ft (2 ft also available)"
+    ],
+    [
+     "RP-LBI-G1-IP-90DEG-12F-DIM",
+     "12 ft 90° incoming power cable for suspended bars"
+    ],
+    [
+     "RP-LBI-JBOX-1.5X4",
+     "LBI junction box, includes one seamless connector"
+    ],
+    [
+     "RP-LBI-SRC-4.7IN",
+     "4.7 in spacer connector, brings a run to a standard 24, 36 or 48 in (does not light)"
+    ],
+    [
+     "RP-LBI-SIL-KIT-10P",
+     "Suspended in-line kit: bracket, 9.8 ft aircraft cable, gripper and ceiling anchor"
+    ],
+    [
+     "RP-LBI-T1516-10P",
+     "T-bar clips, parallel to the T-bar, 10 pack (-90 for perpendicular)"
+    ],
+    [
+     "RP-LBI-45DEG",
+     "45° bracket for cove lighting or displays"
+    ],
+    [
+     "RP-LBI-EMG2-8W-DIM",
+     "Remote emergency driver, 90 minutes: up to three 4 ft bars at max wattage (25W version: up to eight)"
+    ]
+   ],
+   "note": "Every bar includes 4 self-tapping screws and 2 magnetic surface mount clips. More clips and the output cap are on the spec sheet."
+  },
+  "spec_in_tables": [
+   "LBI G1 Linkable Bar / Internal Driver"
+  ]
+ }
+}

@@ -1,0 +1,244 @@
+{
+  "slug": "linear-t5-t8",
+  "brand": "led",
+  "group": "Pin-Base Retrofits",
+  "title": "Linear T5 + T8",
+  "subtitle": "",
+  "pdfPages": [10, 11],
+  "catalogPages": [16, 18],
+  "headline": "Energy saving replacements for fluorescent T8 and T5.",
+  "intro": "Every size and installation method you need — in the highest quality, best light output design. Install our retrofits to get worry-free operation for years to come.",
+  "callouts": [
+    "8 ft, 2-piece design for cost-effective shipping & storing",
+    "Type A + B — FlexColor T8 (G13) and T5 (G5 mini bi-pin)",
+    "Type B — T8 (G13), FlexColor 8 ft T8 (FA8) and FlexColor T5 (G5 mini bi-pin)",
+    "EMG options — T8 lamp with integrated emergency back up, 5W and 10W emergency back up kits"
+  ],
+  "features": [
+    {"label": "5-year warranty"},
+    {"label": "80+ CRI"},
+    {"label": "170° beam angle", "note": "T5 FC (LED-12/18/25T5HO-FCDS Type B lamps)"},
+    {"label": "180° beam angle", "note": "T5 AB (LED-12/18/25T5HO-8xxAB Type A+B lamps) / 42T8-FC"},
+    {"label": "210° beam angle", "note": "FCAB (LED-10/11/12/15T8-FCAB) / 8.5T8"},
+    {"label": "UL Type A+B ballast bypass or compatible", "note": "FCAB / T5 AB"},
+    {"label": "UL Type B ballast bypass", "note": "8.5T8 / 42T8-FC / T5 FC"},
+    {"label": "Single or double-ended power input", "note": "FCAB / T5 AB / 8.5T8 / T5 FC"},
+    {"label": "Double-ended power input", "note": "42T8-FC"},
+    {"label": "Operating temp -40°F to 104°F", "note": "FCAB"},
+    {"label": "Operating temp -4°F to 113°F", "note": "8.5T8 / T5 AB / T5 FC"},
+    {"label": "Operating temp -40°F to 113°F", "note": "42T8-FC"},
+    {"label": "L70 50,000hrs rated life"},
+    {"label": "Glass construction", "note": "table feature glyph on all T8 lamps (FCAB, 8.5T8, 42T8-FC)"},
+    {"label": "Shatter-resistant glass lens", "note": "table feature glyph on all T5 lamps (T5 AB, T5 FC)"},
+    {"label": "FlexColor selectable CCT", "note": "LED-xxT8-FCAB (3000K/3500K/4000K/5000K/6500K), LED-42T8-FC-96-G5 (3000K/3500K/4000K/5000K/6500K), LED-xxT5HO-FCDS (3000K/3500K/4000K/5000K), LED-15T8-FC48-EMG (3000K/3500K/4000K/5000K/6500K); default 4000K"},
+    {"label": "Emergency back up >90 min", "note": "LED-15T8-FC48-EMG lamp (500 EMG lumens) and LED-EMG-05WCP / LED-EMG-10WCP kits"},
+    {"label": "DLC", "note": "for listing status go to LED-LLC.com"},
+    {"label": "120-277V also works on 208V & 240V"}
+  ],
+  "tables": [
+    {
+      "title": "T8 | Ballast Compatible + Ballast Bypass | Type A+B",
+      "pdfPage": 11,
+      "columns": ["Part #", "Voltage", "Replaces", "Wattage", "Lumens", "CCT", "Base", "Features", "Dimensions", "Listings"],
+      "rows": [
+        ["LED-10T8-FCAB24-G4", "120-277V", "17W", "10W", "1450", "FlexColor 3000K/3500K/**4000K**/5000K/6500K", "G13", "Glass construction", "24.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-11T8-FCAB36-G4", "120-277V", "25W", "11W", "1650", "FlexColor 3000K/3500K/**4000K**/5000K/6500K", "G13", "Glass construction", "36.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-12T8-FCAB48-G4", "120-277V", "32W", "12W", "1800", "FlexColor 3000K/3500K/**4000K**/5000K/6500K", "G13", "Glass construction", "48.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-15T8-FCAB48-G4", "120-277V", "32W", "15W", "2200", "FlexColor 3000K/3500K/**4000K**/5000K/6500K", "G13", "Glass construction", "48.0 in x 1.0 in", "cULus Classified, cULus Listed"]
+      ],
+      "notes": ["Default CCT for FlexColor is shown in bold", "120-277V also works on 208V & 240V"]
+    },
+    {
+      "title": "T5 | Ballast Compatible + Ballast Bypass | Type A+B",
+      "pdfPage": 11,
+      "columns": ["Part #", "Voltage", "Replaces", "Wattage", "Lumens", "CCT", "Base", "Features", "Dimensions", "Listings"],
+      "rows": [
+        ["LED-12T5HO-835AB24-G5", "120-277V", "24W", "12W", "1600", "3500K", "G5 Mini Bi-Pin", "Shatter-resistant glass lens", "23.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-12T5HO-840AB24-G5", "120-277V", "24W", "12W", "1600", "4000K", "G5 Mini Bi-Pin", "Shatter-resistant glass lens", "23.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-12T5HO-850AB24-G5", "120-277V", "24W", "12W", "1600", "5000K", "G5 Mini Bi-Pin", "Shatter-resistant glass lens", "23.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-18T5HO-835AB36-G5", "120-277V", "39W", "18W", "2500", "3500K", "G5 Mini Bi-Pin", "Shatter-resistant glass lens", "34.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-18T5HO-840AB36-G5", "120-277V", "39W", "18W", "2500", "4000K", "G5 Mini Bi-Pin", "Shatter-resistant glass lens", "34.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-18T5HO-850AB36-G5", "120-277V", "39W", "18W", "2500", "5000K", "G5 Mini Bi-Pin", "Shatter-resistant glass lens", "34.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-25T5HO-835AB48-G5", "120-277V", "54W", "24W", "3500", "3500K", "G5 Mini Bi-Pin", "Shatter-resistant glass lens", "46.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-25T5HO-840AB48-G5", "120-277V", "54W", "24W", "3500", "4000K", "G5 Mini Bi-Pin", "Shatter-resistant glass lens", "46.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-25T5HO-850AB48-G5", "120-277V", "54W", "24W", "3500", "5000K", "G5 Mini Bi-Pin", "Shatter-resistant glass lens", "46.0 in x 1.0 in", "cULus Classified, cULus Listed"]
+      ],
+      "notes": ["Wattage for the LED-25T5HO-8xxAB48-G5 lamps is printed as 24W in the catalog", "120-277V also works on 208V & 240V"]
+    },
+    {
+      "title": "T8 | Ballast Bypass | Type B",
+      "pdfPage": 11,
+      "columns": ["Part #", "Voltage", "Replaces", "Wattage", "Lumens", "CCT", "Base", "Features", "Dimensions", "Listings"],
+      "rows": [
+        ["LED-8.5T8-835DS48-G4", "120-277V", "32W", "8.5W", "1600", "3500K", "G13", "Glass construction", "48.0 in x 1.0 in", "cULus Listed"],
+        ["LED-8.5T8-840DS48-G4", "120-277V", "32W", "8.5W", "1650", "4000K", "G13", "Glass construction", "48.0 in x 1.0 in", "cULus Listed"],
+        ["LED-8.5T8-850DS48-G4", "120-277V", "32W", "8.5W", "1650", "5000K", "G13", "Glass construction", "48.0 in x 1.0 in", "cULus Listed"],
+        ["LED-42T8-FC-96-G5", "120-277V", "86W", "42W", "5000", "FlexColor 3000K/3500K/**4000K**/5000K/6500K", "FA8*", "Glass construction", "93.0 in x 1.0 in", "cULus Listed"]
+      ],
+      "notes": ["* R17D base end cap available", "Default CCT for FlexColor is shown in bold", "120-277V also works on 208V & 240V"]
+    },
+    {
+      "title": "T5 | Ballast Bypass | Type B",
+      "pdfPage": 11,
+      "columns": ["Part #", "Voltage", "Replaces", "Wattage", "Lumens", "CCT", "Base", "Features", "Dimensions", "Listings"],
+      "rows": [
+        ["LED-12T5HO-FCDS24-G4", "120-277V", "24W", "12W", "1600", "FlexColor 3000K/3500K/**4000K**/5000K", "G5 Mini Bi-Pin", "Shatter-resistant glass lens", "23.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-18T5HO-FCDS36-G4", "120-277V", "39W", "18W", "2370", "FlexColor 3000K/3500K/**4000K**/5000K", "G5 Mini Bi-Pin", "Shatter-resistant glass lens", "34.0 in x 1.0 in", "cULus Classified, cULus Listed"],
+        ["LED-25T5HO-FCDS48-G4", "120-277V", "54W", "25W", "3330", "FlexColor 3000K/3500K/**4000K**/5000K", "G5 Mini Bi-Pin", "Shatter-resistant glass lens", "46.0 in x 1.0 in", "cULus Classified, cULus Listed"]
+      ],
+      "notes": ["Default CCT for FlexColor is shown in bold", "120-277V also works on 208V & 240V"]
+    },
+    {
+      "title": "T8 Lamp w/ Integrated Emergency Back Up",
+      "pdfPage": 11,
+      "columns": ["Part #", "Wattage", "Lumens", "EMG Lumens", "CCT", "EMG Time", "Dimensions", "Listings"],
+      "rows": [
+        ["LED-15T8-FC48-EMG", "15W", "1900-2000", "500", "FlexColor 3000K/3500K/**4000K**/5000K/6500K", ">90 min", "47.7 in x 1.3 in", "cULus Classified"]
+      ],
+      "notes": ["Default CCT for FlexColor is shown in bold", "LED 15T8-EMG is a lamp w/ integrated EMG function. It can generally be used in any 4 ft T8 fixture that has had the ballast bypassed."]
+    },
+    {
+      "title": "Emergency Back Up Kit",
+      "pdfPage": 11,
+      "columns": ["Part #", "Wattage", "Lumens", "EMG Lumens", "CCT", "EMG Time", "Dimensions", "Listings"],
+      "rows": [
+        ["LED-EMG-05WCP", "5W", "N/A", "N/A", "N/A", ">90 min", "9.5 in x 1.3 in x 1.5 in", "cULus Listed"],
+        ["LED-EMG-10WCP", "10W", "N/A", "N/A", "N/A", ">90 min", "12.75 in x 1.6 in x 1.5 in", "cULus Listed"]
+      ],
+      "notes": []
+    },
+    {
+      "title": "Compatible Products",
+      "pdfPage": 11,
+      "columns": ["Part #", "LED-15T8-FC48-EMG", "LED-EMG-05WCP", "LED-EMG-10WCP"],
+      "rows": [
+        ["LED-10T8-FCAB24-G4", "", "Yes", "Yes"],
+        ["LED-11T8-FCAB36-G4", "", "Yes", "Yes"],
+        ["LED-12T8-FCAB48-G4", "Yes", "Yes", "Yes"],
+        ["LED-15T8-FCAB48-G4", "Yes", "Yes", "Yes"],
+        ["LED-12T5HO-8XXAB24-G5", "", "Yes", "Yes"],
+        ["LED-18T5HO-8XXAB36-G5", "", "Yes", "Yes"],
+        ["LED-25T5HO-8XXAB48-G5", "", "Yes", "Yes"],
+        ["LED-8.5T8-8XX-DS48-G4", "Yes", "Yes", ""],
+        ["LED-42T8-FC-96-G5", "", "Yes", "Yes"],
+        ["LED-12T5HO-FCDS24-G4", "", "Yes", "Yes"],
+        ["LED-18T5HO-FCDS36-G4", "", "Yes", "Yes"],
+        ["LED-25T5HO-FCDS48-G4", "", "Yes", "Yes"]
+      ],
+      "notes": ["EMG compatibility matrix: 'Yes' = a check mark in the catalog; blank = no check mark", "LED 15T8-EMG is a lamp w/ integrated EMG function. It can generally be used in any 4 ft T8 fixture that has had the ballast bypassed.", "Part numbers are written as printed in the matrix (8XX = any CCT: 835/840/850). The 8.5T8 row is printed 'LED-8.5T8-8XX-DS48-G4' here (with a hyphen before DS) but the main table prints 'LED-8.5T8-835DS48-G4' / '840DS48' / '850DS48' (no hyphen)"]
+    }
+  ],
+  "footnotes": [
+    "* R17D base end cap available (FA8 base, LED-42T8-FC-96-G5)",
+    "Default CCT for FlexColor is shown in bold",
+    "120-277V also works on 208V & 240V",
+    "For listing status go to LED-LLC.com (DLC)",
+    "LED 15T8-EMG is a lamp w/ integrated EMG function. It can generally be used in any 4 ft T8 fixture that has had the ballast bypassed.",
+    "Feature glyph key: plain tube icon = glass construction; tube with starburst = shatter-resistant glass lens"
+  ],
+  "images": [
+    {
+      "file": "p10-b1.jpg",
+      "kind": "hero",
+      "shows": "Catalog composite: car showroom with linear ceiling lights (left) and a daylit office corridor with recessed troffers (right), with the 8 ft 2-piece LED-42T8-FC tube laid across the bottom edge overhanging onto white; includes the small 'LED-42T8-FC' caption under the lamp",
+      "products": ["LED-42T8-FC-96-G5"],
+      "use": "superseded by custom/linear-t5-t8-hero-extended.jpg (same composite with the caption painted out)"
+    },
+    {
+      "file": "custom/linear-t5-t8-hero-extended.jpg",
+      "kind": "hero",
+      "shows": "The composite with the full LED-42T8-FC 2-piece tube (FlexColor switch piece on the left, plain second piece on the right) over the showroom/corridor photos; the 'LED-42T8-FC' caption in the white margin was painted out",
+      "products": ["LED-42T8-FC-96-G5"],
+      "use": "hero"
+    },
+    {
+      "file": "custom/linear-t5-t8-hero.jpg",
+      "kind": "application",
+      "shows": "Photo-bounded crop of the two application photos only (car showroom with linear lighting, daylit office corridor), cut just above the LED-42T8-FC tube so no lamp and no text appear",
+      "products": [],
+      "use": "hero-alt (safe banner crop for dark or non-white backgrounds)"
+    },
+    {
+      "file": "custom/linear-t5-t8-cutout-t8-fcab.png",
+      "kind": "product",
+      "shows": "Type A+B FlexColor T8 tube (G13 pins, CCT selector switch on the end cap) on white",
+      "products": ["LED-10T8-FCAB24-G4", "LED-11T8-FCAB36-G4", "LED-12T8-FCAB48-G4", "LED-15T8-FCAB48-G4"],
+      "use": "cutout"
+    },
+    {
+      "file": "custom/linear-t5-t8-cutout-t5ho-ab.png",
+      "kind": "product",
+      "shows": "Type A+B T5HO tube (G5 mini bi-pin, fixed CCT) on white",
+      "products": ["LED-12T5HO-835AB24-G5", "LED-12T5HO-840AB24-G5", "LED-12T5HO-850AB24-G5", "LED-18T5HO-835AB36-G5", "LED-18T5HO-840AB36-G5", "LED-18T5HO-850AB36-G5", "LED-25T5HO-835AB48-G5", "LED-25T5HO-840AB48-G5", "LED-25T5HO-850AB48-G5"],
+      "use": "cutout"
+    },
+    {
+      "file": "custom/linear-t5-t8-cutout-8.5t8.png",
+      "kind": "product",
+      "shows": "Type B LED-8.5T8 ballast-bypass T8 tube (G13 pins, clear/frosted glass) on white",
+      "products": ["LED-8.5T8-835DS48-G4", "LED-8.5T8-840DS48-G4", "LED-8.5T8-850DS48-G4"],
+      "use": "cutout"
+    },
+    {
+      "file": "custom/linear-t5-t8-cutout-42t8.png",
+      "kind": "product",
+      "shows": "Type B LED-42T8 8 ft FlexColor T8 tube end (FA8 single-pin base, CCT selector switch) on white",
+      "products": ["LED-42T8-FC-96-G5"],
+      "use": "cutout"
+    },
+    {
+      "file": "custom/linear-t5-t8-cutout-t5ho-fcds.png",
+      "kind": "product",
+      "shows": "Type B FlexColor T5HO tube (G5 mini bi-pin, CCT selector switch) on white",
+      "products": ["LED-12T5HO-FCDS24-G4", "LED-18T5HO-FCDS36-G4", "LED-25T5HO-FCDS48-G4"],
+      "use": "cutout"
+    },
+    {
+      "file": "custom/linear-t5-t8-cutout-15t8-emg.png",
+      "kind": "product",
+      "shows": "LED-15T8-FC48-EMG 4 ft T8 lamp with integrated emergency back up (red end caps, battery leads and test switch harness) on white",
+      "products": ["LED-15T8-FC48-EMG"],
+      "use": "cutout"
+    },
+    {
+      "file": "custom/linear-t5-t8-cutout-emg-05wcp.png",
+      "kind": "product",
+      "shows": "LED-EMG-05WCP 5W emergency back up kit (red housing with leads) on white",
+      "products": ["LED-EMG-05WCP"],
+      "use": "cutout"
+    },
+    {
+      "file": "custom/linear-t5-t8-cutout-emg-10wcp.png",
+      "kind": "product",
+      "shows": "LED-EMG-10WCP 10W emergency back up kit (longer red housing with leads) on white",
+      "products": ["LED-EMG-10WCP"],
+      "use": "cutout"
+    }
+  ],
+  "extras": [
+    {
+      "title": "Line-up (page 16)",
+      "columns": ["UL type", "Models", "Lamp", "Base", "FlexColor"],
+      "rows": [
+        ["Type A + B", "LED-10T8 / 11T8 / 12T8 / 15T8", "T8", "G13", "Yes"],
+        ["Type A + B", "LED-12T5HO / 18T5HO / 25T5HO", "T5", "G5 Mini Bi-Pin", "No (3500K / 4000K / 5000K models)"],
+        ["Type B", "LED-8.5T8", "T8", "G13", "No (3500K / 4000K / 5000K models)"],
+        ["Type B", "LED-42T8", "T8 (8 ft)", "FA8* (R17D base end cap available)", "Yes"],
+        ["Type B", "LED-12T5HO / 18T5HO / 25T5HO", "T5", "G5 Mini Bi-Pin", "Yes"]
+      ]
+    },
+    {
+      "title": "EMG options (page 16)",
+      "columns": ["Part #", "Wattage", "EMG time", "CCT"],
+      "rows": [
+        ["LED-15T8-FC48-EMG", "15W", "90 min", "FlexColor 3000K/3500K/4000K/5000K/6500K"],
+        ["LED-EMG-05WCP", "5W", "90 min", ""],
+        ["LED-EMG-10WCP", "10W", "90 min", ""]
+      ]
+    },
+    {
+      "title": "8 ft, 2-piece design",
+      "text": "The LED-42T8-FC 8 ft T8 ships as a 2-piece design for cost-effective shipping & storing (93.0 in x 1.0 in assembled, FA8 base, R17D base end cap available)."
+    }
+  ]
+}

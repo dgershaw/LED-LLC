@@ -1,0 +1,390 @@
+{
+ "slug": "taa-troffers",
+ "brand": "remphos",
+ "group": "Retrofit Kits",
+ "title": "TAA Troffer Retrofit Kits (TRV/TRF) + Fixtures (TV/TF)",
+ "subtitle": "",
+ "pdfPages": [
+  28
+ ],
+ "catalogPages": [
+  52,
+  53
+ ],
+ "headline": "Solutions that meet the requirements of the United States Trade Agreements Act",
+ "intro": "",
+ "callouts": [
+  "Meets the requirements of the United States Trade Agreements Act (TAA)",
+  "Simple or networked lighting controls available"
+ ],
+ "features": [
+  {
+   "label": "5-year warranty"
+  },
+  {
+   "label": "TAA compliant",
+   "note": "meets the requirements of the United States Trade Agreements Act (TAA)"
+  },
+  {
+   "label": "cULus Listed"
+  },
+  {
+   "label": "FCC"
+  },
+  {
+   "label": "DLC",
+   "note": "see spec sheet on LED-LLC.com for DLC listing status"
+  },
+  {
+   "label": "Sensor ready",
+   "note": "0-10V dim to off"
+  },
+  {
+   "label": "12V control ready port"
+  },
+  {
+   "label": "130 LPW efficacy",
+   "note": "** troffer retrofit kits have an efficacy of 125 LPW"
+  },
+  {
+   "label": "80+ CRI"
+  },
+  {
+   "label": "120° beam angle"
+  },
+  {
+   "label": "Operating temp 0°F to 122°F",
+   "note": ""
+  },
+  {
+   "label": "1.5kA surge protection"
+  },
+  {
+   "label": "L70 50,000hrs rated life"
+  },
+  {
+   "label": "FlexWatt selectable wattage",
+   "note": "factory default in bold in the tables"
+  },
+  {
+   "label": "FlexColor selectable CCT",
+   "note": "fixtures (TV/TF) and TRV kits: 3500K/4000K/5000K; TRF kits: 2700K/3000K/3500K/4000K/5000K; default 4000K"
+  },
+  {
+   "label": "Optional internal emergency battery backup",
+   "note": "-EMG1 suffix, 90 min / 500 lm"
+  },
+  {
+   "label": "Remote control",
+   "note": "RC-REMOTE-IR23 (for microwave occ sensors)"
+  },
+  {
+   "label": "Compatible w/ surface mount kit and flange kit",
+   "note": "troffer fixtures (TV/TF); catalog says 'see page 45'"
+  },
+  {
+   "label": "Simple lighting controls / networked lighting controls available",
+   "note": "see catalog page 25 or the product spec sheet on LED-LLC.com"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Troffer Fixtures",
+   "pdfPage": 28,
+   "columns": [
+    "Part #",
+    "UPC",
+    "Description",
+    "Lumens",
+    "FlexWatt",
+    "FlexColor",
+    "DLC code"
+   ],
+   "rows": [
+    [
+     "RP-TV-G1-1X4-35W-40K-WC-TAA",
+     "197810035671",
+     "1X4 volumetric fixture",
+     "2200/3300/**4400**",
+     "18W/26W/**35W**",
+     "3500K/**4000K**/5000K",
+     "S-1M5XK9"
+    ],
+    [
+     "RP-TV-G1-2X2-35W-40K-WC-TAA",
+     "197810035701",
+     "2X2 volumetric fixture",
+     "2200/3300/**4400**",
+     "18W/26W/**35W**",
+     "3500K/**4000K**/5000K",
+     "S-VGPK1B"
+    ],
+    [
+     "RP-TV-G1-2X4-44W-40K-WC-TAA",
+     "197810016304",
+     "2X4 volumetric fixture",
+     "3300/4400/**5500**",
+     "26W/35W/**44W**",
+     "3500K/**4000K**/5000K",
+     "S-Q67KQX"
+    ],
+    [
+     "RP-TF-G1-1X4-40W-40K-WC-TAA",
+     "844006009847",
+     "1X4 flat panel fixture",
+     "2600/3900/**5200**",
+     "20W/30W/**40W**",
+     "3500K/**4000K**/5000K",
+     "S-WQ239X"
+    ],
+    [
+     "RP-TF-G1-2X2-40W-40K-WC-TAA",
+     "844006009793",
+     "2X2 flat panel fixture",
+     "2600/3900/**5200**",
+     "20W/30W/**40W**",
+     "3500K/**4000K**/5000K",
+     "S-G5ZQY8"
+    ],
+    [
+     "RP-TF-G1-2X4-50W-40K-WC-TAA",
+     "844006009786",
+     "2X4 flat panel fixture",
+     "3900/5200/**6500**",
+     "30W/40W/**50W**",
+     "3500K/**4000K**/5000K",
+     "S-N155V0"
+    ]
+   ],
+   "notes": [
+    "Factory set wattage and CCT are shown in bold",
+    "All fixtures run on 120-277V",
+    "RP-TV = volumetric, RP-TF = flat panel",
+    "Surface mount and flange kits are listed under More details"
+   ],
+   "source": "RP-TV-TF-G1-TAA spec sheet, 08.25.26"
+  },
+  {
+   "title": "Troffer Retrofit Kits",
+   "pdfPage": 28,
+   "columns": [
+    "Part #",
+    "Voltage",
+    "FlexWatt",
+    "Lumens*",
+    "FlexColor",
+    "Dimensions"
+   ],
+   "rows": [
+    [
+     "RP-TRV-G2-1X4-37W-40K-WC-TAA",
+     "120-277V",
+     "16W/30W/**37W**",
+     "2100-5000",
+     "3500K/**4000K**/5000K",
+     "47.8 in x 11.9 in x 3.3 in"
+    ],
+    [
+     "RP-TRV-G2-2X2-37W-40K-WC-TAA",
+     "120-277V",
+     "16W/30W/**37W**",
+     "2100-5000",
+     "3500K/**4000K**/5000K",
+     "47.8 in x 23.9 in x 3.3 in"
+    ],
+    [
+     "RP-TRV-G2-2X4-41W-40K-WC-TAA",
+     "120-277V",
+     "23W/30W/**41W**",
+     "3100-5500",
+     "3500K/**4000K**/5000K",
+     "23.9 in x 23.9 in x 3.3 in"
+    ],
+    [
+     "RP-TRF-G2-1X4-40W-40K-WC-TAA",
+     "120-277V",
+     "16W/24W/30W/35W/**40W**",
+     "2160-5400",
+     "2700K/3000K/3500K/**4000K**/5000K",
+     "47.0 in x 11.4 in x 1.3 in"
+    ],
+    [
+     "RP-TRF-G2-2X2-40W-40K-WC-TAA",
+     "120-277V",
+     "16W/24W/30W/35W/**40W**",
+     "2160-5400",
+     "2700K/3000K/3500K/**4000K**/5000K",
+     "22.9 in x 22.9 in x 1.3 in"
+    ],
+    [
+     "RP-TRF-G2-2X4-50W-40K-WC-TAA",
+     "120-277V",
+     "24W/30W/35W/40W/**50W**",
+     "3240-6750",
+     "2700K/3000K/3500K/**4000K**/5000K",
+     "46.9 in x 22.9 in x 1.3 in"
+    ]
+   ],
+   "notes": [
+    "Factory set wattage, lumens and CCT are shown in bold",
+    "* Lumens are calculated",
+    "** Troffer retrofit kits have an efficacy of 125 LPW",
+    "RP-TRV = volumetric, RP-TRF = flat panel",
+    "The catalog prints the first four Dimensions cells without the second 'x' (e.g. '47.8 IN x 11.9 IN 3.3 IN'); the separator was added here",
+    "The table has no Listings column; the page-footer listing marks are TAA, cULus Listed, FCC and DLC (see spec sheet on LED-LLC.com for DLC listing status)",
+    "RP-TRV-G2-2X2 and RP-TRV-G2-2X4 dimensions are transcribed as printed (47.8 x 23.9 and 23.9 x 23.9) although they appear transposed in the catalog"
+   ]
+  }
+ ],
+ "footnotes": [
+  "Factory set wattage, lumens and CCT are shown in bold",
+  "* Calculated (Lumens column of the Troffer Retrofit Kits table)",
+  "** Troffer retrofit kits have an efficacy of 125LPW (the icon strip shows 130 LPW)",
+  "Compatible w/ surface mount kit and flange kit (see page 45) — troffer fixtures table",
+  "See spec sheet on LED-LLC.com for DLC listing status",
+  "See page 25 for more information on simple / networked lighting controls or check out the product spec sheet on our website LED-LLC.com",
+  "Lumens are printed as a range (min-max across the FlexWatt settings) in bold weight for every row; no single lumen value is marked as the factory default",
+  "Operating temp is printed as '-0°F TO 122°F' in the catalog icon strip",
+  "CATALOG AS PRINTED: RP-TRV-G2-2X2 dimensions read 47.8 in x 23.9 in x 3.3 in and RP-TRV-G2-2X4 read 23.9 in x 23.9 in x 3.3 in; the two appear transposed in the catalog (a 2X2 should be ~24 x 24) but are transcribed exactly as printed"
+ ],
+ "images": [
+  {
+   "file": "p28-b1.jpg",
+   "kind": "application",
+   "shows": "Young woman in a mustard-yellow sweater working at a laptop and writing on a clipboard in a bright office; no captions",
+   "products": [
+    "RP-TV",
+    "RP-TF"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "p28-b2.jpg",
+   "kind": "product",
+   "shows": "Two product shots on a dark blue panel: RP-TV (volumetric) troffer fixture on the left and RP-TF (flat panel) on the right, each with a small sensor module on the frame and its caption beneath ('RP-TV (VOLUMETRIC)', 'RP-TF (FLAT PANEL)')",
+   "products": [
+    "RP-TV",
+    "RP-TF"
+   ],
+   "use": "superseded by custom/taa-troffers-rp-tv.jpg and custom/taa-troffers-rp-tf.jpg (split, captions removed)"
+  },
+  {
+   "file": "p28-b3.jpg",
+   "kind": "hero",
+   "shows": "Merged block: the blue 'TAA — MEETS THE REQUIREMENTS OF THE UNITED STATES TRADE AGREEMENTS ACT (TAA)' graphic panel on the left, then a modern white laboratory with linear ceiling lights, with the RP-TRV volumetric retrofit kit composited in front at the right edge (the kit's bottom is clipped by the block edge)",
+   "products": [
+    "RP-TRV"
+   ],
+   "use": "superseded by custom/taa-troffers-taa-badge.jpg and custom/taa-troffers-hero.jpg (split; hero keeps the kit whole with its caption painted out)"
+  },
+  {
+   "file": "p28-b4.jpg",
+   "kind": "hero",
+   "shows": "Blurred control-room corridor with large blue data-dashboard screens and recessed ceiling panels, with the RP-TRF flat-panel retrofit kit composited at bottom left (the kit's bottom is clipped by the block edge)",
+   "products": [
+    "RP-TRF"
+   ],
+   "use": "superseded by custom/taa-troffers-hero-trf.jpg (kit kept whole, caption painted out)"
+  },
+  {
+   "file": "p28-b5.jpg",
+   "kind": "product",
+   "shows": "RP-TRV (volumetric) troffer retrofit kit, front view, tight crop of the composited product shot (edges of the lab photo visible at the top corners)",
+   "products": [
+    "RP-TRV"
+   ],
+   "use": "product card / cutout"
+  },
+  {
+   "file": "p28-b6.jpg",
+   "kind": "product",
+   "shows": "RP-TRF (flat panel) troffer retrofit kit, front view, tight crop of the composited product shot (edges of the corridor photo visible at the top corners)",
+   "products": [
+    "RP-TRF"
+   ],
+   "use": "product card / cutout"
+  },
+  {
+   "file": "custom/taa-troffers-hero.jpg",
+   "kind": "hero",
+   "shows": "Catalog composite: RP-TRV volumetric troffer retrofit kit in front of a modern white laboratory with linear ceiling lights; kit kept whole, 'RP-TRV (VOLUMETRIC)' caption painted out of the white margin",
+   "products": [
+    "RP-TRV"
+   ],
+   "use": "hero"
+  },
+  {
+   "file": "custom/taa-troffers-hero-trf.jpg",
+   "kind": "hero",
+   "shows": "Catalog composite: RP-TRF flat-panel troffer retrofit kit in front of a blurred control-room corridor with blue dashboard screens; kit kept whole, 'RP-TRF (FLAT PANEL)' caption painted out of the white margin",
+   "products": [
+    "RP-TRF"
+   ],
+   "use": "gallery / alternate hero"
+  },
+  {
+   "file": "custom/taa-troffers-taa-badge.jpg",
+   "kind": "callout",
+   "shows": "Blue graphic panel with the striped 'TAA' logotype and the text 'Meets the requirements of the United States Trade Agreements Act (TAA)' with white chevron lines",
+   "products": [
+    "RP-TRV",
+    "RP-TRF",
+    "RP-TV",
+    "RP-TF"
+   ],
+   "use": "callout"
+  },
+  {
+   "file": "custom/taa-troffers-rp-tv.jpg",
+   "kind": "product",
+   "shows": "RP-TV (volumetric) TAA troffer fixture, front view on dark blue background, caption removed",
+   "products": [
+    "RP-TV"
+   ],
+   "use": "gallery / product card"
+  },
+  {
+   "file": "custom/taa-troffers-rp-tf.jpg",
+   "kind": "product",
+   "shows": "RP-TF (flat panel) TAA troffer fixture, front view on dark blue background, caption removed",
+   "products": [
+    "RP-TF"
+   ],
+   "use": "gallery / product card"
+  }
+ ],
+ "extras": [
+  {
+   "title": "Options",
+   "columns": [
+    "Option",
+    "Part # / suffix",
+    "Description"
+   ],
+   "rows": [
+    [
+     "Optional internal emergency battery backup",
+     "-EMG1",
+     "Emergency battery backup (90 min / 500 lm)"
+    ],
+    [
+     "Remote control",
+     "RC-REMOTE-IR23",
+     "For microwave occ sensors"
+    ]
+   ]
+  },
+  {
+   "title": "TAA",
+   "text": "Meets the requirements of the United States Trade Agreements Act (TAA)."
+  },
+  {
+   "title": "Lighting controls",
+   "text": "Simple Lighting Controls | Networked Lighting Controls. See page 25 for more information or check out the product spec sheet on our website LED-LLC.com."
+  },
+  {
+   "title": "Models",
+   "text": "Troffer fixtures: RP-TV (volumetric) and RP-TF (flat panel), G1, in 1X4, 2X2 and 2X4 sizes, compatible with the surface mount kit and flange kit (see page 45). Troffer retrofit kits: RP-TRV (volumetric) and RP-TRF (flat panel), G2, in 1X4, 2X2 and 2X4 sizes."
+  }
+ ]
+}

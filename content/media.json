@@ -1,0 +1,138 @@
+{
+  "_about": "Hand-edited media for product pages. tools/build.py reads this file on every build. Keys under videos, install_photos and eddy_spots are category slugs (data/<slug>.json). Case studies attach to the pages listed in 'pages' and to every page that lists one of their part numbers.",
+  "videos": {
+    "shoe-box-wall-pack": [
+      {
+        "youtube": "ypXSpfRoVVA",
+        "title": "LED Shoe Box / Wall Pack Retrofits",
+        "channel": "Light Efficient Design and Remphos",
+        "summary": "See how Light Efficient Design LED retrofit lamps turn existing shoe box and wall pack fixtures into efficient LED lighting."
+      }
+    ]
+  },
+  "install_photos": {
+    "shoe-box-wall-pack": [
+      {
+        "src": "assets/img/install/shoe-box-wall-pack/parking-lot-fog.jpg",
+        "alt": "Parking lot poles with LED shoe box fixtures shining down through fog",
+        "caption": "Parking lot in fog",
+        "focus": "50% 30%"
+      },
+      {
+        "src": "assets/img/install/shoe-box-wall-pack/rail-yard-platforms.jpg",
+        "alt": "Rail yard platforms at night lit by pole-mounted LED fixtures",
+        "caption": "Rail yard platforms",
+        "focus": "50% 40%"
+      }
+    ]
+  },
+  "case_studies": [
+    {
+      "id": "pic-quik",
+      "title": "Top-to-bottom store retrofit",
+      "client": "Pic Quik",
+      "location": "Las Cruces, NM",
+      "segment": "Gas station, convenience store and car wash",
+      "pdf": "assets/docs/case-studies/Pic-Quik-Case-Study.pdf",
+      "pdf_pages": 2,
+      "image": "assets/img/case-studies/pic-quik/gas-canopy.jpg",
+      "image_alt": "Pic Quik fuel canopy at night after the LED retrofit",
+      "thumbs": [
+        [
+          "assets/img/case-studies/pic-quik/storefront.jpg",
+          "Pic Quik storefront at night"
+        ],
+        [
+          "assets/img/case-studies/pic-quik/subway-entrance.jpg",
+          "Store entrance canopy"
+        ],
+        [
+          "assets/img/case-studies/pic-quik/car-wash.jpg",
+          "Car wash bay"
+        ]
+      ],
+      "page_preview": "assets/img/case-studies/pic-quik/page-1.jpg",
+      "stat": [
+        "28",
+        "stores in the chain now being retrofitted"
+      ],
+      "situation": "HID gas canopy fixtures were wasting energy and caused a maintenance headache, with bulbs and ballasts constantly being replaced.",
+      "solution": "The gas canopy fixtures were easily retrofitted with the directional, horizontal-mount LED-8090. Ease of install and superior light output immediately led to retrofitting the entire store.",
+      "result": "A brighter, more efficient retail environment that is safer and easier to shop, all while standing out amongst the competition.",
+      "quote": "The overall look of the store and light output after being retrofitted was so impressive… I told my managers to do every location ASAP.",
+      "quote_by": "Owner, Pic Quik (28 locations)",
+      "products": [
+        [
+          "LED-8090",
+          "Gas canopy and car wash bay"
+        ],
+        [
+          "LED-8089",
+          "Pole lights"
+        ],
+        [
+          "LED-8055",
+          "Entrance canopy"
+        ],
+        [
+          "LED-8039",
+          "Bollards"
+        ],
+        [
+          "LED-8029",
+          "Outdoor downlights"
+        ],
+        [
+          "LED-7320",
+          "Indoor downlights"
+        ],
+        [
+          "LBI",
+          "Sign lighting, double sided"
+        ]
+      ],
+      "team": [
+        [
+          "Distributor",
+          "CED Las Cruces, NM"
+        ],
+        [
+          "Installer",
+          "PRH Electric and the Pic Quik maintenance team"
+        ],
+        [
+          "Representative",
+          "Mountain States, Bernalillo, NM"
+        ]
+      ],
+      "pages": [
+        "shoe-box-wall-pack"
+      ]
+    }
+  ],
+  "eddy_spots": {
+    "lbi-65": {
+      "img": "eddy-water.png",
+      "peek": true,
+      "title": "Eddy ran the splash test himself",
+      "text": "IP65, NSF certified and IK08 tough. The bar passed with flying colors. Eddy is still drying off."
+    },
+    "color-palette": {
+      "img": "eddy-water.png",
+      "peek": true,
+      "title": "Color for wet places, too",
+      "text": "LBI Color Palette also comes in an LBI 65 version for wet and NSF applications. Eddy checked. Twice. With a water cannon."
+    },
+    "lighting-controls": {
+      "img": "eddy-silvair.png",
+      "title": "Eddy earned his Silvair sash",
+      "text": "Bluetooth mesh sensors that are listed on the DLC NLC QPL, with no extra wiring. He still will not tell anyone the app password."
+    },
+    "lbi-g2": {
+      "img": "eddy-connector.png",
+      "wide": true,
+      "title": "Click, link, done",
+      "text": "Seamless connectors snap bars together end to end. Eddy approves of anything that clicks."
+    }
+  }
+}

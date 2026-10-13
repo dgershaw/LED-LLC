@@ -1,12 +1,12 @@
 /* LBI family site: variant data + interactive bar stage.
    All product facts come from the spec sheets in assets/docs (revision dates noted per variant).
-   Palette + and Palette X have no spec sheet yet: their values are marked pending. */
+   Palette+ and PaletteX have no spec sheet yet: their values are marked pending. */
 (function () {
   "use strict";
 
   const PALETTE_COLORS = {
     red:    { name: "Red",    hex: "#ff2a1a", note: "Used for reducing eye strain, increasing biological stimulation or wavelength-specific visibility." },
-    orange: { name: "Orange", hex: "#ff7a10", note: "Used for clear signaling, high visibility or wavelength-specific illumination. Measured dominant wavelength 606.3 nm (LBI 65 Color Palette + test report)." },
+    orange: { name: "Orange", hex: "#ff7a10", note: "Used for clear signaling, high visibility or wavelength-specific illumination. Measured dominant wavelength 606.3 nm (LBI 65 Color Palette+ test report)." },
     amber:  { name: "Amber",  hex: "#ffb000", note: "Used where photochemical sensitivity, glare reduction or wavelength-specific signaling is important." },
     green:  { name: "Green",  hex: "#19e05a", note: "Used where enhanced contrast sensitivity, visual clarity or precise color rendering is required." },
     blue:   { name: "Blue",   hex: "#2a6bff", note: "Common in applications that create soothing atmospheres, high-contrast visibility or subtle displays." },
@@ -20,6 +20,8 @@
     { id: "BV", code: "BLU-WC-VLT", colors: ["blue", "violet"], lm: { "2": "15–300", "4": "30–600" } }
   ];
 
+  // on the company site, docmap.js gives each document's permanent address (newest version); the standalone page links its own copy
+  const docUrl = (f) => (window.DOC_MAP && window.DOC_MAP[f]) || "assets/docs/" + encodeURI(f);
   const ICON = {
     doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 16.5h5"/></svg>',
     wrench: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L4 16.8V20h3.2l5.3-5.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg>',
@@ -31,6 +33,45 @@
   };
 
   const V = [
+    {
+      id: "g1", group: "white", name: "LBI G1", short: "G1",
+      kind: "Economical linkable white light bar", glyph: "#fff8ec", profile: "slim",
+      tagline: "The economical LBI. Up to 146 lumens per watt, with wattage and color temperature you set on the bar.",
+      lead: "The economical Linkable Bar with Internal Driver, in the same 1.2 in profile and lengths as LBI G2. Three wattages and three color temperatures on the bar, in standard or warm models. A direct replacement for fluorescent strips, troffers, vapor tights, low and high bays, coves and stairwells.",
+      features: [
+        "SuperFLEX: switch between 3 wattages and 3 color temperatures on the bar.",
+        "Standard models (WC) set 3500K, 4000K or 5000K. Warm models (WC2) set 2700K, 3000K or 3500K.",
+        "Link 33 four-foot bars at 120VAC or 40 at 277VAC from one power feed.",
+        "Pass-through 0-10V dimming and auxiliary 12V output, so a whole run dims together.",
+        "Simple Lighting Control (in-line microwave or PIR occupancy with daylight harvesting) or Silvair Bluetooth mesh network control. Optional sensors link right to the bars.",
+        "Mounting clips with rare-earth magnets, plus T-bar, blade, suspended and 45° options. Suitable for dry and damp locations."
+      ],
+      apps: ["Fluorescent strip replacement", "Troffers and vapor tights", "Low and high bays", "Cove lighting", "Stairwells"],
+      photos: [["cutsheet/lbi-g1/pool.jpg", "Indoor pool and fitness center"]],
+      sizes: { "2": { len: 19.3, watts: [6, 9, 12], lm: [706, 1063, 1419], def: 0 }, "3": { len: 31.3, watts: [10, 12, 15], lm: [1335, 1648, 1961], def: 0 }, "4": { len: 43.3, watts: [10, 15, 25], lm: [1344, 2255, 3166], def: 1 } },
+      lmNote: "at 3500K",
+      // Two models per length, each with its own 3-position FlexColor switch (spec sheet p. 3).
+      cctSets: [{ code: "WC", label: "Standard", range: "3500–5000K", ccts: [3500, 4000, 5000], def: 4000 }, { code: "WC2", label: "Warm", range: "2700–3500K", ccts: [2700, 3000, 3500], def: 2700 }],
+      ccts: [3500, 4000, 5000], cctRemoteOnly: [], cctDef: 4000,
+      pn: (s, w, k, st) => `RP-LBI-G1-${s}F-${{ "2": 6, "3": 10, "4": 15 }[s]}W-${st && st.set === 1 ? "27K-WC2" : "40K-WC"}`,
+      link: "4 ft: 33 @ 120V · 40 @ 277V",
+      specs: [
+        ["Efficacy", "Up to 146", "lm/W (light engine)"],
+        ["Lumens", "696–3,653", "Across 2, 3 and 4 ft"],
+        ["Wattage", "6–25 W", "FlexWatt, 3 settings"],
+        ["Color temp", "2700–5000K", "FlexColor, 3 settings per model"],
+        ["CRI", "80+", ""],
+        ["Beam", "120°", ""],
+        ["Power factor", ">0.9", "THD <20%"],
+        ["Operating temp", "-13°F to 140°F", ""],
+        ["Size", "1.2 × 1.2 in", "19.3, 31.3 or 43.3 in long"],
+        ["Warranty", "10 years", "120–277V"]
+      ],
+      docs: [["Spec sheet", "spec-sheets/RP-LBI-Spec_Sheet.pdf", "PDF, 15 pages, rev. 06.30.26"]],
+      parts: [["RP-LBI-G1-2F-6W-40K-WC", "2 ft linkable bar, standard 3500/4000/5000K", "6/9/12 W", "780–1,560"], ["RP-LBI-G1-2F-6W-27K-WC2", "2 ft linkable bar, warm 2700/3000/3500K", "6/9/12 W", "696–1,524"], ["RP-LBI-G1-3F-10W-40K-WC", "3 ft linkable bar, standard 3500/4000/5000K", "10/12/15 W", "1,400–2,100"], ["RP-LBI-G1-3F-10W-27K-WC2", "3 ft linkable bar, warm 2700/3000/3500K", "10/12/15 W", "1,270–1,980"], ["RP-LBI-G1-4F-15W-40K-WC", "4 ft linkable bar, standard 3500/4000/5000K", "10/15/25 W", "1,462–3,653"], ["RP-LBI-G1-4F-15W-27K-WC2", "4 ft linkable bar, warm 2700/3000/3500K", "10/15/25 W", "1,260–3,400"]],
+      shot: "g1-hero.jpg",
+      cmp: { light: "White, 2700–5000K", watts: "2 ft: 6–12 W · 3 ft: 10–15 W · 4 ft: 10–25 W", lm: "2 ft: 696–1,560 · 3 ft: 1,270–2,100 · 4 ft: 1,260–3,653", control: "On-board switches, Simple or Silvair sensors", rating: "Dry and damp", eff: "Up to 146 lm/W", best: "Economical retrofits, fluorescent strip replacement" }
+    },
     {
       id: "g2", group: "white", name: "LBI G2", short: "G2",
       kind: "Linkable white light bar", glyph: "#fff4e0", profile: "slim",
@@ -153,7 +194,7 @@
         "Connect up to 40 from one power feed (30 4 ft units at 120VAC, 40 at 277VAC).",
         "Uses the same accessories as the regular LBI.",
         "Dims to off. Optional sensors and emergency battery backup.",
-        "Also offered as the LBI 65 Color Palette + for wet locations (IP65) and NSF-certified applications."
+        "Also offered as the LBI 65 Color Palette+ for wet locations (IP65) and NSF-certified applications."
       ],
       apps: ["Labs and clean rooms", "Venues and stages", "Aircraft cabins", "Signaling and safety", "Displays", "Wellness spaces"],
       photos: [["color-red.jpg", "Red"], ["color-orange.jpg", "Orange"], ["color-amber.jpg", "Amber"], ["color-green.jpg", "Green"], ["color-blue.jpg", "Blue"], ["color-violet.jpg", "Violet"]],
@@ -169,26 +210,26 @@
         ["Operating temp", "-13°F to 140°F", ""],
         ["Size", "1.2 × 1.2 in", "19.3 in or 43.3 in long"],
         ["Voltage", "120–347V", "347V for Canada"],
-        ["Wet locations", "LBI 65 Color Palette +", "IP65 and NSF"]
+        ["Wet locations", "LBI 65 Color Palette+", "IP65 and NSF"]
       ],
       docs: [["Sell sheet", "LBI-Palette-Sell-Sheet.pdf", "PDF, 2 pages"]],
       parts: [["RP-LBI-G2-2F-6W-RED-WC-ORG", "2 ft, red / orange", "6/9/12 W", "375–600"], ["RP-LBI-G2-2F-6W-AMB-WC-GRN", "2 ft, amber / green", "6/9/12 W", "1,175–2,125"], ["RP-LBI-G2-2F-6W-BLU-WC-VLT", "2 ft, blue / violet", "6/9/12 W", "15–300"], ["RP-LBI-G2-4F-25W-RED-WC-ORG", "4 ft, red / orange", "10/15/25 W", "750–1,200"], ["RP-LBI-G2-4F-25W-AMB-WC-GRN", "4 ft, amber / green", "10/15/25 W", "2,350–4,250"], ["RP-LBI-G2-4F-25W-BLU-WC-VLT", "4 ft, blue / violet", "10/15/25 W", "30–600"]],
       shot: "palette-hero-blue.jpg",
-      closeups: [["palette-bar-blue.jpg", "Same slim housing as LBI G2, shown in blue", "bar"], ["palette-hero.jpg", "LBI 65 Color Palette +, the IP65 version, in orange", "bar"]],
+      closeups: [["palette-bar-blue.jpg", "Same slim housing as LBI G2, shown in blue", "bar"], ["palette-hero.jpg", "LBI 65 Color Palette+, the IP65 version, in orange", "bar"]],
       cmp: { light: "6 fixed wavelengths, 2 per bar", watts: "2 ft: 6–12 W · 4 ft: 10–25 W", lm: "Varies by color: 15–4,250", control: "On-board switch, remote", rating: "Dry and damp", eff: "Varies by color", best: "Labs, signaling, specialty color" }
     },
     {
-      id: "plus", group: "color", name: "LBI Color Palette +", short: "Palette +",
+      id: "plus", group: "color", name: "LBI Color Palette+", short: "Palette+",
       kind: "Linkable RGBWW light bar: white light and limitless color in one", glyph: "conic", profile: "slim",
       tagline: "White light out of the box. Any color from the remote. One bar does both.",
-      lead: "LBI Color Palette + is an LBI G2 that can also mix limitless color. Every bar ships set to white light, with FlexWatt and FlexColor switches identical to LBI G2, so it installs, dims and qualifies for rebates like any white bar. Add the optional RGBWW remote and the same bar becomes a full color tunable fixture. RGBWW means red, green, blue, warm white and cool white LEDs in one bar: any color, and any white from 2700K to 5000K.",
+      lead: "LBI Color Palette+ is an LBI G2 that can also mix limitless color. Every bar ships set to white light, with FlexWatt and FlexColor switches identical to LBI G2, so it installs, dims and qualifies for rebates like any white bar. Add the optional RGBWW remote and the same bar becomes a full color tunable fixture. RGBWW means red, green, blue, warm white and cool white LEDs in one bar: any color, and any white from 2700K to 5000K.",
       features: [
         "Ships in white light mode: the DLC-listed, rebate-eligible configuration, set with switches identical to LBI G2.",
         "RGBWW light engine: red, green, blue, warm white and cool white in one bar, for limitless color mixing plus 2700K to 5000K white. Lumen values are for white light.",
         "Color is unlocked with the optional RGBWW remote (RP-REMOTE-RGB-WC, includes holster, sold separately). One remote adjusts every bar on the job.",
         "Link up to 40 bars from one power feed, in 2, 3 and 4 ft lengths.",
         "0-10V dimming to off, sensor ready, Simple or Networked Lighting Controls.",
-        "Also offered as LBI 65 Palette for IP65-rated and NSF-certified applications."
+        "Also offered as LBI 65 Color Palette+ for IP65-rated and NSF-certified applications."
       ],
       apps: ["Theaters and cinemas", "Entertainment venues", "Bars and restaurants", "Bridges and facades", "Retail displays", "Houses of worship"],
       photos: [["plus-theater.jpg", "Cinema lobby"], ["plus-bridge.jpg", "Pedestrian bridge"], ["plus-venue.jpg", "Entertainment venue"], ["plus-bar.jpg", "Hotel bar"]],
@@ -216,7 +257,7 @@
       cmp: { light: "RGBWW: white 2700–5000K + limitless color", watts: "2 ft: 6–12 W · 3 ft: 10–18 W · 4 ft: 12–25 W", lm: "White: 2 ft 960–1,920 · 3 ft 1,600–2,880 · 4 ft 1,920–4,000", control: "Switches for white (as shipped) · optional RGBWW remote for color", rating: "Dry and damp · IP65 version", eff: "160 lm/W (white)", best: "Hospitality, venues, retail, facades" }
     },
     {
-      id: "x", group: "color", name: "LBI Color Palette X", short: "Palette X",
+      id: "x", group: "color", name: "LBI Color PaletteX", short: "PaletteX",
       kind: "Linkable RGBWW color tunable light bar with DMX", glyph: "conic", profile: "slim", pending: true,
       tagline: "Full RGBWW color under DMX control. Program scenes, cues and shows from the console your venue already runs.",
       lead: "A linkable RGBWW light bar driven over DMX. Red, green, blue, warm white and cool white each have their own channel, so one bar mixes any color and any white from the console, for venues and installations that need programmed scenes and precise control of every run. Full specifications will be added when the spec sheet is ready.",
@@ -236,7 +277,7 @@
       cmp: { light: "RGBWW: full color + tunable white", watts: "Pending spec sheet", lm: "Pending spec sheet", control: "DMX console · RGBWW channels", rating: "Pending spec sheet", eff: "Pending spec sheet", best: "Venues, shows, architectural" }
     },
     {
-      id: "palette65", group: "color", name: "LBI 65 Color Palette +", short: "LBI 65 Color Palette +",
+      id: "palette65", group: "color", name: "LBI 65 Color Palette+", short: "LBI 65 Color Palette+",
       kind: "IP65 linkable precision wavelength light bar, set by remote", glyph: "linear-gradient(90deg,#ff2a1a,#ff7a10,#ffb000,#19e05a,#2a6bff,#8a3dff)", glyphShadow: "#ff7a10", profile: "wet",
       tagline: "The LBI Color Palette, sealed for wet locations. The same six colors, set with the included remote.",
       lead: "An IP65-rated linkable LED bar with an internal driver, delivering precision wavelength selection. Liquid-tight end caps and the same seamless, vapor-tight linking as the LBI 65. There are no switches on the bar: each bar carries two colors and four wattages, chosen with the included remote.",
@@ -280,6 +321,7 @@
   const h = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const fmt = (n) => n.toLocaleString("en-US");
   const kcode = (k) => `${String(k).slice(0, 2)}K`;
+  const cctList = (v, st) => v.cctSets ? v.cctSets[(st && st.set) || 0].ccts : v.ccts;
 
   function cctToRgb(k) {   // Tanner Helland approximation
     const t = k / 100; let r, g, b;
@@ -303,7 +345,7 @@
     plus: { mode: "white", w: null, k: 4000, on: true, hue: 210, level: 0.85, white: false, rk: 4000, cycle: false },
     dmx: { r: 40, g: 120, b: 255, ww: 0, cw: 0 }
   };
-  V.filter(v => v.group === "white").forEach(v => { state.white[v.id] = { w: null, k: v.cctDef }; });
+  V.filter(v => v.group === "white").forEach(v => { state.white[v.id] = { w: null, k: v.cctDef, set: 0 }; });
 
   // ---------- switcher + family stage ----------
   function renderSwitcher() {
@@ -312,7 +354,7 @@
     }</div>`;
     $("#switcher-row").innerHTML = group("white", "White") + '<span class="sw-divider" aria-hidden="true"></span>' + group("color", "Color");
   }
-  const FAM_SUB = { g2: "Linkable white bar", lbi65: "IP65 for wet locations", max: "High-lumen strip", palette: "6 precision colors", palette65: "IP65, 6 colors, by remote", plus: "RGBWW: white + color, remote", x: "RGBWW over DMX" };
+  const FAM_SUB = { g2: "Linkable white bar", g1: "Economical white bar", lbi65: "IP65 for wet locations", max: "High-lumen strip", palette: "6 precision colors", palette65: "IP65, 6 colors, by remote", plus: "RGBWW: white + color, remote", x: "RGBWW over DMX" };
   function renderFamily() {
     const row = (v) => {
       const cls = v.profile === "max" ? "thick" : v.profile === "wet" ? "wet" : "";
@@ -358,7 +400,7 @@
     if (animate) { ["#product-head", "#details"].forEach(s => { const el = $(s); el.classList.remove("fade"); void el.offsetWidth; el.classList.add("fade"); }); }
   }
 
-  // Popular accessories: one tab each for LBI + LBI G2, LBI 65 and LBI MAX. The open tab follows the variant on the stage.
+  // Popular accessories: one tab each for LBI G1 + LBI G2, LBI 65 and LBI MAX. The open tab follows the variant on the stage.
   // Without the script every panel shows, each under its own heading.
   function selectAcc(key, focus) {
     const acc = document.querySelector("[data-acc]");
@@ -428,6 +470,29 @@
       <div class="brandmark">REMPHOS</div>
     </div>`;
   }
+  // The LBI 65's own remote, drawn after the real one (David, 2026-10-09; spec sheet p. 1 and 7): power and RESET, CCT+/CCT- and
+  // LM+/LM- steps, Q1 and Q2, six color temperature keys and PW1 to PW4, the four FlexWatt wattages of the bar's length.
+  const R65_K = { 2700: "#f26a3c", 3000: "#f6c21c", 3500: "#fbe07c", 4000: "#fdebb0", 5000: "#cdd9f6", 5700: "#5d92e2" };
+  // The keys as drawn on the spec sheet (David, 2026-10-12): a black sun with a white label band for CCT+ and CCT−,
+  // a white sun with a chevron and a label band for LM+ and LM−.
+  const RAYS = (c, w) => `<path d="M12 .8v3.4M12 19.8v3.4M.8 12h3.4M19.8 12h3.4M4.1 4.1l2.4 2.4M17.5 17.5l2.4 2.4M4.1 19.9l2.4-2.4M17.5 6.5l2.4-2.4M8.2 2.4l1.1 2.5M14.7 19.1l1.1 2.5M2.4 8.2l2.5 1.1M19.1 14.7l2.5 1.1M2.4 15.8l2.5-1.1M19.1 9.3l2.5-1.1M8.2 21.6l1.1-2.5M14.7 4.9l1.1-2.5" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/>`;
+  const BAND = (txt, fg) => `<rect x="3" y="9.6" width="18" height="4.8" rx="0.6" fill="#fff"/><text x="12" y="13.4" text-anchor="middle" font-size="4.4" font-weight="800" font-family="Arial Narrow, Roboto Condensed, Avenir Next Condensed, sans-serif" fill="${fg}">${txt}</text>`;
+  const SUN = txt => `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6.6" fill="#17181b"/>${RAYS("#17181b", 1.7)}${BAND(txt, "#17181b")}</svg>`;
+  const LMI = (up, txt) => `<svg viewBox="-1 -4 26 32" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="none" stroke="#fff" stroke-width="1.5"/>${RAYS("#fff", 1.4)}<path d="${up ? "M7.2 1.2 12 -3.4l4.8 4.6z" : "M7.2 22.8 12 27.4l4.8-4.6z"}" fill="#fff"/>${BAND(txt, "#2b2c30")}</svg>`;
+  function remoteLbi65(v, sz, st) {
+    const key = (k, cls, inner, aria, extra = "") => `<button type="button" class="r65-key ${cls}" data-r65k="${k}" aria-label="${h(aria)}"${extra}>${inner}</button>`;
+    return `<div class="remote r65" role="group" aria-label="LBI 65 remote">
+      <div class="r65-top">${key("power", "pwr", `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v8M7 6.3a7.5 7.5 0 1 0 10 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>`, st.off ? "Turn on" : "Turn off", ` aria-pressed="${!st.off}"`)}${key("reset", "reset", "<span>RESET</span>", "Reset to the factory setting")}</div>
+      <div class="r65-adj">
+        <div class="r65-col lite">${key("cool", "icon", SUN("CCT+"), "CCT+: one step cooler")}${key("warm", "icon", SUN("CCT−"), "CCT−: one step warmer")}</div>
+        <div class="r65-col">${key("q1", "q", "<span>Q1</span>", "Q1", ' aria-disabled="true"')}${key("q2", "q", "<span>Q2</span>", "Q2", ' aria-disabled="true"')}</div>
+        <div class="r65-col grey">${key("up", "icon", LMI(true, "LM+"), "LM+: brighter")}${key("down", "icon", LMI(false, "LM−"), "LM−: dimmer")}</div>
+      </div>
+      <div class="r65-cct">${v.ccts.map((k, i) => `<button type="button" class="r65-key cct${!st.off && k === st.k ? " sel" : ""}" style="--c:${R65_K[k] || cctToRgb(k)}" data-r65="cct" data-i="${i}" aria-pressed="${k === st.k}" aria-label="${k}K"><span>${k}K</span></button>`).join("")}</div>
+      <div class="r65-pw">${sz.watts.map((w, i) => `<button type="button" class="r65-key pw${!st.off && i === st.w ? " sel" : ""}" data-r65="watt" data-i="${i}" aria-pressed="${i === st.w}" aria-label="PW${i + 1}: ${w} W"><span>PW${i + 1}</span></button>`).join("")}</div>
+      <div class="r65-brand"><img src="assets/img/brand/remphos-wordmark.png" alt="RemPhos" width="120" height="18"></div>
+    </div>`;
+  }
   const REMOTE_NOTE = "No switches on the bar: set it on site with the included remote, or order a factory preset to save install time. Remote layout is illustrative.";
 
   function renderControls(v) {
@@ -437,10 +502,16 @@
       const sz = v.sizes[state.size], st = state.white[v.id];
       if (st.w == null || st.w >= sz.watts.length) st.w = sz.def;
       el.innerHTML = `<div class="remote-layout">
-        ${remote65([
-          { key: "watt", label: "FlexWatt", keys: sz.watts.map((w, i) => ({ label: `${w}W`, sel: i === st.w })) },
-          { key: "cct", label: "FlexColor", keys: v.ccts.map(k => ({ label: `${(k / 1000).toFixed(1).replace(".0", "")}K`, aria: `${k}K`, c: cctToRgb(k), sel: k === st.k })) }])}
-        <p class="illus">${REMOTE_NOTE}</p>
+        ${remoteLbi65(v, sz, st)}
+        <div class="r65-legend">
+          <p class="illus">The included remote. There are no switches on the bar: set it on site, or order a factory preset to save install time. Try the keys.</p>
+          <dl>
+            <div><dt>2700K to 5700K</dt><dd>FlexColor: pick one of six color temperatures. CCT+ and CCT− step cooler or warmer.</dd></div>
+            <div><dt>PW1 to PW4</dt><dd>FlexWatt: ${sz.watts.map((w, i) => `PW${i + 1} ${w} W`).join(", ")} on the ${state.size} ft bar.</dd></div>
+            <div><dt>LM+ and LM−</dt><dd>Brighter or dimmer.</dd></div>
+            <div><dt>Power and RESET</dt><dd>On or off, and back to the factory setting, ${sz.watts[sz.def]} W at 4000K.</dd></div>
+          </dl>
+        </div>
       </div>`;
     } else if (v.id === "palette65") {
       const sz = v.sizes[state.size], st = state.p65;
@@ -461,10 +532,10 @@
     } else if (v.group === "white") {
       const sz = v.sizes[state.size], st = state.white[v.id];
       if (st.w == null || st.w >= sz.watts.length) st.w = sz.def;
-      const kIdx = v.ccts.indexOf(st.k);
-      el.innerHTML = `<div class="ctl-grid">
+      const cc = cctList(v, st), kIdx = cc.indexOf(st.k);
+      el.innerHTML = `${v.cctSets ? `<div class="mode-pills" role="group" aria-label="Model: color temperature range">${v.cctSets.map((c, j) => `<button class="mode-pill" data-cset="${j}" aria-pressed="${(st.set || 0) === j}" style="--c:${cctToRgb(c.def)}"><i></i>${c.label} ${c.range} <small>${c.code}</small></button>`).join("")}</div>` : ""}<div class="ctl-grid">
         ${slide("watt", "FlexWatt switch", sz.watts.map(w => ({ label: `${w}W` })), st.w)}
-        ${slide("cct", "FlexColor switch", v.ccts.map(k => ({ label: `${(k / 1000).toFixed(1).replace(".0", "")}K`, aria: `${k}K`, sub: v.cctRemoteOnly.includes(k) ? "remote" : "" })), kIdx)}
+        ${slide("cct", "FlexColor switch", cc.map(k => ({ label: `${(k / 1000).toFixed(1).replace(".0", "")}K`, aria: `${k}K`, sub: v.cctRemoteOnly.includes(k) ? "remote" : "" })), kIdx)}
       </div>
       <p class="illus">Set on site with switches on the bar, or order factory preset to save install time.</p>`;
     } else if (v.id === "palette") {
@@ -486,15 +557,7 @@
       const colors = [["R", 0], ["G", 120], ["B", 230], ["", 30], ["", 55], ["", 90], ["", 165], ["", 190], ["", 210], ["", 275], ["", 300], ["", 330]];
       const names = { 0: "Red", 120: "Green", 230: "Blue", 30: "Orange", 55: "Yellow", 90: "Lime", 165: "Teal", 190: "Cyan", 210: "Azure", 275: "Violet", 300: "Magenta", 330: "Pink" };
       const kIdx = v.ccts.indexOf(p.k);
-      el.innerHTML = `
-      <div class="plus-note">
-        <span class="pn-ic" aria-hidden="true">${ICON.tag}</span>
-        <div><b>Ships in white light mode.</b> Every LBI Color Palette + leaves the factory set to white, with FlexWatt and FlexColor switches identical to LBI G2, so it is DLC listed and rebate eligible as installed. Color is unlocked with the optional RGBWW remote <span class="mono">RP-REMOTE-RGB-WC</span>, sold separately. One remote adjusts every bar on the job.</div>
-      </div>
-      <div class="mode-pills" role="group" aria-label="What is controlling the bar">
-        <button class="mode-pill" data-pmode="white" aria-pressed="${!remoteMode}" style="--c:#fff4e0"><i></i>White light via switches <small>as shipped</small></button>
-        <button class="mode-pill" data-pmode="remote" aria-pressed="${remoteMode}" style="--c:${hsl(p.hue, 95, 55)}"><i class="${p.white ? "" : "rainbow"}"></i>Color via optional remote</button>
-      </div>
+      const remoteHtml = `
       <div class="sub-head"><h4>Optional RGBWW remote</h4><span>RP-REMOTE-RGB-WC, includes holster. One remote for every bar. RGBWW: red, green, blue, warm white and cool white.</span></div>
       <div class="remote-layout">
         <div class="remote rgbww${remoteMode ? " active" : ""}" role="group" aria-label="RGBWW remote control">
@@ -524,12 +587,27 @@
           <p class="illus">Interactive preview of the RGBWW remote. The key layout follows the catalog; the spec sheet is the final reference.</p>
         </div>
       </div>
-      <div class="sub-head"><h4>Switches on the back of the bar</h4><span>Identical to LBI G2. This is how every LBI Color Palette + ships.</span></div>
-      <div class="ctl-grid${remoteMode ? " dimmed" : ""}">
+      <div class="sub-head"><h4>Switches on the back of the bar</h4><span>Identical to LBI G2. This is how every LBI Color Palette+ ships.</span></div>
+      <div class="ctl-grid dimmed">
         ${slide("pw2", "FlexWatt switch", sz.watts.map(w => ({ label: `${w}W` })), p.w)}
         ${slide("pk2", "FlexColor switch", v.ccts.map(k => ({ label: `${(k / 1000).toFixed(1).replace(".0", "")}K`, aria: `${k}K` })), kIdx)}
       </div>
       <p class="illus">Factory set to <b>${v.factoryW[state.size]}W · 4000K</b>. Moving a switch sets the white light the bar returns to whenever the remote is not in use.</p>`;
+      el.innerHTML = `
+      <div class="plus-note">
+        <span class="pn-ic" aria-hidden="true">${ICON.tag}</span>
+        <div><b>Ships in white light mode.</b> Every LBI Color Palette+ leaves the factory set to white, with FlexWatt and FlexColor switches identical to LBI G2, so it is DLC listed and rebate eligible as installed. Color is unlocked with the optional RGBWW remote <span class="mono">RP-REMOTE-RGB-WC</span>, sold separately. One remote adjusts every bar on the job.</div>
+      </div>
+      <div class="mode-pills" role="group" aria-label="What is controlling the bar">
+        <button class="mode-pill" data-pmode="white" aria-pressed="${!remoteMode}" style="--c:#fff4e0"><i></i>White light via switches <small>as shipped</small></button>
+        <button class="mode-pill" data-pmode="remote" aria-pressed="${remoteMode}" style="--c:${hsl(p.hue, 95, 55)}"><i class="${p.white ? "" : "rainbow"}"></i>Color via optional remote</button>
+      </div>
+${remoteMode ? remoteHtml : `
+      <div class="ctl-grid">
+        ${slide("pw2", "FlexWatt switch", sz.watts.map(w => ({ label: `${w}W` })), p.w)}
+        ${slide("pk2", "FlexColor switch", v.ccts.map(k => ({ label: `${(k / 1000).toFixed(1).replace(".0", "")}K`, aria: `${k}K` })), kIdx)}
+      </div>
+      <p class="illus">Set on site with the switches on the back of the bar, identical to LBI G2. Factory set to <b>${v.factoryW[state.size]}W · 4000K</b>.</p>`}`;
     } else if (v.id === "x") {
       const d = state.dmx, CH = { r: 1, g: 2, b: 3, ww: 4, cw: 5 };   // RGBWW: five channels, two of them white
       const fader = (k, name, col) => `<div class="fader" style="--fc:${col}"><span class="ch">CH ${CH[k]}</span><output id="o-${k}">${String(d[k]).padStart(3, "0")}</output><div class="slot"><input type="range" min="0" max="255" value="${d[k]}" data-fader="${k}" aria-label="${name.replace("<br>", " ")} channel"></div><span class="name">${name}</span></div>`;
@@ -547,7 +625,7 @@
             </div>
           </div>
         </div>
-        <p class="illus">Interactive preview with an example 5-channel RGBWW map: red, green, blue, warm white and cool white, each on its own DMX channel. The final personality and channel order come from the LBI Color Palette X spec sheet.</p>`;
+        <p class="illus">Interactive preview with an example 5-channel RGBWW map: red, green, blue, warm white and cool white, each on its own DMX channel. The final personality and channel order come from the LBI Color PaletteX spec sheet.</p>`;
     }
     applyLight();
   }
@@ -570,10 +648,11 @@
       const st = state.white[v.id];
       color = cctToRgb(st.k);
       level = 0.38 + 0.62 * (st.w / (sz.watts.length - 1));
+      if (v.id === "lbi65") level = st.off ? 0 : level * (st.dim || 1);   // the remote's power and LM+/LM- keys
       const w = sz.watts[st.w];
       const lm = sz.lm ? `≈ ${fmt(sz.lm[st.w])} lm` : `${sz.range} lm range`;
-      read = [["Output", `<b>${lm}</b>${sz.lm && v.lmNote ? ` ${v.lmNote}` : ""}`], ["Setting", `<b>${w} W · ${st.k}K</b>`],
-              ["Part #", `<span class="mono pn">${v.pn(state.size, w, kcode(st.k))}</span>`]];
+      read = [["Output", `<b>${st.off ? "Off" : lm}</b>${!st.off && sz.lm && v.lmNote ? ` ${v.lmNote}` : ""}`], ["Setting", `<b>${w} W · ${st.k}K${v.id === "lbi65" && !st.off && (st.dim || 1) < 1 ? ` · dimmed to ${Math.round(st.dim * 100)}%` : ""}</b>`],
+              ["Part #", `<span class="mono pn">${v.pn(state.size, w, kcode(st.k), st)}</span>`]];
     } else if (v.id === "palette65") {
       const m = PALETTE_MODELS[state.pal.model], c = PALETTE_COLORS[m.colors[state.pal.side]], w = state.p65.w ?? sz.def;
       color = c.hex; level = 0.45 + 0.55 * (w / (sz.watts.length - 1));
@@ -619,7 +698,7 @@
   }
 
   function resCard(icon, title, meta, href) {
-    if (href) return `<a class="res" href="assets/docs/${href}" target="_blank" rel="noopener"><span class="ic">${ICON[icon]}</span><span><h4>${h(title)}</h4><p>${h(meta)}</p><span class="state ready">Available</span></span></a>`;
+    if (href) return `<a class="res" href="${docUrl(href)}" target="_blank" rel="noopener"><span class="ic">${ICON[icon]}</span><span><h4>${h(title)}</h4><p>${h(meta)}</p><span class="state ready">Available</span></span></a>`;
     return `<div class="res soon"><span class="ic">${ICON[icon]}</span><span><h4>${h(title)}</h4><p>${h(meta)}</p><span class="state soon">Coming soon</span></span></div>`;
   }
 
@@ -649,7 +728,7 @@
         </div>
       </section>
       <section aria-labelledby="sp-h">
-        <div class="section-head"><h3 id="sp-h">At a glance</h3>${v.docs[0] ? `<a href="assets/docs/${v.docs[0][1]}" target="_blank" rel="noopener">Full ${h(v.docs[0][0].toLowerCase())} ›</a>` : ""}</div>
+        <div class="section-head"><h3 id="sp-h">At a glance</h3>${v.docs[0] ? `<a href="${docUrl(v.docs[0][1])}" target="_blank" rel="noopener">Full ${h(v.docs[0][0].toLowerCase())} ›</a>` : ""}</div>
         <div class="spec-tiles" style="--cols:${v.specs.length % 5 === 0 ? 5 : 4}">${v.specs.map(([k, val, n]) => `<div><div class="k">${h(k)}</div><div class="v${/^RP-[A-Z0-9-]+$/.test(val) ? " mono" : ""}">${h(val)}</div>${n ? `<div class="n">${h(n)}</div>` : ""}</div>`).join("")}</div>
       </section>
       <section aria-labelledby="pn-h">
@@ -674,14 +753,14 @@
     const head = `<tr><th scope="col"><span class="visually-hidden">Spec</span></th>${V.map(v => `<th scope="col" data-col="${v.id}"><button class="colbtn" data-go="${v.id}" data-scroll="1"><span class="sw-glyph" style="--g:${glyphCss(v)}${v.glyph === "conic" || v.glyphShadow ? `;--gs:${v.glyphShadow || "#7a6cff"}` : ""}"></span><span class="grp">${v.group === "white" ? "White" : "Color"}</span><strong>${h(v.name)}</strong></button></th>`).join("")}</tr>`;
     const body = ROWS.map(([lab, key]) => `<tr><th scope="row">${lab}</th>${V.map(v => `<td data-col="${v.id}" class="${/^Pending/.test(v.cmp[key]) ? "tbd" : ""}">${h(v.cmp[key]).split(" · ").join("<br>")}</td>`).join("")}</tr>`).join("")
       + `<tr><th scope="row">Lengths</th>${V.map(v => `<td data-col="${v.id}">${Object.keys(v.sizes).map(s => `${s} ft`).join(", ")}</td>`).join("")}</tr>`
-      + `<tr><th scope="row">Linking</th>${V.map(v => `<td data-col="${v.id}">${v.pending ? "Linkable" : v.id === "max" ? "20 @ 120V · 40 @ 277V" : "Up to 40 from one feed"}</td>`).join("")}</tr>`;
+      + `<tr><th scope="row">Linking</th>${V.map(v => `<td data-col="${v.id}">${v.pending ? "Linkable" : v.link || (v.id === "max" ? "20 @ 120V · 40 @ 277V" : "Up to 40 from one feed")}</td>`).join("")}</tr>`;
     $("#cmp").innerHTML = `<thead>${head}</thead><tbody>${body}</tbody>`;
     // Phones get one card per variant instead of a 7-column table.
     const cards = $("#cmp-cards");
     if (cards) {
       const facts = v => [...ROWS.map(([lab, key]) => [lab, h(v.cmp[key]).split(" · ").join("<br>")]),
         ["Lengths", Object.keys(v.sizes).map(s => `${s} ft`).join(", ")],
-        ["Linking", v.pending ? "Linkable" : v.id === "max" ? "20 @ 120V · 40 @ 277V" : "Up to 40 from one feed"]];
+        ["Linking", v.pending ? "Linkable" : v.link || (v.id === "max" ? "20 @ 120V · 40 @ 277V" : "Up to 40 from one feed")]];
       cards.innerHTML = V.map(v => `<details class="cmp-card" data-col="${v.id}"${v.id === state.id ? " open" : ""}>
         <summary><span class="sw-glyph" style="--g:${glyphCss(v)}"></span><span class="t"><span class="grp">${v.group === "white" ? "White" : "Color"}</span><strong>${h(v.name)}</strong></span><span class="chev" aria-hidden="true">›</span></summary>
         <dl>${facts(v).map(([k, val]) => `<div><dt>${k}</dt><dd>${val}</dd></div>`).join("")}</dl>
@@ -697,7 +776,7 @@
   // ---------- finder ----------
   const finder = { light: null, need: null };
   const NEEDS = {
-    white: [["g2", "Indoor, dry or damp", "Offices, retail, schools, back of house"], ["lbi65", "Wet, outdoor or washdown", "Garages, coolers, canopies, tunnels"], ["max", "High ceilings, more lumens", "Warehouses, manufacturing, big box retail"]],
+    white: [["g1", "Economical, indoor", "Fluorescent strip and troffer replacement on a budget"], ["g2", "Indoor, dry or damp", "Offices, retail, schools, back of house"], ["lbi65", "Wet, outdoor or washdown", "Garages, coolers, canopies, tunnels"], ["max", "High ceilings, more lumens", "Warehouses, manufacturing, big box retail"]],
     color: [["palette", "One exact color, indoors", "Pick 1 of 6 wavelengths, set on the bar"], ["plus", "White now, any color later", "Ships in white mode; RGBWW color with the optional remote"], ["x", "Any color, programmed shows", "RGBWW over DMX, with warm and cool white channels"], ["palette65", "One exact color, wet locations", "IP65; pick 1 of 6 wavelengths, set with the remote"]]
   };
   function renderFinder() {
@@ -720,12 +799,14 @@
   // ---------- events ----------
   // Switching variants: if the configurator stage is on screen, it stays exactly where it is (the bar
   // must not jump away under the user's hand); from anywhere else the page goes to the new variant's hero.
-  function go(id) {
+  function go(id, open) {
     if (!byId[id]) return;
-    const stage = $(".stage"), before = stage.getBoundingClientRect();
+    const stage = $(".stage"), before = stage.getBoundingClientRect(), cmp = $("#compare"), cmpBefore = cmp && cmp.getBoundingClientRect();
     const topEdge = (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0);
-    const visible = Math.min(before.bottom, innerHeight) - Math.max(before.top, topEdge);
-    const inConfigurator = visible > 120;
+    const seen = (r) => Math.min(r.bottom, innerHeight) - Math.max(r.top, topEdge);
+    const inConfigurator = seen(before) > 120;
+    // At the compare table the page also holds still (David, 2026-10-08): the new model's column lights up in place.
+    const inCompare = !inConfigurator && !open && cmpBefore && seen(cmpBefore) > 160;
     state.id = id;
     renderProduct(true);
     try { history.replaceState(null, "", `#${id}`); } catch (e) { /* sandboxed */ }
@@ -737,21 +818,53 @@
       if (target < topEdge && target + after.height < innerHeight) target = Math.min(topEdge, innerHeight - after.height);
       const d = after.top - target;
       if (Math.abs(d) > 0.5) window.scrollBy({ top: d, left: 0, behavior: "instant" });
+    } else if (inCompare) {
+      const d = cmp.getBoundingClientRect().top - cmpBefore.top;
+      if (Math.abs(d) > 0.5) window.scrollBy({ top: d, left: 0, behavior: "instant" });
     } else {
       $("#product").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
     }
   }
 
+  // Scroll catch on laptops (David, 2026-10-08): scrolling down with a mouse or trackpad stops the page for a moment
+  // with the configurator framed under the switcher. Browsers only let a page cancel the first wheel event of a
+  // gesture, so instead of cancelling, the page locks scrolling (html.scroll-hold) once the stage reaches its spot.
+  // The lock lasts until that gesture, trackpad momentum included, has ended (at least 0.9 s, at most 2.5 s); the
+  // next scroll carries on, and scrolling up lets go at once. Only when the whole stage fits the window.
+  (() => {
+    const root = document.documentElement;
+    let armed = true, holding = false, held = 0, lastWheel = -1e9, prevGap = null, timer = 0;
+    const edge = () => parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
+    const gap = () => $(".stage").getBoundingClientRect().top - edge();   // > 0 while the stage is still below its spot
+    const fits = () => matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine)").matches && $(".stage").offsetHeight + edge() + 8 <= innerHeight;
+    const release = () => { holding = false; clearInterval(timer); root.classList.remove("scroll-hold"); };
+    addEventListener("wheel", (e) => { lastWheel = performance.now(); if (holding && e.deltaY < 0) release(); }, { passive: true });
+    addEventListener("scroll", () => {
+      const g = gap(), was = prevGap;
+      prevGap = g;
+      if (holding) return;
+      if (g > 2) { armed = true; return; }
+      if (!armed || was === null || was <= 0 || performance.now() - lastWheel > 250 || !fits()) return;
+      armed = false; holding = true; held = performance.now();
+      root.classList.add("scroll-hold");
+      if (g < -0.5) window.scrollBy({ top: g, left: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      timer = setInterval(() => {
+        const now = performance.now();
+        if ((now - held > 900 && now - lastWheel > 250) || now - held > 2500) release();
+      }, 50);
+    }, { passive: true });
+  })();
+
   document.addEventListener("click", (e) => {
     const t = e.target.closest("button, a");
     if (!t) return;
-    if (t.dataset.go) { go(t.dataset.go); return; }
+    if (t.dataset.go) { go(t.dataset.go, !!t.closest("#cmp-cards")); return; }   // a phone card's "Open" button still goes to the bar
     const v = byId[state.id];
     if (t.dataset.size) { state.size = t.dataset.size; renderControls(v); return; }
     if (t.dataset.slide) {
       const i = +t.dataset.i, k = t.dataset.slide;
       if (k === "watt") state.white[v.id].w = i;
-      if (k === "cct") state.white[v.id].k = v.ccts[i];
+      if (k === "cct") state.white[v.id].k = cctList(v, state.white[v.id])[i];
       if (k === "side") state.pal.side = i;
       if (k === "pw") state.pal.w = i;
       if (k === "pw2") { state.plus.w = i; state.plus.mode = "white"; }
@@ -762,16 +875,37 @@
     }
     if (t.dataset.r65) {
       const i = +t.dataset.i, k = t.dataset.r65;
-      if (v.id === "lbi65") { if (k === "watt") state.white.lbi65.w = i; if (k === "cct") state.white.lbi65.k = v.ccts[i]; }
+      if (v.id === "lbi65") { const st = state.white.lbi65; st.off = false; if (k === "watt") st.w = i; if (k === "cct") st.k = v.ccts[i]; }
       if (v.id === "palette65") { if (k === "watt") state.p65.w = i; if (k === "color") state.pal.side = i; }
       renderControls(v);
       const again = document.querySelector(`[data-r65="${k}"][data-i="${i}"]`); if (again) again.focus();
+      return;
+    }
+    if (t.dataset.r65k) {   // the LBI 65 remote's other keys
+      const k = t.dataset.r65k, st = state.white.lbi65, sz = v.sizes[state.size], i = v.ccts.indexOf(st.k);
+      if (k === "q1" || k === "q2") return;
+      if (k === "power") st.off = !st.off;
+      else if (k === "reset") { st.off = false; st.dim = 1; st.w = sz.def; st.k = v.cctDef; }
+      else {
+        st.off = false;
+        if (k === "cool") st.k = v.ccts[Math.min(v.ccts.length - 1, i + 1)];
+        if (k === "warm") st.k = v.ccts[Math.max(0, i - 1)];
+        if (k === "up") st.dim = Math.min(1, +((st.dim || 1) + 0.2).toFixed(2));
+        if (k === "down") st.dim = Math.max(0.2, +((st.dim || 1) - 0.2).toFixed(2));
+      }
+      renderControls(v);
+      const again = document.querySelector(`[data-r65k="${k}"]`); if (again) again.focus();
       return;
     }
     if (t.dataset.color) {
       const c = t.dataset.color;
       state.pal.model = PALETTE_MODELS.findIndex(m => m.colors.includes(c));
       state.pal.side = PALETTE_MODELS[state.pal.model].colors.indexOf(c);
+      renderControls(v); return;
+    }
+    if (t.dataset.cset) {   // LBI G1: standard (WC) or warm (WC2) model, each with its own FlexColor positions
+      const st = state.white[v.id], set = v.cctSets[+t.dataset.cset];
+      st.set = +t.dataset.cset; if (!set.ccts.includes(st.k)) st.k = set.def;
       renderControls(v); return;
     }
     if (t.dataset.pmode) { state.plus.mode = t.dataset.pmode; if (t.dataset.pmode === "remote") state.plus.on = true; renderControls(v); return; }

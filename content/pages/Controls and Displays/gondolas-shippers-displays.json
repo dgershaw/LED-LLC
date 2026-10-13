@@ -1,0 +1,41 @@
+{
+  "title": "Gondolas + Shippers + Displays",
+  "subtitle": "",
+  "headline": "",
+  "intro": "",
+  "callouts": [],
+  "features": [],
+  "tables": [
+    {
+      "title": "Gondolas + Shippers + Displays",
+      "columns": [
+        "Part #",
+        "Item",
+        "Size",
+        "Notes"
+      ],
+      "rows": [
+        "LED-9902 | 2 ft Gondola w/ LED Card | 24 in x 14 in x 78 in | Product(s) ordered separately",
+        "LED-9903 | 3 ft Gondola w/ LED Card | 36 in x 14 in x 78 in | Product(s) ordered separately",
+        "LED-FCT8-M | FlexColor T8 Shipper | 17 in x 13.5 in x 17 in | Product(s) ordered separately; Product qty - 50 LED-XXT8",
+        "LED-9800 | Screw-in Retrofit w/ FlexColor (countertop display) | 8 in x 10 in x 4 in | Product(s) ordered separately",
+        "LED-9900 | Screw-in Retrofit w/ Horizontal & Base-down Socket Positions (countertop display) | 6 in x 10 in x 16 in | Product(s) ordered separately",
+        "LED-9750-G2 | Pin-base Retrofits (countertop display) | 9.5 in x 8 in x 10 in | Product(s) ordered separately",
+        "RP-LBI-G1-1F-2X-DISPLAY | LBI – Linkable Bar / Internal Driver (display) | 10 in x 9 in x 22 in | Product(s) included w/ display",
+        "SL-9101 | Solar Multifunctional Flood Light (display) | 9 in x 9 in x 16 in | Product(s) included w/ display"
+      ],
+      "notes": [
+        "The catalog has no table on this spread; each row is one labelled item (name, size, part number) and the 'Notes' column carries the bracket caption printed beneath the group it belongs to: 'PRODUCT(S) ORDERED SEPARATELY' (left page: both gondolas and the T8 shipper; right page: LED-9800, LED-9900, LED-9750-G2) or 'PRODUCT(S) INCLUDED W/ DISPLAY' (RP-LBI-G1-1F-2X-DISPLAY and SL-9101)",
+        "Sizes are printed in capitals as W x D x H style triplets, e.g. '24 IN x 14 IN x 78 IN'; the catalog does not label which dimension is which",
+        "'PRODUCT QTY - 50 LED-XXT8' is printed under the FlexColor T8 shipper: the shipper holds 50 FlexColor T8 tubes (XX = wattage); the rendered tubes are labelled '15W | LED-15T8-FCAB48-G4'",
+        "Words in parentheses in the Item column ('countertop display', 'display') are added for clarity and are not printed in the catalog"
+      ],
+      "pdfPage": 37
+    }
+  ],
+  "footnotes": [
+    "Ordered separately: LED-9902, LED-9903, LED-FCT8-M, LED-9800, LED-9900, LED-9750-G2",
+    "Included with the display: RP-LBI-G1-1F-2X-DISPLAY, SL-9101",
+    "Holds 50 LED-XXT8 tubes (FlexColor T8 shipper)"
+  ]
+}

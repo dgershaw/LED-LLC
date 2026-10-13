@@ -1,0 +1,126 @@
+{
+  "title": "Area Lights",
+  "subtitle": "",
+  "headline": "All-in-one design w/ solar panel, light engine and battery built-in...",
+  "intro": "",
+  "callouts": [
+    "All-in-one design with solar panel, light engine and battery built in (SL-AIO)",
+    "A sleek design, easy installation and great performance (SL-SAL)",
+    "Exclusive long-lasting battery"
+  ],
+  "features": [
+    {
+      "label": "5-year warranty"
+    },
+    {
+      "label": "Battery charge time 7 hrs",
+      "note": "SL-AIO; SL-SAL 6 hrs"
+    },
+    {
+      "label": "Battery life up to 50 hrs"
+    },
+    {
+      "label": "Battery charge temp 32°F to 149°F",
+      "note": "SL-AIO; SL-SAL -4°F to 140°F"
+    },
+    {
+      "label": "Fixture operating temp -4°F to 122°F",
+      "note": "SL-AIO; SL-SAL -40°F to 140°F"
+    },
+    {
+      "label": "Replaceable battery"
+    },
+    {
+      "label": "Type III optics"
+    },
+    {
+      "label": "L70 50,000hrs rated life"
+    },
+    {
+      "label": "Exclusive long-lasting battery",
+      "note": "battery glyph key; marks SL-SAL-60L-FC-T3-BK-G3 and SL-SAL-100L-FC-T3-BK-G3"
+    },
+    {
+      "label": "Turtle friendly",
+      "note": "footer key icon; also overlaid on the SL-AIO-40L hero photo. The catalog does not attach it to a specific table row."
+    },
+    {
+      "label": "Operating modes: Timer | Motion sensing",
+      "note": "both the SL-AIO and SL-SAL tables"
+    },
+    {
+      "label": "Color: Gray",
+      "note": "grey dot beside -GY part numbers"
+    },
+    {
+      "label": "Color: Dark Bronze",
+      "note": "dark-red dot beside -DB part numbers"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Off-Grid Area Lights | All-In-One (SL-AIO)",
+      "columns": [
+        "Part #",
+        "Compares To",
+        "Lumens",
+        "FlexColor",
+        "EPA",
+        "Color",
+        "Dimensions",
+        "Listings"
+      ],
+      "rows": [
+        "SL-AIO-40L-FC-SF-GY | 20W HID | 4000 | 3000K/4000K/5000K | 1.5 | Gray | 31.5 in x 10.6 in x 8.4 in | CE, FCC, RoHS",
+        "SL-AIO-40L-FC-SF-DB | 20W HID | 4000 | 3000K/4000K/5000K | 1.5 | Dark Bronze | 31.5 in x 10.6 in x 8.4 in | CE, FCC, RoHS",
+        "SL-AIO-70L-FC-SF-GY | 40W HID | 7000 | 3000K/4000K/5000K | 2.85 | Gray | 39.2 in x 14.6 in x 10.2 in | CE, FCC, RoHS",
+        "SL-AIO-70L-FC-SF-DB | 40W HID | 7000 | 3000K/4000K/5000K | 2.85 | Dark Bronze | 39.2 in x 14.6 in x 10.2 in | CE, FCC, RoHS",
+        "SL-AIO-70L-FC2-SF-GY | 40W HID | 7000 | 2200K/2700K/3000K | 2.85 | Gray | 39.2 in x 14.6 in x 10.2 in | CE, FCC, RoHS",
+        "SL-AIO-70L-FC2-SF-DB | 40W HID | 7000 | 2200K/2700K/3000K | 2.85 | Dark Bronze | 39.2 in x 14.6 in x 10.2 in | CE, FCC, RoHS"
+      ],
+      "notes": [
+        "Catalog table title is OFF-GRID AREA LIGHTS (left-hand table, SL-AIO-40L pictured).",
+        "Operating modes: Timer | Motion sensing.",
+        "Catalog prints the dimensions as 31.5 IN x 10.6 INx 8.4 IN and 39.2 IN x 14.6 INx 10.2 IN (no W/D/H order stated).",
+        "Listings icons: CE, FCC and RoHS Compliant (one merged cell for all six rows).",
+        "No bold (factory-default) CCT is marked in the FlexColor cells.",
+        "Color dots beside the part numbers: grey = Gray (-GY), dark red = Dark Bronze (-DB)."
+      ],
+      "pdfPage": 32
+    },
+    {
+      "title": "Off-Grid Area Lights | SL-SAL",
+      "columns": [
+        "Part #",
+        "Features",
+        "Compares To",
+        "Wattage",
+        "Lumens",
+        "FlexColor",
+        "EPA",
+        "Dimensions*",
+        "Listings"
+      ],
+      "rows": [
+        "SL-SAL-60L-FC-T3-BK-G3 | Exclusive long-lasting battery | 250W HID | 30W | 6000 | 3000K/4000K/5000K | 4.5 | 36.0 in x 26.0 in x 32.0 in | Coming soon",
+        "SL-SAL-100L-FC-T3-BK-G3 | Exclusive long-lasting battery | 400W HID | 50W | 10,000 | 3000K/4000K/5000K | 6.5 | 40.0 in x 39.0 in x 35.0 in | Coming soon"
+      ],
+      "notes": [
+        "Catalog table title is OFF-GRID AREA LIGHTS (right-hand table, SL-SAL-100 pictured).",
+        "* Dimensions based on popular configuration.",
+        "Operating modes: Timer | Motion sensing.",
+        "Listings cell reads COMING SOON for both rows.",
+        "No bold (factory-default) CCT is marked in the FlexColor cell."
+      ],
+      "pdfPage": 32
+    }
+  ],
+  "footnotes": [
+    "* Based on popular configuration (SL-SAL dimensions).",
+    "Footer key (left): Turtle friendly icon, Gray dot, Dark Bronze dot.",
+    "Footer key (right): battery glyph = Exclusive long-lasting battery.",
+    "See pages 68 + 69 for pole recommendations.",
+    "The feature strip also gives RP-SAL values (7 hrs battery charge time, 32°F to 149°F battery charge temp, -4°F to 122°F fixture operating temp); RP-SAL is not in this page's tables.",
+    "Page footer: SOLERA SOLAR / OFF-GRID."
+  ]
+}

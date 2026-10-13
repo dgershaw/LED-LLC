@@ -242,7 +242,7 @@ html { scroll-padding-top: calc(var(--header-h) + var(--switcher-h) + 12px); }
 .app-note { font-size: 0.9375rem; color: var(--stage-ink); max-width: 60ch; line-height: 1.5; }
 .app-note .tagc { color: var(--c); font-weight: 600; }
 
-/* Remote (Palette +) */
+/* Remote (Palette+) */
 .remote-layout { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 28px 40px; align-items: start; }
 @media (max-width: 1279px) { .remote-layout { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 640px) { .remote-layout { justify-items: stretch; } .remote-layout .remote { justify-self: center; } .plus-note { grid-template-columns: minmax(0, 1fr); } .plus-note .pn-ic { display: none; } }
@@ -270,7 +270,7 @@ input[type="range"] { width: 100%; accent-color: #f4f5f8; }
 .hue-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 3px solid #111; cursor: pointer; }
 .hue-slider::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 3px solid #111; cursor: pointer; }
 
-/* DMX console (Palette X) */
+/* DMX console (PaletteX) */
 .console {
   display: grid; grid-template-columns: repeat(5, minmax(52px, 1fr)) minmax(0, 1.5fr); gap: 14px; align-items: stretch;
   background: #101217; border: 1px solid #2a2e38; border-radius: 16px; padding: 16px;
@@ -286,8 +286,8 @@ input[type="range"] { width: 100%; accent-color: #f4f5f8; }
 .fader .name { font-size: 0.8125rem; font-weight: 700; color: var(--fc, var(--stage-ink)); text-align: center; line-height: 1.15; }
 .dmx-side { display: grid; gap: 12px; align-content: start; }
 .dmx-addr { font-family: var(--font-mono); font-size: 1.5rem; color: #ff5b3a; background: #05060a; border: 1px solid #262a33; border-radius: 8px; padding: 8px 12px; letter-spacing: 0.08em; text-shadow: 0 0 10px #ff5b3a88; }
-.scene-btns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.scene-btns button { border: 1px solid #2f3440; background: #171a21; color: var(--stage-ink); border-radius: 8px; padding: 7px 10px; font-size: 0.8125rem; cursor: pointer; }
+.scene-btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: 8px; }
+.scene-btns button { border: 1px solid #2f3440; background: #171a21; color: var(--stage-ink); border-radius: 8px; padding: 7px 6px; white-space: nowrap; font-size: 0.8125rem; cursor: pointer; }
 .scene-btns button:hover { border-color: #5a6070; }
 .illus { font-size: 0.8125rem; color: var(--stage-muted); border-left: 2px solid var(--stage-line); padding-left: 10px; align-self: start; }
 
@@ -406,7 +406,7 @@ table.cmp { border-collapse: collapse; width: 100%; min-width: 860px; font-size:
 .taglist { display: flex; flex-wrap: wrap; gap: 6px; }
 
 
-/* Palette +: white light by switch (as shipped) or color by the optional RGBWW remote */
+/* Palette+: white light by switch (as shipped) or color by the optional RGBWW remote */
 .plus-note { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px 16px; border-radius: 12px; background: rgb(255 255 255 / 0.06); border: 1px solid var(--stage-line); font-size: 0.9375rem; line-height: 1.5; color: var(--stage-ink); }
 .plus-note .pn-ic { width: 36px; height: 36px; border-radius: 10px; background: rgb(255 255 255 / 0.08); display: grid; place-items: center; color: var(--stage-ink); }
 .plus-note .pn-ic svg { width: 20px; height: 20px; }
@@ -444,7 +444,7 @@ table.cmp { border-collapse: collapse; width: 100%; min-width: 860px; font-size:
 /* the light wash is wider than a phone screen */
 .stage-room { overflow-x: clip; }
 
-/* long variant notes (Palette + is "RGBWW: white + color, remote") wrap on phones instead of widening the page */
+/* long variant notes (Palette+ is "RGBWW: white + color, remote") wrap on phones instead of widening the page */
 @media (max-width: 480px) { .fam-bar .sub { white-space: normal; } }
 
 /* ---------- Popular accessories (merged from the catalog's LBI family pages, 2026-10-08) ---------- */
@@ -469,7 +469,7 @@ table.cmp { border-collapse: collapse; width: 100%; min-width: 860px; font-size:
 .acc-name { font-size: 0.875rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
 .acc-name small { display: block; font-size: 0.8125rem; font-weight: 500; color: var(--muted); }
 
-/* LBI 65 + LBI 65 Color Palette +: no switches on the bar, everything is set with the included remote */
+/* LBI 65 + LBI 65 Color Palette+: no switches on the bar, everything is set with the included remote */
 .remote.ip65 { width: 264px; gap: 14px; padding: 18px 16px 22px; }
 .remote.ip65 .rgrp { display: grid; gap: 7px; }
 .remote.ip65 .rlab { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #4a4e57; text-align: center; }
@@ -507,3 +507,44 @@ html { scroll-padding-top: calc(var(--safe-top, 0px) + var(--header-h) + var(--s
   .sw-group:last-child { flex-grow: 1.35; }
   .sw-btn { flex: 1 1 0; min-width: 0; padding: 6px 4px; font-size: 0.75rem; line-height: 1.12; text-align: center; text-wrap: balance; }
 }
+
+/* Scroll catch at the configurator (lbi.js): the page is locked for a moment. A stable gutter keeps the layout from shifting when the scrollbar goes away. */
+html { scrollbar-gutter: stable; }
+html.scroll-hold { overflow: hidden; }
+
+/* The LBI 65's real remote (David, 2026-10-09): white body, power and RESET, a grey adjust panel, a dark color temperature panel,
+   an outlined PW panel and the RemPhos wordmark, after the drawing on the spec sheet. */
+.remote.r65 { width: 232px; padding: 26px 16px 18px; gap: 14px; border-radius: 64px 64px 40px 40px; background: #fff; border: 2px solid #8e8f94; box-shadow: 0 18px 40px rgb(0 0 0 / 0.35); }
+.r65-key { border: 0; cursor: pointer; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 0.8125rem; color: #1b1c20;
+  transition: transform .08s; font-family: inherit; padding: 0; }
+.r65-key > span { display: inline-block; transform: scaleX(0.8); letter-spacing: -0.01em; }
+.r65-key:active { transform: translateY(1px); }
+.r65-key:focus-visible { outline: 3px solid #2a6bff; outline-offset: 2px; }
+.r65-key.sel { outline: 3px solid #2a6bff; outline-offset: 3px; }
+.r65-top { display: flex; justify-content: space-between; padding: 0 8px; }
+.r65-key.pwr { width: 46px; height: 46px; background: #e3262d; box-shadow: inset 0 0 0 3px #e3262d, inset 0 0 0 5.5px #fff; }
+.r65-key.pwr[aria-pressed="false"] { background: #8d1a1f; box-shadow: inset 0 0 0 3px #8d1a1f, inset 0 0 0 5.5px #fff; }
+.r65-key.pwr svg { width: 24px; height: 24px; }
+.r65-key.reset { width: 46px; height: 46px; background: #141518; color: #fff; }
+/* the drawing: CCT keys and LM keys in two outlined grey boxes, Q1 and Q2 between them on the white body */
+.r65-adj { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.r65-col { display: grid; gap: 14px; justify-items: center; align-content: center; padding: 10px 0; border-radius: 10px; }
+.r65-col.lite, .r65-col.grey { background: #c7c8cb; border: 1.5px solid #3c3d41; }
+.r65-key.icon { width: 50px; height: 50px; background: #8d8e92; }
+.r65-key.icon[data-r65k="cool"] { background: #b9c6e8; }
+.r65-key.icon[data-r65k="warm"] { background: #f5c518; }
+.r65-key.icon svg { width: 44px; height: 44px; }
+.r65-key.icon[data-r65k="up"] svg, .r65-key.icon[data-r65k="down"] svg { width: 48px; height: 52px; }
+.r65-key.q { width: 42px; height: 42px; margin-block: 4px; background: #6a6b6f; color: #fff; cursor: default; }
+.r65-cct { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 8px; justify-items: center; padding: 14px 8px; border-radius: 12px; background: #6a6b6f; border: 1.5px solid #3c3d41; }
+.r65-key.cct { width: 50px; height: 50px; background: var(--c); box-shadow: inset 0 0 0 2px var(--c), inset 0 0 0 4px #fff; }
+.r65-pw { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; justify-items: center; padding: 16px 20px; border-radius: 12px; border: 1.5px solid #3c3d41; background: #fff; }
+.r65-key.pw { width: 50px; height: 50px; background: #5c5d61; color: #fff; box-shadow: inset 0 0 0 2px #5c5d61, inset 0 0 0 4px #fff; }
+.r65-brand { text-align: center; padding-top: 4px; line-height: 0; }
+.r65-brand img { width: 120px; height: auto; display: inline-block; }
+.r65-legend { display: grid; gap: 14px; align-content: start; }
+.r65-legend .illus { margin: 0; }
+.r65-legend dl { margin: 0; display: grid; gap: 10px; }
+.r65-legend dt { font-weight: 700; color: var(--stage-ink); font-size: 0.875rem; }
+.r65-legend dd { margin: 2px 0 0; color: var(--stage-muted); font-size: 0.875rem; }
+@media (max-width: 380px) { .remote.r65 { width: 100%; max-width: 232px; } }

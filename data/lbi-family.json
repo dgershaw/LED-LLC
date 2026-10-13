@@ -1,0 +1,510 @@
+{
+ "slug": "lbi-family",
+ "brand": "remphos",
+ "group": "Linkable Light Bars",
+ "title": "LBI Family Overview",
+ "subtitle": "",
+ "pdfPages": [
+  15
+ ],
+ "catalogPages": [
+  26,
+  27
+ ],
+ "headline": "One light. Unlimited possibilities — connect up to 40 from one power feed*",
+ "intro": "",
+ "callouts": [
+  "One light. Unlimited possibilities — connect up to 40 from one power feed*",
+  "Easiest install ever — more time to chill",
+  "LBI — linkable light bar w/ an internal driver. Switch between 3 wattages + 3 CCTs",
+  "LBI G2 — linkable light bar w/ an internal driver. Tunable white. More CCTs. More lumens",
+  "LBI 65 — linkable light bar w/ an internal driver. IP65-rated. More CCTs. More lumens",
+  "LBI MAX — linkable strip fixture w/ an internal driver. More CCTs. Even higher lumens"
+ ],
+ "features": [
+  {
+   "label": "IP65 rated ingress protection",
+   "note": "LBI 65 only"
+  },
+  {
+   "label": "IK08 impact rating",
+   "note": "LBI 65 only"
+  },
+  {
+   "label": "NSF certified",
+   "note": "LBI 65 only"
+  },
+  {
+   "label": "Linkable — up to 40 units from one power feed",
+   "note": "* Connect up to 30 4 ft LBI or LBI 65 units, or 20 4 ft LBI MAX units, at 120VAC"
+  },
+  {
+   "label": "Internal driver",
+   "note": "All LBI bars"
+  }
+ ],
+ "tables": [
+  {
+   "title": "LBI + LBI G2 Popular Accessories",
+   "pdfPage": 15,
+   "columns": [
+    "Category",
+    "Accessory"
+   ],
+   "rows": [
+    [
+     "Mounting accessories",
+     "45° bracket"
+    ],
+    [
+     "Mounting accessories",
+     "Up/down clip"
+    ],
+    [
+     "Mounting accessories",
+     "Two-way clip"
+    ],
+    [
+     "Mounting accessories",
+     "Suspended in-line bracket kit"
+    ],
+    [
+     "Incoming power",
+     "3 ft cable kit"
+    ],
+    [
+     "Incoming power",
+     "Cable w/ switch"
+    ],
+    [
+     "Incoming power",
+     "90° cable"
+    ],
+    [
+     "Connectors",
+     "Linking cable (up to 72 in)"
+    ],
+    [
+     "Connectors",
+     "Seamless connectors (dimmable / non-dimmable)"
+    ]
+   ],
+   "notes": [
+    "Seamless connectors are pictured as two parts labelled DIMMABLE and NON-DIMMABLE under one caption",
+    "A bracket line under the Incoming Power and Connectors groups connects (via a dashed line and 'PLUS') to the LBI MAX popular accessories list",
+    "See spec sheet on LED-LLC.com for full line of accessories"
+   ]
+  },
+  {
+   "title": "LBI 65 Popular Accessories",
+   "pdfPage": 15,
+   "columns": [
+    "Category",
+    "Accessory"
+   ],
+   "rows": [
+    [
+     "Aircraft suspension cable",
+     "10 ft / stainless + waterproof"
+    ],
+    [
+     "Incoming power",
+     "3 ft wire whip"
+    ],
+    [
+     "Incoming power",
+     "Conduit adapter"
+    ],
+    [
+     "Connectors",
+     "Linking cable (up to 48 in)"
+    ],
+    [
+     "Connectors",
+     "Seamless connectors (dimmable / non-dimmable)"
+    ]
+   ],
+   "notes": [
+    "Seamless connectors are pictured as two parts under one 'DIMMABLE / NON-DIMMABLE' label",
+    "See spec sheet on LED-LLC.com for full line of accessories"
+   ]
+  },
+  {
+   "title": "LBI MAX Popular Accessories",
+   "pdfPage": 15,
+   "columns": [
+    "Category",
+    "Accessory"
+   ],
+   "rows": [
+    [
+     "Mounting accessories",
+     "Pendant kit"
+    ],
+    [
+     "Mounting accessories",
+     "Suspension linking kit"
+    ],
+    [
+     "Incoming power (shared with LBI + LBI G2)",
+     "3 ft cable kit"
+    ],
+    [
+     "Incoming power (shared with LBI + LBI G2)",
+     "Cable w/ switch"
+    ],
+    [
+     "Incoming power (shared with LBI + LBI G2)",
+     "90° cable"
+    ],
+    [
+     "Connectors (shared with LBI + LBI G2)",
+     "Linking cable (up to 72 in)"
+    ],
+    [
+     "Connectors (shared with LBI + LBI G2)",
+     "Seamless connectors (dimmable / non-dimmable)"
+    ]
+   ],
+   "notes": [
+    "Only the two mounting accessories are pictured under the LBI MAX heading; the word 'PLUS' with a dashed line runs from this list down and across the page to an arrow under the LBI + LBI G2 Incoming Power and Connectors groups, so those five accessories are listed here as 'PLUS' rows",
+    "See spec sheet on LED-LLC.com for full line of accessories"
+   ]
+  }
+ ],
+ "footnotes": [
+  "* Connect up to 30 4 ft LBI or LBI 65 units, or 20 4 ft LBI MAX units, at 120VAC",
+  "See spec sheet on LED-LLC.com for full line of accessories",
+  "PDF page 15 is a two-page spread; only the left half carries a printed page number (26), the right half is unnumbered and taken as 27",
+  "This spread is a family overview with no part numbers, wattages, lumens or listings; the headline says 'up to 40' while the asterisked footnote gives 30 (LBI / LBI 65) or 20 (LBI MAX) 4 ft units at 120VAC — both transcribed as printed"
+ ],
+ "images": [
+  {
+   "file": "p15-b1.jpg",
+   "kind": "callout",
+   "shows": "LBI family card: light-blue panel with 'LBI / LINKABLE LIGHT BAR W/ AN INTERNAL DRIVER / SWITCH BETWEEN 3 WATTAGES + 3 CCTS' and a white LBI light bar; clean",
+   "products": [
+    "LBI"
+   ],
+   "use": "gallery (family card)"
+  },
+  {
+   "file": "p15-b2.jpg",
+   "kind": "callout",
+   "shows": "Two family cards merged in one block: LBI G2 (text + light bar) and LBI 65 (text, IP65 / IK08 / NSF icons, light bar with water droplets) on a continuous blue panel",
+   "products": [
+    "LBI G2",
+    "LBI 65"
+   ],
+   "use": "gallery (prefer the split crops custom/lbi-family-card-lbi-g2.jpg and custom/lbi-family-card-lbi-65.jpg)"
+  },
+  {
+   "file": "p15-b3.jpg",
+   "kind": "hero",
+   "shows": "LBI MAX family card: 'LBI MAX / LINKABLE STRIP FIXTURE W/ AN INTERNAL DRIVER / MORE CCTS. EVEN HIGHER LUMENS' with a green chameleon draped over a white LBI MAX strip fixture, its tail curling below the card into the white margin",
+   "products": [
+    "LBI MAX"
+   ],
+   "use": "none (card graphic with baked-in text)"
+  },
+  {
+   "file": "custom/lbi-family-card-lbi-g2.jpg",
+   "kind": "callout",
+   "shows": "LBI G2 family card split from block 2: 'LBI G2 / LINKABLE LIGHT BAR W/ AN INTERNAL DRIVER / TUNABLE WHITE. MORE CCTS. MORE LUMENS' with a white light bar on blue",
+   "products": [
+    "LBI G2"
+   ],
+   "use": "gallery (family card)"
+  },
+  {
+   "file": "custom/lbi-family-card-lbi-65.jpg",
+   "kind": "callout",
+   "shows": "LBI 65 family card split from block 2: 'LBI 65 / LINKABLE LIGHT BAR W/ AN INTERNAL DRIVER / IP65-RATED. MORE CCTS. MORE LUMENS' with IP65, IK08 and NSF icons and a light bar covered in water droplets on blue",
+   "products": [
+    "LBI 65"
+   ],
+   "use": "gallery (family card)"
+  },
+  {
+   "file": "custom/lbi-family-banner.jpg",
+   "kind": "callout",
+   "shows": "All four family cards (LBI, LBI G2, LBI 65, LBI MAX) in one wide strip exactly as laid out across the spread (2600 px wide)",
+   "products": [
+    "LBI",
+    "LBI G2",
+    "LBI 65",
+    "LBI MAX"
+   ],
+   "use": "gallery (wide banner)"
+  },
+  {
+   "file": "custom/lbi-family-lbi-bar.jpg",
+   "kind": "hero",
+   "shows": "LBI linkable light bar (white, slim, end caps) on the card's flat blue background; same render is used on the LBI and LBI G2 cards",
+   "products": [
+    "LBI",
+    "LBI G2"
+   ],
+   "use": "hero"
+  },
+  {
+   "file": "custom/lbi-family-lbi-65-bar.jpg",
+   "kind": "application",
+   "shows": "LBI 65 IP65 light bar with sealed end caps surrounded by water droplets on the card's flat blue background; icons and text cropped out",
+   "products": [
+    "LBI 65"
+   ],
+   "use": "gallery"
+  },
+  {
+   "file": "custom/lbi-family-lbi-max-chameleon.jpg",
+   "kind": "product",
+   "shows": "Green chameleon lying along a white LBI MAX strip fixture, tail curling below; the card's two thin white rule segments were painted over with the card blue, text cropped out",
+   "products": [
+    "LBI MAX"
+   ],
+   "use": "none (card graphic)"
+  },
+  {
+   "file": "custom/lbi-family-accessories-lbi-g2.jpg",
+   "kind": "diagram",
+   "shows": "Labelled LBI + LBI G2 popular-accessories strip: Mounting Accessories (45° bracket, up/down clip, two-way clip, suspended in-line bracket kit), Incoming Power (3 ft cable kit, cable w/ switch, 90° cable), Connectors (linking cable up to 72 in, seamless connectors dimmable / non-dimmable); title removed, item labels kept",
+   "products": [
+    "LBI",
+    "LBI G2"
+   ],
+   "use": "callout"
+  },
+  {
+   "file": "custom/lbi-family-accessories-lbi-65.jpg",
+   "kind": "diagram",
+   "shows": "Labelled LBI 65 popular-accessories strip: aircraft suspension cable (10 ft / stainless + waterproof), Incoming Power (3 ft wire whip, conduit adapter), Connectors (linking cable up to 48 in, seamless connectors dimmable / non-dimmable); title removed",
+   "products": [
+    "LBI 65"
+   ],
+   "use": "callout"
+  },
+  {
+   "file": "custom/lbi-family-accessories-lbi-max.jpg",
+   "kind": "diagram",
+   "shows": "Labelled LBI MAX popular-accessories strip: Mounting Accessories (pendant kit, suspension linking kit); title and the 'PLUS' dashed connector removed",
+   "products": [
+    "LBI MAX"
+   ],
+   "use": "callout"
+  },
+  {
+   "file": "custom/lbi-family-acc-45-bracket.png",
+   "kind": "product",
+   "shows": "45° bracket cutout on white (small, ~100 px)",
+   "products": [
+    "LBI",
+    "LBI G2"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-up-down-clip.png",
+   "kind": "product",
+   "shows": "Up/down clip cutout on white (small, ~93 px)",
+   "products": [
+    "LBI",
+    "LBI G2"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-two-way-clip.png",
+   "kind": "product",
+   "shows": "Two-way clip cutout on white (small, ~71 px wide)",
+   "products": [
+    "LBI",
+    "LBI G2"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-suspended-inline-bracket-kit.png",
+   "kind": "product",
+   "shows": "Suspended in-line bracket kit cutout on white: coiled aircraft cable with ferrules plus hanging in-line bracket (~228 px wide)",
+   "products": [
+    "LBI",
+    "LBI G2"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-3ft-cable-kit.png",
+   "kind": "product",
+   "shows": "3 ft cable kit cutout on white: white connector plug with bare-wire leads (~176 px wide)",
+   "products": [
+    "LBI",
+    "LBI G2",
+    "LBI MAX"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-cable-with-switch.png",
+   "kind": "product",
+   "shows": "Cable w/ switch cutout on white: plug, in-line rocker switch and connector (~209 px wide)",
+   "products": [
+    "LBI",
+    "LBI G2",
+    "LBI MAX"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-90-cable.png",
+   "kind": "product",
+   "shows": "90° cable cutout on white (small, ~47 px wide)",
+   "products": [
+    "LBI",
+    "LBI G2",
+    "LBI MAX"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-linking-cable-72in.png",
+   "kind": "product",
+   "shows": "Linking cable (up to 72 in) cutout on white; the 'UP TO 72 IN' label and its dotted leader removed (~143 px wide)",
+   "products": [
+    "LBI",
+    "LBI G2",
+    "LBI MAX"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-seamless-connector-dimmable.png",
+   "kind": "product",
+   "shows": "Seamless connector, dimmable (white) cutout on white (small, ~63 px)",
+   "products": [
+    "LBI",
+    "LBI G2",
+    "LBI MAX"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-seamless-connector-non-dimmable.png",
+   "kind": "product",
+   "shows": "Seamless connector, non-dimmable (black) cutout on white (small, ~64 px)",
+   "products": [
+    "LBI",
+    "LBI G2",
+    "LBI MAX"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-aircraft-suspension-cable-10ft.png",
+   "kind": "product",
+   "shows": "10 ft stainless + waterproof aircraft suspension cable cutout on white (~106 px)",
+   "products": [
+    "LBI 65"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-3ft-wire-whip.png",
+   "kind": "product",
+   "shows": "3 ft wire whip cutout on white: coiled white whip with connector and wire leads (~82 px)",
+   "products": [
+    "LBI 65"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-conduit-adapter.png",
+   "kind": "product",
+   "shows": "Conduit adapter cutout on white (~102 px wide)",
+   "products": [
+    "LBI 65"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-linking-cable-48in.png",
+   "kind": "product",
+   "shows": "LBI 65 linking cable (up to 48 in) cutout on white, sealed connectors at both ends; label removed (~139 px wide)",
+   "products": [
+    "LBI 65"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-lbi65-seamless-connector-dimmable.png",
+   "kind": "product",
+   "shows": "LBI 65 seamless connector, dimmable (white) cutout on white (small, ~63 px)",
+   "products": [
+    "LBI 65"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-lbi65-seamless-connector-non-dimmable.png",
+   "kind": "product",
+   "shows": "LBI 65 seamless connector, non-dimmable (black) cutout on white (small, ~63 px)",
+   "products": [
+    "LBI 65"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-pendant-kit.png",
+   "kind": "product",
+   "shows": "Pendant kit cutout on white: square canopy with two screws (~88 px)",
+   "products": [
+    "LBI MAX"
+   ],
+   "use": "cutout"
+  },
+  {
+   "file": "custom/lbi-family-acc-suspension-linking-kit.png",
+   "kind": "product",
+   "shows": "Suspension linking kit cutout on white: coiled aircraft cable with ferrules plus perforated linking plate with screws (~244 px wide)",
+   "products": [
+    "LBI MAX"
+   ],
+   "use": "cutout"
+  }
+ ],
+ "extras": [
+  {
+   "title": "LBI",
+   "subtitle": "Linkable light bar w/ an internal driver",
+   "text": "Switch between 3 wattages + 3 CCTs",
+   "image": "p15-b1.jpg"
+  },
+  {
+   "title": "LBI G2",
+   "subtitle": "Linkable light bar w/ an internal driver",
+   "text": "Tunable white. More CCTs. More lumens",
+   "image": "custom/lbi-family-card-lbi-g2.jpg"
+  },
+  {
+   "title": "LBI 65",
+   "subtitle": "Linkable light bar w/ an internal driver",
+   "text": "IP65-rated. More CCTs. More lumens",
+   "badges": [
+    "IP65",
+    "IK08",
+    "NSF"
+   ],
+   "image": "custom/lbi-family-card-lbi-65.jpg"
+  },
+  {
+   "title": "LBI MAX",
+   "subtitle": "Linkable strip fixture w/ an internal driver",
+   "text": "More CCTs. Even higher lumens",
+   "image": "p15-b3.jpg"
+  },
+  {
+   "title": "Linking capacity",
+   "text": "Connect up to 40 from one power feed*. * Connect up to 30 4 ft LBI or LBI 65 units, or 20 4 ft LBI MAX units, at 120VAC."
+  }
+ ]
+}

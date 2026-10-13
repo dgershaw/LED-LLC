@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% import "_parts.html" as P %}
+{% block brand %}led{% endblock %}
+{% block head %}<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap">{% endblock %}
+{% block main %}
+<div class="eddy-page">
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <span class="crumb"><a href="index.html">Home</a><span class="sep">›</span></span>
+    <span class="crumb"><span aria-current="page">Meet Eddy</span></span>
+  </nav>
+
+  <section class="eddy-hero" aria-labelledby="h1">
+    <div class="eddy-hero-text">
+      <p class="eyebrow brand">Our mascot</p>
+      <h1 id="h1">Meet Eddy</h1>
+      <p class="lede">His full name is <b>Edison</b>, after Thomas Edison. His friends call him <b>Eddy</b>. He is built like an old-fashioned 5 mm LED, the same little LED that sits on our logo, and he has a job on just about every page of this site.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#looks">See his many looks</a>
+        <a class="btn btn-ghost" href="#amy">Meet his creator</a>
+        {#- Laptops only: the welcome tour lives in assets/js/tour.js and starts from the home page (David, 2026-10-09). #}
+        <a class="btn btn-ghost tour-only" href="index.html?tour=start">Take my one-minute tour</a>
+      </div>
+    </div>
+    <figure class="eddy-hero-art">
+      <span class="blob a" aria-hidden="true"></span><span class="blob b" aria-hidden="true"></span>
+      <button type="button" class="eddy-buddy" data-eddy-talk aria-label="Say hi to Eddy">
+        <span class="rays" aria-hidden="true">{% for i in range(7) %}<i style="--i:{{ i }}"></i>{% endfor %}</span>
+        <img src="assets/img/eddy/eddy-connector.png" alt="Eddy holding a linking connector in each hand"{{ dims('assets/img/eddy/eddy-connector.png') }}>
+        <span class="spark s1" aria-hidden="true"></span><span class="spark s2" aria-hidden="true"></span>
+      </button>
+      <figcaption class="eddy-say" aria-live="polite"><span>Hi! I'm Eddy. Tap me.</span></figcaption>
+    </figure>
+  </section>
+</div>
+
+<div class="wrap stack">
+  <section class="eddy-origin" aria-labelledby="origin-h">
+    <div class="origin-art" aria-hidden="true">
+      <img class="sym" src="assets/img/eddy/led-symbol.png" alt=""{{ dims('assets/img/eddy/led-symbol.png') }}>
+      <span class="arrow">→</span>
+      <img src="assets/img/eddy/eddy-sample.png" alt=""{{ dims('assets/img/eddy/eddy-sample.png') }}>
+    </div>
+    <div>
+      <h2 id="origin-h">From logo to legend</h2>
+      <p>Look just above the words Light Efficient Design. That blue and green shape is a classic 5 mm LED, the kind that lit up a generation of electronics. Give it a face, a personality and a job to do, and you get Eddy.</p>
+      <p>He is a small LED with a big sense of humor, and he helps out across all three of our brands: Light Efficient Design, RemPhos and Solera.</p>
+    </div>
+  </section>
+
+  <section class="amy" id="amy" aria-labelledby="amy-h">
+    <div class="amy-photo"><img src="assets/img/eddy/amy-george.jpg" alt="Amy George, Senior Creative Director at Light Efficient Design" width="400" height="400" loading="lazy" decoding="async"><img class="amy-eddy" src="assets/img/eddy/led-symbol.png" alt="" width="381" height="329" loading="lazy"></div>
+    <div class="amy-text">
+      <p class="eyebrow brand">The artist behind Eddy</p>
+      <h2 id="amy-h">Brought to life by Amy George</h2>
+      <p>Every Eddy on this page comes from <b>Amy George</b>, our Senior Creative Director. Amy has been with Light Efficient Design for more than 15 years, and she dresses Eddy up in so many fun ways that he now has a bigger wardrobe than most of us.</p>
+      <p>When you see Eddy holding a sample scoop, a magnifying glass or a water cannon, that is Amy's work. Thank you, Amy.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="hist-h">
+    <div class="section-head"><h2 id="hist-h">Eddy through the years</h2><p>Eddy has grown up a lot. Older versions are on their way from the archive.</p></div>
+    <ol class="eddy-timeline">
+      {% for h in history %}
+      <li class="{{ 'now' if h.img else 'ph' }}">
+        <div class="frame">{% if h.img %}<img src="{{ h.img }}" alt="{{ h.title }}" loading="lazy"{{ dims(h.img) }}>{% else %}<span>Older Eddy<br>coming soon</span>{% endif %}</div>
+        <strong>{{ h.title }}</strong>
+        <p>{{ h.text }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section id="looks" aria-labelledby="looks-h">
+    <div class="section-head"><h2 id="looks-h">The many looks of Eddy</h2><p>A few of Amy's favorites. Each one has a day job somewhere on this site.</p></div>
+    <div class="eddy-looks">
+      {% for g in gallery %}
+      {% set fx = g.img|replace('eddy-', '')|replace('.png', '') %}
+      <a class="look fx-{{ fx }}" href="{{ g.href }}" style="--tilt:{{ ['-2deg', '1.5deg', '-1deg', '2deg', '-1.5deg', '1deg'][loop.index0 % 6] }}; --d:{{ loop.index0 * 0.35 }}s">
+        <span class="art"><span class="fx" aria-hidden="true">{% for i in range(6) %}<i style="--i:{{ i }}"></i>{% endfor %}</span><img src="assets/img/eddy/{{ g.img }}" alt="{{ g.title }}" loading="lazy"{{ dims('assets/img/eddy/' ~ g.img) }}></span>
+        <strong>{{ g.title }}</strong>
+        <span class="cap">{{ g.text }}</span>
+        <span class="go">See him at work: {{ g.where }} ›</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="eddy-facts" aria-labelledby="facts-h">
+    <h2 id="facts-h">Eddy, by the numbers</h2>
+    <dl>
+      <div><dt><span data-count="5">5</span> mm</dt><dd>His size, in LED terms. He has never let it hold him back.</dd></div>
+      <div><dt>1</dt><dd>Famous namesake: Thomas Edison.</dd></div>
+      <div><dt>3</dt><dd>Brands he works for: Light Efficient Design, RemPhos and Solera.</dd></div>
+      <div><dt><span data-count="15">15</span>+</dt><dd>Years Amy George has been with the company, and counting.</dd></div>
+    </dl>
+  </section>
+
+  {{ P.next_steps("Put Eddy to work", "He will happily send a sample, find your rebates or track down your local rep.", who=False) }}
+</div>
+</div>
+{% endblock %}
