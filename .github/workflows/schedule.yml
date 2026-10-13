@@ -1,0 +1,56 @@
+# "Schedule a go-live", run from the admin page: approves the sandbox as it is now and publishes it at a chosen date
+# and time (Central). The plan is kept on the `schedule` branch (go-live.json) until publish-scheduled.yml carries it
+# out, and the portal shows it. One go-live can be scheduled at a time; scheduling again replaces it.
+name: Schedule a go-live
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: When, and who asked (sent by the admin page)
+        required: false
+        default: "{}"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: schedule-branch
+  cancel-in-progress: false
+
+jobs:
+  schedule:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          ref: main
+      - name: Write down the plan
+        env:
+          PAYLOAD: ${{ inputs.payload }}
+          GH_TOKEN: ${{ github.token }}
+          TEAMS_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
+          TZ: America/Chicago
+        run: |
+          NAME=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.name // .triggeredBy.githubUsername // empty')
+          EMAIL=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.email // empty')
+          WHEN=$(printf '%s' "$PAYLOAD" | jq -r '.inputs.when // empty')
+          NOTE=$(printf '%s' "$PAYLOAD" | jq -r '.inputs.note // empty')
+          [ -n "$NAME" ] || NAME="${GITHUB_ACTOR}"
+          [ -n "$EMAIL" ] || EMAIL="${GITHUB_ACTOR}@users.noreply.github.com"
+          AT=$(date -d "$WHEN" +%s 2>/dev/null) || { echo "::error::Could not read the date and time \"$WHEN\". Write it like 2026-10-20 9:00 am."; exit 1; }
+          [ "$AT" -gt "$(date +%s)" ] || { echo "::error::\"$WHEN\" is already in the past."; exit 1; }
+          SNAP=$(git rev-parse origin/main)
+          cp tools/notify.sh /tmp/notify.sh   # the schedule branch holds only the plan, so keep the notifier at hand
+          jq -n --arg at "$AT" --arg text "$(date -d @"$AT" '+%b %-d, %Y at %-I:%M %p %Z' | sed 's/ AM / am /; s/ PM / pm /')" --arg by "$NAME" --arg email "$EMAIL" \
+                --arg note "$NOTE" --arg snapshot "$SNAP" --arg set "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+                '{at: ($at|tonumber), at_text: $text, by: $by, email: $email, note: $note, snapshot: $snapshot, set_at: $set}' > /tmp/go-live.json
+          git config user.name "$NAME"; git config user.email "$EMAIL"
+          if git fetch origin schedule:refs/remotes/origin/schedule 2>/dev/null; then git checkout -q -B schedule origin/schedule; else git checkout -q --orphan schedule; git rm -rfq . >/dev/null 2>&1 || true; fi
+          cp /tmp/go-live.json go-live.json
+          git add go-live.json && git commit -q -m "Go-live scheduled by $NAME for $(jq -r .at_text go-live.json)"
+          git push -f origin schedule
+          gh workflow run deploy.yml --ref main
+          bash /tmp/notify.sh "Go-live scheduled" "$NAME scheduled the sandbox to go live on $(jq -r .at_text go-live.json).${NOTE:+ Note: $NOTE}" "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal"

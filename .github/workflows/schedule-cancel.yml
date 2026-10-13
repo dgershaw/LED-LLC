@@ -1,0 +1,40 @@
+# "Cancel the scheduled go-live", run from the admin page: drops the plan on the `schedule` branch.
+name: Cancel the scheduled go-live
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: Who cancelled (sent by the admin page)
+        required: false
+        default: "{}"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: schedule-branch
+  cancel-in-progress: false
+
+jobs:
+  cancel:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - name: Drop the plan
+        env:
+          PAYLOAD: ${{ inputs.payload }}
+          GH_TOKEN: ${{ github.token }}
+          TEAMS_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
+        run: |
+          NAME=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.name // .triggeredBy.githubUsername // empty'); [ -n "$NAME" ] || NAME="${GITHUB_ACTOR}"
+          if git fetch origin schedule:refs/remotes/origin/schedule 2>/dev/null; then
+            git push origin --delete schedule
+            gh workflow run deploy.yml --ref main
+            bash tools/notify.sh "Scheduled go-live cancelled" "$NAME cancelled the scheduled go-live. The sandbox keeps its changes." "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal"
+          else
+            echo "Nothing was scheduled."
+          fi

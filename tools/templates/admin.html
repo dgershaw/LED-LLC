@@ -25,8 +25,20 @@
   .card.sand .dot { background: #e0a100; }
   .card .big { font-size: var(--step-3); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin: 10px 0 6px; }
   .card p { margin: 0; color: var(--muted); }
+  .card p a { color: var(--ink); }
+  .card .sched { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: #fff6d6; color: var(--ink); }
   .card .btn-approve { display: inline-block; margin-top: 16px; padding: 12px 20px; border-radius: 999px; background: var(--ok); color: #fff; font-weight: 700; text-decoration: none; }
   .card .btn-approve:hover { filter: brightness(1.08); }
+  .card .btn-back { display: inline-block; margin-top: 16px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-weight: 600; text-decoration: none; }
+  .card .btn-back:hover { border-color: var(--ink); }
+  .tabs { display: flex; flex-wrap: wrap; gap: 6px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+  .tabs a { padding: 10px 14px; border-radius: 10px 10px 0 0; color: var(--muted); font-weight: 600; text-decoration: none; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+  .tabs a:hover { color: var(--ink); }
+  .tabs a.on { color: var(--ink); border-bottom-color: var(--ok); }
+  .tabs .n { display: inline-block; min-width: 20px; padding: 0 6px; margin-left: 6px; border-radius: 999px; background: var(--line); color: var(--ink); font-size: 0.75rem; text-align: center; }
+  .tabs .n.warn { background: #ffe8a6; }
+  .pane { display: none; }
+  .pane.on { display: block; }
   .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 0 0 14px; }
   .toolbar h2 { font-size: var(--step-1); margin: 0; }
   .toolbar label { margin-left: auto; color: var(--muted); font-size: var(--step--1); display: flex; align-items: center; gap: 8px; }
@@ -34,21 +46,72 @@
   .feed { display: grid; gap: 10px; margin-bottom: 40px; }
   .chg { display: grid; grid-template-columns: 150px 1fr; gap: 6px 18px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); }
   .chg .who { font-weight: 700; }
+  .chg .via { color: var(--muted); font-size: var(--step--1); }
   .chg .when { color: var(--muted); font-size: var(--step--1); }
   .chg ul { margin: 0; padding-left: 18px; }
   .chg li { margin: 2px 0; }
+  .chg .act { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 8px; }
   .chg .sha { color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem; }
+  .chg .act a { font-size: var(--step--1); color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .chg details { margin-top: 10px; }
+  .chg summary { cursor: pointer; font-size: var(--step--1); font-weight: 600; color: var(--ink); }
+  .diff { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: var(--step--1); }
+  .diff th { text-align: left; color: var(--muted); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+  .diff td { vertical-align: top; padding: 8px; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+  .diff td.f { width: 22%; color: var(--muted); }
+  .diff del { background: #ffe1e1; color: #8a1f1f; text-decoration: line-through; }
+  .diff ins { background: #dff5e3; color: #14532d; text-decoration: none; }
   .chg.hide { display: none; }
-  .empty { color: var(--muted); padding: 18px; border: 1px dashed var(--line); border-radius: var(--radius-sm); }
+  .empty { color: var(--muted); padding: 18px; border: 1px dashed var(--line); border-radius: var(--radius-sm); margin-bottom: 40px; }
   .rel { margin-bottom: 26px; }
   .rel-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 10px 0; border-bottom: 2px solid var(--ok); margin-bottom: 10px; }
+  .rel.back .rel-head { border-bottom-color: #e0a100; }
   .rel-head strong { font-size: var(--step-0); }
   .rel-head .when, .rel-head .note { color: var(--muted); }
   .rel-head .count { margin-left: auto; color: var(--muted); font-size: var(--step--1); }
-  @media (max-width: 640px) { .chg { grid-template-columns: 1fr; } .adm-top .built { margin-left: 0; } }
+  .rel .sub { color: var(--muted); margin: 0 0 8px; }
+  .tbl { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 28px; font-size: var(--step--1); }
+  .tbl th { text-align: left; padding: 10px 12px; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--line); background: var(--bg); }
+  .tbl td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+  .tbl tr:last-child td { border-bottom: 0; }
+  .tbl a { color: var(--ink); }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; background: var(--line); color: var(--ink); white-space: nowrap; }
+  .tag.new { background: #dff5e3; color: #14532d; }
+  .tag.warn { background: #ffe8a6; color: #5b4300; }
+  .tag.old { color: var(--muted); font-weight: 500; }
+  .tbl .files div { margin: 1px 0; }
+  .tbl .files .older, .tbl .files .older a { color: var(--muted); }
+  h3.cat { font-size: var(--step-0); margin: 24px 0 10px; }
+  .note { color: var(--muted); margin: 0 0 16px; }
+  .qr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-bottom: 40px; }
+  .qr { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); align-items: start; }
+  .qr img { width: 96px; height: 96px; display: block; background: #fff; }
+  .qr .k { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .qr .nm { font-weight: 700; overflow-wrap: anywhere; margin: 2px 0 6px; }
+  .qr .url { font-family: var(--font-mono); font-size: 0.75rem; overflow-wrap: anywhere; color: var(--ink); }
+  .qr .row { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 8px; font-size: var(--step--1); }
+  .qr .row a, .qr .row button { color: var(--ink); background: none; border: 0; padding: 0; font: inherit; font-size: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  @media (max-width: 640px) {
+    .chg { grid-template-columns: 1fr; } .adm-top .built { margin-left: 0; }
+    .diff thead { display: none; } .diff td { display: block; border-bottom: 0; padding: 4px 8px; } .diff td.f { width: auto; padding-top: 10px; border-top: 1px solid var(--line); }
+    .diff td.b::before { content: "Before: "; color: var(--muted); } .diff td.a::before { content: "After: "; color: var(--muted); }
+    .tbl.inv th:nth-child(n+3), .tbl.inv td:nth-child(n+3) { display: none; }
+  }
 </style>
 </head>
 <body>
+{% macro change(c) -%}
+<article class="chg" data-who="{{ c.who }}">
+  <div><div class="who">{{ c.who }}</div>{% if c.via %}<div class="via">through {{ c.via }}</div>{% endif %}<div class="when">{{ c.when }}</div></div>
+  <div><ul>{% for w in c.what %}<li>{{ w }}</li>{% endfor %}</ul>
+    <div class="act"><span class="sha" title="The change id">{{ c.sha }}</span>{% for label, url in c.links %}<a href="{{ url }}" target="_blank" rel="noopener">{{ label }}</a>{% endfor %}<a href="{{ cms }}/actions" target="_blank" rel="noopener" title="Opens the Undo a change button; enter this change id there">Undo this change</a></div>
+    {% if c.diff %}<details><summary>What changed, word by word</summary>
+      <table class="diff"><thead><tr><th>Where</th><th>Before</th><th>After</th></tr></thead><tbody>
+      {% for f, a, b in c.diff %}<tr><td class="f">{{ f }}</td><td class="b">{{ a|safe }}</td><td class="a">{{ b|safe }}</td></tr>{% endfor %}
+      </tbody></table></details>{% endif %}
+  </div>
+</article>
+{%- endmacro %}
 <main class="adm">
   <div class="adm-top">
     <img src="../assets/img/brand/led-logo-h.png" alt="Light Efficient Design">
@@ -65,14 +128,21 @@
     <div class="card sand">
       <h2><span class="dot"></span>Sandbox</h2>
       <div class="big">{{ pending|length }}</div>
-      <p>{% if pending|length == 1 %}change waiting for approval{% else %}changes waiting for approval{% endif %}{% if pending %}, the latest by {{ pending[0].who }} on {{ pending[0].when }}{% endif %}.</p>
-      {% if pending %}<a class="btn-approve" href="{{ cms }}/actions" target="_blank" rel="noopener">Approve and publish to live</a>{% endif %}
+      <p>{% if pending|length == 1 %}change waiting for approval{% else %}changes waiting for approval{% endif %}{% if pending %}, the latest by {{ pending[0].who }} on {{ pending[0].when }}{% endif %}.
+      {% if compare.same %}The sandbox and the live site are the same.{% else %}<a href="#compare">{{ compare.pages|length }} page{{ '' if compare.pages|length == 1 else 's' }} and {{ compare.files|length }} file{{ '' if compare.files|length == 1 else 's' }}</a> differ from the live site.{% endif %}</p>
+      {% if schedule %}<p class="sched">Scheduled to go live on <strong>{{ schedule.when }}</strong>, set by {{ schedule.by }}{% if schedule.note %}: “{{ schedule.note }}”{% endif %}. It publishes the sandbox as it was when scheduled; <a href="{{ cms }}/actions" target="_blank" rel="noopener">cancel it</a> under Actions.</p>{% endif %}
+      {% if pending %}<a class="btn-approve" href="{{ cms }}/actions" target="_blank" rel="noopener">Approve and publish to live</a> <a class="btn-back" href="{{ cms }}/actions" target="_blank" rel="noopener" title="Approve now, publish at a chosen date and time">Schedule a go-live</a>{% endif %}
     </div>
     <div class="card">
       <h2><span class="dot"></span>Live site</h2>
       {% if releases %}
       <div class="big">{{ releases[0].when.split(' at ')[0] }}</div>
+      {% if releases[0].kind == 'rollback' %}
+      <p>Rolled back by {{ releases[0].who }} on {{ releases[0].when }} to {{ releases[0].back_to }}{% if releases[0].note %}: “{{ releases[0].note }}”{% endif %}.</p>
+      {% else %}
       <p>Approved by {{ releases[0].who }} on {{ releases[0].when }}{% if releases[0].note %}: “{{ releases[0].note }}”{% endif %}.</p>
+      {% endif %}
+      {% if can_roll_back %}<a class="btn-back" href="{{ cms }}/actions" target="_blank" rel="noopener" title="Puts the live site back to the version before this one; the sandbox keeps everything">Roll back to the previous version</a>{% endif %}
       {% elif has_live %}
       <div class="big">Published</div>
       <p>No approvals recorded yet.</p>
@@ -83,46 +153,111 @@
     </div>
   </div>
 
-  <div class="toolbar">
-    <h2>Waiting on the sandbox</h2>
-    <label>Show changes by <select id="who"><option value="">everyone</option>{% for p in people %}<option>{{ p }}</option>{% endfor %}</select></label>
-  </div>
-  <div class="feed">
-    {% for c in pending %}
-    <article class="chg" data-who="{{ c.who }}">
-      <div><div class="who">{{ c.who }}</div><div class="when">{{ c.when }}</div><div class="sha">{{ c.sha }}</div></div>
-      <ul>{% for w in c.what %}<li>{{ w }}</li>{% endfor %}</ul>
-    </article>
-    {% else %}
-    <div class="empty">Everything on the sandbox is live. New edits and uploads will appear here.</div>
-    {% endfor %}
-  </div>
+  <nav class="tabs" id="tabs">
+    <a href="#changes" class="on">Changes</a>
+    <a href="#compare">Sandbox vs live{% if not compare.same %}<span class="n">{{ compare.pages|length + compare.files|length }}</span>{% endif %}</a>
+    <a href="#documents">Documents{% if inv.missing %}<span class="n warn" title="Products missing a document">{{ inv.missing }}</span>{% endif %}</a>
+    <a href="#qr">QR codes</a>
+  </nav>
 
-  <div class="toolbar"><h2>Published versions</h2></div>
-  {% for r in releases %}
-  <section class="rel">
-    <div class="rel-head">
-      <strong>Approved by {{ r.who }}</strong><span class="when">{{ r.when }}</span>{% if r.note %}<span class="note">“{{ r.note }}”</span>{% endif %}
-      <span class="count">{{ r.changes|length }} change{{ '' if r.changes|length == 1 else 's' }}</span>
+  <section class="pane on" id="changes">
+    <div class="toolbar">
+      <h2>Waiting on the sandbox</h2>
+      <label>Show changes by <select id="who"><option value="">everyone</option>{% for p in people %}<option>{{ p }}</option>{% endfor %}</select></label>
     </div>
-    <div class="feed">
-      {% for c in r.changes %}
-      <article class="chg" data-who="{{ c.who }}">
-        <div><div class="who">{{ c.who }}</div><div class="when">{{ c.when }}</div><div class="sha">{{ c.sha }}</div></div>
-        <ul>{% for w in c.what %}<li>{{ w }}</li>{% endfor %}</ul>
-      </article>
+    {% if pending %}<div class="feed">{% for c in pending %}{{ change(c) }}{% endfor %}</div>
+    {% else %}<div class="empty">Everything on the sandbox is live. New edits and uploads will appear here.</div>{% endif %}
+
+    <div class="toolbar"><h2>Published versions</h2></div>
+    {% for r in releases %}
+    <section class="rel{% if r.kind == 'rollback' %} back{% endif %}">
+      <div class="rel-head">
+        <strong>{% if r.kind == 'rollback' %}Rolled back by {{ r.who }}{% else %}Approved by {{ r.who }}{% endif %}</strong><span class="when">{{ r.when }}</span>{% if r.note %}<span class="note">“{{ r.note }}”</span>{% endif %}
+        <span class="count">{% if r.kind == 'rollback' %}{{ r.removed|length }} change{{ '' if r.removed|length == 1 else 's' }} taken off the live site{% else %}{{ r.changes|length }} change{{ '' if r.changes|length == 1 else 's' }}{% endif %}</span>
+      </div>
+      {% if r.kind == 'rollback' %}<p class="sub">Back to {{ r.back_to }}. These changes came off the live site and stay on the sandbox:</p>{% endif %}
+      <div class="feed">{% for c in r.changes + r.removed %}{{ change(c) }}{% endfor %}</div>
+    </section>
+    {% else %}
+    <div class="empty">Each approval and roll-back will be listed here with who did it, when, and the changes it carried.</div>
+    {% endfor %}
+  </section>
+
+  <section class="pane" id="compare">
+    <div class="toolbar"><h2>Sandbox vs live, page by page</h2></div>
+    {% if compare.same %}
+    <div class="empty">The sandbox and the live site are the same right now.</div>
+    {% else %}
+    <p class="note">What a visitor would see differently once the sandbox is approved. Open both links to compare.</p>
+    {% if compare.pages %}
+    <table class="tbl"><thead><tr><th>Page</th><th>Status</th><th>Sandbox</th><th>Live</th></tr></thead><tbody>
+      {% for p in compare.pages %}<tr><td>{{ p.title }}</td><td><span class="tag{% if p.kind != 'changed' %} new{% endif %}">{{ p.kind }}</span></td>
+        <td>{% if p.sandbox %}<a href="{{ p.sandbox }}" target="_blank" rel="noopener">Open</a>{% endif %}</td><td>{% if p.live %}<a href="{{ p.live }}" target="_blank" rel="noopener">Open</a>{% endif %}</td></tr>{% endfor %}
+    </tbody></table>
+    {% endif %}
+    {% if compare.files %}
+    <table class="tbl"><thead><tr><th>File</th><th>Group</th><th>Status</th><th>Sandbox</th><th>Live</th></tr></thead><tbody>
+      {% for f in compare.files %}<tr><td>{{ f.name }}</td><td>{{ f.group }}</td><td><span class="tag{% if f.kind != 'changed' %} new{% endif %}">{{ f.kind }}</span></td>
+        <td>{% if f.sandbox %}<a href="{{ f.sandbox }}" target="_blank" rel="noopener">Open</a>{% endif %}</td><td>{% if f.live %}<a href="{{ f.live }}" target="_blank" rel="noopener">Open</a>{% endif %}</td></tr>{% endfor %}
+    </tbody></table>
+    {% endif %}
+    {% endif %}
+  </section>
+
+  <section class="pane" id="documents">
+    <div class="toolbar"><h2>Documents by product</h2></div>
+    <p class="note">Every spec sheet, instruction sheet, sell sheet, case study and IES file on the sandbox, by product. The newest version of a document is the one the site links; older versions are listed in grey. <span class="tag new">new</span> marks a file not yet on the live site, <span class="tag warn">missing</span> a product with nothing of that kind yet.</p>
+    {% for cat in inv.categories %}
+    <h3 class="cat">{{ cat.name }}</h3>
+    <table class="tbl inv"><thead><tr><th>Product</th><th>Spec sheets</th><th>Instructions</th><th>Sell sheets, case studies</th><th>IES files</th></tr></thead><tbody>
+      {% for r in cat.rows %}<tr>
+        <td><a href="{{ r.page }}" target="_blank" rel="noopener">{{ r.product }}</a>{% for m in r.missing %} <span class="tag warn">missing {{ m }}</span>{% endfor %}</td>
+        {% for kind in ['spec-sheets', 'instructions'] %}<td class="files">{% for d in r.kinds[kind] %}<div{% if not d.newest %} class="older"{% endif %}><a href="{{ d.url }}" target="_blank" rel="noopener">{{ d.name }}</a>{% if d.newest and not d.on_live %} <span class="tag new">new</span>{% endif %}</div>{% endfor %}</td>{% endfor %}
+        <td class="files">{% for kind in ['sell-sheets', 'case-studies'] %}{% for d in r.kinds[kind] %}<div{% if not d.newest %} class="older"{% endif %}><a href="{{ d.url }}" target="_blank" rel="noopener">{{ d.name }}</a>{% if d.newest and not d.on_live %} <span class="tag new">new</span>{% endif %}</div>{% endfor %}{% endfor %}</td>
+        <td class="files">{% for i in r.ies %}<div>{{ i.pn }} <span class="tag old">{{ i.count }} file{{ '' if i.count == 1 else 's' }}</span>{% if i.new %} <span class="tag new">{{ i.new }} new</span>{% endif %}</div>{% endfor %}</td>
+      </tr>{% endfor %}
+    </tbody></table>
+    {% endfor %}
+    {% if inv.extra %}
+    <h3 class="cat">Catalog</h3>
+    <table class="tbl"><tbody>{% for d in inv.extra %}<tr><td class="files"><div{% if not d.newest %} class="older"{% endif %}><a href="{{ d.url }}" target="_blank" rel="noopener">{{ d.name }}</a>{% if d.newest and not d.on_live %} <span class="tag new">new</span>{% endif %}</div></td></tr>{% endfor %}</tbody></table>
+    {% endif %}
+  </section>
+
+  <section class="pane" id="qr">
+    <div class="toolbar"><h2>Permanent addresses and QR codes</h2></div>
+    <p class="note">Each document keeps one address for good, whatever version is uploaded later, so it can go in print. The QR codes point at <strong>{{ final_url }}</strong>, the address the site will have once it goes live on its own domain; until then the "works today" link is the one to test with. Download a code as an SVG for print.</p>
+    <div class="qr-grid">
+      {% for q in qr %}
+      <div class="qr">
+        <img src="{{ q.qr }}" alt="QR code for {{ q.name }}" loading="lazy">
+        <div>
+          <div class="k">{{ q.kind }}{% if q.product %} · {{ q.product }}{% endif %}</div>
+          <div class="nm">{{ q.name }}</div>
+          <div class="url">{{ q.final }}</div>
+          <div class="row"><button type="button" data-copy="{{ q.final }}">Copy address</button><a href="{{ q.qr }}" download>Download QR</a><a href="{{ q.today }}" target="_blank" rel="noopener">Works today</a></div>
+        </div>
+      </div>
       {% endfor %}
     </div>
   </section>
-  {% else %}
-  <div class="empty">Each approval will be listed here with who approved it, when, and the changes it carried live.</div>
-  {% endfor %}
 </main>
 <script>
   const sel = document.getElementById("who");
   sel.addEventListener("change", () => {
     document.querySelectorAll(".chg").forEach(el => el.classList.toggle("hide", !!sel.value && el.dataset.who !== sel.value));
   });
+  const tabs = [...document.querySelectorAll("#tabs a")], panes = [...document.querySelectorAll(".pane")];
+  function show(id) {
+    if (!panes.some(p => p.id === id)) id = "changes";
+    tabs.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + id));
+    panes.forEach(p => p.classList.toggle("on", p.id === id));
+  }
+  addEventListener("hashchange", () => show(location.hash.slice(1)));
+  show(location.hash.slice(1));
+  document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy address", 1500); } catch (e) { prompt("Copy this address", b.dataset.copy); }
+  }));
 </script>
 </body>
 </html>

@@ -23,6 +23,55 @@ actions:
       - name: note
         label: Note (optional, shown in the history)
         type: text
+  - name: roll-back
+    label: Roll back the live site
+    workflow: roll-back.yml
+    ref: main
+    cancelable: false
+    confirm:
+      title: Put the live site back to the version that was live before this one?
+      button: Roll back
+    fields:
+      - name: note
+        label: Why (optional, shown in the history)
+        type: text
+  - name: schedule
+    label: Schedule a go-live
+    workflow: schedule.yml
+    ref: main
+    cancelable: false
+    confirm:
+      title: Approve everything now on the sandbox and publish it at this date and time (Central)?
+      button: Schedule
+    fields:
+      - name: when
+        label: Date and time, Central (for example 2026-10-20 9:00 am)
+        type: text
+        required: true
+      - name: note
+        label: Note (optional, shown in the history)
+        type: text
+  - name: schedule-cancel
+    label: Cancel the scheduled go-live
+    workflow: schedule-cancel.yml
+    ref: main
+    cancelable: false
+    confirm:
+      title: Cancel the scheduled go-live? The sandbox keeps its changes.
+      button: Cancel the go-live
+  - name: undo
+    label: Undo a change
+    workflow: undo.yml
+    ref: main
+    cancelable: false
+    confirm:
+      title: Reverse this one change on the sandbox? It will wait for approval like any other change.
+      button: Undo
+    fields:
+      - name: change
+        label: Change id (shown next to the change on the admin page)
+        type: text
+        required: true
 
 content:
   - name: pages
@@ -44,7 +93,7 @@ content:
     fields:
       - name: title
         label: Page title
-        type: string
+        type: text
         required: true
       - name: subtitle
         label: Subtitle

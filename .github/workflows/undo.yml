@@ -1,0 +1,55 @@
+# "Undo a change", run from the admin page with a change id from the portal: reverses that one change on the
+# sandbox, in the name of whoever clicked. The undo is itself a change, so it waits for approval like any other.
+name: Undo a change
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: Which change, and who asked (sent by the admin page)
+        required: false
+        default: "{}"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: sandbox-branch
+  cancel-in-progress: false
+
+jobs:
+  undo:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          ref: main
+      - name: Reverse the change on the sandbox
+        env:
+          PAYLOAD: ${{ inputs.payload }}
+          GH_TOKEN: ${{ github.token }}
+          TEAMS_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
+        run: |
+          NAME=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.name // .triggeredBy.githubUsername // empty')
+          EMAIL=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.email // empty')
+          CHANGE=$(printf '%s' "$PAYLOAD" | jq -r '.inputs.change // empty' | tr -d '[:space:]')
+          [ -n "$NAME" ] || NAME="${GITHUB_ACTOR}"
+          [ -n "$EMAIL" ] || EMAIL="${GITHUB_ACTOR}@users.noreply.github.com"
+          export GIT_AUTHOR_NAME="$NAME" GIT_AUTHOR_EMAIL="$EMAIL"
+          export GIT_COMMITTER_NAME="Site publisher" GIT_COMMITTER_EMAIL="noreply@led-llc.com"
+          printf '%s' "$CHANGE" | grep -Eq '^[0-9a-f]{7,40}$' || { echo "::error::Enter the change id shown on the admin page (seven letters and digits)."; exit 1; }
+          SHA=$(git rev-parse -q --verify "$CHANGE^{commit}") || { echo "::error::No change has the id $CHANGE."; exit 1; }
+          git merge-base --is-ancestor "$SHA" origin/main || { echo "::error::Change $CHANGE is not on the sandbox."; exit 1; }
+          [ "$(git rev-list --parents -n 1 "$SHA" | wc -w)" -le 2 ] || { echo "::error::Change $CHANGE is not a single change and cannot be undone this way."; exit 1; }
+          git checkout -q -B main origin/main
+          if ! git revert --no-edit "$SHA"; then
+            git revert --abort || true
+            echo "::error::A later change touched the same files, so this one cannot be undone automatically. Edit the page or re-upload the file instead."
+            exit 1
+          fi
+          git commit -q --amend -m "Undid: $(git log -1 --format=%s "$SHA")"$'\n\n'"Undoes: $SHA"
+          git push origin main
+          gh workflow run deploy.yml --ref main
+          bash tools/notify.sh "A change was undone on the sandbox" "$NAME undid: $(git log -1 --format=%s "$SHA"). The undo waits for approval." "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal"

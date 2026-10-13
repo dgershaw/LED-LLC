@@ -1,0 +1,40 @@
+# Carries out a scheduled go-live (schedule.yml): every ten minutes, if the planned time has come, publishes the
+# sandbox commit that was approved, in the name of whoever scheduled it, and drops the plan.
+name: Publish a scheduled go-live
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: live-branch
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          ref: main
+      - name: Publish if the time has come
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TEAMS_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
+        run: |
+          git fetch origin schedule:refs/remotes/origin/schedule 2>/dev/null || { echo "Nothing scheduled."; exit 0; }
+          git show origin/schedule:go-live.json > /tmp/go-live.json
+          AT=$(jq -r .at /tmp/go-live.json); NOW=$(date +%s)
+          if [ "$NOW" -lt "$AT" ]; then echo "Scheduled for $(jq -r .at_text /tmp/go-live.json); not yet."; exit 0; fi
+          NAME=$(jq -r .by /tmp/go-live.json); EMAIL=$(jq -r .email /tmp/go-live.json); NOTE=$(jq -r .note /tmp/go-live.json); SNAP=$(jq -r .snapshot /tmp/go-live.json)
+          git cat-file -e "$SNAP^{commit}" || { echo "::error::The approved sandbox version $SNAP no longer exists."; git push origin --delete schedule; exit 1; }
+          OUT=$(bash tools/publish-live.sh "$NAME" "$EMAIL" "${NOTE:-Scheduled go-live}" "$SNAP"); echo "$OUT"
+          git push origin --delete schedule
+          gh workflow run deploy.yml --ref main
+          bash tools/notify.sh "Live site updated (scheduled)" "The go-live $NAME scheduled for $(jq -r .at_text /tmp/go-live.json) has been published.${NOTE:+ Note: $NOTE}" "https://dgershaw.github.io/LED-LLC/" "Open the live site"

@@ -1,6 +1,6 @@
 # "Approve and publish to live", run from the admin page (Pages CMS passes who clicked it in `payload`).
-# Moves the `live` branch to everything now on the sandbox with a merge commit in the approver's name, then
-# starts the publish workflow. The portal reads these merge commits as the approval history.
+# Publishes the sandbox (`main`) as the live version in the approver's name (tools/publish-live.sh), starts the
+# publish workflow and tells the team. The portal reads the live branch's commits as the approval history.
 name: Approve and publish to live
 
 on:
@@ -16,7 +16,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: approve
+  group: live-branch
   cancel-in-progress: false
 
 jobs:
@@ -27,26 +27,20 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-      - name: Move the live version to the sandbox's content
+      - name: Publish the sandbox's content as the live version
         env:
           PAYLOAD: ${{ inputs.payload }}
           GH_TOKEN: ${{ github.token }}
+          TEAMS_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
         run: |
           NAME=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.name // .triggeredBy.githubUsername // empty')
           EMAIL=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.email // empty')
           NOTE=$(printf '%s' "$PAYLOAD" | jq -r '.inputs.note // empty')
           [ -n "$NAME" ] || NAME="${GITHUB_ACTOR}"
           [ -n "$EMAIL" ] || EMAIL="${GITHUB_ACTOR}@users.noreply.github.com"
-          git config user.name "$NAME"
-          git config user.email "$EMAIL"
-          if git fetch origin live:refs/remotes/origin/live 2>/dev/null; then
-            git checkout -B live origin/live
-          else
-            # the first approval: the live branch starts at the site's first commit, so this merge carries everything
-            git checkout -B live "$(git rev-list --max-parents=0 origin/main | tail -1)"
-          fi
-          MSG="Approved for the live site by $NAME"
-          if [ -n "$NOTE" ]; then MSG="$MSG"$'\n\n'"Note: $NOTE"; fi
-          git merge --no-ff --no-edit -m "$MSG" origin/main
-          git push origin live
-          gh workflow run deploy.yml --ref main
+          OUT=$(bash tools/publish-live.sh "$NAME" "$EMAIL" "$NOTE")
+          echo "$OUT"
+          case "$OUT" in Published*)
+            gh workflow run deploy.yml --ref main
+            bash tools/notify.sh "Live site updated" "$NAME approved the sandbox for the live site.${NOTE:+ Note: $NOTE} It is live in a few minutes." "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal";;
+          esac

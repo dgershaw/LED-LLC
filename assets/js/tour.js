@@ -52,14 +52,15 @@
 
   /* Eddy as a drawing, so he can point, wave, blink and hop. Proportions follow Amy George's stickers. */
   const EDDY = `<svg class="eddy-svg" viewBox="0 0 200 240" aria-hidden="true" focusable="false">
-  <g class="e-ant" fill="none" stroke="#0b4f9b" stroke-width="6" stroke-linecap="round"><path d="M118 38c2-14 8-24 18-32"/><path d="M118 38c7-13 15-20 30-24"/><path d="M118 38c11-9 23-12 37-10"/></g>
-  <path class="e-torso" d="M56 126h88v72h-4v38h-28v-38h-24v38H60v-38h-4z" fill="#0b4f9b"/>
-  <path d="M28 130a72 72 0 0 1 144 0z" fill="#7a9f3c"/>
-  <path d="M100 134v16" stroke="#5a92cd" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="134" r="4.5" fill="#5a92cd"/>
-  <g class="e-eye"><circle cx="100" cy="90" r="26" fill="#fff"/><circle cx="100" cy="90" r="16" fill="none" stroke="#0b4f9b" stroke-width="8"/><circle class="e-pupil" cx="100" cy="90" r="6.5" fill="#0b4f9b"/></g>
-  <path d="M116 117q10-3 16-12" fill="none" stroke="#0b4f9b" stroke-width="3" stroke-linecap="round"/>
-  <g class="e-arm e-arm-l"><path d="M60 150h-40" fill="none" stroke="#0b4f9b" stroke-width="18" stroke-linecap="round"/><circle cx="18" cy="150" r="14" fill="#0b4f9b"/></g>
-  <g class="e-arm e-arm-r"><path d="M140 150h40" fill="none" stroke="#0b4f9b" stroke-width="18" stroke-linecap="round"/><circle cx="182" cy="150" r="14" fill="#0b4f9b"/></g>
+  <g class="e-out" fill="#fff" stroke="#fff" stroke-width="7" stroke-linejoin="round"><path d="M42 124h116v85h-22v24H114v-24H86v24H64v-24H42z"/><path d="M38 126a66 66 0 1 1 124 0z"/></g>
+  <g class="e-ant" fill="none" stroke="#154f91" stroke-width="5" stroke-linecap="round"><path d="M101 40c2-14 10-24 22-30"/><path d="M101 40c8-12 18-20 32-24"/><path d="M101 40c12-8 24-12 38-10"/></g>
+  <path class="e-torso" d="M42 124h116v85h-22v24H114v-24H86v24H64v-24H42z" fill="#154f91"/>
+  <path d="M38 126a66 66 0 1 1 124 0z" fill="#79983d"/>
+  <path d="M100 138v18" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="133" r="4.5" fill="#fff"/>
+  <g class="e-eye"><circle cx="100" cy="84" r="29" fill="#fff"/><circle cx="100" cy="84" r="15" fill="none" stroke="#154f91" stroke-width="8"/><circle class="e-pupil" cx="100" cy="84" r="5.6" fill="#154f91"/></g>
+  <path d="M117 113c6 4 13 2 18-6" fill="none" stroke="#154f91" stroke-width="3.5" stroke-linecap="round"/>
+  <g class="e-arm e-arm-l"><path d="M44 130H14" fill="none" stroke="#fff" stroke-width="25" stroke-linecap="round"/><g transform="translate(12 130) scale(-1 1)"><rect x="-10" y="-14" width="28" height="28" rx="11" fill="#fff" stroke="#fff" stroke-width="7"/><rect x="1" y="-30" width="12" height="23" rx="6" fill="#fff" stroke="#fff" stroke-width="7"/></g><path d="M44 130H14" fill="none" stroke="#154f91" stroke-width="18" stroke-linecap="round"/><g transform="translate(12 130) scale(-1 1)"><rect x="-10" y="-14" width="28" height="28" rx="11" fill="#154f91"/><rect x="1" y="-30" width="12" height="23" rx="6" fill="#154f91"/><path d="M-1-5h11M-1 4h11" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".7"/></g></g>
+  <g class="e-arm e-arm-r"><path d="M156 130h30" fill="none" stroke="#fff" stroke-width="25" stroke-linecap="round"/><g transform="translate(188 130)"><rect x="-10" y="-14" width="28" height="28" rx="11" fill="#fff" stroke="#fff" stroke-width="7"/><rect x="1" y="-30" width="12" height="23" rx="6" fill="#fff" stroke="#fff" stroke-width="7"/></g><path d="M156 130h30" fill="none" stroke="#154f91" stroke-width="18" stroke-linecap="round"/><g transform="translate(188 130)"><rect x="-10" y="-14" width="28" height="28" rx="11" fill="#154f91"/><rect x="1" y="-30" width="12" height="23" rx="6" fill="#154f91"/><path d="M-1-5h11M-1 4h11" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".7"/></g></g>
 </svg>`;
   const SPEAKER = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`;
 
@@ -329,8 +330,8 @@
     const fy = p.y + guide.offsetHeight - fig.offsetHeight * 0.4;
     const ang = Math.atan2(r.top + r.height / 2 - fy, r.left + r.width / 2 - fx) * 180 / Math.PI;   // 0 right, -90 up
     const rightSide = Math.cos(ang * Math.PI / 180) >= 0;
-    if (rightSide) { svg.style.setProperty("--ar", clamp(ang, -95, 60).toFixed(0) + "deg"); svg.style.setProperty("--al", "-42deg"); }
-    else { let a = ang - 180; if (a <= -180) a += 360; svg.style.setProperty("--al", clamp(a, -60, 95).toFixed(0) + "deg"); svg.style.setProperty("--ar", "42deg"); }
+    if (rightSide) { svg.style.setProperty("--ar", clamp(ang, -95, 60).toFixed(0) + "deg"); svg.style.setProperty("--al", "28deg"); }
+    else { let a = ang - 180; if (a <= -180) a += 360; svg.style.setProperty("--al", clamp(a, -60, 95).toFixed(0) + "deg"); svg.style.setProperty("--ar", "-28deg"); }
     svg.style.setProperty("--lx", (5 * Math.cos(ang * Math.PI / 180)).toFixed(1) + "px");
     svg.style.setProperty("--ly", (5 * Math.sin(ang * Math.PI / 180)).toFixed(1) + "px");
     fig.dataset.side = rightSide ? "r" : "l";
