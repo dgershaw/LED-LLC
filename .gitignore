@@ -3,3 +3,15 @@ notes/
 cms/
 tools/__pycache__/
 __pycache__/
+# Built by tools/build.py on GitHub (deploy.yml); never committed
+/*.html
+/robots.txt
+/sitemap.xml
+/llms.txt
+/llms-full.txt
+/docs/
+/ies/
+/admin/
+/out/
+assets/js/docmap.js
+assets/js/search-index.json

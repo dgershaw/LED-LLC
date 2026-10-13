@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Site administration | Light Efficient Design</title>
+<link rel="icon" href="../assets/img/brand/favicon.svg">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .adm { max-width: 1120px; margin: 0 auto; padding: 32px var(--gutter) 80px; }
+  .adm-top { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-bottom: 28px; }
+  .adm-top img { height: 30px; width: auto; }
+  .adm-top h1 { font-size: var(--step-2); margin: 0; letter-spacing: -0.01em; }
+  .adm-top .built { color: var(--muted); font-size: var(--step--1); margin-left: auto; }
+  .adm-links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+  .adm-links a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-weight: 600; text-decoration: none; }
+  .adm-links a.go { background: var(--ok); border-color: var(--ok); color: #fff; }
+  .adm-links a:hover { border-color: var(--ink); }
+  .adm-links a.go:hover { filter: brightness(1.08); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 36px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; }
+  .card h2 { margin: 0 0 6px; font-size: var(--step-1); display: flex; align-items: center; gap: 10px; }
+  .card .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--ok); }
+  .card.sand .dot { background: #e0a100; }
+  .card .big { font-size: var(--step-3); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin: 10px 0 6px; }
+  .card p { margin: 0; color: var(--muted); }
+  .card .btn-approve { display: inline-block; margin-top: 16px; padding: 12px 20px; border-radius: 999px; background: var(--ok); color: #fff; font-weight: 700; text-decoration: none; }
+  .card .btn-approve:hover { filter: brightness(1.08); }
+  .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 0 0 14px; }
+  .toolbar h2 { font-size: var(--step-1); margin: 0; }
+  .toolbar label { margin-left: auto; color: var(--muted); font-size: var(--step--1); display: flex; align-items: center; gap: 8px; }
+  .toolbar select { font: inherit; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+  .feed { display: grid; gap: 10px; margin-bottom: 40px; }
+  .chg { display: grid; grid-template-columns: 150px 1fr; gap: 6px 18px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); }
+  .chg .who { font-weight: 700; }
+  .chg .when { color: var(--muted); font-size: var(--step--1); }
+  .chg ul { margin: 0; padding-left: 18px; }
+  .chg li { margin: 2px 0; }
+  .chg .sha { color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem; }
+  .chg.hide { display: none; }
+  .empty { color: var(--muted); padding: 18px; border: 1px dashed var(--line); border-radius: var(--radius-sm); }
+  .rel { margin-bottom: 26px; }
+  .rel-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 10px 0; border-bottom: 2px solid var(--ok); margin-bottom: 10px; }
+  .rel-head strong { font-size: var(--step-0); }
+  .rel-head .when, .rel-head .note { color: var(--muted); }
+  .rel-head .count { margin-left: auto; color: var(--muted); font-size: var(--step--1); }
+  @media (max-width: 640px) { .chg { grid-template-columns: 1fr; } .adm-top .built { margin-left: 0; } }
+</style>
+</head>
+<body>
+<main class="adm">
+  <div class="adm-top">
+    <img src="../assets/img/brand/led-logo-h.png" alt="Light Efficient Design">
+    <h1>Site administration</h1>
+    <span class="built">Updated {{ built }}</span>
+  </div>
+  <div class="adm-links">
+    <a class="go" href="{{ cms }}" target="_blank" rel="noopener">Edit pages and files</a>
+    <a href="{{ sandbox_url }}" target="_blank" rel="noopener">Open the sandbox</a>
+    <a href="{{ live_url }}" target="_blank" rel="noopener">Open the live site</a>
+  </div>
+
+  <div class="cards">
+    <div class="card sand">
+      <h2><span class="dot"></span>Sandbox</h2>
+      <div class="big">{{ pending|length }}</div>
+      <p>{% if pending|length == 1 %}change waiting for approval{% else %}changes waiting for approval{% endif %}{% if pending %}, the latest by {{ pending[0].who }} on {{ pending[0].when }}{% endif %}.</p>
+      {% if pending %}<a class="btn-approve" href="{{ cms }}/actions" target="_blank" rel="noopener">Approve and publish to live</a>{% endif %}
+    </div>
+    <div class="card">
+      <h2><span class="dot"></span>Live site</h2>
+      {% if releases %}
+      <div class="big">{{ releases[0].when.split(' at ')[0] }}</div>
+      <p>Approved by {{ releases[0].who }} on {{ releases[0].when }}{% if releases[0].note %}: “{{ releases[0].note }}”{% endif %}.</p>
+      {% elif has_live %}
+      <div class="big">Published</div>
+      <p>No approvals recorded yet.</p>
+      {% else %}
+      <div class="big">Not yet</div>
+      <p>Nothing has been approved for the live site yet; the sandbox is what visitors see until the first approval.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <h2>Waiting on the sandbox</h2>
+    <label>Show changes by <select id="who"><option value="">everyone</option>{% for p in people %}<option>{{ p }}</option>{% endfor %}</select></label>
+  </div>
+  <div class="feed">
+    {% for c in pending %}
+    <article class="chg" data-who="{{ c.who }}">
+      <div><div class="who">{{ c.who }}</div><div class="when">{{ c.when }}</div><div class="sha">{{ c.sha }}</div></div>
+      <ul>{% for w in c.what %}<li>{{ w }}</li>{% endfor %}</ul>
+    </article>
+    {% else %}
+    <div class="empty">Everything on the sandbox is live. New edits and uploads will appear here.</div>
+    {% endfor %}
+  </div>
+
+  <div class="toolbar"><h2>Published versions</h2></div>
+  {% for r in releases %}
+  <section class="rel">
+    <div class="rel-head">
+      <strong>Approved by {{ r.who }}</strong><span class="when">{{ r.when }}</span>{% if r.note %}<span class="note">“{{ r.note }}”</span>{% endif %}
+      <span class="count">{{ r.changes|length }} change{{ '' if r.changes|length == 1 else 's' }}</span>
+    </div>
+    <div class="feed">
+      {% for c in r.changes %}
+      <article class="chg" data-who="{{ c.who }}">
+        <div><div class="who">{{ c.who }}</div><div class="when">{{ c.when }}</div><div class="sha">{{ c.sha }}</div></div>
+        <ul>{% for w in c.what %}<li>{{ w }}</li>{% endfor %}</ul>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% else %}
+  <div class="empty">Each approval will be listed here with who approved it, when, and the changes it carried live.</div>
+  {% endfor %}
+</main>
+<script>
+  const sel = document.getElementById("who");
+  sel.addEventListener("change", () => {
+    document.querySelectorAll(".chg").forEach(el => el.classList.toggle("hide", !!sel.value && el.dataset.who !== sel.value));
+  });
+</script>
+</body>
+</html>

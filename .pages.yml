@@ -1,12 +1,28 @@
 # Pages CMS (https://app.pagescms.org): the admin page for this site.
-# Every save is a commit to this repo; .github/workflows/build.yml then rebuilds the pages with tools/build.py
-# and publishes them, so an edit is live a few minutes later.
+# Every save is a commit to this repo; .github/workflows/deploy.yml then rebuilds the sandbox copy of the site
+# (/sandbox/). The live site only changes when someone approves (actions below).
 #
 # Every kind of download has a folder per Products menu category and, inside it, one per product (IES files go one level
 # deeper, in a folder named after the part number). The site finds a file by its name in any folder, so a file can be
 # moved without breaking a link. Documents keep their exact names (rename: false). To post a newer version, upload it under the same name with
 # V2, rev3 or a date added (RP-LBI-Spec_Sheet V2.pdf, LBI-G2-Spec-Sheet-2026-10-12.pdf): the build points every
 # link at the newest version. The older file can stay or be deleted.
+
+# "Approve and publish to live" (under Actions in the admin page): everything on the sandbox goes live, in the name of
+# whoever clicks it. The portal at /admin/ lists every change, who made it, when, and each approval.
+actions:
+  - name: publish
+    label: Approve and publish to live
+    workflow: approve.yml
+    ref: main
+    cancelable: false
+    confirm:
+      title: Publish everything now on the sandbox to the live site?
+      button: Approve and publish
+    fields:
+      - name: note
+        label: Note (optional, shown in the history)
+        type: text
 
 content:
   - name: pages
