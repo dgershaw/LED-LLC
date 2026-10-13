@@ -43,7 +43,8 @@ jobs:
           AT=$(date -d "$WHEN" +%s 2>/dev/null) || { echo "::error::Could not read the date and time \"$WHEN\". Write it like 2026-10-20 9:00 am."; exit 1; }
           [ "$AT" -gt "$(date +%s)" ] || { echo "::error::\"$WHEN\" is already in the past."; exit 1; }
           SNAP=$(git rev-parse origin/main)
-          jq -n --arg at "$AT" --arg text "$(date -d @"$AT" '+%b %-d, %Y at %-I:%M %p %Z')" --arg by "$NAME" --arg email "$EMAIL" \
+          cp tools/notify.sh /tmp/notify.sh   # the schedule branch holds only the plan, so keep the notifier at hand
+          jq -n --arg at "$AT" --arg text "$(date -d @"$AT" '+%b %-d, %Y at %-I:%M %p %Z' | sed 's/ AM / am /; s/ PM / pm /')" --arg by "$NAME" --arg email "$EMAIL" \
                 --arg note "$NOTE" --arg snapshot "$SNAP" --arg set "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
                 '{at: ($at|tonumber), at_text: $text, by: $by, email: $email, note: $note, snapshot: $snapshot, set_at: $set}' > /tmp/go-live.json
           git config user.name "$NAME"; git config user.email "$EMAIL"
@@ -52,4 +53,4 @@ jobs:
           git add go-live.json && git commit -q -m "Go-live scheduled by $NAME for $(jq -r .at_text go-live.json)"
           git push -f origin schedule
           gh workflow run deploy.yml --ref main
-          bash tools/notify.sh "Go-live scheduled" "$NAME scheduled the sandbox to go live on $(jq -r .at_text go-live.json).${NOTE:+ Note: $NOTE}" "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal"
+          bash /tmp/notify.sh "Go-live scheduled" "$NAME scheduled the sandbox to go live on $(jq -r .at_text go-live.json).${NOTE:+ Note: $NOTE}" "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal"
