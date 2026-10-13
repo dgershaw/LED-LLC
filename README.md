@@ -11,6 +11,9 @@ A preview of the new Light Efficient Design, RemPhos and Solera website, publish
 - Every edit and upload lands on the **sandbox** first: https://dgershaw.github.io/LED-LLC/sandbox/ (the `main` branch), rebuilt a few minutes after each save.
 - The **live site** (the root, built from the `live` branch) only changes when someone clicks **Approve and publish to live** under *Actions* in the admin page. The approval is recorded in that person's name (`.github/workflows/approve.yml`).
 - The **administration portal** at https://dgershaw.github.io/LED-LLC/admin/ lists every change with who made it and when, what is still waiting on the sandbox, and every published version with its approver (`tools/portal.py`, built from the repository's history by `.github/workflows/deploy.yml`).
+- Changes made through Claude are committed in the name of the person who asked for them (Claude is the committer), so the portal shows "David, through Claude".
+- **Undo a change** (under *Actions*, with the change id shown next to the change on the portal) reverses that one change on the sandbox; the undo waits for approval like any other change (`.github/workflows/undo.yml`). A change that a later change built on cannot be undone automatically.
+- **Roll back the live site** puts the live site back to the version that was live before the current one and records who did it; the sandbox keeps everything, and the next approval publishes it all again (`.github/workflows/roll-back.yml`). Each live version carries a `Snapshot:` line naming the sandbox commit it published.
 
 ## The admin page
 

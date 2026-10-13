@@ -23,6 +23,31 @@ actions:
       - name: note
         label: Note (optional, shown in the history)
         type: text
+  - name: roll-back
+    label: Roll back the live site
+    workflow: roll-back.yml
+    ref: main
+    cancelable: false
+    confirm:
+      title: Put the live site back to the version that was live before this one?
+      button: Roll back
+    fields:
+      - name: note
+        label: Why (optional, shown in the history)
+        type: text
+  - name: undo
+    label: Undo a change
+    workflow: undo.yml
+    ref: main
+    cancelable: false
+    confirm:
+      title: Reverse this one change on the sandbox? It will wait for approval like any other change.
+      button: Undo
+    fields:
+      - name: change
+        label: Change id (shown next to the change on the admin page)
+        type: text
+        required: true
 
 content:
   - name: pages
@@ -44,7 +69,7 @@ content:
     fields:
       - name: title
         label: Page title
-        type: string
+        type: text
         required: true
       - name: subtitle
         label: Subtitle

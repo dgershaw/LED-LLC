@@ -34,10 +34,17 @@
   .feed { display: grid; gap: 10px; margin-bottom: 40px; }
   .chg { display: grid; grid-template-columns: 150px 1fr; gap: 6px 18px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); }
   .chg .who { font-weight: 700; }
+  .chg .via { color: var(--muted); font-size: var(--step--1); }
+  .chg .act { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px; }
+  .chg .sha { color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem; }
+  .chg .undo { font-size: var(--step--1); color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .card .btn-back { display: inline-block; margin-top: 16px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-weight: 600; text-decoration: none; }
+  .card .btn-back:hover { border-color: var(--ink); }
+  .rel.back .rel-head { border-bottom-color: #e0a100; }
+  .rel .sub { color: var(--muted); margin: 0 0 8px; }
   .chg .when { color: var(--muted); font-size: var(--step--1); }
   .chg ul { margin: 0; padding-left: 18px; }
   .chg li { margin: 2px 0; }
-  .chg .sha { color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem; }
   .chg.hide { display: none; }
   .empty { color: var(--muted); padding: 18px; border: 1px dashed var(--line); border-radius: var(--radius-sm); }
   .rel { margin-bottom: 26px; }
@@ -49,6 +56,13 @@
 </style>
 </head>
 <body>
+{% macro change(c) -%}
+<article class="chg" data-who="{{ c.who }}">
+  <div><div class="who">{{ c.who }}</div>{% if c.via %}<div class="via">through {{ c.via }}</div>{% endif %}<div class="when">{{ c.when }}</div></div>
+  <div><ul>{% for w in c.what %}<li>{{ w }}</li>{% endfor %}</ul>
+    <div class="act"><span class="sha" title="The change id">{{ c.sha }}</span><a class="undo" href="{{ cms }}/actions" target="_blank" rel="noopener" title="Opens the Undo a change button; enter this change id there">Undo this change</a></div></div>
+</article>
+{%- endmacro %}
 <main class="adm">
   <div class="adm-top">
     <img src="../assets/img/brand/led-logo-h.png" alt="Light Efficient Design">
@@ -72,7 +86,12 @@
       <h2><span class="dot"></span>Live site</h2>
       {% if releases %}
       <div class="big">{{ releases[0].when.split(' at ')[0] }}</div>
+      {% if releases[0].kind == 'rollback' %}
+      <p>Rolled back by {{ releases[0].who }} on {{ releases[0].when }} to {{ releases[0].back_to }}{% if releases[0].note %}: “{{ releases[0].note }}”{% endif %}.</p>
+      {% else %}
       <p>Approved by {{ releases[0].who }} on {{ releases[0].when }}{% if releases[0].note %}: “{{ releases[0].note }}”{% endif %}.</p>
+      {% endif %}
+      {% if can_roll_back %}<a class="btn-back" href="{{ cms }}/actions" target="_blank" rel="noopener" title="Puts the live site back to the version before this one; the sandbox keeps everything">Roll back to the previous version</a>{% endif %}
       {% elif has_live %}
       <div class="big">Published</div>
       <p>No approvals recorded yet.</p>
@@ -89,10 +108,7 @@
   </div>
   <div class="feed">
     {% for c in pending %}
-    <article class="chg" data-who="{{ c.who }}">
-      <div><div class="who">{{ c.who }}</div><div class="when">{{ c.when }}</div><div class="sha">{{ c.sha }}</div></div>
-      <ul>{% for w in c.what %}<li>{{ w }}</li>{% endfor %}</ul>
-    </article>
+    {{ change(c) }}
     {% else %}
     <div class="empty">Everything on the sandbox is live. New edits and uploads will appear here.</div>
     {% endfor %}
@@ -100,22 +116,20 @@
 
   <div class="toolbar"><h2>Published versions</h2></div>
   {% for r in releases %}
-  <section class="rel">
+  <section class="rel{% if r.kind == 'rollback' %} back{% endif %}">
     <div class="rel-head">
-      <strong>Approved by {{ r.who }}</strong><span class="when">{{ r.when }}</span>{% if r.note %}<span class="note">“{{ r.note }}”</span>{% endif %}
-      <span class="count">{{ r.changes|length }} change{{ '' if r.changes|length == 1 else 's' }}</span>
+      <strong>{% if r.kind == 'rollback' %}Rolled back by {{ r.who }}{% else %}Approved by {{ r.who }}{% endif %}</strong><span class="when">{{ r.when }}</span>{% if r.note %}<span class="note">“{{ r.note }}”</span>{% endif %}
+      <span class="count">{% if r.kind == 'rollback' %}{{ r.removed|length }} change{{ '' if r.removed|length == 1 else 's' }} taken off the live site{% else %}{{ r.changes|length }} change{{ '' if r.changes|length == 1 else 's' }}{% endif %}</span>
     </div>
+    {% if r.kind == 'rollback' %}<p class="sub">Back to {{ r.back_to }}. These changes came off the live site and stay on the sandbox:</p>{% endif %}
     <div class="feed">
-      {% for c in r.changes %}
-      <article class="chg" data-who="{{ c.who }}">
-        <div><div class="who">{{ c.who }}</div><div class="when">{{ c.when }}</div><div class="sha">{{ c.sha }}</div></div>
-        <ul>{% for w in c.what %}<li>{{ w }}</li>{% endfor %}</ul>
-      </article>
+      {% for c in r.changes + r.removed %}
+      {{ change(c) }}
       {% endfor %}
     </div>
   </section>
   {% else %}
-  <div class="empty">Each approval will be listed here with who approved it, when, and the changes it carried live.</div>
+  <div class="empty">Each approval and roll-back will be listed here with who did it, when, and the changes it carried.</div>
   {% endfor %}
 </main>
 <script>

@@ -1,6 +1,7 @@
 # "Approve and publish to live", run from the admin page (Pages CMS passes who clicked it in `payload`).
-# Moves the `live` branch to everything now on the sandbox with a merge commit in the approver's name, then
-# starts the publish workflow. The portal reads these merge commits as the approval history.
+# Adds a commit to the `live` branch whose content is exactly what the sandbox (`main`) holds now, in the
+# approver's name, then starts the publish workflow. The portal reads these commits as the approval history;
+# each one carries a "Snapshot:" line naming the sandbox commit it published, which roll-back.yml relies on.
 name: Approve and publish to live
 
 on:
@@ -16,7 +17,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: approve
+  group: live-branch
   cancel-in-progress: false
 
 jobs:
@@ -27,7 +28,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-      - name: Move the live version to the sandbox's content
+      - name: Publish the sandbox's content as the live version
         env:
           PAYLOAD: ${{ inputs.payload }}
           GH_TOKEN: ${{ github.token }}
@@ -37,16 +38,19 @@ jobs:
           NOTE=$(printf '%s' "$PAYLOAD" | jq -r '.inputs.note // empty')
           [ -n "$NAME" ] || NAME="${GITHUB_ACTOR}"
           [ -n "$EMAIL" ] || EMAIL="${GITHUB_ACTOR}@users.noreply.github.com"
-          git config user.name "$NAME"
-          git config user.email "$EMAIL"
+          export GIT_AUTHOR_NAME="$NAME" GIT_AUTHOR_EMAIL="$EMAIL"
+          export GIT_COMMITTER_NAME="Site publisher" GIT_COMMITTER_EMAIL="noreply@led-llc.com"
+          SNAP=$(git rev-parse origin/main)
+          PARENT=()
           if git fetch origin live:refs/remotes/origin/live 2>/dev/null; then
-            git checkout -B live origin/live
-          else
-            # the first approval: the live branch starts at the site's first commit, so this merge carries everything
-            git checkout -B live "$(git rev-list --max-parents=0 origin/main | tail -1)"
+            PARENT=(-p origin/live)
+            CUR=$(git log -1 --format=%B origin/live | sed -n 's/^Snapshot: //p' | head -1)
+            [ -n "$CUR" ] || CUR=$(git rev-parse -q --verify origin/live^2 || true)
+            if [ "$CUR" = "$SNAP" ]; then echo "The live site already matches the sandbox; nothing to publish."; exit 0; fi
           fi
-          MSG="Approved for the live site by $NAME"
-          if [ -n "$NOTE" ]; then MSG="$MSG"$'\n\n'"Note: $NOTE"; fi
-          git merge --no-ff --no-edit -m "$MSG" origin/main
-          git push origin live
+          MSG="Approved for the live site by $NAME"$'\n\n'
+          [ -z "$NOTE" ] || MSG="$MSG""Note: $NOTE"$'\n'
+          MSG="$MSG""Snapshot: $SNAP"
+          C=$(printf '%s\n' "$MSG" | git commit-tree "$SNAP^{tree}" "${PARENT[@]}")
+          git push origin "$C:refs/heads/live"
           gh workflow run deploy.yml --ref main
