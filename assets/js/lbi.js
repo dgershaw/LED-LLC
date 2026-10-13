@@ -473,19 +473,23 @@
   // The LBI 65's own remote, drawn after the real one (David, 2026-10-09; spec sheet p. 1 and 7): power and RESET, CCT+/CCT- and
   // LM+/LM- steps, Q1 and Q2, six color temperature keys and PW1 to PW4, the four FlexWatt wattages of the bar's length.
   const R65_K = { 2700: "#f26a3c", 3000: "#f6c21c", 3500: "#fbe07c", 4000: "#fdebb0", 5000: "#cdd9f6", 5700: "#5d92e2" };
-  const SUN = c => `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="${c}" stroke="#1b1c20" stroke-width="1.4"/><path d="M12 1.8v3M12 19.2v3M1.8 12h3M19.2 12h3M4.8 4.8l2.1 2.1M17.1 17.1l2.1 2.1M4.8 19.2l2.1-2.1M17.1 6.9l2.1-2.1" stroke="#1b1c20" stroke-width="1.6" stroke-linecap="round"/></svg>`;
-  const LMI = up => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z" fill="#fff" stroke="#1b1c20" stroke-width="1.5"/><path d="${up ? "M12 16V8.5M8.6 11.6 12 8.2l3.4 3.4" : "M12 8v7.5M8.6 12.4 12 15.8l3.4-3.4"}" stroke="#1b1c20" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  // The keys as drawn on the spec sheet (David, 2026-10-12): a black sun with a white label band for CCT+ and CCT−,
+  // a white sun with a chevron and a label band for LM+ and LM−.
+  const RAYS = (c, w) => `<path d="M12 .8v3.4M12 19.8v3.4M.8 12h3.4M19.8 12h3.4M4.1 4.1l2.4 2.4M17.5 17.5l2.4 2.4M4.1 19.9l2.4-2.4M17.5 6.5l2.4-2.4M8.2 2.4l1.1 2.5M14.7 19.1l1.1 2.5M2.4 8.2l2.5 1.1M19.1 14.7l2.5 1.1M2.4 15.8l2.5-1.1M19.1 9.3l2.5-1.1M8.2 21.6l1.1-2.5M14.7 4.9l1.1-2.5" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/>`;
+  const BAND = (txt, fg) => `<rect x="3" y="9.6" width="18" height="4.8" rx="0.6" fill="#fff"/><text x="12" y="13.4" text-anchor="middle" font-size="4.4" font-weight="800" font-family="Arial Narrow, Roboto Condensed, Avenir Next Condensed, sans-serif" fill="${fg}">${txt}</text>`;
+  const SUN = txt => `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6.6" fill="#17181b"/>${RAYS("#17181b", 1.7)}${BAND(txt, "#17181b")}</svg>`;
+  const LMI = (up, txt) => `<svg viewBox="-1 -4 26 32" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="none" stroke="#fff" stroke-width="1.5"/>${RAYS("#fff", 1.4)}<path d="${up ? "M7.2 1.2 12 -3.4l4.8 4.6z" : "M7.2 22.8 12 27.4l4.8-4.6z"}" fill="#fff"/>${BAND(txt, "#2b2c30")}</svg>`;
   function remoteLbi65(v, sz, st) {
     const key = (k, cls, inner, aria, extra = "") => `<button type="button" class="r65-key ${cls}" data-r65k="${k}" aria-label="${h(aria)}"${extra}>${inner}</button>`;
     return `<div class="remote r65" role="group" aria-label="LBI 65 remote">
-      <div class="r65-top">${key("power", "pwr", `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v8M7 6.3a7.5 7.5 0 1 0 10 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>`, st.off ? "Turn on" : "Turn off", ` aria-pressed="${!st.off}"`)}${key("reset", "reset", "RESET", "Reset to the factory setting")}</div>
+      <div class="r65-top">${key("power", "pwr", `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v8M7 6.3a7.5 7.5 0 1 0 10 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>`, st.off ? "Turn on" : "Turn off", ` aria-pressed="${!st.off}"`)}${key("reset", "reset", "<span>RESET</span>", "Reset to the factory setting")}</div>
       <div class="r65-adj">
-        <div class="r65-col lite">${key("cool", "icon", `${SUN("#c6d4f7")}<span>CCT+</span>`, "CCT+: one step cooler")}${key("warm", "icon", `${SUN("#f6c21c")}<span>CCT−</span>`, "CCT−: one step warmer")}</div>
-        <div class="r65-col">${key("q1", "q", "Q1", "Q1", ' aria-disabled="true"')}${key("q2", "q", "Q2", "Q2", ' aria-disabled="true"')}</div>
-        <div class="r65-col grey">${key("up", "icon", `${LMI(true)}<span>LM+</span>`, "LM+: brighter")}${key("down", "icon", `${LMI(false)}<span>LM−</span>`, "LM−: dimmer")}</div>
+        <div class="r65-col lite">${key("cool", "icon", SUN("CCT+"), "CCT+: one step cooler")}${key("warm", "icon", SUN("CCT−"), "CCT−: one step warmer")}</div>
+        <div class="r65-col">${key("q1", "q", "<span>Q1</span>", "Q1", ' aria-disabled="true"')}${key("q2", "q", "<span>Q2</span>", "Q2", ' aria-disabled="true"')}</div>
+        <div class="r65-col grey">${key("up", "icon", LMI(true, "LM+"), "LM+: brighter")}${key("down", "icon", LMI(false, "LM−"), "LM−: dimmer")}</div>
       </div>
-      <div class="r65-cct">${v.ccts.map((k, i) => `<button type="button" class="r65-key cct${!st.off && k === st.k ? " sel" : ""}" style="--c:${R65_K[k] || cctToRgb(k)}" data-r65="cct" data-i="${i}" aria-pressed="${k === st.k}" aria-label="${k}K">${k}K</button>`).join("")}</div>
-      <div class="r65-pw">${sz.watts.map((w, i) => `<button type="button" class="r65-key pw${!st.off && i === st.w ? " sel" : ""}" data-r65="watt" data-i="${i}" aria-pressed="${i === st.w}" aria-label="PW${i + 1}: ${w} W">PW${i + 1}</button>`).join("")}</div>
+      <div class="r65-cct">${v.ccts.map((k, i) => `<button type="button" class="r65-key cct${!st.off && k === st.k ? " sel" : ""}" style="--c:${R65_K[k] || cctToRgb(k)}" data-r65="cct" data-i="${i}" aria-pressed="${k === st.k}" aria-label="${k}K"><span>${k}K</span></button>`).join("")}</div>
+      <div class="r65-pw">${sz.watts.map((w, i) => `<button type="button" class="r65-key pw${!st.off && i === st.w ? " sel" : ""}" data-r65="watt" data-i="${i}" aria-pressed="${i === st.w}" aria-label="PW${i + 1}: ${w} W"><span>PW${i + 1}</span></button>`).join("")}</div>
       <div class="r65-brand"><img src="assets/img/brand/remphos-wordmark.png" alt="RemPhos" width="120" height="18"></div>
     </div>`;
   }
