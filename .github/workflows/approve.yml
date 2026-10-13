@@ -1,7 +1,6 @@
 # "Approve and publish to live", run from the admin page (Pages CMS passes who clicked it in `payload`).
-# Adds a commit to the `live` branch whose content is exactly what the sandbox (`main`) holds now, in the
-# approver's name, then starts the publish workflow. The portal reads these commits as the approval history;
-# each one carries a "Snapshot:" line naming the sandbox commit it published, which roll-back.yml relies on.
+# Publishes the sandbox (`main`) as the live version in the approver's name (tools/publish-live.sh), starts the
+# publish workflow and tells the team. The portal reads the live branch's commits as the approval history.
 name: Approve and publish to live
 
 on:
@@ -32,25 +31,16 @@ jobs:
         env:
           PAYLOAD: ${{ inputs.payload }}
           GH_TOKEN: ${{ github.token }}
+          TEAMS_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
         run: |
           NAME=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.name // .triggeredBy.githubUsername // empty')
           EMAIL=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.email // empty')
           NOTE=$(printf '%s' "$PAYLOAD" | jq -r '.inputs.note // empty')
           [ -n "$NAME" ] || NAME="${GITHUB_ACTOR}"
           [ -n "$EMAIL" ] || EMAIL="${GITHUB_ACTOR}@users.noreply.github.com"
-          export GIT_AUTHOR_NAME="$NAME" GIT_AUTHOR_EMAIL="$EMAIL"
-          export GIT_COMMITTER_NAME="Site publisher" GIT_COMMITTER_EMAIL="noreply@led-llc.com"
-          SNAP=$(git rev-parse origin/main)
-          PARENT=()
-          if git fetch origin live:refs/remotes/origin/live 2>/dev/null; then
-            PARENT=(-p origin/live)
-            CUR=$(git log -1 --format=%B origin/live | sed -n 's/^Snapshot: //p' | head -1)
-            [ -n "$CUR" ] || CUR=$(git rev-parse -q --verify origin/live^2 || true)
-            if [ "$CUR" = "$SNAP" ]; then echo "The live site already matches the sandbox; nothing to publish."; exit 0; fi
-          fi
-          MSG="Approved for the live site by $NAME"$'\n\n'
-          [ -z "$NOTE" ] || MSG="$MSG""Note: $NOTE"$'\n'
-          MSG="$MSG""Snapshot: $SNAP"
-          C=$(printf '%s\n' "$MSG" | git commit-tree "$SNAP^{tree}" "${PARENT[@]}")
-          git push origin "$C:refs/heads/live"
-          gh workflow run deploy.yml --ref main
+          OUT=$(bash tools/publish-live.sh "$NAME" "$EMAIL" "$NOTE")
+          echo "$OUT"
+          case "$OUT" in Published*)
+            gh workflow run deploy.yml --ref main
+            bash tools/notify.sh "Live site updated" "$NAME approved the sandbox for the live site.${NOTE:+ Note: $NOTE} It is live in a few minutes." "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal";;
+          esac

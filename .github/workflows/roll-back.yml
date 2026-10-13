@@ -31,6 +31,7 @@ jobs:
         env:
           PAYLOAD: ${{ inputs.payload }}
           GH_TOKEN: ${{ github.token }}
+          TEAMS_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
         run: |
           NAME=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.name // .triggeredBy.githubUsername // empty')
           EMAIL=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.email // empty')
@@ -54,3 +55,4 @@ jobs:
           C=$(printf '%s\n' "$MSG" | git commit-tree "$PREVSNAP^{tree}" -p origin/live)
           git push origin "$C:refs/heads/live"
           gh workflow run deploy.yml --ref main
+          bash tools/notify.sh "Live site rolled back" "$NAME rolled the live site back to the previous version.${NOTE:+ Note: $NOTE}" "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal"

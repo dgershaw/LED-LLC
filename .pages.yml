@@ -35,6 +35,30 @@ actions:
       - name: note
         label: Why (optional, shown in the history)
         type: text
+  - name: schedule
+    label: Schedule a go-live
+    workflow: schedule.yml
+    ref: main
+    cancelable: false
+    confirm:
+      title: Approve everything now on the sandbox and publish it at this date and time (Central)?
+      button: Schedule
+    fields:
+      - name: when
+        label: Date and time, Central (for example 2026-10-20 9:00 am)
+        type: text
+        required: true
+      - name: note
+        label: Note (optional, shown in the history)
+        type: text
+  - name: schedule-cancel
+    label: Cancel the scheduled go-live
+    workflow: schedule-cancel.yml
+    ref: main
+    cancelable: false
+    confirm:
+      title: Cancel the scheduled go-live? The sandbox keeps its changes.
+      button: Cancel the go-live
   - name: undo
     label: Undo a change
     workflow: undo.yml

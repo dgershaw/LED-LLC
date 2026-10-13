@@ -30,6 +30,7 @@ jobs:
         env:
           PAYLOAD: ${{ inputs.payload }}
           GH_TOKEN: ${{ github.token }}
+          TEAMS_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
         run: |
           NAME=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.name // .triggeredBy.githubUsername // empty')
           EMAIL=$(printf '%s' "$PAYLOAD" | jq -r '.triggeredBy.email // empty')
@@ -51,3 +52,4 @@ jobs:
           git commit -q --amend -m "Undid: $(git log -1 --format=%s "$SHA")"$'\n\n'"Undoes: $SHA"
           git push origin main
           gh workflow run deploy.yml --ref main
+          bash tools/notify.sh "A change was undone on the sandbox" "$NAME undid: $(git log -1 --format=%s "$SHA"). The undo waits for approval." "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal"

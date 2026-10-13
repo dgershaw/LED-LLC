@@ -399,6 +399,15 @@ def main():
     live_ref = next((r for r in ("live", "origin/live")
                      if subprocess.run(["git", "-C", str(main_repo), "rev-parse", "--verify", "-q", r], capture_output=True).returncode == 0), None)
 
+    schedule = None   # a go-live planned with schedule.yml: go-live.json on the schedule branch
+    for ref in ("schedule", "origin/schedule"):
+        try:
+            schedule = json.loads(git(main_repo, "show", f"{ref}:go-live.json"))
+            schedule["when"] = fmt(datetime.fromtimestamp(schedule["at"], timezone.utc))
+            schedule["by"] = person(schedule.get("by", ""))
+            break
+        except (subprocess.CalledProcessError, ValueError, KeyError, OSError):
+            schedule = None
     history = live_history(main_repo, live_ref) if live_ref else []
     current = history[0]["snapshot"] if history else ""
     pending = [entry(c, main_repo) for c in commits(main_repo, "main", *([f"^{current}"] if current else []))]
@@ -424,10 +433,10 @@ def main():
     page = env.get_template("admin.html").render(pending=pending, releases=releases, people=people, built=built, cms=CMS,
                                                  live_url=LIVE_URL, sandbox_url=SANDBOX_URL, final_url=FINAL_URL, has_live=bool(live_ref),
                                                  can_roll_back=len({h["snapshot"] for h in history}) > 1,
-                                                 compare=compare, inv=inv, qr=qr, kinds=KINDS, kind_order=KIND_ORDER[:4])
+                                                 compare=compare, inv=inv, qr=qr, kinds=KINDS, kind_order=KIND_ORDER[:4], schedule=schedule)
     (out / "admin").mkdir(parents=True, exist_ok=True)
     (out / "admin" / "index.html").write_text(page)
-    (out / "admin" / "changes.json").write_text(json.dumps(dict(built=built, pending=pending, releases=releases, compare=compare), indent=1))
+    (out / "admin" / "changes.json").write_text(json.dumps(dict(built=built, pending=pending, releases=releases, compare=compare, schedule=schedule), indent=1))
     print(f"portal: {len(pending)} changes awaiting approval, {len(releases)} versions published, "
           f"{len(compare['pages'])} pages and {len(compare['files'])} files differ, {inv['missing']} missing items, {len(qr)} QR codes")
 

@@ -26,6 +26,7 @@
   .card .big { font-size: var(--step-3); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin: 10px 0 6px; }
   .card p { margin: 0; color: var(--muted); }
   .card p a { color: var(--ink); }
+  .card .sched { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: #fff6d6; color: var(--ink); }
   .card .btn-approve { display: inline-block; margin-top: 16px; padding: 12px 20px; border-radius: 999px; background: var(--ok); color: #fff; font-weight: 700; text-decoration: none; }
   .card .btn-approve:hover { filter: brightness(1.08); }
   .card .btn-back { display: inline-block; margin-top: 16px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-weight: 600; text-decoration: none; }
@@ -129,7 +130,8 @@
       <div class="big">{{ pending|length }}</div>
       <p>{% if pending|length == 1 %}change waiting for approval{% else %}changes waiting for approval{% endif %}{% if pending %}, the latest by {{ pending[0].who }} on {{ pending[0].when }}{% endif %}.
       {% if compare.same %}The sandbox and the live site are the same.{% else %}<a href="#compare">{{ compare.pages|length }} page{{ '' if compare.pages|length == 1 else 's' }} and {{ compare.files|length }} file{{ '' if compare.files|length == 1 else 's' }}</a> differ from the live site.{% endif %}</p>
-      {% if pending %}<a class="btn-approve" href="{{ cms }}/actions" target="_blank" rel="noopener">Approve and publish to live</a>{% endif %}
+      {% if schedule %}<p class="sched">Scheduled to go live on <strong>{{ schedule.when }}</strong>, set by {{ schedule.by }}{% if schedule.note %}: “{{ schedule.note }}”{% endif %}. It publishes the sandbox as it was when scheduled; <a href="{{ cms }}/actions" target="_blank" rel="noopener">cancel it</a> under Actions.</p>{% endif %}
+      {% if pending %}<a class="btn-approve" href="{{ cms }}/actions" target="_blank" rel="noopener">Approve and publish to live</a> <a class="btn-back" href="{{ cms }}/actions" target="_blank" rel="noopener" title="Approve now, publish at a chosen date and time">Schedule a go-live</a>{% endif %}
     </div>
     <div class="card">
       <h2><span class="dot"></span>Live site</h2>

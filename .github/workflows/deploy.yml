@@ -34,6 +34,7 @@ jobs:
         run: |
           cd main
           git fetch origin live:refs/remotes/origin/live 2>/dev/null && LIVE=origin/live || LIVE=main
+          git fetch origin schedule:refs/remotes/origin/schedule 2>/dev/null || true
           echo "Live version: $LIVE"
           git worktree add --detach ../live "$LIVE"
       - uses: actions/setup-python@v6
@@ -81,3 +82,11 @@ jobs:
           path: out
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Tell the team about the sandbox (after a push; approvals send their own message)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          TEAMS_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
+        run: |
+          N=$(jq -r '.pending|length' out/admin/changes.json); WHO=$(jq -r '.pending[0].who // "Someone"' out/admin/changes.json)
+          WHAT=$(jq -r '.pending[0].what|join("; ")' out/admin/changes.json)
+          bash main/tools/notify.sh "Sandbox updated" "$WHO: $WHAT. $N change$([ "$N" = 1 ] || echo s) now waiting for approval." "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal"
