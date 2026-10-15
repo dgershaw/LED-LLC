@@ -829,8 +829,8 @@ ${remoteMode ? remoteHtml : `
   // Scroll catch on laptops (David, 2026-10-08): scrolling down with a mouse or trackpad stops the page for a moment
   // with the configurator framed under the switcher. Browsers only let a page cancel the first wheel event of a
   // gesture, so instead of cancelling, the page locks scrolling (html.scroll-hold) once the stage reaches its spot.
-  // The lock lasts until that gesture, trackpad momentum included, has ended (at least 0.9 s, at most 2.5 s); the
-  // next scroll carries on, and scrolling up lets go at once. Only when the whole stage fits the window.
+  // The lock lasts half a second, however the wheel keeps turning (a longer lock read as a page that would not scroll
+  // past the stage with a mouse wheel, Kcampbell, 2026-10-15); scrolling up lets go at once. Only when the whole stage fits the window.
   (() => {
     const root = document.documentElement;
     let armed = true, holding = false, held = 0, lastWheel = -1e9, prevGap = null, timer = 0;
@@ -850,7 +850,7 @@ ${remoteMode ? remoteHtml : `
       if (g < -0.5) window.scrollBy({ top: g, left: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
       timer = setInterval(() => {
         const now = performance.now();
-        if ((now - held > 900 && now - lastWheel > 250) || now - held > 2500) release();
+        if (now - held > 500) release();
       }, 50);
     }, { passive: true });
   })();
