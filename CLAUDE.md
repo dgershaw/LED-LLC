@@ -44,6 +44,7 @@ The repository is the source of the Light Efficient Design website: the Light Ef
 
 ## Look and feel
 
+- Never modify a logo: no splitting, recolouring, redrawing, cropping into the artwork, re-arranging or animating. Use the files exactly as the team supplies them (the header uses `assets/img/brand/led-logo-original.png`); scaling to size is the only change allowed.
 - "Less is more": a clean, Apple-like, fully responsive site. Nothing busy. A cluttered page loses sections; it is not compressed.
 - High contrast everywhere, no text smaller than 12 px, the catalog fonts. Product heroes show the whole product, never cropped; no blurry or oversized images; boxes in a row are equal size; pages fill a laptop screen (content up to 1760 px wide with fluid gutters) and work on an iPhone. Check every change at about 1440 px and 390 px wide before pushing.
 - Product page order: compact auto-sliding imagery (product-only shots first, then in use); "At a glance" as a short list of the cut sheet's five points with its logos and symbols; video, install photos and case studies near the top; specifications and the part-number table with one IES download per row; "Next steps, with a little help from Eddy" at the very bottom; "More from" as a small auto-scrolling strip.
@@ -52,7 +53,7 @@ The repository is the source of the Light Efficient Design website: the Light Ef
 
 ## Eddy, the mascot
 
-- Eddy (Edison) is a 5 mm LED named after Thomas Edison, created by Senior Creative Director Amy George. The LED in the header logo is Eddy; the welcome tour is `assets/js/tour.js` with its styles at the end of `assets/css/site.css`.
+- Eddy (Edison) is a 5 mm LED named after Thomas Edison, created by Senior Creative Director Amy George. The LED in the logo is Eddy, but the logo itself is never animated or split to make him move; the welcome tour is `assets/js/tour.js` with its styles at the end of `assets/css/site.css`.
 - Any Eddy drawn by Claude must look like Amy's stickers (see `assets/img/eddy/`): the same head-to-body proportions, eye, pins and gloves. Before calling it done, show the person a large side-by-side with a sticker. When Amy supplies a plain Eddy, use her art directly instead of drawing.
 - Eddy's recorded voice lines are MP3 files under `assets/audio/tour/`; to change a line, replace the file with the same name.
 
