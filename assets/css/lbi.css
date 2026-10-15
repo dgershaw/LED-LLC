@@ -278,14 +278,14 @@ input[type="range"] { width: 100%; accent-color: #f4f5f8; }
 @media (max-width: 640px) { .console { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; padding: 12px; } .console .dmx-side { grid-column: 1 / -1; } .fader output { min-width: 0; width: 100%; padding: 2px 3px; font-size: 0.75rem; } }
 .fader { display: grid; justify-items: center; gap: 8px; }
 .fader .ch { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--stage-muted); }
-.fader output { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--stage-ink); background: #05060a; border: 1px solid #262a33; border-radius: 6px; padding: 2px 6px; min-width: 3.4em; text-align: center; }
+.fader output { font-family: var(--font-mono); font-weight: var(--mono-weight); font-size: 0.8125rem; color: var(--stage-ink); background: #05060a; border: 1px solid #262a33; border-radius: 6px; padding: 2px 6px; min-width: 3.4em; text-align: center; }
 .fader .slot { position: relative; height: 170px; width: 100%; display: grid; place-items: center; }
 .fader input[type="range"] {
   writing-mode: vertical-lr; direction: rtl; width: 28px; height: 160px; accent-color: var(--fc, #f4f5f8); cursor: pointer;
 }
 .fader .name { font-size: 0.8125rem; font-weight: 700; color: var(--fc, var(--stage-ink)); text-align: center; line-height: 1.15; }
 .dmx-side { display: grid; gap: 12px; align-content: start; }
-.dmx-addr { font-family: var(--font-mono); font-size: 1.5rem; color: #ff5b3a; background: #05060a; border: 1px solid #262a33; border-radius: 8px; padding: 8px 12px; letter-spacing: 0.08em; text-shadow: 0 0 10px #ff5b3a88; }
+.dmx-addr { font-family: var(--font-mono); font-weight: var(--mono-weight); font-size: 1.5rem; color: #ff5b3a; background: #05060a; border: 1px solid #262a33; border-radius: 8px; padding: 8px 12px; letter-spacing: 0.08em; text-shadow: 0 0 10px #ff5b3a88; }
 .scene-btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: 8px; }
 .scene-btns button { border: 1px solid #2f3440; background: #171a21; color: var(--stage-ink); border-radius: 8px; padding: 7px 6px; white-space: nowrap; font-size: 0.8125rem; cursor: pointer; }
 .scene-btns button:hover { border-color: #5a6070; }
