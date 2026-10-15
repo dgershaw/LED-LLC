@@ -189,44 +189,16 @@ FINDER = [
     ("Something else", "Search every part number and product name", "search"),
 ]
 
-# Home-page mosaic (David, 2026-10-08): the key products of the moment. Each tile links to its product, and each glow is
-# "x,y,w,h" as fractions of the image (w and h of its width), placed by site.js however the tile crops, plus an optional
-# " soft" for a wide, faint spill of light. Swap tiles here when new products launch. Captions stay short enough for a phone.
-MOSAIC = [  # key products of the moment; change freely. Each light is "x,y,w,h[,deg[,top]] [kind]", as fractions of the image
-    # (w and h of its width). kind: none = the lit surface (it glows and spills a halo), "soft" = a faint wide bloom,
-    # "beam" = a cone of light from x,y (h long, w wide at its far end, top = its width at the source as a share of w;
-    # deg 0 points down, positive turns it clockwise), "spark" = a small twinkle on a point source.
-    # A beam, bloom or spark breathes with the light listed before it.
-    dict(cls="m-a", file="cover/p01-b1.jpg", cap="Solera i-Series", alt="Solera i-Series solar area light", href="i-series.html",
-         glows=["0.16,0.4,0.22,0.05,22", "0.16,0.41,0.4,0.2,22 soft", "0.165,0.425,0.5,0.46,22,0.42 beam", "0.09,0.345,0.05,0.05 spark"]),
-    dict(cls="m-b", file="cover/p01-b8.jpg", cap="Retrofit lamps", alt="Light Efficient Design LED retrofit lamps", href="light-efficient-design.html",
-         glows=["0.215,0.44,0.12,0.3", "0.205,0.48,0.3,0.56 soft", "0.215,0.37,0.07,0.07 spark",
-                "0.515,0.38,0.3,0.26", "0.515,0.4,0.42,0.42 soft",
-                "0.35,0.51,0.07,0.33", "0.67,0.6,0.15,0.13", "0.67,0.6,0.24,0.24 soft", "0.773,0.56,0.05,0.5"]),
-    dict(cls="m-c", file="office.jpg", cap="LBI G2", alt="RemPhos LBI G2 light bars in an office", href="lbi.html#g2", pos="50% 20%",
-         glows=["0.27,0.114,0.26,0.045,39", "0.56,0.226,0.42,0.045", "0.837,0.114,0.24,0.045,-43", "0.556,0.306,0.24,0.034",
-                "0.556,0.34,0.22,0.03", "0.54,0.22,0.7,0.2 soft"]),
-    dict(cls="m-d", file="cover/p01-b4.jpg", cap="Retrofit kits", alt="RemPhos LED retrofit kits", href="wall-ceiling-retrofit-kits.html",
-         glows=["0.28,0.45,0.4,0.15", "0.27,0.38,0.56,0.36 soft", "0.79,0.485,0.38,0.06,14", "0.79,0.49,0.48,0.16,14 soft",
-                "0.1,0.87,0.18,0.12", "0.255,0.88,0.035,0.1"]),
-    dict(cls="m-e", file="cat/solar-bollard-post-tops/p33-b3.jpg", cap="Solar bollards", alt="Solera solar bollards and post tops along a path at night", href="solar-bollard-post-tops.html",
-         glows=["0.72,0.148,0.2,0.03", "0.72,0.152,0.52,0.372,0,0.38 beam", "0.72,0.2,0.34,0.14 soft",
-                "0.197,0.12,0.06,0.05", "0.197,0.14,0.2,0.16 soft", "0.197,0.15,0.17,0.3,0,0.2 beam", "0.197,0.115,0.05,0.05 spark",
-                "0.545,0.52,0.03,0.03", "0.6,0.57,0.025,0.025", "0.651,0.63,0.016,0.016", "0.668,0.65,0.012,0.012"]),
+# Home-page mosaic (David, 2026-10-08): the key products of the moment. Each tile links to its product; the photos show
+# as they are, with no glow laid over them (2026-10-15). Swap tiles here when new products launch. Captions stay short enough for a phone.
+MOSAIC = [
+    dict(cls="m-a", file="cover/p01-b1.jpg", cap="Solera i-Series", alt="Solera i-Series solar area light", href="i-series.html"),
+    dict(cls="m-b", file="cover/p01-b8.jpg", cap="Retrofit lamps", alt="Light Efficient Design LED retrofit lamps", href="light-efficient-design.html"),
+    dict(cls="m-c", file="office.jpg", cap="LBI G2", alt="RemPhos LBI G2 light bars in an office", href="lbi.html#g2", pos="50% 20%"),
+    dict(cls="m-d", file="cover/p01-b4.jpg", cap="Retrofit kits", alt="RemPhos LED retrofit kits", href="wall-ceiling-retrofit-kits.html"),
+    dict(cls="m-e", file="cat/solar-bollard-post-tops/p33-b3.jpg", cap="Solar bollards", alt="Solera solar bollards and post tops along a path at night", href="solar-bollard-post-tops.html"),
 ]
 
-
-def mosaic_lights(glows):
-    """Template data for the mosaic lights: kind, coordinates and an animation offset shared with the light it belongs to."""
-    out, k = [], -1
-    for g in glows:
-        coords, _, kind = g.partition(" ")
-        if not kind:
-            k += 1
-        out.append(dict(kind=kind or "glow", g=coords, n=max(k, 0)))
-    for o in out:
-        o["delay"] = "%.1f" % ((o["n"] * 2.3 + (k + 1) * 0.7) % 6.2)
-    return out
 
 # Pages the catalog prints without photography borrow a cover photo so the hero is never empty.
 HERO_FALLBACK = {}
@@ -1842,7 +1814,7 @@ def main():
     for k, (web, _) in list(brand_pics.items()):
         if not (ROOT / web).is_file():
             brand_pics[k] = (heroes.get(next((c["slug"] for c in cats if c["brand_key"] == k and c["hero"]), ""), HOME_IMAGE[0]), "contain")
-    render("home.html", "index.html", 1.0, page="home", mosaic=[dict(m, lights=mosaic_lights(m["glows"])) for m in MOSAIC], brand_pics=brand_pics, finder=[
+    render("home.html", "index.html", 1.0, page="home", mosaic=MOSAIC, brand_pics=brand_pics, finder=[
         dict(q=q, strong=s, href=(h if h.endswith(".html") or h == "search" else f"{h}.html")) for q, s, h in FINDER if h in ("search",) or h.endswith(".html") or any(c["slug"] == h for c in cats)],
         heroes=heroes, brand_cats=by_brand,
         seo=seo_for("index.html", f"{SITE_NAME} | LED Retrofit Lamps, RemPhos, Solera", home_desc, image=HOME_IMAGE[0], image_alt=HOME_IMAGE[1],

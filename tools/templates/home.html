@@ -12,7 +12,7 @@
     <a class="btn btn-ghost" href="#brands">Browse by brand</a>
   </div>
   <div class="mosaic" aria-label="Product photography">
-    {% for m in mosaic %}<figure class="{{ m.cls }}"><a href="{{ m.href }}" aria-label="{{ m.cap }}"><span class="ph"><img src="assets/img/{{ m.file }}" alt="{{ m.alt }}"{{ dims('assets/img/' ~ m.file) }}{% if m.pos %} style="object-position: {{ m.pos }}"{% endif %}>{% for g in m.lights %}<span class="glow{% if g.kind != 'glow' %} {{ g.kind }}{% endif %}" data-g="{{ g.g }}" style="--gd:-{{ g.delay }}s" aria-hidden="true">{% if g.kind == 'beam' %}<i></i>{% endif %}</span>{% endfor %}</span><figcaption>{{ m.cap }} <span aria-hidden="true">›</span></figcaption></a></figure>{% endfor %}
+    {% for m in mosaic %}<figure class="{{ m.cls }}"><a href="{{ m.href }}" aria-label="{{ m.cap }}"><span class="ph"><img src="assets/img/{{ m.file }}" alt="{{ m.alt }}"{{ dims('assets/img/' ~ m.file) }}{% if m.pos %} style="object-position: {{ m.pos }}"{% endif %}></span><figcaption>{{ m.cap }} <span aria-hidden="true">›</span></figcaption></a></figure>{% endfor %}
   </div>
 </section>
 

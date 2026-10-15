@@ -266,30 +266,6 @@
   window.addEventListener("hashchange", unfold);
   unfold();
 
-  /* ----- Home mosaic glows: each glow is given in image coordinates ("x,y,w,h" fractions), so place it on the
-     cropped image (object-fit: cover, centered) every time the tile changes size ----- */
-  const glowTiles = $$(".mosaic figure").filter(f => f.querySelector(".glow"));
-  if (glowTiles.length) {
-    const place = () => glowTiles.forEach(fig => {
-      const img = fig.querySelector("img"), W = fig.clientWidth, H = fig.clientHeight;
-      const iw = +img.getAttribute("width") || img.naturalWidth, ih = +img.getAttribute("height") || img.naturalHeight;
-      if (!iw || !ih || !W) return;
-      const s = Math.max(W / iw, H / ih), dw = iw * s, dh = ih * s;
-      const [px, py] = (getComputedStyle(img).objectPosition.match(/[\d.]+%/g) || ["50%", "50%"]).map(v => parseFloat(v) / 100);
-      const dx = (W - dw) * px, dy = (H - dh) * py;
-      $$(".glow", fig).forEach(g => {
-        const [x, y, w, h, deg = 0, top = 0.25] = g.dataset.g.split(",").map(Number);
-        const k = g.classList.contains("beam") || g.classList.contains("spark") ? 1 : 1.6;  // 1.6: the halo spills past the lamp
-        Object.assign(g.style, { left: dx + x * dw + "px", top: dy + y * dh + "px", width: w * dw * k + "px", height: (h || w) * dw * k + "px" });
-        g.style.setProperty("--r", deg + "deg");
-        g.style.setProperty("--tw", top * 100 + "%");
-      });
-    });
-    place();
-    window.addEventListener("load", place, { once: true });
-    if ("ResizeObserver" in window) new ResizeObserver(place).observe($(".mosaic")); else window.addEventListener("resize", place);
-  }
-
   /* ----- At a glance on phones: the first six points, the rest one tap away ----- */
   $$(".spec-tiles").forEach(list => {
     if (list.children.length <= 6) return;
