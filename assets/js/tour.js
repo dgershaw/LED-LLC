@@ -46,8 +46,8 @@
       say: "Then the <strong>part numbers</strong>, with spec sheets, instructions and IES files right in the table." },
     { key: "next", page: "shoe-box-wall-pack.html", at: ".next-steps", pose: "wave",
       say: "Need a sample, a rebate or your local rep? That's my department, at the bottom of every page." },
-    { key: "home", page: "index.html", at: ".hdr-eddy", pose: "wave", fun: "wiggle", last: true,
-      say: "That's the tour! I live in the logo, so whenever I wiggle, click me and I'll lend a hand. <strong>Welcome home.</strong>" },
+    { key: "home", page: "index.html", at: ".hdr-logo", pose: "wave", last: true,
+      say: "That's the tour! I'm the LED in our logo, and I'm always around to lend a hand. <strong>Welcome home.</strong>" },
   ];
 
   /* Eddy as a drawing, so he can point, wave, blink and hop. Proportions follow Amy George's stickers. */
@@ -168,7 +168,7 @@
     fit(true);
     if (arriving) { arriving = false; requestAnimationFrame(() => requestAnimationFrame(() => guide && guide.classList.remove("dash-in"))); }
     if (st.fun === "juggle" && !reduce) funIntro(); else if (st.pose === "wave") wave();
-    if (st.fun === "flip") flipSwitches(); else if (st.fun === "pick") pickBar(); else if (st.fun === "wiggle") wiggleLogo();
+    if (st.fun === "flip") flipSwitches(); else if (st.fun === "pick") pickBar();
     speak(st);
     startTimer(Math.max(duration(st.say), st.hold || 0));
     try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ }
@@ -417,13 +417,6 @@
       undo.push(() => size(s0));
     }
   }
-  /* The last stop: the header LED wiggles as Eddy says "whenever I wiggle", and once more on "click me" (David, 2026-10-09). */
-  function wiggleLogo() {
-    const led = $(".hdr-eddy"); if (!led) return;
-    const go = twice => { led.classList.remove("wiggle", "twice"); void led.offsetWidth; led.classList.toggle("twice", twice); led.classList.add("wiggle"); };
-    funT.push(setTimeout(() => go(true), 2700), setTimeout(() => go(false), 5100));
-  }
-
   /* ----- Pace: a line stays up long enough to read, longer when spoken; hovering the bubble pauses it. ----- */
   function duration(s) {
     const n = s.replace(/<[^>]+>/g, "").length;

@@ -43,13 +43,9 @@
 
 <header class="site-header">
   <div class="wrap">
-    {#- The LED in the logo is Eddy: it wiggles now and then (site.js) and opens his page; the wordmark still goes home (David, 2026-10-09). #}
+    {#- The logo exactly as supplied (2026-10-15): one image, never split, recoloured, animated or redrawn. #}
     <div class="hdr-logo">
-      <a class="hdr-eddy" href="eddy.html" aria-label="Meet Eddy, our LED mascot"><img src="assets/img/brand/led-symbol-h.png" alt=""{{ dims('assets/img/brand/led-symbol-h.png') }}><span class="eddy-tip" aria-hidden="true">Meet Eddy</span></a>
-      <a class="hdr-home" href="index.html" aria-label="Light Efficient Design, home">
-        <img class="theme-light-only" src="assets/img/brand/led-wordmark-h.png" alt="Light Efficient Design"{{ dims('assets/img/brand/led-wordmark-h.png') }}>
-        <img class="theme-dark-only" src="assets/img/brand/led-wordmark-h-white.png" alt="Light Efficient Design"{{ dims('assets/img/brand/led-wordmark-h-white.png') }}>
-      </a>
+      <a href="index.html" aria-label="Light Efficient Design, home"><img src="assets/img/brand/led-logo-original.png" alt="Light Efficient Design"{{ dims('assets/img/brand/led-logo-original.png') }}></a>
     </div>
     <ul class="hdr-nav">
       <li><button class="nav-item products" aria-expanded="false" aria-controls="mega-products">Products{{ caret() }}</button></li>

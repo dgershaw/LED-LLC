@@ -159,39 +159,12 @@ p { margin: 0; }
   border-bottom: 1px solid var(--line);
 }
 .site-header > .wrap { height: 100%; display: flex; align-items: center; gap: 18px; }
-/* The logo is two links: the LED (Eddy) opens eddy.html, the wordmark goes home. The gap is the artwork's own 20 of 104 px.
-   site.js wiggles the LED now and then at random, and on a mouse hover, unless the visitor prefers reduced motion (David, 2026-10-09). */
-.hdr-logo { --logo-h: 30px; display: flex; align-items: center; gap: calc(var(--logo-h) * 20 / 104); height: 100%; flex: 0 0 auto; }
+/* The logo as supplied, one image at its own proportions. Never split, recolour or animate it (2026-10-15). */
+.hdr-logo { --logo-h: 44px; display: flex; align-items: center; height: 100%; flex: 0 0 auto; }
 .hdr-logo a { display: flex; align-items: center; height: 100%; }
 .hdr-logo a:hover { text-decoration: none; }
 .hdr-logo img { height: var(--logo-h); width: auto; }
-@media (max-width: 420px) { .hdr-logo { --logo-h: 25px; } }
-.hdr-eddy { position: relative; }
-.hdr-eddy::before { content: ""; position: absolute; inset: 0 -3px 0 -10px; }  /* a finger-sized target on phones */
-.hdr-eddy:focus-visible { outline: none; }
-.hdr-eddy:focus-visible img { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
-.hdr-eddy img { transform-origin: 32% 72%; }
-.hdr-eddy.wiggle img { animation: eddy-wiggle 1s ease-in-out both; }
-.hdr-eddy.wiggle.twice img { animation-iteration-count: 2; }
-@keyframes eddy-wiggle {
-  0%, 100% { transform: none; }
-  12% { transform: rotate(-14deg) scale(1.06); }
-  27% { transform: rotate(11deg) scale(1.05); }
-  42% { transform: rotate(-8deg) scale(1.03); }
-  57% { transform: rotate(5deg) scale(1.01); }
-  72% { transform: rotate(-2.5deg); }
-  86% { transform: rotate(1deg); }
-}
-@media (prefers-reduced-motion: reduce) { .hdr-eddy.wiggle img { animation: none; } }
-.eddy-tip {
-  position: absolute; left: -8px; top: calc(100% + 6px); z-index: 2;
-  padding: 7px 11px; border-radius: 999px; background: var(--ink); color: var(--bg);
-  font-size: 0.8125rem; font-weight: 700; line-height: 1; white-space: nowrap;
-  box-shadow: 0 12px 26px -14px rgb(0 0 0 / 0.55);
-  opacity: 0; transform: translateY(-4px); pointer-events: none; transition: opacity .15s ease, transform .15s ease;
-}
-.hdr-eddy:hover .eddy-tip, .hdr-eddy:focus-visible .eddy-tip { opacity: 1; transform: none; }
-@media (hover: none) { .eddy-tip { display: none; } }
+@media (max-width: 420px) { .hdr-logo { --logo-h: 38px; } }
 .hdr-nav { display: flex; align-items: center; gap: 2px; margin: 0 0 0 8px; padding: 0; height: 100%; }
 .hdr-nav > li { list-style: none; height: 100%; display: flex; align-items: center; }
 .nav-item {
