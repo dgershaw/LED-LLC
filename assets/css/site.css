@@ -222,7 +222,7 @@ p { margin: 0; }
 }
 @keyframes slidein { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
 .drawer .panel-head { display: flex; justify-content: space-between; align-items: center; height: var(--header-h); margin: 0 -18px 10px; padding: 0 12px 0 18px; border-bottom: 1px solid var(--line); }
-.drawer .panel-head img { height: 26px; width: auto; }
+.drawer .panel-head img { height: 36px; width: auto; }
 .drawer .acc { border-top: 1px solid var(--line); }
 .drawer .acc > button { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border: 0; background: none; font-size: 1.0625rem; font-weight: 600; cursor: pointer; text-align: left; }
 .drawer .acc > button .caret { width: 12px; height: 12px; transition: transform .2s; }
@@ -685,7 +685,7 @@ footer.site-footer { --f-bg: #0d0e12; --f-ink: #ffffff; --f-muted: #c9ccd4; --f-
 .site-footer h2 { font-family: var(--font-display); font-size: 1.125rem; font-weight: 800; color: var(--f-ink); letter-spacing: 0; margin-bottom: 14px; line-height: 1.25; }
 .site-footer .ft-h2b { margin-top: 24px; }
 .ft-logo { display: inline-block; }
-.ft-logo img { height: 30px; width: auto; }
+.ft-logo img { height: 44px; width: auto; }
 .ft-tag { margin-top: 8px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--f-muted); }
 .site-footer address { font-style: normal; margin-top: 18px; color: var(--f-ink); line-height: 1.5; }
 .ft-social { list-style: none; margin: 20px 0 0; padding: 0; display: flex; gap: 10px; }

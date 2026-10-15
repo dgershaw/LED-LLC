@@ -45,7 +45,7 @@
   <div class="wrap">
     {#- The logo exactly as supplied (2026-10-15): one image, never split, recoloured, animated or redrawn. #}
     <div class="hdr-logo">
-      <a href="index.html" aria-label="Light Efficient Design, home"><img src="assets/img/brand/led-logo-original.png" alt="Light Efficient Design"{{ dims('assets/img/brand/led-logo-original.png') }}></a>
+      <a href="index.html" aria-label="Light Efficient Design, home"><img class="theme-light-only" src="assets/img/brand/led-logo-original.png" alt="Light Efficient Design"{{ dims('assets/img/brand/led-logo-original.png') }}><img class="theme-dark-only" src="assets/img/brand/led-logo-original-white.png" alt="Light Efficient Design"{{ dims('assets/img/brand/led-logo-original-white.png') }}></a>
     </div>
     <ul class="hdr-nav">
       <li><button class="nav-item products" aria-expanded="false" aria-controls="mega-products">Products{{ caret() }}</button></li>
@@ -94,8 +94,8 @@
   <div class="scrim"></div>
   <div class="panel">
     <div class="panel-head">
-      <img class="theme-light-only" src="assets/img/brand/led-logo-h.png" alt="Light Efficient Design"{{ dims('assets/img/brand/led-logo-h.png') }}>
-      <img class="theme-dark-only" src="assets/img/brand/led-logo-h-white.png" alt="Light Efficient Design"{{ dims('assets/img/brand/led-logo-h-white.png') }}>
+      <img class="theme-light-only" src="assets/img/brand/led-logo-original.png" alt="Light Efficient Design"{{ dims('assets/img/brand/led-logo-original.png') }}>
+      <img class="theme-dark-only" src="assets/img/brand/led-logo-original-white.png" alt="Light Efficient Design"{{ dims('assets/img/brand/led-logo-original-white.png') }}>
       <button class="icon-btn" id="menu-close" aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     </div>
     <button class="btn btn-ghost" data-open-search style="justify-content:flex-start;gap:10px;margin-bottom:8px">{{ search_icon() }} Search part numbers</button>
@@ -143,7 +143,7 @@
   <div class="wrap">
     <div class="ft-top">
       <div class="ft-brand">
-        <a href="index.html" class="ft-logo" aria-label="Light Efficient Design, home"><img src="assets/img/brand/led-logo-h-white.png" alt="Light Efficient Design"{{ dims('assets/img/brand/led-logo-h-white.png') }}></a>
+        <a href="index.html" class="ft-logo" aria-label="Light Efficient Design, home"><img src="assets/img/brand/led-logo-original-white.png" alt="Light Efficient Design"{{ dims('assets/img/brand/led-logo-original-white.png') }}></a>
         <p class="ft-tag">Leading thru innovation</p>
         <address>Corporate HQ &amp; Training Center<br>{{ HQ.street }}<br>{{ HQ.city }}, {{ HQ.region }} {{ HQ.zip }}</address>
         <ul class="ft-social" aria-label="Light Efficient Design on social media">
