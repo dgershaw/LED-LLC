@@ -180,6 +180,14 @@ p { margin: 0; }
 /* The Solera i-Series Overview is the second feature, with a Solera-yellow dot (David, 2026-10-09). */
 .nav-item.featured.solar::before, .mega-col li a.featured.solar::before { background: var(--solera); box-shadow: 0 0 8px rgb(249 198 6 / 0.8); }
 .nav-item .short { display: none; }
+/* Computers: the menu words sit on the same line as the words in the logo, whose lettering is in the lower part of the artwork,
+   so the header is 64px there and the menu items sit low (2026-10-15). Phones show no menu words and keep 56px. */
+@media (min-width: 981px) {
+  :root { --header-h: 64px; }
+  .hdr-logo a { align-items: flex-start; }
+  .hdr-logo img { margin-top: 4px; }
+  .hdr-nav > li { align-items: flex-end; padding-bottom: 6px; }
+}
 @media (max-width: 1279px) { .nav-item .full { display: none; } .nav-item .short { display: inline; } .hdr-nav .nav-item { padding: 7px 9px; } }
 .hdr-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 .icon-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid transparent; background: transparent; cursor: pointer; display: grid; place-items: center; color: var(--ink); }
