@@ -328,34 +328,6 @@
     }
   }
 
-  // Scroll catch on laptops, as on the LBI Family Overview: scrolling down with a mouse or trackpad stops the page for a
-  // moment with the configurator framed under the switcher. The page locks scrolling (html.scroll-hold) once the stage
-  // reaches its spot, until that gesture (momentum included) ends: at least 0.9 s, at most 2.5 s. Scrolling up lets go.
-  (() => {
-    const root = document.documentElement;
-    let armed = true, holding = false, held = 0, lastWheel = -1e9, prevGap = null, timer = 0;
-    const edge = () => parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
-    const gap = () => $(".stage").getBoundingClientRect().top - edge();
-    // the controls column is long here, so the test is whether the sticky scene (photo, footprint, readout) fits the window
-    const fits = () => matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine)").matches && $(".stage-view").offsetHeight + edge() + 8 <= innerHeight;
-    const release = () => { holding = false; clearInterval(timer); root.classList.remove("scroll-hold"); };
-    addEventListener("wheel", (e) => { lastWheel = performance.now(); if (holding && e.deltaY < 0) release(); }, { passive: true });
-    addEventListener("scroll", () => {
-      const g = gap(), was = prevGap;
-      prevGap = g;
-      if (holding) return;
-      if (g > 2) { armed = true; return; }
-      if (!armed || was === null || was <= 0 || performance.now() - lastWheel > 250 || !fits()) return;
-      armed = false; holding = true; held = performance.now();
-      root.classList.add("scroll-hold");
-      if (g < -0.5) window.scrollBy({ top: g, left: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-      timer = setInterval(() => {
-        const now = performance.now();
-        if ((now - held > 900 && now - lastWheel > 250) || now - held > 2500) release();
-      }, 50);
-    }, { passive: true });
-  })();
-
   // The stage holds its place while a control changes it: controls to the right can get taller or shorter.
   function rerender() {
     const stage = $(".stage"), top = stage.getBoundingClientRect().top;
