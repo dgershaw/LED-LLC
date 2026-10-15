@@ -826,35 +826,6 @@ ${remoteMode ? remoteHtml : `
     }
   }
 
-  // Scroll catch on laptops (David, 2026-10-08): scrolling down with a mouse or trackpad stops the page for a moment
-  // with the configurator framed under the switcher. Browsers only let a page cancel the first wheel event of a
-  // gesture, so instead of cancelling, the page locks scrolling (html.scroll-hold) once the stage reaches its spot.
-  // The lock lasts half a second, however the wheel keeps turning (a longer lock read as a page that would not scroll
-  // past the stage with a mouse wheel, Kcampbell, 2026-10-15); scrolling up lets go at once. Only when the whole stage fits the window.
-  (() => {
-    const root = document.documentElement;
-    let armed = true, holding = false, held = 0, lastWheel = -1e9, prevGap = null, timer = 0;
-    const edge = () => parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
-    const gap = () => $(".stage").getBoundingClientRect().top - edge();   // > 0 while the stage is still below its spot
-    const fits = () => matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine)").matches && $(".stage").offsetHeight + edge() + 8 <= innerHeight;
-    const release = () => { holding = false; clearInterval(timer); root.classList.remove("scroll-hold"); };
-    addEventListener("wheel", (e) => { lastWheel = performance.now(); if (holding && e.deltaY < 0) release(); }, { passive: true });
-    addEventListener("scroll", () => {
-      const g = gap(), was = prevGap;
-      prevGap = g;
-      if (holding) return;
-      if (g > 2) { armed = true; return; }
-      if (!armed || was === null || was <= 0 || performance.now() - lastWheel > 250 || !fits()) return;
-      armed = false; holding = true; held = performance.now();
-      root.classList.add("scroll-hold");
-      if (g < -0.5) window.scrollBy({ top: g, left: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-      timer = setInterval(() => {
-        const now = performance.now();
-        if (now - held > 500) release();
-      }, 50);
-    }, { passive: true });
-  })();
-
   document.addEventListener("click", (e) => {
     const t = e.target.closest("button, a");
     if (!t) return;
