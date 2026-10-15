@@ -301,7 +301,9 @@ EDDY_HISTORY = [
 WIDE_COLS = {"features", "fixture", "mounting", "listings", "description", "notes", "item", "control", "products", "product", "accessory", "accessories",
              "replaces", "application", "applications", "configuration", "models", "model", "lamp", "lamps", "note", "option group", "options",
              "mounting height", "includes", "whats included", "benefit", "function", "comments", "remarks", "finish", "finish options", "kit", "kits", "choice"}
-UNIT_RE = re.compile(r"(?<![A-Z0-9\-])(\d+(?:\.\d+)?)\s+(FT|IN|LBS?|HRS?|YRS?)\b(?![\w-])")
+UNIT_RE = re.compile(r"(?<![A-Z0-9\-])(\d+(?:\.\d+)?)\s+(LBS?|HRS?|YRS?)\b(?![\w-])")
+# lengths in tables read in capitals, as on the spec sheets (2 FT, 19.3 IN x 1.2 IN)
+LEN_RE = re.compile(r"(?<![A-Za-z0-9\-])(\d+(?:\.\d+)?)\s+(ft|in)\b(?![\w-])", re.I)
 
 # Transcription notes the extractors left for the review pass. None of it is customer copy, so anything that matches stays out of the page.
 EDITORIAL_RE = re.compile(r"^(CHECK|UNREADABLE|LAYOUT NOTE|AS PRINTED|CATALOG AS PRINTED|Merged\b|Block also includes|Pages? \d|Page footer|Page note|Interpretation|Only the left|Only the two|Printed page|PDF page|This spread|Feature glyph|Product symbol key|Source note|Composite|Catalog section|Catalog page numbers?|Catalog table title|Catalog heading|Headline dash|Divider|No part numbers|No bold|No factory[- ]default|No -HV suffix|Listings? icons?|Listings? cell|Colou?r (dots?|key)|Footer key|Key labels|Size comparison height|Words in parentheses|The catalog)", re.I)
@@ -543,11 +545,11 @@ def table_prep(t):
     cols = [cols[i] for i in keep]
     rows = [[r[i] for i in keep] for r in rows]
     t["pn_col"] = next((i for i, c in enumerate(cols) if "part" in c.lower()), 0 if cols and rows and is_pn(rows[0][0]) else None)
-    # units the catalog sets in capitals (8 FT, 3.0 IN) read as text here; part numbers are never touched
+    # weights and hours the catalog sets in capitals (12 LBS) read as text here, lengths stay in capitals; part numbers are never touched
     for r in rows:
         for i, c in enumerate(r):
             if i != t["pn_col"] and not isinstance(c, Markup):
-                r[i] = UNIT_RE.sub(lambda m: f"{m.group(1)} {m.group(2).lower()}", c)
+                r[i] = LEN_RE.sub(lambda m: f"{m.group(1)} {m.group(2).upper()}", UNIT_RE.sub(lambda m: f"{m.group(1)} {m.group(2).lower()}", c))
     t["columns"], t["rows"] = cols, rows
     norm = lambda c: re.sub(r"[^a-z ]", "", c.lower().replace("(s)", "s")).strip()
     t["wide"] = [norm(c) in WIDE_COLS or norm(c).rstrip("s") in WIDE_COLS for c in cols]
