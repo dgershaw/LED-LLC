@@ -134,6 +134,8 @@ def flatten(d):
         if k in d:
             scalars.append((label, text(d[k])))
     lists.append(("Key points", [text(x) for x in d.get("callouts", [])]))
+    if "sheet_points" in d:
+        lists.append(("Spec-sheet points", [text(x) for x in d.get("sheet_points", [])]))
     lists.append(("At a glance", [text(x) for x in d.get("features", [])]))
     for t in d.get("tables", []):
         name = short(text(t.get("title")) or "Table")

@@ -109,6 +109,11 @@ content:
         description: Short lines shown near the top of the page.
         type: string
         list: true
+      - name: sheet_points
+        label: Spec-sheet points
+        description: "Spec-sheet pages only (LBI G1, Shoe Box + Wall Pack, TAA troffers): the bullet points under the headline. These pages show them instead of the Introduction, Key points and At a glance."
+        type: string
+        list: true
       - name: features
         label: At a glance
         description: One feature per item, with an optional note shown after it.

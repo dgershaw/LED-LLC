@@ -150,5 +150,12 @@
   "hero_image": {
     "src": "assets/img/cat/taa-troffers/hero.jpg",
     "alt": "Catalog composite: RP-TRV volumetric troffer retrofit kit in front of a modern white laboratory with linear ceiling lights; kit kept whole, 'RP-TRV (VOLUMETRIC)' caption painted out of the white margin"
-  }
+  },
+  "sheet_points": [
+    "Slim design makes it easier to replace a wide range of existing fixtures",
+    "Constant current driver is flicker free in accordance with IEEE-PAR1789, conforms to GSA P100",
+    "Emergency battery backup option available",
+    "Choose from a volumetric or a flat panel design",
+    "Field installable Simple & Network Lighting Controls options"
+  ]
 }

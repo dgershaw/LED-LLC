@@ -33,5 +33,12 @@
   "hero_image": {
     "src": "assets/img/product/g1-hero.jpg",
     "alt": "RemPhos LBI G1 linkable light bar with its end cap"
-  }
+  },
+  "sheet_points": [
+    "Up to 146 lumens per watt, the economical replacement for fluorescent lamps",
+    "Link 33 four-foot bars together at 120VAC, or 40 at 277VAC",
+    "Replaces linear and general purpose strips, troffers, vapor tight fixtures, low and high bays, cove lighting and stairwells",
+    "Many accessories let the LBI mount in a wide variety of applications",
+    "Your choice of Simple & Network Lighting Controls"
+  ]
 }

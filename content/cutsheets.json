@@ -1,14 +1,7 @@
 {
- "_about": "Hand-edited. A product page laid out from its spec sheet (cut sheet): key points, icon strip, listing marks, a top slider (product shots first, then photos in use), and downloads. IES files are found automatically in assets/ies/<part number>/ (see IES_DIR in build.py). tools/build.py reads this on every build; keys are category slugs. Icons live in assets/img/icons (cropped from the spec sheets). Add a page here only once David has sent its spec sheet.",
+ "_about": "Hand-edited. A product page laid out from its spec sheet (cut sheet): key points (sheet_points in the page's content/pages file, which CloudCannon and Pages CMS edit; a \"bullets\" list here is only used until the page file has them), icon strip, listing marks, a top slider (product shots first, then photos in use), and downloads. IES files are found automatically in assets/ies/<part number>/ (see IES_DIR in build.py). tools/build.py reads this on every build; keys are category slugs. Icons live in assets/img/icons (cropped from the spec sheets). Add a page here only once David has sent its spec sheet.",
  "taa-troffers": {
   "sheet": "TAA Troffer Fixtures (TV/TF)",
-  "bullets": [
-   "Slim design makes it easier to replace a wide range of existing fixtures",
-   "Constant current driver is flicker free in accordance with IEEE-PAR1789, conforms to GSA P100",
-   "Emergency battery backup option available",
-   "Choose from a volumetric or a flat panel design",
-   "Field installable Simple & Network Lighting Controls options"
-  ],
   "superflex": "Switch between 3 wattages & 3 CCTs",
   "superflex_note": "Fixtures (TV/TF). The retrofit kits switch between up to 5 wattages and 5 CCTs.",
   "plug": "Simply remove the cap and plug in the sensor",
@@ -207,13 +200,6 @@
  },
  "shoe-box-wall-pack": {
   "sheet": "Shoe Box + Wall Pack",
-  "bullets": [
-   "20W to 110W models replace up to 400W HID, and the 320W LED-8091 replaces 1000W HID",
-   "Light panel can rotate once the base is tightened to direct light out of the fixture",
-   "Includes a fan and thermal sensor to run cool and ensure a long and bright life",
-   "Enclosed fixture safe and approved for damp locations",
-   "HV models run on 277-480V (can be used on 347V)"
-  ],
   "superflex": "Switch between 3000K, 4000K and 5000K",
   "superflex_note": "FlexColor (-FC) models, set on the lamp. Factory default 4000K.",
   "flex_img": "flexcolor.png",
@@ -1153,13 +1139,6 @@
  },
  "lbi-g1": {
   "sheet": "LBI G1 Linkable Bar / Internal Driver",
-  "bullets": [
-   "Up to 146 lumens per watt, the economical replacement for fluorescent lamps",
-   "Link 33 four-foot bars together at 120VAC, or 40 at 277VAC",
-   "Replaces linear and general purpose strips, troffers, vapor tight fixtures, low and high bays, cove lighting and stairwells",
-   "Many accessories let the LBI mount in a wide variety of applications",
-   "Your choice of Simple & Network Lighting Controls"
-  ],
   "superflex": "Switch between 3 wattages & 3 CCTs",
   "superflex_note": "Standard models (WC): 3500K, 4000K or 5000K. Warm models (WC2): 2700K, 3000K or 3500K.",
   "plug": "Optional sensors link right to the bars, no wiring needed",

@@ -30,6 +30,21 @@ collections_config:
     disable_file_actions: true
     _enabled_editors: [visual, data]
 
+# Spec-sheet pages (LBI G1, Shoe Box + Wall Pack, TAA troffers) show their spec-sheet points under the headline instead of
+# the Introduction, Key points and At a glance, so those boxes are hidden there to avoid edits that show nowhere.
+file_config:
+  - glob:
+      - "content/pages/**/lbi-g1.json"
+      - "content/pages/**/shoe-box-wall-pack.json"
+      - "content/pages/**/taa-troffers.json"
+    _inputs:
+      intro:
+        hidden: true
+      callouts:
+        hidden: true
+      features:
+        hidden: true
+
 # Saves become one change each on the portal, described in a plain sentence by the person saving.
 commit_templates:
   - label: Describe the change
@@ -88,6 +103,10 @@ _inputs:
   callouts:
     type: array
     label: Key points
+  sheet_points:
+    type: array
+    label: Spec-sheet points
+    comment: The bullet points under the headline, as on the spec sheet. Keep them to about five.
   features:
     type: array
     label: At a glance

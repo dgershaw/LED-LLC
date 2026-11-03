@@ -90,5 +90,12 @@
   "hero_image": {
     "src": "assets/img/cat/shoe-box-wall-pack/hero-extended.jpg",
     "alt": "The composite with the complete LED-8088 lamp (body over the photo, screw base overhanging onto white below); the 'LED-8088' caption and the two callout lines in the white margin were painted out"
-  }
+  },
+  "sheet_points": [
+    "20W to 110W models replace up to 400W HID, and the 320W LED-8091 replaces 1000W HID",
+    "Light panel can rotate once the base is tightened to direct light out of the fixture",
+    "Includes a fan and thermal sensor to run cool and ensure a long and bright life",
+    "Enclosed fixture safe and approved for damp locations",
+    "HV models run on 277-480V (can be used on 347V)"
+  ]
 }

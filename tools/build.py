@@ -1007,6 +1007,7 @@ def apply_page_file(slug, d):
         d[k] = p.get(k, "" if k in ("title", "subtitle", "headline", "intro") else [])
     d["title"] = d["title"] or slug.replace("-", " ").title()
     d["hero_image"] = p.get("hero_image") if isinstance(p.get("hero_image"), dict) else None
+    d["sheet_points"] = [x for x in p.get("sheet_points") or [] if isinstance(x, str)]   # spec-sheet pages only (load_cutsheets)
     d["features"] = [dict(label=x.get("label", ""), note=x.get("note", ""), i=i) for i, x in enumerate(d["features"]) if isinstance(x, dict) and x.get("label")]
     d["tables"] = [dict(t, columns=t.get("columns") or [], notes=t.get("notes") or [],
                         rows=[re.split(r"\s*\|\s*", r.strip()) if isinstance(r, str) else r for r in t.get("rows") or []]) for t in d["tables"]]
@@ -1419,10 +1420,14 @@ def load_cutsheets(cats):
         for d in cs["docs"]:
             d["size"] = f"{(ROOT / find_doc(d['pdf'])).stat().st_size / 1e6:.1f} MB"
         cs["more"] = [table_prep(dict(t, notes=[t["note"]] if t.get("note") else [])) for t in (cs.get("options"), cs.get("accessories")) if t]
-        # the spec sheet sets "Simple" and "Network Lighting Controls" in the two control blues; both open the controls page
-        cs["points"] = [Markup(str(escape(b)).replace("Simple &amp; Network Lighting Controls",
-                        '<a class="ctl-s" href="lighting-controls.html">Simple</a> &amp; <a class="ctl-n" href="lighting-controls.html">Network Lighting Controls</a>'))
-                        for b in cs.get("bullets") or []]
+        # the points under the headline live in the page file (sheet_points, edited in CloudCannon and Pages CMS, David 2026-11-03);
+        # "bullets" here is only for a page whose file has none yet. Each keeps its place in the file for the visual editor.
+        # The spec sheet sets "Simple" and "Network Lighting Controls" in the two control blues; both open the controls page.
+        own = [(i, b) for i, b in enumerate(c.get("sheet_points") or []) if b.strip()]
+        cs["points_editable"] = bool(own)
+        cs["points"] = [(Markup(str(escape(b)).replace("Simple &amp; Network Lighting Controls",
+                        '<a class="ctl-s" href="lighting-controls.html">Simple</a> &amp; <a class="ctl-n" href="lighting-controls.html">Network Lighting Controls</a>')), i)
+                        for i, b in (own or list(enumerate(cs.get("bullets") or [])))]
         # Pages with several spec sheets (one per model group) carry a model table: each group of rows shares its spec
         # sheet (one merged cell), each model has its own installation instructions and IES files (David, 2026-10-08).
         sheet = next((d for d in cs["docs"] if d["kind"] == "Spec sheet"), None)
