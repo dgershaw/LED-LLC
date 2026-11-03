@@ -165,5 +165,9 @@
     "Product symbol key (foot of catalog page 69): dark square = OFF-GRID POST TOP LIGHT (SL-SPT); dark circle = OFF-GRID PATHWAY LIGHT (SL-CPT); dark triangle = OFF-GRID ALL-IN-ONE AREA LIGHT (SL-AIO-40L); yellow triangle = OFF-GRID ALL-IN-ONE AREA LIGHT (SL-AIO-70L); dark five-point star = OFF-GRID AREA LIGHT (SL-SAL-60L); yellow five-point star = OFF-GRID AREA LIGHT (SL-SAL-100L); dark cross = INTELLIGENT MODULAR AREA LIGHT (SL-MA1/SL-MA2); yellow cross = INTELLIGENT MODULAR DECORATIVE LIGHT (SL-MD1)",
     "Max EPA headings (80), (90), (100) and (120) are wind speeds in mph",
     "AS PRINTED (possible typo): SL-RPSQ-30-6-7-EMB-XX-YY Max EPA 17.9 / 11.7 / 8.3 / 8.3 versus 17.9 / 14.5 / 11.7 / 8.3 for the anchor-base version of the same pole"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/poles/hero.png",
+    "alt": "Line drawing of the Solera pole types: round and square straight poles with an anchor base or for direct burial, 8 to 30 ft mounting heights"
+  }
 }

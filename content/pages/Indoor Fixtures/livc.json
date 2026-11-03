@@ -110,5 +110,9 @@
     "Merged cells: on both tables Voltage and FlexColor span all three rows; FlexWatt '10W/15W/20W/30W' and Lumens '1580-4740' span the 2 ft and 3 ft rows, the 4 ft row has its own '10W/15W/30W/40W' and '1580-6320'",
     "Square-endcap lengths are printed without a decimal ('24 IN', '36 IN', '48 IN'); rounded-endcap lengths are printed '24.0 IN' etc. - transcribed as printed",
     "Printed page number 40 appears on the left-hand page only; the right-hand page carries no printed number (41 inferred)"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/livc/hero-product.jpg",
+    "alt": "LIVC stairwell, vanity and wraparound fixture, with the rounded (LIVC-RD, 3.5 in) and square (LIVC-SQ, 3.0 in) endcap profiles"
+  }
 }

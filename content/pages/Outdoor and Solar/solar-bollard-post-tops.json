@@ -168,5 +168,9 @@
     "Colour key under the bollard table: ● Black, ● Dark Bronze",
     "Rated life: the icon strip shows both an L70 50,000hrs and an L70 100,000hrs icon without model labels (SBL/SPT/CPT are labelled on the battery and temperature icons only)",
     "Page footer: SOLERA SOLAR / OFF-GRID"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/solar-bollard-post-tops/hero-spt.jpg",
+    "alt": "SL-SPT solar post top lantern over a lit waterfront promenade"
+  }
 }

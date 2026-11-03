@@ -141,5 +141,9 @@
     "* 9003 models have a 3 year warranty",
     "** Excludes model 9210 (footnote on the Daisy-Chain icon)",
     "Listings: cETLus (Intertek) marks on LED-9010/9011/9012/9016-50K-G3 and both LED-9003 strings; LED-9210-50K-G2 carries the cULus Listed mark"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/work-lights/hero.jpg",
+    "alt": "Catalog composite: LED-9010 caged work light with hook and 35 ft cord in front of a scaffolding / concrete-wall site; caption and callout whited out of the white margin, lamp kept whole"
+  }
 }

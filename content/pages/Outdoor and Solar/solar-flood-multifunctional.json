@@ -121,5 +121,9 @@
     "* Garden stake is an accessory and is sold separately (RP-SFL-MS-G1)",
     "Headline dash: the catalog prints 'ADJUSTABLE – LIGHT EXACTLY WHERE YOU NEED IT...' with an en dash",
     "Page footer: SOLERA SOLAR / OFF-GRID"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/solar-flood-multifunctional/hero-sfl.jpg",
+    "alt": "The flood-light composite with the table slivers whited out: SL-SFL-20W-40K-BK-G2 on its adjustable post, complete down to the base plate, in front of the resort signage photo (portrait format, 939 x 1291 px)"
+  }
 }

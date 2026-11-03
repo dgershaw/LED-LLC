@@ -143,5 +143,9 @@
     "See spec sheet on LED-LLC.com for DLC listing status",
     "Simple Lighting Controls | Networked Lighting Controls: see page 25 for more information or check out the product spec sheet on our website LED-LLC.com",
     "Only the left page number (28) is printed on the spread; the right page (LBI G2 table) is 29"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/product/g2-hero.jpg",
+    "alt": "RemPhos LBI G2 linkable light bar with its end cap"
+  }
 }

@@ -156,5 +156,9 @@
     "DLC: for listing status go to LED-LLC.com",
     "Listings icons on both pages are the cULus Listed and cULus Classified marks; the LED-806x filament lamps show the cETLus (Intertek) and FCC marks; LED-8028M345-G7-FW is marked PENDING",
     "Page 4 printed heading for the first column is '120-277V PART #'"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/bollard-post-top/hero.jpg",
+    "alt": "LED-8000 (foreground) and LED-8024 corn lamps over a lit tree-lined street with post-top lanterns at dusk; part-number labels and the callout text removed from the white margin, both lamps kept whole including the bases that extend below the photo"
+  }
 }

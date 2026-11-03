@@ -1214,8 +1214,8 @@ html { scroll-padding-top: calc(var(--safe-top) + var(--header-h) + 12px); }
 .mosaic figure > a:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
 .mosaic .ph { position: absolute; inset: 0; display: block; transition: transform .9s cubic-bezier(.2, .65, .2, 1), filter .6s ease; }
 .mosaic figure > a:hover .ph { transform: scale(1.04); filter: brightness(1.05); }
-.mosaic figcaption span { display: inline-block; transition: transform .25s ease; }
-.mosaic figure > a:hover figcaption span { transform: translateX(3px); }
+.mosaic figcaption span[aria-hidden] { display: inline-block; transition: transform .25s ease; }
+.mosaic figure > a:hover figcaption span[aria-hidden] { transform: translateX(3px); }
 
 /* ---------- Spec-sheet pages (content/cutsheets.json): laid out like the RemPhos cut sheet (David, 2026-10-08) ---------- */
 :root { --mark: #45464e; --ctl-s: #2c6cb8; --ctl-n: #003f80; --fw-red: #d23c22; }

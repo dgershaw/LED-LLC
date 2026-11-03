@@ -192,5 +192,9 @@
     "RP-DOT-BZ (photo caption) is read as the bronze-finish Outdoor Tough Drum; the BZ finish code does not appear in the spec table",
     "No photo of the Sconce (SCD) appears on this spread",
     "Printed page number 42 appears on the left-hand page only; the right-hand page carries no printed number (43 inferred)"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/wall-ceiling-fixtures/hero.jpg",
+    "alt": "RP-DAL-4S Architectural Linen Drum pendant against the blue spoke-pattern panel, caption cropped out"
+  }
 }

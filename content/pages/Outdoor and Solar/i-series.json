@@ -116,5 +116,9 @@
     "Hybrid = -HYB part numbers; X in the part number = optics: 2 = Type 2, 3 = Type 3, 4 = Type 4, 5 = Type 5",
     "Recommended mounting height, Modular Area + Decorative Lights: 20 ft – 30 ft. See pages 68 + 69 for pole recommendations.",
     "Page footer: SOLERA SOLAR / HYBRID + OFF-GRID (page 56) and SOLERA SOLAR / i-SERIES (page 58)."
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/i-series/hero.jpg",
+    "alt": "SL-MA1 modular solar area light composite over the night-time parking lot photo, page icon removed (recommended category hero)"
+  }
 }

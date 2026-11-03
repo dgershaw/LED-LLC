@@ -114,5 +114,9 @@
     "Optional field installable emergency backup (-EMG, 90 min / 500 lm) ships separately",
     "RC-REMOTE-IR23 remote control is for Simple Lighting Controls",
     "Only the left-hand printed page number (44) appears on this spread"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/wall-ceiling-retrofit-kits/hero.jpg",
+    "alt": "Catalog composite: man on the phone with a laptop in a cafe (left) and a daylit hotel lobby atrium with pendant drums (right), with the round LEDCR retrofit module in front overhanging onto white; the two captions in the white margin were painted out"
+  }
 }

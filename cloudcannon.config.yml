@@ -1,0 +1,110 @@
+# CloudCannon, the visual editor for the marketing team (David, 2026-11-03).
+# On the home page and the product pages, editors click any marked text to retype it and click a photo to drop in a new one.
+# Each save is a commit to `main`, so it lands on the sandbox first and still waits for "Approve and publish to live"
+# on the admin portal, like every other change. Pages CMS (.pages.yml) keeps working on the same files.
+# The templates say which text and photos are editable (data-editable attributes in tools/templates/home.html and category.html).
+
+paths:
+  uploads: assets/img/uploads      # photos dropped into the editor; the build links them without the leading /
+
+collections_config:
+  home:
+    path: content/home
+    name: Home page
+    description: The headline, the five photo tiles and the section headings of the home page.
+    url: /
+    icon: home
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors: [visual, data]
+  products:
+    path: content/pages
+    name: Product pages
+    description: The text and main photo of each product page. Spec-sheet pages take their key points and photos from the spec sheet.
+    glob: ["**/*.json"]
+    url: "/[slug].html"
+    icon: lightbulb
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors: [visual, data]
+
+# Saves become one change each on the portal, described in a plain sentence by the person saving.
+commit_templates:
+  - label: Describe the change
+    template_string: "{message}"
+    _inputs:
+      message:
+        type: text
+        label: What did you change?
+        comment: One plain sentence for the change list on the admin portal, for example "Changed the LBI 65 headline".
+
+_inputs:
+  # photos: {src, alt} on the product pages and the LBI photo, image on the home tiles
+  hero_image:
+    type: object
+    label: Main photo
+    comment: Shown whole, never cropped. Use a product photo on a plain background.
+  lbi_image:
+    type: object
+    label: LBI photo
+  src:
+    type: image
+    label: Photo
+  image:
+    type: image
+    label: Photo
+  alt:
+    type: text
+    label: Photo description
+    comment: What the photo shows, for screen readers and search engines.
+  mosaic:
+    type: array
+    label: Photo tiles
+    comment: The five tiles under the headline. Keep captions short enough for a phone.
+  caption:
+    type: text
+    label: Caption
+  link:
+    type: text
+    label: Link
+    comment: The page the tile opens, for example lbi.html
+  position:
+    type: text
+    label: Photo focus
+    comment: Optional. Which part of the photo stays in view when the tile crops it, for example "50% 20%".
+  # product page text
+  title:
+    type: text
+    label: Page title
+  subtitle:
+    type: text
+  headline:
+    type: text
+  intro:
+    type: textarea
+    label: Introduction
+  callouts:
+    type: array
+    label: Key points
+  features:
+    type: array
+    label: At a glance
+  label:
+    type: text
+    label: Feature
+  note:
+    type: text
+  tables:
+    type: array
+    label: Part-number and spec tables
+    comment: Rows are one line each, with the cells separated by " | ".
+  footnotes:
+    type: array
+  pdfPage:
+    hidden: true
+  catalogPage:
+    hidden: true
+  source:
+    hidden: true

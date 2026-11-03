@@ -270,5 +270,9 @@
     "For listing status go to LED-LLC.com (DLC)",
     "LED 15T8-EMG is a lamp w/ integrated EMG function. It can generally be used in any 4 ft T8 fixture that has had the ballast bypassed.",
     "Feature glyph key: plain tube icon = glass construction; tube with starburst = shatter-resistant glass lens"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/linear-t5-t8/hero-extended.jpg",
+    "alt": "The composite with the full LED-42T8-FC 2-piece tube (FlexColor switch piece on the left, plain second piece on the right) over the showroom/corridor photos; the 'LED-42T8-FC' caption in the white margin was painted out"
+  }
 }

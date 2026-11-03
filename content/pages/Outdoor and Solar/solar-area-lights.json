@@ -122,5 +122,9 @@
     "See pages 68 + 69 for pole recommendations.",
     "The feature strip also gives RP-SAL values (7 hrs battery charge time, 32°F to 149°F battery charge temp, -4°F to 122°F fixture operating temp); RP-SAL is not in this page's tables.",
     "Page footer: SOLERA SOLAR / OFF-GRID."
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/solar-area-lights/p32-b1.jpg",
+    "alt": "SL-AIO-40L all-in-one solar area light (grey, integrated panel/light engine/battery with motion sensor) in front of a tree-lined road at dusk lit by a row of the same fixtures; the turtle-friendly icon is overlaid at bottom-right (recommended category hero)"
+  }
 }

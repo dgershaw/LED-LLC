@@ -29,5 +29,9 @@
   ],
   "footnotes": [
     "Factory set wattage and CCT are shown in bold"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/product/g1-hero.jpg",
+    "alt": "RemPhos LBI G1 linkable light bar with its end cap"
+  }
 }

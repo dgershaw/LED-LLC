@@ -99,6 +99,8 @@ def describe(c, main):
         verb = {"A": "Uploaded", "M": "Replaced", "D": "Removed", "R": "Renamed"}.get(status, "Changed")
         if path.startswith("content/pages/"):
             lines.append(f"Edited the {page_title(main, path)} page")
+        elif path.startswith("content/home/"):
+            lines.append("Edited the home page")
         elif path.startswith("assets/docs/"):
             kind = KINDS.get(p.parts[2], "document") if len(p.parts) > 2 else "document"
             product = p.parts[4] if len(p.parts) > 5 else ""
@@ -140,6 +142,20 @@ def flatten(d):
         lists.append((f"{name}: rows", [text(r) for r in t.get("rows", [])]))
         lists.append((f"{name}: notes", [text(x) for x in t.get("notes", [])]))
     lists.append(("Footnotes", [text(x) for x in d.get("footnotes", [])]))
+    for k, label in (("hero_image", "Main photo"), ("lbi_image", "LBI photo")):   # {src, alt}, edited in CloudCannon or Pages CMS
+        if isinstance(d.get(k), dict):
+            scalars.append((label, text(d[k].get("src"))))
+            scalars.append((f"{label}: description", text(d[k].get("alt"))))
+    # the home page file (content/home/index.json)
+    for k, label in (("eyebrow", "Line above the headline"), ("headline_tail", "Second line of the headline"), ("lede", "Home introduction"),
+                     ("brands_title", "Brands heading"), ("brands_text", "Brands text"), ("lbi_title", "LBI heading"), ("lbi_text", "LBI text"),
+                     ("finder_title", "Replacing heading"), ("finder_text", "Replacing text"),
+                     ("resources_title", "Resources heading"), ("resources_text", "Resources text")):
+        if k in d:
+            scalars.append((label, text(d[k])))
+    for i, m in enumerate(d.get("mosaic", []) if isinstance(d.get("mosaic"), list) else []):
+        for k, label in (("image", "photo"), ("alt", "photo description"), ("caption", "caption"), ("link", "link"), ("position", "photo focus")):
+            scalars.append((f"Photo tile {i + 1}: {label}", text(m.get(k))))
     return scalars, lists
 
 def wdiff(a, b):
@@ -205,16 +221,19 @@ def details(c, main):
     pages = sum(1 for _, p in c["files"] if p.startswith("content/pages/"))
     for status, path in c["files"]:
         slug = slug_of(path)
-        if slug and slug not in seen:
+        if path.startswith("content/home/") and "home" not in seen:
+            seen.add("home")
+            links.append(("Open the home page", SANDBOX_URL))
+        elif slug and slug not in seen:
             seen.add(slug)
             links.append((f"Open the {B.NAV_TITLES.get(slug, slug.replace('-', ' ').title())} page", f"{SANDBOX_URL}{slug}.html"))
         elif (path.startswith("assets/docs/") or path.startswith("assets/ies/")) and status != "D" and Path(path).suffix.lower() in B.DOWNLOAD_EXTS:
             links.append((f"Open {Path(path).name}", SANDBOX_URL + B.url_path(B.public_path(path))))
-        if path.startswith("content/pages/") and path.endswith(".json") and len(diff) < MAX_DIFF_ROWS:
+        if path.startswith(("content/pages/", "content/home/")) and path.endswith(".json") and len(diff) < MAX_DIFF_ROWS:
             before = file_at(main, f"{c['sha']}^", path) if c["parents"] else ""
             after = file_at(main, c["sha"], path) if status != "D" else ""
             slug = Path(path).stem
-            prefix = (B.NAV_TITLES.get(slug, slug.replace("-", " ").title()) + ": ") if pages > 1 else ""
+            prefix = ("Home page: " if path.startswith("content/home/") else B.NAV_TITLES.get(slug, slug.replace("-", " ").title()) + ": ") if pages > 1 else ""
             diff += [(prefix + f, a, b) for f, a, b in page_diff(before, after)]
     return links[:6], diff[:MAX_DIFF_ROWS]
 

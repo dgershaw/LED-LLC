@@ -143,5 +143,9 @@
     "The divider page (PDF page 19) carries no printed catalog page number; LBI Color Palette is catalog page 36 and LBI Color Palette+ is catalog page 38",
     "CHECK: the catalog prints the 4 ft LBI Color Palette part numbers as RP-LBI-G2-4F-15W-… (FlexWatt 10W/15W/25W, 15W default); the LBI Color Palette sell sheet text in the project's pdf folder prints the same models as RP-LBI-G2-4F-25W-…. Transcribed as printed in the catalog.",
     "UNREADABLE: RP-REMOTE-RGB-WC remote key labels on PDF page 21 — the two two-line ON/OFF-style keys in row 1, the row-4 right pair, the four round keys in the right pair of rows 5-6, the fourth key of row 7 and the tiny text above row 1 are illegible (135 x 226 px source image); marked ? in the remote key-layout extra."
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/product/palette-hero-blue.jpg",
+    "alt": "RemPhos LBI Color Palette light bar glowing blue"
+  }
 }

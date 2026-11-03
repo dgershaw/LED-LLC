@@ -7,6 +7,7 @@
   "use strict";
   if (!window.matchMedia) return;
   if (/[?&]tourframe\b/.test(location.search)) return;            // a page shown inside the touch-screen tour never runs its own
+  if (window.inEditorMode || /\.cloudvent\.net$/.test(location.hostname)) return;   // not while the team edits the page in CloudCannon
   // Touch screens (iPhone, iPad) only let a page start sound after a tap, and every page change locks it again. So there the
   // tour never leaves the home page: other pages open in a full-screen frame under Eddy, and his voice runs straight through
   // (David, 2026-10-09: "make this one continuous thing"). Laptops still move from page to page.

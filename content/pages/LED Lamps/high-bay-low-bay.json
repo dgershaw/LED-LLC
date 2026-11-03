@@ -129,5 +129,9 @@
     "*** Excludes 8100 models (active cooling)",
     "LAYOUT NOTE: the printed merged dimension cell '10.3 IN x 12.5 IN' spans LED-8232M345D-HV as well as the two LED-8242 rows, while '8.7 IN x 10.5 IN' covers only LED-8232M345D; transcribed as printed (10.3 in x 12.5 in for the HV model). Every other HV variant in the catalog shares its sibling's dimensions, so this may be a catalog layout slip - verify against the LED-8232M345D-HV spec sheet",
     "The LED-8035E57-A row has no fixture icon (blank FIXTURE cell); it carries only the 'includes uplight' feature icon"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/high-bay-low-bay/hero-extended.jpg",
+    "alt": "The composite with both lamps complete (bodies over the photo, lower parts overhanging onto white below); the two captions and the callout line in the white margin were painted out"
+  }
 }

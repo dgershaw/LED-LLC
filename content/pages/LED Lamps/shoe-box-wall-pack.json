@@ -86,5 +86,9 @@
     "For listing status go to LED-LLC.com (DLC)",
     "Default lumens and CCT for FlexColor lamps are shown in bold",
     "Size comparison height labels: 5.5 in = ED17, 8.1 in = 30W corn lamp, 11.5 in = ED37, 11.2 in = 110W corn lamp (assigned from dimension-line position and drawing scale; the graphic prints no heights for LED-8087E or LED-8090M, whose table dimensions are 6.4 in and 11.4 in long)"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/shoe-box-wall-pack/hero-extended.jpg",
+    "alt": "The composite with the complete LED-8088 lamp (body over the photo, screw base overhanging onto white below); the 'LED-8088' caption and the two callout lines in the white margin were painted out"
+  }
 }

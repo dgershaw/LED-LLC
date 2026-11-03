@@ -37,5 +37,9 @@
     "Ordered separately: LED-9902, LED-9903, LED-FCT8-M, LED-9800, LED-9900, LED-9750-G2",
     "Included with the display: RP-LBI-G1-1F-2X-DISPLAY, SL-9101",
     "Holds 50 LED-XXT8 tubes (FlexColor T8 shipper)"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/gondolas-shippers-displays/3ft-gondola-9903.png",
+    "alt": "LED-9903 3 ft black wire gondola rack with brand header card; shelves of boxed Bollard Retrofit and Post Top Retrofit lamps and a bottom shelf of LED Work Site String Light boxes, rendered on white"
+  }
 }

@@ -134,5 +134,9 @@
     "Need air return... add -AIR to part number when ordering",
     "See page 25 for more information on simple / networked lighting controls or check out the product spec sheet on our website LED-LLC.com",
     "Lumens are printed as a range (min-max across the FlexWatt settings) in bold weight for every row; no single lumen value is marked as the factory default"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/troffer-retrofit-kits-fixtures/hero.png",
+    "alt": "RP-TTF flat-panel troffer kit at an angle; cut out of block 2 onto a transparent background, panel shown whole (835 x 393)"
+  }
 }

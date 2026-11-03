@@ -162,8 +162,64 @@ content:
         label: Footnotes
         type: string
         list: true
+      - name: hero_image
+        label: Main photo
+        description: Shown whole, never cropped. Spec-sheet pages show their spec-sheet photos at the top and use this one on cards and link previews.
+        type: object
+        fields:
+          - name: src
+            label: Photo
+            type: image
+            options:
+              media: photos
+          - name: alt
+            label: Photo description
+            description: What the photo shows, for screen readers and search engines.
+            type: string
+  # The home page (David, 2026-11-03); the same file CloudCannon's visual editor edits.
+  - name: home
+    label: Home page
+    description: The headline, the five photo tiles and the section headings of the home page.
+    type: file
+    path: content/home/index.json
+    format: json
+    fields:
+      - { name: eyebrow, label: Line above the headline, type: string }
+      - { name: headline, label: Headline, type: string }
+      - { name: headline_tail, label: Second line of the headline, type: string }
+      - { name: lede, label: Introduction, type: text }
+      - name: mosaic
+        label: Photo tiles
+        description: The five tiles under the headline. Keep captions short enough for a phone.
+        type: object
+        list: { min: 5, max: 5 }
+        fields:
+          - { name: image, label: Photo, type: image, options: { media: photos } }
+          - { name: alt, label: Photo description, type: string }
+          - { name: caption, label: Caption, type: string }
+          - { name: link, label: Link, description: "The page the tile opens, for example lbi.html", type: string }
+          - { name: position, label: Photo focus, description: "Optional. Which part of the photo stays in view, for example 50% 20%.", type: string }
+      - { name: brands_title, label: Brands heading, type: string }
+      - { name: brands_text, label: Brands text, type: text }
+      - { name: lbi_title, label: LBI heading, type: string }
+      - { name: lbi_text, label: LBI text, type: text }
+      - name: lbi_image
+        label: LBI photo
+        type: object
+        fields:
+          - { name: src, label: Photo, type: image, options: { media: photos } }
+          - { name: alt, label: Photo description, type: string }
+      - { name: finder_title, label: "\"What are you replacing?\" heading", type: string }
+      - { name: finder_text, label: "\"What are you replacing?\" text", type: text }
+      - { name: resources_title, label: Resources heading, type: string }
+      - { name: resources_text, label: Resources text, type: text }
 
 media:
+  - name: photos
+    label: Photos
+    input: assets/img/uploads
+    output: /assets/img/uploads
+    extensions: [jpg, jpeg, png, webp]
   - name: spec-sheets
     label: Spec sheets
     input: assets/docs/spec-sheets

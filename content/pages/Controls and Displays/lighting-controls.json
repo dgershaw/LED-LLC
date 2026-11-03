@@ -72,5 +72,9 @@
   "footnotes": [
     "PDF page 14 is a two-page spread; only the left half carries a printed page number (24), the right half (tables) is unnumbered and taken as 25",
     "No part numbers, wattages or listings appear on this spread; it is a compatibility matrix of control options per luminaire family"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/lighting-controls/hero-products.jpg",
+    "alt": "RemPhos in-line occupancy sensors for the LBI G2 and LBI 65, and the IR23 sensor remote"
+  }
 }

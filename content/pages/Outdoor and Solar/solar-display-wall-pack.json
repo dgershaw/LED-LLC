@@ -138,5 +138,9 @@
     "Magnetic mounting: magnet glyph beside SL-SWL-16L-FC-BK-G3-M (footer key 'MAGNETIC MOUNTING')",
     "Surface mount bracket is included with the display light; the clamp mount bracket RP-SDL-BK-LB is an optional accessory",
     "Page footer: SOLERA SOLAR / OFF-GRID"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/solar-display-wall-pack/hero-swl.jpg",
+    "alt": "Catalog composite: SL-SWL-16L-FC wall pack (large four-strip solar panel over a curved lens with PIR sensor) in front of a snowy loading dock with roll-up doors, yellow bollards and a trailer; no text; cropped above the dotted leader line that runs along the bottom of the catalog photo"
+  }
 }

@@ -189,15 +189,19 @@ FINDER = [
     ("Something else", "Search every part number and product name", "search"),
 ]
 
-# Home-page mosaic (David, 2026-10-08): the key products of the moment. Each tile links to its product; the photos show
-# as they are, with no glow laid over them (2026-10-15). Swap tiles here when new products launch. Captions stay short enough for a phone.
-MOSAIC = [
-    dict(cls="m-a", file="cover/p01-b1.jpg", cap="Solera i-Series", alt="Solera i-Series solar area light", href="i-series.html"),
-    dict(cls="m-b", file="cover/p01-b8.jpg", cap="Retrofit lamps", alt="Light Efficient Design LED retrofit lamps", href="light-efficient-design.html"),
-    dict(cls="m-c", file="office.jpg", cap="LBI G2", alt="RemPhos LBI G2 light bars in an office", href="lbi.html#g2", pos="50% 20%"),
-    dict(cls="m-d", file="cover/p01-b4.jpg", cap="Retrofit kits", alt="RemPhos LED retrofit kits", href="wall-ceiling-retrofit-kits.html"),
-    dict(cls="m-e", file="cat/solar-bollard-post-tops/p33-b3.jpg", cap="Solar bollards", alt="Solera solar bollards and post tops along a path at night", href="solar-bollard-post-tops.html"),
-]
+def web_path(p):
+    """An image path as the pages link it: relative to the site root. CloudCannon saves uploads as /assets/img/uploads/...,
+    which would miss the sandbox's /sandbox/ prefix."""
+    return (p or "").strip().lstrip("/")
+
+# Home-page copy and mosaic, edited in CloudCannon's visual editor or Pages CMS (David, 2026-11-03).
+# The mosaic holds the key products of the moment (David, 2026-10-08): five tiles, each linking to its product; the photos
+# show as they are, with no glow laid over them (2026-10-15). Captions stay short enough for a phone.
+HOME_FILE = ROOT / "content" / "home" / "index.json"
+HOME = json.loads(HOME_FILE.read_text())
+MOSAIC = [dict(cls=f"m-{'abcde'[i]}", src=web_path(m.get("image")), cap=m.get("caption", ""), alt=m.get("alt", ""),
+               href=m.get("link") or "#", pos=(m.get("position") or "").strip(), i=i)
+          for i, m in enumerate(HOME["mosaic"][:5]) if web_path(m.get("image"))]
 
 
 # Pages the catalog prints without photography borrow a cover photo so the hero is never empty.
@@ -905,7 +909,7 @@ def share_card(out, image):
     W, H = 1200, 630
     kind, srcs, _ = SHARE.get(out, ("single", [image], ""))
     if kind == "mosaic":
-        srcs = [f"assets/img/{m['file']}" for m in MOSAIC[:4]]
+        srcs = [m["src"] for m in MOSAIC[:4]]
     files = [ROOT / x.partition("#")[0] for x in srcs]
     if not srcs or not all(f.is_file() for f in files):
         return None
@@ -921,7 +925,7 @@ def share_card(out, image):
     elif kind == "mosaic":
         g, tw, th = 8, (W - 8) // 2, (H - 8) // 2
         for i, im in enumerate(ims):
-            pos = MOSAIC[i].get("pos", "50% 50%").replace("%", "").split()
+            pos = (MOSAIC[i]["pos"] or "50% 50%").replace("%", "").split()
             card.paste(_cover(im, tw, th, (float(pos[0]) / 100, float(pos[1]) / 100)), ((tw + g) * (i % 2), (th + g) * (i // 2)))
     elif kind == "pair":
         for i, im in enumerate(ims):
@@ -1002,7 +1006,8 @@ def apply_page_file(slug, d):
     for k in PAGE_KEYS:
         d[k] = p.get(k, "" if k in ("title", "subtitle", "headline", "intro") else [])
     d["title"] = d["title"] or slug.replace("-", " ").title()
-    d["features"] = [dict(label=x.get("label", ""), note=x.get("note", "")) for x in d["features"] if isinstance(x, dict) and x.get("label")]
+    d["hero_image"] = p.get("hero_image") if isinstance(p.get("hero_image"), dict) else None
+    d["features"] = [dict(label=x.get("label", ""), note=x.get("note", ""), i=i) for i, x in enumerate(d["features"]) if isinstance(x, dict) and x.get("label")]
     d["tables"] = [dict(t, columns=t.get("columns") or [], notes=t.get("notes") or [],
                         rows=[re.split(r"\s*\|\s*", r.strip()) if isinstance(r, str) else r for r in t.get("rows") or []]) for t in d["tables"]]
 
@@ -1245,6 +1250,20 @@ def load_categories():
             hero = dict(web=web, shows=shows, caption=shows, kind="application", ar=size[0] / max(1, size[1]), override=fit0 or "plain")
         if hero is None and slug in HERO_FALLBACK:
             hero = dict(web=HERO_FALLBACK[slug][0], shows=HERO_FALLBACK[slug][1], caption=HERO_FALLBACK[slug][1], kind="application", ar=16 / 10)
+        # the main photo chosen in CloudCannon or Pages CMS (content/pages hero_image) wins; the one chosen above moves to the gallery
+        chosen = d.get("hero_image") or {}
+        src = web_path(chosen.get("src"))
+        if src and (ROOT / src).is_file() and (not hero or hero["web"] != src):
+            if hero and hero.get("kind") in ("application", "hero") and not hero.get("override"):
+                if hero.get("cls") is None:
+                    r = hero.get("ar") or 1.6
+                    hero["cls"] = "strip" if r > 3.2 else "wide" if r > 1.9 else ""
+                gallery.insert(0, hero)
+            size = img_size(src) or (16, 10)
+            alt = (chosen.get("alt") or "").strip() or d["title"]
+            hero = dict(web=src, shows=alt, caption=alt, kind="application", ar=size[0] / max(1, size[1]), override="plain")
+        elif hero and chosen.get("alt") and hero["web"] == src:
+            hero["shows"] = chosen["alt"].strip()
         if hero:
             gallery = [g for g in gallery if g["web"] != hero["web"]]
             ar = hero.get("ar") or 1.6
@@ -1298,13 +1317,15 @@ def load_categories():
         d["footnotes"] = [f for f in d["footnotes"] if not any(norm(f).startswith(s) for s in shown)]
         # callouts: the catalog's big statements, minus duplicates of the headline, laid on 12 tracks so every row is full
         heads = {re.sub(r"\W+", " ", d["headline"].lower()).strip()}
-        callouts = []
-        for c in d.get("callouts", []):
+        callouts, where = [], {}   # where: each shown callout's position in the content file, for the visual editor
+        for i, c in enumerate(d.get("callouts", [])):
             c = clean_headline(c)
             if c and not is_editorial(c) and re.sub(r"\W+", " ", c.lower()).strip() not in heads:
                 callouts.append(c)
+                where.setdefault(c, i)
         callouts = dedupe(callouts)
         d["callouts"] = list(zip(callouts, spans(len(callouts), 12, 4 if len(callouts) != 3 else 3)))
+        d["callout_idx"] = [where[c] for c in callouts]
         feats = []
         for f in d.get("features", []):
             f["label"] = pageref(re.sub(r"\s*\|\s*", " / ", strip_bold(f.get("label") or "")).strip())
@@ -1792,6 +1813,7 @@ def main():
     env.filters["strip_bold"] = strip_bold
     env.filters["refs"] = refs
     env.filters["cellhtml"] = cellhtml
+    env.filters["web_path"] = web_path
     env.filters["cattitle"] = cattitle
     # compact color chips: "LBI Color Palette bar rendering glowing red" -> "Red"
     env.filters["chip"] = lambda t: (lambda x: x[:1].upper() + x[1:])(re.sub(r"^.*?\bbar rendering (?:glowing |showing the )?", "", str(t)).replace("full RGB spectrum", "LBI Color Palette+ RGBWW"))
@@ -1814,7 +1836,7 @@ def main():
     for k, (web, _) in list(brand_pics.items()):
         if not (ROOT / web).is_file():
             brand_pics[k] = (heroes.get(next((c["slug"] for c in cats if c["brand_key"] == k and c["hero"]), ""), HOME_IMAGE[0]), "contain")
-    render("home.html", "index.html", 1.0, page="home", mosaic=MOSAIC, brand_pics=brand_pics, finder=[
+    render("home.html", "index.html", 1.0, page="home", home=HOME, mosaic=MOSAIC, brand_pics=brand_pics, finder=[
         dict(q=q, strong=s, href=(h if h.endswith(".html") or h == "search" else f"{h}.html")) for q, s, h in FINDER if h in ("search",) or h.endswith(".html") or any(c["slug"] == h for c in cats)],
         heroes=heroes, brand_cats=by_brand,
         seo=seo_for("index.html", f"{SITE_NAME} | LED Retrofit Lamps, RemPhos, Solera", home_desc, image=HOME_IMAGE[0], image_alt=HOME_IMAGE[1],

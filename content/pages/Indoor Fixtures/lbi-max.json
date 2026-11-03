@@ -109,5 +109,9 @@
     "See spec sheet on LED-LLC.com for DLC listing status",
     "CHECK: RP-LBIMAX-4F-48W-40K-WC dimensions are printed in the catalog as \"4.0 IN x 2.5 IN x 3.0 IN\" (verified by zoom); this is almost certainly a typo for 48.0 in since it is the 4 ft model. Transcribed as printed.",
     "Factory defaults (bold) cross-checked against the LBI MAX spec sheet text: 'Factory ships 2 ft at 25W/4000K, and 4 ft at 48W/4000K'"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/product/max-hero.jpg",
+    "alt": "RemPhos LBI MAX high-lumen linkable strip"
+  }
 }

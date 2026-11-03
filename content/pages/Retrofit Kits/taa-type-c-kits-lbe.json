@@ -129,5 +129,9 @@
     "Interpretation: wattage choices are codes with their selectable settings in parentheses, e.g. 12W (6-8-10-12); the catalog prints only the heading WATTAGE with these values",
     "The catalog lists no lumen values for these configurable kits; the feature strip gives 146 LPW light-engine efficacy",
     "Only the left-hand printed page number (48) appears on this spread"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/taa-type-c-kits-lbe/hero-typec.jpg",
+    "alt": "Catalog composite for the TAA Type C kits: blue TAA panel (left) and laboratory photo (right) with two Type C T5/T8 tubes laid across the bottom edge overhanging onto white; no captions"
+  }
 }

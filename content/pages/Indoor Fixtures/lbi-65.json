@@ -175,5 +175,9 @@
     "Only the left page number (30) is printed on the spread; the right page (vapor-tight bundles) is 31",
     "Vapor-tight bundle part numbers mix '4FT'/'8FT' (plain and OCCBT bundles) with '4F'/'8F' (OCC bundles); transcribed as printed",
     "The 4 ft LBI65 lumen range is printed '1920- 4000' (stray space); written as 1920-4000"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/product/lbi65-hero.jpg",
+    "alt": "RemPhos LBI 65 IP65 linkable light bar with its sealed end cap"
+  }
 }

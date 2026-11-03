@@ -50,13 +50,13 @@ jobs:
           cd live && python3 tools/build.py
           mkdir -p ../out
           rsync -a --exclude '.git' --exclude '.github' --exclude 'tools' --exclude 'data' --exclude 'content' --exclude 'notes' \
-                --exclude 'README.md' --exclude '.pages.yml' --exclude '.gitignore' --exclude 'TEST_COPY' ./ ../out/
+                --exclude 'README.md' --exclude '.pages.yml' --exclude 'cloudcannon.config.yml' --exclude '.cloudcannon' --exclude '.gitignore' --exclude 'TEST_COPY' ./ ../out/
       - name: Build the sandbox
         run: |
           cd main && python3 tools/build.py
           mkdir -p ../out/sandbox
           rsync -a --exclude '.git' --exclude '.github' --exclude 'tools' --exclude 'data' --exclude 'content' --exclude 'notes' \
-                --exclude 'README.md' --exclude '.pages.yml' --exclude '.gitignore' --exclude 'TEST_COPY' ./ ../out/sandbox/
+                --exclude 'README.md' --exclude '.pages.yml' --exclude 'cloudcannon.config.yml' --exclude '.cloudcannon' --exclude '.gitignore' --exclude 'TEST_COPY' ./ ../out/sandbox/
           printf 'User-agent: *\nDisallow: /\n' > ../out/sandbox/robots.txt
       - name: Build the administration portal
         run: python3 main/tools/portal.py --main main --live live --out out

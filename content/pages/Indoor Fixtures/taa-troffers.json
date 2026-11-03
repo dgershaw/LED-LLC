@@ -146,5 +146,9 @@
     "Lumens are printed as a range (min-max across the FlexWatt settings) in bold weight for every row; no single lumen value is marked as the factory default",
     "Operating temp is printed as '-0°F TO 122°F' in the catalog icon strip",
     "CATALOG AS PRINTED: RP-TRV-G2-2X2 dimensions read 47.8 in x 23.9 in x 3.3 in and RP-TRV-G2-2X4 read 23.9 in x 23.9 in x 3.3 in; the two appear transposed in the catalog (a 2X2 should be ~24 x 24) but are transcribed exactly as printed"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/taa-troffers/hero.jpg",
+    "alt": "Catalog composite: RP-TRV volumetric troffer retrofit kit in front of a modern white laboratory with linear ceiling lights; kit kept whole, 'RP-TRV (VOLUMETRIC)' caption painted out of the white margin"
+  }
 }

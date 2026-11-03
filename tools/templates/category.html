@@ -19,9 +19,9 @@
   <section class="page-hero{% if cs %} cs-hero{% endif %}" aria-labelledby="h1">
     <div>
       <p class="eyebrow brand">{{ c.brand.name }} · {{ c.group }}</p>
-      <h1 id="h1">{{ c.h1_html }}{% if c.subtitle %}<small>{{ c.subtitle }}</small>{% endif %}</h1>
-      {% if c.headline %}<p class="headline"><span class="lead-in">{{ c.headline }}</span></p>{% endif %}
-      {% if c.intro and not cs %}<p class="intro">{{ c.intro }}</p>{% endif %}
+      <h1 id="h1">{{ c.h1_html }}{% if c.subtitle %}<small data-editable="text" data-prop="subtitle">{{ c.subtitle }}</small>{% endif %}</h1>
+      {% if c.headline %}<p class="headline"><span class="lead-in" data-editable="text" data-prop="headline">{{ c.headline }}</span></p>{% endif %}
+      {% if c.intro and not cs %}<p class="intro" data-editable="text" data-prop="intro">{{ c.intro }}</p>{% endif %}
       {% if cs %}<ul class="cs-points">{% for b in cs.points %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
       <div class="actions">
         {% if cs and cs.models %}<a class="btn btn-primary" href="#parts"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Spec sheets + IES files</a>{% elif sheet %}<a class="btn btn-primary" href="{{ sheet.pdf }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Spec sheet (PDF)</a>{% endif %}
@@ -36,7 +36,7 @@
     <div class="cs-slider">{{ P.slideshow(cs.slides, c.nav_title ~ " photos", "4/3", dots=True) }}</div>
     {% else %}
     <figure class="shot photo{% if c.hero_fit %} {{ c.hero_fit }}{% endif %}{% if c.hero_tall %} tall{% endif %}"{% if c.hero and c.hero.web in RAIN %} data-rain="{{ RAIN[c.hero.web] }}"{% endif %}>
-      {% if c.hero %}<img src="{{ c.hero.web }}" alt="{{ c.hero.shows }}"{{ dims(c.hero.web) }}>{% else %}<div class="shot-ph">Photography coming soon</div>{% endif %}
+      {% if c.hero %}<img src="{{ c.hero.web }}" alt="{{ c.hero.shows }}"{{ dims(c.hero.web) }}{% if c.hero_image %} data-editable="image" data-prop="hero_image"{% endif %}>{% else %}<div class="shot-ph">Photography coming soon</div>{% endif %}
     </figure>
     {% endif %}
   </section>
@@ -75,7 +75,7 @@
   {% if c.callouts and not cs %}
   <section aria-label="Highlights">
     <div class="callouts">
-      {% for text, span in c.callouts %}<div class="callout plain s{{ span }}" style="--span:{{ span }}"><p class="text">{{ text }}</p></div>{% endfor %}
+      {% for text, span in c.callouts %}<div class="callout plain s{{ span }}" style="--span:{{ span }}"><p class="text" data-editable="text" data-prop="callouts.{{ c.callout_idx[loop.index0] }}">{{ text }}</p></div>{% endfor %}
     </div>
   </section>
   {% endif %}
@@ -111,7 +111,7 @@
   <section aria-labelledby="feat-h">
     <div class="section-head"><h2 id="feat-h">At a glance</h2><p>Warranty, listings and construction.</p></div>
     <div class="spec-tiles" style="--cols:{{ c.feature_cols }}">
-      {% for f in c.features %}<div><div class="v">{{ f.label }}</div>{% if f.note %}<div class="n">{{ f.note }}</div>{% endif %}</div>{% endfor %}
+      {% for f in c.features %}<div><div class="v" data-editable="text" data-prop="features.{{ f.i }}.label">{{ f.label }}</div>{% if f.note %}<div class="n" data-editable="text" data-prop="features.{{ f.i }}.note">{{ f.note }}</div>{% endif %}</div>{% endfor %}
     </div>
   </section>
   {% endif %}

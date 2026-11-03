@@ -228,5 +228,9 @@
     "Page 12 (PDF page 8) is the lamp line-up: TYPE A + B (2-pin: LED-7300-G4, 7310-G5, 7311-G4, 7312-G4, 7313-G4, 7314-G4, 7322-G4, 7316-G2; 4-pin: LED-7318-G2, 7328-G2, 7320-G4, 7324-G4), TYPE A (4-pin: LED-7330-G2, 7334-G2) and TYPE B (2-pin: LED-7350-G4, 7351-G4; 4-pin: LED-7340-G3/7343-G3/7344-G3/7345-G3); FlexColor dotted lines run over the Type A+B and Type B groups only",
     "The 'NOW W/ FLEXCOLOR —' and 'EXTENDABLE END CAP' statements sit on one line under the 90° rotatable head panel (LED-7318-FC2) and read as a single callout; the LED-7320 lamp to the right carries only an arrow caption '← LED-7320'",
     "Catalog page numbers: 12 (line-up) and 14 (spec tables)"
-  ]
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/pl-pll/hero.jpg",
+    "alt": "Catalog composite: LED-7320 PL lamp in front of an elevator lobby with wall sconces; caption and callout text whited out of the white margin, lamp kept whole"
+  }
 }

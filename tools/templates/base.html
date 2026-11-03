@@ -194,5 +194,11 @@
 <script src="assets/js/tour.js"></script>
 {% block scripts %}{% endblock %}
 <script src="assets/js/motion.js"></script>
+{#- CloudCannon's visual editor (David, 2026-11-03): the click-to-edit layer loads only inside the editor, never for visitors.
+    The data-editable attributes on the templates tell it which content file field each text or photo comes from. #}
+<script type="module">
+  const editing = () => import("./assets/js/editable-regions.js").catch((e) => console.warn("CloudCannon editing layer:", e));
+  if (window.inEditorMode) editing(); else document.addEventListener("cloudcannon:load", editing, { once: true });
+</script>
 </body>
 </html>
