@@ -136,6 +136,14 @@ def flatten(d):
     lists.append(("Key points", [text(x) for x in d.get("callouts", [])]))
     if "sheet_points" in d:
         lists.append(("Spec-sheet points", [text(x) for x in d.get("sheet_points", [])]))
+    if isinstance(d.get("sheet_marks"), list):
+        lists.append(("Listing and warranty logos", [text({k: x.get(k) for k in ("logo", "alt", "height")}) for x in d["sheet_marks"] if isinstance(x, dict)]))
+    if isinstance(d.get("sheet_flex"), dict):
+        scalars.append(("SuperFlex panel", text({k: d["sheet_flex"].get(k) for k in ("logo", "alt", "headline", "note")})))
+    if isinstance(d.get("sheet_icons"), list):
+        lists.append(("Icon row", [text({k: x.get(k) for k in ("icon", "value", "caption", "alt")}) for x in d["sheet_icons"] if isinstance(x, dict)]))
+    if "sheet_plug" in d:
+        scalars.append(("Sensor line", text(d["sheet_plug"])))
     lists.append(("At a glance", [text(x) for x in d.get("features", [])]))
     for t in d.get("tables", []):
         name = short(text(t.get("title")) or "Table")

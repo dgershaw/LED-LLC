@@ -114,6 +114,38 @@ content:
         description: "Spec-sheet pages only (LBI G1, Shoe Box + Wall Pack, TAA troffers): the bullet points under the headline. These pages show them instead of the Introduction, Key points and At a glance."
         type: string
         list: true
+      - name: sheet_marks
+        label: "Spec-sheet pages: listing and warranty logos"
+        description: Black logos on a transparent background (PNG); the site colours them.
+        type: object
+        list: true
+        fields:
+          - { name: logo, label: Logo, type: image, options: { media: photos } }
+          - { name: alt, label: Description, type: string }
+          - { name: height, label: Height in pixels, type: number }
+      - name: sheet_flex
+        label: "Spec-sheet pages: SuperFlex or FlexColor panel"
+        type: object
+        fields:
+          - { name: logo, label: Logo, type: image, options: { media: photos } }
+          - { name: alt, label: Logo description, type: string }
+          - { name: headline, label: Headline, type: string }
+          - { name: note, label: Note, type: string }
+          - { name: words, label: Show the FlexWatt and FlexColor words, type: boolean, hidden: true }
+      - name: sheet_icons
+        label: "Spec-sheet pages: icon row"
+        description: Black icons on a transparent background (PNG); the site colours them.
+        type: object
+        list: true
+        fields:
+          - { name: icon, label: Icon, type: image, options: { media: photos } }
+          - { name: value, label: Bold line (optional), type: string }
+          - { name: caption, label: Caption, type: string }
+          - { name: alt, label: Description, type: string }
+          - { name: scale, label: Scale, type: number, hidden: true }
+      - name: sheet_plug
+        label: "Spec-sheet pages: sensor line"
+        type: string
       - name: features
         label: At a glance
         description: One feature per item, with an optional note shown after it.

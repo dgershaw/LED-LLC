@@ -40,5 +40,97 @@
     "Replaces linear and general purpose strips, troffers, vapor tight fixtures, low and high bays, cove lighting and stairwells",
     "Many accessories let the LBI mount in a wide variety of applications",
     "Your choice of Simple & Network Lighting Controls"
-  ]
+  ],
+  "sheet_marks": [
+    {
+      "logo": "assets/img/icons/warranty-10.png",
+      "alt": "10-year warranty",
+      "height": 54
+    },
+    {
+      "logo": "assets/img/icons/etl-listed.png",
+      "alt": "cETLus Listed (Intertek): UL 1598 listed fixture and UL 1598C listed retrofit kit",
+      "height": 44
+    },
+    {
+      "logo": "assets/img/icons/fcc.png",
+      "alt": "FCC Class A",
+      "height": 34
+    },
+    {
+      "logo": "assets/img/icons/rohs.png",
+      "alt": "RoHS compliant",
+      "height": 46
+    },
+    {
+      "logo": "assets/img/icons/dlc-listed.png",
+      "alt": "DLC Listed",
+      "height": 52
+    }
+  ],
+  "sheet_flex": {
+    "logo": "assets/img/icons/superflex.png",
+    "alt": "SuperFlex",
+    "headline": "Switch between 3 wattages & 3 CCTs",
+    "note": "Standard models (WC): 3500K, 4000K or 5000K. Warm models (WC2): 2700K, 3000K or 3500K.",
+    "words": true
+  },
+  "sheet_icons": [
+    {
+      "icon": "assets/img/icons/volt-120-277.png",
+      "value": "",
+      "caption": "Voltage",
+      "alt": "120-277V"
+    },
+    {
+      "icon": "assets/img/icons/lpw-146.png",
+      "value": "",
+      "caption": "Efficacy (light engine)",
+      "alt": "146 lumens per watt",
+      "scale": 1.2
+    },
+    {
+      "icon": "assets/img/icons/pf-thd.png",
+      "value": "",
+      "caption": "Power factor / THD",
+      "alt": "Power factor above 0.9, total harmonic distortion below 20%"
+    },
+    {
+      "icon": "assets/img/icons/cri-80.png",
+      "value": "",
+      "caption": "CRI",
+      "alt": "80+ CRI"
+    },
+    {
+      "icon": "assets/img/icons/dim-to-off.png",
+      "value": "",
+      "caption": "Sensor ready",
+      "alt": "0-10V dim to off"
+    },
+    {
+      "icon": "assets/img/icons/occ-simple.png",
+      "value": "",
+      "caption": "Optional simple OCC",
+      "alt": "Occupancy sensor"
+    },
+    {
+      "icon": "assets/img/icons/beam-120.png",
+      "value": "",
+      "caption": "Beam angle",
+      "alt": "120 degree beam angle"
+    },
+    {
+      "icon": "assets/img/icons/emg.png",
+      "value": "",
+      "caption": "Optional EMG battery backup",
+      "alt": "Emergency battery"
+    },
+    {
+      "icon": "assets/img/icons/temp.png",
+      "value": "-13°F to 140°F",
+      "caption": "Operating temp",
+      "alt": "Thermometer"
+    }
+  ],
+  "sheet_plug": "Optional sensors link right to the bars, no wiring needed"
 }

@@ -92,17 +92,19 @@
     <div class="section-head"><h2 id="feat-h">At a glance</h2><p>From the {{ cs.sheet }} spec sheet{% if cs.models %}s{% endif %}.</p></div>
     <div class="cs-card">
       <div class="cs-top">
-        <ul class="cs-marks" aria-label="Listings and warranty">{% for m in cs.marks %}<li><span class="mk" role="img" aria-label="{{ m.alt }}" style="-webkit-mask-image:url({{ m.src }});mask-image:url({{ m.src }});--h:{{ m.h or 36 }}px;aspect-ratio:{{ dims_ratio(m.src) }}"></span></li>{% endfor %}</ul>
-        {% if cs.superflex %}{% set fimg = 'assets/img/icons/' ~ (cs.flex_img or 'superflex.png') %}<div class="cs-flex"><img src="{{ fimg }}" alt="{{ cs.flex_alt or 'SuperFlex' }}"{{ dims(fimg) }}><p><b>{{ cs.superflex }}</b>{% if not cs.flex_img %}<span class="fx"><span class="fw">Flex<em>Watt</em></span> <span class="fc">Flex<em>Color</em></span></span>{% endif %}{% if cs.superflex_note %}<small>{{ cs.superflex_note }}</small>{% endif %}</p></div>{% endif %}
+        {# data-editable: CloudCannon's visual editor; each logo and icon opens its picture, description and words (sheet_* in the page file) #}
+        <ul class="cs-marks" aria-label="Listings and warranty"{% if cs.marks_editable %} data-editable="array" data-prop="sheet_marks" data-direction="row"{% endif %}>{% for m in cs.marks %}<li{% if cs.marks_editable %} data-editable="array-item"{% endif %}><span class="mk" role="img" aria-label="{{ m.alt }}" style="-webkit-mask-image:url({{ m.src }});mask-image:url({{ m.src }});--h:{{ m.h or 36 }}px;aspect-ratio:{{ dims_ratio(m.src) }}"></span></li>{% endfor %}</ul>
+        {% if cs.superflex %}{% set fimg = cs.flex_src %}{% set ed = cs.flex_editable %}<div class="cs-flex"><img src="{{ fimg }}" alt="{{ cs.flex_alt or 'SuperFlex' }}"{{ dims(fimg) }}{% if ed %} data-editable="image" data-prop-src="sheet_flex.logo" data-prop-alt="sheet_flex.alt"{% endif %}><p><b{% if ed %} data-editable="text" data-prop="sheet_flex.headline"{% endif %}>{{ cs.superflex }}</b>{% if cs.flex_words %}<span class="fx"><span class="fw">Flex<em>Watt</em></span> <span class="fc">Flex<em>Color</em></span></span>{% endif %}{% if cs.superflex_note %}<small{% if ed %} data-editable="text" data-prop="sheet_flex.note"{% endif %}>{{ cs.superflex_note }}</small>{% endif %}</p></div>{% endif %}
       </div>
-      <ul class="cs-icons" style="--n:{{ cs.icons|length }};--half:{{ (cs.icons|length + 1) // 2 }};--ph:{{ 3 if cs.icons|length in [3, 6, 9] else 4 }}">
-        {% for ic in cs.icons %}<li><span class="ic" role="img" aria-label="{{ ic.alt or ic.label }}" style="-webkit-mask-image:url({{ ic.src }});mask-image:url({{ ic.src }});aspect-ratio:{{ dims_ratio(ic.src) }}{% if ic.scale %};--s:{{ ic.scale }}{% endif %}"></span><b>{{ ic.value or "" }}</b><span class="lb">{{ ic.label }}</span></li>{% endfor %}
+      {% set ed = cs.icons_editable %}
+      <ul class="cs-icons" style="--n:{{ cs.icons|length }};--half:{{ (cs.icons|length + 1) // 2 }};--ph:{{ 3 if cs.icons|length in [3, 6, 9] else 4 }}"{% if ed %} data-editable="array" data-prop="sheet_icons" data-direction="row"{% endif %}>
+        {% for ic in cs.icons %}<li{% if ed %} data-editable="array-item"{% endif %}><span class="ic" role="img" aria-label="{{ ic.alt or ic.label }}" style="-webkit-mask-image:url({{ ic.src }});mask-image:url({{ ic.src }});aspect-ratio:{{ dims_ratio(ic.src) }}{% if ic.scale %};--s:{{ ic.scale }}{% endif %}"></span><b{% if ed %} data-editable="text" data-prop="value"{% endif %}>{{ ic.value or "" }}</b><span class="lb"{% if ed %} data-editable="text" data-prop="caption"{% endif %}>{{ ic.label }}</span></li>{% endfor %}
       </ul>
       {% if cs.plug %}
       <div class="cs-ctl">
         <a href="lighting-controls.html" class="ctl-s"><span class="ic" style="-webkit-mask-image:url(assets/img/icons/ctl-simple.png);mask-image:url(assets/img/icons/ctl-simple.png);aspect-ratio:{{ dims_ratio('assets/img/icons/ctl-simple.png') }}" aria-hidden="true"></span>Simple lighting controls</a>
         <a href="lighting-controls.html" class="ctl-n"><span class="ic" style="-webkit-mask-image:url(assets/img/icons/ctl-network.png);mask-image:url(assets/img/icons/ctl-network.png);aspect-ratio:{{ dims_ratio('assets/img/icons/ctl-network.png') }}" aria-hidden="true"></span>Network lighting controls</a>
-        <p>{{ cs.plug }}.</p>
+        <p>{% if cs.plug_editable %}<span data-editable="text" data-prop="sheet_plug">{{ cs.plug }}</span>{% else %}{{ cs.plug }}{% endif %}.</p>
       </div>
       {% endif %}
     </div>

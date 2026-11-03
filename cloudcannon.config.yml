@@ -107,6 +107,39 @@ _inputs:
     type: array
     label: Spec-sheet points
     comment: The bullet points under the headline, as on the spec sheet. Keep them to about five.
+  # spec-sheet pages: At a glance
+  sheet_marks:
+    type: array
+    label: Listing and warranty logos
+  logo:
+    type: image
+    label: Logo
+    comment: A black logo on a transparent background (PNG). The site colours it to match the page.
+  height:
+    type: number
+    label: Logo height (pixels)
+  sheet_flex:
+    type: object
+    label: SuperFlex or FlexColor panel
+  words:
+    hidden: true
+  sheet_icons:
+    type: array
+    label: Icon row
+  icon:
+    type: image
+    label: Icon
+    comment: A black icon on a transparent background (PNG). The site colours it to match the page.
+  value:
+    type: text
+    label: Bold line
+    comment: Optional. Shown in bold under the icon, for example 50,000 hrs.
+  scale:
+    hidden: true
+  sheet_plug:
+    type: text
+    label: Sensor line
+    comment: The line beside the Simple and Network lighting controls links.
   features:
     type: array
     label: At a glance

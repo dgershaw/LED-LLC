@@ -1008,6 +1008,8 @@ def apply_page_file(slug, d):
     d["title"] = d["title"] or slug.replace("-", " ").title()
     d["hero_image"] = p.get("hero_image") if isinstance(p.get("hero_image"), dict) else None
     d["sheet_points"] = [x for x in p.get("sheet_points") or [] if isinstance(x, str)]   # spec-sheet pages only (load_cutsheets)
+    for k in ("sheet_marks", "sheet_flex", "sheet_icons", "sheet_plug"):
+        d[k] = p.get(k)
     d["features"] = [dict(label=x.get("label", ""), note=x.get("note", ""), i=i) for i, x in enumerate(d["features"]) if isinstance(x, dict) and x.get("label")]
     d["tables"] = [dict(t, columns=t.get("columns") or [], notes=t.get("notes") or [],
                         rows=[re.split(r"\s*\|\s*", r.strip()) if isinstance(r, str) else r for r in t.get("rows") or []]) for t in d["tables"]]
@@ -1412,8 +1414,28 @@ def load_cutsheets(cats):
             c["cs"] = None
             continue
         cs = dict(cs)
-        for k in ("marks", "icons"):
-            cs[k] = [dict(x, src=f"assets/img/icons/{x['img']}") for x in cs.get(k) or [] if (ROOT / "assets" / "img" / "icons" / x["img"]).is_file()]
+        # At a glance: listing marks, the SuperFlex or FlexColor panel, the icon row and the sensor line come from the page file
+        # (sheet_marks, sheet_flex, sheet_icons, sheet_plug; CloudCannon and Pages CMS edit them, David 2026-11-03), else from
+        # here. Each item keeps its place in the file (i) for the visual editor; an item whose picture is missing is skipped.
+        icons_dir = "assets/img/icons/"
+        own_marks, own_icons, own_flex = c.get("sheet_marks"), c.get("sheet_icons"), c.get("sheet_flex")
+        cs["marks_editable"], cs["icons_editable"] = isinstance(own_marks, list), isinstance(own_icons, list)
+        marks = ([dict(src=web_path(x.get("logo")), alt=x.get("alt") or "", h=x.get("height"), i=i) for i, x in enumerate(own_marks) if isinstance(x, dict)]
+                 if cs["marks_editable"] else [dict(x, src=icons_dir + x["img"], i=i) for i, x in enumerate(cs.get("marks") or [])])
+        icons = ([dict(src=web_path(x.get("icon")), value=x.get("value") or "", label=x.get("caption") or "", alt=x.get("alt") or "", scale=x.get("scale"), i=i)
+                  for i, x in enumerate(own_icons) if isinstance(x, dict)]
+                 if cs["icons_editable"] else [dict(x, src=icons_dir + x["img"], i=i) for i, x in enumerate(cs.get("icons") or [])])
+        cs["marks"] = [x for x in marks if x["src"] and (ROOT / x["src"]).is_file()]
+        cs["icons"] = [x for x in icons if x["src"] and (ROOT / x["src"]).is_file()]
+        cs["flex_editable"] = isinstance(own_flex, dict)
+        if cs["flex_editable"]:
+            cs["superflex"], cs["superflex_note"] = own_flex.get("headline") or "", own_flex.get("note") or ""
+            cs["flex_src"], cs["flex_alt"], cs["flex_words"] = web_path(own_flex.get("logo")), own_flex.get("alt") or "", bool(own_flex.get("words"))
+        else:
+            cs["flex_src"], cs["flex_words"] = icons_dir + (cs.get("flex_img") or "superflex.png"), not cs.get("flex_img")
+        cs["plug_editable"] = isinstance(c.get("sheet_plug"), str)
+        if cs["plug_editable"]:
+            cs["plug"] = c["sheet_plug"].strip().rstrip(".")
         cs["slides"] = [dict(web=x["src"], shows=x.get("alt") or x.get("caption") or "", caption=x.get("caption"), contain=x.get("fit") == "contain", focus=x.get("focus"))
                         for x in cs.get("slides") or [] if (ROOT / x["src"]).is_file()]
         cs["docs"] = [d for d in cs.get("docs") or [] if find_doc(d["pdf"])]

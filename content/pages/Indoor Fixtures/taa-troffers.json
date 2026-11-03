@@ -157,5 +157,85 @@
     "Emergency battery backup option available",
     "Choose from a volumetric or a flat panel design",
     "Field installable Simple & Network Lighting Controls options"
-  ]
+  ],
+  "sheet_marks": [
+    {
+      "logo": "assets/img/icons/taa.png",
+      "alt": "TAA: meets the requirements of the United States Trade Agreements Act",
+      "height": 30
+    },
+    {
+      "logo": "assets/img/icons/warranty-5.png",
+      "alt": "5-year warranty",
+      "height": 54
+    },
+    {
+      "logo": "assets/img/icons/culus.png",
+      "alt": "cULus Listed",
+      "height": 40
+    },
+    {
+      "logo": "assets/img/icons/dlc-premium.png",
+      "alt": "DLC Listed Premium",
+      "height": 52
+    }
+  ],
+  "sheet_flex": {
+    "logo": "assets/img/icons/superflex.png",
+    "alt": "SuperFlex",
+    "headline": "Switch between 3 wattages & 3 CCTs",
+    "note": "Fixtures (TV/TF). The retrofit kits switch between up to 5 wattages and 5 CCTs.",
+    "words": true
+  },
+  "sheet_icons": [
+    {
+      "icon": "assets/img/icons/volt-120-277.png",
+      "value": "",
+      "caption": "Voltage",
+      "alt": "120-277V"
+    },
+    {
+      "icon": "assets/img/icons/dim-to-off.png",
+      "value": "",
+      "caption": "Sensor ready",
+      "alt": "0-10V dim to off"
+    },
+    {
+      "icon": "assets/img/icons/emg.png",
+      "value": "",
+      "caption": "Optional EMG battery backup",
+      "alt": "Emergency battery"
+    },
+    {
+      "icon": "assets/img/icons/cri-80.png",
+      "value": "",
+      "caption": "CRI",
+      "alt": "80+ CRI"
+    },
+    {
+      "icon": "assets/img/icons/beam-120.png",
+      "value": "",
+      "caption": "Beam angle",
+      "alt": "120 degree beam angle"
+    },
+    {
+      "icon": "assets/img/icons/temp.png",
+      "value": "0°F to 122°F",
+      "caption": "Operating temp",
+      "alt": "Thermometer"
+    },
+    {
+      "icon": "assets/img/icons/surge-2-5ka.png",
+      "value": "",
+      "caption": "Surge protection",
+      "alt": "2.5kA surge protection"
+    },
+    {
+      "icon": "assets/img/icons/life-l70.png",
+      "value": "50,000 hrs",
+      "caption": "Rated life (L70)",
+      "alt": "L70 rated life"
+    }
+  ],
+  "sheet_plug": "Simply remove the cap and plug in the sensor"
 }

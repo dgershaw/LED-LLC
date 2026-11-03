@@ -97,5 +97,84 @@
     "Includes a fan and thermal sensor to run cool and ensure a long and bright life",
     "Enclosed fixture safe and approved for damp locations",
     "HV models run on 277-480V (can be used on 347V)"
+  ],
+  "sheet_marks": [
+    {
+      "logo": "assets/img/icons/warranty-5.png",
+      "alt": "5-year warranty",
+      "height": 54
+    },
+    {
+      "logo": "assets/img/icons/culus.png",
+      "alt": "cULus Listed",
+      "height": 40
+    },
+    {
+      "logo": "assets/img/icons/culus-classified.png",
+      "alt": "cULus Classified: mogul or 120V medium base only",
+      "height": 40
+    },
+    {
+      "logo": "assets/img/icons/dlc-listed.png",
+      "alt": "DLC Listed",
+      "height": 52
+    }
+  ],
+  "sheet_flex": {
+    "logo": "assets/img/icons/flexcolor.png",
+    "alt": "FlexColor",
+    "headline": "Switch between 3000K, 4000K and 5000K",
+    "note": "FlexColor (-FC) models, set on the lamp. Factory default 4000K.",
+    "words": false
+  },
+  "sheet_icons": [
+    {
+      "icon": "assets/img/icons/volt-120-277.png",
+      "value": "",
+      "caption": "Voltage",
+      "alt": "120-277V, also works on 208V and 240V"
+    },
+    {
+      "icon": "assets/img/icons/base-med-mogul.png",
+      "value": "",
+      "caption": "Medium + mogul base",
+      "alt": "Screw base"
+    },
+    {
+      "icon": "assets/img/icons/ballast-bypass.png",
+      "value": "",
+      "caption": "Ballast bypass",
+      "alt": "UL Type B ballast bypass"
+    },
+    {
+      "icon": "assets/img/icons/active-cooling.png",
+      "value": "",
+      "caption": "Active cooling",
+      "alt": "Fan"
+    },
+    {
+      "icon": "assets/img/icons/cri-80.png",
+      "value": "",
+      "caption": "CRI",
+      "alt": "80+ CRI"
+    },
+    {
+      "icon": "assets/img/icons/surge-10ka.png",
+      "value": "",
+      "caption": "Surge protection",
+      "alt": "10kA surge protection"
+    },
+    {
+      "icon": "assets/img/icons/temp.png",
+      "value": "-40°F to 122°F",
+      "caption": "Operating temp",
+      "alt": "Thermometer"
+    },
+    {
+      "icon": "assets/img/icons/life-l70-l90.png",
+      "value": "50,000 hrs",
+      "caption": "Rated life",
+      "alt": "L70 and L90 rated life"
+    }
   ]
 }
