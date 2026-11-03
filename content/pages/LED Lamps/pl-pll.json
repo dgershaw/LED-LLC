@@ -232,5 +232,26 @@
   "hero_image": {
     "src": "assets/img/cat/pl-pll/hero.jpg",
     "alt": "Catalog composite: LED-7320 PL lamp in front of an elevator lobby with wall sconces; caption and callout text whited out of the white margin, lamp kept whole"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/pl-pll/p08-b1.jpg",
+      "alt": "Modern lobby with a floating wooden staircase, LED-lit treads, glass balustrade, marble wall and a potted palm; no product shown",
+      "caption": "Modern lobby with a floating wooden staircase, LED-lit treads",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/pl-pll/lineup.jpg",
+      "alt": "Full page 12 line-up: all PL + PLL lamps on white grouped as TYPE A + B (2-pin / 4-pin), TYPE A (4-pin) and TYPE B (2-pin / 4-pin) with FlexColor markers, base pin diagrams and base names under each lamp, the 90° rotatable head inset and the 7340/43/44/45 length comparison; page number and margin furniture removed",
+      "caption": "LED-7300-G4, LED-7310-G5, LED-7311-G4, LED-7312-G4, LED-7313-G4",
+      "show_as": "diagram",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

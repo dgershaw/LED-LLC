@@ -76,5 +76,26 @@
   "hero_image": {
     "src": "assets/img/cat/lighting-controls/hero-products.jpg",
     "alt": "RemPhos in-line occupancy sensors for the LBI G2 and LBI 65, and the IR23 sensor remote"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/lighting-controls/p14-b4.jpg",
+      "alt": "Hand holding a smartphone running the Silvair app ('Corridor' zone: A scene / B scene, On / Off / Auto, dimming sliders for All luminaires, Luminaire 1, Luminaire 2) in a dim open-plan office; clean photo, no caption",
+      "caption": "Hand holding a smartphone running the Silvair app",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/lighting-controls/p14-b1.jpg",
+      "alt": "White wall-mounted single-button switch / wall controller on a grey wall with a blurred open-plan office behind; clean stock photo, no caption",
+      "caption": "White wall-mounted single-button switch / wall controller",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

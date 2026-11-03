@@ -144,6 +144,9 @@ def flatten(d):
         lists.append(("Icon row", [text({k: x.get(k) for k in ("icon", "value", "caption", "alt")}) for x in d["sheet_icons"] if isinstance(x, dict)]))
     if "sheet_plug" in d:
         scalars.append(("Sensor line", text(d["sheet_plug"])))
+    for k, label in (("photos", "Photos"), ("install_photos", "Installation photos"), ("sheet_slides", "Top slideshow")):
+        if isinstance(d.get(k), list) and "blocks" not in d:
+            lists.append((label, [text({f: x.get(f) for f in ("image", "alt", "caption", "show_as", "fit", "size", "focus")}) for x in d[k] if isinstance(x, dict)]))
     lists.append(("At a glance", [text(x) for x in d.get("features", [])]))
     for t in d.get("tables", []):
         name = short(text(t.get("title")) or "Table")

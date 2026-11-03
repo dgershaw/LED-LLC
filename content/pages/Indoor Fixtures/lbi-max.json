@@ -113,5 +113,44 @@
   "hero_image": {
     "src": "assets/img/product/max-hero.jpg",
     "alt": "RemPhos LBI MAX high-lumen linkable strip"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/lbi-max/lobby.jpg",
+      "alt": "Lobby lounge with wood-slat ceiling and feature wall, blue sofas; LBI MAX linear strips run as parallel lines across the ceiling",
+      "caption": "Lobby lounge with wood-slat ceiling and feature wall, blue sofas",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/lbi-max/p18-b1.jpg",
+      "alt": "Man on an exercise bike in a gym; LBI MAX strips run as continuous lines and rectangles across the dark ceiling",
+      "caption": "Man on an exercise bike in a gym",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/lbi-max/p18-b3.jpg",
+      "alt": "Glass-walled office meeting area, two people working at a desk under suspended LBI MAX linear strips",
+      "caption": "Glass-walled office meeting area, two people working",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/lbi-max/strip-cutout.png",
+      "alt": "LBI MAX linkable strip fixture, white housing with frosted lens, side view on white",
+      "caption": "LBI MAX linkable strip fixture, white housing",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

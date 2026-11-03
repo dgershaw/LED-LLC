@@ -133,5 +133,35 @@
   "hero_image": {
     "src": "assets/img/cat/taa-type-c-kits-lbe/hero-typec.jpg",
     "alt": "Catalog composite for the TAA Type C kits: blue TAA panel (left) and laboratory photo (right) with two Type C T5/T8 tubes laid across the bottom edge overhanging onto white; no captions"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/taa-type-c-kits-lbe/lab.jpg",
+      "alt": "Laboratory with glassware on a stainless bench, researchers at the back and troffer ceiling lights; cropped above the tubes",
+      "caption": "Laboratory with glassware on a stainless bench, researchers",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/taa-type-c-kits-lbe/hangar.jpg",
+      "alt": "Fighter jet parked in an aircraft hangar at dusk, linear strip lights along the curved roof; cropped above the LBE bar",
+      "caption": "Fighter jet parked in an aircraft hangar",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/taa-type-c-kits-lbe/soldier.jpg",
+      "alt": "Soldier in camouflage holding a laptop in a warehouse lit by linear fixtures; cropped above the LBE bar",
+      "caption": "Soldier in camouflage holding a laptop in a warehouse",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

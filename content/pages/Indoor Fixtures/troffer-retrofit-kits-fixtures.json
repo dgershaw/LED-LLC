@@ -138,5 +138,44 @@
   "hero_image": {
     "src": "assets/img/cat/troffer-retrofit-kits-fixtures/hero.png",
     "alt": "RP-TTF flat-panel troffer kit at an angle; cut out of block 2 onto a transparent background, panel shown whole (835 x 393)"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/troffer-retrofit-kits-fixtures/p27-b1.jpg",
+      "alt": "Open-plan office with cubicle workstations, black mesh chairs and monitors under recessed ceiling troffers, daylight through large windows; no captions",
+      "caption": "Open-plan office with cubicle workstations, black mesh chairs",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/troffer-retrofit-kits-fixtures/p27-b3.jpg",
+      "alt": "Veterinary clinic: a smiling vet in navy scrubs with a red stethoscope examines a golden retriever on the table, exam room lit by a ceiling troffer; no captions",
+      "caption": "RP-TTV, RP-TTF",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/troffer-retrofit-kits-fixtures/rp-ttf.jpg",
+      "alt": "RP-TTF (flat panel) troffer retrofit kit / fixture, front view on blue background, caption removed",
+      "caption": "RP-TTF",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/troffer-retrofit-kits-fixtures/rp-ttv.jpg",
+      "alt": "RP-TTV (volumetric) troffer retrofit kit / fixture, front view on blue background, caption removed",
+      "caption": "RP-TTV",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

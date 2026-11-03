@@ -557,7 +557,7 @@ def fix_copy(html):
     for rx, rep in COPY_RX:
         html = rx.sub(rep, html)
     # catalog headings are set in capitals, but the i in i-Series stays small
-    html = re.sub(r'alt="([^"]+)"', lambda m: 'alt="%s"' % clean_alt(m.group(1)), html)
+    html = re.sub(r'(?<![\w-])alt="([^"]+)"', lambda m: 'alt="%s"' % clean_alt(m.group(1)), html)   # not data-prop-alt="alt", the editor's binding
     html = re.sub(r"(<h1[^>]*>)i-&#8288;Series", r'\1<span class="nocap">i</span>-&#8288;Series', html)
     return html
 
@@ -1104,7 +1104,7 @@ def apply_page_file(slug, d):
     d["title"] = d["title"] or slug.replace("-", " ").title()
     d["hero_image"] = p.get("hero_image") if isinstance(p.get("hero_image"), dict) else None
     d["sheet_points"] = [x for x in p.get("sheet_points") or [] if isinstance(x, str)]   # spec-sheet pages only (load_cutsheets)
-    for k in ("sheet_marks", "sheet_flex", "sheet_icons", "sheet_plug"):
+    for k in ("sheet_marks", "sheet_flex", "sheet_icons", "sheet_plug", "sheet_slides", "photos", "install_photos"):
         d[k] = p.get(k)
     d["features"] = [dict(label=x.get("label", ""), note=x.get("note", ""), i=i) for i, x in enumerate(d["features"]) if isinstance(x, dict) and x.get("label")]
     d["tables"] = [dict(t, columns=t.get("columns") or [], notes=t.get("notes") or [],
@@ -1262,6 +1262,29 @@ def make_test_copy():
     (ROOT / "robots.txt").write_text("User-agent: *\nDisallow: /\n")
     (ROOT / ".nojekyll").touch()
 
+def page_photos(items, hero):
+    """A page file's photo list as the gallery and cutouts load_categories lays out. Show as: slideshow, cutout (product
+    shots on white), diagram or banner (a wide strip). Size, for cutouts: normal, wide or auto (by shape).
+    Fit: whole, fill or auto. Each keeps its place in the file (i) for the visual editor."""
+    gallery, cutouts = [], []
+    for i, x in enumerate(items):
+        src = web_path(x.get("image")) if isinstance(x, dict) else ""
+        how, size = x.get("show_as") or "slideshow", x.get("size") or "auto"
+        if not src or not (ROOT / src).is_file() or (hero and hero["web"] == src and how != "cutout"):
+            continue   # the main photo is not repeated in the slideshow, but may stand among the product cutouts
+        w, h = img_size(src) or (4, 3)
+        ar = w / max(1, h)
+        im = dict(web=src, shows=(x.get("alt") or "").strip(), caption=(x.get("caption") or "").strip(), ar=ar, i=i,
+                  kind=x.get("kind") or "application", fit=x.get("fit") or "auto", focus=(x.get("focus") or "").strip())
+        if how == "cutout":
+            im["label"] = im["caption"]
+            im["cls"] = "cut long" if size == "wide" or (size == "auto" and ar > 2.6) else "cut"
+            cutouts.append(im)
+            continue
+        im["cls"] = ("diagram tall" if ar < 0.9 else "diagram") if how == "diagram" else "strip" if how == "banner" else "wide" if ar > 1.9 else ""
+        gallery.append(im)
+    return gallery, cutouts
+
 def load_categories():
     cats = []
     for slug in ORDER:
@@ -1372,7 +1395,13 @@ def load_categories():
         # Portrait and 4:3 heroes get a 4:3 tile so the whole product shows at a useful size.
         d["hero_tall"] = bool(hero) and (hero.get("ar") or 1.6) < 1.45
         d["hero_contain"] = fit == "contain"
-        gallery.sort(key=lambda g: (g["cls"].startswith("diagram"), g["cls"] == "diagram tall", g["cls"] not in ("wide", "strip")))
+        # The page file's photo list (photos, edited in CloudCannon and Pages CMS, David 2026-11-03) replaces the catalog's
+        # gallery and cutouts: its order is the page's order, and its Fit and Size choices win over the automatic ones below.
+        own_photos = isinstance(d.get("photos"), list)
+        if own_photos:
+            gallery, cutouts = page_photos(d["photos"], hero)
+        else:
+            gallery.sort(key=lambda g: (g["cls"].startswith("diagram"), g["cls"] == "diagram tall", g["cls"] not in ("wide", "strip")))
         for g in gallery:   # slideshow: room photos fill the frame, composites and odd shapes are shown whole
             g["contain"] = g.get("kind") == "hero" or not (1.4 <= (g.get("ar") or 1.6) <= 1.95)
         plain = [g for g in gallery if not g["cls"].startswith("diagram") and g["cls"] != "strip"]
@@ -1383,6 +1412,9 @@ def load_categories():
         d["ss_ar"] = round(stage, 3)
         for g in plain:
             g["contain"] = g.get("kind") == "hero" or abs(math.log((g.get("ar") or 1.6) / stage)) > 0.22
+        for g in gallery:
+            if g.get("fit") in ("whole", "fill"):
+                g["contain"] = g["fit"] == "whole"
         if len(plain) == 1 and plain[0]["cls"] == "" and plain[0].get("kind") == "hero":
             plain[0]["cls"] = "solo"  # a lone product composite is shown whole; a lone application photo still crops to a banner
         units = sum(2 if g["cls"] == "wide" else 1 for g in plain)
@@ -1398,6 +1430,8 @@ def load_categories():
         for g, sp in zip(tall, spans(len(tall), 12, 4) if len(tall) > 1 else [12]):
             g["span"] = sp
         for im in cutouts:
+            if own_photos:
+                continue   # the caption typed for it
             prods = im.get("products") or []
             im["label"] = ", ".join(prods) if prods and len(prods) <= 2 and len(", ".join(prods)) <= 40 else (im["caption"] or ", ".join(prods))
         d["cutouts_spans"] = bool(cutouts) and all(im["cls"] == "cut long" for im in cutouts)
@@ -1477,7 +1511,14 @@ def load_media(cats):
                      thumb=f"https://i.ytimg.com/vi/{v['youtube']}/hqdefault.jpg", watch=f"https://www.youtube.com/watch?v={v['youtube']}")
             c["videos"].append(v)
             videos.append(v)
-        c["install"] = [dict(p) for p in (m.get("install_photos") or {}).get(c["slug"], []) if (ROOT / p["src"]).is_file()]
+        if isinstance(c.get("install_photos"), list):   # the page file's installation photos (CloudCannon and Pages CMS)
+            c["install"] = [dict(src=web_path(p.get("image")), alt=p.get("alt") or "", caption=p.get("caption") or "", focus=p.get("focus") or "", i=i)
+                            for i, p in enumerate(c["install_photos"]) if isinstance(p, dict)]
+            c["install"] = [p for p in c["install"] if p["src"] and (ROOT / p["src"]).is_file()]
+            c["install_editable"] = True
+        else:
+            c["install"] = [dict(p) for p in (m.get("install_photos") or {}).get(c["slug"], []) if (ROOT / p["src"]).is_file()]
+            c["install_editable"] = False
         spot = (m.get("eddy_spots") or {}).get(c["slug"])
         c["eddy"] = dict(spot, img=f"assets/img/eddy/{spot['img']}") if spot and (EDDY_DIR / spot["img"]).is_file() else None
         c["case_studies"] = []
@@ -1532,8 +1573,15 @@ def load_cutsheets(cats):
         cs["plug_editable"] = isinstance(c.get("sheet_plug"), str)
         if cs["plug_editable"]:
             cs["plug"] = c["sheet_plug"].strip().rstrip(".")
-        cs["slides"] = [dict(web=x["src"], shows=x.get("alt") or x.get("caption") or "", caption=x.get("caption"), contain=x.get("fit") == "contain", focus=x.get("focus"))
-                        for x in cs.get("slides") or [] if (ROOT / x["src"]).is_file()]
+        if isinstance(c.get("sheet_slides"), list):   # the page file's top slideshow (CloudCannon and Pages CMS), in its order
+            slides = [dict(src=web_path(x.get("image")), alt=x.get("alt"), caption=x.get("caption"), fit="contain" if x.get("fit") == "whole" else "",
+                           focus=x.get("focus"), i=i) for i, x in enumerate(c["sheet_slides"]) if isinstance(x, dict)]
+            cs["slides_editable"] = True
+        else:
+            slides, cs["slides_editable"] = cs.get("slides") or [], False
+        cs["slides"] = [dict(web=x["src"], shows=x.get("alt") or x.get("caption") or "", caption=x.get("caption"), contain=x.get("fit") == "contain",
+                             focus=x.get("focus") or "", i=x.get("i"))
+                        for x in slides if x.get("src") and (ROOT / x["src"]).is_file()]
         cs["docs"] = [d for d in cs.get("docs") or [] if find_doc(d["pdf"])]
         for d in cs["docs"]:
             d["size"] = f"{(ROOT / find_doc(d['pdf'])).stat().st_size / 1e6:.1f} MB"

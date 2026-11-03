@@ -179,5 +179,45 @@
   "hero_image": {
     "src": "assets/img/product/lbi65-hero.jpg",
     "alt": "RemPhos LBI 65 IP65 linkable light bar with its sealed end cap"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/lbi-65/hero.jpg",
+      "alt": "Right-page composite: office building entrance at dusk with linear soffit lighting and a salmon processing line under vapor-tight fixtures, with the LBI65 vapor-tight bar covered in water droplets across the bottom; cropped above the 'Order a vapor tight bundle' headline",
+      "caption": "RP-LBI65-2F-6W-40K-WC, RP-LBI65-3F-10W-40K-WC",
+      "show_as": "banner",
+      "fit": "auto",
+      "size": "auto",
+      "focus": "",
+      "kind": "hero"
+    },
+    {
+      "image": "assets/img/cat/lbi-65/app-entrance.jpg",
+      "alt": "Stone-and-glass office building entrance at dusk with linear LED lighting under the canopy soffit; cropped above the overlapping bar",
+      "caption": "Stone-and-glass office building entrance at dusk",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/lbi-65/app-food.jpg",
+      "alt": "Salmon fillets on a wet food-processing line under vapor-tight linear fixtures with water spray; cropped above the overlapping bar",
+      "caption": "Salmon fillets on a wet food-processing line",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/lbi-65/p17-b1.jpg",
+      "alt": "Chef in a commercial kitchen wiping a plate, with the NSF certification badge overlaid on the photo",
+      "caption": "Chef in a commercial kitchen wiping a plate",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

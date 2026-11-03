@@ -145,5 +145,26 @@
   "hero_image": {
     "src": "assets/img/cat/work-lights/hero.jpg",
     "alt": "Catalog composite: LED-9010 caged work light with hook and 35 ft cord in front of a scaffolding / concrete-wall site; caption and callout whited out of the white margin, lamp kept whole"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/work-lights/hero-extended.jpg",
+      "alt": "Both catalog photos side by side: LED-9010 caged work light on scaffolding (left) and LED-9003-182 string light head under a sidewalk shed (right); captions and callouts removed",
+      "caption": "LED-9010 and LED-9003 string light on site",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/work-lights/p12-b2.jpg",
+      "alt": "LED-9003-182 string light head (round black UFO-style lamp with hanging hook) on a yellow cord under a scaffold / sidewalk shed with chain-link fence; clean photo, no caption",
+      "caption": "LED-9003-182 string light under sidewalk shed",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

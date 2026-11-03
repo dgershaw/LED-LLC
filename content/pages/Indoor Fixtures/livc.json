@@ -114,5 +114,45 @@
   "hero_image": {
     "src": "assets/img/cat/livc/hero-product.jpg",
     "alt": "LIVC stairwell, vanity and wraparound fixture, with the rounded (LIVC-RD, 3.5 in) and square (LIVC-SQ, 3.0 in) endcap profiles"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/livc/p22-b1.jpg",
+      "alt": "School children running down a locker-lined corridor lit by ceiling-mounted LIVC wraparound fixtures; no captions",
+      "caption": "School children running down a locker-lined corridor",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/livc/p22-b4.jpg",
+      "alt": "Students climbing a concrete stairwell with a rounded-endcap LIVC fixture composited large in the lower-right foreground, overlapping the white page below the photo; no captions",
+      "caption": "Students climbing a concrete stairwell",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": "",
+      "kind": "hero"
+    },
+    {
+      "image": "assets/img/cat/livc/p22-b3.jpg",
+      "alt": "Tiled commercial washroom with four mirrors, each topped by a wall-mounted LIVC vanity light; no captions",
+      "caption": "Tiled commercial washroom with four mirrors, each topped",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/livc/fixture.jpg",
+      "alt": "Side view of the LIVC wraparound fixture, cut from the blue callout panel (blue background, not white)",
+      "caption": "LIVC",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

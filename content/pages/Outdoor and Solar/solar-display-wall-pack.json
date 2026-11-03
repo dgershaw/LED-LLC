@@ -142,5 +142,44 @@
   "hero_image": {
     "src": "assets/img/cat/solar-display-wall-pack/hero-swl.jpg",
     "alt": "Catalog composite: SL-SWL-16L-FC wall pack (large four-strip solar panel over a curved lens with PIR sensor) in front of a snowy loading dock with roll-up doors, yellow bollards and a trailer; no text; cropped above the dotted leader line that runs along the bottom of the catalog photo"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/solar-display-wall-pack/hero-sdl.jpg",
+      "alt": "Catalog composite: SL-SDL-4FT-40K-BK-G2 all-in-one display light (4 ft solar-topped light bar, lit lens strip below) across the top of a wooden information board with a topographic map at a mountain park; fixture kept whole, no text (a thin white hairline near the right end of the fixture is in the catalog's own render)",
+      "caption": "SL-SDL-4FT-40K-BK-G2 all-in-one display light",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/solar-display-wall-pack/sdl-surface-bracket.jpg",
+      "alt": "Detail of the SL-SDL-4FT-40K-BK-G2 display light end cap with the included surface mount bracket, on yellow",
+      "caption": "SL-SDL-4FT-40K-BK-G2",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/solar-display-wall-pack/sdl-clamp-bracket.jpg",
+      "alt": "Detail of the SL-SDL-4FT-40K-BK-G2 display light end with the optional RP-SDL-BK-LB clamp mount bracket (dotted highlight circle), on yellow",
+      "caption": "SL-SDL-4FT-40K-BK-G2, RP-SDL-BK-LB",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/solar-display-wall-pack/swl-product.jpg",
+      "alt": "SL-SWL-16L-FC wall pack product shot (tilted solar panel, detachable cord connectors, lens with sensor) on the yellow panel background, text removed (product on yellow, not a white cutout)",
+      "caption": "SL-SWL-16L-FC wall pack product shot",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

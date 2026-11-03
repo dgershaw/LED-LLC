@@ -237,5 +237,65 @@
       "alt": "L70 rated life"
     }
   ],
-  "sheet_plug": "Simply remove the cap and plug in the sensor"
+  "sheet_plug": "Simply remove the cap and plug in the sensor",
+  "photos": [],
+  "install_photos": [],
+  "sheet_slides": [
+    {
+      "image": "assets/img/cutsheet/taa-troffers/rp-tv.jpg",
+      "alt": "RemPhos RP-TV volumetric troffer fixture",
+      "caption": "RP-TV volumetric fixture",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cutsheet/taa-troffers/rp-tf.jpg",
+      "alt": "RemPhos RP-TF flat panel troffer fixture",
+      "caption": "RP-TF flat panel fixture",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/taa-troffers/p28-b5.jpg",
+      "alt": "RemPhos RP-TRV volumetric troffer retrofit kit",
+      "caption": "RP-TRV volumetric retrofit kit",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/taa-troffers/p28-b6.jpg",
+      "alt": "RemPhos RP-TRF flat panel troffer retrofit kit",
+      "caption": "RP-TRF flat panel retrofit kit",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cutsheet/taa-troffers/classroom.jpg",
+      "alt": "Students studying in a classroom lit by ceiling troffers",
+      "caption": "Classroom",
+      "fit": "fill",
+      "focus": "50% 22%"
+    },
+    {
+      "image": "assets/img/cat/taa-troffers/hero.jpg",
+      "alt": "A laboratory with the RP-TRV volumetric retrofit kit",
+      "caption": "Laboratory",
+      "fit": "fill",
+      "focus": "88% 50%"
+    },
+    {
+      "image": "assets/img/cat/taa-troffers/hero-trf.jpg",
+      "alt": "A control room with the RP-TRF flat panel retrofit kit",
+      "caption": "Control room",
+      "fit": "fill",
+      "focus": "8% 50%"
+    },
+    {
+      "image": "assets/img/cat/taa-troffers/p28-b1.jpg",
+      "alt": "A woman working at a laptop in a bright office",
+      "caption": "Office",
+      "fit": "fill",
+      "focus": "50% 40%"
+    }
+  ]
 }

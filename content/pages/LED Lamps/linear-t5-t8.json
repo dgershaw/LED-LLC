@@ -274,5 +274,35 @@
   "hero_image": {
     "src": "assets/img/cat/linear-t5-t8/hero-extended.jpg",
     "alt": "The composite with the full LED-42T8-FC 2-piece tube (FlexColor switch piece on the left, plain second piece on the right) over the showroom/corridor photos; the 'LED-42T8-FC' caption in the white margin was painted out"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/linear-t5-t8/cutout-15t8-emg.png",
+      "alt": "LED-15T8-FC48-EMG 4 ft T8 lamp with integrated emergency back up (red end caps, battery leads and test switch harness) on white",
+      "caption": "LED-15T8-FC48-EMG",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/linear-t5-t8/cutout-emg-05wcp.png",
+      "alt": "LED-EMG-05WCP 5W emergency back up kit (red housing with leads) on white",
+      "caption": "LED-EMG-05WCP",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/linear-t5-t8/cutout-emg-10wcp.png",
+      "alt": "LED-EMG-10WCP 10W emergency back up kit (longer red housing with leads) on white",
+      "caption": "LED-EMG-10WCP",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

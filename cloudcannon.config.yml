@@ -246,6 +246,56 @@ _inputs:
     type: text
     label: Photo focus
     comment: Optional. Which part of the photo stays in view when the tile crops it, for example "50% 20%".
+  # product page photos, in page order (the home page has its own photo controls above)
+  photos:
+    type: array
+    label: Photos
+    comment: Every photo below the top of the page, in the order shown. Drag to reorder; the main photo is set above.
+    options:
+      structures:
+        values:
+          - label: Photo
+            value: { image: assets/img/office.jpg, alt: Describe the photo, caption: "", show_as: slideshow, fit: auto, size: auto, focus: "" }
+  install_photos:
+    type: array
+    label: Installation photos
+    comment: Photos from real jobs, shown beside the video. Drag to reorder.
+    options:
+      structures:
+        values:
+          - label: Installation photo
+            value: { image: assets/img/office.jpg, alt: Describe the photo, caption: Where it is, focus: "" }
+  sheet_slides:
+    type: array
+    label: Top slideshow
+    comment: Spec-sheet pages. Product-only shots first, then photos in use. Drag to reorder.
+    options:
+      structures:
+        values:
+          - label: Slide
+            value: { image: assets/img/office.jpg, alt: Describe the photo, caption: "", fit: whole, focus: "" }
+  show_as:
+    type: select
+    label: Show as
+    options:
+      values: { slideshow: In the slideshow, cutout: Product cutout (on white), diagram: Diagram, banner: Wide banner }
+  fit:
+    type: select
+    label: Fit
+    options:
+      values: { auto: Automatic, whole: Show the whole photo, fill: Fill the frame (may crop the edges) }
+  size:
+    type: select
+    label: Size
+    comment: For product cutouts.
+    options:
+      values: { auto: Automatic, normal: Normal, wide: Wide (two columns) }
+  focus:
+    type: text
+    label: Photo focus
+    comment: Optional. Which part of the photo stays in view when it is cropped, for example "50% 30%" (across, down).
+  kind:
+    hidden: true
   # product page text
   title:
     type: text

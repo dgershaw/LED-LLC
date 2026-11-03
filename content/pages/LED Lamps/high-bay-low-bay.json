@@ -133,5 +133,17 @@
   "hero_image": {
     "src": "assets/img/cat/high-bay-low-bay/hero-extended.jpg",
     "alt": "The composite with both lamps complete (bodies over the photo, lower parts overhanging onto white below); the two captions and the callout line in the white margin were painted out"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/high-bay-low-bay/light-distribution.jpg",
+      "alt": "Light distribution / foot candle comparison on DLC ceiling-mounted high bay fixtures: LED-8232 (140W high bay), LED-8236 (95W high bay) and LED-8027 (100W post top) with foot candles, delivered lumens, LPW and a 32 in dimension; re-cropped so the fixture housings are complete",
+      "caption": "Foot candle comparison, ceiling-mounted",
+      "show_as": "diagram",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

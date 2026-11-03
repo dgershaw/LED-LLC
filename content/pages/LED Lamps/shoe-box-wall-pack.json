@@ -176,5 +176,76 @@
       "caption": "Rated life",
       "alt": "L70 and L90 rated life"
     }
+  ],
+  "photos": [
+    {
+      "image": "assets/img/cat/shoe-box-wall-pack/size-comparison.jpg",
+      "alt": "Size comparison strip with labels: ED17 (5.5 in), LED-8087E (OURS), 30W corn lamp (8.1 in), ED37 (11.5 in), LED-8090M (OURS), 110W corn lamp (11.2 in)",
+      "caption": "Size comparison vs HID and corn lamps",
+      "show_as": "diagram",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/shoe-box-wall-pack/light-distribution.jpg",
+      "alt": "Light distribution / foot candle comparison on DLC pole-mounted fixtures: LED-8090 (110W shoe box), LED-8089 (80W shoe box) and LED-8027 (100W post top) with foot candles, delivered lumens and LPW; re-cropped without the green page rule and section divider",
+      "caption": "Foot candle comparison, pole-mounted",
+      "show_as": "diagram",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": [
+    {
+      "image": "assets/img/install/shoe-box-wall-pack/parking-lot-fog.jpg",
+      "alt": "Parking lot poles with LED shoe box fixtures shining down through fog",
+      "caption": "Parking lot in fog",
+      "focus": "50% 30%"
+    },
+    {
+      "image": "assets/img/install/shoe-box-wall-pack/rail-yard-platforms.jpg",
+      "alt": "Rail yard platforms at night lit by pole-mounted LED fixtures",
+      "caption": "Rail yard platforms",
+      "focus": "50% 40%"
+    }
+  ],
+  "sheet_slides": [
+    {
+      "image": "assets/img/cutsheet/shoe-box-wall-pack/flexcolor-shoebox.jpg",
+      "alt": "FlexColor shoe box and wall pack LED retrofit lamp with its rotatable screw base",
+      "caption": "FlexColor shoe box retrofit (-FC)",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cutsheet/shoe-box-wall-pack/led-8089m.jpg",
+      "alt": "LED-8089M shoe box retrofit lamp with a fan housing and mogul base",
+      "caption": "LED-8089M with a mogul base",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cutsheet/shoe-box-wall-pack/led-8091.jpg",
+      "alt": "LED-8091 320W retrofit: a flat LED panel that mounts on the fixture lens, wired to its driver with a mogul base",
+      "caption": "LED-8091: LED panel and driver",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/shoe-box-wall-pack/hero.jpg",
+      "alt": "Shoe box retrofit lamp over a parking lot lit at night and a loading dock lit by wall packs",
+      "caption": "Parking lot and loading dock",
+      "fit": "fill",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cutsheet/shoe-box-wall-pack/street-night.jpg",
+      "alt": "Parking lot and street lit by shoe box fixtures at night",
+      "caption": "Street and parking lot",
+      "fit": "fill",
+      "focus": "50% 45%"
+    }
   ]
 }

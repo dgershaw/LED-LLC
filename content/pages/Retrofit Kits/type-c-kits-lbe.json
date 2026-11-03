@@ -131,5 +131,35 @@
   "hero_image": {
     "src": "assets/img/cat/type-c-kits-lbe/hero-typec.jpg",
     "alt": "Catalog composite for the Type C kits: hospital corridor photo (left) and the blue 'Type C U-bend kits also available' panel (right) with two Type C T5/T8 tubes laid across the bottom edge overhanging onto white; no captions"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/type-c-kits-lbe/corridor.jpg",
+      "alt": "Hospital corridor: nurse helping an elderly woman with a walker, linear ceiling lights and framed art; cropped above the tubes",
+      "caption": "Hospital corridor: nurse helping an elderly woman",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/type-c-kits-lbe/doctor.jpg",
+      "alt": "Doctor with stethoscope talking to a patient in a clinic with linear ceiling lights; cropped above the LBE bar",
+      "caption": "Doctor with stethoscope talking to a patient in a clinic",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/type-c-kits-lbe/hospital-room.jpg",
+      "alt": "Hospital patient room with bed, armchair, wood floor and city view through the windows; cropped above the LBE bar",
+      "caption": "Hospital patient room with bed, armchair, wood floor",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

@@ -147,5 +147,161 @@
   "hero_image": {
     "src": "assets/img/product/palette-hero-blue.jpg",
     "alt": "RemPhos LBI Color Palette light bar glowing blue"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/color-palette/p21-b1.jpg",
+      "alt": "Cinema lobby ('Theater 1' / 'Theater 2' signage) with cove lighting in blue, amber and violet from LBI Color Palette+ bars",
+      "caption": "Cinema lobby",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/p21-b3.jpg",
+      "alt": "Bar lounge with a full-height wall grid of blue-lit linear bars behind the counter",
+      "caption": "Bar lounge with a full-height wall grid of blue-lit linear bars",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/p20-b5.jpg",
+      "alt": "Gloved hand holding a stylus over a glowing circuit pattern, lit blue",
+      "caption": "Gloved hand holding a stylus",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/p20-b6.jpg",
+      "alt": "Row of women in a fitness studio under violet/magenta light",
+      "caption": "RP-LBI-G2-2F-6W-BLU-WC-VLT, RP-LBI-G2-4F-15W-BLU-WC-VLT",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/app-red.jpg",
+      "alt": "Soldier in a command centre under red light (clean crop)",
+      "caption": "Soldier in a command centre under red light",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/app-orange.jpg",
+      "alt": "Semiconductor wafer inspection under orange/amber light (clean crop)",
+      "caption": "Semiconductor wafer inspection under orange/amber light",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/app-yellow.jpg",
+      "alt": "Lab technician pipetting under amber/yellow light (clean crop)",
+      "caption": "Lab technician pipetting under amber/yellow light",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/app-green.jpg",
+      "alt": "Scientist examining petri dishes under green light (clean crop)",
+      "caption": "Scientist examining petri dishes under green light",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/app-bridge.jpg",
+      "alt": "Pedestrian suspension bridge at night, railings lit green by linear bars",
+      "caption": "Pedestrian suspension bridge at night, railings lit green",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/app-trampoline.jpg",
+      "alt": "Trampoline park with yellow, red and magenta linear accent lighting along ducts and ceiling",
+      "caption": "Trampoline park with yellow, red",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/bar-red.png",
+      "alt": "LBI Color Palette bar rendering glowing red, on white",
+      "caption": "LBI Color Palette bar rendering glowing red",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/bar-orange.png",
+      "alt": "LBI Color Palette bar rendering glowing orange, on white",
+      "caption": "LBI Color Palette bar rendering glowing orange",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/bar-yellow.png",
+      "alt": "LBI Color Palette bar rendering glowing amber/yellow, on white",
+      "caption": "LBI Color Palette bar rendering glowing amber/yellow",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/bar-green.png",
+      "alt": "LBI Color Palette bar rendering glowing green, on white",
+      "caption": "LBI Color Palette bar rendering glowing green",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/bar-blue.png",
+      "alt": "LBI Color Palette bar rendering glowing blue, on white",
+      "caption": "LBI Color Palette bar rendering glowing blue",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/bar-violet.png",
+      "alt": "LBI Color Palette bar rendering glowing violet, on white",
+      "caption": "LBI Color Palette bar rendering glowing violet",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/color-palette/rgb-bar.png",
+      "alt": "LBI Color Palette+ bar rendering showing the full RGB spectrum (red through violet) along its length with soft glow, on white",
+      "caption": "LBI Color Palette+ bar rendering showing the full RGB spectrum",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

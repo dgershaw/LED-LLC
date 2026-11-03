@@ -126,5 +126,18 @@
   "hero_image": {
     "src": "assets/img/cat/solar-area-lights/p32-b1.jpg",
     "alt": "SL-AIO-40L all-in-one solar area light (grey, integrated panel/light engine/battery with motion sensor) in front of a tree-lined road at dusk lit by a row of the same fixtures; the turtle-friendly icon is overlaid at bottom-right (recommended category hero)"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/solar-area-lights/p32-b3.jpg",
+      "alt": "SL-SAL-100 off-grid solar area light (two solar panels on a pole-top tilt mount, Type III area light head) in front of a curved pathway at sunset",
+      "caption": "SL-SAL-100 off-grid solar area light",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": "",
+      "kind": "hero"
+    }
+  ],
+  "install_photos": []
 }

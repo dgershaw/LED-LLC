@@ -172,5 +172,27 @@
   "hero_image": {
     "src": "assets/img/cat/solar-bollard-post-tops/hero-spt.jpg",
     "alt": "SL-SPT solar post top lantern over a lit waterfront promenade"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/solar-bollard-post-tops/p33-b3.jpg",
+      "alt": "Catalog composite: SL-CPT-30L-FC pathway light (wide shallow round head on three arms over a slim pole, light cone drawn downward) in front of a tree-lined park path lit by pole lights at night; no caption or text in the block",
+      "caption": "SL-CPT-30L-FC pathway light",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": "",
+      "kind": "hero"
+    },
+    {
+      "image": "assets/img/cat/solar-bollard-post-tops/hero-sbl.jpg",
+      "alt": "The bollard-light composite with the headline whited out of the margin; the bollard head stays whole above the photo edge",
+      "caption": "SL-SBL-5L-FC-BK-G2, SL-SBL-5L-FC-DB-G2",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

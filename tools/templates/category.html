@@ -33,7 +33,7 @@
       </div>
     </div>
     {% if cs and cs.slides %}
-    <div class="cs-slider">{{ P.slideshow(cs.slides, c.nav_title ~ " photos", "4/3", dots=True) }}</div>
+    <div class="cs-slider">{{ P.slideshow(cs.slides, c.nav_title ~ " photos", "4/3", dots=True, prop="sheet_slides" if cs.slides_editable else None) }}</div>
     {% else %}
     <figure class="shot photo{% if c.hero_fit %} {{ c.hero_fit }}{% endif %}{% if c.hero_tall %} tall{% endif %}"{% if c.hero and c.hero.web in RAIN %} data-rain="{{ RAIN[c.hero.web] }}"{% endif %}>
       {% if c.hero %}<img src="{{ c.hero.web }}" alt="{{ c.hero.shows }}"{{ dims(c.hero.web) }}{% if c.hero_image %} data-editable="image" data-prop="hero_image"{% endif %}>{% else %}<div class="shot-ph">Photography coming soon</div>{% endif %}
@@ -49,7 +49,7 @@
     {% set n = c.install|length %}
     <div class="media-grid{% if c.videos %} has-video{% endif %} n{{ n if n < 3 else 'm' }}">
       {% for v in c.videos %}{{ P.video(v, "lead" if loop.first else "") }}{% endfor %}
-      {% for p in c.install %}<a class="install{% if loop.index > 2 %} more{% endif %}" href="{{ p.src }}" data-lightbox data-caption="{{ p.caption }}"><img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy"{{ dims(p.src) }}{% if p.focus %} style="object-position:{{ p.focus }}"{% endif %}><span class="cap">{{ p.caption }}</span></a>{% endfor %}
+      {% for p in c.install %}<a class="install{% if loop.index > 2 %} more{% endif %}" href="{{ p.src }}" data-lightbox data-caption="{{ p.caption }}"><img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy"{{ dims(p.src) }}{% if p.focus %} style="object-position:{{ p.focus }}"{% endif %}{% if c.install_editable %} data-editable="image" data-prop-src="install_photos.{{ p.i }}.image" data-prop-alt="install_photos.{{ p.i }}.alt"{% endif %}><span class="cap"{% if c.install_editable %} data-editable="text" data-prop="install_photos.{{ p.i }}.caption"{% endif %}>{{ p.caption }}</span></a>{% endfor %}
     </div>
   </section>
   {% endif %}
@@ -60,15 +60,15 @@
   <section id="photos" aria-labelledby="gal-h">
     <div class="section-head"><h2 id="gal-h">In the field and on the bench</h2>{% if photos|length > 1 %}<p>Swipe or use the arrows to see more.</p>{% endif %}</div>
     <div class="gal-grid{% if photos and c.cutouts %} two{% endif %}"{% if photos and c.ss_ar %} style="--ss-ar:{{ c.ss_ar }}"{% endif %}>
-      {% if photos %}{{ P.slideshow(photos, c.nav_title ~ " photos", c.ss_ar) }}{% endif %}
+      {% if photos %}{{ P.slideshow(photos, c.nav_title ~ " photos", c.ss_ar, prop="photos") }}{% endif %}
       {% if c.cutouts %}
       {% set chips = c.cutouts|length >= 5 and c.cutouts|selectattr('cls', 'equalto', 'cut long')|list|length == c.cutouts|length %}
       <div class="gallery cutouts{% if chips %} chips{% elif c.cutouts_spans %} spans{% endif %}">
-        {% for im in c.cutouts %}<figure class="{{ im.cls }}"{% if im.span and not chips %} style="--span:{{ im.span }}"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}><figcaption>{{ im.label|chip if chips else im.label }}</figcaption></figure>{% endfor %}
+        {% for im in c.cutouts %}<figure class="{{ im.cls }}"{% if im.span and not chips %} style="--span:{{ im.span }}"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{% if im.i is not none %} data-editable="image" data-prop-src="photos.{{ im.i }}.image" data-prop-alt="photos.{{ im.i }}.alt"{% endif %}><figcaption{% if im.i is not none %} data-editable="text" data-prop="photos.{{ im.i }}.caption"{% endif %}>{{ im.label|chip if chips else im.label }}</figcaption></figure>{% endfor %}
       </div>
       {% endif %}
     </div>
-    {% for im in strips if not photos or im.web in RAIN %}<figure class="strip-fig"{% if im.web in RAIN %} data-rain="{{ RAIN[im.web] }}"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}></figure>{% endfor %}
+    {% for im in strips if not photos or im.web in RAIN %}<figure class="strip-fig"{% if im.web in RAIN %} data-rain="{{ RAIN[im.web] }}"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{% if im.i is not none %} data-editable="image" data-prop-src="photos.{{ im.i }}.image" data-prop-alt="photos.{{ im.i }}.alt"{% endif %}></figure>{% endfor %}
   </section>
   {% endif %}
 
@@ -155,7 +155,7 @@
   <section aria-labelledby="diag-h">
     <div class="section-head"><h2 id="diag-h">Diagrams</h2></div>
     <div class="diagrams n{{ diagrams|length if diagrams|length < 4 else 'm' }}">
-      {% for im in diagrams %}<figure class="diagram-fig"><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{{ natmax(im.web) }}>{% if im.caption %}<figcaption>{{ im.caption }}</figcaption>{% endif %}</figure>{% endfor %}
+      {% for im in diagrams %}<figure class="diagram-fig"><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{{ natmax(im.web) }}{% if im.i is not none %} data-editable="image" data-prop-src="photos.{{ im.i }}.image" data-prop-alt="photos.{{ im.i }}.alt"{% endif %}>{% if im.caption %}<figcaption{% if im.i is not none %} data-editable="text" data-prop="photos.{{ im.i }}.caption"{% endif %}>{{ im.caption }}</figcaption>{% endif %}</figure>{% endfor %}
     </div>
   </section>
   {% endif %}

@@ -132,5 +132,30 @@
       "alt": "Thermometer"
     }
   ],
-  "sheet_plug": "Optional sensors link right to the bars, no wiring needed"
+  "sheet_plug": "Optional sensors link right to the bars, no wiring needed",
+  "photos": [],
+  "install_photos": [],
+  "sheet_slides": [
+    {
+      "image": "assets/img/cutsheet/lbi-g1/lbi-g1.jpg",
+      "alt": "RemPhos LBI G1 linkable light bar with its end cap",
+      "caption": "LBI G1 linkable bar",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/lbi-g2/app-install.jpg",
+      "alt": "An electrician installing a linkable LBI bar in a ceiling grid",
+      "caption": "Installing linkable bars",
+      "fit": "fill",
+      "focus": "30% 50%"
+    },
+    {
+      "image": "assets/img/cutsheet/lbi-g1/pool.jpg",
+      "alt": "An indoor pool with a fitness center on the floor above",
+      "caption": "Indoor pool and fitness center",
+      "fit": "fill",
+      "focus": ""
+    }
+  ]
 }

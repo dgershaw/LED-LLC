@@ -199,6 +199,40 @@ content:
         label: Footnotes
         type: string
         list: true
+      - name: photos
+        label: Photos
+        description: Every photo below the top of the page, in the order shown.
+        type: object
+        list: true
+        fields:
+          - { name: image, label: Photo, type: image, options: { media: photos } }
+          - { name: alt, label: Photo description, type: string }
+          - { name: caption, label: Caption, type: string }
+          - { name: show_as, label: Show as, type: select, options: { values: [ { value: slideshow, label: In the slideshow }, { value: cutout, label: Product cutout (on white) }, { value: diagram, label: Diagram }, { value: banner, label: Wide banner } ] } }
+          - { name: fit, label: Fit, type: select, options: { values: [ { value: auto, label: Automatic }, { value: whole, label: Show the whole photo }, { value: fill, label: Fill the frame } ] } }
+          - { name: size, label: Size (product cutouts), type: select, options: { values: [ { value: auto, label: Automatic }, { value: normal, label: Normal }, { value: wide, label: Wide } ] } }
+          - { name: focus, label: Photo focus, description: "Optional, for example 50% 30%", type: string }
+          - { name: kind, label: Kind, type: string, hidden: true }
+      - name: install_photos
+        label: Installation photos
+        type: object
+        list: true
+        fields:
+          - { name: image, label: Photo, type: image, options: { media: photos } }
+          - { name: alt, label: Photo description, type: string }
+          - { name: caption, label: Caption, type: string }
+          - { name: focus, label: Photo focus, type: string }
+      - name: sheet_slides
+        label: "Spec-sheet pages: top slideshow"
+        description: Product-only shots first, then photos in use.
+        type: object
+        list: true
+        fields:
+          - { name: image, label: Photo, type: image, options: { media: photos } }
+          - { name: alt, label: Photo description, type: string }
+          - { name: caption, label: Caption, type: string }
+          - { name: fit, label: Fit, type: select, options: { values: [ { value: whole, label: Show the whole photo }, { value: fill, label: Fill the frame } ] } }
+          - { name: focus, label: Photo focus, type: string }
       - name: hero_image
         label: Main photo
         description: Shown whole, never cropped. Spec-sheet pages show their spec-sheet photos at the top and use this one on cards and link previews.

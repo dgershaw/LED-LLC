@@ -1,57 +1,7 @@
 {
- "_about": "Hand-edited. A product page laid out from its spec sheet (cut sheet): key points, listing marks, the SuperFlex or FlexColor panel, icon strip and sensor line (sheet_points, sheet_marks, sheet_flex, sheet_icons and sheet_plug in the page's content/pages file, which CloudCannon and Pages CMS edit; bullets, marks, superflex, icons and plug here are only used until the page file has them), a top slider (product shots first, then photos in use), and downloads. IES files are found automatically in assets/ies/<part number>/ (see IES_DIR in build.py). tools/build.py reads this on every build; keys are category slugs. Icons live in assets/img/icons (cropped from the spec sheets). Add a page here only once David has sent its spec sheet.",
+ "_about": "Hand-edited. A product page laid out from its spec sheet (cut sheet): key points, listing marks, the SuperFlex or FlexColor panel, icon strip sensor line and top slideshow (sheet_points, sheet_marks, sheet_flex, sheet_icons, sheet_plug and sheet_slides in the page's content/pages file, which CloudCannon and Pages CMS edit; bullets, marks, superflex, icons, plug and slides here are only used until the page file has them), a top slider (product shots first, then photos in use), and downloads. IES files are found automatically in assets/ies/<part number>/ (see IES_DIR in build.py). tools/build.py reads this on every build; keys are category slugs. Icons live in assets/img/icons (cropped from the spec sheets). Add a page here only once David has sent its spec sheet.",
  "taa-troffers": {
   "sheet": "TAA Troffer Fixtures (TV/TF)",
-  "slides": [
-   {
-    "src": "assets/img/cutsheet/taa-troffers/rp-tv.jpg",
-    "caption": "RP-TV volumetric fixture",
-    "alt": "RemPhos RP-TV volumetric troffer fixture",
-    "fit": "contain"
-   },
-   {
-    "src": "assets/img/cutsheet/taa-troffers/rp-tf.jpg",
-    "caption": "RP-TF flat panel fixture",
-    "alt": "RemPhos RP-TF flat panel troffer fixture",
-    "fit": "contain"
-   },
-   {
-    "src": "assets/img/cat/taa-troffers/p28-b5.jpg",
-    "caption": "RP-TRV volumetric retrofit kit",
-    "alt": "RemPhos RP-TRV volumetric troffer retrofit kit",
-    "fit": "contain"
-   },
-   {
-    "src": "assets/img/cat/taa-troffers/p28-b6.jpg",
-    "caption": "RP-TRF flat panel retrofit kit",
-    "alt": "RemPhos RP-TRF flat panel troffer retrofit kit",
-    "fit": "contain"
-   },
-   {
-    "src": "assets/img/cutsheet/taa-troffers/classroom.jpg",
-    "caption": "Classroom",
-    "alt": "Students studying in a classroom lit by ceiling troffers",
-    "focus": "50% 22%"
-   },
-   {
-    "src": "assets/img/cat/taa-troffers/hero.jpg",
-    "caption": "Laboratory",
-    "alt": "A laboratory with the RP-TRV volumetric retrofit kit",
-    "focus": "88% 50%"
-   },
-   {
-    "src": "assets/img/cat/taa-troffers/hero-trf.jpg",
-    "caption": "Control room",
-    "alt": "A control room with the RP-TRF flat panel retrofit kit",
-    "focus": "8% 50%"
-   },
-   {
-    "src": "assets/img/cat/taa-troffers/p28-b1.jpg",
-    "caption": "Office",
-    "alt": "A woman working at a laptop in a bright office",
-    "focus": "50% 40%"
-   }
-  ],
   "docs": [
    {
     "kind": "Spec sheet",
@@ -131,37 +81,6 @@
  },
  "shoe-box-wall-pack": {
   "sheet": "Shoe Box + Wall Pack",
-  "slides": [
-   {
-    "src": "assets/img/cutsheet/shoe-box-wall-pack/flexcolor-shoebox.jpg",
-    "caption": "FlexColor shoe box retrofit (-FC)",
-    "alt": "FlexColor shoe box and wall pack LED retrofit lamp with its rotatable screw base",
-    "fit": "contain"
-   },
-   {
-    "src": "assets/img/cutsheet/shoe-box-wall-pack/led-8089m.jpg",
-    "caption": "LED-8089M with a mogul base",
-    "alt": "LED-8089M shoe box retrofit lamp with a fan housing and mogul base",
-    "fit": "contain"
-   },
-   {
-    "src": "assets/img/cutsheet/shoe-box-wall-pack/led-8091.jpg",
-    "caption": "LED-8091: LED panel and driver",
-    "alt": "LED-8091 320W retrofit: a flat LED panel that mounts on the fixture lens, wired to its driver with a mogul base",
-    "fit": "contain"
-   },
-   {
-    "src": "assets/img/cat/shoe-box-wall-pack/hero.jpg",
-    "caption": "Parking lot and loading dock",
-    "alt": "Shoe box retrofit lamp over a parking lot lit at night and a loading dock lit by wall packs"
-   },
-   {
-    "src": "assets/img/cutsheet/shoe-box-wall-pack/street-night.jpg",
-    "caption": "Street and parking lot",
-    "alt": "Parking lot and street lit by shoe box fixtures at night",
-    "focus": "50% 45%"
-   }
-  ],
   "docs": [
    {
     "kind": "Spec sheet",
@@ -1000,25 +919,6 @@
  },
  "lbi-g1": {
   "sheet": "LBI G1 Linkable Bar / Internal Driver",
-  "slides": [
-   {
-    "src": "assets/img/cutsheet/lbi-g1/lbi-g1.jpg",
-    "caption": "LBI G1 linkable bar",
-    "alt": "RemPhos LBI G1 linkable light bar with its end cap",
-    "fit": "contain"
-   },
-   {
-    "src": "assets/img/cat/lbi-g2/app-install.jpg",
-    "caption": "Installing linkable bars",
-    "alt": "An electrician installing a linkable LBI bar in a ceiling grid",
-    "focus": "30% 50%"
-   },
-   {
-    "src": "assets/img/cutsheet/lbi-g1/pool.jpg",
-    "caption": "Indoor pool and fitness center",
-    "alt": "An indoor pool with a fitness center on the floor above"
-   }
-  ],
   "docs": [
    {
     "kind": "Spec sheet",

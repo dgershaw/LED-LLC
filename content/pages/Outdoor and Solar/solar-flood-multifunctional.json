@@ -125,5 +125,35 @@
   "hero_image": {
     "src": "assets/img/cat/solar-flood-multifunctional/hero-sfl.jpg",
     "alt": "The flood-light composite with the table slivers whited out: SL-SFL-20W-40K-BK-G2 on its adjustable post, complete down to the base plate, in front of the resort signage photo (portrait format, 939 x 1291 px)"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/solar-flood-multifunctional/app-garden-signs.jpg",
+      "alt": "Garden interpretive sign panels on posts lit from below along a stone path at dusk (flood-light application; the drawn light cone from the SFL composite fades in at the left edge)",
+      "caption": "Garden interpretive sign panels on posts",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/solar-flood-multifunctional/app-bus-shelter.jpg",
+      "alt": "Modern bus shelter with a backlit transit-map display and canopy downlights beside a city street at dawn (multifunctional flood-light application); no product shown",
+      "caption": "Modern bus shelter with a backlit transit-map display",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/solar-flood-multifunctional/smfl-product.jpg",
+      "alt": "SL-SMFL-10W-40K-BK-G1 light engine and separate solar panel on the yellow panel background with the callout text and dotted pointer removed (product on yellow, not a white cutout)",
+      "caption": "SL-SMFL-10W-40K-BK-G1",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

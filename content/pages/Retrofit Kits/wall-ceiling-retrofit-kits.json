@@ -118,5 +118,26 @@
   "hero_image": {
     "src": "assets/img/cat/wall-ceiling-retrofit-kits/hero.jpg",
     "alt": "Catalog composite: man on the phone with a laptop in a cafe (left) and a daylit hotel lobby atrium with pendant drums (right), with the round LEDCR retrofit module in front overhanging onto white; the two captions in the white margin were painted out"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/wall-ceiling-retrofit-kits/p24-b1.jpg",
+      "alt": "Hotel corridor with two decorative wall sconces lit (LEDSR sconce retrofit application), wood doors at the end of the hall",
+      "caption": "Hotel corridor with two decorative wall sconces lit",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/wall-ceiling-retrofit-kits/ledcr-module.jpg",
+      "alt": "Round LEDCR circular retrofit light engine with central driver housing and fisheye lens array on the blue panel background; small (365 x 360 px)",
+      "caption": "RP-LEDCR-G3-9IN-22W-40K-WC",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

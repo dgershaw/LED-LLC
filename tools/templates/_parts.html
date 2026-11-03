@@ -131,13 +131,15 @@
 {% endmacro %}
 
 {# Photo slideshow: one photo at a time at a sensible size, arrows, swipe and thumbnails. rain.js picks up data-rain slides. #}
-{% macro slideshow(items, label="Photos", ar=None, dots=False) %}
+{% macro slideshow(items, label="Photos", ar=None, dots=False, prop=None) %}
+{#- prop: the page file's list these photos come from (photos, sheet_slides), so CloudCannon can edit each one in place #}
 <div class="slideshow{% if dots %} dotted{% endif %}" data-slideshow aria-roledescription="carousel" aria-label="{{ label }}"{% if ar %} style="--ss-ar:{{ ar }}"{% endif %}>
   <div class="ss-stage">
     {% for im in items %}
     <figure class="ss-slide{% if loop.first %} is-on{% endif %}{% if im.contain %} contain{% endif %}" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ items|length }}"{% if not loop.first %} aria-hidden="true"{% endif %}{% if im.web in RAIN %} data-rain="{{ RAIN[im.web] }}"{% endif %}>
-      <img src="{{ im.web }}" alt="{{ im.shows }}"{% if not loop.first %} loading="lazy"{% endif %}{{ dims(im.web) }}{% if im.focus %} style="object-position:{{ im.focus }}"{% endif %}>
-      {% if im.caption %}<figcaption>{{ im.caption }}</figcaption>{% endif %}
+      {% set ed = prop and im.i is not none %}
+      <img src="{{ im.web }}" alt="{{ im.shows }}"{% if not loop.first %} loading="lazy"{% endif %}{{ dims(im.web) }}{% if im.focus %} style="object-position:{{ im.focus }}"{% endif %}{% if ed %} data-editable="image" data-prop-src="{{ prop }}.{{ im.i }}.image" data-prop-alt="{{ prop }}.{{ im.i }}.alt"{% endif %}>
+      {% if im.caption %}<figcaption{% if ed %} data-editable="text" data-prop="{{ prop }}.{{ im.i }}.caption"{% endif %}>{{ im.caption }}</figcaption>{% endif %}
     </figure>
     {% endfor %}
     {% if items|length > 1 %}

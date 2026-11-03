@@ -196,5 +196,35 @@
   "hero_image": {
     "src": "assets/img/cat/wall-ceiling-fixtures/hero.jpg",
     "alt": "RP-DAL-4S Architectural Linen Drum pendant against the blue spoke-pattern panel, caption cropped out"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/wall-ceiling-fixtures/p23-b5.jpg",
+      "alt": "Bright waiting room with blue chairs, plants and colourful artwork, lit by a single DAL linen drum pendant; no captions",
+      "caption": "Bright waiting room with blue chairs, plants",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/wall-ceiling-fixtures/drd.jpg",
+      "alt": "RP-DRD Designer Drum on the dark cafe wall, cropped above the caption",
+      "caption": "RP-DRD",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/wall-ceiling-fixtures/dot.jpg",
+      "alt": "RP-DOT-BZ Outdoor Tough Drum on the dark cafe wall, cropped above the caption and IP65/IK08 icons",
+      "caption": "RP-DOT",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

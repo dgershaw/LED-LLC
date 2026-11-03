@@ -147,5 +147,45 @@
   "hero_image": {
     "src": "assets/img/product/g2-hero.jpg",
     "alt": "RemPhos LBI G2 linkable light bar with its end cap"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/lbi-g2/hero.jpg",
+      "alt": "Right-page composite: office lobby and retail store photos lit by LBI G2 bars, with an angled LBI bar (end cap visible) in front and linked bars along the bottom; no captions",
+      "caption": "RP-LBI-G2-2F-6W-40K-WC, RP-LBI-G2-3F-10W-40K-WC",
+      "show_as": "banner",
+      "fit": "auto",
+      "size": "auto",
+      "focus": "",
+      "kind": "hero"
+    },
+    {
+      "image": "assets/img/cat/lbi-g2/app-install.jpg",
+      "alt": "Electrician in gloves installing a linkable LBI bar into a ceiling grid with other LBI bars lit",
+      "caption": "Electrician in gloves installing a linkable LBI bar",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/lbi-g2/app-retail.jpg",
+      "alt": "Woman with shopping bags in a clothing store lit by linear LED bars on the ceiling",
+      "caption": "Woman with shopping bags in a clothing store",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/lbi-g2/app-office.jpg",
+      "alt": "Modern office lobby with blue sofas and recessed linear lighting, an angled LBI bar with its end cap overlapping the lower left corner",
+      "caption": "Modern office lobby with blue sofas",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

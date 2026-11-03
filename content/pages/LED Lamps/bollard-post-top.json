@@ -160,5 +160,35 @@
   "hero_image": {
     "src": "assets/img/cat/bollard-post-top/hero.jpg",
     "alt": "LED-8000 (foreground) and LED-8024 corn lamps over a lit tree-lined street with post-top lanterns at dusk; part-number labels and the callout text removed from the white margin, both lamps kept whole including the bases that extend below the photo"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/bollard-post-top/hero-8038.jpg",
+      "alt": "LED-8038 corn lamp over a bollard-lit garden path at dusk; caption removed, lamp whole",
+      "caption": "LED-8038 over a bollard-lit garden path",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/bollard-post-top/hero-8018.jpg",
+      "alt": "LED-8018 frosted-lens lamp over a garden bollard scene at dusk; caption and 'FROSTED LENS' callout removed, lamp whole (hero candidate for the LED-801x/802x frosted-lens subgroup)",
+      "caption": "LED-8018 frosted lamp at a garden bollard",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/bollard-post-top/hero-8062.jpg",
+      "alt": "LED-8062 filament lamp with its dashed ED-shape outline over a twin-lantern post top at dusk; caption and callout removed, lamp whole (hero candidate for the LED-806x filament subgroup)",
+      "caption": "LED-8062 filament lamp with a twin post top",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

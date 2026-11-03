@@ -41,5 +41,17 @@
   "hero_image": {
     "src": "assets/img/cat/gondolas-shippers-displays/3ft-gondola-9903.png",
     "alt": "LED-9903 3 ft black wire gondola rack with brand header card; shelves of boxed Bollard Retrofit and Post Top Retrofit lamps and a bottom shelf of LED Work Site String Light boxes, rendered on white"
-  }
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/gondolas-shippers-displays/3ft-gondola-9903.png",
+      "alt": "LED-9903 3 ft black wire gondola rack with brand header card; shelves of boxed Bollard Retrofit and Post Top Retrofit lamps and a bottom shelf of LED Work Site String Light boxes, rendered on white",
+      "caption": "LED-9903",
+      "show_as": "cutout",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": []
 }

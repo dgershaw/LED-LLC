@@ -1,5 +1,5 @@
 {
-  "_about": "Hand-edited media for product pages. tools/build.py reads this file on every build. Keys under videos, install_photos and eddy_spots are category slugs (data/<slug>.json). Case studies attach to the pages listed in 'pages' and to every page that lists one of their part numbers.",
+  "_about": "Hand-edited media for product pages. tools/build.py reads this file on every build. Keys under videos, install_photos and eddy_spots are category slugs (data/<slug>.json). Case studies attach to the pages listed in 'pages' and to every page that lists one of their part numbers. Installation photos now live in each page's content/pages file (install_photos), where CloudCannon and Pages CMS edit them; install_photos here is only used for a page whose file has none.",
   "videos": {
     "shoe-box-wall-pack": [
       {
@@ -10,22 +10,7 @@
       }
     ]
   },
-  "install_photos": {
-    "shoe-box-wall-pack": [
-      {
-        "src": "assets/img/install/shoe-box-wall-pack/parking-lot-fog.jpg",
-        "alt": "Parking lot poles with LED shoe box fixtures shining down through fog",
-        "caption": "Parking lot in fog",
-        "focus": "50% 30%"
-      },
-      {
-        "src": "assets/img/install/shoe-box-wall-pack/rail-yard-platforms.jpg",
-        "alt": "Rail yard platforms at night lit by pole-mounted LED fixtures",
-        "caption": "Rail yard platforms",
-        "focus": "50% 40%"
-      }
-    ]
-  },
+  "install_photos": {},
   "case_studies": [
     {
       "id": "pic-quik",
