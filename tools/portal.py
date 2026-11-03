@@ -166,7 +166,22 @@ def flatten(d):
     for i, m in enumerate(d.get("mosaic", []) if isinstance(d.get("mosaic"), list) else []):
         for k, label in (("image", "photo"), ("alt", "photo description"), ("caption", "caption"), ("link", "link"), ("position", "photo focus")):
             scalars.append((f"Photo tile {i + 1}: {label}", text(m.get(k))))
+    # the home page as blocks (since 2026-11-03): every setting of every block, so moves and resizes show too
+    for i, blk in enumerate(d.get("blocks", []) if isinstance(d.get("blocks"), list) else []):
+        if not isinstance(blk, dict):
+            continue
+        name = f"Block {i + 1} ({HOME_KINDS.get(blk.get('_type'), blk.get('_type') or 'block')})"
+        for k, v in blk.items():
+            if k == "_type":
+                continue
+            if isinstance(v, list) and v and all(isinstance(x, dict) for x in v):
+                lists.append((f"{name}: {k.replace('_', ' ')}", [text(x) for x in v]))
+            else:
+                scalars.append((f"{name}: {k.replace('_', ' ')}", text(v) if not isinstance(v, (int, float, bool)) else str(v)))
     return scalars, lists
+
+HOME_KINDS = {"hero": "Headline", "photo_grid": "Photo grid", "brands": "Brand cards", "feature": "Photo and text", "image": "Photo",
+              "text": "Text", "finder": "What are you replacing?", "next_steps": "Eddy's next steps", "resources": "Resources"}
 
 def wdiff(a, b):
     """The old and the new text as HTML, with what went away struck through and what came in underlined."""

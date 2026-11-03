@@ -1,0 +1,123 @@
+{#- The home page as a stack of blocks (David, 2026-11-03): content/home/index.json "blocks", edited in CloudCannon's visual
+    editor, where the team adds, removes, reorders and resizes them. Each block is one macro below; build.py fills in the
+    defaults (home_block) so a half-filled block still renders. data-editable/data-prop tell the editor which field each
+    text or photo is; layout choices (sizes, sides, shapes) show after a save, when CloudCannon rebuilds the preview.
+    The first block of each kind keeps the id Eddy's tour and links use (#brands, .home-hero h1, .next-steps). -#}
+{% import "_parts.html" as P %}
+
+{% macro buttons(list, cls="") %}{% if list %}<div class="hero-actions{{ cls }}" data-editable="array" data-prop="buttons" data-direction="row">{% for b in list %}{% if b.link == 'search' %}<button class="btn btn-{{ 'primary' if b.style == 'primary' else 'ghost' }}" data-open-search data-editable="array-item"><span data-editable="text" data-prop="label">{{ b.label }}</span></button>{% else %}<a class="btn btn-{{ 'primary' if b.style == 'primary' else 'ghost' }}" href="{{ b.link }}" data-editable="array-item"><span data-editable="text" data-prop="label">{{ b.label }}</span></a>{% endif %}{% endfor %}</div>{% endif %}{% endmacro %}
+
+{% macro head(b, hid) %}{% if b.title or b.text %}<div class="band-head{% if b.align == 'center' %} center{% endif %}">{% if b.title %}<h2 id="{{ hid }}" data-editable="text" data-prop="title">{{ b.title }}</h2>{% endif %}{% if b.text %}<p data-editable="text" data-prop="text">{{ b.text }}</p>{% endif %}</div>{% endif %}{% endmacro %}
+
+{%- macro photo(im) -%}
+<img src="{{ im.src }}" alt="{{ im.alt }}"{{ dims(im.src) }}{% if im.fit == 'contain' or im.position %} style="{% if im.fit == 'contain' %}object-fit:contain;{% endif %}{% if im.position %}object-position:{{ im.position }}{% endif %}"{% endif %} data-editable="image" data-prop-src="image" data-prop-alt="alt">
+{%- endmacro -%}
+
+{% macro block(b, ctx) %}
+{% set hid = b.hid %}
+{% set wrapcls = " blk bg-" ~ b.background ~ " sp-" ~ b.spacing %}
+{% if b._type == "hero" %}
+<section class="home-hero wrap{{ wrapcls }}{% if b.align == 'left' %} left{% endif %}"{% if hid %} aria-labelledby="{{ hid }}"{% endif %} data-editable="array-item" data-id="hero">
+  {% if b.eyebrow %}<p class="eyebrow" data-editable="text" data-prop="eyebrow">{{ b.eyebrow }}</p>{% endif %}
+  <h1{% if hid %} id="{{ hid }}"{% endif %}><span data-editable="text" data-prop="headline">{{ b.headline }}</span>{% if b.headline_tail %} <span class="since" data-editable="text" data-prop="headline_tail">{{ b.headline_tail }}</span>{% endif %}</h1>
+  {% if b['values'] %}<p class="values">{% for v in b['values'] %}{% if not loop.first %} {% endif %}<span data-editable="text" data-prop="values.{{ loop.index0 }}">{{ v }}</span>{% endfor %}</p>{% endif %}
+  {% if b.lede %}<p class="lede" data-editable="text" data-prop="lede">{{ b.lede }}</p>{% endif %}
+  {{ buttons(b.buttons) }}
+</section>
+{% elif b._type == "photo_grid" %}
+<section class="home-grid wrap{{ wrapcls }}" aria-label="{{ b.title or 'Product photography' }}" data-editable="array-item" data-id="photo_grid">
+  {{ head(b, hid) }}
+  <div class="mosaic rows-{{ b.row_height }}" aria-label="Product photography" data-editable="array" data-prop="tiles" data-direction="row">
+    {% for m in b.tiles %}<figure style="--w:{{ m.width }};--h:{{ m.height }};--pw:{{ 6 if m.width >= 5 else 3 }};--ph:{{ m.height if m.width >= 5 else 1 }}" data-editable="array-item">{% if m.link %}<a href="{{ m.link }}" aria-label="{{ m.caption or m.alt }}">{% else %}<div class="ph-box">{% endif %}<span class="ph">{{ photo(m) }}</span>{% if m.caption %}<figcaption><span data-editable="text" data-prop="caption">{{ m.caption }}</span>{% if m.link %} <span aria-hidden="true">›</span>{% endif %}</figcaption>{% endif %}{% if m.link %}</a>{% else %}</div>{% endif %}</figure>{% endfor %}
+  </div>
+</section>
+{% elif b._type == "brands" %}
+<section class="band{{ wrapcls }}"{% if b.anchor %} id="{{ b.anchor }}"{% endif %}{% if hid %} aria-labelledby="{{ hid }}"{% endif %} data-editable="array-item" data-id="brands">
+  <div class="wrap">
+    {{ head(b, hid) }}
+    <div class="brand-cards">
+      {% for n in ctx.nav %}
+      {% set bd = n.brand %}
+      {% set pic = b.pics[bd.key] %}
+      <a class="brand-card" href="{{ bd.slug }}.html">
+        {#- The RemPhos card shows the LBI 65 with rain falling on it (David, 2026-10-09); rain.js picks up data-rain. #}
+        <div class="pic{% if pic.fit == 'contain' %} contain{% endif %}"{% if pic.src in RAIN %} data-rain="{{ RAIN[pic.src] }}"{% endif %}><img src="{{ pic.src }}" alt=""{{ dims(pic.src) }}{% if pic.position %} style="object-position:{{ pic.position }}"{% endif %} {% if pic.i is not none %} data-editable="image" data-prop-src="photos.{{ pic.i }}.image"{% endif %}></div>
+        <div class="band-strip" style="--c:{{ bd.color }}"></div>
+        <div class="body">
+          <div class="logo-row">{{ P.brand_logo(bd) }}</div>
+          <h3>{{ bd.h1 }}</h3>
+          <p>{{ bd.blurb }}</p>
+          <div class="cats">{% for g in n.groups %}<span class="chip">{{ g.name }}</span>{% endfor %}</div>
+          <span class="more">Explore {{ bd.name }} ›</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% elif b._type == "feature" %}
+<section class="band{{ wrapcls }}"{% if hid %} aria-labelledby="{{ hid }}"{% endif %} data-editable="array-item" data-id="feature">
+  <div class="wrap feature{% if b.image_side == 'left' %} img-left{% endif %}{% if b.sized %} sized{% endif %}" style="--img:{{ b.image_width }}%">
+    <div>
+      {% if b.eyebrow %}<p class="eyebrow brand" data-editable="text" data-prop="eyebrow">{{ b.eyebrow }}</p>{% endif %}
+      {% if b.title %}<h2{% if hid %} id="{{ hid }}"{% endif %} data-editable="text" data-prop="title">{{ b.title }}</h2>{% endif %}
+      {% if b.text %}<p data-editable="text" data-prop="text">{{ b.text }}</p>{% endif %}
+      {% if b.show_lbi_list %}
+      <div class="glyphs">
+        <div class="glyph-row"><i style="--g:#fff8ec"></i><span><b>LBI G1</b><small>The economical white bar, dry and damp</small></span></div>
+        <div class="glyph-row"><i style="--g:#fff3dc"></i><span><b>LBI G2</b><small>FlexWatt and FlexColor white, dry and damp</small></span></div>
+        <div class="glyph-row"><i style="--g:#dbe9ff"></i><span><b>LBI 65</b><small>IP65 for wet locations and wash-down</small></span></div>
+        <div class="glyph-row"><i style="--g:#fff8ea"></i><span><b>LBI MAX</b><small>High-lumen strip for higher ceilings</small></span></div>
+        <div class="glyph-row"><i class="spectrum"></i><span><b>LBI Color Palette</b><small>Six precision wavelengths, set on the bar</small></span></div>
+        <div class="glyph-row"><i class="spectrum"></i><span><b>LBI Color Palette+ and LBI Color PaletteX</b><small>RGBWW white plus color, by remote or over DMX</small></span></div>
+        <div class="glyph-row"><i class="spectrum"></i><span><b>LBI 65 Color Palette+</b><small>Six precision wavelengths, IP65 for wet locations</small></span></div>
+      </div>
+      {% endif %}
+      {{ buttons(b.buttons, ' left') }}
+    </div>
+    {% if b.image.src %}<figure class="shot photo shape-{{ b.image_shape|replace(':', '-') }}{% if b.fit == 'contain' %} contain{% endif %}"><img src="{{ b.image.src }}" alt="{{ b.image.alt }}"{{ dims(b.image.src) }}{% if b.position %} style="object-position:{{ b.position }}"{% endif %} data-editable="image" data-prop="image"></figure>{% endif %}
+  </div>
+</section>
+{% elif b._type == "image" %}
+<section class="band{{ wrapcls }}" data-editable="array-item" data-id="image">
+  <div class="wrap">
+    <figure class="blk-image align-{{ b.align }} shape-{{ b.image_shape|replace(':', '-') }}{% if b.fit == 'contain' %} contain{% endif %}" style="--w:{{ b.image_size }}%">
+      {% if b.link %}<a href="{{ b.link }}">{% endif %}<img src="{{ b.image.src }}" alt="{{ b.image.alt }}"{{ dims(b.image.src) }}{% if b.position %} style="object-position:{{ b.position }}"{% endif %} loading="lazy" data-editable="image" data-prop="image">{% if b.link %}</a>{% endif %}
+      {% if b.caption %}<figcaption data-editable="text" data-prop="caption">{{ b.caption }}</figcaption>{% endif %}
+    </figure>
+  </div>
+</section>
+{% elif b._type == "text" %}
+<section class="band{{ wrapcls }}"{% if hid %} aria-labelledby="{{ hid }}"{% endif %} data-editable="array-item" data-id="text">
+  <div class="wrap blk-text align-{{ b.align }}">
+    {% if b.eyebrow %}<p class="eyebrow" data-editable="text" data-prop="eyebrow">{{ b.eyebrow }}</p>{% endif %}
+    {{ head(b, hid) }}
+    {{ buttons(b.buttons, ' left' if b.align != 'center' else '') }}
+  </div>
+</section>
+{% elif b._type == "finder" %}
+<section class="band{{ wrapcls }}"{% if hid %} aria-labelledby="{{ hid }}"{% endif %} data-editable="array-item" data-id="finder">
+  <div class="wrap">
+    {{ head(b, hid) }}
+    <div class="finder-grid">
+      {% for f in ctx.finder %}{% if f.href == 'search' %}<button class="find" data-open-search><strong>{{ f.q }}</strong><span>{{ f.strong }}</span></button>{% else %}<a class="find" href="{{ f.href }}"><strong>{{ f.q }}</strong><span>{{ f.strong }}</span></a>{% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+{% elif b._type == "next_steps" %}
+<section class="band{{ wrapcls }}" data-editable="array-item" data-id="next_steps">
+  <div class="wrap">{{ P.next_steps(b.title, b.text, hid=hid, editable=True) }}</div>
+</section>
+{% elif b._type == "resources" %}
+<section class="band{{ wrapcls }}"{% if hid %} aria-labelledby="{{ hid }}"{% endif %} data-editable="array-item" data-id="resources">
+  <div class="wrap">
+    {{ head(b, hid) }}
+    <div class="resources">
+      <a class="res" href="{{ CATALOG_PDF }}" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><div><h4>2026 Full Product Catalog</h4><p>Every brand and part number in one PDF.</p><span class="state ready">Download</span></div></a>
+      <a class="res" href="resources.html"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><h4>Spec sheets and sell sheets</h4><p>LBI family documents today, more categories as they are published.</p><span class="state ready">Browse</span></div></a>
+      <a class="res" href="contact.html"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><div><h4>Samples, rebates and reps</h4><p>Talk to sales about a sample, local rebates or your rep.</p><span class="state ready">Contact</span></div></a>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endmacro %}

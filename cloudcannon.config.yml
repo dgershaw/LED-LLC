@@ -11,13 +11,143 @@ collections_config:
   home:
     path: content/home
     name: Home page
-    description: The headline, the five photo tiles and the section headings of the home page.
+    description: The home page as blocks. Add, remove, drag and resize them in the visual editor; size and layout changes show after you save.
     url: /
     icon: home
     disable_add: true
     disable_add_folder: true
     disable_file_actions: true
     _enabled_editors: [visual, data]
+    # the home page's own controls (they win over the product-page labels below)
+    _inputs:
+      blocks:
+        type: array
+        label: Blocks
+        comment: The sections of the home page, top to bottom. Drag to reorder.
+        options:
+          structures: _structures.home_blocks
+      _type:
+        hidden: true
+      background:
+        type: select
+        label: Background
+        options:
+          values: { plain: White, grey: Grey band }
+      spacing:
+        type: select
+        label: Space above and below
+        options:
+          values: { none: None, tight: Small, normal: Normal, large: Large }
+      align:
+        type: select
+        label: Alignment
+        options:
+          values: { left: Left, center: Centre, right: Right }
+      eyebrow:
+        type: text
+        label: Small line above the heading
+      headline:
+        type: text
+        label: Headline
+      headline_tail:
+        type: text
+        label: Second line of the headline (in blue)
+      values:
+        type: array
+        label: Values line
+      lede:
+        type: textarea
+        label: Introduction
+      title:
+        type: text
+        label: Heading
+      text:
+        type: textarea
+        label: Text
+      buttons:
+        type: array
+        label: Buttons
+        options:
+          structures:
+            values:
+              - label: Button
+                value: { label: Button text, link: contact.html, style: ghost }
+      label:
+        type: text
+        label: Button text
+      link:
+        type: text
+        label: Link
+        comment: A page (lbi.html), a section (#brands), a full web address, or "search" to open the part-number search.
+      style:
+        type: select
+        label: Button style
+        options:
+          values: { primary: Solid, ghost: Outline }
+      tiles:
+        type: array
+        label: Photo tiles
+        comment: Drag to reorder. Widths are out of 12 columns; on phones wide tiles fill the row and the rest take half.
+        options:
+          structures:
+            values:
+              - label: Photo tile
+                value: { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 4, height: 1, fit: cover, position: "" }
+      width:
+        type: range
+        label: Width (columns, out of 12)
+        options: { min: 1, max: 12, step: 1 }
+      height:
+        type: range
+        label: Height (rows)
+        options: { min: 1, max: 4, step: 1 }
+      row_height:
+        type: select
+        label: Row height
+        options:
+          values: { small: Small, medium: Medium, large: Large }
+      caption:
+        type: text
+        label: Caption
+        comment: Optional. Keep it short enough for a phone.
+      fit:
+        type: select
+        label: Fit
+        options:
+          values: { cover: Fill the frame (may crop the edges), contain: Show the whole photo }
+      position:
+        type: text
+        label: Photo focus
+        comment: Optional. Which part of the photo stays in view when it is cropped, for example "50% 20%" (across, down).
+      image_side:
+        type: select
+        label: Photo side
+        options:
+          values: { left: Left, right: Right }
+      image_width:
+        type: range
+        label: Photo width (% of the row)
+        options: { min: 25, max: 75, step: 1 }
+      image_size:
+        type: range
+        label: Photo width (% of the page)
+        options: { min: 20, max: 100, step: 5 }
+      image_shape:
+        type: select
+        label: Photo shape
+        options:
+          values: { original: As the photo is, "1:1": Square, "4:3": "4:3", "3:2": "3:2", "16:9": "16:9 wide", "21:9": "21:9 panorama", "3:4": "3:4 tall" }
+      show_lbi_list:
+        type: switch
+        label: Show the LBI family list
+      photos:
+        type: array
+        label: Brand card photos
+        options: { disable_add: true, disable_remove: true, disable_reorder: true }
+      brand:
+        type: text
+        label: Brand
+        disabled: true
   products:
     path: content/pages
     name: Product pages
@@ -45,6 +175,40 @@ file_config:
       features:
         hidden: true
 
+# What a new home block starts as (the "Add" menu of the home page's Blocks). Keep in step with HOME_NEW in tools/build.py,
+# which draws the same blocks for the visual editor's preview.
+_structures:
+  home_blocks:
+    style: modal
+    values:
+      - label: Text
+        description: A heading, a sentence or two, and optional buttons.
+        value: { _type: text, background: plain, spacing: normal, title: A new heading, text: A sentence or two about it., align: left, buttons: [] }
+      - label: Photo
+        description: One photo, sized and placed as you like, with an optional caption and link.
+        value: { _type: image, background: plain, spacing: normal, image: { src: assets/img/office.jpg, alt: Describe the photo }, caption: "", link: "", image_size: 100, align: center, image_shape: "16:9", fit: cover, position: "" }
+      - label: Photo and text
+        description: A photo beside a heading and text. Choose the side and the photo's width.
+        value: { _type: feature, background: plain, spacing: normal, eyebrow: "", title: A new heading, text: A sentence or two about it., show_lbi_list: false, buttons: [], image: { src: assets/img/office.jpg, alt: Describe the photo }, image_side: right, image_width: 52, image_shape: "4:3", fit: cover, position: "" }
+      - label: Photo grid
+        description: Photo tiles of any width and height, like the one under the headline.
+        value: { _type: photo_grid, background: plain, spacing: normal, title: "", text: "", row_height: medium, tiles: [ { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 6, height: 2, fit: cover, position: "" }, { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 6, height: 2, fit: cover, position: "" } ] }
+      - label: Headline
+        description: A big headline with an introduction and buttons, like the top of the page.
+        value: { _type: hero, background: plain, spacing: normal, align: center, eyebrow: "", headline: A new headline, headline_tail: "", values: [], lede: "", buttons: [] }
+      - label: Brand cards
+        description: The Light Efficient Design, RemPhos and Solera cards.
+        value: { _type: brands, background: plain, spacing: normal, title: "Three brands, built for the job in front of you", text: "", photos: [] }
+      - label: What are you replacing?
+        description: The cards that send people to the right products.
+        value: { _type: finder, background: plain, spacing: normal, title: "What are you replacing?", text: "" }
+      - label: Eddy's next steps
+        description: Samples, rebates and the rep finder, with Eddy.
+        value: { _type: next_steps, background: plain, spacing: normal, title: "Samples, rebates and your local rep", text: "" }
+      - label: Resources
+        description: The catalog, documents and contact cards.
+        value: { _type: resources, background: grey, spacing: normal, title: For everyone on the project, text: "" }
+
 # Saves become one change each on the portal, described in a plain sentence by the person saving.
 commit_templates:
   - label: Describe the change
@@ -56,14 +220,11 @@ commit_templates:
         comment: One plain sentence for the change list on the admin portal, for example "Changed the LBI 65 headline".
 
 _inputs:
-  # photos: {src, alt} on the product pages and the LBI photo, image on the home tiles
+  # photos: {src, alt} on the product pages and in home blocks, image on the home tiles
   hero_image:
     type: object
     label: Main photo
     comment: Shown whole, never cropped. Use a product photo on a plain background.
-  lbi_image:
-    type: object
-    label: LBI photo
   src:
     type: image
     label: Photo
@@ -74,10 +235,6 @@ _inputs:
     type: text
     label: Photo description
     comment: What the photo shows, for screen readers and search engines.
-  mosaic:
-    type: array
-    label: Photo tiles
-    comment: The five tiles under the headline. Keep captions short enough for a phone.
   caption:
     type: text
     label: Caption

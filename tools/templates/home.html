@@ -1,90 +1,12 @@
 {% extends "base.html" %}
-{% import "_parts.html" as P %}
+{% import "_home_blocks.html" as H with context %}
 {% block brand %}remphos{% endblock %}
 {% block main %}
-<section class="home-hero wrap" aria-labelledby="h1">
-  <p class="eyebrow" data-editable="text" data-prop="eyebrow">{{ home.eyebrow }}</p>
-  <h1 id="h1"><span data-editable="text" data-prop="headline">{{ home.headline }}</span> <span class="since" data-editable="text" data-prop="headline_tail">{{ home.headline_tail }}</span></h1>
-  <p class="values"><span>Customer first.</span> <span>Quality first.</span></p>
-  <p class="lede" data-editable="text" data-prop="lede">{{ home.lede }}</p>
-  <div class="hero-actions">
-    <button class="btn btn-primary" data-open-search>Find a part number</button>
-    <a class="btn btn-ghost" href="#brands">Browse by brand</a>
-  </div>
-  <div class="mosaic" aria-label="Product photography">
-    {% for m in mosaic %}<figure class="{{ m.cls }}"><a href="{{ m.href }}" aria-label="{{ m.cap }}"><span class="ph"><img src="{{ m.src }}" alt="{{ m.alt }}"{{ dims(m.src) }}{% if m.pos %} style="object-position: {{ m.pos }}"{% endif %} data-editable="image" data-prop-src="mosaic.{{ m.i }}.image" data-prop-alt="mosaic.{{ m.i }}.alt"></span><figcaption><span data-editable="text" data-prop="mosaic.{{ m.i }}.caption">{{ m.cap }}</span> <span aria-hidden="true">›</span></figcaption></a></figure>{% endfor %}
-  </div>
-</section>
-
-<section class="band" id="brands" aria-labelledby="brands-h">
-  <div class="wrap">
-    <div class="band-head"><h2 id="brands-h" data-editable="text" data-prop="brands_title">{{ home.brands_title }}</h2><p data-editable="text" data-prop="brands_text">{{ home.brands_text }}</p></div>
-    <div class="brand-cards">
-      {% for n in nav %}
-      {% set b = n.brand %}
-      <a class="brand-card" href="{{ b.slug }}.html">
-        {% set pic = brand_pics[b.key] %}
-        {#- The RemPhos card shows the LBI 65 with rain falling on it (David, 2026-10-09); rain.js picks up data-rain. #}
-        <div class="pic{% if pic[1] %} {{ pic[1] }}{% endif %}"{% if pic[0] in RAIN %} data-rain="{{ RAIN[pic[0]] }}"{% endif %}><img src="{{ pic[0] }}" alt=""{{ dims(pic[0]) }}></div>
-        <div class="band-strip" style="--c:{{ b.color }}"></div>
-        <div class="body">
-          <div class="logo-row">{{ P.brand_logo(b) }}</div>
-          <h3>{{ b.h1 }}</h3>
-          <p>{{ b.blurb }}</p>
-          <div class="cats">{% for g in n.groups %}<span class="chip">{{ g.name }}</span>{% endfor %}</div>
-          <span class="more">Explore {{ b.name }} ›</span>
-        </div>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<section class="band alt" aria-labelledby="lbi-h">
-  <div class="wrap feature">
-    <div>
-      <p class="eyebrow brand">RemPhos · Linkable Light Bars</p>
-      <h2 id="lbi-h" data-editable="text" data-prop="lbi_title">{{ home.lbi_title }}</h2>
-      <p data-editable="text" data-prop="lbi_text">{{ home.lbi_text }}</p>
-      <div class="glyphs">
-        <div class="glyph-row"><i style="--g:#fff8ec"></i><span><b>LBI G1</b><small>The economical white bar, dry and damp</small></span></div>
-        <div class="glyph-row"><i style="--g:#fff3dc"></i><span><b>LBI G2</b><small>FlexWatt and FlexColor white, dry and damp</small></span></div>
-        <div class="glyph-row"><i style="--g:#dbe9ff"></i><span><b>LBI 65</b><small>IP65 for wet locations and wash-down</small></span></div>
-        <div class="glyph-row"><i style="--g:#fff8ea"></i><span><b>LBI MAX</b><small>High-lumen strip for higher ceilings</small></span></div>
-        <div class="glyph-row"><i class="spectrum"></i><span><b>LBI Color Palette</b><small>Six precision wavelengths, set on the bar</small></span></div>
-        <div class="glyph-row"><i class="spectrum"></i><span><b>LBI Color Palette+ and LBI Color PaletteX</b><small>RGBWW white plus color, by remote or over DMX</small></span></div>
-        <div class="glyph-row"><i class="spectrum"></i><span><b>LBI 65 Color Palette+</b><small>Six precision wavelengths, IP65 for wet locations</small></span></div>
-      </div>
-      <div class="hero-actions" style="justify-content:flex-start">
-        <a class="btn btn-primary" href="lbi.html">See the LBI Family Overview</a>
-        <a class="btn btn-ghost" href="remphos.html#linkable-light-bars">LBI part numbers</a>
-      </div>
-    </div>
-    {% set li = home.lbi_image.src|web_path %}<figure class="shot photo"><img src="{{ li }}" alt="{{ home.lbi_image.alt }}"{{ dims(li) }} data-editable="image" data-prop="lbi_image"></figure>
-  </div>
-</section>
-
-<section class="band" aria-labelledby="find-h">
-  <div class="wrap">
-    <div class="band-head"><h2 id="find-h" data-editable="text" data-prop="finder_title">{{ home.finder_title }}</h2><p data-editable="text" data-prop="finder_text">{{ home.finder_text }}</p></div>
-    <div class="finder-grid">
-      {% for f in finder %}{% if f.href == 'search' %}<button class="find" data-open-search><strong>{{ f.q }}</strong><span>{{ f.strong }}</span></button>{% else %}<a class="find" href="{{ f.href }}"><strong>{{ f.q }}</strong><span>{{ f.strong }}</span></a>{% endif %}{% endfor %}
-    </div>
-  </div>
-</section>
-
-<section class="band" aria-labelledby="next-h">
-  <div class="wrap">{{ P.next_steps("Samples, rebates and your local rep", "Eddy, our 5 mm LED with a big personality, is here to help on every job.") }}</div>
-</section>
-
-<section class="band alt" aria-labelledby="res-h">
-  <div class="wrap">
-    <div class="band-head"><h2 id="res-h" data-editable="text" data-prop="resources_title">{{ home.resources_title }}</h2><p data-editable="text" data-prop="resources_text">{{ home.resources_text }}</p></div>
-    <div class="resources">
-      <a class="res" href="{{ CATALOG_PDF }}" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><div><h4>2026 Full Product Catalog</h4><p>Every brand and part number in one PDF.</p><span class="state ready">Download</span></div></a>
-      <a class="res" href="resources.html"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><h4>Spec sheets and sell sheets</h4><p>LBI family documents today, more categories as they are published.</p><span class="state ready">Browse</span></div></a>
-      <a class="res" href="contact.html"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><div><h4>Samples, rebates and reps</h4><p>Talk to sales about a sample, local rebates or your rep.</p><span class="state ready">Contact</span></div></a>
-    </div>
-  </div>
-</section>
+{#- The home page's blocks (content/home/index.json). In CloudCannon the team adds, removes, drags and resizes them;
+    each <template> is what a newly added block of that kind looks like before its first save. #}
+<div class="home-blocks" data-editable="array" data-prop="blocks" data-id-key="_type">
+{% for b in blocks %}{{ H.block(b, {"nav": nav, "finder": finder}) }}{% endfor %}
+{% for b in new_blocks %}<template data-id="{{ b._type }}">{{ H.block(b, {"nav": nav, "finder": finder}) }}</template>
+{% endfor %}
+</div>
 {% endblock %}

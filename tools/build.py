@@ -194,14 +194,110 @@ def web_path(p):
     which would miss the sandbox's /sandbox/ prefix."""
     return (p or "").strip().lstrip("/")
 
-# Home-page copy and mosaic, edited in CloudCannon's visual editor or Pages CMS (David, 2026-11-03).
-# The mosaic holds the key products of the moment (David, 2026-10-08): five tiles, each linking to its product; the photos
-# show as they are, with no glow laid over them (2026-10-15). Captions stay short enough for a phone.
+# The home page is a stack of blocks (David, 2026-11-03: "give free control for the home page"): content/home/index.json
+# "blocks", which the team adds, removes, reorders and sizes in CloudCannon's visual editor. tools/templates/_home_blocks.html
+# draws each kind. HOME_BLOCKS holds every kind's settings and defaults; HOME_NEW is what a block starts as when added,
+# and must match _structures.home_blocks in cloudcannon.config.yml. On phones the blocks stack and grids fold to two columns.
 HOME_FILE = ROOT / "content" / "home" / "index.json"
 HOME = json.loads(HOME_FILE.read_text())
-MOSAIC = [dict(cls=f"m-{'abcde'[i]}", src=web_path(m.get("image")), cap=m.get("caption", ""), alt=m.get("alt", ""),
-               href=m.get("link") or "#", pos=(m.get("position") or "").strip(), i=i)
-          for i, m in enumerate(HOME["mosaic"][:5]) if web_path(m.get("image"))]
+HOME_BLOCKS = {
+    "hero": dict(align="center", eyebrow="", headline="", headline_tail="", values=[], lede="", buttons=[]),
+    "photo_grid": dict(title="", text="", row_height="medium", tiles=[]),
+    "brands": dict(title="", text="", photos=[]),
+    "feature": dict(eyebrow="", title="", text="", show_lbi_list=False, buttons=[], image=None, image_side="right", image_width=52,
+                    image_shape="4:3", fit="cover", position=""),
+    "image": dict(image=None, caption="", link="", image_size=100, align="center", image_shape="original", fit="cover", position=""),
+    "text": dict(eyebrow="", title="", text="", align="left", buttons=[]),
+    "finder": dict(title="", text=""),
+    "next_steps": dict(title="", text=""),
+    "resources": dict(title="", text=""),
+}
+HOME_IDS = {"hero": "h1", "brands": "brands-h", "feature": "lbi-h", "finder": "find-h", "next_steps": "next-h", "resources": "res-h"}
+PLACEHOLDER = "assets/img/office.jpg"
+HOME_NEW = [
+    dict(_type="text", title="A new heading", text="A sentence or two about it.", align="left", buttons=[]),
+    dict(_type="image", image=dict(src=PLACEHOLDER, alt="Describe the photo"), caption="", link="", image_size=100, align="center", image_shape="16:9", fit="cover", position=""),
+    dict(_type="feature", eyebrow="", title="A new heading", text="A sentence or two about it.", show_lbi_list=False, buttons=[],
+         image=dict(src=PLACEHOLDER, alt="Describe the photo"), image_side="right", image_width=52, image_shape="4:3", fit="cover", position=""),
+    dict(_type="photo_grid", title="", text="", row_height="medium", tiles=[
+        dict(image=PLACEHOLDER, alt="Describe the photo", caption="Caption", link="", width=6, height=2, fit="cover", position=""),
+        dict(image=PLACEHOLDER, alt="Describe the photo", caption="Caption", link="", width=6, height=2, fit="cover", position="")]),
+    dict(_type="hero", align="center", eyebrow="", headline="A new headline", headline_tail="", values=[], lede="", buttons=[]),
+    dict(_type="brands", title="Three brands, built for the job in front of you", text="", photos=[]),
+    dict(_type="finder", title="What are you replacing?", text=""),
+    dict(_type="next_steps", title="Samples, rebates and your local rep", text=""),
+    dict(_type="resources", title="For everyone on the project", text=""),
+]
+
+def clamp_int(v, lo, hi, default):
+    try:
+        return max(lo, min(hi, int(round(float(v)))))
+    except (TypeError, ValueError):
+        return default
+
+def home_image(v):
+    """{src, alt} from the file, linked relative to the site root; empty when the file is missing."""
+    v = v if isinstance(v, dict) else {"src": v} if isinstance(v, str) else {}
+    src = web_path(v.get("src"))
+    return dict(src=src if src and (ROOT / src).is_file() else "", alt=(v.get("alt") or "").strip())
+
+def home_blocks(blocks, brand_pics=None, new=False):
+    """The home blocks with every setting filled in and kept in range, ready for _home_blocks.html."""
+    out, seen = [], set()
+    for n, raw in enumerate(blocks if isinstance(blocks, list) else []):
+        kind = raw.get("_type") if isinstance(raw, dict) else None
+        if kind not in HOME_BLOCKS:
+            continue
+        b = dict(HOME_BLOCKS[kind], background="plain", spacing="normal")
+        b.update({k: v for k, v in raw.items() if v is not None})
+        b["_type"], b["n"] = kind, n
+        b["background"] = b["background"] if b["background"] in ("plain", "grey") else "plain"
+        b["spacing"] = b["spacing"] if b["spacing"] in ("none", "tight", "normal", "large") else "normal"
+        b["buttons"] = [dict(label=x.get("label") or "Button", link=(x.get("link") or "#").strip(), style=x.get("style") or "ghost")
+                        for x in b.get("buttons") or [] if isinstance(x, dict)]
+        if kind == "hero":
+            b["values"] = [v for v in b["values"] if isinstance(v, str)]
+        if kind == "photo_grid":
+            tiles = []
+            for t in b["tiles"] if isinstance(b["tiles"], list) else []:
+                src = web_path(t.get("image")) if isinstance(t, dict) else ""
+                if src and (ROOT / src).is_file():
+                    tiles.append(dict(src=src, alt=t.get("alt") or "", caption=t.get("caption") or "", link=(t.get("link") or "").strip(),
+                                      width=clamp_int(t.get("width"), 1, 12, 4), height=clamp_int(t.get("height"), 1, 4, 1),
+                                      fit=t.get("fit") or "cover", position=(t.get("position") or "").strip()))
+            b["tiles"] = tiles
+            b["row_height"] = b["row_height"] if b["row_height"] in ("small", "medium", "large") else "medium"
+        if kind == "brands":
+            pics = {}
+            for i, x in enumerate(b["photos"] if isinstance(b["photos"], list) else []):
+                src = web_path(x.get("image")) if isinstance(x, dict) else ""
+                if src and (ROOT / src).is_file() and x.get("brand") in BRANDS:
+                    pics[x["brand"]] = dict(src=src, fit=x.get("fit") or "cover", position=(x.get("position") or "").strip(), i=i)
+            for k, (src, fit) in (brand_pics or {}).items():
+                pics.setdefault(k, dict(src=src, fit=fit or "cover", position="", i=None))
+            b["pics"] = pics
+        if kind in ("feature", "image"):
+            b["image"] = home_image(b["image"])
+            b["image_shape"] = b["image_shape"] if b["image_shape"] in ("original", "1:1", "4:3", "3:2", "16:9", "21:9", "3:4") else "4:3"
+            b["position"] = (b.get("position") or "").strip()
+        if kind == "feature":
+            b["image_width"] = clamp_int(b["image_width"], 25, 75, 52)
+            b["sized"] = b["image_width"] != 52
+            b["image_side"] = "left" if b["image_side"] == "left" else "right"
+        if kind == "image":
+            b["image_size"] = clamp_int(b["image_size"], 20, 100, 100)
+            b["align"] = b["align"] if b["align"] in ("left", "center", "right") else "center"
+        if kind == "text":
+            b["align"] = "center" if b["align"] == "center" else "left"
+        # the first block of each kind keeps the ids the tour and links know; a new block (a template) gets none
+        b["hid"] = "" if new else (HOME_IDS[kind] if kind in HOME_IDS and kind not in seen else f"blk{n}-h")
+        b["anchor"] = "brands" if kind == "brands" and kind not in seen and not new else ""
+        seen.add(kind)
+        out.append(b)
+    return out
+
+# The share card's mosaic: the first photo grid's first tiles
+MOSAIC = [dict(src=t["src"], pos=t["position"]) for t in next((b["tiles"] for b in home_blocks(HOME.get("blocks")) if b["_type"] == "photo_grid"), [])]
 
 
 # Pages the catalog prints without photography borrow a cover photo so the hero is never empty.
@@ -1863,7 +1959,8 @@ def main():
     for k, (web, _) in list(brand_pics.items()):
         if not (ROOT / web).is_file():
             brand_pics[k] = (heroes.get(next((c["slug"] for c in cats if c["brand_key"] == k and c["hero"]), ""), HOME_IMAGE[0]), "contain")
-    render("home.html", "index.html", 1.0, page="home", home=HOME, mosaic=MOSAIC, brand_pics=brand_pics, finder=[
+    render("home.html", "index.html", 1.0, page="home", blocks=home_blocks(HOME.get("blocks"), brand_pics),
+           new_blocks=home_blocks(HOME_NEW, brand_pics, new=True), finder=[
         dict(q=q, strong=s, href=(h if h.endswith(".html") or h == "search" else f"{h}.html")) for q, s, h in FINDER if h in ("search",) or h.endswith(".html") or any(c["slug"] == h for c in cats)],
         heroes=heroes, brand_cats=by_brand,
         seo=seo_for("index.html", f"{SITE_NAME} | LED Retrofit Lamps, RemPhos, Solera", home_desc, image=HOME_IMAGE[0], image_alt=HOME_IMAGE[1],

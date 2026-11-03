@@ -1,55 +1,163 @@
 {
-  "eyebrow": "Leading Thru Innovation",
-  "headline": "Innovation you can install,",
-  "headline_tail": "since 2008.",
-  "lede": "Retrofit lamps that keep the fixture, linkable bars and kits that install in minutes, and solar lighting that never sees a utility bill. From Light Efficient Design, RemPhos and Solera.",
-  "mosaic": [
+  "blocks": [
     {
-      "image": "assets/img/cover/p01-b1.jpg",
-      "alt": "Solera i-Series solar area light",
-      "caption": "Solera i-Series",
-      "link": "i-series.html",
+      "_type": "hero",
+      "background": "plain",
+      "spacing": "normal",
+      "align": "center",
+      "eyebrow": "Leading Thru Innovation",
+      "headline": "Innovation you can install,",
+      "headline_tail": "since 2008.",
+      "values": [
+        "Customer first.",
+        "Quality first."
+      ],
+      "lede": "Retrofit lamps that keep the fixture, linkable bars and kits that install in minutes, and solar lighting that never sees a utility bill. From Light Efficient Design, RemPhos and Solera.",
+      "buttons": [
+        {
+          "label": "Find a part number",
+          "link": "search",
+          "style": "primary"
+        },
+        {
+          "label": "Browse by brand",
+          "link": "#brands",
+          "style": "ghost"
+        }
+      ]
+    },
+    {
+      "_type": "photo_grid",
+      "background": "plain",
+      "spacing": "normal",
+      "row_height": "medium",
+      "tiles": [
+        {
+          "image": "assets/img/cover/p01-b1.jpg",
+          "alt": "Solera i-Series solar area light",
+          "caption": "Solera i-Series",
+          "link": "i-series.html",
+          "width": 5,
+          "height": 2,
+          "fit": "cover",
+          "position": ""
+        },
+        {
+          "image": "assets/img/cover/p01-b8.jpg",
+          "alt": "Light Efficient Design LED retrofit lamps",
+          "caption": "Retrofit lamps",
+          "link": "light-efficient-design.html",
+          "width": 3,
+          "height": 2,
+          "fit": "cover",
+          "position": ""
+        },
+        {
+          "image": "assets/img/office.jpg",
+          "alt": "RemPhos LBI G2 light bars in an office",
+          "caption": "LBI G2",
+          "link": "lbi.html#g2",
+          "width": 4,
+          "height": 1,
+          "fit": "cover",
+          "position": "50% 20%"
+        },
+        {
+          "image": "assets/img/cover/p01-b4.jpg",
+          "alt": "RemPhos LED retrofit kits",
+          "caption": "Retrofit kits",
+          "link": "wall-ceiling-retrofit-kits.html",
+          "width": 2,
+          "height": 1,
+          "fit": "cover",
+          "position": ""
+        },
+        {
+          "image": "assets/img/cat/solar-bollard-post-tops/p33-b3.jpg",
+          "alt": "Solera solar bollards and post tops along a path at night",
+          "caption": "Solar bollards",
+          "link": "solar-bollard-post-tops.html",
+          "width": 2,
+          "height": 1,
+          "fit": "cover",
+          "position": ""
+        }
+      ]
+    },
+    {
+      "_type": "brands",
+      "background": "plain",
+      "spacing": "normal",
+      "title": "Three brands, built for the job in front of you",
+      "text": "Pick the brand that matches the fixture, the site and the budget. Everything ships from the same company with the same support.",
+      "photos": [
+        {
+          "brand": "led",
+          "image": "assets/img/cat/bollard-post-top/hero.jpg",
+          "fit": "contain"
+        },
+        {
+          "brand": "remphos",
+          "image": "assets/img/product/lbi65-hero.jpg",
+          "fit": "contain"
+        },
+        {
+          "brand": "solera",
+          "image": "assets/img/cover/p01-b1.jpg",
+          "fit": "cover"
+        }
+      ]
+    },
+    {
+      "_type": "feature",
+      "background": "grey",
+      "spacing": "normal",
+      "eyebrow": "RemPhos · Linkable Light Bars",
+      "title": "One linkable bar. Eight ways to light the job.",
+      "text": "LBI bars in 2, 3 and 4 ft with the driver inside. Link up to 40 from one feed, then set wattage and color on site. Compare all eight and try each one live in the LBI Family Overview.",
+      "show_lbi_list": true,
+      "buttons": [
+        {
+          "label": "See the LBI Family Overview",
+          "link": "lbi.html",
+          "style": "primary"
+        },
+        {
+          "label": "LBI part numbers",
+          "link": "remphos.html#linkable-light-bars",
+          "style": "ghost"
+        }
+      ],
+      "image": {
+        "src": "assets/img/product/palette-hero-rainbow.jpg",
+        "alt": "LBI Color Palette+ light bar"
+      },
+      "image_side": "right",
+      "image_width": 52,
+      "image_shape": "4:3",
+      "fit": "cover",
       "position": ""
     },
     {
-      "image": "assets/img/cover/p01-b8.jpg",
-      "alt": "Light Efficient Design LED retrofit lamps",
-      "caption": "Retrofit lamps",
-      "link": "light-efficient-design.html",
-      "position": ""
+      "_type": "finder",
+      "background": "plain",
+      "spacing": "normal",
+      "title": "What are you replacing?",
+      "text": "Start from the fixture on the ceiling or the pole in the lot. Each card opens the part numbers that fit."
     },
     {
-      "image": "assets/img/office.jpg",
-      "alt": "RemPhos LBI G2 light bars in an office",
-      "caption": "LBI G2",
-      "link": "lbi.html#g2",
-      "position": "50% 20%"
+      "_type": "next_steps",
+      "background": "plain",
+      "spacing": "normal",
+      "title": "Samples, rebates and your local rep",
+      "text": "Eddy, our 5 mm LED with a big personality, is here to help on every job."
     },
     {
-      "image": "assets/img/cover/p01-b4.jpg",
-      "alt": "RemPhos LED retrofit kits",
-      "caption": "Retrofit kits",
-      "link": "wall-ceiling-retrofit-kits.html",
-      "position": ""
-    },
-    {
-      "image": "assets/img/cat/solar-bollard-post-tops/p33-b3.jpg",
-      "alt": "Solera solar bollards and post tops along a path at night",
-      "caption": "Solar bollards",
-      "link": "solar-bollard-post-tops.html",
-      "position": ""
+      "_type": "resources",
+      "background": "grey",
+      "spacing": "normal",
+      "title": "For everyone on the project",
+      "text": "Specifiers, distributors, contractors and facilities teams find what they need in the same place."
     }
-  ],
-  "brands_title": "Three brands, built for the job in front of you",
-  "brands_text": "Pick the brand that matches the fixture, the site and the budget. Everything ships from the same company with the same support.",
-  "lbi_title": "One linkable bar. Eight ways to light the job.",
-  "lbi_text": "LBI bars in 2, 3 and 4 ft with the driver inside. Link up to 40 from one feed, then set wattage and color on site. Compare all eight and try each one live in the LBI Family Overview.",
-  "lbi_image": {
-    "src": "assets/img/product/palette-hero-rainbow.jpg",
-    "alt": "LBI Color Palette+ light bar"
-  },
-  "finder_title": "What are you replacing?",
-  "finder_text": "Start from the fixture on the ceiling or the pole in the lot. Each card opens the part numbers that fit.",
-  "resources_title": "For everyone on the project",
-  "resources_text": "Specifiers, distributors, contractors and facilities teams find what they need in the same place."
+  ]
 }

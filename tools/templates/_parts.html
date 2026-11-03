@@ -59,9 +59,9 @@
 {% endmacro %}
 
 {# Samples, rebates and the rep finder, each with its Eddy sticker #}
-{% macro next_steps(heading="Next steps, with a little help from Eddy", sub="Samples, rebates and your local rep, for every product on this site.", hid="next-h", who=True, skip=[]) %}
+{% macro next_steps(heading="Next steps, with a little help from Eddy", sub="Samples, rebates and your local rep, for every product on this site.", hid="next-h", who=True, skip=[], editable=False) %}
 <section class="next-steps" aria-labelledby="{{ hid }}">
-  <div class="section-head"><h2 id="{{ hid }}">{{ heading }}</h2><p>{{ sub }}</p>{% if who %}<a href="eddy.html">Who is Eddy? ›</a>{% endif %}</div>
+  <div class="section-head"><h2 id="{{ hid }}"{% if editable %} data-editable="text" data-prop="title"{% endif %}>{{ heading }}</h2><p{% if editable %} data-editable="text" data-prop="text"{% endif %}>{{ sub }}</p>{% if who %}<a href="eddy.html">Who is Eddy? ›</a>{% endif %}</div>
   <div class="eddy-trio" style="--n:{{ NEXT_STEPS|length - skip|length }}">
     {% for s in NEXT_STEPS if s.key not in skip %}
     <a class="eddy-card {{ s.key }}" href="{{ s.href }}">
