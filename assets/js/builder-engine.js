@@ -694,7 +694,7 @@
     t = t.replace(/(\d+)\s*(?:'|ft|foot|feet)?\s*(?:x|by)\s*(\d+)\s*(?:'|ft|foot|feet)?/g, (m0, p, q) => ` ${p}x${q} `);
     t = t.replace(/(\d),(\d{3})\b/g, "$1$2");
     // sentences, then "..., and 10 vapor tights" style joins
-    const sentences = t.split(/(?<=[.!?;])\s+|\n+/).flatMap(s => s.split(/,?\s+(?:and|plus|also|then)\s+(?=(?:about\s+|another\s+|approximately\s+)?\(?\d+\)?\s)/)).map(s => s.trim()).filter(Boolean);
+    const sentences = t.replace(/([.!?;])\s+/g, "$1\n").split(/\n+/).flatMap(s => s.split(/,?\s+(?:and|plus|also|then)\s+(?=(?:about\s+|another\s+|approximately\s+)?\(?\d+\)?\s)/)).map(s => s.trim()).filter(Boolean);
     const scenarios = [];
     const global = {};
     let cur = null;

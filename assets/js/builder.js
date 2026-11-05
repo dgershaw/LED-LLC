@@ -787,12 +787,17 @@
   }
 
   // ------------------------------------------------------------------ start
-  if (!restore()) {
-    state.areas = [E.newArea({ name: "", qty: 20, lamps: 3, lamp: "t8" })];
-  }
-  state.areas.forEach(a => E.normalize(a));
-  if (state.areas.length === 1 && !location.hash) state.open = state.areas[0].id;
+  const fresh = () => { state.areas = [E.newArea({ name: "", qty: 20, lamps: 3, lamp: "t8" })]; state.open = state.areas[0].id; };
+  try {
+    if (!restore()) fresh();
+    state.areas.forEach(a => E.normalize(a));
+    if (state.areas.length === 1 && !location.hash) state.open = state.areas[0].id;
+  } catch (e) { fresh(); }
+  state.mode = "list";   // the page always opens on the design wizard (David, 2026-11-05)
   if (location.hash.startsWith("#p=")) history.replaceState(null, "", location.pathname + location.search + "#pb-results");
-  renderMode();
-  renderAll();
+  try { renderMode(); renderAll(); }
+  catch (e) {   // a list saved by an older version of the page: start over rather than show a dead page
+    try { localStorage.removeItem(KEY); } catch (e2) { /* storage blocked */ }
+    fresh(); state.text = ""; renderMode(); renderAll();
+  }
 })();
