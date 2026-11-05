@@ -116,6 +116,7 @@
       <div><div class="drawer-brands">{% for n in nav %}<a class="mb" href="{{ n.brand.slug }}.html">{{ P.brand_logo(n.brand) }}<span>{{ n.brand.name }} ›</span></a>{% endfor %}</div><ul><li><a href="products.html">All products</a></li></ul></div>
     </div>
     <div class="plain"><a href="lbi.html">LBI Family Overview</a></div>
+    <div class="plain"><a href="lbi-project-builder.html">LBI Project Builder</a></div>
     <div class="plain"><a href="i-series.html">Solera i-Series Overview</a></div>
     <div class="plain"><a href="resources.html">Resources</a></div>
     <div class="plain"><a href="contact.html">Contact</a></div>
@@ -165,6 +166,7 @@
           {% for col in pmenu %}<li><a href="products.html#{{ col.key }}">{{ col.name }}</a></li>{% endfor %}
           {% for n in nav %}<li><a href="{{ n.brand.slug }}.html">{{ n.brand.name }}</a></li>{% endfor %}
           <li><a href="lbi.html">LBI Family Overview</a></li>
+          <li><a href="lbi-project-builder.html">LBI Project Builder</a></li>
           <li><a href="i-series.html">Solera i-Series Overview</a></li>
           <li><a href="resources.html">Catalog, spec sheets and IES</a></li>
           <li><a href="contact.html">Contact and locations</a></li>

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% import "_parts.html" as P %}
+{% block brand %}remphos{% endblock %}
+{% block head %}<link rel="stylesheet" href="assets/css/builder.css">{% endblock %}
+{% block main %}
+{#- LBI Project Builder (David, 2026-11-05): a customer describes the project, area by area, and gets the complete LBI bill
+    of materials to send in for a quote. Rules and part numbers live in assets/js/builder-engine.js; the page in builder.js.
+    It is not the LBI Family Overview's configurator, which picks one bar; this one specifies a whole job. #}
+<div class="pb" id="pb">
+  <section class="pb-hero wrap" aria-labelledby="pb-h">
+    <p class="eyebrow"><a href="lbi.html">RemPhos LBI family</a> · LBI Project Builder</p>
+    <h1 id="pb-h">Every part for your LBI project, in one list.</h1>
+    <p class="lede">Tell us what is in each area of the building, or just describe it. The builder picks the light bars and every linking cable, connector, power cable, bracket, sensor and battery the job needs, then gives you a list to download and send for a quote.</p>
+    <div class="pb-mode" role="tablist" aria-label="How do you want to describe the project?">
+      <button type="button" role="tab" class="pb-mode-btn" data-mode="list" aria-selected="true">Pick from lists</button>
+      <button type="button" role="tab" class="pb-mode-btn" data-mode="words" aria-selected="false">Describe it in words</button>
+    </div>
+  </section>
+
+  <section class="pb-work wrap" aria-label="Project">
+    <div class="pb-main">
+      <div class="pb-words" id="pb-words" hidden>
+        <label class="pb-label" for="pb-text">Describe your project</label>
+        <p class="pb-help">Write it the way you would tell a rep: how many fixtures of each kind, what lamps are in them now, long runs in feet, wet or outdoor areas, the voltage, and the controls you want.</p>
+        <textarea id="pb-text" rows="6" placeholder="In the office we have 20 2x4 troffers, each with three T8 lamps. We want Bluetooth mesh control for the whole space. The lobby has a 100 ft cove of fluorescent strips on a 0-10V dimmer, 277V."></textarea>
+        <div class="pb-examples" aria-label="Examples">
+          <span>Try:</span>
+          <button type="button" class="pb-chip" data-example="0">Office troffers</button>
+          <button type="button" class="pb-chip" data-example="1">Cove + warehouse</button>
+          <button type="button" class="pb-chip" data-example="2">Parking garage</button>
+        </div>
+        <div class="pb-actions"><button type="button" class="btn btn-primary" id="pb-read">Build my list</button><span class="pb-read-note" id="pb-read-note" role="status"></span></div>
+        <div class="pb-readout" id="pb-readout" aria-live="polite"></div>
+      </div>
+
+      <div class="pb-areas-head">
+        <h2>Areas in this project</h2>
+        <p>One area for each kind of fixture or run. Add as many as the building needs.</p>
+      </div>
+      <div class="pb-areas" id="pb-areas"></div>
+      <button type="button" class="pb-add" id="pb-add"><span aria-hidden="true">+</span> Add another area</button>
+    </div>
+
+    <aside class="pb-side" id="pb-side" aria-label="Your list so far"></aside>
+  </section>
+
+  <section class="band pb-results" id="pb-results" aria-labelledby="pb-res-h">
+    <div class="wrap">
+      <p class="eyebrow">Bill of materials</p>
+      <h2 id="pb-res-h">Your LBI project list</h2>
+      <div id="pb-out"></div>
+      <div class="pb-contact" id="pb-contact">
+        <h3>Send it for a quote</h3>
+        <p>Add your details so they print on the list. Nothing is sent until you choose to email it.</p>
+        <div class="pb-fields">
+          <label>Project name<input type="text" data-p="name" autocomplete="off" placeholder="Main street office"></label>
+          <label>Your name<input type="text" data-p="person" autocomplete="name"></label>
+          <label>Company<input type="text" data-p="company" autocomplete="organization"></label>
+          <label>Email<input type="email" data-p="email" autocomplete="email"></label>
+          <label>Phone<input type="tel" data-p="phone" autocomplete="tel"></label>
+          <label>Job ZIP code<input type="text" data-p="zip" inputmode="numeric" autocomplete="postal-code"></label>
+        </div>
+        <div class="pb-export">
+          <button type="button" class="btn btn-primary" data-act="pdf">Download PDF</button>
+          <button type="button" class="btn btn-ghost" data-act="xlsx">Download Excel</button>
+          <button type="button" class="btn btn-ghost" data-act="quote">Email it for a quote</button>
+          <button type="button" class="btn btn-ghost" data-act="link">Copy a link to this list</button>
+        </div>
+        <p class="pb-fine" id="pb-copied" role="status"></p>
+        <p class="pb-fine">This list is a recommendation from the spec sheets. Our team checks every quote and confirms quantities, settings and lead times with you. Prices are on the quote.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="pb-bar" id="pb-bar" aria-hidden="true"></div>
+  <noscript><div class="wrap"><p class="lede">The LBI Project Builder needs JavaScript. You can also email your project to <a href="mailto:{{ EMAIL }}">{{ EMAIL }}</a> or call {{ PHONE }} and we will put the list together for you.</p></div></noscript>
+</div>
+<div class="wrap" style="padding-block:clamp(40px,6vw,64px)">{{ P.next_steps("Next steps, with a little help from Eddy", "Request a sample, check rebates in your area, or reach your local rep.") }}</div>
+{% endblock %}
+{% block scripts %}<script src="assets/js/builder-engine.js"></script><script src="assets/js/builder.js"></script>{% endblock %}

@@ -58,6 +58,7 @@ SHARE = {
     "resources.html": ("docs", ["assets/img/docs/RP-LBI-Spec_Sheet-p1.jpg", "assets/img/docs/RP-TV-TF-G1-TAA-Spec_Sheet-p1.jpg",
                                 "assets/img/docs/LED-8091_Spec_Sheet-p1.jpg"], "RemPhos and Light Efficient Design spec sheets"),
     "lbi.html": ("pair", ["assets/img/product/g2-hero.jpg", "assets/img/product/palette-hero-rainbow.jpg"], "RemPhos LBI white and color linkable light bars"),
+    "lbi-project-builder.html": ("pair", ["assets/img/product/g2-hero.jpg", "assets/img/cat/lbi-family/accessories-lbi-g2.jpg"], "RemPhos LBI light bar with its linking cables, connectors, power cables and brackets"),
     "light-efficient-design.html": ("brand", ["assets/img/brand/led-logo-h.png", "assets/img/cat/bollard-post-top/hero.jpg"], "Light Efficient Design LED retrofit lamps"),
     "remphos.html": ("brand", ["assets/img/brand/remphos-logo-white.png#004e99", "assets/img/product/g2-hero.jpg"], "RemPhos LBI linkable light bar"),
     "solera.html": ("brand", ["assets/img/brand/solera-logo.png", "assets/img/cover/p01-b1.jpg"], "Solera i-Series solar area light"),
@@ -118,7 +119,7 @@ PRODUCT_MENU = [
         ("HID replacement", ["shoe-box-wall-pack", "bollard-post-top", "high-bay-low-bay", "hazardous-location"]),
         ("Fluorescent replacement", ["pl-pll", "linear-t5-t8"])]),
     dict(key="indoor", name="Indoor Fixtures", blurb="Linkable light bars, color, stairwell and wraparound fixtures, troffers and work lights.", groups=[
-        ("Linkable light bars", ["lbi.html", "lbi-g1", "lbi-g2", "lbi-65", "lbi-max", "color-palette"]),
+        ("Linkable light bars", ["lbi.html", "lbi-project-builder.html", "lbi-g1", "lbi-g2", "lbi-65", "lbi-max", "color-palette"]),
         ("Fixtures", ["livc", "wall-ceiling-fixtures", "troffer-retrofit-kits-fixtures", "taa-troffers", "work-lights"])]),
     dict(key="kits", name="Retrofit Kits", blurb="Keep the housing, upgrade everything inside it.", groups=[
         ("", ["troffer-retrofit-kits-fixtures", "taa-troffers", "type-c-kits-lbe", "taa-type-c-kits-lbe", "wall-ceiling-retrofit-kits", "lbi-max"])]),
@@ -1693,6 +1694,8 @@ def build_product_menu(cats):
             for sl in slugs:
                 if sl == "lbi.html":
                     entries.append(dict(href="lbi.html", nav_title="LBI Family Overview", featured=True, brand=BRANDS["remphos"], hero=None, headline="Compare and set up all eight bars"))
+                elif sl == "lbi-project-builder.html":
+                    entries.append(dict(href=sl, nav_title="LBI Project Builder", featured=True, brand=BRANDS["remphos"], hero=None, headline="Every part for a whole LBI job, in one list"))
                 elif sl == "i-series":
                     entries.append(dict(by_slug[sl], featured=True))
                 elif sl in by_slug:
@@ -2068,6 +2071,12 @@ def main():
                ld_webpage("lbi.html", "LBI Family Overview", lbi_desc, kind="CollectionPage", image=lbi_img,
                           **({"mainEntity": {"@id": page_url("lbi.html") + "#variants"}} if variants else {})),
                ld_lbi_products(variants) if variants else None]))
+    pb_desc = compose_description(["LBI Project Builder: describe each area of your project, retrofit or new, and get the complete RemPhos LBI bill of materials.",
+                                   "Light bars, linking cables, seamless connectors, power cables, brackets, sensors and battery backup, with placement notes, as a PDF or Excel file to send for a quote."])
+    render("builder.html", "lbi-project-builder.html", 0.8, page="lbi-project-builder",
+           seo=seo_for("lbi-project-builder.html", "LBI Project Builder: Bill of Materials | RemPhos", pb_desc, image=lbi_img, image_alt=lbi_alt, jsonld=[
+               ld_webpage("lbi-project-builder.html", "LBI Project Builder", pb_desc, image=lbi_img, breadcrumb=True),
+               ld_breadcrumbs("lbi-project-builder.html", [("Home", "index.html"), ("RemPhos", "remphos.html"), ("LBI Family Overview", "lbi.html"), ("LBI Project Builder", "lbi-project-builder.html")])]))
     docs = [d for d in RESOURCE_DOCS if newest_path("assets/docs/" + d)]
     res_desc = compose_description(["Download the 2026 Full Product Catalog and the LBI spec sheets and sell sheets for Light Efficient Design, RemPhos and Solera.",
                                     "Every category page opens the catalog PDF at its own section."])
