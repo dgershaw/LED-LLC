@@ -58,12 +58,20 @@
   }
 
   // ------------------------------------------------------------------ form pieces
-  const seg = (k, opts, cur, cls = "") => `<div class="pb-seg ${cls}" role="radiogroup">${opts.map(([v, label, sub, dis]) =>
+  const seg = (k, opts, cur, cls = "") => `<div class="pb-seg ${cls}${opts.filter(o => o[2]).length > 1 && opts.length > 2 ? " cards" : ""}" role="radiogroup">${opts.map(([v, label, sub, dis]) =>
     `<button type="button" role="radio" data-k="${k}" data-v="${h(v)}" aria-checked="${String(cur) === String(v)}"${dis ? " disabled" : ""}><span>${label}</span>${sub ? `<small>${sub}</small>` : ""}</button>`).join("")}</div>`;
   const num = (k, v, min, max, unit, step = 1) => `<div class="pb-num"><button type="button" data-step="${k}" data-d="-${step}" aria-label="Fewer">−</button><input type="number" inputmode="decimal" data-k="${k}" value="${h(v)}" min="${min}" max="${max}" step="${step}" aria-label="${h(unit || k)}"><button type="button" data-step="${k}" data-d="${step}" aria-label="More">+</button>${unit ? `<span class="pb-unit">${unit}</span>` : ""}</div>`;
   const q = (label, body, help, wide) => `<div class="pb-q${wide ? " wide" : ""}"><div class="pb-q-l">${label}</div>${body}${help ? `<p class="pb-q-h">${help}</p>` : ""}</div>`;
 
   const NUMERIC = new Set(["qty", "lamps", "runFt", "runs", "barLen", "barsPer", "cct", "watt", "volts", "lead65", "gapIn", "emg"]);
+
+  const moreOpen = new Set();
+  document.addEventListener("toggle", (ev) => {
+    const d = ev.target; if (!d.matches || !d.matches(".pb-more")) return;
+    const a = areaOf(d); if (!a) return;
+    if (d.open) moreOpen.add(a.id); else moreOpen.delete(a.id);
+    const g = d.querySelector(".pb-more-go"); if (g) g.textContent = d.open ? "Hide" : "Change";
+  }, true);
 
   function areaTitle(a, i) { return a.name ? a.name : `Area ${i + 1}`; }
 
@@ -84,7 +92,7 @@
     const sh = E.SHAPES[a.app] && E.SHAPES[a.app][a.size];
     const head = `<div class="pb-area-head">
         <span class="pb-n">${i + 1}</span>
-        <div class="pb-area-t"><strong>${h(areaTitle(a, i))}</strong><span>${h(areaSummary(r))}</span></div>
+        <div class="pb-area-t">${open ? `<input class="pb-name" type="text" data-k="name" value="${h(a.name)}" placeholder="${h(`Name area ${i + 1}`)}" aria-label="Name this area" autocomplete="off">` : `<strong>${h(areaTitle(a, i))}</strong>`}<span>${h(areaSummary(r))}</span></div>
         <div class="pb-area-acts">
           <button type="button" class="pb-link" data-act="toggle" aria-expanded="${open}">${open ? "Done" : "Edit"}</button>
           <button type="button" class="pb-icon" data-act="dup" title="Duplicate this area" aria-label="Duplicate ${h(areaTitle(a, i))}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></svg></button>
@@ -94,7 +102,7 @@
     if (!open) return `<article class="pb-area" data-id="${a.id}">${head}</article>`;
 
     const qs = [];
-    qs.push(q("Name this area", `<input class="pb-text" type="text" data-k="name" value="${h(a.name)}" placeholder="${h(`Area ${i + 1}, for example Open office`)}" autocomplete="off">`));
+    const adv = [];
     qs.push(q("What are you doing?", seg("job", [["retrofit", "Retrofit", "Keep the fixtures, replace the lamps"], ["new", "New LBI fixtures", "The bars are the fixture"]], a.job)));
     if (a.job === "retrofit") {
       qs.push(q("What is there now?", seg("app", [["troffer", "Troffers"], ["strip", "Strips or wraps"], ["vapor", "Vapor tights"], ["cove", "Coves and continuous runs"], ["bay", "Low or high bays"]], a.app, "flow"), null, true));
@@ -120,39 +128,39 @@
     // light bar
     const allowed = a.env === "wet" ? ["lbi65"] : ["g1", "g2", "lbi65", "max", "palette", "plus"];
     const modelOpts = [["auto", `Recommended`, E.MODELS[rec.id].name]].concat(E.MODEL_ORDER.filter(id => allowed.includes(id)).map(id => [id, E.MODELS[id].name, E.MODELS[id].kind]));
-    qs.push(q("Light bar", seg("model", modelOpts, a.model, "flow models"), a.model === "auto" ? h(rec.why) : null, true));
+    adv.push(q("Light bar", seg("model", modelOpts, a.model, "flow models"), a.model === "auto" ? h(rec.why) : null, true));
     if (a.job === "new") {
-      qs.push(q("Bar length", seg("barLen", m.lens.map(L => [L, `${L} ft`, `${m.len[L]} in`]), a.barLen)));
-      if (!isRun) qs.push(q("Bars end to end in each fixture", seg("barsPer", [[1, "1"], [2, "2"], [3, "3"], [4, "4"]], a.barsPer || 1), "Two 4 ft bars make an 8 ft fixture."));
+      adv.push(q("Bar length", seg("barLen", m.lens.map(L => [L, `${L} ft`, `${m.len[L]} in`]), a.barLen)));
+      if (!isRun) adv.push(q("Bars end to end in each fixture", seg("barsPer", [[1, "1"], [2, "2"], [3, "3"], [4, "4"]], a.barsPer || 1), "Two 4 ft bars make an 8 ft fixture."));
     } else if (!isRun && sh) {
       const def = r.layout ? r.layout.bars : null;
-      qs.push(q("Bars in each fixture", num("barsPer", a.barsPer || def, 1, 16, "bars"), a.barsPer ? `<button type="button" class="pb-link" data-k="barsPer" data-v="">Back to the recommended ${h(String(def))}</button>` : "Recommended from the lamps. Change it if you want more or fewer bars."));
+      adv.push(q("Bars in each fixture", num("barsPer", a.barsPer || def, 1, 16, "bars"), a.barsPer ? `<button type="button" class="pb-link" data-k="barsPer" data-v="">Back to the recommended ${h(String(def))}</button>` : "Recommended from the lamps. Change it if you want more or fewer bars."));
     }
-    if (m.color) qs.push(q("Colors on each bar", seg("pair", Object.entries(E.PAIRS).map(([k, p]) => [k, p.name]), a.pair), "Each bar carries two colors on a switch."));
-    else qs.push(q("Color temperature", seg("cct", m.ccts.map(k => [k, `${k}K`]), a.cct || m.cctDef, "flow"), m.id === "g1" ? "2700K and 3000K use the warm model (WC2)." : null));
+    if (m.color) adv.push(q("Colors on each bar", seg("pair", Object.entries(E.PAIRS).map(([k, p]) => [k, p.name]), a.pair), "Each bar carries two colors on a switch."));
+    else adv.push(q("Color temperature", seg("cct", m.ccts.map(k => [k, `${k}K`]), a.cct || m.cctDef, "flow"), m.id === "g1" ? "2700K and 3000K use the warm model (WC2)." : null));
     if (!m.color) {
-      if (a.job === "retrofit" || isRun) qs.push(q("Light level", seg("level", [["saver", "Save energy"], ["match", isRun ? "Standard" : "Match today"], ["brighter", "Brighter"]], a.level), "Sets the FlexWatt switch on each bar. You can change it on site."));
-      else { const L = +a.barLen; qs.push(q("Wattage (FlexWatt)", seg("watt", m.watts[L].map(w => [w, `${w} W`, m.lm && m.lm[L] ? `${fmt(m.lm[L][m.watts[L].indexOf(w)])} lm` : ""]), a.watt || m.def[L], "flow"))); }
+      if (a.job === "retrofit" || isRun) adv.push(q("Light level", seg("level", [["saver", "Save energy"], ["match", isRun ? "Standard" : "Match today"], ["brighter", "Brighter"]], a.level), "Sets the FlexWatt switch on each bar. You can change it on site."));
+      else { const L = +a.barLen; adv.push(q("Wattage (FlexWatt)", seg("watt", m.watts[L].map(w => [w, `${w} W`, m.lm && m.lm[L] ? `${fmt(m.lm[L][m.watts[L].indexOf(w)])} lm` : ""]), a.watt || m.def[L], "flow"))); }
     }
     if (a.job === "new") {
       const mounts = [["surface", "Surface", "Ceiling or wall"], ["suspended", "Suspended", "Aircraft cable"]];
       if (m.family === "lbi") mounts.push(["tbar", "T-bar grid", "Clips under the T-bar"], ["cove45", "45° bracket", "Coves, displays"]);
-      qs.push(q("Mounting", seg("mount", mounts, a.mount, "flow")));
+      adv.push(q("Mounting", seg("mount", mounts, a.mount, "flow")));
     } else if (a.app === "cove" && m.family === "lbi") {
-      qs.push(q("Aim", seg("aim", [["flat", "Flat"], ["45", "Tilted 45°", "45° brackets"]], a.aim)));
+      adv.push(q("Aim", seg("aim", [["flat", "Flat"], ["45", "Tilted 45°", "45° brackets"]], a.aim)));
     }
     // power
-    qs.push(q("Voltage", seg("volts", [120, 208, 240, 277, 347].map(v => [v, `${v}V`, v === 347 ? "Canada" : "", !m.volts.includes(v)]), a.volts, "flow")));
+    adv.push(q("Voltage", seg("volts", [120, 208, 240, 277, 347].map(v => [v, `${v}V`, v === 347 ? "Canada" : "", !m.volts.includes(v)]), a.volts, "flow")));
     if (m.family === "lbi65") {
-      qs.push(q("Incoming power", seg("feed", [["conduit", "Conduit adapter", "Liquid-tight, 1/2 in NPT"], ["whip", "Wire whip"]], a.feed)));
-      qs.push(q("Lead length", seg("lead65", [[3, "3 ft"], [10, "10 ft"]], a.lead65)));
+      adv.push(q("Incoming power", seg("feed", [["conduit", "Conduit adapter", "Liquid-tight, 1/2 in NPT"], ["whip", "Wire whip"]], a.feed)));
+      adv.push(q("Lead length", seg("lead65", [[3, "3 ft"], [10, "10 ft"]], a.lead65)));
     } else {
       const feeds = [["hardwire", "Hardwired", "Into the fixture or a junction box"], ["plug", "Plug-in", "120V outlet, on/off switch", +a.volts !== 120], ["pendant", "From above", "12 ft 90° cable for suspended bars"]];
-      qs.push(q("Incoming power", seg("feed", feeds, a.feed, "flow")));
+      adv.push(q("Incoming power", seg("feed", feeds, a.feed, "flow")));
     }
     if (a.job === "new" && !isRun) {
-      qs.push(q("Feed several fixtures from one circuit?", seg("chain", [[false, "No", "One feed per fixture"], [true, "Yes", "Link them with cables"]], a.chain)));
-      if (a.chain) qs.push(q("Gap between fixtures", num("gapIn", a.gapIn, 1, 72, "in"), `Linking cables go up to ${m.family === "lbi65" ? 48 : 72} in.`));
+      adv.push(q("Feed several fixtures from one circuit?", seg("chain", [[false, "No", "One feed per fixture"], [true, "Yes", "Link them with cables"]], a.chain)));
+      if (a.chain) adv.push(q("Gap between fixtures", num("gapIn", a.gapIn, 1, 72, "in"), `Linking cables go up to ${m.family === "lbi65" ? 48 : 72} in.`));
     }
     // controls
     qs.push(q("Controls", seg("ctl", [["none", "None", "Wall switch"], ["dimmer", "0-10V dimmer", "Whole run dims together"], ["simple", "Occupancy sensor", "Simple Lighting Control"], ["mesh", "Bluetooth mesh", "Silvair networked control"]], a.ctl, "flow"), null, true));
@@ -163,15 +171,18 @@
       if (a.meshKind === "sensor" && m.family === "lbi") qs.push(q("Sensor type", seg("sensor", [["oc2", "Microwave"], ["pir", "Passive infrared"]], a.sensor === "pir" ? "pir" : "oc2")));
     }
     if ((a.ctl === "simple" || a.ctl === "mesh") && isRun && m.family !== "max") qs.push(q("Sensor position in the run", seg("place", [["end", "At the end", "Recommended"], ["middle", "In the middle"], ["start", "Next to the feed"]], a.place, "flow"), "One sensor for every 15 bars."));
-    if (m.id === "g2") qs.push(q("Tunable white remote", seg("irwc", [[false, "No"], [true, "Add one", "RC-REMOTE-IRWC"]], a.irwc)));
-    if (m.id === "plus") qs.push(q("Color remote", seg("rgb", [[true, "Add one", "Unlocks color"], [false, "White light only"]], a.rgb)));
+    if (m.id === "g2") adv.push(q("Tunable white remote", seg("irwc", [[false, "No", "Not needed"], [true, "Add one", "RC-REMOTE-IRWC"]], a.irwc)));
+    if (m.id === "plus") adv.push(q("Color remote", seg("rgb", [[true, "Add one", "Unlocks color"], [false, "White light only"]], a.rgb)));
     // emergency
     const emgMax = isRun ? a.runs : a.qty;
-    qs.push(q(isRun ? "Runs with battery backup" : "Fixtures with battery backup", num("emg", a.emg, 0, emgMax, `of ${emgMax}`), "90 minutes of emergency light."));
-    if (a.emg > 0 && m.emgBuiltIn) qs.push(q("Battery", seg("emgKind", [["remote", "Remote battery pack", "Powers the whole fixture"], ["builtin", "Built into one bar", "-EMG, 500 lm"]], a.emgKind)));
+    adv.push(q(isRun ? "Runs with battery backup" : "Fixtures with battery backup", num("emg", a.emg, 0, emgMax, `of ${emgMax}`), "90 minutes of emergency light."));
+    if (a.emg > 0 && m.emgBuiltIn) adv.push(q("Battery", seg("emgKind", [["remote", "Remote battery pack", "Powers the whole fixture"], ["builtin", "Built into one bar", "-EMG, 500 lm"]], a.emgKind)));
 
     const fixes = r.fixes.length ? `<p class="pb-fix">${r.fixes.map(h).join(" ")}</p>` : "";
-    return `<article class="pb-area is-open" data-id="${a.id}">${head}<div class="pb-qs">${qs.join("")}</div>${fixes}<div class="pb-area-foot"><button type="button" class="btn btn-primary btn-sm" data-act="toggle">Done</button><a class="pb-link" href="#pb-a-${a.id}">See this area's parts ›</a></div></article>`;
+    const feedName = { hardwire: "hardwired", plug: "plug-in", pendant: "power from above", conduit: "conduit adapter", whip: "wire whip" }[a.feed] || "";
+    const picks = [m.name + (a.model === "auto" ? " (recommended)" : ""), m.color ? (E.PAIRS[a.pair] || {}).name : `${a.cct || m.cctDef}K`, `${a.volts}V`, feedName, a.emg ? `${a.emg} with battery backup` : "no battery backup"].filter(Boolean);
+    const more = `<details class="pb-more"${moreOpen.has(a.id) ? " open" : ""}><summary><span class="pb-more-t">Light bar, color, power and battery backup</span><span class="pb-more-s">${h(picks.join(" · "))}</span><span class="pb-more-go" aria-hidden="true">${moreOpen.has(a.id) ? "Hide" : "Change"}</span></summary><div class="pb-qs">${adv.join("")}</div></details>`;
+    return `<article class="pb-area is-open" data-id="${a.id}">${head}<div class="pb-qs">${qs.join("")}</div>${more}${fixes}<div class="pb-area-foot"><button type="button" class="btn btn-primary btn-sm" data-act="toggle">Done</button><a class="pb-link" href="#pb-a-${a.id}">See this area's parts ›</a></div></article>`;
   }
 
   // ------------------------------------------------------------------ layout drawings
@@ -281,12 +292,12 @@
     const top = P.lines.slice(0, 9);
     $("#pb-side").innerHTML = `<div class="pb-side-in">
       <p class="eyebrow">Your list so far</p>
-      <div class="pb-tiles"><div><b>${fmt(T.bars)}</b><span>light bars</span></div><div><b>${fmt(T.feeds)}</b><span>power feeds</span></div><div><b>${fmt(T.sensors)}</b><span>sensors</span></div></div>
+      <div class="pb-tiles"><div><b>${fmt(T.bars)}</b><span>light bars</span></div><div><b>${fmt(T.feeds)}</b><span>power feeds</span></div>${T.sensors ? `<div><b>${fmt(T.sensors)}</b><span>sensors</span></div>` : `<div><b>${P.lines.length}</b><span>line items</span></div>`}</div>
       <ul class="pb-mini">${top.map(l => `<li><span class="pn">${h(l.pn)}</span><span class="q">${l.pack > 1 ? `${l.order} × ${l.pack}-pk` : `× ${fmt(l.qty)}`}</span></li>`).join("")}${P.lines.length > top.length ? `<li class="more">and ${P.lines.length - top.length} more</li>` : ""}</ul>
       <a class="btn btn-primary" href="#pb-results">See the full list</a>
       <div class="pb-side-acts"><button type="button" class="pb-link" data-act="pdf">PDF</button><button type="button" class="pb-link" data-act="xlsx">Excel</button><button type="button" class="pb-link" data-act="quote">Email for a quote</button></div>
     </div>`;
-    $("#pb-bar").innerHTML = `<a href="#pb-results"><span><b>${fmt(T.bars)}</b> bars · <b>${P.lines.length}</b> part numbers</span><span class="go">See list ›</span></a>`;
+    $("#pb-bar").innerHTML = `<a href="#pb-results"><span><b>${fmt(T.bars)}</b> bars · <b>${P.lines.length}</b> line items</span><span class="go">See list ›</span></a>`;
   }
 
   function renderResults() {
@@ -295,7 +306,7 @@
     let html = `<div class="pb-sum">
       <div><b>${fmt(T.bars)}</b><span>light bars</span></div>
       <div><b>${fmt(T.feeds)}</b><span>power feeds</span></div>
-      <div><b>${fmt(T.sensors)}</b><span>sensors</span></div>
+      ${T.sensors ? `<div><b>${fmt(T.sensors)}</b><span>sensors</span></div>` : ""}
       <div><b>${fmt(T.watts)} W</b><span>connected load</span></div>
       ${T.lumens ? `<div><b>${fmt(T.lumens)}</b><span>lumens, at the settings shown</span></div>` : ""}
     </div>`;

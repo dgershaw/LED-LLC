@@ -73,6 +73,7 @@
 .pb-text:focus, .pb-num input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 .pb-seg { display: flex; flex-wrap: wrap; gap: 6px; }
 .pb-seg button { appearance: none; font: inherit; text-align: left; display: grid; gap: 1px; padding: 8px 12px; min-height: 40px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; font-size: 0.9375rem; font-weight: 600; }
+.pb-seg button { align-content: start; }
 .pb-seg button small { font-size: 0.75rem; font-weight: 500; color: var(--muted); }
 .pb-seg button:hover:not(:disabled) { border-color: var(--muted); }
 .pb-seg button[aria-checked="true"] { border-color: var(--pb-sel); background: color-mix(in srgb, var(--pb-sel) 9%, var(--surface)); box-shadow: inset 0 0 0 1px var(--pb-sel); }
@@ -80,6 +81,21 @@
 .pb-seg button:disabled { opacity: 0.45; cursor: not-allowed; }
 .pb-seg:not(.flow) button { flex: 1 1 0; }
 .pb-seg.models button { flex: 0 1 auto; }
+.pb-seg.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); }
+.pb-name { width: 100%; font: inherit; font-size: 1.0625rem; font-weight: 700; color: var(--ink); background: transparent; border: 1px solid transparent; border-bottom-color: var(--line); border-radius: 6px; padding: 2px 6px; margin-left: -6px; }
+.pb-name::placeholder { color: var(--muted); font-weight: 600; }
+.pb-name:hover { border-color: var(--line); }
+.pb-name:focus { outline: 2px solid var(--accent); outline-offset: 1px; background: var(--bg); }
+.pb-more { margin: 0 16px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); }
+.pb-more > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding: 12px 14px; }
+.pb-more > summary::-webkit-details-marker { display: none; }
+.pb-more-t { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.pb-more-s { grid-column: 1; font-size: 0.9375rem; font-weight: 600; color: var(--ink); }
+.pb-more-go { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: var(--accent); font-weight: 600; font-size: 0.9375rem; }
+.pb-more-go::after { content: " ›"; }
+.pb-more[open] .pb-more-go::after { content: ""; }
+.pb-more[open] > summary { border-bottom: 1px solid var(--line); }
+.pb-more .pb-qs { border-top: 0; padding-inline: 14px; background: var(--surface); border-radius: 0 0 12px 12px; }
 .pb-num { display: inline-flex; align-items: center; gap: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); overflow: hidden; }
 .pb-num button { appearance: none; border: 0; background: var(--surface-2); color: var(--ink); width: 40px; height: 40px; font-size: 1.25rem; cursor: pointer; }
 .pb-num button:hover { background: var(--line); }
@@ -201,6 +217,9 @@
   .pb-area-t span { font-size: 0.875rem; }
   .pb-icon { width: 32px; height: 32px; }
   .pb-seg button { padding: 8px 10px; }
+  .pb-seg.cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pb-more { margin-inline: 12px; }
+  .pb-more .pb-qs { padding-inline: 12px; }
   .pb-ao-body { grid-template-columns: minmax(0, 1fr); }
   .pb-fields { grid-template-columns: minmax(0, 1fr); }
   .pb-export .btn { flex: 1 1 100%; justify-content: center; }
