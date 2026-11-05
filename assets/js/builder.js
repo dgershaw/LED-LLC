@@ -352,7 +352,7 @@
     const P = last, T = P.totals;
     const top = P.lines.slice(0, 9);
     $("#pb-side").innerHTML = `<div class="pb-side-in">
-      <p class="eyebrow">Your list so far</p>
+      <p class="eyebrow">Your bill of materials so far</p>
       <div class="pb-tiles"><div><b>${fmt(T.bars)}</b><span>light bars</span></div><div><b>${fmt(T.feeds)}</b><span>power feeds</span></div>${T.sensors ? `<div><b>${fmt(T.sensors)}</b><span>sensors</span></div>` : `<div><b>${P.lines.length}</b><span>line items</span></div>`}</div>
       <ul class="pb-mini">${top.map(l => `<li><span class="pn">${h(l.pn)}</span><span class="q">${l.pack > 1 ? `${l.order} × ${l.pack}-pk` : `× ${fmt(l.qty)}`}</span></li>`).join("")}${P.lines.length > top.length ? `<li class="more">and ${P.lines.length - top.length} more</li>` : ""}</ul>
       <a class="btn btn-primary" href="#pb-results">See the full list</a>

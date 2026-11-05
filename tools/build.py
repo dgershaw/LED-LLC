@@ -1695,7 +1695,7 @@ def build_product_menu(cats):
                 if sl == "lbi.html":
                     entries.append(dict(href="lbi.html", nav_title="LBI Family Overview", featured=True, brand=BRANDS["remphos"], hero=None, headline="Compare and set up all eight bars"))
                 elif sl == "lbi-project-builder.html":
-                    entries.append(dict(href=sl, nav_title="LBI Project Builder", featured=True, brand=BRANDS["remphos"], hero=None, headline="Every part for a whole LBI job, in one list"))
+                    entries.append(dict(href=sl, nav_title="LBI Project Builder", featured=True, brand=BRANDS["remphos"], hero=None, headline="Build your LBI bill of materials and request a quote"))
                 elif sl == "i-series":
                     entries.append(dict(by_slug[sl], featured=True))
                 elif sl in by_slug:
@@ -2071,10 +2071,10 @@ def main():
                ld_webpage("lbi.html", "LBI Family Overview", lbi_desc, kind="CollectionPage", image=lbi_img,
                           **({"mainEntity": {"@id": page_url("lbi.html") + "#variants"}} if variants else {})),
                ld_lbi_products(variants) if variants else None]))
-    pb_desc = compose_description(["LBI Project Builder: describe each area of your project, retrofit or new, and get the complete RemPhos LBI bill of materials.",
-                                   "Light bars, linking cables, seamless connectors, power cables, brackets, sensors and battery backup, with placement notes, as a PDF or Excel file to send for a quote."])
+    pb_desc = compose_description(["LBI Project Builder: use the design wizard or describe your project in words to build a complete RemPhos LBI bill of materials, then request a quote.",
+                                   "Light bars, linking cables, seamless connectors, power feeds, brackets, sensors and battery backup for retrofits, new fixtures, coves and tray ceilings, as a PDF or Excel file."])
     render("builder.html", "lbi-project-builder.html", 0.8, page="lbi-project-builder",
-           seo=seo_for("lbi-project-builder.html", "LBI Project Builder: Bill of Materials | RemPhos", pb_desc, image=lbi_img, image_alt=lbi_alt, jsonld=[
+           seo=seo_for("lbi-project-builder.html", "LBI Project Builder: Bill of Materials and Quote | RemPhos", pb_desc, image=lbi_img, image_alt=lbi_alt, jsonld=[
                ld_webpage("lbi-project-builder.html", "LBI Project Builder", pb_desc, image=lbi_img, breadcrumb=True),
                ld_breadcrumbs("lbi-project-builder.html", [("Home", "index.html"), ("RemPhos", "remphos.html"), ("LBI Family Overview", "lbi.html"), ("LBI Project Builder", "lbi-project-builder.html")])]))
     docs = [d for d in RESOURCE_DOCS if newest_path("assets/docs/" + d)]
