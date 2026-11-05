@@ -234,6 +234,14 @@
     return out;
   }
 
+  // Run shapes. A tray ceiling is a closed square or rectangle: straight sides with seamless connectors, a 12 in linking
+  // cable around each corner (David, 2026-11-05). The chain starts at one corner with the power feed and ends back at that
+  // corner, so a closed tray has one corner left unlinked.
+  const SHAPE_SIDES = { line: (a) => [a.runFt], tray: (a) => [a.sideA, a.sideB, a.sideA, a.sideB], u: (a) => [a.sideA, a.sideB, a.sideA], l: (a) => [a.sideA, a.sideB] };
+  const SHAPE_NAME = { line: "straight run", tray: "tray ceiling", u: "three-sided cove", l: "L-shaped cove" };
+  const CORNER_IN = 12;
+  function sidesOf(a) { return (SHAPE_SIDES[a.shape] || SHAPE_SIDES.line)(a).map(x => +x || 0); }
+
   function wattIndex(m, L, target) {
     const lm = m.lm && m.lm[L];
     if (!lm) return m.watts[L].indexOf(m.def[L]);
@@ -247,7 +255,7 @@
     seq += 1;
     return Object.assign({
       id: "a" + Date.now().toString(36) + seq, name: "", job: "retrofit", app: "troffer", size: "2x4", qty: 10,
-      lamps: null, lamp: null, runFt: 40, runs: 1, env: "dry", model: "auto", barLen: 4, barsPer: null, cct: null, level: "match",
+      lamps: null, lamp: null, runFt: 40, runs: 1, shape: "line", sideA: 16, sideB: 12, env: "dry", model: "auto", barLen: 4, barsPer: null, cct: null, level: "match",
       watt: null, pair: "RO", mount: "surface", aim: "flat", volts: 120, feed: "hardwire", lead65: 3, chain: false, gapIn: 24,
       ctl: "none", sensor: "oc2", meshKind: "sensor", place: "end", emg: 0, emgKind: "remote", irwc: false, rgb: true
     }, over || {});
@@ -292,6 +300,9 @@
     if (m.family === "max") a.emgKind = "builtin";   // LBI MAX takes its battery inside the strip (-EM1)
     a.qty = clamp(Math.round(+a.qty || 0), 0, 9999);
     a.runs = clamp(Math.round(+a.runs || 0), 0, 999);
+    if (!SHAPE_SIDES[a.shape]) a.shape = "line";
+    a.sideA = clamp(+a.sideA || 0, 0, 500); a.sideB = clamp(+a.sideB || 0, 0, 500);
+    if (a.shape !== "line") a.runFt = Math.round(sidesOf(a).reduce((t, x) => t + x, 0) * 10) / 10;
     a.runFt = clamp(+a.runFt || 0, 0, 2000);
     a.emg = clamp(Math.round(+a.emg || 0), 0, a.app === "run" || a.app === "cove" ? a.runs : a.qty);
     return fixes;
@@ -458,8 +469,12 @@
     } else {
       // ---------------- continuous runs: coves, lines, perimeters
       units = a.runs;
+      const shaped = a.shape && a.shape !== "line";
+      const sides = sidesOf(a).map(ft => Object.assign({ ft }, fillRun(m, ft * 12)));
       const runIn = a.runFt * 12;
-      const fill = fillRun(m, runIn);
+      const fill = { seq: [].concat(...sides.map(sd => sd.seq)), lit: sides.reduce((t, sd) => t + sd.lit, 0), gap: sides.reduce((t, sd) => t + sd.gap, 0) };
+      // what joins bar i to bar i+1: a seamless connector on a straight side, a linking cable around a corner
+      const cornerAfter = new Set(); { let k = 0; sides.forEach((sd, i) => { k += sd.seq.length; if (i < sides.length - 1 && sd.seq.length && k < fill.seq.length) cornerAfter.add(k - 1); }); }
       const L = 4;
       const lmTarget = null;
       // the longest bars take the chosen level; shorter bars are set to the closest light per inch, so the run looks even
@@ -477,15 +492,24 @@
         m.lm[len].forEach((v, i) => { if (Math.abs(v / m.len[len] - perIn) < Math.abs(m.lm[len][bi] / m.len[len] - perIn)) bi = i; });
         return m.watts[len][bi];
       };
-      const segs = splitFeeds(m, fill.seq, volts, false);
-      let ssc = 0, nodim = 0, sensors = 0, feeds = segs.length;
+      const segs = splitFeeds(m, fill.seq, volts, cornerAfter.size > 0);
+      let ssc = 0, nodim = 0, sensors = 0, corners = 0, cornersNo = 0, feeds = segs.length;
       const zonesBySeg = segs.map(sg => hasSensor ? zonesOf(sg.length) : [sg.length]);
-      segs.forEach((sg, i) => {
-        const z = zonesBySeg[i];
-        ssc += sg.length - 1 - (z.length - 1);
-        nodim += z.length - 1;
-        sensors += hasSensor ? z.length : 0;
-      });
+      { let k = 0;
+        segs.forEach((sg, i) => {
+          const z = zonesBySeg[i]; let zi = 0, inZ = 0;
+          sensors += hasSensor ? z.length : 0;
+          sg.forEach((len, bi) => {
+            inZ += 1; const zoneEnd = inZ === z[zi]; if (zoneEnd) { zi += 1; inZ = 0; }
+            if (bi < sg.length - 1) {
+              const corner = cornerAfter.has(k);
+              if (corner) { if (zoneEnd) cornersNo += 1; else corners += 1; }
+              else if (zoneEnd) nodim += 1; else ssc += 1;
+            }
+            k += 1;
+          });
+        });
+      }
       const emgRuns = Math.min(a.emg, units);
       for (const len of [4, 3, 2]) {
         const n = fill.seq.filter(x => x === len).length;
@@ -520,6 +544,11 @@
           if (a.mount === "suspended") add(ACC.sil, units * (b + feeds));
         } else if (m.family === "lbi65" && a.mount === "suspended") add(ACC.spnd65, units * fill.seq.length * 2);
       }
+      if (corners || cornersNo) {
+        const lc = lcFor(CORNER_IN);
+        add(lc, units * corners);
+        if (cornersNo) add(Object.assign({}, lc, { pn: lc.pn.replace("-DIM", "-NODIM"), d: lc.d.replace("dimmable", "non-dimming (control zone break)") }), units * cornersNo);
+      }
       add(feedAcc(), units * feeds);
       if (hasSensor && m.family !== "max") add(sensorAcc(), units * sensors);
       if (emgRuns && !(a.emgKind === "builtin" && (m.emgBuiltIn || m.family === "max"))) {
@@ -528,9 +557,15 @@
         else add(load <= 100 ? ACC.emg8 : ACC.emg25, emgRuns * (load <= 100 ? 1 : Math.ceil(load / 300)));
       }
       const counts = [4, 3, 2].map(len => [len, fill.seq.filter(x => x === len).length]).filter(x => x[1]);
-      layout = { kind: "run", seq: fill.seq, segs, zones: zonesBySeg, runIn, lit: fill.lit, gap: fill.gap, sensor: hasSensor, place: a.place, len: m.len, family: m.family };
-      notes.unshift(`Each ${a.runFt} ft run: ${counts.map(([len, n]) => `${n} × ${len} ft`).join(" + ")} bars end to end with seamless connectors, ${ftIn(fill.lit)} of light${fill.gap > 0.05 ? `, ${ftIn(fill.gap)} short of the full ${a.runFt} ft (split it between the two ends)` : ""}. A ${m.lens.includes(4) ? "\"4 ft\"" : ""} bar is ${m.len[4] || m.len[2]} in long, which is why the count is not simply length ÷ 4.`.replace("A  bar", "A bar"));
-      if (segs.length > 1) notes.push(`Power: ${segs.length} feeds per run (at ${volts}V one feed carries up to ${feedLimit(m, 4, volts, false)} four-foot bars). Feed ${segs.map((s, i) => `${i + 1} powers bars ${segs.slice(0, i).reduce((t, x) => t + x.length, 0) + 1}–${segs.slice(0, i + 1).reduce((t, x) => t + x.length, 0)}`).join(", feed ")}; where two feeds meet, leave the bars unconnected.`);
+      layout = { kind: "run", seq: fill.seq, segs, zones: zonesBySeg, runIn, lit: fill.lit, gap: fill.gap, sensor: hasSensor, place: a.place, len: m.len, family: m.family,
+        shape: a.shape || "line", sides: sides.map(sd => ({ ft: sd.ft, seq: sd.seq, gap: sd.gap })), corners: [...cornerAfter], closed: a.shape === "tray" };
+      if (shaped) {
+        const desc = (sd) => [4, 3, 2].map(len => [len, sd.seq.filter(x => x === len).length]).filter(x => x[1]).map(([len, n]) => `${n} × ${len} ft`).join(" + ");
+        const uniq = [];
+        sides.forEach(sd => { const d = `${ftIn(sd.ft * 12)} side${sd.seq.length ? `: ${desc(sd)}` : ""}`; const u = uniq.find(x => x.d === d); if (u) u.n += 1; else uniq.push({ d, n: 1 }); });
+        notes.unshift(`Each ${SHAPE_NAME[a.shape]} (${a.shape === "l" ? `${a.sideA} × ${a.sideB} ft` : `${a.sideA} × ${a.sideB} ft`}, ${ftIn(runIn)} around): ${uniq.map(u => `${u.n > 1 ? `${u.n} × ` : ""}${u.d}`).join("; ")}. Bars on each straight side join with seamless connectors; ${corners + cornersNo === 1 ? "the linked corner takes" : `each of the ${corners + cornersNo} linked corners takes`} a ${CORNER_IN} in linking cable${cornersNo ? ` (${cornersNo === corners + cornersNo ? "all" : cornersNo} non-dimming, where a control zone ends at the corner)` : ""}.${cornerAfter.size > corners + cornersNo ? ` Where a new power feed starts at a corner, that corner is not linked.` : ""}${a.shape === "tray" ? " The run starts at one corner with the power feed and goes all the way around, so that last corner stays open: the run simply ends there." : ""} Measure each side along the cove, corner to corner.`);
+      } else notes.unshift(`Each ${a.runFt} ft run: ${counts.map(([len, n]) => `${n} × ${len} ft`).join(" + ")} bars end to end with seamless connectors, ${ftIn(fill.lit)} of light${fill.gap > 0.05 ? `, ${ftIn(fill.gap)} short of the full ${a.runFt} ft (split it between the two ends)` : ""}. A ${m.lens.includes(4) ? "\"4 ft\"" : ""} bar is ${m.len[4] || m.len[2]} in long, which is why the count is not simply length ÷ 4.`.replace("A  bar", "A bar"));
+      if (segs.length > 1) notes.push(`Power: ${segs.length} feeds per run (at ${volts}V one feed carries up to ${feedLimit(m, 4, volts, cornerAfter.size > 0)} four-foot bars). Feed ${segs.map((s, i) => `${i + 1} powers bars ${segs.slice(0, i).reduce((t, x) => t + x.length, 0) + 1}–${segs.slice(0, i + 1).reduce((t, x) => t + x.length, 0)}`).join(", feed ")}; where two feeds meet, leave the bars unconnected.`);
       else notes.push(`Power: one incoming power feed at the start of each run carries all ${fill.seq.length} bars at ${volts}V.`);
       if (hasSensor) {
         const pos = { end: "at the far end of each zone (away from the feed)", middle: "in the middle of each zone, between two bars", start: "at the start of each zone, next to the power feed" }[a.place] || "";
@@ -619,7 +654,7 @@
   const NUMW = { zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12,
     thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18, nineteen: 19, twenty: 20, thirty: 30, forty: 40,
     fifty: 50, sixty: 60, seventy: 70, eighty: 80, ninety: 90, dozen: 12, single: 1, double: 2, twin: 2, triple: 3 };
-  const ROOMS = ["open office", "office", "offices", "lobby", "warehouse", "hallway", "hallways", "corridor", "corridors", "classroom", "classrooms", "break room", "breakroom",
+  const ROOMS = ["dining room", "meeting rooms", "meeting room", "conference room", "conference rooms", "board room", "boardroom", "ballroom", "open office", "office", "offices", "lobby", "warehouse", "hallway", "hallways", "corridor", "corridors", "classroom", "classrooms", "break room", "breakroom",
     "kitchen", "parking garage", "garage", "parking deck", "restroom", "restrooms", "bathroom", "stairwell", "stairwells", "stairs", "gym", "gymnasium", "retail", "store",
     "showroom", "conference room", "conference rooms", "lab", "laboratory", "cooler", "coolers", "freezer", "freezers", "canopy", "mechanical room", "shop", "workshop",
     "factory", "plant", "manufacturing", "school", "hospital", "hotel", "restaurant", "bar", "theater", "theatre", "church", "sanctuary", "aisle", "aisles",
@@ -643,7 +678,7 @@
   const FIXTURE_RE = /\b(troffers?|lay-?ins?|parabolics?|recessed|panels?|strips?|strip lights?|wraps?|wraparounds?|wrap-arounds?|industrials?|channels?|vapou?r[\s-]?tights?|vaportights?|vt'?s|coves?|continuous|perimeter|valances?|high[\s-]?bays?|low[\s-]?bays?|highbays?|lowbays?|bays|fixtures?|lights?|light bars?|lbis?)\b/;
 
   function detectApp(t) {
-    if (/\bcoves?\b|\bvalances?\b|\bcontinuous\b|\bperimeter\b|\bline of light\b|\brun of\b|\bruns?\b.*\b(?:ft|feet|foot)\b|\b(?:ft|feet|foot)\b.*\bruns?\b/.test(t)) return "cove";
+    if (/\btray(?:ed)?\b|\bcoves?\b|\bvalances?\b|\bcontinuous\b|\bperimeter\b|\bline of light\b|\brun of\b|\bruns?\b.*\b(?:ft|feet|foot)\b|\b(?:ft|feet|foot)\b.*\bruns?\b/.test(t)) return "cove";
     if (/\bvapou?r[\s-]?tights?\b|\bvaportights?\b|\bvt'?s\b/.test(t)) return "vapor";
     if (/\btroffers?\b|\blay-?ins?\b|\bparabolics?\b|\brecessed\b|\b2\s*x\s*[24]\b|\b1\s*x\s*4\b/.test(t)) return "troffer";
     if (/\bhigh[\s-]?bays?\b|\blow[\s-]?bays?\b|\bhighbays?\b|\blowbays?\b/.test(t)) return "bay";
@@ -667,7 +702,7 @@
 
     for (const s of sentences) {
       const f = readFacts(s);
-      const startsNew = f.app && (f.qty != null || f.runFt != null);
+      const startsNew = f.app && (f.qty != null || f.runFt != null || f.sideA != null);
       if (startsNew && (!cur || cur.app || cur.qty != null)) {
         cur = { src: [] }; scenarios.push(cur);
       } else if (!cur && f.app) { cur = { src: [] }; scenarios.push(cur); }
@@ -691,6 +726,16 @@
     let x = " " + s + " ";
     const app = detectApp(x);
     if (app) f.app = app;
+    // tray ceilings and shaped coves: "a 16 x 12 tray ceiling", "an L-shaped cove 10 by 6"
+    const shape = /\btray(?:ed)?\b/.test(x) ? "tray" : /\bl[\s-]?shaped?\b/.test(x) ? "l" : /\bu[\s-]?shaped?\b|\bthree[\s-]sided\b|\b3[\s-]sided\b/.test(x) ? "u" : null;
+    if (shape) {
+      f.app = "cove"; f.shape = shape;
+      const d = x.match(/\b(\d+(?:\.\d+)?)x(\d+(?:\.\d+)?)\b/);
+      if (d && +d[1] >= 3 && +d[2] >= 3) { f.sideA = +d[1]; f.sideB = +d[2]; x = x.replace(d[0], " SIDES "); }
+      else { const one = x.match(/(\d+(?:\.\d+)?)\s*(?:'|ft\b|foot\b|feet\b)\s*(?:square\b|sq\b)?/); if (one && shape === "tray" && /square/.test(x)) { f.sideA = f.sideB = +one[1]; x = x.replace(one[0], " SIDES "); } }
+      const n = x.match(/\b(\d+)\s+(?:[a-z-]+\s+){0,2}?(?:tray(?:ed)?|coves?|ceilings?|rooms?|areas?|offices?|suites?)\b/);
+      if (n && +n[1] < 1000) { f.qty = +n[1]; x = x.replace(n[0], " QTY "); }
+    }
     if (/\bnew\b|\bnew construction\b|\binstall(?:ing)? lbi\b|\bbrand new\b/.test(x) && !/\breplac|\bretrofit|\bexisting\b/.test(x)) f.job = "new";
     if (/\breplac|\bretrofit|\bexisting\b|\bswap|\bupgrad|\bfluorescent\b/.test(x)) f.job = "retrofit";
     // sizes
@@ -722,7 +767,7 @@
     // quantity: "quantity 20 of", "(20)", "20 of", first plain number before a fixture word
     let q = x.match(/\b(?:quantity|qty|count of)\s*:?\s*\(?(\d+)\)?/) || x.match(/\(?\b(\d+)\)?\s+(?:of\s+)?(?:the\s+|our\s+|existing\s+|these\s+)?(?:SIZE\s+|LEN\s+)?(?:[a-zA-Z0-9-]+\s+){0,3}?(?:troffers?|lay-?ins?|parabolics?|panels?|strips?|wraps?|wraparounds?|industrials?|channels?|vapou?r[\s-]?tights?|vaportights?|high[\s-]?bays?|low[\s-]?bays?|highbays?|lowbays?|bays|fixtures?|lights?|light bars?|lbis?|bars)\b/);
     if (!q && FIXTURE_RE.test(x)) q = x.match(/\(?\b(\d+)\)?/);
-    if (q && f.qty == null && +q[1] > 0 && +q[1] < 10000) f.qty = +q[1];
+    if (q && f.qty == null && !f.shape && +q[1] > 0 && +q[1] < 10000) f.qty = +q[1];
     // environment
     if (/\bwet\b|\boutdoors?\b|\boutside\b|\bexterior\b|\bcanopy\b|\bcanopies\b|\bparking (?:garage|deck|structure)\b|\bgarage\b|\bcoolers?\b|\bfreezers?\b|\bwash-?down\b|\bcar wash\b|\bwash bay\b|\btunnels?\b|\bip65\b|\bwalk-?in\b|\bpool\b|\bfood process/.test(x)) f.env = "wet";
     // model
@@ -770,7 +815,7 @@
     // area name
     for (const r of ROOMS) {
       const re = new RegExp("\\b" + r.replace(/ /g, "\\s+") + "\\b");
-      if (re.test(x)) { f.name = r.replace(/\b\w/g, c => c.toUpperCase()); break; }
+      if (re.test(s)) { f.name = r.replace(/\b\w/g, c => c.toUpperCase()); break; }
     }
     return f;
   }
@@ -787,7 +832,10 @@
     if (!sc.size && (sc.lamp === "f96" || sc.lamp === "f96ho") && (a.app === "strip" || a.app === "vapor")) sc.size = "8";
     if (sc.size && SHAPES[a.app] && SHAPES[a.app][sc.size]) a.size = sc.size;
     else if (SHAPES[a.app]) a.size = Object.keys(SHAPES[a.app])[0];
-    if (a.app === "run" || a.app === "cove") {
+    if ((a.app === "run" || a.app === "cove") && sc.shape) {
+      a.shape = sc.shape; a.runs = sc.qty || 1;
+      if (sc.sideA) { a.sideA = sc.sideA; a.sideB = sc.sideB; } else assumed.push(`${a.sideA} × ${a.sideB} ft`);
+    } else if (a.app === "run" || a.app === "cove") {
       a.runFt = sc.runFt != null ? sc.runFt : 40; a.runs = sc.qty || 1;
       if (sc.runFt == null) assumed.push("a 40 ft run");
     } else {
@@ -808,7 +856,7 @@
     return a;
   }
 
-  const api = { MODELS, MODEL_ORDER, PAIRS, LAMPS, SHAPES, LEVELS, ACC, GROUPS, LINK_LENGTHS, SENSOR_CAPACITY,
+  const api = { SHAPE_NAME, sidesOf, MODELS, MODEL_ORDER, PAIRS, LAMPS, SHAPES, LEVELS, ACC, GROUPS, LINK_LENGTHS, SENSOR_CAPACITY,
     newArea, recommend, modelFor, normalize, areaBom, projectBom, orderText, fillRun, splitFeeds, feedLimit, parse, ftIn, fmt };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.LBIPB = api;

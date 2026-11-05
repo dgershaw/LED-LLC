@@ -15,7 +15,8 @@
   const EXAMPLES = [
     "For example, in my project I have quantity 20 of 2 x 4 troffer fixtures in the ceiling. In each fixture, I am replacing three T8 fluorescent lamps. I want a Mesh Bluetooth control to control the whole space.",
     "The lobby has a 100 ft cove of 4 ft fluorescent strips, 277V, on a 0-10V dimmer, 3000K. The warehouse has 40 8 ft strips with two F96 lamps each, occupancy sensors, and emergency battery backup on 6 of them.",
-    "Parking garage: 60 new LBI 65 fixtures, 4 ft, linked together about 3 ft apart, 277V, with PIR occupancy sensors. Plus 12 vapor tights in the wash bay with two T8 lamps each."
+    "Parking garage: 60 new LBI 65 fixtures, 4 ft, linked together about 3 ft apart, 277V, with PIR occupancy sensors. Plus 12 vapor tights in the wash bay with two T8 lamps each.",
+    "The dining room has a 16 x 12 tray ceiling with fluorescent strips in the cove, 3000K, on a 0-10V dimmer. The two meeting rooms each have a 12 x 12 tray ceiling with Bluetooth mesh."
   ];
 
   // ------------------------------------------------------------------ state
@@ -63,7 +64,7 @@
   const num = (k, v, min, max, unit, step = 1) => `<div class="pb-num"><button type="button" data-step="${k}" data-d="-${step}" aria-label="Fewer">−</button><input type="number" inputmode="decimal" data-k="${k}" value="${h(v)}" min="${min}" max="${max}" step="${step}" aria-label="${h(unit || k)}"><button type="button" data-step="${k}" data-d="${step}" aria-label="More">+</button>${unit ? `<span class="pb-unit">${unit}</span>` : ""}</div>`;
   const q = (label, body, help, wide) => `<div class="pb-q${wide ? " wide" : ""}"><div class="pb-q-l">${label}</div>${body}${help ? `<p class="pb-q-h">${help}</p>` : ""}</div>`;
 
-  const NUMERIC = new Set(["qty", "lamps", "runFt", "runs", "barLen", "barsPer", "cct", "watt", "volts", "lead65", "gapIn", "emg"]);
+  const NUMERIC = new Set(["qty", "lamps", "runFt", "runs", "barLen", "barsPer", "cct", "watt", "volts", "lead65", "gapIn", "emg", "sideA", "sideB"]);
 
   const moreOpen = new Set();
   document.addEventListener("toggle", (ev) => {
@@ -77,7 +78,10 @@
 
   function areaSummary(r) {
     const a = r.area, m = r.model;
-    const what = r.isRun
+    const shapeName = { tray: ["tray ceiling", "tray ceilings"], u: ["three-sided cove", "three-sided coves"], l: ["L-shaped cove", "L-shaped coves"] }[a.shape];
+    const what = r.isRun && shapeName
+      ? `${a.runs} ${shapeName[a.runs === 1 ? 0 : 1]}, ${a.sideA} × ${a.sideB} ft`
+      : r.isRun
       ? `${a.runs} × ${a.runFt} ft ${a.job === "retrofit" ? "cove" : "run"}${a.runs === 1 ? "" : "s"}`
       : a.job === "retrofit" ? `${a.qty} × ${a.qty === 1 ? E.SHAPES[a.app][a.size].label : E.SHAPES[a.app][a.size].many}` : `${a.qty} new fixture${a.qty === 1 ? "" : "s"}`;
     return `${what} → ${fmt(r.barsTotal)} × ${m.name} bars`;
@@ -112,8 +116,15 @@
       qs.push(q("What are you building?", seg("app", [["fixtures", "Individual fixtures", "Garages, closets, stairs, rows"], ["run", "Continuous runs", "Coves, lines, perimeters"]], a.app), null, true));
     }
     if (isRun) {
-      qs.push(q(a.job === "retrofit" ? "How many coves or runs?" : "How many runs?", num("runs", a.runs, 1, 999, a.runs === 1 ? "run" : "runs")));
-      qs.push(q("Length of each run", num("runFt", a.runFt, 1, 2000, "ft"), a.job === "retrofit" ? "A row of 25 four-foot fixtures end to end is 100 ft." : "Measure the length you want lit, end to end."));
+      qs.push(q("Shape", seg("shape", [["line", "Straight", "One straight line"], ["tray", "Tray ceiling", "Square or rectangle, 4 sides"], ["u", "Three sides", "U-shaped cove"], ["l", "L-shape", "Two sides and a corner"]], a.shape || "line"), a.shape && a.shape !== "line" ? "Seamless connectors along each side, a 12 in linking cable around each corner." : null, true));
+      if (!a.shape || a.shape === "line") {
+        qs.push(q(a.job === "retrofit" ? "How many coves or runs?" : "How many runs?", num("runs", a.runs, 1, 999, a.runs === 1 ? "run" : "runs")));
+        qs.push(q("Length of each run", num("runFt", a.runFt, 1, 2000, "ft"), a.job === "retrofit" ? "A row of 25 four-foot fixtures end to end is 100 ft." : "Measure the length you want lit, end to end."));
+      } else {
+        const word = { tray: ["tray ceiling", "tray ceilings"], u: ["cove", "coves"], l: ["cove", "coves"] }[a.shape];
+        qs.push(q(`How many ${word[1]}?`, num("runs", a.runs, 1, 999, word[a.runs === 1 ? 0 : 1])));
+        qs.push(q(a.shape === "tray" ? "Size of each tray" : "Side lengths", `<div class="pb-pair">${num("sideA", a.sideA, 1, 500, "ft")}<span aria-hidden="true">×</span>${num("sideB", a.sideB, 1, 500, "ft")}</div>`, a.shape === "tray" ? `Length × width, measured along the cove. ${E.ftIn(a.runFt * 12)} around.` : a.shape === "u" ? `The two matching sides × the side between them. ${E.ftIn(a.runFt * 12)} in all.` : `The two sides of the L. ${E.ftIn(a.runFt * 12)} in all.`));
+      }
     } else {
       qs.push(q(a.job === "retrofit" ? "How many fixtures?" : "How many fixtures?", num("qty", a.qty, 1, 9999, a.qty === 1 ? "fixture" : "fixtures")));
     }
@@ -257,8 +268,58 @@
     return s + "</svg>";
   }
 
+  // Plan view of a tray ceiling, U or L cove: bars along each side, linking cables around the corners.
+  function drawShape(L) {
+    const A = L.sides[0].ft * 12, B = (L.sides[1] || { ft: 0 }).ft * 12;
+    const sc = Math.min(860 / Math.max(A, 1), 440 / Math.max(B, 1));
+    const pad = 70, W = Math.round(A * sc + pad * 2), H = Math.round(B * sc + pad * 2);
+    const P = [[pad, pad], [pad + A * sc, pad], [pad + A * sc, pad + B * sc], [pad, pad + B * sc]];   // corners, clockwise from top left
+    const cx = W / 2, cy = H / 2;
+    const bars = [];   // {x1,y1,x2,y2,len}
+    L.sides.forEach((sd, i) => {
+      const [ax, ay] = P[i % 4], [bx, by] = P[(i + 1) % 4];
+      const ux = Math.sign(bx - ax), uy = Math.sign(by - ay);
+      let t = (sd.gap * sc) / 2;
+      sd.seq.forEach(len => { const w = L.len[len] * sc; bars.push({ x1: ax + ux * t, y1: ay + uy * t, x2: ax + ux * (t + w), y2: ay + uy * (t + w), len, side: i }); t += w; });
+    });
+    const toward = (x, y, d) => { const dx = cx - x, dy = cy - y, n = Math.hypot(dx, dy) || 1; return [x + dx / n * d, y + dy / n * d]; };
+    let s = `<svg class="pb-draw shape" viewBox="0 0 ${W} ${H}" role="img" aria-label="Plan of one ${h(E.SHAPE_NAME[L.shape])}: ${L.seq.length} bars">`;
+    s += `<path class="ceil" d="M${P[0]} L${P[1]} L${P[2]} L${P[3]} Z"/>`;
+    const ln = (b, cls, i) => `<line class="${cls}" x1="${b.x1 + Math.sign(b.x2 - b.x1) * 1.5}" y1="${b.y1 + Math.sign(b.y2 - b.y1) * 1.5}" x2="${b.x2 - Math.sign(b.x2 - b.x1) * 1.5}" y2="${b.y2 - Math.sign(b.y2 - b.y1) * 1.5}">${i != null ? `<title>${b.len} ft bar #${i + 1}</title>` : ""}</line>`;
+    s += bars.map((b, i) => ln(b, "sbar", null) + ln(b, "sbar-in", i)).join("");
+    // joins
+    const corners = new Set(L.corners);
+    let k = 0; const ends = [];
+    L.segs.forEach((seg, si) => {
+      const zones = L.zones[si]; let zi = 0, inZ = 0, zoneStart = k;
+      seg.forEach((len, bi) => {
+        inZ += 1; const zoneEnd = inZ === zones[zi];
+        const b = bars[k], nb = bars[k + 1];
+        if (bi < seg.length - 1) {
+          if (corners.has(k)) { const d1x = Math.sign(b.x2 - b.x1), d1y = Math.sign(b.y2 - b.y1), d2x = Math.sign(nb.x2 - nb.x1), d2y = Math.sign(nb.y2 - nb.y1); s += `<path class="lc${zoneEnd ? " nodim" : ""}" d="M${b.x2} ${b.y2} C ${b.x2 + d1x * 34} ${b.y2 + d1y * 34} ${nb.x1 - d2x * 34} ${nb.y1 - d2y * 34} ${nb.x1} ${nb.y1}"/>`; }
+          else s += `<circle class="${zoneEnd ? "ssc nodim" : "ssc"}" cx="${b.x2}" cy="${b.y2}" r="4.5"/>`;
+        }
+        if (zoneEnd) { ends.push({ from: zoneStart, to: k }); zoneStart = k + 1; zi += 1; inZ = 0; }
+        k += 1;
+      });
+      const f = bars[k - seg.length];
+      const [fx, fy] = toward(f.x1, f.y1, -26);
+      s += `<path class="feed" d="M${fx} ${fy} L${f.x1} ${f.y1}"/><circle class="feed-dot" cx="${fx}" cy="${fy}" r="10"/><path class="bolt" d="M${fx - 1} ${fy - 6} l-3 6 h4 l-2 5 5-7 h-4 l2-4z"/>`;
+      if (si > 0) { const pb = bars[k - seg.length - 1]; s += `<path class="brk" d="M${(pb.x2 + f.x1) / 2} ${(pb.y2 + f.y1) / 2} L${toward((pb.x2 + f.x1) / 2, (pb.y2 + f.y1) / 2, 22).join(" ")}"/>`; }
+    });
+    if (L.sensor) ends.forEach(z => {
+      const bi = L.family === "max" ? z.from : L.place === "start" ? z.from : L.place === "middle" ? Math.floor((z.from + z.to) / 2) : z.to;
+      const b = bars[bi]; const mx = L.place === "end" && L.family !== "max" ? b.x2 * 0.8 + b.x1 * 0.2 : (b.x1 + b.x2) / 2, my = L.place === "end" && L.family !== "max" ? b.y2 * 0.8 + b.y1 * 0.2 : (b.y1 + b.y2) / 2;
+      const [sx, sy] = toward(mx, my, 24);
+      s += `<path class="lead" d="M${mx} ${my} L${sx} ${sy}"/><circle class="sensor" cx="${sx}" cy="${sy}" r="9"/><text class="sl" x="${sx}" y="${sy + 3.5}" text-anchor="middle">S</text>`;
+    });
+    return s + "</svg>";
+  }
+
   function legendRun(L) {
-    const parts = [`<span class="len">${E.ftIn(L.runIn)} run, ${E.ftIn(L.lit)} lit</span>`, `<span><i class="k bar"></i>bars (${[4, 3, 2].map(len => [len, L.seq.filter(x => x === len).length]).filter(x => x[1]).map(([len, n]) => `${n} × ${len} ft`).join(", ")})</span>`, `<span><i class="k feed"></i>power feed</span>`, `<span><i class="k ssc"></i>seamless connector</span>`];
+    const shaped = L.shape && L.shape !== "line";
+    const parts = [`<span class="len">${shaped ? `${E.ftIn(L.sides[0].ft * 12)} × ${E.ftIn(L.sides[1].ft * 12)}, ${E.ftIn(L.lit)} lit` : `${E.ftIn(L.runIn)} run, ${E.ftIn(L.lit)} lit`}</span>`, `<span><i class="k bar"></i>bars (${[4, 3, 2].map(len => [len, L.seq.filter(x => x === len).length]).filter(x => x[1]).map(([len, n]) => `${n} × ${len} ft`).join(", ")})</span>`, `<span><i class="k feed"></i>power feed</span>`, `<span><i class="k ssc${shaped ? " dot" : ""}"></i>seamless connector</span>`];
+    if (shaped && L.corners.length) parts.push(`<span><i class="k lc"></i>12 in linking cable at a corner</span>`);
     if (L.sensor) parts.push(`<span><i class="k sensor"></i>sensor</span>`);
     if (L.zones.flat().length > L.segs.length) parts.push(`<span><i class="k nodim"></i>zone break (non-dimming connector)</span>`);
     if (L.segs.length > 1) parts.push(`<span><i class="k brk"></i>next feed starts</span>`);
@@ -319,7 +380,7 @@
       html += `<article class="pb-ao" id="pb-a-${a.id}">
         <header><span class="pb-n">${i + 1}</span><div><h4>${h(areaTitle(a, i))}</h4><p>${h(areaSummary(r))}${r.area.model === "auto" ? "" : ""}</p></div><button type="button" class="pb-link" data-edit="${a.id}">Edit</button></header>
         <div class="pb-ao-body">
-          <figure class="pb-fig">${r.layout ? (r.layout.kind === "run" ? drawRun(r.layout) + legendRun(r.layout) : drawFixture(r.layout)) : ""}<figcaption>${r.layout && r.layout.kind === "run" ? "One run, to scale" : "One fixture"}</figcaption></figure>
+          <figure class="pb-fig">${r.layout ? (r.layout.kind === "run" ? (r.layout.shape && r.layout.shape !== "line" ? drawShape(r.layout) : drawRun(r.layout)) + legendRun(r.layout) : drawFixture(r.layout)) : ""}<figcaption>${r.layout && r.layout.kind === "run" ? (r.layout.shape && r.layout.shape !== "line" ? `One ${E.SHAPE_NAME[r.layout.shape]}, seen from below, to scale` : "One run, to scale") : "One fixture"}</figcaption></figure>
           <ul class="pb-notes">${r.notes.map(n => `<li>${h(n)}</li>`).join("")}${r.area._assumed && r.area._assumed.length ? `<li class="as">Assumed from your description: ${h(r.area._assumed.join(", "))}. Change it in the area if that is not right.</li>` : ""}</ul>
         </div>
         ${linesTable(r.lines.map(l => Object.assign({ areas: [] }, l)), false)}
