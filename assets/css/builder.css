@@ -182,7 +182,9 @@
 .pb-draw .feed-dot { fill: var(--accent); }
 .pb-draw .bolt { fill: #fff; }
 .pb-draw .sensor { fill: #1f8a4c; }
-.pb-draw .sl { fill: #fff; font-size: 9.5px; font-weight: 800; }
+.pb-draw .sensor.box { fill: #1f8a4c; }
+.pb-draw .sbox { stroke: #1f8a4c; stroke-width: 16; stroke-linecap: butt; }
+.pb-legend .k.sensor.box { width: 10px; height: 14px; border-radius: 2px; }
 .pb-draw .lead { stroke: #1f8a4c; stroke-width: 1.5; }
 .pb-draw .dim { fill: none; stroke: var(--muted); stroke-width: 1; }
 .pb-draw .dt { fill: var(--muted); font-size: 12px; font-weight: 600; }

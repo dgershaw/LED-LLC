@@ -11,6 +11,7 @@
   const fmt = E.fmt;
   const KEY = "lbi-project-builder-v1";
   const EMAIL = "sales@led-llc.com";
+  const EXACT_NOTE = "Run lengths are taken as exact: each run is filled to light as much of its length as possible without going over, with 3 in kept clear for every incoming power cable.";
 
   const EXAMPLES = [
     "For example, in my project I have quantity 20 of 2 x 4 troffer fixtures in the ceiling. In each fixture, I am replacing three T8 fluorescent lamps. I want a Mesh Bluetooth control to control the whole space.",
@@ -181,7 +182,7 @@
       qs.push(q("Silvair device", seg("meshKind", kinds, a.meshKind)));
       if (a.meshKind === "sensor" && m.family === "lbi") qs.push(q("Sensor type", seg("sensor", [["oc2", "Microwave"], ["pir", "Passive infrared"]], a.sensor === "pir" ? "pir" : "oc2")));
     }
-    if ((a.ctl === "simple" || a.ctl === "mesh") && isRun && m.family !== "max") qs.push(q("Sensor position in the run", seg("place", [["end", "At the end", "Recommended"], ["middle", "In the middle"], ["start", "Next to the feed"]], a.place, "flow"), "One sensor for every 15 bars."));
+    if ((a.ctl === "simple" || a.ctl === "mesh") && isRun && m.family !== "max") qs.push(q("Where the sensors go", seg("place", [["tucked", "Tucked behind the bars", "At the ends of the run, on 6 in jumper cables"], ["inline", "In line between bars", `Takes about ${E.SENSOR_IN} in per sensor`]], a.place), "One sensor for every 15 bars."));
     if (m.id === "g2") adv.push(q("Tunable white remote", seg("irwc", [[false, "No", "Not needed"], [true, "Add one", "RC-REMOTE-IRWC"]], a.irwc)));
     if (m.id === "plus") adv.push(q("Color remote", seg("rgb", [[true, "Add one", "Unlocks color"], [false, "White light only"]], a.rgb)));
     // emergency
@@ -238,90 +239,80 @@
   function drawRun(L) {
     const W = 1000, x0 = 24, x1 = W - 24, y = 44;
     const sc = (x1 - x0) / Math.max(L.runIn, 1);
-    const fam = L.family;
+    const X = (inches) => x0 + inches * sc;
     let s = `<svg class="pb-draw run" viewBox="0 0 ${W} 100" role="img" aria-label="Layout of one run: ${L.seq.length} bars">`;
     s += `<path class="dim" d="M${x0} 92 H ${x1} M${x0} 86 V 98 M${x1} 86 V 98"/>`;
-    let x = x0 + (L.gap * sc) / 2, k = 0;
-    L.segs.forEach((seg, si) => {
-      // feed marker
-      s += `<circle class="feed-dot" cx="${x}" cy="${y - 22}" r="8"/><path class="bolt" d="M${x - 1} ${y - 28} l-3 6 h4 l-2 5 5-7 h-4 l2-4z"/><path class="feed" d="M${x} ${y - 14} V ${y - 2}"/>`;
-      const zones = L.zones[si];
-      let zi = 0, inZone = 0;
-      const zoneStarts = [];
-      seg.forEach((len, bi) => {
-        const w = L.len[len] * sc;
-        if (inZone === 0) zoneStarts.push({ x, n: zones[zi] });
-        s += `<rect class="bar len${len}" x="${x + 0.6}" y="${y}" width="${Math.max(1, w - 1.2)}" height="14" rx="3"><title>${len} ft bar #${k + 1}</title></rect>`;
-        inZone += 1; k += 1;
-        const endOfZone = inZone === zones[zi];
-        if (bi < seg.length - 1) s += `<rect class="${endOfZone ? "ssc nodim" : "ssc"}" x="${x + w - 1.5}" y="${y - 3}" width="3" height="20" rx="1"/>`;
-        x += w;
-        if (endOfZone) { zoneStarts[zoneStarts.length - 1].x1 = x; zi += 1; inZone = 0; }
-      });
-      if (L.sensor && fam !== "max") zoneStarts.forEach(z => {
-        const sx = L.place === "start" ? z.x + 6 : L.place === "middle" ? (z.x + z.x1) / 2 : z.x1 - 6;
-        s += `<circle class="sensor" cx="${sx}" cy="${y + 28}" r="7"/><text class="sl" x="${sx}" y="${y + 31.5}" text-anchor="middle">S</text><path class="lead" d="M${sx} ${y + 21} V ${y + 14}"/>`;
-      });
-      if (L.sensor && fam === "max") zoneStarts.forEach(z => { s += `<circle class="sensor" cx="${z.x + 8}" cy="${y + 28}" r="7"/><text class="sl" x="${z.x + 8}" y="${y + 31.5}" text-anchor="middle">S</text>`; });
-      if (si < L.segs.length - 1) s += `<path class="brk" d="M${x} ${y - 6} V ${y + 20}"/>`;
+    L.feeds.forEach(f => {
+      const fx = X(f.x), bx = X(L.bars[f.k].x);
+      s += `<path class="feed" d="M${fx} ${y + 7} H ${bx} M${fx} ${y - 14} V ${y + 7}"/><circle class="feed-dot" cx="${fx}" cy="${y - 22}" r="8"/><path class="bolt" d="M${fx - 1} ${y - 28} l-3 6 h4 l-2 5 5-7 h-4 l2-4z"/>`;
+    });
+    L.bars.forEach(b => { const bx = X(b.x), w = L.len[b.len] * sc; s += `<rect class="bar len${b.len}" x="${bx + 0.6}" y="${y}" width="${Math.max(1, w - 1.2)}" height="14" rx="3"><title>${b.len} ft bar #${b.k + 1}</title></rect>`; });
+    L.joins.forEach(j => {
+      const b = L.bars[j.after], ex = X(b.x + L.len[b.len]);
+      if (j.kind === "ssc" || j.kind === "nodim" || j.kind === "lcNo") s += `<rect class="ssc${j.kind === "ssc" ? "" : " nodim"}" x="${ex - 1.5}" y="${y - 3}" width="3" height="20" rx="1"/>`;
+      else if (j.kind === "break") s += `<path class="brk" d="M${(ex + X(L.bars[j.after + 1].x)) / 2} ${y - 6} V ${y + 20}"/>`;
+    });
+    L.sensors.forEach(sn => {
+      const sx = X(sn.x);
+      if (sn.builtin) s += `<circle class="sensor" cx="${sx + 8}" cy="${y + 28}" r="7"/>`;
+      else if (sn.tucked) { const d = sn.atEnd === "end" ? -1 : 1; s += `<path class="lead" d="M${sx} ${y + 14} v 7 h ${d * 9}"/><circle class="sensor" cx="${sx + d * 9}" cy="${y + 28}" r="7"/>`; }
+      else s += `<rect class="sensor box" x="${sx}" y="${y - 1}" width="${Math.max(5, L.sensorIn * sc)}" height="16" rx="2"/>`;
     });
     return s + "</svg>";
   }
 
   // Plan view of a tray ceiling, U or L cove: bars along each side, linking cables around the corners.
   function drawShape(L) {
-    const A = L.sides[0].ft * 12, B = (L.sides[1] || { ft: 0 }).ft * 12;
+    const A = L.sides[0].len, B = (L.sides[1] || { len: 0 }).len;
     const sc = Math.min(860 / Math.max(A, 1), 440 / Math.max(B, 1));
     const pad = 70, W = Math.round(A * sc + pad * 2), H = Math.round(B * sc + pad * 2);
     const P = [[pad, pad], [pad + A * sc, pad], [pad + A * sc, pad + B * sc], [pad, pad + B * sc]];   // corners, clockwise from top left
+    const U = [[1, 0], [0, 1], [-1, 0], [0, -1]];
+    const pt = (side, inches) => [P[side % 4][0] + U[side % 4][0] * inches * sc, P[side % 4][1] + U[side % 4][1] * inches * sc];
     const cx = W / 2, cy = H / 2;
-    const bars = [];   // {x1,y1,x2,y2,len}
-    L.sides.forEach((sd, i) => {
-      const [ax, ay] = P[i % 4], [bx, by] = P[(i + 1) % 4];
-      const ux = Math.sign(bx - ax), uy = Math.sign(by - ay);
-      let t = (sd.gap * sc) / 2;
-      sd.seq.forEach(len => { const w = L.len[len] * sc; bars.push({ x1: ax + ux * t, y1: ay + uy * t, x2: ax + ux * (t + w), y2: ay + uy * (t + w), len, side: i }); t += w; });
-    });
     const toward = (x, y, d) => { const dx = cx - x, dy = cy - y, n = Math.hypot(dx, dy) || 1; return [x + dx / n * d, y + dy / n * d]; };
     let s = `<svg class="pb-draw shape" viewBox="0 0 ${W} ${H}" role="img" aria-label="Plan of one ${h(E.SHAPE_NAME[L.shape])}: ${L.seq.length} bars">`;
     s += `<path class="ceil" d="M${P[0]} L${P[1]} L${P[2]} L${P[3]} Z"/>`;
-    const ln = (b, cls, i) => `<line class="${cls}" x1="${b.x1 + Math.sign(b.x2 - b.x1) * 1.5}" y1="${b.y1 + Math.sign(b.y2 - b.y1) * 1.5}" x2="${b.x2 - Math.sign(b.x2 - b.x1) * 1.5}" y2="${b.y2 - Math.sign(b.y2 - b.y1) * 1.5}">${i != null ? `<title>${b.len} ft bar #${i + 1}</title>` : ""}</line>`;
-    s += bars.map((b, i) => ln(b, "sbar", null) + ln(b, "sbar-in", i)).join("");
-    // joins
-    const corners = new Set(L.corners);
-    let k = 0; const ends = [];
-    L.segs.forEach((seg, si) => {
-      const zones = L.zones[si]; let zi = 0, inZ = 0, zoneStart = k;
-      seg.forEach((len, bi) => {
-        inZ += 1; const zoneEnd = inZ === zones[zi];
-        const b = bars[k], nb = bars[k + 1];
-        if (bi < seg.length - 1) {
-          if (corners.has(k)) { const d1x = Math.sign(b.x2 - b.x1), d1y = Math.sign(b.y2 - b.y1), d2x = Math.sign(nb.x2 - nb.x1), d2y = Math.sign(nb.y2 - nb.y1); s += `<path class="lc${zoneEnd ? " nodim" : ""}" d="M${b.x2} ${b.y2} C ${b.x2 + d1x * 34} ${b.y2 + d1y * 34} ${nb.x1 - d2x * 34} ${nb.y1 - d2y * 34} ${nb.x1} ${nb.y1}"/>`; }
-          else s += `<circle class="${zoneEnd ? "ssc nodim" : "ssc"}" cx="${b.x2}" cy="${b.y2}" r="4.5"/>`;
-        }
-        if (zoneEnd) { ends.push({ from: zoneStart, to: k }); zoneStart = k + 1; zi += 1; inZ = 0; }
-        k += 1;
-      });
-      const f = bars[k - seg.length];
-      const [fx, fy] = toward(f.x1, f.y1, -26);
-      s += `<path class="feed" d="M${fx} ${fy} L${f.x1} ${f.y1}"/><circle class="feed-dot" cx="${fx}" cy="${fy}" r="10"/><path class="bolt" d="M${fx - 1} ${fy - 6} l-3 6 h4 l-2 5 5-7 h-4 l2-4z"/>`;
-      if (si > 0) { const pb = bars[k - seg.length - 1]; s += `<path class="brk" d="M${(pb.x2 + f.x1) / 2} ${(pb.y2 + f.y1) / 2} L${toward((pb.x2 + f.x1) / 2, (pb.y2 + f.y1) / 2, 22).join(" ")}"/>`; }
+    const seg = (a, b, cls, title) => `<line class="${cls}" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}">${title ? `<title>${title}</title>` : ""}</line>`;
+    L.bars.forEach(b => {
+      const a1 = pt(b.side, b.x + 0.75 / sc), a2 = pt(b.side, b.x + L.len[b.len] - 0.75 / sc);
+      s += seg(a1, a2, "sbar") + seg(a1, a2, "sbar-in", `${b.len} ft bar #${b.k + 1}`);
     });
-    if (L.sensor) ends.forEach(z => {
-      const bi = L.family === "max" ? z.from : L.place === "start" ? z.from : L.place === "middle" ? Math.floor((z.from + z.to) / 2) : z.to;
-      const b = bars[bi]; const mx = L.place === "end" && L.family !== "max" ? b.x2 * 0.8 + b.x1 * 0.2 : (b.x1 + b.x2) / 2, my = L.place === "end" && L.family !== "max" ? b.y2 * 0.8 + b.y1 * 0.2 : (b.y1 + b.y2) / 2;
-      const [sx, sy] = toward(mx, my, 24);
-      s += `<path class="lead" d="M${mx} ${my} L${sx} ${sy}"/><circle class="sensor" cx="${sx}" cy="${sy}" r="9"/><text class="sl" x="${sx}" y="${sy + 3.5}" text-anchor="middle">S</text>`;
+    L.joins.forEach(j => {
+      const b = L.bars[j.after], e = pt(b.side, b.x + L.len[b.len]);
+      if (j.kind === "ssc" || j.kind === "nodim" || j.kind === "lcNo") s += `<circle class="ssc${j.kind === "ssc" ? "" : " nodim"}" cx="${e[0]}" cy="${e[1]}" r="4.5"/>`;
+      else if (j.kind === "corner" || j.kind === "cornerNo") {
+        const nb = L.bars[j.after + 1], n = pt(nb.side, nb.x), u1 = U[b.side % 4], u2 = U[nb.side % 4];
+        s += `<path class="lc${j.kind === "cornerNo" ? " nodim" : ""}" d="M${e[0]} ${e[1]} C ${e[0] + u1[0] * 34} ${e[1] + u1[1] * 34} ${n[0] - u2[0] * 34} ${n[1] - u2[1] * 34} ${n[0]} ${n[1]}"/>`;
+      } else if (j.kind === "break") {
+        const nb = L.bars[j.after + 1], n = pt(nb.side, nb.x), mx = (e[0] + n[0]) / 2, my = (e[1] + n[1]) / 2;
+        s += `<path class="brk" d="M${mx} ${my} L${toward(mx, my, 22).join(" ")}"/>`;
+      }
+    });
+    L.feeds.forEach(f => {
+      const b = L.bars[f.k], fp = pt(f.side, f.x), bp = pt(b.side, b.x), [ox, oy] = toward(fp[0], fp[1], -26);
+      s += `<path class="feed" d="M${fp[0]} ${fp[1]} L${bp[0]} ${bp[1]} M${ox} ${oy} L${fp[0]} ${fp[1]}"/><circle class="feed-dot" cx="${ox}" cy="${oy}" r="10"/><path class="bolt" d="M${ox - 1} ${oy - 6} l-3 6 h4 l-2 5 5-7 h-4 l2-4z"/>`;
+    });
+    L.sensors.forEach(sn => {
+      const p = pt(sn.side, sn.x);
+      if (sn.builtin) { const [tx, ty] = toward(p[0], p[1], 24); s += `<circle class="sensor" cx="${tx}" cy="${ty}" r="9"/>`; }
+      else if (sn.tucked) { const q = pt(sn.side, sn.x + (sn.atEnd === "end" ? -10 : 10)); const [tx, ty] = toward(q[0], q[1], 24); s += `<path class="lead" d="M${p[0]} ${p[1]} L${tx} ${ty}"/><circle class="sensor" cx="${tx}" cy="${ty}" r="9"/>`; }
+      else s += seg(p, pt(sn.side, sn.x + L.sensorIn), "sbox");
     });
     return s + "</svg>";
   }
 
   function legendRun(L) {
     const shaped = L.shape && L.shape !== "line";
-    const parts = [`<span class="len">${shaped ? `${E.ftIn(L.sides[0].ft * 12)} × ${E.ftIn(L.sides[1].ft * 12)}, ${E.ftIn(L.lit)} lit` : `${E.ftIn(L.runIn)} run, ${E.ftIn(L.lit)} lit`}</span>`, `<span><i class="k bar"></i>bars (${[4, 3, 2].map(len => [len, L.seq.filter(x => x === len).length]).filter(x => x[1]).map(([len, n]) => `${n} × ${len} ft`).join(", ")})</span>`, `<span><i class="k feed"></i>power feed</span>`, `<span><i class="k ssc${shaped ? " dot" : ""}"></i>seamless connector</span>`];
+    const parts = [`<span class="len">${shaped ? `${E.ftIn(L.sides[0].len)} × ${E.ftIn(L.sides[1].len)}` : `${E.ftIn(L.runIn)} run`}, ${E.ftIn(L.lit)} lit${L.spare > 0.05 ? `, ${E.ftIn(L.spare)} to spare` : ""}</span>`,
+      `<span><i class="k bar"></i>bars (${[4, 3, 2].map(len => [len, L.seq.filter(x => x === len).length]).filter(x => x[1]).map(([len, n]) => `${n} × ${len} ft`).join(", ")})</span>`,
+      `<span><i class="k feed"></i>power feed, ${L.feedIn} in kept clear for the cable</span>`, `<span><i class="k ssc${shaped ? " dot" : ""}"></i>seamless connector</span>`];
     if (shaped && L.corners.length) parts.push(`<span><i class="k lc"></i>12 in linking cable at a corner</span>`);
-    if (L.sensor) parts.push(`<span><i class="k sensor"></i>sensor</span>`);
-    if (L.zones.flat().length > L.segs.length) parts.push(`<span><i class="k nodim"></i>zone break (non-dimming connector)</span>`);
+    if (L.sensor && L.family !== "max") {
+      if (L.sensors.some(x => x.tucked)) parts.push(`<span><i class="k sensor"></i>sensor, tucked behind the bars on a 6 in jumper</span>`);
+      if (L.sensors.some(x => !x.tucked)) parts.push(`<span><i class="k sensor box"></i>in-line sensor, about ${L.sensorIn} in</span>`);
+    } else if (L.sensor) parts.push(`<span><i class="k sensor"></i>unit with the sensor built in</span>`);
+    if (L.joins.some(j => j.kind === "nodim" || j.kind === "lcNo" || j.kind === "cornerNo")) parts.push(`<span><i class="k nodim"></i>zone break (non-dimming)</span>`);
     if (L.segs.length > 1) parts.push(`<span><i class="k brk"></i>next feed starts</span>`);
     return `<p class="pb-legend">${parts.join("")}</p>`;
   }
@@ -373,7 +364,7 @@
     </div>`;
     html += `<h3 class="pb-h3">Everything to order</h3>`;
     html += linesTable(P.lines, true);
-    html += `<p class="pb-fine">Parts sold in packs of 10 are rounded up to whole packs in the Order column. "Set to" is the FlexWatt and FlexColor switch position for each bar; we can preset it at the factory to save labor on site.</p>`;
+    html += `<p class="pb-fine">Parts sold in packs of 10 are rounded up to whole packs in the Order column. "Set to" is the FlexWatt and FlexColor switch position for each bar; we can preset it at the factory to save labor on site.${P.per.some(r => r.isRun) ? " " + EXACT_NOTE : ""}</p>`;
     html += `<h3 class="pb-h3">Area by area</h3><div class="pb-areas-out">`;
     P.per.forEach((r, i) => {
       const a = state.areas[i];
@@ -468,7 +459,7 @@
   });
   document.addEventListener("change", (ev) => {
     const t = ev.target;
-    if (t.type === "number" && t.dataset.k && areaOf(t)) { const a = areaOf(t); if (t.value === "") t.value = a[t.dataset.k] || 0; setVal(a, t.dataset.k, t.value); renderAll(); }
+    if (t.type === "number" && t.dataset.k && areaOf(t)) { const a = areaOf(t); if (t.value === "") t.value = a[t.dataset.k] || 0; if (+t.value === +a[t.dataset.k]) return; setVal(a, t.dataset.k, t.value); renderAll(); }
   });
   $("#pb-text") && $("#pb-text").addEventListener("keydown", (ev) => { if ((ev.metaKey || ev.ctrlKey) && ev.key === "Enter") readText(); });
 
@@ -580,6 +571,7 @@
     rows1.push({ cells: ["Totals"], s: 2 });
     rows1.push({ cells: ["Light bars", P.totals.bars] }, { cells: ["Power feeds", P.totals.feeds] }, { cells: ["Sensors", P.totals.sensors] }, { cells: ["Connected load (W)", P.totals.watts] });
     rows1.push({ cells: [] });
+    if (P.per.some(r => r.isRun)) rows1.push({ cells: [EXACT_NOTE], s: 4 });
     rows1.push({ cells: ["A recommendation from the LBI spec sheets. Our team confirms quantities, settings and lead times on the quote. sales@led-llc.com · 847.380.3540"], s: 4 });
     const rows2 = head.slice();
     rows2.push({ cells: ["Area", "Part #", "Description", "Setting", "Qty", "Order"], s: 3 });
@@ -708,7 +700,7 @@
     let g = null;
     for (const l of P.lines) { if (l.g !== g) { g = l.g; groupRow(g); } row(l, fmt(l.qty), E.orderText(l)); }
     y += 6;
-    wrap("Parts sold in packs are rounded up to whole packs in the Order column. \"Set to\" is the FlexWatt and FlexColor switch position for each bar; we can preset it at the factory.", 8, false, PW - 2 * M).forEach(t => { need(12); text(M, y + 8, t, 8, false, MUTED); y += 11; });
+    wrap("Parts sold in packs are rounded up to whole packs in the Order column. \"Set to\" is the FlexWatt and FlexColor switch position for each bar; we can preset it at the factory." + (P.per.some(r => r.isRun) ? " " + EXACT_NOTE : ""), 8, false, PW - 2 * M).forEach(t => { need(12); text(M, y + 8, t, 8, false, MUTED); y += 11; });
     // areas
     P.per.forEach((r, i) => {
       y += 16; need(90);
@@ -774,6 +766,7 @@
     contactLines().forEach(([k, v]) => lines.push(`${k}: ${v}`));
     lines.push("", "AREAS");
     P.per.forEach((r, i) => lines.push(`${i + 1}. ${areaTitle(state.areas[i], i)}: ${areaSummary(r)} (${areaSpec(r)})`));
+    if (P.per.some(r => r.isRun)) lines.push("", EXACT_NOTE);
     lines.push("", "BILL OF MATERIALS");
     P.lines.forEach(l => lines.push(`${E.orderText(l)} | ${l.pn}${l.set ? " | " + l.set : ""}`));
     lines.push("", "Open this list: " + shareLink(), "", "(I can attach the PDF or Excel file from the LBI Project Builder.)");

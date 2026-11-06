@@ -242,6 +242,86 @@
   const CORNER_IN = 12;
   function sidesOf(a) { return (SHAPE_SIDES[a.shape] || SHAPE_SIDES.line)(a).map(x => +x || 0); }
 
+  // What else takes up length in a run (David, 2026-11-06): the incoming power cable adds 1.6 in per the spec sheet, and
+  // David keeps 3 in clear for it; a sensor tucked behind the bars at the end of a run on a 6 in jumper adds nothing.
+  const FEED_IN = 3;
+  // ASSUMED: an in-line sensor or node sitting between two bars takes about this much of the run; David to confirm.
+  const SENSOR_IN = 4;
+  const TUCK_IN = 6;   // the jumper cable to a sensor tucked behind the bars
+
+  /**
+   * Plan one run: fill each straight side with bars, leaving room for the power cables and any in-line sensors, and
+   * work out where every feed, sensor, connector and cable goes. Positions are inches from the start of each side.
+   */
+  function planRun(m, sideFts, volts, senLen, place, builtinSensors) {
+    const sidesIn = sideFts.map(ft => ft * 12);
+    let reserve = sidesIn.map(() => 0);
+    let out = null;
+    for (let iter = 0; iter < 12; iter++) {
+      const sides = sidesIn.map((len, i) => { const f = fillRun(m, Math.max(0, len - reserve[i])); return { ft: sideFts[i], len, seq: f.seq, lit: f.lit }; });
+      const seq = [], sideOf = [];
+      sides.forEach((sd, i) => sd.seq.forEach(L => { seq.push(L); sideOf.push(i); }));
+      const cornerAfter = new Set();
+      for (let k = 1; k < seq.length; k++) if (sideOf[k] !== sideOf[k - 1]) cornerAfter.add(k - 1);
+      const segs = splitFeeds(m, seq, volts, cornerAfter.size > 0 || (senLen && place === "tucked"));
+      const zones = segs.map(sg => senLen || builtinSensors ? zonesOf(sg.length) : [sg.length]);
+      const need = sidesIn.map(() => 0);
+      const bars = seq.map((len, k) => ({ k, len, side: sideOf[k] }));
+      const feeds = [], sensors = [], joins = [];
+      let k = 0;
+      segs.forEach((sg, si) => {
+        feeds.push({ k, side: sideOf[k] }); need[sideOf[k]] += FEED_IN;
+        const z = zones[si]; let zk = k;
+        z.forEach((n, zi) => {
+          const first = zi === 0, last = zi === z.length - 1;
+          if (senLen) {
+            let s;
+            if (place === "tucked" && last) s = { k: zk + n - 1, side: sideOf[zk + n - 1], tucked: true, atEnd: "end" };
+            else if (place === "tucked" && first) s = { k: zk, side: sideOf[zk], tucked: true, atEnd: "start" };
+            else { s = { k: zk, side: sideOf[zk], tucked: false, atEnd: "start" }; need[sideOf[zk]] += SENSOR_IN; }
+            s.zone = zi; s.seg = si; sensors.push(s);
+          } else if (builtinSensors) sensors.push({ k: zk, side: sideOf[zk], builtin: true, atEnd: "start", zone: zi, seg: si });
+          zk += n;
+        });
+        let inZ = 0, zi = 0;
+        for (let b = k; b < k + sg.length - 1; b++) {
+          inZ += 1;
+          const zoneEnd = inZ === z[zi];
+          const nextInline = zoneEnd && sensors.some(s => s.seg === si && s.k === b + 1 && !s.tucked && !s.builtin);
+          let kind;
+          if (cornerAfter.has(b)) kind = zoneEnd ? "cornerNo" : "corner";
+          else if (nextInline) kind = "lcNo";
+          else if (zoneEnd) kind = "nodim";
+          else kind = "ssc";
+          joins.push({ after: b, kind });
+          if (zoneEnd) { zi += 1; inZ = 0; }
+        }
+        k += sg.length;
+        if (si < segs.length - 1) joins.push({ after: k - 1, kind: "break" });
+      });
+      const fits = need.every((v, i) => v <= reserve[i] + 1e-9);
+      if (fits || iter === 11) {
+        // positions: spare length split between the two ends of each side
+        sides.forEach((sd, i) => { sd.need = need[i]; sd.spare = Math.max(0, sd.len - sd.lit - need[i]); });
+        const cur = sides.map(sd => sd.spare / 2);
+        bars.forEach(b => {
+          const i = b.side;
+          const f = feeds.find(x => x.k === b.k); if (f) { f.x = cur[i]; cur[i] += FEED_IN; }
+          const s = sensors.find(x => x.k === b.k && x.atEnd === "start" && !x.tucked && !x.builtin); if (s) { s.x = cur[i]; cur[i] += SENSOR_IN; }
+          b.x = cur[i]; cur[i] += m.len[b.len];
+        });
+        sensors.forEach(s => { if (s.x == null) { const b = bars[s.k]; s.x = s.atEnd === "end" ? b.x + m.len[b.len] : b.x; } });
+        const counts = { feeds: segs.length, sensors: sensors.filter(s => !s.builtin).length, inline: sensors.filter(s => !s.tucked && !s.builtin).length, jumpers: sensors.filter(s => s.tucked).length };
+        ["ssc", "nodim", "lcNo", "corner", "cornerNo"].forEach(kd => { counts[kd === "corner" ? "corners" : kd === "cornerNo" ? "cornersNo" : kd] = joins.filter(j => j.kind === kd).length; });
+        out = { sides, seq, segs, zones, cornerAfter, bars, feeds, sensors, joins, counts,
+          lit: sides.reduce((t, sd) => t + sd.lit, 0), spare: sides.reduce((t, sd) => t + sd.spare, 0), reserved: need.reduce((t, v) => t + v, 0) };
+        break;
+      }
+      reserve = reserve.map((r, i) => Math.max(r, need[i]));
+    }
+    return out;
+  }
+
   function wattIndex(m, L, target) {
     const lm = m.lm && m.lm[L];
     if (!lm) return m.watts[L].indexOf(m.def[L]);
@@ -257,7 +337,7 @@
       id: "a" + Date.now().toString(36) + seq, name: "", job: "retrofit", app: "troffer", size: "2x4", qty: 10,
       lamps: null, lamp: null, runFt: 40, runs: 1, shape: "line", sideA: 16, sideB: 12, env: "dry", model: "auto", barLen: 4, barsPer: null, cct: null, level: "match",
       watt: null, pair: "RO", mount: "surface", aim: "flat", volts: 120, feed: "hardwire", lead65: 3, chain: false, gapIn: 24,
-      ctl: "none", sensor: "oc2", meshKind: "sensor", place: "end", emg: 0, emgKind: "remote", irwc: false, rgb: true
+      ctl: "none", sensor: "oc2", meshKind: "sensor", place: "tucked", emg: 0, emgKind: "remote", irwc: false, rgb: true
     }, over || {});
   }
 
@@ -301,6 +381,7 @@
     a.qty = clamp(Math.round(+a.qty || 0), 0, 9999);
     a.runs = clamp(Math.round(+a.runs || 0), 0, 999);
     if (!SHAPE_SIDES[a.shape]) a.shape = "line";
+    if (!["tucked", "inline"].includes(a.place)) a.place = a.place === "middle" ? "inline" : "tucked";
     a.sideA = clamp(+a.sideA || 0, 0, 500); a.sideB = clamp(+a.sideB || 0, 0, 500);
     if (a.shape !== "line") a.runFt = Math.round(sidesOf(a).reduce((t, x) => t + x, 0) * 10) / 10;
     a.runFt = clamp(+a.runFt || 0, 0, 2000);
@@ -467,16 +548,14 @@
         else notes.push(`Controls: one in-line ${a.ctl === "mesh" ? "Silvair" : ""} sensor per fixture, plugged in at the end of the run (the far end of the last bar, away from the power feed), facing the room. One sensor controls up to ${SENSOR_CAPACITY} bars.`.replace("  ", " "));
       }
     } else {
-      // ---------------- continuous runs: coves, lines, perimeters
+      // ---------------- continuous runs: coves, lines, perimeters, tray ceilings
       units = a.runs;
       const shaped = a.shape && a.shape !== "line";
-      const sides = sidesOf(a).map(ft => Object.assign({ ft }, fillRun(m, ft * 12)));
       const runIn = a.runFt * 12;
-      const fill = { seq: [].concat(...sides.map(sd => sd.seq)), lit: sides.reduce((t, sd) => t + sd.lit, 0), gap: sides.reduce((t, sd) => t + sd.gap, 0) };
-      // what joins bar i to bar i+1: a seamless connector on a straight side, a linking cable around a corner
-      const cornerAfter = new Set(); { let k = 0; sides.forEach((sd, i) => { k += sd.seq.length; if (i < sides.length - 1 && sd.seq.length && k < fill.seq.length) cornerAfter.add(k - 1); }); }
-      const L = 4;
-      const lmTarget = null;
+      const senLen = hasSensor && m.family !== "max";
+      const plan = planRun(m, sidesOf(a), volts, senLen, a.place, hasSensor && m.family === "max");
+      const sides = plan.sides, segs = plan.segs, zonesBySeg = plan.zones, cornerAfter = plan.cornerAfter, C = plan.counts;
+      const fill = { seq: plan.seq, lit: plan.lit, gap: plan.spare };
       // the longest bars take the chosen level; shorter bars are set to the closest light per inch, so the run looks even
       const Lmain = fill.seq[0] || m.lens[0];
       const wsMain = m.watts[Lmain];
@@ -492,33 +571,16 @@
         m.lm[len].forEach((v, i) => { if (Math.abs(v / m.len[len] - perIn) < Math.abs(m.lm[len][bi] / m.len[len] - perIn)) bi = i; });
         return m.watts[len][bi];
       };
-      const segs = splitFeeds(m, fill.seq, volts, cornerAfter.size > 0);
-      let ssc = 0, nodim = 0, sensors = 0, corners = 0, cornersNo = 0, feeds = segs.length;
-      const zonesBySeg = segs.map(sg => hasSensor ? zonesOf(sg.length) : [sg.length]);
-      { let k = 0;
-        segs.forEach((sg, i) => {
-          const z = zonesBySeg[i]; let zi = 0, inZ = 0;
-          sensors += hasSensor ? z.length : 0;
-          sg.forEach((len, bi) => {
-            inZ += 1; const zoneEnd = inZ === z[zi]; if (zoneEnd) { zi += 1; inZ = 0; }
-            if (bi < sg.length - 1) {
-              const corner = cornerAfter.has(k);
-              if (corner) { if (zoneEnd) cornersNo += 1; else corners += 1; }
-              else if (zoneEnd) nodim += 1; else ssc += 1;
-            }
-            k += 1;
-          });
-        });
-      }
+      const feeds = segs.length;
+      const sensors = hasSensor ? zonesBySeg.flat().length : 0;
       const emgRuns = Math.min(a.emg, units);
       for (const len of [4, 3, 2]) {
         const n = fill.seq.filter(x => x === len).length;
         if (!n) continue;
         const w = wFor(len);
-        let plainPer = n;
         if (len === fill.seq[0]) {
-          if (emgRuns && a.emgKind === "builtin" && (m.emgBuiltIn || m.family === "max")) { addBars(len, w, emgRuns, { emg: true }); plainPer -= 0; }
-          if (m.family === "max" && hasSensor) { addBars(len, w, units * sensors, { sensor: maxSuffix() }); }
+          if (emgRuns && a.emgKind === "builtin" && (m.emgBuiltIn || m.family === "max")) addBars(len, w, emgRuns, { emg: true });
+          if (m.family === "max" && hasSensor) addBars(len, w, units * sensors, { sensor: maxSuffix() });
         }
         let plain = units * n;
         if (len === fill.seq[0]) {
@@ -529,14 +591,12 @@
       }
       // connectors and mounting
       if (m.family === "max") {
-        const joins = units * (ssc + nodim);
-        if (a.mount === "suspended") { add(ACC.maxSpnd, units * ssc); add(ACC.maxSil, units * zonesBySeg.flat().length); }
-        else add(ACC.maxSm, units * ssc);
-        add(ACC.sscNo, units * nodim);
-        void joins;
+        if (a.mount === "suspended") { add(ACC.maxSpnd, units * C.ssc); add(ACC.maxSil, units * zonesBySeg.flat().length); }
+        else add(ACC.maxSm, units * C.ssc);
+        add(ACC.sscNo, units * C.nodim);
       } else {
-        add(ACC.ssc, units * ssc);
-        add(ACC.sscNo, units * nodim);
+        add(ACC.ssc, units * C.ssc);
+        add(ACC.sscNo, units * C.nodim);
         if (m.family === "lbi") {
           const b = fill.seq.length;
           if (a.mount === "cove45" || (a.job === "retrofit" && a.aim === "45")) add(ACC.b45, units * b * 2);
@@ -544,11 +604,13 @@
           if (a.mount === "suspended") add(ACC.sil, units * (b + feeds));
         } else if (m.family === "lbi65" && a.mount === "suspended") add(ACC.spnd65, units * fill.seq.length * 2);
       }
-      if (corners || cornersNo) {
+      if (C.corners || C.cornersNo) {
         const lc = lcFor(CORNER_IN);
-        add(lc, units * corners);
-        if (cornersNo) add(Object.assign({}, lc, { pn: lc.pn.replace("-DIM", "-NODIM"), d: lc.d.replace("dimmable", "non-dimming (control zone break)") }), units * cornersNo);
+        add(lc, units * C.corners);
+        if (C.cornersNo) add(Object.assign({}, lc, { pn: lc.pn.replace("-DIM", "-NODIM"), d: lc.d.replace("dimmable", "non-dimming (control zone break)") }), units * C.cornersNo);
       }
+      if (C.jumpers) { const lc = lcFor(TUCK_IN); add(Object.assign({}, lc, { d: lc.d + " (jumper to a sensor tucked behind the bars)" }), units * C.jumpers); }
+      if (C.lcNo) { const lc = lcFor(TUCK_IN); add(Object.assign({}, lc, { pn: lc.pn.replace("-DIM", "-NODIM"), d: lc.d.replace("dimmable", "non-dimming (control zone break, to an in-line sensor)") }), units * C.lcNo); }
       add(feedAcc(), units * feeds);
       if (hasSensor && m.family !== "max") add(sensorAcc(), units * sensors);
       if (emgRuns && !(a.emgKind === "builtin" && (m.emgBuiltIn || m.family === "max"))) {
@@ -557,26 +619,39 @@
         else add(load <= 100 ? ACC.emg8 : ACC.emg25, emgRuns * (load <= 100 ? 1 : Math.ceil(load / 300)));
       }
       const counts = [4, 3, 2].map(len => [len, fill.seq.filter(x => x === len).length]).filter(x => x[1]);
-      layout = { kind: "run", seq: fill.seq, segs, zones: zonesBySeg, runIn, lit: fill.lit, gap: fill.gap, sensor: hasSensor, place: a.place, len: m.len, family: m.family,
-        shape: a.shape || "line", sides: sides.map(sd => ({ ft: sd.ft, seq: sd.seq, gap: sd.gap })), corners: [...cornerAfter], closed: a.shape === "tray" };
+      layout = { kind: "run", seq: fill.seq, segs, zones: zonesBySeg, runIn, lit: fill.lit, gap: fill.gap, spare: plan.spare, reserved: plan.reserved,
+        sensor: hasSensor, place: a.place, len: m.len, family: m.family, shape: a.shape || "line", closed: a.shape === "tray",
+        sides: sides.map(sd => ({ ft: sd.ft, len: sd.len, seq: sd.seq, lit: sd.lit, need: sd.need, spare: sd.spare })), corners: [...cornerAfter],
+        bars: plan.bars, feeds: plan.feeds, sensors: plan.sensors, joins: plan.joins, feedIn: FEED_IN, sensorIn: SENSOR_IN };
+      // what the length is spent on, for the notes
+      const spent = [];
+      spent.push(`${FEED_IN} in kept clear for ${feeds === 1 ? "the incoming power cable" : `each of the ${feeds} incoming power cables`}`);
+      if (C.inline) spent.push(`about ${SENSOR_IN} in for ${C.inline === 1 ? "the in-line sensor" : `each of the ${C.inline} in-line sensors`}`);
+      const spare = plan.spare;
+      const spareText = spare > 0.05 ? `, which leaves ${ftIn(spare)} to spare${shaped ? " over the sides" : " (split it between the two ends)"}` : ", using the full length";
+      const desc = (sq) => [4, 3, 2].map(len => [len, sq.filter(x => x === len).length]).filter(x => x[1]).map(([len, n]) => `${n} × ${len} ft`).join(" + ");
       if (shaped) {
-        const desc = (sd) => [4, 3, 2].map(len => [len, sd.seq.filter(x => x === len).length]).filter(x => x[1]).map(([len, n]) => `${n} × ${len} ft`).join(" + ");
         const uniq = [];
-        sides.forEach(sd => { const d = `${ftIn(sd.ft * 12)} side${sd.seq.length ? `: ${desc(sd)}` : ""}`; const u = uniq.find(x => x.d === d); if (u) u.n += 1; else uniq.push({ d, n: 1 }); });
-        notes.unshift(`Each ${SHAPE_NAME[a.shape]} (${a.shape === "l" ? `${a.sideA} × ${a.sideB} ft` : `${a.sideA} × ${a.sideB} ft`}, ${ftIn(runIn)} around): ${uniq.map(u => `${u.n > 1 ? `${u.n} × ` : ""}${u.d}`).join("; ")}. Bars on each straight side join with seamless connectors; ${corners + cornersNo === 1 ? "the linked corner takes" : `each of the ${corners + cornersNo} linked corners takes`} a ${CORNER_IN} in linking cable${cornersNo ? ` (${cornersNo === corners + cornersNo ? "all" : cornersNo} non-dimming, where a control zone ends at the corner)` : ""}.${cornerAfter.size > corners + cornersNo ? ` Where a new power feed starts at a corner, that corner is not linked.` : ""}${a.shape === "tray" ? " The run starts at one corner with the power feed and goes all the way around, so that last corner stays open: the run simply ends there." : ""} Measure each side along the cove, corner to corner.`);
-      } else notes.unshift(`Each ${a.runFt} ft run: ${counts.map(([len, n]) => `${n} × ${len} ft`).join(" + ")} bars end to end with seamless connectors, ${ftIn(fill.lit)} of light${fill.gap > 0.05 ? `, ${ftIn(fill.gap)} short of the full ${a.runFt} ft (split it between the two ends)` : ""}. A ${m.lens.includes(4) ? "\"4 ft\"" : ""} bar is ${m.len[4] || m.len[2]} in long, which is why the count is not simply length ÷ 4.`.replace("A  bar", "A bar"));
-      if (segs.length > 1) notes.push(`Power: ${segs.length} feeds per run (at ${volts}V one feed carries up to ${feedLimit(m, 4, volts, cornerAfter.size > 0)} four-foot bars). Feed ${segs.map((s, i) => `${i + 1} powers bars ${segs.slice(0, i).reduce((t, x) => t + x.length, 0) + 1}–${segs.slice(0, i + 1).reduce((t, x) => t + x.length, 0)}`).join(", feed ")}; where two feeds meet, leave the bars unconnected.`);
+        sides.forEach(sd => { const d = `${ftIn(sd.len)} side${sd.seq.length ? `: ${desc(sd.seq)}` : ""}`; const u = uniq.find(x => x.d === d); if (u) u.n += 1; else uniq.push({ d, n: 1 }); });
+        notes.unshift(`Each ${SHAPE_NAME[a.shape]} (${a.sideA} × ${a.sideB} ft, ${ftIn(runIn)} around): ${uniq.map(u => `${u.n > 1 ? `${u.n} × ` : ""}${u.d}`).join("; ")}. That is ${ftIn(fill.lit)} of light plus ${spent.join(" and ")}${spareText}. Bars on each straight side join with seamless connectors; ${C.corners + C.cornersNo === 1 ? "the linked corner takes" : `each of the ${C.corners + C.cornersNo} linked corners takes`} a ${CORNER_IN} in linking cable${C.cornersNo ? ` (${C.cornersNo === C.corners + C.cornersNo ? "all" : C.cornersNo} non-dimming, where a control zone ends at the corner)` : ""}.${cornerAfter.size > C.corners + C.cornersNo ? " Where a new power feed starts at a corner, that corner is not linked." : ""}${a.shape === "tray" ? " The run starts at one corner with the power feed and goes all the way around, so that last corner stays open: the run simply ends there." : ""} Measure each side along the cove, corner to corner.`);
+      } else notes.unshift(`Each ${a.runFt} ft run: ${desc(fill.seq)} bars end to end with seamless connectors. That is ${ftIn(fill.lit)} of light plus ${spent.join(" and ")}${spareText}. A ${m.lens.includes(4) ? "\"4 ft\" " : ""}bar is ${m.len[4] || m.len[2]} in long, which is why the count is not simply length ÷ 4.`);
+      if (segs.length > 1) notes.push(`Power: ${segs.length} feeds per run (at ${volts}V one feed carries up to ${feedLimit(m, 4, volts, C.corners + C.cornersNo + C.jumpers > 0)} four-foot bars). Feed ${segs.map((s, i) => `${i + 1} powers bars ${segs.slice(0, i).reduce((t, x) => t + x.length, 0) + 1}–${segs.slice(0, i + 1).reduce((t, x) => t + x.length, 0)}`).join(", feed ")}; where two feeds meet, leave the bars unconnected.`);
       else notes.push(`Power: one incoming power feed at the start of each run carries all ${fill.seq.length} bars at ${volts}V.`);
       if (hasSensor) {
-        const pos = { end: "at the far end of each zone (away from the feed)", middle: "in the middle of each zone, between two bars", start: "at the start of each zone, next to the power feed" }[a.place] || "";
         const zs = zonesBySeg.flat();
         if (m.family === "max") notes.push(`Controls: ${zs.length} LBI MAX ${zs.length === 1 ? "unit" : "units"} per run ordered with the sensor built in (${maxSuffix()}), one per zone of up to ${SENSOR_CAPACITY} bars.`);
-        else notes.push(`Controls: ${zs.length === 1 ? "one in-line sensor per run" : `${zs.length} control zones per run (${zs.join(", ")} bars), one in-line sensor each`}, placed ${pos}. One sensor controls up to ${SENSOR_CAPACITY} bars.`);
-        if (nodim) notes.push(`Zones are separated with a non-dimming seamless connector, so each sensor dims only its own bars while power continues down the run.`);
+        else {
+          const zonesText = zs.length === 1 ? "one sensor per run" : `${zs.length} control zones per run (${zs.join(", ")} bars), one sensor each`;
+          if (a.place === "tucked") {
+            if (zs.length === 1) notes.push(`Controls: ${zonesText}, tucked behind the bars at the far end of the run on a ${TUCK_IN} in jumper cable, so it adds no length to the run.`);
+            else if (!C.inline) notes.push(`Controls: ${zonesText}. Each zone's sensor sits at an end of ${segs.length > 1 ? "its feed's stretch of bars" : "the run"}, tucked behind the bars on a ${TUCK_IN} in jumper cable, so the sensors add no length; the zones meet at a non-dimming seamless connector.`);
+            else notes.push(`Controls: ${zonesText}. The first and last zones' sensors tuck behind the bars at the ends of the run on ${TUCK_IN} in jumper cables. Each middle zone's sensor sits in line at the start of its zone, after a ${TUCK_IN} in non-dimming linking cable from the zone before, and takes about ${SENSOR_IN} in of the run.`);
+          } else notes.push(`Controls: ${zonesText}, each in line at the start of its zone (the first right after the power feed, the others after a ${TUCK_IN} in non-dimming linking cable), taking about ${SENSOR_IN} in of the run each.`);
+          notes.push(`One sensor controls up to ${SENSOR_CAPACITY} bars.`);
+        }
       }
       if (a.job === "retrofit") notes.push(`Remove the old strips or lamp holders and ballasts. ${MOUNT_NOTE[m.family]}`);
       if (counts.length > 1 && perIn) notes.push(`Shorter bars are set to the wattage closest to the light per inch of the ${Lmain} ft bars, so the run looks even.`);
-      void lmTarget; void L;
     }
 
     // light bar lines, longest first, ahead of everything else
@@ -856,7 +931,7 @@
     return a;
   }
 
-  const api = { SHAPE_NAME, sidesOf, MODELS, MODEL_ORDER, PAIRS, LAMPS, SHAPES, LEVELS, ACC, GROUPS, LINK_LENGTHS, SENSOR_CAPACITY,
+  const api = { SHAPE_NAME, sidesOf, planRun, FEED_IN, SENSOR_IN, TUCK_IN, MODELS, MODEL_ORDER, PAIRS, LAMPS, SHAPES, LEVELS, ACC, GROUPS, LINK_LENGTHS, SENSOR_CAPACITY,
     newArea, recommend, modelFor, normalize, areaBom, projectBom, orderText, fillRun, splitFeeds, feedLimit, parse, ftIn, fmt };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.LBIPB = api;
