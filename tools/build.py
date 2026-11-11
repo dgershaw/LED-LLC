@@ -71,7 +71,7 @@ SEO_TITLES = {
     "pl-pll": "PL + PLL LED Retrofit Lamps", "linear-t5-t8": "Linear T5 + T8 LED Retrofit Lamps", "work-lights": "Temporary LED Work Site Lights",
     "lighting-controls": "Simple + Networked Lighting Controls", "lbi-family": "LBI Family Overview + Accessories",
     "lbi-g2": "LBI G2 Linkable LED Light Bars", "lbi-g1": "LBI G1 Economical Linkable LED Light Bar", "lbi-65": "LBI 65 IP65 Linkable LED Light Bar", "lbi-max": "LBI MAX Linkable LED Strip Fixture",
-    "color-palette": "LBI Color Palette LED Light Bars", "livc": "LIVC Stairwell, Vanity + Wrap Fixtures", "wall-ceiling-fixtures": "Wall + Ceiling LED Fixtures",
+    "color-palette": "LBI Palette LED Light Bars", "livc": "LIVC Stairwell, Vanity + Wrap Fixtures", "wall-ceiling-fixtures": "Wall + Ceiling LED Fixtures",
     "wall-ceiling-retrofit-kits": "Wall + Ceiling LED Retrofit Kits", "type-c-kits-lbe": "Type C Kits + Linear Barkits (LBE)",
     "taa-type-c-kits-lbe": "TAA Type C Kits + Linear Barkits", "troffer-retrofit-kits-fixtures": "Troffer LED Retrofit Kits + Fixtures",
     "taa-troffers": "TAA Troffer LED Retrofit Kits + Fixtures", "i-series": "Solera i-Series Overview: Modular Solar Lighting", "solar-area-lights": "Solar Area Lights",
@@ -104,7 +104,7 @@ NAV_TITLES = {
     "bollard-post-top": "Bollard + Post Top", "shoe-box-wall-pack": "Shoe Box + Wall Pack", "high-bay-low-bay": "High Bay + Low Bay",
     "hazardous-location": "Hazardous Location", "pl-pll": "PL + PLL", "linear-t5-t8": "Linear T5 + T8", "work-lights": "Work Lights",
     "lighting-controls": "Lighting Controls", "lbi-family": "LBI Family Overview", "lbi-g2": "LBI G2", "lbi-g1": "LBI G1", "lbi-65": "LBI 65",
-    "lbi-max": "LBI MAX", "color-palette": "LBI Color Palette", "livc": "LIVC Stairwell, Vanity + Wrap", "wall-ceiling-fixtures": "Wall + Ceiling Fixtures",
+    "lbi-max": "LBI MAX", "color-palette": "LBI Palette", "livc": "LIVC Stairwell, Vanity + Wrap", "wall-ceiling-fixtures": "Wall + Ceiling Fixtures",
     "wall-ceiling-retrofit-kits": "Wall + Ceiling Retrofit Kits", "type-c-kits-lbe": "Type C Kits + Linear Barkits",
     "taa-type-c-kits-lbe": "TAA Type C Kits + Barkits", "troffer-retrofit-kits-fixtures": "Troffer Kits + Fixtures",
     "taa-troffers": "TAA Troffer Kits + Fixtures", "i-series": "Solera i-Series Overview", "solar-area-lights": "Area Lights",
@@ -147,7 +147,7 @@ BRANDS = {
         points=[("1. Innovatively engineered", "LED fixtures and retrofits making installation as fast and easy as possible."),
                 ("2. Controllable and customizable", "Fixtures and retrofits that maximize the lighting experience for end users."),
                 ("3. The name", "Derived from the remote layer of phosphor that converts blue LED light to white.")],
-        groups=["Linkable Light Bars", "LBI Color Palette", "Lighting Controls", "Fixtures", "Retrofit Kits"]),
+        groups=["Linkable Light Bars", "LBI Palette", "Lighting Controls", "Fixtures", "Retrofit Kits"]),
     "solera": dict(
         key="solera", slug="solera", name="Solera", tagline="Solar lighting for any application",
         h1="Off-grid lighting with no trenching, no wiring and no energy bill.",
@@ -167,7 +167,7 @@ GROUP_BLURBS = {
     "Work Lights": "Temporary work-site lights and string lights with long cords and daisy-chaining for construction sites.",
     "Merchandising": "Gondolas, shippers and counter displays that put the lamp line on the distributor's floor.",
     "Linkable Light Bars": "The LBI family: 2, 3 and 4 ft linkable bars with the driver inside. Link up to 40 from one feed, then set wattage and color on site.",
-    "LBI Color Palette": "Precision wavelength bars and RGBWW full-color bars (red, green, blue, warm white and cool white) for grocery, hospitality and venues, with white light built in.",
+    "LBI Palette": "Precision wavelength bars and RGBWW full-color bars (red, green, blue, warm white and cool white) for grocery, hospitality and venues, with white light built in.",
     "Lighting Controls": "On-board switches, in-line sensors and the IR23 remote, or go wireless with Silvair Bluetooth mesh.",
     "Fixtures": "Stairwell, vanity and wraparound fixtures, drums and sconces that install in minutes.",
     "Retrofit Kits": "Wall, ceiling, troffer and linear kits that convert existing housings to LED, including TAA-compliant options.",
@@ -185,7 +185,7 @@ FINDER = [
     ("Strip or wrap fixtures", "LBI linkable bars and LBI MAX", "lbi.html"),
     ("Troffers", "Retrofit kits and new fixtures", "troffer-retrofit-kits-fixtures"),
     ("Dark parking lots and paths", "Solar area lights, no trenching", "solar-area-lights"),
-    ("Grocery, venues, facades", "LBI Color Palette light bars", "color-palette"),
+    ("Grocery, venues, facades", "LBI Palette light bars", "color-palette"),
     ("Stairwells, vanities, corridors", "LIVC fixtures that install in minutes", "livc"),
     ("Something else", "Search every part number and product name", "search"),
 ]
@@ -385,7 +385,7 @@ HERO_OVERRIDE = {
     "lbi-g1": ("assets/img/product/g1-hero.jpg", "RemPhos LBI G1 linkable light bar with its end cap", "cover"),
     "lbi-65": ("assets/img/product/lbi65-hero.jpg", "RemPhos LBI 65 IP65 linkable light bar with its sealed end cap", "cover"),
     "lbi-max": ("assets/img/product/max-hero.jpg", "RemPhos LBI MAX high-lumen linkable strip", "cover"),
-    "color-palette": ("assets/img/product/palette-hero-blue.jpg", "RemPhos LBI Color Palette light bar glowing blue", "cover"),
+    "color-palette": ("assets/img/product/palette-hero-blue.jpg", "RemPhos LBI Palette light bar glowing blue", "cover"),
     "livc": ("assets/img/cat/livc/hero-product.jpg", "LIVC stairwell, vanity and wraparound fixture, with the rounded (LIVC-RD, 3.5 in) and square (LIVC-SQ, 3.0 in) endcap profiles", "cover"),
     "lighting-controls": ("assets/img/cat/lighting-controls/hero-products.jpg", "RemPhos in-line occupancy sensors for the LBI G2 and LBI 65, and the IR23 sensor remote", "cover"),
     "solar-bollard-post-tops": ("assets/img/cat/solar-bollard-post-tops/hero-spt.jpg", "SL-SPT solar post top lantern over a lit waterfront promenade", ""),
@@ -413,8 +413,8 @@ IES_DIR = ROOT / "assets" / "ies"
 ALSO_IN = {"lbi-max": ["Fixtures", "Retrofit Kits"]}
 # The three Eddy stickers: samples, rebates and the rep finder, on every product page and the LBI page.
 # Display names for the LBI documents on the Resources page (file names lose the "+" and the "Color")
-DOC_TITLES = {"spec-sheets/RP-LBI-Spec_Sheet.pdf": "LBI G1 Spec Sheet", "LBI-65-Palette-Red-Orange-Spec-Sheet.pdf": "LBI 65 Color Palette+ Red/Orange Spec Sheet",
-              "LBI-Palette-Sell-Sheet.pdf": "LBI Color Palette Sell Sheet"}
+DOC_TITLES = {"spec-sheets/RP-LBI-Spec_Sheet.pdf": "LBI G1 Spec Sheet", "LBI-65-Palette-Red-Orange-Spec-Sheet.pdf": "LBI 65 Palette+ Red/Orange Spec Sheet",
+              "LBI-Palette-Sell-Sheet.pdf": "LBI Palette Sell Sheet"}
 # The documents listed on the Resources page (by file name; the build finds each one's folder and newest version)
 RESOURCE_DOCS = ["LBI-65-Palette-Red-Orange-Spec-Sheet.pdf", "LBI-65-Spec-Sheet.pdf", "LBI-Family-Flyer.pdf", "LBI-G2-Spec-Sheet.pdf",
                  "LBI-MAX-Spec-Sheet.pdf", "LBI-Palette-Sell-Sheet.pdf", "LED-2026-Full-Product-Catalog.pdf"]
@@ -553,7 +553,7 @@ def feature_cols(n):
 # Product names that must not break across lines: "i-" alone at a line end, "LBI" without its model, a lone "+".
 NOWRAP = [(re.compile(r"\bi-Series\b"), "i-&#8288;Series"),  # word joiner: no break after the hyphen
           (re.compile(r"\bLBI (G2|65|MAX)\b"), r"LBI&nbsp;\1"),
-          (re.compile(r"\bPalette ([+X])(?![\w-])"), r"Palette\1"),   # Palette+ and PaletteX have no space (David, 2026-10-09)
+          (re.compile(r"\bPalette ([+X])(?![\w-])"), r"Palette\1"),   # Palette+ has no space (David, 2026-10-09)
           (re.compile(r"\b(built|TAA|all-in|plug-and|one|ballast)-(in|compliant|one|play|piece|bypass)\b"), r"\1-&#8288;\2"),
           (re.compile(r"(?<=\d) in(?=$| x |[,;)])"), "&nbsp;in"),  # dimensions: never leave "in" alone on a line
           (re.compile(r"\bp\. (\d+)(?:–(\d+))?"), lambda m: "p.&nbsp;" + m.group(1) + ("–&#8288;" + m.group(2) if m.group(2) else ""))]
@@ -577,12 +577,11 @@ COPY_FIXES = [
     ("Anchor-base and direct-burial poles from 10 to 30 ft", "Anchor-base and direct-burial poles from 8 to 30 ft"),
     ('<h1 id="h1">Pole Offering</h1>', '<h1 id="h1">Poles</h1>'),
     ("Gondolas + Shippers + Displays", "Gondolas, Shippers + Displays"),
-    # LBI naming rule: full product names, and RGBWW for the color-tunable bars
-    ("LBI&nbsp;65 Palette Red Orange Spec Sheet", "LBI&nbsp;65 Color Palette+ Red/Orange Spec Sheet"),
-    ("LBI 65 Palette Red Orange Spec Sheet", "LBI 65 Color Palette+ Red/Orange Spec Sheet"),
-    ("LBI&nbsp;65 Palette is also offered", "LBI&nbsp;65 Color Palette+ is also offered"),
-    ("LBI Palette Sell Sheet", "LBI Color Palette Sell Sheet"),
-    ("LBI&nbsp;G2 · LBI&nbsp;65 · Palette</td>", "LBI&nbsp;G2 · LBI&nbsp;65 · LBI Color Palette</td>"),
+    # LBI naming rule: full product names (LBI Palette, LBI Palette+, LBI Palette DMX since 2026-11-11), and RGBWW for the color-tunable bars
+    ("LBI&nbsp;65 Palette Red Orange Spec Sheet", "LBI&nbsp;65 Palette+ Red/Orange Spec Sheet"),
+    ("LBI 65 Palette Red Orange Spec Sheet", "LBI 65 Palette+ Red/Orange Spec Sheet"),
+    ("LBI&nbsp;65 Palette is also offered", "LBI&nbsp;65 Palette+ is also offered"),
+    ("LBI&nbsp;G2 · LBI&nbsp;65 · Palette</td>", "LBI&nbsp;G2 · LBI&nbsp;65 · LBI Palette</td>"),
     ("limitless RGB color mixing", "limitless RGBWW color mixing"), ("Limitless RGB Color Mixing", "Limitless RGBWW Color Mixing"),
     (">RGB color mixing and ", ">RGBWW color mixing and "), ("FlexColor: RGB color mixing", "FlexColor: RGBWW color mixing"),
     ("white presets, full RGB color,", "white presets, full RGBWW color,"),
@@ -2055,8 +2054,8 @@ def build_nav(cats):
             items = [c for c in cats if c["brand_key"] == key and (c["group"] == g or g in also_groups(c))]
             if g == "Linkable Light Bars":
                 items = [dict(href="lbi.html", nav_title="LBI Family Overview", headline="All eight bars in one place: compare them, set them up and see them lit", featured=True)] + items
-            if g == "LBI Color Palette" and items:
-                items = items + [dict(href="lbi.html#palette", nav_title="LBI Color Palette in the LBI Family Overview", headline="Precision color and full RGBWW, live")]
+            if g == "LBI Palette" and items:
+                items = items + [dict(href="lbi.html#palette", nav_title="LBI Palette in the LBI Family Overview", headline="Precision color and full RGBWW, live")]
             if items:
                 groups.append(dict(name=g, blurb=GROUP_BLURBS.get(g, ""), entries=items))
         nav.append(dict(brand=b, groups=groups))
@@ -2239,7 +2238,7 @@ def write_llms(cats, variants, total_pn, studies=()):
          f"> {SITE_NAME} (led-llc.com) designs and sells commercial LED lighting under three brands: Light Efficient Design LED retrofit lamps for HID and fluorescent fixtures, RemPhos linkable light bars, fixtures, retrofit kits and lighting controls, and Solera solar lighting and poles. This site is the web edition of the 2026 Full Product Catalog: part numbers with specifications, one page per product category.",
          "",
          "Key facts:", "",
-         f"- Brands: Light Efficient Design (screw-in and pin-base LED retrofit lamps, work lights, merchandising displays), RemPhos (LBI linkable light bars with internal drivers, LBI Color Palette color bars, lighting controls, fixtures, retrofit kits), Solera (solar area, bollard, flood, display and wall-pack lights, poles).",
+         f"- Brands: Light Efficient Design (screw-in and pin-base LED retrofit lamps, work lights, merchandising displays), RemPhos (LBI linkable light bars with internal drivers, LBI Palette color bars, lighting controls, fixtures, retrofit kits), Solera (solar area, bollard, flood, display and wall-pack lights, poles).",
          "- Part numbers: every category page lists its part numbers in tables with wattage, lumens, CCT, base, voltage and dimensions as printed in the catalog; factory defaults for selectable (FlexWatt / FlexColor) lamps are shown in bold. The full digest is in llms-full.txt.",
          f"- Corporate HQ & Training Center: {HQ['street']}, {HQ['city']}, {HQ['region']} {HQ['zip']}. Innovation & Manufacturing Center: {MFG['street']}, {MFG['city']}, {MFG['region']} {MFG['zip']}.",
          f"- Sales: {PHONE}, {EMAIL}. Samples, utility rebate help and local representatives for all three brands.",
@@ -2249,7 +2248,7 @@ def write_llms(cats, variants, total_pn, studies=()):
         b = BRANDS[key]
         L += [f"## {b['name']}", "", f"- [{b['name']} overview]({page_url(b['slug'] + '.html')}): {b['h1']} {b['blurb']}"]
         if key == "remphos":
-            L.append(f"- [LBI Family Overview]({page_url('lbi.html')}): The eight LBI linkable light bar variants ({', '.join(v['name'] for v in variants) or 'LBI G1, LBI G2, LBI 65, LBI MAX, LBI Color Palette, LBI Color Palette+, LBI Color PaletteX, LBI 65 Color Palette+'}) with lengths, wattage, lumens, color, controls and example part numbers.")
+            L.append(f"- [LBI Family Overview]({page_url('lbi.html')}): The eight LBI linkable light bar variants ({', '.join(v['name'] for v in variants) or 'LBI G1, LBI G2, LBI 65, LBI MAX, LBI Palette, LBI Palette+, LBI Palette DMX, LBI 65 Palette+'}) with lengths, wattage, lumens, color, controls and example part numbers.")
         for c in by_brand[key]:
             desc = clean_text(c.get("headline") or SEO_LEADS.get(c["slug"]) or GROUP_BLURBS.get(c["group"], ""))
             L.append(f"- [{c['nav_title']}]({page_url(c['href'])}): {c['group']}. {desc}")
@@ -2371,8 +2370,8 @@ def main():
     env.filters["cellhtml"] = cellhtml
     env.filters["web_path"] = web_path
     env.filters["cattitle"] = cattitle
-    # compact color chips: "LBI Color Palette bar rendering glowing red" -> "Red"
-    env.filters["chip"] = lambda t: (lambda x: x[:1].upper() + x[1:])(re.sub(r"^.*?\bbar rendering (?:glowing |showing the )?", "", str(t)).replace("full RGB spectrum", "LBI Color Palette+ RGBWW"))
+    # compact color chips: "LBI Palette bar rendering glowing red" -> "Red"
+    env.filters["chip"] = lambda t: (lambda x: x[:1].upper() + x[1:])(re.sub(r"^.*?\bbar rendering (?:glowing |showing the )?", "", str(t)).replace("full RGB spectrum", "LBI Palette+ RGBWW"))
     env.globals.update(DOC_TITLES=DOC_TITLES, PAGE_DOCS=PAGE_DOCS, NO_REBATES=NO_REBATES, BRANDS=BRANDS, BRAND_ORDER=BRAND_ORDER, nav=nav, cats=cats, CATALOG_PDF=CATALOG_PDF, SITE_NAME=SITE_NAME,
                        total_pn=total_pn, dims=dims, dims_ratio=dims_ratio, IES=IES, logo_style=logo_style, spans=spans, NEXT_STEPS=NEXT_STEPS, PHONE=PHONE, EMAIL=EMAIL, HQ=HQ, MFG=MFG, SOCIAL=SOCIAL, RAIN=RAIN, natmax=natmax, pmenu=pmenu)
 
@@ -2451,7 +2450,7 @@ def main():
     body, tail, fine = lbi_body()
     glance, glance_notes = lbi_glance(variants) if variants else (None, [])
     lbi_desc = compose_description(["RemPhos LBI family: linkable LED light bars with the driver inside, in 2, 3 and 4 ft.",
-                                    "LBI G1 (economical), LBI G2, LBI 65 (IP65), LBI MAX, LBI Color Palette, LBI Color Palette+, LBI Color PaletteX and LBI 65 Color Palette+.",
+                                    "LBI G1 (economical), LBI G2, LBI 65 (IP65), LBI MAX, LBI Palette, LBI Palette+, LBI Palette DMX and LBI 65 Palette+.",
                                     "Link up to 40 bars from one power feed, then set wattage and color on site."])
     lbi_img, lbi_alt = BRAND_IMAGES["remphos"]
     render("lbi.html", "lbi.html", 0.9, page="lbi", lbi_body=body, lbi_tail=tail, lbi_fine=fine, glance=glance, glance_notes=glance_notes,

@@ -30,8 +30,8 @@
         "Control"
       ],
       "rows": [
-        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ | In-line microwave occupancy and daylight harvesting sensor",
-        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65 | In-line passive infrared occupancy and daylight harvesting sensor",
+        "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ | In-line microwave occupancy and daylight harvesting sensor",
+        "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65 | In-line passive infrared occupancy and daylight harvesting sensor",
         "LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 | Microwave occupancy and daylight hold-off sensor",
         "DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 | Limited-range microwave occupancy and daylight hold-off sensor",
         "TTV / TTF | Passive infrared occupancy and daylight harvesting sensor",
@@ -51,9 +51,9 @@
         "Control"
       ],
       "rows": [
-        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ | In-line Silvair™ Bluetooth microwave motion and daylight harvesting sensor",
-        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65 | In-line Silvair™ Bluetooth control node",
-        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65 | In-line Silvair™ Bluetooth passive infrared motion and daylight harvesting sensor",
+        "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ | In-line Silvair™ Bluetooth microwave motion and daylight harvesting sensor",
+        "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65 | In-line Silvair™ Bluetooth control node",
+        "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65 | In-line Silvair™ Bluetooth passive infrared motion and daylight harvesting sensor",
         "LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 | Silvair™ Bluetooth microwave motion and daylight harvesting sensor",
         "LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 | Silvair™ Bluetooth node w/ external antenna",
         "DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 / TTV / TTF | Silvair™ Bluetooth control node",
@@ -63,7 +63,7 @@
       ],
       "notes": [
         "Connect and control lighting fixtures via Bluetooth mesh w/ the Silvair app — available for iOS and Android on the App Store and Google Play (statement printed under the table beside the RemPhos x Silvair robot logo)",
-        "Merged product cells repeated: 'LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65' spans two rows, 'LBI MAX / LIVC / ...' spans two rows, 'LBE / TYPE C T5 & T8' spans two rows",
+        "Merged product cells repeated: 'LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65' spans two rows, 'LBI MAX / LIVC / ...' spans two rows, 'LBE / TYPE C T5 & T8' spans two rows",
         "Catalog prints the control descriptions in all caps and marks Silvair with a ™"
       ],
       "pdfPage": 14

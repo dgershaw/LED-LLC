@@ -1,7 +1,7 @@
 /* LBI Project Builder: the rules that turn a project description into a bill of materials.
    No page code in here, so the same file runs in the browser (window.LBIPB) and in Node for tests.
    Every part number and limit comes from the spec sheets: RP-LBI (LBI G1, rev. 06.30.26), LBI G2 (07.28.26),
-   LBI 65 (07.23.26), LBI MAX (08.25.26), the LBI Color Palette sell sheet and the 2026 catalog (pp. 24-32).
+   LBI 65 (07.23.26), LBI MAX (08.25.26), the LBI Palette sell sheet and the 2026 catalog (pp. 24-32).
    Where a sheet is silent the rule is marked ASSUMED and listed in notes/catalog-questions.md for David. */
 (function (root) {
   "use strict";
@@ -56,7 +56,7 @@
       volts: [120, 208, 240, 277], wet: false
     },
     plus: {
-      id: "plus", name: "LBI Color Palette+", kind: "white light now, any color with the optional remote", family: "lbi", lens: [4, 2],
+      id: "plus", name: "LBI Palette+", kind: "white light now, any color with the optional remote", family: "lbi", lens: [4, 2],
       len: { 2: 19.3, 4: 43.3 },
       watts: { 2: [6, 8, 10, 12], 4: [12, 15, 20, 25] },
       lm: { 2: [960, 1280, 1600, 1920], 4: [1920, 2400, 3200, 4000] },
@@ -67,7 +67,7 @@
       volts: [120, 208, 240, 277, 347], wet: false
     },
     palette: {
-      id: "palette", name: "LBI Color Palette", kind: "precise colors, two per bar", family: "lbi", lens: [4, 2],
+      id: "palette", name: "LBI Palette", kind: "precise colors, two per bar", family: "lbi", lens: [4, 2],
       len: { 2: 19.3, 4: 43.3 },
       watts: { 2: [6, 9, 12], 4: [10, 15, 25] },
       lm: null,
@@ -140,7 +140,7 @@
     bleA65: { pn: "RP-LBI65-BLE-A", d: "IP65 in-line Silvair Bluetooth mesh control node", pack: 1, img: null, g: "Controls" },
     ir23: { pn: "RC-REMOTE-IR23", d: "IR23 remote, to change Simple Lighting Control sensor settings (one per project is enough)", pack: 1, img: null, g: "Controls" },
     irwc: { pn: "RC-REMOTE-IRWC", d: "LBI G2 tunable white remote", pack: 1, img: null, g: "Controls" },
-    rgb: { pn: "RP-REMOTE-RGB-WC", d: "LBI Color Palette+ RGBWW remote with holster, unlocks color", pack: 1, img: null, g: "Controls" },
+    rgb: { pn: "RP-REMOTE-RGB-WC", d: "LBI Palette+ RGBWW remote with holster, unlocks color", pack: 1, img: null, g: "Controls" },
     emg8: { pn: "RP-LBI-EMG2-8W-DIM", d: "Remote emergency battery pack, 90 min, up to 100 W of bars", pack: 1, img: null, g: "Emergency" },
     emg25: { pn: "RP-LBI-EMG2-25W-DIM", d: "Remote emergency battery pack, 90 min, up to 300 W of bars", pack: 1, img: null, g: "Emergency" },
     emg65: { pn: "RP-LBI65-EMG-40W", d: "Wet-location emergency LED driver, 90 min, up to 40 W of bars", pack: 1, img: null, g: "Emergency" }
@@ -696,7 +696,7 @@
     if (m.family === "lbi65") notes.push("Every LBI 65 bar comes with its remote for wattage and color temperature, two mounting brackets (45° and 90°) and stainless screws, and ships with the waterproof end cap and moisture valve installed.");
     if (a.ctl === "dimmer") notes.push("Dimming: connect a 0-10V wall dimmer (by others) to the dimming leads of the incoming power cable; the whole run dims together.");
     if (a.ctl === "mesh") notes.push("Commission the Silvair devices in the Silvair app. Silvair wireless wall switches: ask us which ones to add.");
-    if (m.id === "plus") notes.push(a.rgb ? "LBI Color Palette+ ships in white light mode with switches like LBI G2; the RGBWW remote unlocks color for every bar on the job." : "LBI Color Palette+ ships in white light mode with switches like LBI G2; color needs the optional RGBWW remote, sold separately.");
+    if (m.id === "plus") notes.push(a.rgb ? "LBI Palette+ ships in white light mode with switches like LBI G2; the RGBWW remote unlocks color for every bar on the job." : "LBI Palette+ ships in white light mode with switches like LBI G2; color needs the optional RGBWW remote, sold separately.");
     if (volts === 347) notes.push("347V: the bars are the -CN models for Canada (120-347V).");
 
     return { area: a, model: m, rec, delamp: delampInfo, lines: merge(lines).map(finalize), notes, assumptions, fixes, layout, units, barsTotal, wattsTotal, lumensTotal, isRun };
