@@ -255,7 +255,7 @@
           "link": "contact.html#sample"
         },
         {
-          "graphic": "",
+          "graphic": "assets/img/uploads/homepage-graphic-02.png",
           "graphic_alt": "",
           "graphic_height": 66,
           "title": "FIND REBATES",
@@ -264,7 +264,7 @@
           "link": "contact.html#rebates"
         },
         {
-          "graphic": "",
+          "graphic": "assets/img/uploads/homepage-graphic-03.png",
           "graphic_alt": "",
           "graphic_height": 70,
           "title": "REP FINDER",
