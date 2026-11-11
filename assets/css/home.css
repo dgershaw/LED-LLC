@@ -68,16 +68,22 @@
 .lbi-bar.bar-g2 { --g: #fff3dd; }
 .lbi-bar.bar-65 { --g: #dae9ff; }
 .lbi-bar.bar-max { --g: #fff8eb; }
-.lbi-bar.bar-palette { background:
-    linear-gradient(rgb(255 255 255 / 0) 55%, rgb(255 255 255 / 0.72) 55%),
-    linear-gradient(90deg, #ee2e3e 0 16.66%, #f7931e 0 33.33%, #ffc629 0 50%, #63bb46 0 66.66%, #1bc3f2 0 83.33%, #9b8ac4 0);
-  box-shadow: 0 0 10px 0 rgb(240 160 120 / 0.35); }
-.lbi-bar.bar-palette-plus, .lbi-bar.bar-palette-dmx { box-shadow: none; }
-.lbi-bar.bar-palette-plus { background: linear-gradient(90deg, #e8102e 0 6.66%, #f45a3c 0 13.33%, #fca33a 0 20%, #ffe82a 0 26.66%, #c8ec2a 0 33.33%,
-    #8fd635 0 40%, #5dc63a 0 46.66%, #28a83a 0 53.33%, #34b77a 0 60%, #2fd6d6 0 66.66%, #3fa6dc 0 73.33%, #2f6fe0 0 80%, #4f55d8 0 86.66%,
-    #8a55e8 0 93.33%, #8b2be8 0); }
-.lbi-bar.bar-palette-dmx { background: linear-gradient(90deg, #ff2a1a, #ff7a10, #ffb000, #19e05a, #2a6bff, #8a3dff); }
-.lbi-bar.bar-palette-plus::after, .lbi-bar.bar-palette-dmx::after { content: ""; position: absolute; inset: -6px -2px; border-radius: 8px;
+/* LBI Palette: its six set colours, each lit on top with the pale lens below (Kcampbell's reference, 2026-11-11) */
+.lbi-bar.bar-palette { height: 9px; outline-color: color-mix(in srgb, var(--ink) 12%, transparent); box-shadow: 0 0 10px 0 rgb(240 150 130 / 0.3); background:
+    linear-gradient(90deg, #fce4ee 0 16.66%, #fffeef 0 33.33%, #fdfbe1 0 50%, #eef6ef 0 66.66%, #dff2f7 0 83.33%, #ffffff 0) bottom / 100% 42% no-repeat,
+    linear-gradient(rgb(255 255 255 / 0), rgb(255 255 255 / 0.22) 50%, rgb(255 255 255 / 0)) top / 100% 58% no-repeat,
+    linear-gradient(90deg, #ee4150 0 16.66%, #f99f3d 0 33.33%, #ffcb41 0 50%, #72bf44 0 66.66%, #39c6f3 0 83.33%, #a99acb 0); }
+/* LBI Palette+: a finer rainbow of fifteen colours over a white lens, each glowing in its own colour */
+.lbi-bar.bar-palette-plus { --seg: linear-gradient(90deg, #f44768 0 6.66%, #f88267 0 13.33%, #fbbf59 0 20%, #fff94a 0 26.66%, #cfee49 0 33.33%,
+    #9edd4a 0 40%, #70cd4b 0 46.66%, #4bb549 0 53.33%, #4abf86 0 60%, #4ad8da 0 66.66%, #59b3dd 0 73.33%, #4a86e7 0 80%, #696ee1 0 86.66%,
+    #9c79f9 0 93.33%, #9952fe 0);
+  height: 9px; box-shadow: none; outline-color: color-mix(in srgb, var(--ink) 12%, transparent);
+  background: linear-gradient(#f9faff, #e2e5ef) bottom / 100% 35% no-repeat, var(--seg) top / 100% 65% no-repeat; }
+.lbi-bar.bar-palette-plus::after { content: ""; position: absolute; inset: -7px -3px; border-radius: 8px; background: var(--seg);
+  filter: blur(7px); opacity: 0.35; z-index: -1; }
+/* LBI Palette DMX: a seamless rainbow */
+.lbi-bar.bar-palette-dmx { box-shadow: none; background: linear-gradient(90deg, #ff2a1a, #ff7a10, #ffb000, #19e05a, #2a6bff, #8a3dff); }
+.lbi-bar.bar-palette-dmx::after { content: ""; position: absolute; inset: -6px -2px; border-radius: 8px;
   background: inherit; filter: blur(7px); opacity: 0.45; z-index: -1; }
 
 /* ---------- What are you replacing? ---------- */
