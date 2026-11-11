@@ -1,7 +1,92 @@
 {% extends "base.html" %}
 {% import "_parts.html" as P %}
 {% block brand %}{{ c.brand_key }}{% endblock %}
+{% import "_home_blocks.html" as H with context %}
 {% block main %}
+{#- One of the page's own sections, by kind (see PAGE_SECTIONS in build.py). pp is the CloudCannon address of the page file
+    ("@file[/content/pages/...].") when the section sits in the sections list, so its photos and words stay editable in place. #}
+{% macro own_section(kind, pp="") %}
+{% set cs = c.cs %}
+{% if kind == "media" %}
+  {% if c.videos or c.install %}
+  <section id="media" aria-labelledby="media-h">
+    <div class="section-head"><h2 id="media-h">See it in action</h2><p>{% if c.videos %}The product video{% if c.install %} and photos from real installations{% endif %}{% else %}Photos from real installations{% endif %}. Select a photo to see it larger.</p></div>
+    {% set n = c.install|length %}
+    <div class="media-grid{% if c.videos %} has-video{% endif %} n{{ n if n < 3 else 'm' }}">
+      {% for v in c.videos %}{{ P.video(v, "lead" if loop.first else "") }}{% endfor %}
+      {% for p in c.install %}<a class="install{% if loop.index > 2 %} more{% endif %}" href="{{ p.src }}" data-lightbox data-caption="{{ p.caption }}"><img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy"{{ dims(p.src) }}{{ photo_style(p.focus, p.zoom or 1) }}{% if c.install_editable %} data-editable="image" data-prop-src="{{ pp }}install_photos.{{ p.i }}.image" data-prop-alt="{{ pp }}install_photos.{{ p.i }}.alt"{% endif %}><span class="cap"{% if c.install_editable %} data-editable="text" data-prop="{{ pp }}install_photos.{{ p.i }}.caption"{% endif %}>{{ p.caption }}</span></a>{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+{% elif kind == "photos" %}
+  {% set photos = (c.gallery or [])|rejectattr('cls', 'in', ['diagram', 'diagram tall', 'strip'])|list %}
+  {% set strips = (c.gallery or [])|selectattr('cls', 'equalto', 'strip')|list %}
+  {% if (photos or strips or c.cutouts) and not cs %}
+  <section id="photos" aria-labelledby="gal-h">
+    <div class="section-head"><h2 id="gal-h">In the field and on the bench</h2>{% if photos|length > 1 %}<p>Swipe or use the arrows to see more.</p>{% endif %}</div>
+    <div class="gal-grid{% if photos and c.cutouts %} two{% endif %}"{% if photos and c.ss_ar %} style="--ss-ar:{{ c.ss_ar }}"{% endif %}>
+      {% if photos %}{{ P.slideshow(photos, c.nav_title ~ " photos", c.ss_ar, prop=pp ~ "photos") }}{% endif %}
+      {% if c.cutouts %}
+      {% set chips = c.cutouts|length >= 5 and c.cutouts|selectattr('cls', 'equalto', 'cut long')|list|length == c.cutouts|length %}
+      <div class="gallery cutouts{% if chips %} chips{% elif c.cutouts_spans %} spans{% endif %}">
+        {% for im in c.cutouts %}<figure class="{{ im.cls }}"{% if im.span and not chips %} style="--span:{{ im.span }}"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{% if im.i is not none %} data-editable="image" data-prop-src="{{ pp }}photos.{{ im.i }}.image" data-prop-alt="{{ pp }}photos.{{ im.i }}.alt"{% endif %}><figcaption{% if im.i is not none %} data-editable="text" data-prop="{{ pp }}photos.{{ im.i }}.caption"{% endif %}>{{ im.label|chip if chips else im.label }}</figcaption></figure>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% for im in strips if not photos or im.web in RAIN %}<figure class="strip-fig{% if im.width and im.width < 100 %} sized align-{{ im.align }}{% endif %}"{% if im.width and im.width < 100 %} style="--w:{{ im.width }}%"{% endif %}{% if im.web in RAIN %} data-rain="{{ RAIN[im.web] }}"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{% if im.i is not none %} data-editable="image" data-prop-src="{{ pp }}photos.{{ im.i }}.image" data-prop-alt="{{ pp }}photos.{{ im.i }}.alt"{% endif %}></figure>{% endfor %}
+  </section>
+  {% endif %}
+{% elif kind == "highlights" %}
+  {% if c.callouts and not cs %}
+  <section aria-label="Highlights">
+    <div class="callouts">
+      {% for text, span in c.callouts %}<div class="callout plain s{{ span }}" style="--span:{{ span }}"><p class="text" data-editable="text" data-prop="{{ pp }}callouts.{{ c.callout_idx[loop.index0] }}">{{ text }}</p></div>{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+{% elif kind == "case_studies" %}
+  {% if c.case_studies %}
+  <section id="case-studies" aria-labelledby="cs-h">
+    <div class="section-head"><h2 id="cs-h">Case {{ 'study' if c.case_studies|length == 1 else 'studies' }}</h2><p>Real jobs, real results. Each case study opens as a PDF you can share with your customer.</p></div>
+    <div class="cases">{% for cs in c.case_studies %}{{ P.case_study(cs) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+{% elif kind == "glance" %}
+  {% if cs %}
+  <section class="cs-glance" aria-labelledby="feat-h">
+    <div class="section-head"><h2 id="feat-h">At a glance</h2><p>From the {{ cs.sheet }} spec sheet{% if cs.models %}s{% endif %}.</p></div>
+    <div class="cs-card">
+      <div class="cs-top">
+        {# data-editable: CloudCannon's visual editor; each logo and icon opens its picture, description and words (sheet_* in the page file) #}
+        <ul class="cs-marks" aria-label="Listings and warranty"{% if cs.marks_editable %} data-editable="array" data-prop="{{ pp }}sheet_marks" data-direction="row"{% endif %}>{% for m in cs.marks %}<li{% if cs.marks_editable %} data-editable="array-item"{% endif %}><span class="mk" role="img" aria-label="{{ m.alt }}" style="-webkit-mask-image:url({{ m.src }});mask-image:url({{ m.src }});--h:{{ m.h or 36 }}px;aspect-ratio:{{ dims_ratio(m.src) }}"></span></li>{% endfor %}</ul>
+        {% if cs.superflex %}{% set fimg = cs.flex_src %}{% set ed = cs.flex_editable %}<div class="cs-flex"><img src="{{ fimg }}" alt="{{ cs.flex_alt or 'SuperFlex' }}"{{ dims(fimg) }}{% if ed %} data-editable="image" data-prop-src="{{ pp }}sheet_flex.logo" data-prop-alt="{{ pp }}sheet_flex.alt"{% endif %}><p><b{% if ed %} data-editable="text" data-prop="{{ pp }}sheet_flex.headline"{% endif %}>{{ cs.superflex }}</b>{% if cs.flex_words %}<span class="fx"><span class="fw">Flex<em>Watt</em></span> <span class="fc">Flex<em>Color</em></span></span>{% endif %}{% if cs.superflex_note %}<small{% if ed %} data-editable="text" data-prop="{{ pp }}sheet_flex.note"{% endif %}>{{ cs.superflex_note }}</small>{% endif %}</p></div>{% endif %}
+      </div>
+      {% set ed = cs.icons_editable %}
+      <ul class="cs-icons" style="--n:{{ cs.icons|length }};--half:{{ (cs.icons|length + 1) // 2 }};--ph:{{ 3 if cs.icons|length in [3, 6, 9] else 4 }}"{% if ed %} data-editable="array" data-prop="{{ pp }}sheet_icons" data-direction="row"{% endif %}>
+        {% for ic in cs.icons %}<li{% if ed %} data-editable="array-item"{% endif %}><span class="ic" role="img" aria-label="{{ ic.alt or ic.label }}" style="-webkit-mask-image:url({{ ic.src }});mask-image:url({{ ic.src }});aspect-ratio:{{ dims_ratio(ic.src) }}{% if ic.scale %};--s:{{ ic.scale }}{% endif %}"></span><b{% if ed %} data-editable="text" data-prop="value"{% endif %}>{{ ic.value or "" }}</b><span class="lb"{% if ed %} data-editable="text" data-prop="caption"{% endif %}>{{ ic.label }}</span></li>{% endfor %}
+      </ul>
+      {% if cs.plug %}
+      <div class="cs-ctl">
+        <a href="lighting-controls.html" class="ctl-s"><span class="ic" style="-webkit-mask-image:url(assets/img/icons/ctl-simple.png);mask-image:url(assets/img/icons/ctl-simple.png);aspect-ratio:{{ dims_ratio('assets/img/icons/ctl-simple.png') }}" aria-hidden="true"></span>Simple lighting controls</a>
+        <a href="lighting-controls.html" class="ctl-n"><span class="ic" style="-webkit-mask-image:url(assets/img/icons/ctl-network.png);mask-image:url(assets/img/icons/ctl-network.png);aspect-ratio:{{ dims_ratio('assets/img/icons/ctl-network.png') }}" aria-hidden="true"></span>Network lighting controls</a>
+        <p>{% if cs.plug_editable %}<span data-editable="text" data-prop="{{ pp }}sheet_plug">{{ cs.plug }}</span>{% else %}{{ cs.plug }}{% endif %}.</p>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% elif c.features %}
+  <section aria-labelledby="feat-h">
+    <div class="section-head"><h2 id="feat-h">At a glance</h2><p>Warranty, listings and construction.</p></div>
+    <div class="spec-tiles" style="--cols:{{ c.feature_cols }}">
+      {% for f in c.features %}<div><div class="v" data-editable="text" data-prop="{{ pp }}features.{{ f.i }}.label">{{ f.label }}</div>{% if f.note %}<div class="n" data-editable="text" data-prop="{{ pp }}features.{{ f.i }}.note">{{ f.note }}</div>{% endif %}</div>{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+{% elif kind == "eddy" %}
+  {% if c.eddy %}{{ P.eddy_spot(c.eddy) }}{% endif %}
+{% endif %}
+{% endmacro %}
+
 {%- if c.brand_key == "solera" %}
 {#- Every Solera page opens with a band in Solera yellow carrying the black logo (David, 2026-10-09). #}
 <div class="brand-band solera"><div class="wrap"><a class="bb-logo" href="solera.html" aria-label="Solera, all solar lighting"><img src="assets/img/brand/solera-logo-dark.png" alt="Solera"{{ dims('assets/img/brand/solera-logo-dark.png') }}></a><a class="bb-link" href="solera.html">All Solera products ›</a></div></div>
@@ -43,82 +128,23 @@
 </div>
 
 <div class="wrap stack">
-  {% if c.videos or c.install %}
-  <section id="media" aria-labelledby="media-h">
-    <div class="section-head"><h2 id="media-h">See it in action</h2><p>{% if c.videos %}The product video{% if c.install %} and photos from real installations{% endif %}{% else %}Photos from real installations{% endif %}. Select a photo to see it larger.</p></div>
-    {% set n = c.install|length %}
-    <div class="media-grid{% if c.videos %} has-video{% endif %} n{{ n if n < 3 else 'm' }}">
-      {% for v in c.videos %}{{ P.video(v, "lead" if loop.first else "") }}{% endfor %}
-      {% for p in c.install %}<a class="install{% if loop.index > 2 %} more{% endif %}" href="{{ p.src }}" data-lightbox data-caption="{{ p.caption }}"><img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy"{{ dims(p.src) }}{{ photo_style(p.focus, p.zoom or 1) }}{% if c.install_editable %} data-editable="image" data-prop-src="install_photos.{{ p.i }}.image" data-prop-alt="install_photos.{{ p.i }}.alt"{% endif %}><span class="cap"{% if c.install_editable %} data-editable="text" data-prop="install_photos.{{ p.i }}.caption"{% endif %}>{{ p.caption }}</span></a>{% endfor %}
-    </div>
-  </section>
-  {% endif %}
-
-  {% set photos = (c.gallery or [])|rejectattr('cls', 'in', ['diagram', 'diagram tall', 'strip'])|list %}
-  {% set strips = (c.gallery or [])|selectattr('cls', 'equalto', 'strip')|list %}
-  {% if (photos or strips or c.cutouts) and not cs %}
-  <section id="photos" aria-labelledby="gal-h">
-    <div class="section-head"><h2 id="gal-h">In the field and on the bench</h2>{% if photos|length > 1 %}<p>Swipe or use the arrows to see more.</p>{% endif %}</div>
-    <div class="gal-grid{% if photos and c.cutouts %} two{% endif %}"{% if photos and c.ss_ar %} style="--ss-ar:{{ c.ss_ar }}"{% endif %}>
-      {% if photos %}{{ P.slideshow(photos, c.nav_title ~ " photos", c.ss_ar, prop="photos") }}{% endif %}
-      {% if c.cutouts %}
-      {% set chips = c.cutouts|length >= 5 and c.cutouts|selectattr('cls', 'equalto', 'cut long')|list|length == c.cutouts|length %}
-      <div class="gallery cutouts{% if chips %} chips{% elif c.cutouts_spans %} spans{% endif %}">
-        {% for im in c.cutouts %}<figure class="{{ im.cls }}"{% if im.span and not chips %} style="--span:{{ im.span }}"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{% if im.i is not none %} data-editable="image" data-prop-src="photos.{{ im.i }}.image" data-prop-alt="photos.{{ im.i }}.alt"{% endif %}><figcaption{% if im.i is not none %} data-editable="text" data-prop="photos.{{ im.i }}.caption"{% endif %}>{{ im.label|chip if chips else im.label }}</figcaption></figure>{% endfor %}
-      </div>
-      {% endif %}
-    </div>
-    {% for im in strips if not photos or im.web in RAIN %}<figure class="strip-fig{% if im.width and im.width < 100 %} sized align-{{ im.align }}{% endif %}"{% if im.width and im.width < 100 %} style="--w:{{ im.width }}%"{% endif %}{% if im.web in RAIN %} data-rain="{{ RAIN[im.web] }}"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{% if im.i is not none %} data-editable="image" data-prop-src="photos.{{ im.i }}.image" data-prop-alt="photos.{{ im.i }}.alt"{% endif %}></figure>{% endfor %}
-  </section>
-  {% endif %}
-
-  {% if c.callouts and not cs %}
-  <section aria-label="Highlights">
-    <div class="callouts">
-      {% for text, span in c.callouts %}<div class="callout plain s{{ span }}" style="--span:{{ span }}"><p class="text" data-editable="text" data-prop="callouts.{{ c.callout_idx[loop.index0] }}">{{ text }}</p></div>{% endfor %}
-    </div>
-  </section>
-  {% endif %}
-
-  {% if c.case_studies %}
-  <section id="case-studies" aria-labelledby="cs-h">
-    <div class="section-head"><h2 id="cs-h">Case {{ 'study' if c.case_studies|length == 1 else 'studies' }}</h2><p>Real jobs, real results. Each case study opens as a PDF you can share with your customer.</p></div>
-    <div class="cases">{% for cs in c.case_studies %}{{ P.case_study(cs) }}{% endfor %}</div>
-  </section>
-  {% endif %}
-
-  {% if cs %}
-  <section class="cs-glance" aria-labelledby="feat-h">
-    <div class="section-head"><h2 id="feat-h">At a glance</h2><p>From the {{ cs.sheet }} spec sheet{% if cs.models %}s{% endif %}.</p></div>
-    <div class="cs-card">
-      <div class="cs-top">
-        {# data-editable: CloudCannon's visual editor; each logo and icon opens its picture, description and words (sheet_* in the page file) #}
-        <ul class="cs-marks" aria-label="Listings and warranty"{% if cs.marks_editable %} data-editable="array" data-prop="sheet_marks" data-direction="row"{% endif %}>{% for m in cs.marks %}<li{% if cs.marks_editable %} data-editable="array-item"{% endif %}><span class="mk" role="img" aria-label="{{ m.alt }}" style="-webkit-mask-image:url({{ m.src }});mask-image:url({{ m.src }});--h:{{ m.h or 36 }}px;aspect-ratio:{{ dims_ratio(m.src) }}"></span></li>{% endfor %}</ul>
-        {% if cs.superflex %}{% set fimg = cs.flex_src %}{% set ed = cs.flex_editable %}<div class="cs-flex"><img src="{{ fimg }}" alt="{{ cs.flex_alt or 'SuperFlex' }}"{{ dims(fimg) }}{% if ed %} data-editable="image" data-prop-src="sheet_flex.logo" data-prop-alt="sheet_flex.alt"{% endif %}><p><b{% if ed %} data-editable="text" data-prop="sheet_flex.headline"{% endif %}>{{ cs.superflex }}</b>{% if cs.flex_words %}<span class="fx"><span class="fw">Flex<em>Watt</em></span> <span class="fc">Flex<em>Color</em></span></span>{% endif %}{% if cs.superflex_note %}<small{% if ed %} data-editable="text" data-prop="sheet_flex.note"{% endif %}>{{ cs.superflex_note }}</small>{% endif %}</p></div>{% endif %}
-      </div>
-      {% set ed = cs.icons_editable %}
-      <ul class="cs-icons" style="--n:{{ cs.icons|length }};--half:{{ (cs.icons|length + 1) // 2 }};--ph:{{ 3 if cs.icons|length in [3, 6, 9] else 4 }}"{% if ed %} data-editable="array" data-prop="sheet_icons" data-direction="row"{% endif %}>
-        {% for ic in cs.icons %}<li{% if ed %} data-editable="array-item"{% endif %}><span class="ic" role="img" aria-label="{{ ic.alt or ic.label }}" style="-webkit-mask-image:url({{ ic.src }});mask-image:url({{ ic.src }});aspect-ratio:{{ dims_ratio(ic.src) }}{% if ic.scale %};--s:{{ ic.scale }}{% endif %}"></span><b{% if ed %} data-editable="text" data-prop="value"{% endif %}>{{ ic.value or "" }}</b><span class="lb"{% if ed %} data-editable="text" data-prop="caption"{% endif %}>{{ ic.label }}</span></li>{% endfor %}
-      </ul>
-      {% if cs.plug %}
-      <div class="cs-ctl">
-        <a href="lighting-controls.html" class="ctl-s"><span class="ic" style="-webkit-mask-image:url(assets/img/icons/ctl-simple.png);mask-image:url(assets/img/icons/ctl-simple.png);aspect-ratio:{{ dims_ratio('assets/img/icons/ctl-simple.png') }}" aria-hidden="true"></span>Simple lighting controls</a>
-        <a href="lighting-controls.html" class="ctl-n"><span class="ic" style="-webkit-mask-image:url(assets/img/icons/ctl-network.png);mask-image:url(assets/img/icons/ctl-network.png);aspect-ratio:{{ dims_ratio('assets/img/icons/ctl-network.png') }}" aria-hidden="true"></span>Network lighting controls</a>
-        <p>{% if cs.plug_editable %}<span data-editable="text" data-prop="sheet_plug">{{ cs.plug }}</span>{% else %}{{ cs.plug }}{% endif %}.</p>
-      </div>
-      {% endif %}
-    </div>
-  </section>
-  {% elif c.features %}
-  <section aria-labelledby="feat-h">
-    <div class="section-head"><h2 id="feat-h">At a glance</h2><p>Warranty, listings and construction.</p></div>
-    <div class="spec-tiles" style="--cols:{{ c.feature_cols }}">
-      {% for f in c.features %}<div><div class="v" data-editable="text" data-prop="features.{{ f.i }}.label">{{ f.label }}</div>{% if f.note %}<div class="n" data-editable="text" data-prop="features.{{ f.i }}.note">{{ f.note }}</div>{% endif %}</div>{% endfor %}
-    </div>
-  </section>
-  {% endif %}
-
-  {% if c.eddy %}{{ P.eddy_spot(c.eddy) }}{% endif %}
+  {#- The middle of the page: the page file's sections list, reordered, hidden and added to in CloudCannon (David, 2026-11-11).
+      Page sections keep their usual look; new blocks are the home page's Text, Photo, Photo and text and Photo grid. #}
+  {% set pp = "@file[/" ~ c.page_file ~ "]." %}
+  <div class="page-sections" data-editable="array" data-prop="sections" data-id-key="_type">
+  {% for s in c.sections_list %}
+    {% set show = " show-" ~ s.show_on if s.show_on != "all" else "" %}
+    {% if s._type in ["media", "photos", "highlights", "case_studies", "glance", "eddy"] %}
+    {% if s.has and s.show_on != "none" %}<div class="psec{{ show }}"{% if s.n is not none %} data-editable="array-item" data-id="{{ s._type }}"{% endif %}>
+{{ own_section(s._type, pp) }}
+    </div>{% elif s.n is not none %}<div class="psec-off" data-editable="array-item" data-id="{{ s._type }}"></div>{% endif %}
+    {% elif s._type == "unknown" %}<div class="psec-off" data-editable="array-item"></div>
+    {% else %}{{ H.block(s, {}) }}
+    {% endif %}
+  {% endfor %}
+  {% for b in new_blocks %}<template data-id="{{ b._type }}">{{ H.block(b, {}) }}</template>
+  {% endfor %}
+  </div>
 
   {% if c.tables %}
   <section id="parts" aria-labelledby="parts-h">

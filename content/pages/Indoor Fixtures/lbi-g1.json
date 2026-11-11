@@ -157,5 +157,11 @@
       "fit": "fill",
       "focus": ""
     }
+  ],
+  "sections": [
+    {
+      "_type": "glance",
+      "show_on": "all"
+    }
   ]
 }

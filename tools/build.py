@@ -213,6 +213,7 @@ HOME_BLOCKS = {
     "next_steps": dict(title="", text=""),
     "resources": dict(title="", text=""),
 }
+SHOW_ON = ("all", "laptop", "phone", "none")   # Show on: every screen, laptops and tablets only, phones only, hidden (David, 2026-11-11)
 HOME_IDS = {"hero": "h1", "brands": "brands-h", "feature": "lbi-h", "finder": "find-h", "next_steps": "next-h", "resources": "res-h"}
 PLACEHOLDER = "assets/img/office.jpg"
 HOME_NEW = [
@@ -272,6 +273,7 @@ def home_blocks(blocks, brand_pics=None, new=False):
         b["_type"], b["n"] = kind, n
         b["background"] = b["background"] if b["background"] in ("plain", "grey") else "plain"
         b["spacing"] = b["spacing"] if b["spacing"] in ("none", "tight", "normal", "large") else "normal"
+        b["show_on"] = b.get("show_on") if b.get("show_on") in SHOW_ON else "all"
         b["buttons"] = [dict(label=x.get("label") or "Button", link=(x.get("link") or "#").strip(), style=x.get("style") or "ghost")
                         for x in b.get("buttons") or [] if isinstance(x, dict)]
         if kind == "hero":
@@ -1217,8 +1219,9 @@ def apply_page_file(slug, d):
     d["title"] = d["title"] or slug.replace("-", " ").title()
     d["hero_image"] = p.get("hero_image") if isinstance(p.get("hero_image"), dict) else None
     d["sheet_points"] = [x for x in p.get("sheet_points") or [] if isinstance(x, str)]   # spec-sheet pages only (load_cutsheets)
-    for k in ("sheet_marks", "sheet_flex", "sheet_icons", "sheet_plug", "sheet_slides", "photos", "install_photos"):
+    for k in ("sheet_marks", "sheet_flex", "sheet_icons", "sheet_plug", "sheet_slides", "photos", "install_photos", "sections"):
         d[k] = p.get(k)
+    d["page_file"] = f.relative_to(ROOT).as_posix()   # CloudCannon's @file[...] address of this page's file
     d["features"] = [dict(label=x.get("label", ""), note=x.get("note", ""), i=i) for i, x in enumerate(d["features"]) if isinstance(x, dict) and x.get("label")]
     d["tables"] = [dict(t, columns=t.get("columns") or [], notes=t.get("notes") or [],
                         rows=[re.split(r"\s*\|\s*", r.strip()) if isinstance(r, str) else r for r in t.get("rows") or []]) for t in d["tables"]]
@@ -1399,6 +1402,65 @@ def page_photos(items, hero):
         im["cls"] = ("diagram tall" if ar < 0.9 else "diagram") if how == "diagram" else "strip" if how == "banner" else "wide" if ar > 1.9 else ""
         gallery.append(im)
     return gallery, cutouts
+
+# ---------- Product page sections (David, 2026-11-11: "add or delete sections/blocks ... or reorder") ----------
+# The middle of a product page is the page file's "sections" list, which the team reorders, hides and adds to in CloudCannon.
+# It holds the page's own sections (the kinds in PAGE_SECTIONS, filled from the spec sheet, the catalog and media.json) and
+# new blocks of the home page's kinds in PAGE_BLOCKS. The top (title, intro, main photo) and the end (part numbers and
+# specifications, diagrams, more details, documents, More from, Next steps) stay fixed: they come from the spec sheets.
+# A page section the page has content for but the list does not name is put back at its usual place, so a section is
+# removed with Show on: Hidden, never lost. Every block can be shown on every screen, laptops and tablets only, or phones only.
+PAGE_SECTIONS = ["media", "photos", "highlights", "case_studies", "glance", "eddy"]
+PAGE_BLOCKS = ["text", "image", "feature", "photo_grid"]
+
+def page_has(c, kind):
+    cs = c.get("cs")
+    gallery = c.get("gallery") or []
+    return bool({
+        "media": c.get("videos") or c.get("install"),
+        "photos": not cs and (c.get("cutouts") or any(not g["cls"].startswith("diagram") for g in gallery)),
+        "highlights": not cs and c.get("callouts"),
+        "case_studies": c.get("case_studies"),
+        "glance": cs or c.get("features"),
+        "eddy": c.get("eddy"),
+    }[kind])
+
+def default_sections(c):
+    return [dict(_type=k, show_on="all") for k in PAGE_SECTIONS if page_has(c, k)]
+
+def page_sections(c):
+    """The middle of a product page, in the page file's order, ready for category.html. Each entry keeps its place in the
+    file (n) so the visual editor's drag handles line up with the file."""
+    raw = c.get("sections") if isinstance(c.get("sections"), list) else None
+    out = []
+    for n, x in enumerate(raw if raw is not None else default_sections(c)):
+        kind = x.get("_type") if isinstance(x, dict) else None
+        show = x.get("show_on") if isinstance(x, dict) and x.get("show_on") in SHOW_ON else "all"
+        if kind in PAGE_SECTIONS and any(b["_type"] == kind for b in out):
+            out.append(dict(_type="unknown", show_on="none", n=n, has=False))   # a page section shows once
+        elif kind in PAGE_SECTIONS:
+            out.append(dict(_type=kind, show_on=show, n=n, has=page_has(c, kind)))
+        elif kind in PAGE_BLOCKS:
+            b = home_blocks([dict(x, spacing=x.get("spacing") or "tight")], new=False)
+            if b:
+                b = b[0]
+                b.update(n=n, hid=f"sec{n}-h", anchor="", inpage=True)
+                out.append(b)
+        else:
+            out.append(dict(_type="unknown", show_on="none", n=n, has=False))   # keeps the editor's count in line with the file
+    # page sections the list leaves out come back after the one before them in the usual order
+    named = {b["_type"] for b in out}
+    for k in PAGE_SECTIONS:
+        if k not in named and page_has(c, k):
+            before = PAGE_SECTIONS[:PAGE_SECTIONS.index(k)]
+            at = max([i + 1 for i, b in enumerate(out) if b["_type"] in before] or [0])
+            out.insert(at, dict(_type=k, show_on="all", n=None, has=True))
+    return out
+
+def page_new_blocks():
+    """What a block added on a product page starts as (the "Add" menu), drawn for the visual editor's preview."""
+    return [dict(b, spacing="tight", show_on="all", n=None, hid="", anchor="", inpage=True)
+            for b in home_blocks([x for x in HOME_NEW if x["_type"] in PAGE_BLOCKS], new=True)]
 
 def load_categories():
     cats = []
@@ -2170,7 +2232,8 @@ def main():
         if c["slug"] == "i-series":
             render_iseries(c, related, render)
             continue
-        render("category.html", c["href"], 0.8, page=c["slug"], c=c, prev=cats[i - 1] if i else None, nxt=cats[i + 1] if i + 1 < len(cats) else None,
+        c["sections_list"] = page_sections(c)
+        render("category.html", c["href"], 0.8, page=c["slug"], c=c, new_blocks=page_new_blocks(), prev=cats[i - 1] if i else None, nxt=cats[i + 1] if i + 1 < len(cats) else None,
                related=related,
                seo=seo_for(c["href"], c["seo_title"], c["seo_description"], brand_key=c["brand_key"], og_type="product.group" if products else "website",
                            image=og_img, image_alt=og_alt, jsonld=[

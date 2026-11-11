@@ -15,7 +15,7 @@
 
 {% macro block(b, ctx) %}
 {% set hid = b.hid %}
-{% set wrapcls = " blk bg-" ~ b.background ~ " sp-" ~ b.spacing %}
+{% set wrapcls = " blk bg-" ~ b.background ~ " sp-" ~ b.spacing ~ (" show-" ~ b.show_on if b.show_on and b.show_on != "all" else "") ~ (" pblk" if b.inpage else "") %}
 {% if b._type == "hero" %}
 <section class="home-hero wrap{{ wrapcls }}{% if b.align == 'left' %} left{% endif %}"{% if hid %} aria-labelledby="{{ hid }}"{% endif %} data-editable="array-item" data-id="hero">
   {% if b.eyebrow %}<p class="eyebrow" data-editable="text" data-prop="eyebrow">{{ b.eyebrow }}</p>{% endif %}

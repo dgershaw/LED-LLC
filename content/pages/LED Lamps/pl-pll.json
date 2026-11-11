@@ -253,5 +253,23 @@
       "focus": ""
     }
   ],
-  "install_photos": []
+  "install_photos": [],
+  "sections": [
+    {
+      "_type": "photos",
+      "show_on": "all"
+    },
+    {
+      "_type": "highlights",
+      "show_on": "all"
+    },
+    {
+      "_type": "case_studies",
+      "show_on": "all"
+    },
+    {
+      "_type": "glance",
+      "show_on": "all"
+    }
+  ]
 }

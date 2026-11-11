@@ -247,5 +247,19 @@
       "fit": "fill",
       "focus": "50% 45%"
     }
+  ],
+  "sections": [
+    {
+      "_type": "media",
+      "show_on": "all"
+    },
+    {
+      "_type": "case_studies",
+      "show_on": "all"
+    },
+    {
+      "_type": "glance",
+      "show_on": "all"
+    }
   ]
 }

@@ -39,8 +39,8 @@ collections_config:
     disable_add_folder: true
     disable_file_actions: true
     _enabled_editors: [visual, data]
-    # the home page's own controls (they win over the product-page labels below)
-    _inputs:
+    # the home page's own controls (they win over the product-page labels below); the product pages' blocks reuse them (&block_inputs)
+    _inputs: &block_inputs
       blocks:
         type: array
         label: Blocks
@@ -59,6 +59,12 @@ collections_config:
         label: Space above and below
         options:
           values: { none: None, tight: Small, normal: Normal, large: Large }
+      show_on:
+        type: select
+        label: Show on
+        comment: Hide a block on phones, or show it only on phones. Hidden keeps it in the list without showing it anywhere.
+        options:
+          values: { all: Every screen, laptop: Laptops and tablets only, phone: Phones only, none: Hidden }
       align:
         type: select
         label: Alignment
@@ -204,6 +210,13 @@ collections_config:
     disable_add_folder: true
     disable_file_actions: true
     _enabled_editors: [visual, data]
+    _inputs:
+      sections:
+        type: array
+        label: Sections
+        comment: The middle of the page, top to bottom. Drag to reorder, add a text or photo block, or set a section to Hidden. The headline at the top and the specifications, documents and Next steps at the bottom stay in place.
+        options:
+          structures: _structures.page_sections
 
 # Spec-sheet pages (LBI G1, Shoe Box + Wall Pack, TAA troffers) show their spec-sheet points under the headline instead of
 # the Introduction, Key points and At a glance, so those boxes are hidden there to avoid edits that show nowhere.
@@ -228,16 +241,16 @@ _structures:
     values:
       - label: Text
         description: A heading, a sentence or two, and optional buttons.
-        value: { _type: text, background: plain, spacing: normal, title: A new heading, text: A sentence or two about it., align: left, buttons: [] }
+        value: { _type: text, background: plain, spacing: normal, show_on: all, title: A new heading, text: A sentence or two about it., align: left, buttons: [] }
       - label: Photo
         description: One photo, sized and placed as you like, with an optional caption and link.
-        value: { _type: image, background: plain, spacing: normal, image: { src: assets/img/office.jpg, alt: Describe the photo }, caption: "", link: "", image_size: 100, align: center, image_shape: "16:9", fit: cover, position: "", zoom: 100 }
+        value: { _type: image, background: plain, spacing: normal, show_on: all, image: { src: assets/img/office.jpg, alt: Describe the photo }, caption: "", link: "", image_size: 100, align: center, image_shape: "16:9", fit: cover, position: "", zoom: 100 }
       - label: Photo and text
         description: A photo beside a heading and text. Choose the side and the photo's width.
-        value: { _type: feature, background: plain, spacing: normal, eyebrow: "", title: A new heading, text: A sentence or two about it., show_lbi_list: false, buttons: [], image: { src: assets/img/office.jpg, alt: Describe the photo }, image_side: right, image_width: 52, image_shape: "4:3", fit: cover, position: "", zoom: 100 }
+        value: { _type: feature, background: plain, spacing: normal, show_on: all, eyebrow: "", title: A new heading, text: A sentence or two about it., show_lbi_list: false, buttons: [], image: { src: assets/img/office.jpg, alt: Describe the photo }, image_side: right, image_width: 52, image_shape: "4:3", fit: cover, position: "", zoom: 100 }
       - label: Photo grid
         description: Photo tiles of any width and height, like the one under the headline.
-        value: { _type: photo_grid, background: plain, spacing: normal, title: "", text: "", row_height: medium, tiles: [ { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 6, height: 2, fit: cover, position: "", zoom: 100 }, { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 6, height: 2, fit: cover, position: "", zoom: 100 } ] }
+        value: { _type: photo_grid, background: plain, spacing: normal, show_on: all, title: "", text: "", row_height: medium, tiles: [ { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 6, height: 2, fit: cover, position: "", zoom: 100 }, { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 6, height: 2, fit: cover, position: "", zoom: 100 } ] }
       - label: Headline
         description: A big headline with an introduction and buttons, like the top of the page.
         value: { _type: hero, background: plain, spacing: normal, align: center, eyebrow: "", headline: A new headline, headline_tail: "", values: [], lede: "", buttons: [] }
@@ -253,6 +266,50 @@ _structures:
       - label: Resources
         description: The catalog, documents and contact cards.
         value: { _type: resources, background: grey, spacing: normal, title: For everyone on the project, text: "" }
+
+# What a new section on a product page starts as (the Sections list's "Add" menu). Keep in step with HOME_NEW and
+# page_new_blocks in tools/build.py. The "Page section" entries are the page's own sections; each one shows once.
+  page_sections:
+    style: modal
+    values:
+      - label: Text
+        description: A heading, a sentence or two, and optional buttons.
+        _inputs: *block_inputs
+        value: { _type: text, background: plain, spacing: tight, show_on: all, title: A new heading, text: A sentence or two about it., align: left, buttons: [] }
+      - label: Photo
+        description: One photo, sized and placed as you like, with an optional caption and link.
+        _inputs: *block_inputs
+        value: { _type: image, background: plain, spacing: tight, show_on: all, image: { src: assets/img/office.jpg, alt: Describe the photo }, caption: "", link: "", image_size: 100, align: center, image_shape: "16:9", fit: cover, position: "", zoom: 100 }
+      - label: Photo and text
+        description: A photo beside a heading and text. Choose the side and the photo's width.
+        _inputs: *block_inputs
+        value: { _type: feature, background: plain, spacing: tight, show_on: all, eyebrow: "", title: A new heading, text: A sentence or two about it., show_lbi_list: false, buttons: [], image: { src: assets/img/office.jpg, alt: Describe the photo }, image_side: right, image_width: 52, image_shape: "4:3", fit: cover, position: "", zoom: 100 }
+      - label: Photo grid
+        description: Photo tiles of any width and height.
+        _inputs: *block_inputs
+        value: { _type: photo_grid, background: plain, spacing: tight, show_on: all, title: "", text: "", row_height: medium, tiles: [ { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 6, height: 2, fit: cover, position: "", zoom: 100 }, { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 6, height: 2, fit: cover, position: "", zoom: 100 } ] }
+      - label: "Page section: Video and installation photos"
+        description: The product video and photos from real jobs.
+        _inputs: *block_inputs
+        value: { _type: media, show_on: all }
+      - label: "Page section: Photos"
+        description: The slideshow, product cutouts and banners from the Photos list.
+        _inputs: *block_inputs
+        value: { _type: photos, show_on: all }
+      - label: "Page section: Key points"
+        description: The highlight boxes from the Key points list.
+        _inputs: *block_inputs
+        value: { _type: highlights, show_on: all }
+      - label: "Page section: Case studies"
+        _inputs: *block_inputs
+        value: { _type: case_studies, show_on: all }
+      - label: "Page section: At a glance"
+        description: The warranty, listings and feature tiles, or the spec-sheet logos and icons.
+        _inputs: *block_inputs
+        value: { _type: glance, show_on: all }
+      - label: "Page section: Eddy"
+        _inputs: *block_inputs
+        value: { _type: eddy, show_on: all }
 
 # Saves become one change each on the portal, described in a plain sentence by the person saving.
 commit_templates:

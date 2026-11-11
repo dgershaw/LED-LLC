@@ -1686,3 +1686,20 @@ html.calm .site-header, html.calm .mega { background: var(--bg) !important; }
 .strip-fig.sized.align-center { margin-inline: auto; }
 .strip-fig.sized.align-right { margin-left: auto; }
 @media (max-width: 560px) { .diagram-fig.sized, .strip-fig.sized { width: 100%; } }
+
+/* ---------- Product page sections (David, 2026-11-11): the middle of a product page as a list the team reorders, hides and
+   adds to in CloudCannon (category.html, page_sections in build.py). New blocks are the home page's kinds, sized to sit in
+   the page column. Show on: laptops and tablets only (show-laptop), phones only (show-phone), hidden (show-none). ---------- */
+.page-sections { display: grid; gap: clamp(40px, 6vw, 64px); }
+.page-sections > * { min-width: 0; }
+.psec-off, .show-none { display: none !important; }
+@media (max-width: 640px) { .show-laptop { display: none !important; } }
+@media (min-width: 641px) { .show-phone { display: none !important; } }
+.blk.pblk { padding-block: 0; }
+.blk.pblk.sp-normal { padding-block: clamp(8px, 1.5vw, 16px); }
+.blk.pblk.sp-large { padding-block: clamp(24px, 4vw, 48px); }
+.blk.pblk > .wrap, .blk.pblk.wrap { max-width: none; padding-inline: 0; }
+.blk.pblk.bg-grey { border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 3vw, 36px); }
+.blk.pblk.bg-grey > .wrap { padding-inline: 0; }
+.blk.pblk .band-head h2 { font-size: clamp(1.5rem, 2.6vw, 1.875rem); }
+.blk.pblk.home-grid { padding-block: 0; }

@@ -181,8 +181,22 @@ def flatten(d):
                 lists.append((f"{name}: {k.replace('_', ' ')}", [text(x) for x in v]))
             else:
                 scalars.append((f"{name}: {k.replace('_', ' ')}", text(v) if not isinstance(v, (int, float, bool)) else str(v)))
+    # product page sections (since 2026-11-11): the order, Show on, and every setting of the blocks added there
+    for i, blk in enumerate(d.get("sections", []) if isinstance(d.get("sections"), list) else []):
+        if not isinstance(blk, dict):
+            continue
+        name = f"Section {i + 1} ({SECTION_KINDS.get(blk.get('_type'), HOME_KINDS.get(blk.get('_type'), blk.get('_type') or 'section'))})"
+        for k, v in blk.items():
+            if k == "_type":
+                continue
+            if isinstance(v, list) and v and all(isinstance(x, dict) for x in v):
+                lists.append((f"{name}: {k.replace('_', ' ')}", [text(x) for x in v]))
+            else:
+                scalars.append((f"{name}: {k.replace('_', ' ')}", text(v) if not isinstance(v, (int, float, bool)) else str(v)))
     return scalars, lists
 
+SECTION_KINDS = {"media": "Video and installation photos", "photos": "Photos", "highlights": "Key points", "case_studies": "Case studies",
+                 "glance": "At a glance", "eddy": "Eddy"}
 HOME_KINDS = {"hero": "Headline", "photo_grid": "Photo grid", "brands": "Brand cards", "feature": "Photo and text", "image": "Photo",
               "text": "Text", "finder": "What are you replacing?", "next_steps": "Eddy's next steps", "resources": "Resources"}
 

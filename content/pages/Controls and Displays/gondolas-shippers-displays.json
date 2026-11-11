@@ -53,5 +53,11 @@
       "focus": ""
     }
   ],
-  "install_photos": []
+  "install_photos": [],
+  "sections": [
+    {
+      "_type": "photos",
+      "show_on": "all"
+    }
+  ]
 }
