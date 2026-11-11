@@ -134,6 +134,7 @@
       qs.push(q(a.size === "8" ? "8 ft lamps in each fixture" : "Lamps in each fixture", seg("lamps", sh.lampsAllowed.map(n => [n, String(n)]), lamps)));
       const lamp = a.lamp || sh.lampDef;
       qs.push(q("Lamp type", seg("lamp", lampOpts.map(k => [k, E.LAMPS[k].name]), lamp, "flow")));
+      if (r.delamp) qs.push(q("Bars in place of the lamps", seg("delamp", [[false, "Lamp for lamp", `${r.delamp.lampBars} ${r.delamp.lampBars === 1 ? "bar" : "bars"} per fixture`], [true, "De-lamp", r.delamp.bars < r.delamp.lampBars ? `${r.delamp.bars} ${r.delamp.bars === 1 ? "bar" : "bars"} per fixture, same light` : "Fewest bars that match the light"]], !!a.delamp), "De-lamping uses fewer bars at a higher setting: less to buy and less labor to install."));
     }
     qs.push(q("Location", seg("env", [["dry", "Dry or damp", "Indoors"], ["wet", "Wet or outdoors", "Washdown, coolers, garages, canopies"]], a.env)));
 
@@ -182,7 +183,7 @@
       qs.push(q("Silvair device", seg("meshKind", kinds, a.meshKind)));
       if (a.meshKind === "sensor" && m.family === "lbi") qs.push(q("Sensor type", seg("sensor", [["oc2", "Microwave"], ["pir", "Passive infrared"]], a.sensor === "pir" ? "pir" : "oc2")));
     }
-    if ((a.ctl === "simple" || a.ctl === "mesh") && isRun && m.family !== "max") qs.push(q("Where the sensors go", seg("place", [["tucked", "Tucked behind the bars", "At the ends of the run, on 6 in jumper cables"], ["inline", "In line between bars", `Takes about ${E.SENSOR_IN} in per sensor`]], a.place), "One sensor for every 15 bars."));
+    if ((a.ctl === "simple" || a.ctl === "mesh") && isRun && m.family !== "max") qs.push(q("Where the sensors go", seg("place", [["tucked", "Tucked behind the bars", "The end sensor hides behind the last bar on its 6 in cable"], ["inline", "In line with the bars", `Every sensor takes about ${E.SENSOR_IN} in of the run`]], a.place), "One sensor for every 15 bars."));
     if (m.id === "g2") adv.push(q("Tunable white remote", seg("irwc", [[false, "No", "Not needed"], [true, "Add one", "RC-REMOTE-IRWC"]], a.irwc)));
     if (m.id === "plus") adv.push(q("Color remote", seg("rgb", [[true, "Add one", "Unlocks color"], [false, "White light only"]], a.rgb)));
     // emergency
@@ -339,13 +340,14 @@
     $("#pb-areas").innerHTML = state.areas.map((a, i) => renderArea(a, i, P.per[i])).join("") || `<p class="pb-empty">No areas yet. Add one to start.</p>`;
   }
 
+  function miniOrder(l) { const o = E.orderParts(l); return [o.packs ? `${o.packs} × ${o.pack}-pk` : "", o.singles ? `${o.singles}` : ""].filter(Boolean).join(" + "); }
   function renderSide() {
     const P = last, T = P.totals;
     const top = P.lines.slice(0, 9);
     $("#pb-side").innerHTML = `<div class="pb-side-in">
       <p class="eyebrow">Your bill of materials so far</p>
       <div class="pb-tiles"><div><b>${fmt(T.bars)}</b><span>light bars</span></div><div><b>${fmt(T.feeds)}</b><span>power feeds</span></div>${T.sensors ? `<div><b>${fmt(T.sensors)}</b><span>sensors</span></div>` : `<div><b>${P.lines.length}</b><span>line items</span></div>`}</div>
-      <ul class="pb-mini">${top.map(l => `<li><span class="pn">${h(l.pn)}</span><span class="q">${l.pack > 1 ? `${l.order} × ${l.pack}-pk` : `× ${fmt(l.qty)}`}</span></li>`).join("")}${P.lines.length > top.length ? `<li class="more">and ${P.lines.length - top.length} more</li>` : ""}</ul>
+      <ul class="pb-mini">${top.map(l => `<li><span class="pn">${h(l.pn)}</span><span class="q">${l.pack > 1 ? miniOrder(l) : `× ${fmt(l.qty)}`}</span></li>`).join("")}${P.lines.length > top.length ? `<li class="more">and ${P.lines.length - top.length} more</li>` : ""}</ul>
       <a class="btn btn-primary" href="#pb-results">See the full list</a>
       <div class="pb-side-acts"><button type="button" class="pb-link" data-act="pdf">PDF</button><button type="button" class="pb-link" data-act="xlsx">Excel</button><button type="button" class="pb-link" data-act="quote">Email for a quote</button></div>
     </div>`;
@@ -364,7 +366,7 @@
     </div>`;
     html += `<h3 class="pb-h3">Everything to order</h3>`;
     html += linesTable(P.lines, true);
-    html += `<p class="pb-fine">Parts sold in packs of 10 are rounded up to whole packs in the Order column. "Set to" is the FlexWatt and FlexColor switch position for each bar; we can preset it at the factory to save labor on site.${P.per.some(r => r.isRun) ? " " + EXACT_NOTE : ""}</p>`;
+    html += `<p class="pb-fine">Seamless connectors and short linking cables are ordered as packs of 10 plus singles, so you buy only what the job needs; parts sold only in packs are rounded up to whole packs. "Set to" is the FlexWatt and FlexColor switch position for each bar; we can preset it at the factory to save labor on site.${P.per.some(r => r.isRun) ? " " + EXACT_NOTE : ""}</p>`;
     html += `<h3 class="pb-h3">Area by area</h3><div class="pb-areas-out">`;
     P.per.forEach((r, i) => {
       const a = state.areas[i];
@@ -400,7 +402,7 @@
     if (raw === "true") v = true; else if (raw === "false") v = false;
     else if (raw === "") v = null;
     else if (NUMERIC.has(k)) v = +raw;
-    const resets = { job: ["app", "lamps", "lamp", "barsPer", "watt"], app: ["lamps", "lamp", "barsPer", "watt", "size"], size: ["lamps", "lamp", "barsPer"], lamps: ["barsPer"], model: ["watt", "cct"], barLen: ["watt"], env: ["model"] };
+    const resets = { delamp: ["barsPer", "watt"], job: ["app", "lamps", "lamp", "barsPer", "watt"], app: ["lamps", "lamp", "barsPer", "watt", "size"], size: ["lamps", "lamp", "barsPer"], lamps: ["barsPer"], model: ["watt", "cct"], barLen: ["watt"], env: ["model"] };
     (resets[k] || []).forEach(x => { a[x] = x === "size" ? "" : null; });
     if (k === "job") a.app = v === "new" ? "fixtures" : "troffer";
     if (k === "app" && (v === "cove" || v === "run")) { a.runs = a.runs || 1; }
@@ -566,7 +568,7 @@
     head.push({ cells: [] });
     const rows1 = head.slice();
     rows1.push({ cells: ["Group", "Part #", "Description", "Setting", "Qty needed", "Order", "Pack", "Areas"], s: 3 });
-    P.lines.forEach(l => rows1.push({ cells: [l.g, { v: l.pn, s: 5 }, l.d, l.set || "", l.qty, l.pack > 1 ? `${l.order} × ${l.pack}-pack` : l.qty, l.pack, l.project ? "Whole project" : l.areas.map(x => areaTitle(state.areas[x.i], x.i)).join(", ")], s: 4 }));
+    P.lines.forEach(l => rows1.push({ cells: [l.g, { v: l.pn, s: 5 }, l.d, l.set || "", l.qty, l.pack > 1 ? E.orderText(l) : l.qty, l.pack, l.project ? "Whole project" : l.areas.map(x => areaTitle(state.areas[x.i], x.i)).join(", ")], s: 4 }));
     rows1.push({ cells: [] });
     rows1.push({ cells: ["Totals"], s: 2 });
     rows1.push({ cells: ["Light bars", P.totals.bars] }, { cells: ["Power feeds", P.totals.feeds] }, { cells: ["Sensors", P.totals.sensors] }, { cells: ["Connected load (W)", P.totals.watts] });
@@ -578,7 +580,7 @@
     P.per.forEach((r, i) => {
       rows2.push({ cells: [`${i + 1}. ${areaTitle(state.areas[i], i)}: ${areaSummary(r)}`], s: 2 });
       rows2.push({ cells: [areaSpec(r)], s: 4 });
-      r.lines.forEach(l => rows2.push({ cells: ["", { v: l.pn, s: 5 }, l.d, l.set || "", l.qty, l.pack > 1 ? `${Math.ceil(l.qty / l.pack)} × ${l.pack}-pack` : l.qty], s: 4 }));
+      r.lines.forEach(l => rows2.push({ cells: ["", { v: l.pn, s: 5 }, l.d, l.set || "", l.qty, l.pack > 1 ? E.orderText(l) : l.qty], s: 4 }));
       r.notes.forEach(n => rows2.push({ cells: ["", "", n], s: 4 }));
       rows2.push({ cells: [] });
     });
@@ -700,7 +702,7 @@
     let g = null;
     for (const l of P.lines) { if (l.g !== g) { g = l.g; groupRow(g); } row(l, fmt(l.qty), E.orderText(l)); }
     y += 6;
-    wrap("Parts sold in packs are rounded up to whole packs in the Order column. \"Set to\" is the FlexWatt and FlexColor switch position for each bar; we can preset it at the factory." + (P.per.some(r => r.isRun) ? " " + EXACT_NOTE : ""), 8, false, PW - 2 * M).forEach(t => { need(12); text(M, y + 8, t, 8, false, MUTED); y += 11; });
+    wrap("Seamless connectors and short linking cables are ordered as packs of 10 plus singles; parts sold only in packs are rounded up to whole packs. \"Set to\" is the FlexWatt and FlexColor switch position for each bar; we can preset it at the factory." + (P.per.some(r => r.isRun) ? " " + EXACT_NOTE : ""), 8, false, PW - 2 * M).forEach(t => { need(12); text(M, y + 8, t, 8, false, MUTED); y += 11; });
     // areas
     P.per.forEach((r, i) => {
       y += 16; need(90);

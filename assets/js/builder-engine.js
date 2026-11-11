@@ -105,11 +105,15 @@
   // ASSUMED: a seamless connector adds no length between bars ("seamless"); David to confirm.
   const SSC_IN = 0;
 
+  // Seamless connectors and the short linking cables are sold singly as well as in packs of 10; the longer cables come
+  // in packs of 10 only (Carly Taylor, 2026-11-10). ASSUMED: "short" means up to 12 in, and a single is the same part
+  // number without -10P; David to confirm.
+  const SINGLE_LC_MAX = 12;
   // Accessories: part number, description, pack size, picture (assets/img/acc).
   const ACC = {
-    ssc: { pn: "RP-LBI-SSC-DIM-10P", d: "Seamless connector, dimmable", pack: 10, img: "seamless-connector-dimmable.png", g: "Connectors" },
-    sscNo: { pn: "RP-LBI-SSC-NODIM-10P", d: "Seamless connector, non-dimming (control zone break)", pack: 10, img: "seamless-connector-non-dimmable.png", g: "Connectors" },
-    lc: (n) => ({ pn: `RP-LBI-LC-${n}IN-DIM-10P`, d: `Linking cable, ${n} in, dimmable`, pack: 10, img: "linking-cable-72in.png", g: "Connectors" }),
+    ssc: { pn: "RP-LBI-SSC-DIM-10P", d: "Seamless connector, dimmable", pack: 10, singles: true, img: "seamless-connector-dimmable.png", g: "Connectors" },
+    sscNo: { pn: "RP-LBI-SSC-NODIM-10P", d: "Seamless connector, non-dimming (control zone break)", pack: 10, singles: true, img: "seamless-connector-non-dimmable.png", g: "Connectors" },
+    lc: (n) => ({ pn: `RP-LBI-LC-${n}IN-DIM-10P`, d: `Linking cable, ${n} in, dimmable`, pack: 10, singles: n <= SINGLE_LC_MAX, img: "linking-cable-72in.png", g: "Connectors" }),
     lc65: (n) => ({ pn: `RP-LBI65-LC-${n}IN-DIM`, d: `LBI 65 linking cable, ${n} in, dimmable`, pack: 1, img: "linking-cable-48in.png", g: "Connectors" }),
     ip3: { pn: "RP-LBI-G1-IP-3F-DIM", d: "3 ft incoming power kit: hardwire into the fixture or a junction box", pack: 1, img: "3ft-cable-kit.png", g: "Power" },
     ipPlug: { pn: "RP-LBI-G1-IP-7F-120V-SW", d: "7 ft plug-in power cable with on/off switch, 120V outlet", pack: 1, img: "cable-with-switch.png", g: "Power" },
@@ -191,6 +195,7 @@
         for (let c = 0; c <= (L2 ? 4 : 0); c++) {
           const n = a + b + c;
           if (!n) continue;
+          if (b && (a || c)) continue;   // a 3 ft bar next to 4 ft or 2 ft bars reads dimmer: use two 2 ft bars instead (Carly Taylor, 2026-11-10)
           const len = a * (L4 || 0) + b * (L3 || 0) + c * (L2 || 0) + (n - 1) * SSC_IN;
           if (len > runIn + 0.01) continue;
           const gap = runIn - len;
@@ -200,10 +205,12 @@
       }
     }
     if (!best) best = { a: 0, b: 0, c: 0, n: 0, len: 0, gap: runIn, score: 0 };
-    const seq = [];   // longest bars first, short ones at the far end where a trim piece is least noticed
-    for (let i = 0; i < best.a; i++) seq.push(4);
+    const seq = [];   // short bars go in the middle of the run, where a half-length bar is least noticed
+    const half = Math.ceil(best.a / 2);
+    for (let i = 0; i < half; i++) seq.push(4);
     for (let i = 0; i < best.b; i++) seq.push(3);
     for (let i = 0; i < best.c; i++) seq.push(2);
+    for (let i = half; i < best.a; i++) seq.push(4);
     return { seq, lit: best.len, gap: best.gap };
   }
 
@@ -275,10 +282,12 @@
         z.forEach((n, zi) => {
           const first = zi === 0, last = zi === z.length - 1;
           if (senLen) {
-            let s;
-            if (place === "tucked" && last) s = { k: zk + n - 1, side: sideOf[zk + n - 1], tucked: true, atEnd: "end" };
-            else if (place === "tucked" && first) s = { k: zk, side: sideOf[zk], tucked: true, atEnd: "start" };
-            else { s = { k: zk, side: sideOf[zk], tucked: false, atEnd: "start" }; need[sideOf[zk]] += SENSOR_IN; }
+            // A plug-in sensor cannot share a bar end with the incoming power cable, so every sensor sits at the far end
+            // of its zone: the last one tucked behind the bars on its 6 in cable, the others in line before the zone break.
+            let s; const e = zk + n - 1;
+            if (place === "tucked" && last) s = { k: e, side: sideOf[e], tucked: true, atEnd: "end" };
+            else { s = { k: e, side: sideOf[e], tucked: false, atEnd: "end" }; need[sideOf[e]] += SENSOR_IN; }
+            void first;
             s.zone = zi; s.seg = si; sensors.push(s);
           } else if (builtinSensors) sensors.push({ k: zk, side: sideOf[zk], builtin: true, atEnd: "start", zone: zi, seg: si });
           zk += n;
@@ -287,10 +296,8 @@
         for (let b = k; b < k + sg.length - 1; b++) {
           inZ += 1;
           const zoneEnd = inZ === z[zi];
-          const nextInline = zoneEnd && sensors.some(s => s.seg === si && s.k === b + 1 && !s.tucked && !s.builtin);
           let kind;
           if (cornerAfter.has(b)) kind = zoneEnd ? "cornerNo" : "corner";
-          else if (nextInline) kind = "lcNo";
           else if (zoneEnd) kind = "nodim";
           else kind = "ssc";
           joins.push({ after: b, kind });
@@ -307,8 +314,8 @@
         bars.forEach(b => {
           const i = b.side;
           const f = feeds.find(x => x.k === b.k); if (f) { f.x = cur[i]; cur[i] += FEED_IN; }
-          const s = sensors.find(x => x.k === b.k && x.atEnd === "start" && !x.tucked && !x.builtin); if (s) { s.x = cur[i]; cur[i] += SENSOR_IN; }
           b.x = cur[i]; cur[i] += m.len[b.len];
+          const s = sensors.find(x => x.k === b.k && x.atEnd === "end" && !x.tucked && !x.builtin); if (s) { s.x = cur[i]; cur[i] += SENSOR_IN; }
         });
         sensors.forEach(s => { if (s.x == null) { const b = bars[s.k]; s.x = s.atEnd === "end" ? b.x + m.len[b.len] : b.x; } });
         const counts = { feeds: segs.length, sensors: sensors.filter(s => !s.builtin).length, inline: sensors.filter(s => !s.tucked && !s.builtin).length, jumpers: sensors.filter(s => s.tucked).length };
@@ -337,7 +344,7 @@
       id: "a" + Date.now().toString(36) + seq, name: "", job: "retrofit", app: "troffer", size: "2x4", qty: 10,
       lamps: null, lamp: null, runFt: 40, runs: 1, shape: "line", sideA: 16, sideB: 12, env: "dry", model: "auto", barLen: 4, barsPer: null, cct: null, level: "match",
       watt: null, pair: "RO", mount: "surface", aim: "flat", volts: 120, feed: "hardwire", lead65: 3, chain: false, gapIn: 24,
-      ctl: "none", sensor: "oc2", meshKind: "sensor", place: "tucked", emg: 0, emgKind: "remote", irwc: false, rgb: true
+      delamp: false, ctl: "none", sensor: "oc2", meshKind: "sensor", place: "tucked", emg: 0, emgKind: "remote", irwc: false, rgb: true
     }, over || {});
   }
 
@@ -403,7 +410,7 @@
     const isRun = (a.job === "new" && a.app === "run") || (a.job === "retrofit" && a.app === "cove");
     const cct = a.cct;
     const setLabel = (L, w) => m.color ? `${PAIRS[a.pair].name}, ${w} W` : `Set to ${w} W, ${cct}K`;
-    let layout = null;
+    let layout = null, delampInfo = null;
     let units = 0;          // fixtures or runs
     let barsTotal = 0, wattsTotal = 0, lumensTotal = 0;
     const barCount = {};    // "L|w|emg|sensor" -> qty
@@ -419,6 +426,8 @@
       if (a.ctl === "simple") return ACC[a.sensor] || ACC.oc2;
       return a.meshKind === "node" ? ACC.bleA : a.sensor === "pir" ? ACC.blePir : ACC.bleOc;
     };
+    // what ships in the box with an LBI in-line sensor or node (from the field, Carly Taylor 2026-11-10; not on the cut sheets)
+    const withBox = (acc) => m.family === "lbi" ? Object.assign({}, acc, { d: acc.d + ". Includes one 6 in linking cable, two dimmable seamless connectors and a surface mount clip" }) : acc;
     const maxSuffix = () => a.ctl === "simple" ? "-OC" : a.meshKind === "node" ? "-BT" : "-OCBT";
     const hasSensor = a.ctl === "simple" || a.ctl === "mesh";
     const lcFor = (inches) => {
@@ -454,8 +463,17 @@
           const top = m.lm ? m.lm[L][m.lm[L].length - 1] : 3000;
           rows = clamp(Math.ceil(target / top), 1, lamps);
         }
-        if (a.barsPer) { rows = Math.max(1, Math.round(a.barsPer / perRow)); }
         lampLm = lamps * lamp.lm * BALLAST_FACTOR * LEVELS[a.level || "match"];
+        // de-lamping: the fewest bars that still reach the light target at their top setting (Carly Taylor, 2026-11-10)
+        const lampRows = rows;
+        if (m.lm && m.lm[L] && a.app !== "bay") {
+          const top = m.lm[L][m.lm[L].length - 1] * perRow;
+          let dl = clamp(Math.ceil(lampLm / top - 1e-9), 1, lampRows);
+          if (a.app === "troffer" && lamps >= 3) dl = Math.max(2, dl);
+          delampInfo = { bars: dl * perRow, lampBars: lampRows * perRow, lamps };
+          if (a.delamp) rows = dl;
+        }
+        if (a.barsPer) { rows = Math.max(1, Math.round(a.barsPer / perRow)); }
         const idx = wattIndex(m, L, lampLm / (rows * perRow));
         w = a.watt && m.watts[L].includes(+a.watt) ? +a.watt : m.watts[L][idx];
         cable = sh.cable;
@@ -464,6 +482,11 @@
         if (m.lm && m.lm[L]) {
           const got = rows * perRow * m.lm[L][m.watts[L].indexOf(w)];
           notes.push(`Light level: ${rows * perRow} × ${L} ft bars at ${w} W give about ${fmt(got)} lm per fixture, against about ${fmt(lamps * lamp.lm * BALLAST_FACTOR)} lm from ${lamps} ${lamp.name} lamps on a typical ballast.`);
+          if (delampInfo && !a.barsPer) {
+            if (a.delamp && delampInfo.bars < delampInfo.lampBars) notes.push(`De-lamped: ${delampInfo.bars} bars replace ${lamps} lamps in each fixture, so there are fewer bars to buy and install.`);
+            else if (a.delamp) notes.push(`De-lamping: this fixture needs all ${delampInfo.lampBars} bars to reach the light level you chose. Pick "Save energy" to see if fewer bars will do.`);
+            else if (delampInfo.bars < delampInfo.lampBars) notes.push(`De-lamping option: ${delampInfo.bars} bars at a higher setting would also reach this light level. Choose "De-lamp" to buy and install fewer bars.`);
+          }
         }
       } else {
         label = "new fixture";
@@ -525,7 +548,7 @@
         }
       }
       // controls
-      if (hasSensor && m.family !== "max") add(sensorAcc(), sensorCount);
+      if (hasSensor && m.family !== "max") add(withBox(sensorAcc()), sensorCount);
       if (chainNote) notes.push(chainNote);
       // emergency
       if (emgUnits && !builtIn) {
@@ -609,10 +632,10 @@
         add(lc, units * C.corners);
         if (C.cornersNo) add(Object.assign({}, lc, { pn: lc.pn.replace("-DIM", "-NODIM"), d: lc.d.replace("dimmable", "non-dimming (control zone break)") }), units * C.cornersNo);
       }
-      if (C.jumpers) { const lc = lcFor(TUCK_IN); add(Object.assign({}, lc, { d: lc.d + " (jumper to a sensor tucked behind the bars)" }), units * C.jumpers); }
-      if (C.lcNo) { const lc = lcFor(TUCK_IN); add(Object.assign({}, lc, { pn: lc.pn.replace("-DIM", "-NODIM"), d: lc.d.replace("dimmable", "non-dimming (control zone break, to an in-line sensor)") }), units * C.lcNo); }
+      // LBI sensors and nodes ship with their own 6 in linking cable and two seamless connectors; LBI 65 jumpers are ordered
+      if (C.jumpers && m.family !== "lbi") { const lc = lcFor(TUCK_IN); add(Object.assign({}, lc, { d: lc.d + " (jumper to a sensor tucked behind the bars)" }), units * C.jumpers); }
       add(feedAcc(), units * feeds);
-      if (hasSensor && m.family !== "max") add(sensorAcc(), units * sensors);
+      if (hasSensor && m.family !== "max") add(withBox(sensorAcc()), units * sensors);
       if (emgRuns && !(a.emgKind === "builtin" && (m.emgBuiltIn || m.family === "max"))) {
         const load = fill.seq.reduce((s, len) => s + wFor(len), 0);
         if (m.family === "lbi65") add(ACC.emg65, emgRuns * Math.ceil(load / 40));
@@ -642,11 +665,10 @@
         if (m.family === "max") notes.push(`Controls: ${zs.length} LBI MAX ${zs.length === 1 ? "unit" : "units"} per run ordered with the sensor built in (${maxSuffix()}), one per zone of up to ${SENSOR_CAPACITY} bars.`);
         else {
           const zonesText = zs.length === 1 ? "one sensor per run" : `${zs.length} control zones per run (${zs.join(", ")} bars), one sensor each`;
-          if (a.place === "tucked") {
-            if (zs.length === 1) notes.push(`Controls: ${zonesText}, tucked behind the bars at the far end of the run on a ${TUCK_IN} in jumper cable, so it adds no length to the run.`);
-            else if (!C.inline) notes.push(`Controls: ${zonesText}. Each zone's sensor sits at an end of ${segs.length > 1 ? "its feed's stretch of bars" : "the run"}, tucked behind the bars on a ${TUCK_IN} in jumper cable, so the sensors add no length; the zones meet at a non-dimming seamless connector.`);
-            else notes.push(`Controls: ${zonesText}. The first and last zones' sensors tuck behind the bars at the ends of the run on ${TUCK_IN} in jumper cables. Each middle zone's sensor sits in line at the start of its zone, after a ${TUCK_IN} in non-dimming linking cable from the zone before, and takes about ${SENSOR_IN} in of the run.`);
-          } else notes.push(`Controls: ${zonesText}, each in line at the start of its zone (the first right after the power feed, the others after a ${TUCK_IN} in non-dimming linking cable), taking about ${SENSOR_IN} in of the run each.`);
+          const boxed = m.family === "lbi" ? " that comes in its box" : "";
+          const endText = a.place === "tucked" ? `tucked behind the bars at the far end of ${segs.length > 1 ? "its feed's stretch of bars" : "the run"} on the ${TUCK_IN} in linking cable${boxed}, so it adds no length` : `in line at the far end of ${segs.length > 1 ? "its feed's stretch of bars" : "the run"}, taking about ${SENSOR_IN} in`;
+          if (zs.length === 1) notes.push(`Controls: ${zonesText}, ${endText}. It goes at the end away from the power feed, because a plug-in sensor and the incoming power cable cannot share the same bar end.`);
+          else notes.push(`Controls: ${zonesText}. A plug-in sensor cannot share a bar end with the incoming power cable, so each sensor sits at the far end of its zone. The last zone's sensor is ${endText}. Every other sensor sits in line between its zone's last bar and the non-dimming seamless connector that starts the next zone, taking about ${SENSOR_IN} in of the run.`);
           notes.push(`One sensor controls up to ${SENSOR_CAPACITY} bars.`);
         }
       }
@@ -676,7 +698,7 @@
     if (m.id === "plus") notes.push(a.rgb ? "LBI Color Palette+ ships in white light mode with switches like LBI G2; the RGBWW remote unlocks color for every bar on the job." : "LBI Color Palette+ ships in white light mode with switches like LBI G2; color needs the optional RGBWW remote, sold separately.");
     if (volts === 347) notes.push("347V: the bars are the -CN models for Canada (120-347V).");
 
-    return { area: a, model: m, rec, lines: merge(lines), notes, assumptions, fixes, layout, units, barsTotal, wattsTotal, lumensTotal, isRun };
+    return { area: a, model: m, rec, delamp: delampInfo, lines: merge(lines).map(finalize), notes, assumptions, fixes, layout, units, barsTotal, wattsTotal, lumensTotal, isRun };
   }
 
   function removeQty(lines, pn, n) {
@@ -705,7 +727,8 @@
     // project-wide items
     const anySimple = per.some(r => r.area.ctl === "simple");
     if (anySimple && !(opts && opts.noIr23)) map.set(ACC.ir23.pn, Object.assign({}, ACC.ir23, { qty: 1, areas: [], project: true }));
-    const lines = [...map.values()].map(l => Object.assign(l, { order: l.pack > 1 ? Math.ceil(l.qty / l.pack) : l.qty }));
+    if (anySimple && !(opts && opts.noIr23)) per.forEach(r => { if (r.area.ctl === "simple") r.notes.push("The IR23 remote that sets these sensors (RC-REMOTE-IR23) is listed once for the whole project, under Everything to order."); });
+    const lines = [...map.values()].map(finalize);
     lines.sort((x, y) => GROUPS.indexOf(x.g) - GROUPS.indexOf(y.g) || (y.bar ? y.bar.len : 0) - (x.bar ? x.bar.len : 0));
     const totals = {
       bars: per.reduce((s, r) => s + r.barsTotal, 0),
@@ -718,11 +741,27 @@
     return { per, lines, totals };
   }
 
-  /** "4 packs of 10" style order text. */
+  /** How a line is ordered: whole packs, plus singles where the part is sold singly. */
+  function orderParts(l) {
+    if (!(l.pack > 1)) return { packs: 0, singles: l.qty, pack: 1 };
+    if (l.singles) return { packs: Math.floor(l.qty / l.pack), singles: l.qty % l.pack, pack: l.pack };
+    return { packs: Math.ceil(l.qty / l.pack), singles: 0, pack: l.pack };
+  }
+  const singlePn = (l) => l.singles ? l.pn.replace(/-10P$/, "") : null;
+  function finalize(l) {
+    const o = orderParts(l);
+    l.d0 = l.d0 || l.d;
+    l.order = o.packs; l.orderSingles = l.pack > 1 ? o.singles : 0;
+    l.d = l.d0 + (l.pack > 1 && o.singles ? `. Singles are ${singlePn(l)}` : "");
+    return l;
+  }
+  /** "1 pack of 10 + 4 singles" style order text. */
   function orderText(l) {
-    if (l.order == null) l = Object.assign({}, l, { order: l.pack > 1 ? Math.ceil(l.qty / l.pack) : l.qty });
-    if (l.pack > 1) return `${l.order} ${l.order === 1 ? "pack" : "packs"} of ${l.pack}`;
-    return String(l.qty);
+    if (!(l.pack > 1)) return String(l.qty);
+    const o = orderParts(l), out = [];
+    if (o.packs) out.push(`${o.packs} ${o.packs === 1 ? "pack" : "packs"} of ${l.pack}`);
+    if (o.singles) out.push(`${o.singles} ${o.singles === 1 ? "single" : "singles"}`);
+    return out.join(" + ");
   }
 
   // ------------------------------------------------------------------ plain-English reader
@@ -801,6 +840,7 @@
     let x = " " + s + " ";
     const app = detectApp(x);
     if (app) f.app = app;
+    if (/\bde-?lamp/.test(x)) f.delamp = true;
     // tray ceilings and shaped coves: "a 16 x 12 tray ceiling", "an L-shaped cove 10 by 6"
     const shape = /\btray(?:ed)?\b/.test(x) ? "tray" : /\bl[\s-]?shaped?\b/.test(x) ? "l" : /\bu[\s-]?shaped?\b|\bthree[\s-]sided\b|\b3[\s-]sided\b/.test(x) ? "u" : null;
     if (shape) {
@@ -920,7 +960,7 @@
     if (sc.lamps != null) a.lamps = sc.lamps;
     if (sc.lamp) a.lamp = sc.lamp;
     if (a.app === "troffer" && a.size === "2x2" && !sc.lamp) a.lamp = "ubend";
-    ["env", "model", "pair", "cct", "ctl", "sensor", "meshKind", "mount", "aim", "feed", "level", "volts", "irwc", "chain", "gapIn"].forEach(k => { if (sc[k] != null) a[k] = sc[k]; });
+    ["delamp", "env", "model", "pair", "cct", "ctl", "sensor", "meshKind", "mount", "aim", "feed", "level", "volts", "irwc", "chain", "gapIn"].forEach(k => { if (sc[k] != null) a[k] = sc[k]; });
     if (a.mount === "tbar" && a.job === "retrofit") a.mount = "surface";
     if (sc.emg != null) a.emg = sc.emg; else if (sc.emgAll) a.emg = a.app === "run" || a.app === "cove" ? a.runs : a.qty;
     if (sc.volts == null) assumed.push("120V");
@@ -932,7 +972,7 @@
   }
 
   const api = { SHAPE_NAME, sidesOf, planRun, FEED_IN, SENSOR_IN, TUCK_IN, MODELS, MODEL_ORDER, PAIRS, LAMPS, SHAPES, LEVELS, ACC, GROUPS, LINK_LENGTHS, SENSOR_CAPACITY,
-    newArea, recommend, modelFor, normalize, areaBom, projectBom, orderText, fillRun, splitFeeds, feedLimit, parse, ftIn, fmt };
+    newArea, recommend, modelFor, normalize, areaBom, projectBom, orderText, orderParts, fillRun, splitFeeds, feedLimit, parse, ftIn, fmt };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.LBIPB = api;
 })(typeof window !== "undefined" ? window : this);
