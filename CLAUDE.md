@@ -36,8 +36,8 @@ The repository is the source of the Light Efficient Design website: the Light Ef
 
 ## Names and facts
 
-- Always write the brand and product names in full: Light Efficient Design, RemPhos, Solera; LBI G1, LBI G2, LBI 65, LBI MAX, LBI Color Palette, LBI Color Palette+, LBI Color PaletteX, LBI 65 Color Palette+. "Palette+" and "PaletteX" have no space before the + or X. Never shorten a name to "Palette+" or "the Color Palette" in visible text.
-- The eight LBI variants are listed in that order everywhere: LBI G1 (the economical LBI, still sold) first, LBI G2 second; the LBI Family Overview opens on LBI G2. 3 ft bars exist only for LBI G1, LBI G2 and LBI 65.
+- Always write the brand and product names in full, as the marketing team supplies them (Kcampbell, 2026-11-11): Light Efficient Design, RemPhos, Solera; LBI G1, LBI G2, LBI 65, LBI MAX, LBI Palette, LBI Palette+, LBI Palette DMX (coming soon; it replaces the name "LBI Color PaletteX", which is no longer used). "Palette+" has no space before the +. The older names "LBI Color Palette" and "LBI Color Palette+" are being retired: use the new names in new copy. Never shorten a name to "Palette+" or "the Palette" in visible text.
+- The LBI variants are listed in that order everywhere: LBI G1 (the economical LBI, still sold) first, LBI G2 second; the LBI Family Overview opens on LBI G2. The home page lists LBI G1, LBI G2, LBI 65, LBI MAX, LBI Palette, LBI Palette+ and LBI Palette DMX, without the LBI 65 Color Palette+. 3 ft bars exist only for LBI G1, LBI G2 and LBI 65.
 - Never state a count of SKUs, models or part numbers anywhere on the site.
 - LBI Color Palette+ ships in white mode with the same switches as LBI G2 and is DLC listed that way; color needs the optional remote, sold separately. No LBI 65 product has physical switches; they come with a remote.
 - The spec sheets are the source of truth. A product page is rebuilt from its spec sheet only when the team sends that sheet, and the page needs far less than the sheet: a visitor who wants everything downloads the sheet.
@@ -62,5 +62,5 @@ The repository is the source of the Light Efficient Design website: the Light Ef
 ## Before you finish
 
 1. Rebuild locally and look at the changed pages at laptop and phone widths.
-2. Search the new copy for short Palette names and for digit + "SKUs", "models" or "part numbers".
+2. Search the new copy for short or retired Palette names and for digit + "SKUs", "models" or "part numbers".
 3. Commit as the requester with a plain-sentence subject, push to `main`, and tell the person the sandbox link and that the change waits for approval on the portal.
