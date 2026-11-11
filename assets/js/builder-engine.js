@@ -252,8 +252,8 @@
   // What else takes up length in a run (David, 2026-11-06): the incoming power cable adds 1.6 in per the spec sheet, and
   // David keeps 3 in clear for it; a sensor tucked behind the bars at the end of a run on a 6 in jumper adds nothing.
   const FEED_IN = 3;
-  // ASSUMED: an in-line sensor or node sitting between two bars takes about this much of the run; David to confirm.
-  const SENSOR_IN = 4;
+  // An in-line sensor or node sitting between two bars takes 4.7 in of the run (David, 2026-11-11; he will measure one to confirm).
+  const SENSOR_IN = 4.7;
   const TUCK_IN = 6;   // the jumper cable to a sensor tucked behind the bars
 
   /**
@@ -670,6 +670,7 @@
           if (zs.length === 1) notes.push(`Controls: ${zonesText}, ${endText}. It goes at the end away from the power feed, because a plug-in sensor and the incoming power cable cannot share the same bar end.`);
           else notes.push(`Controls: ${zonesText}. A plug-in sensor cannot share a bar end with the incoming power cable, so each sensor sits at the far end of its zone. The last zone's sensor is ${endText}. Every other sensor sits in line between its zone's last bar and the non-dimming seamless connector that starts the next zone, taking about ${SENSOR_IN} in of the run.`);
           notes.push(`One sensor controls up to ${SENSOR_CAPACITY} bars.`);
+          if (a.ctl === "mesh" && a.meshKind === "node" && zs.length >= 3) notes.push("For a run this long that only needs nodes, one Silvair room controller relay pack at the power feed (or a Lutron Vive PowPak on Lutron jobs) is often the simpler choice, if there is somewhere to install it. Ask us and we will quote it that way.");
         }
       }
       if (a.job === "retrofit") notes.push(`Remove the old strips or lamp holders and ballasts. ${MOUNT_NOTE[m.family]}`);
