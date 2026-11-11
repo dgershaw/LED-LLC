@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{#- The style guide (Amy George and David, 2026-11-11): everything in content/brand/styles.json, drawn with the site's own
+    styles, plus the rules that are fixed in the templates. Not in the menu or the sitemap; linked from the admin portal. #}
+{% block brand %}remphos{% endblock %}
+{% block main %}
+{% set B = BRAND_STYLES %}
+<div class="wrap">
+  <section class="page-hero" style="grid-template-columns:minmax(0,1fr)">
+    <div>
+      <p class="eyebrow">For the team</p>
+      <h1>Brand styles</h1>
+      <div class="intro rt"><p>The fonts, colours and text sizes approved for the site. The visual editor offers only these, Claude follows the same list, and changing one here changes it on every page. Edit them in CloudCannon under <strong>Brand styles</strong>; like every change, it shows on the sandbox first and goes live when someone approves it.</p></div>
+    </div>
+  </section>
+</div>
+<div class="wrap stack" style="padding-top:0">
+  {% if B.problems %}
+  <section aria-labelledby="sg-p">
+    <div class="section-head"><h2 id="sg-p">Needs attention</h2><p>These entries in the brand styles were not used.</p></div>
+    <ul class="sg-rules">{% for m in B.problems %}<li>{{ m }}</li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+
+  <section aria-labelledby="sg-f">
+    <div class="section-head"><h2 id="sg-f">Font</h2><p>{{ B.fonts.note or "" }}</p></div>
+    <div class="sg-rows">
+      <div class="sg-row"><span>Font</span><span style="font-size:1.5rem">{{ B.fonts.text_font }}, with {{ B.fonts.web_font }} on computers without it</span></div>
+      <div class="sg-row"><span>Light</span><span class="rt"><span class="light" style="font-size:1.5rem">Leading Thru Innovation</span></span></div>
+      <div class="sg-row"><span>Regular</span><span style="font-size:1.5rem">Leading Thru Innovation</span></div>
+      <div class="sg-row"><span>Bold</span><span style="font-size:1.5rem;font-weight:700">Leading Thru Innovation</span></div>
+      <div class="sg-row"><span>Heavy</span><span class="rt"><span class="heavy" style="font-size:1.5rem">Leading Thru Innovation</span></span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="sg-c">
+    <div class="section-head"><h2 id="sg-c">Text colours</h2><p>Each one is checked for contrast on light and dark pages; 4.5:1 is the minimum. On a page, the link and highlight colour follows the page's brand.</p></div>
+    <div class="sg-grid">
+      {% for c in B.text_colors %}
+      <div class="sg-card{% if c.refused %} off{% endif %}">
+        <div class="sg-sw"><span style="background:#fff;color:{{ c.light }}">Aa</span><span style="background:#0c0d11;color:{{ c.dark }}">Aa</span></div>
+        <h3>{{ c.name }}</h3>
+        <p>{{ c.use or "" }}</p>
+        <small>{{ c.light }} light · {{ c.dark }} dark</small>
+        <span>{% if c.refused %}<span class="sg-tag bad">Too faint, not used</span>{% else %}<span class="sg-tag">{{ c.ratio_light }}:1 light · {{ c.ratio_dark }}:1 dark</span>{% endif %}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section aria-labelledby="sg-b">
+    <div class="section-head"><h2 id="sg-b">Brand colours</h2><p>For brand strips, dots and bands, not for text.</p></div>
+    <div class="sg-grid">
+      {% for c in B.brand_colors %}
+      <div class="sg-card"><div class="sg-sw" style="grid-template-columns:1fr;background:{{ c.color }}"></div><h3>{{ c.name }}</h3><p>{{ c.use or "" }}</p><small>{{ c.color }}</small></div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section aria-labelledby="sg-s">
+    <div class="section-head"><h2 id="sg-s">Text sizes and styles</h2><p>In the Styles menu of every formatted text box. Nothing on the site is smaller than 12 px.</p></div>
+    <div class="sg-rows rt">
+      <div class="sg-row"><span>Normal</span><p>Linkable LED bars with the driver inside.</p></div>
+      {% for x in B.text_sizes %}<div class="sg-row"><span>{{ x.name }} ({{ (x.rem * 16)|round|int }} px)</span><p class="size-{{ x.key }}">Linkable LED bars with the driver inside.</p></div>{% endfor %}
+      <div class="sg-row"><span>Large lead</span><p class="lead-large">Hang it, plug it, chain it.</p></div>
+      <div class="sg-row"><span>Small line above a heading</span><p class="eyebrow-line">RemPhos · Linkable light bars</p></div>
+      <div class="sg-row"><span>Highlight</span><p>Up to <span class="hl">40 bars</span> from one feed.</p></div>
+      <div class="sg-row"><span>Note box</span><p class="note-box">Ask your rep about contractor pricing.</p></div>
+      <div class="sg-row"><span>Small print</span><p class="small-print">Daisy-chain excludes model 9210.</p></div>
+      {% for c in TEXT_COLORS %}<div class="sg-row"><span>{{ c.name }} text</span><p><span class="c-{{ c.key }}">Leading Thru Innovation</span></p></div>{% endfor %}
+    </div>
+  </section>
+
+  <section aria-labelledby="sg-ph">
+    <div class="section-head"><h2 id="sg-ph">Photos</h2><p>Photo controls are presets a person picks; nothing moves on its own. Main product photos always show the whole product.</p></div>
+    <div class="sg-shapes">
+      {% for name, ar in [("Square", "1"), ("4:3", "4/3"), ("3:2", "3/2"), ("16:9 wide", "16/9"), ("21:9 panorama", "21/9"), ("3:4 tall", "3/4")] %}
+      <figure><img src="assets/img/office.jpg" alt="" style="aspect-ratio:{{ ar }}" loading="lazy"><figcaption>{{ name }}</figcaption></figure>
+      {% endfor %}
+    </div>
+    <ul class="sg-rules" style="margin-top:16px">
+      <li><strong>Fit:</strong> fill the frame (may crop the edges) or show the whole photo.</li>
+      <li><strong>Photo focus:</strong> which part stays in view when a photo is cropped or zoomed, for example 50% 30% (across, down).</li>
+      <li><strong>Zoom:</strong> 100 % to 300 %, from the photo focus.</li>
+      <li><strong>Width and side:</strong> photo blocks, diagrams and banners; on phones they always fill the width.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="sg-r">
+    <div class="section-head"><h2 id="sg-r">Fixed on every page</h2><p>Set in the site's templates, so they hold whatever is edited.</p></div>
+    <ul class="sg-rules">
+      <li>Brand and product names are written in full: Light Efficient Design, RemPhos, Solera, LBI G1, LBI G2, LBI 65, LBI MAX, LBI Color Palette, LBI Color Palette+, LBI Color PaletteX, LBI 65 Color Palette+.</li>
+      <li>Logos are used exactly as supplied, only scaled.</li>
+      <li>High contrast everywhere and no text under 12 px.</li>
+      <li>Product photos at the top show the whole product. Specifications, part numbers, documents and Next steps stay in their place at the end of each product page.</li>
+      <li>Every page works on a laptop and on a phone; on phones, side-by-side blocks stack.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="sg-x">
+    <div class="section-head"><h2 id="sg-x">Approved exceptions</h2><p>One-off departures from these styles, with who approved them. Ask Claude for an exception; it is added here when approved.</p></div>
+    {% if B.exceptions %}
+    <div class="sg-rows">{% for e in B.exceptions %}<div class="sg-row"><span>{{ e.where }}</span><span>{{ e.what }}{% if e.why %}. {{ e.why }}{% endif %} <small>Approved by {{ e.approved_by or "?" }}{% if e.date %}, {{ e.date }}{% endif %}</small></span></div>{% endfor %}</div>
+    {% else %}<p style="color:var(--muted)">None so far.</p>{% endif %}
+  </section>
+</div>
+{% endblock %}

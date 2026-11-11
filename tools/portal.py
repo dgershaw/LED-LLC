@@ -101,6 +101,8 @@ def describe(c, main):
             lines.append(f"Edited the {page_title(main, path)} page")
         elif path.startswith("content/home/"):
             lines.append("Edited the home page")
+        elif path.startswith("content/brand/"):
+            lines.append("Edited the brand styles")
         elif path.startswith("assets/docs/"):
             kind = KINDS.get(p.parts[2], "document") if len(p.parts) > 2 else "document"
             product = p.parts[4] if len(p.parts) > 5 else ""
@@ -181,6 +183,14 @@ def flatten(d):
                 lists.append((f"{name}: {k.replace('_', ' ')}", [text(x) for x in v]))
             else:
                 scalars.append((f"{name}: {k.replace('_', ' ')}", text(v) if not isinstance(v, (int, float, bool)) else str(v)))
+    # the brand styles file (content/brand/styles.json, since 2026-11-11)
+    if isinstance(d.get("fonts"), dict):
+        scalars.append(("Font", text(d["fonts"].get("text_font"))))
+        scalars.append(("Web font", text(d["fonts"].get("web_font"))))
+    for k, label, fields in (("text_colors", "Text colours", ("name", "light", "dark", "accent_for")), ("brand_colors", "Brand colours", ("name", "color")),
+                             ("text_sizes", "Text sizes", ("name", "rem")), ("exceptions", "Approved exceptions", ("where", "what", "approved_by", "date"))):
+        if isinstance(d.get(k), list):
+            lists.append((label, [text({f: x.get(f) for f in fields}) for x in d[k] if isinstance(x, dict)]))
     # product page sections (since 2026-11-11): the order, Show on, and every setting of the blocks added there
     for i, blk in enumerate(d.get("sections", []) if isinstance(d.get("sections"), list) else []):
         if not isinstance(blk, dict):
@@ -266,16 +276,19 @@ def details(c, main):
         if path.startswith("content/home/") and "home" not in seen:
             seen.add("home")
             links.append(("Open the home page", SANDBOX_URL))
+        elif path.startswith("content/brand/") and "brand" not in seen:
+            seen.add("brand")
+            links.append(("Open the brand styles", SANDBOX_URL + "style-guide.html"))
         elif slug and slug not in seen:
             seen.add(slug)
             links.append((f"Open the {B.NAV_TITLES.get(slug, slug.replace('-', ' ').title())} page", f"{SANDBOX_URL}{slug}.html"))
         elif (path.startswith("assets/docs/") or path.startswith("assets/ies/")) and status != "D" and Path(path).suffix.lower() in B.DOWNLOAD_EXTS:
             links.append((f"Open {Path(path).name}", SANDBOX_URL + B.url_path(B.public_path(path))))
-        if path.startswith(("content/pages/", "content/home/")) and path.endswith(".json") and len(diff) < MAX_DIFF_ROWS:
+        if path.startswith(("content/pages/", "content/home/", "content/brand/")) and path.endswith(".json") and len(diff) < MAX_DIFF_ROWS:
             before = file_at(main, f"{c['sha']}^", path) if c["parents"] else ""
             after = file_at(main, c["sha"], path) if status != "D" else ""
             slug = Path(path).stem
-            prefix = ("Home page: " if path.startswith("content/home/") else B.NAV_TITLES.get(slug, slug.replace("-", " ").title()) + ": ") if pages > 1 else ""
+            prefix = ("Home page: " if path.startswith("content/home/") else "Brand styles: " if path.startswith("content/brand/") else B.NAV_TITLES.get(slug, slug.replace("-", " ").title()) + ": ") if pages > 1 else ""
             diff += [(prefix + f, a, b) for f, a, b in page_diff(before, after)]
     return links[:6], diff[:MAX_DIFF_ROWS]
 
