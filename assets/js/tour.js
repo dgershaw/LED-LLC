@@ -29,7 +29,7 @@
 
   /* The stops. `at` is what the spotlight frames, `do` opens or closes the Products menu first, `pose` adds a wave. */
   const STOPS = [
-    { key: "welcome", page: "index.html", at: ".home-hero h1", pose: "wave", fun: "juggle", hold: 7600, bare: true,
+    { key: "welcome", page: "index.html", at: ".home-hero h1, .hm-banner", pose: "wave", fun: "juggle", hold: 7600, bare: true,
       say: "<strong>Welcome to our new home!</strong> Light Efficient Design, RemPhos and Solera, all under one roof. Let me show you around." },
     { key: "products", page: "index.html", at: "#mega-products .mega-cols", do: "menu",
       say: "Everything we make lives under <strong>Products</strong>, sorted the way the trade thinks: lamps, indoor fixtures, retrofit kits, outdoor and solar, controls." },

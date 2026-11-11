@@ -1,0 +1,135 @@
+/* The home page design of 2026-11 (Kcampbell, Homepage-Design.pdf and Setup-Explanation.pdf). Sizes and spaces are the
+   design's at 1440 px: 40 px headers in Avenir Heavy, 20 px subheaders in Avenir Black, 20 px body in Avenir Roman, 14 px
+   small buttons in Avenir Heavy, all in Cool Gray 11 (--ink). Colours come from the Brand styles (brand.css); the two
+   departures (green and yellow link text) are listed in the exceptions of content/brand/styles.json.
+   Each block's own spacing is its default; the editor's "Space above and below" (.blk.sp-*) overrides it. */
+
+.home-v2 { --hm-line: color-mix(in srgb, var(--ink) 20%, transparent); --hm-gap: 15px; color: var(--ink); }
+.home-v2 .hm-h { font: 800 2.5rem/1.2 var(--font-display); letter-spacing: 0; color: var(--ink); margin: 0; text-wrap: balance; }
+.home-v2 .hm-h > span { display: block; }
+.home-v2 .hm-h.center { text-align: center; }
+.home-v2 .hm-body { font-size: 1.25rem; line-height: 1.3; font-weight: 400; color: var(--ink); }
+.home-v2 .hm-body p { margin: 0; }
+.home-v2 .hm-body p + p { margin-top: 0.65em; }
+
+/* ---------- Rotating banner: 1440 x 550, full width, no arrows or dots ---------- */
+.hm-banner { position: relative; }
+.hm-slides { position: relative; aspect-ratio: 1440 / 550; overflow: hidden; }
+.hm-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .8s ease, visibility 0s linear .8s; }
+.hm-slide.on { opacity: 1; visibility: visible; transition: opacity .8s ease, visibility 0s; }
+.hm-slide a, .hm-slide img { display: block; width: 100%; height: 100%; }
+.hm-slide img { object-fit: cover; }
+@media (prefers-reduced-motion: reduce) { .hm-slide, .hm-slide.on { transition: none; } }
+
+/* ---------- Statement ---------- */
+.hm-statement { padding-top: 55px; }
+.hm-statement .hm-h { text-align: center; }
+
+/* ---------- Brand columns ---------- */
+.hm-brands { padding-top: 49px; }
+.hm-brand-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--hm-gap); }
+.hm-brand { --bc: var(--remphos); --bt: var(--remphos); display: flex; flex-direction: column; min-width: 0; }
+.hm-brand.b-led { --bc: var(--led); --bt: var(--led); }
+.hm-brand.b-solera { --bc: var(--solera); --bt: var(--solera); }
+.hm-logo { display: flex; align-items: center; justify-content: center; height: 100px; margin-bottom: 31px; border-bottom: 2px solid var(--bc); box-sizing: content-box; padding-bottom: 31px; margin-bottom: 0; }
+.hm-logo img { max-width: 100%; height: auto; }
+.hm-logo-missing { font-weight: 900; font-size: 1.25rem; }
+.hm-brand-body { padding: 13px 9px 0 8.5px; }
+.hm-chips { display: flex; flex-wrap: wrap; gap: 10px 14px; margin-top: 22px; }
+.hm-chip { display: inline-flex; align-items: center; height: 40px; padding: 0 13px; border-radius: 20px; background: var(--hm-line);
+  color: var(--ink); font: 800 0.875rem/1 var(--font-ui); text-transform: uppercase; white-space: nowrap; transition: background .15s; }
+.hm-chip:hover { text-decoration: none; background: color-mix(in srgb, var(--ink) 30%, transparent); }
+.hm-more { margin-top: auto; padding-top: 30px; display: block; }
+.hm-more span { display: block; padding-bottom: 11px; border-bottom: 2px solid var(--bc); color: var(--bt); font: 900 1.25rem/1.2 var(--font-display); text-transform: uppercase; }
+.hm-more:hover { text-decoration: none; }
+.hm-more:hover span { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- One light, the LBI list ---------- */
+.hm-lbi { padding-top: 103px; }
+.hm-lbi-grid { display: grid; grid-template-columns: minmax(0, 1fr) 578px; gap: 40px; align-items: start; }
+.hm-lbi-copy { padding-top: 33px; }
+.hm-lbi-copy { max-width: 650px; }
+.hm-lbi-copy .hm-body { margin-top: 12px; }
+.hm-pills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 17px; }
+.hm-pill { display: inline-flex; align-items: center; height: 40px; padding: 0 14.5px; border-radius: 20px; background: var(--remphos); color: #fff;
+  font: 800 0.875rem/1 var(--font-ui); text-transform: uppercase; white-space: nowrap; }
+.hm-pill:hover { text-decoration: none; filter: brightness(1.12); }
+.hm-bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.hm-bars li > a, .hm-bars li > div { display: flex; align-items: center; gap: 28px; color: var(--ink); }
+.hm-bars li > a:hover { text-decoration: none; }
+.hm-bars li > a:hover b { text-decoration: underline; }
+.hm-bars b { display: block; font: 800 0.875rem/19px var(--font-ui); text-transform: uppercase; }
+.hm-bars small { display: block; font: 400 0.875rem/19px var(--font-ui); }
+
+/* the light bars, drawn: white bars glow softly in their own tint; the LBI Palette shows its six set colours, the LBI
+   Palette+ a finer rainbow, the LBI Palette DMX a seamless one */
+.lbi-bar { --g: #fff8ed; position: relative; flex: 0 0 146px; height: 8px; border-radius: 4px; background: var(--g);
+  outline: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); box-shadow: 0 0 14px 1px var(--g); }
+.lbi-bar.bar-g2 { --g: #fff3dd; }
+.lbi-bar.bar-65 { --g: #dae9ff; }
+.lbi-bar.bar-max { --g: #fff8eb; }
+.lbi-bar.bar-palette { background:
+    linear-gradient(rgb(255 255 255 / 0) 55%, rgb(255 255 255 / 0.72) 55%),
+    linear-gradient(90deg, #ee2e3e 0 16.66%, #f7931e 0 33.33%, #ffc629 0 50%, #63bb46 0 66.66%, #1bc3f2 0 83.33%, #9b8ac4 0);
+  box-shadow: 0 0 10px 0 rgb(240 160 120 / 0.35); }
+.lbi-bar.bar-palette-plus, .lbi-bar.bar-palette-dmx { box-shadow: none; }
+.lbi-bar.bar-palette-plus { background: linear-gradient(90deg, #e8102e 0 6.66%, #f45a3c 0 13.33%, #fca33a 0 20%, #ffe82a 0 26.66%, #c8ec2a 0 33.33%,
+    #8fd635 0 40%, #5dc63a 0 46.66%, #28a83a 0 53.33%, #34b77a 0 60%, #2fd6d6 0 66.66%, #3fa6dc 0 73.33%, #2f6fe0 0 80%, #4f55d8 0 86.66%,
+    #8a55e8 0 93.33%, #8b2be8 0); }
+.lbi-bar.bar-palette-dmx { background: linear-gradient(90deg, #ff2a1a, #ff7a10, #ffb000, #19e05a, #2a6bff, #8a3dff); }
+.lbi-bar.bar-palette-plus::after, .lbi-bar.bar-palette-dmx::after { content: ""; position: absolute; inset: -6px -2px; border-radius: 8px;
+  background: inherit; filter: blur(7px); opacity: 0.45; z-index: -1; }
+
+/* ---------- What are you replacing? ---------- */
+.hm-replace { padding-top: 84px; }
+.hm-sub { margin-top: 13px; }
+.hm-boxes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 29.5px 11.5px; margin-top: 32px; }
+.hm-box { display: flex; align-items: center; justify-content: center; min-height: 90px; padding: 12px 16px; border: 1px solid var(--hm-line);
+  border-radius: 10px; text-align: center; color: var(--ink); font: 900 1.25rem/1.2 var(--font-display); text-transform: uppercase;
+  transition: border-color .15s, box-shadow .15s; }
+.hm-box:hover { text-decoration: none; border-color: var(--ink); box-shadow: 0 10px 24px -18px rgb(0 0 0 / 0.45); }
+
+/* ---------- Divider ---------- */
+.hm-divider { padding-top: 81px; }
+.hm-divider hr { margin: 0; border: 0; border-top: 2px solid var(--ink); }
+
+/* ---------- Samples, rebates + your local rep ---------- */
+.hm-help { padding-top: 83px; padding-bottom: 114px; }
+.hm-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--hm-gap); margin-top: 43.5px; }
+.hm-card { display: grid; grid-template-columns: 136px minmax(0, 1fr); min-height: 200px; border-radius: 10px; background: var(--remphos); color: #fff; }
+.hm-card:hover { text-decoration: none; filter: brightness(1.1); }
+.hm-graphic { display: grid; place-items: center; }
+.hm-graphic img { width: auto; max-width: 110px; }
+.hm-card-text { display: flex; flex-direction: column; padding: 29px 12px 21px 0; font: 400 1.25rem/1.2 var(--font-ui); }
+.hm-card-text > b { font: 900 1.25rem/1.2 var(--font-display); text-transform: uppercase; margin-bottom: 12px; }
+.hm-card-text > b.hm-card-link { margin: auto 0 0; padding-top: 14px; }
+
+/* ---------- Smaller screens ---------- */
+@media (max-width: 1180px) {
+  .hm-lbi-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .hm-lbi-copy { max-width: 760px; }
+  .hm-cards { grid-template-columns: minmax(0, 1fr); max-width: 640px; margin-inline: auto; }
+}
+@media (max-width: 980px) {
+  .hm-brand-grid { grid-template-columns: minmax(0, 1fr); gap: 56px; max-width: 640px; margin-inline: auto; }
+  .hm-boxes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; }
+}
+@media (max-width: 600px) {
+  .home-v2 .hm-h { font-size: 2rem; }
+  .home-v2 .hm-body { font-size: 1.1875rem; }
+  .hm-statement { padding-top: 36px; }
+  .hm-brands, .hm-lbi, .hm-replace, .hm-help { padding-top: 56px; }
+  .hm-divider { padding-top: 56px; }
+  .hm-help { padding-bottom: 72px; }
+  .hm-logo { height: 84px; padding-bottom: 20px; }
+  .hm-logo img { max-width: 80%; }
+  .hm-box { min-height: 72px; font-size: 1.1875rem; }
+  .hm-bars li > a, .hm-bars li > div { gap: 16px; }
+  .lbi-bar { flex-basis: 96px; }
+  .hm-card { grid-template-columns: 104px minmax(0, 1fr); }
+  .hm-card-text { padding: 22px 16px 20px 0; }
+}
+
+/* the design's page is pure white (the rest of the site sits on a faint grey) */
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) body:has(.home-v2) { background: #ffffff; } }
+:root[data-theme="light"] body:has(.home-v2) { background: #ffffff; }

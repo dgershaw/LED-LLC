@@ -1,163 +1,278 @@
 {
   "blocks": [
     {
-      "_type": "hero",
+      "_type": "banner",
       "background": "plain",
       "spacing": "normal",
-      "align": "center",
-      "eyebrow": "Leading Thru Innovation",
-      "headline": "Innovation you can install,",
-      "headline_tail": "since 2008.",
-      "values": [
-        "Customer first.",
-        "Quality first."
-      ],
-      "lede": "Retrofit lamps that keep the fixture, linkable bars and kits that install in minutes, and solar lighting that never sees a utility bill. From Light Efficient Design, RemPhos and Solera.",
-      "buttons": [
+      "show_on": "all",
+      "heading": "",
+      "seconds": 6,
+      "slides": [
         {
-          "label": "Find a part number",
-          "link": "search",
-          "style": "primary"
+          "image": "assets/img/uploads/homepage-banner-1.jpg",
+          "alt": "Leading Thru Innovation since 2008",
+          "link": ""
         },
         {
-          "label": "Browse by brand",
-          "link": "#brands",
-          "style": "ghost"
+          "image": "assets/img/uploads/homepage-banner-2.jpg",
+          "alt": "RemPhos RP-DAL-4S pendant lighting a waiting room",
+          "link": ""
+        },
+        {
+          "image": "assets/img/uploads/homepage-banner-3.jpg",
+          "alt": "Light Efficient Design LED-7318-FC2 pin-base lamp with a 90° rotatable head, and the LED-7320",
+          "link": "pl-pll.html"
+        },
+        {
+          "image": "assets/img/uploads/homepage-banner-4.jpg",
+          "alt": "Solera solar wall pack at a snowy loading dock: built to withstand cold climates, with an adjustable, detachable panel on a 6 ft cord",
+          "link": "solar-display-wall-pack.html"
         }
       ]
     },
     {
-      "_type": "photo_grid",
+      "_type": "statement",
       "background": "plain",
       "spacing": "normal",
-      "row_height": "medium",
-      "tiles": [
+      "show_on": "all",
+      "lines": [
+        "ONE COMPANY. THREE BRANDS.",
+        "HUNDREDS OF UNIQUE SOLUTIONS."
+      ]
+    },
+    {
+      "_type": "brand_columns",
+      "background": "plain",
+      "spacing": "normal",
+      "show_on": "all",
+      "columns": [
         {
-          "image": "assets/img/cover/p01-b1.jpg",
-          "alt": "Solera i-Series solar area light",
-          "caption": "Solera i-Series",
-          "link": "i-series.html",
-          "width": 5,
-          "height": 2,
-          "fit": "cover",
-          "position": ""
-        },
-        {
-          "image": "assets/img/cover/p01-b8.jpg",
-          "alt": "Light Efficient Design LED retrofit lamps",
-          "caption": "Retrofit lamps",
+          "logo": "assets/img/brand/led-logo-original.png",
+          "logo_alt": "Light Efficient Design",
+          "logo_width": 315,
           "link": "light-efficient-design.html",
-          "width": 3,
-          "height": 2,
-          "fit": "cover",
-          "position": ""
+          "text": "Delivers practical, high-performance LED retrofit solutions: screw-in retrofits, pin-base retrofits and work site lighting that help contractors, facility managers, and distributors upgrade lighting faster, reduce energy costs, and extend the life of existing fixtures without unnecessary complexity.",
+          "chips": [
+            {
+              "label": "SCREW-IN RETROFITS",
+              "link": "light-efficient-design.html#screw-in-retrofits"
+            },
+            {
+              "label": "PIN-BASE RETROFITS",
+              "link": "light-efficient-design.html#pin-base-retrofits"
+            },
+            {
+              "label": "WORK LIGHTS",
+              "link": "light-efficient-design.html#work-lights"
+            }
+          ],
+          "more_label": "EXPLORE LIGHT EFFICIENT DESIGN >",
+          "more_link": "light-efficient-design.html",
+          "brand_color": "led"
         },
         {
-          "image": "assets/img/office.jpg",
-          "alt": "RemPhos LBI G2 light bars in an office",
-          "caption": "LBI G2",
-          "link": "lbi.html#g2",
-          "width": 4,
-          "height": 1,
-          "fit": "cover",
-          "position": "50% 20%"
+          "logo": "assets/img/brand/remphos-logo.png",
+          "logo_alt": "RemPhos",
+          "logo_width": 205,
+          "link": "remphos.html",
+          "text": "Transforms obsolete fluorescent and HID fixtures into modern, efficient LED lighting systems through innovative retrofit technology and new fixture options, helping customers modernize spaces while reducing waste, labor, and replacement costs.",
+          "chips": [
+            {
+              "label": "RETROFIT KITS",
+              "link": "remphos.html#retrofit-kits"
+            },
+            {
+              "label": "FIXTURES",
+              "link": "remphos.html#fixtures"
+            }
+          ],
+          "more_label": "EXPLORE REMPHOS >",
+          "more_link": "remphos.html",
+          "brand_color": "remphos"
         },
         {
-          "image": "assets/img/cover/p01-b4.jpg",
-          "alt": "RemPhos LED retrofit kits",
-          "caption": "Retrofit kits",
-          "link": "wall-ceiling-retrofit-kits.html",
-          "width": 2,
-          "height": 1,
-          "fit": "cover",
-          "position": ""
-        },
-        {
-          "image": "assets/img/cat/solar-bollard-post-tops/p33-b3.jpg",
-          "alt": "Solera solar bollards and post tops along a path at night",
-          "caption": "Solar bollards",
-          "link": "solar-bollard-post-tops.html",
-          "width": 2,
-          "height": 1,
-          "fit": "cover",
-          "position": ""
+          "logo": "assets/img/brand/solera-logo.png",
+          "logo_alt": "Solera",
+          "logo_width": 172,
+          "link": "solera.html",
+          "text": "Provides reliable, off-grid and innovative, hybrid/intelligent solar lighting solutions that bring safety, visibility, and security to outdoor spaces where traditional power is impractical, costly, or unavailable.",
+          "chips": [
+            {
+              "label": "OFF-GRID",
+              "link": "solera.html#solar-lighting"
+            },
+            {
+              "label": "HYBRID",
+              "link": "solera.html#solar-lighting"
+            },
+            {
+              "label": "INTELLIGENT",
+              "link": "solera.html#solar-lighting"
+            }
+          ],
+          "more_label": "EXPLORE SOLERA >",
+          "more_link": "solera.html",
+          "brand_color": "solera"
         }
       ]
     },
     {
-      "_type": "brands",
+      "_type": "lbi_list",
       "background": "plain",
       "spacing": "normal",
-      "title": "Three brands, built for the job in front of you",
-      "text": "Pick the brand that matches the fixture, the site and the budget. Everything ships from the same company with the same support.",
-      "photos": [
-        {
-          "brand": "led",
-          "image": "assets/img/cat/bollard-post-top/hero.jpg",
-          "fit": "contain"
-        },
-        {
-          "brand": "remphos",
-          "image": "assets/img/product/lbi65-hero.jpg",
-          "fit": "contain"
-        },
-        {
-          "brand": "solera",
-          "image": "assets/img/cover/p01-b1.jpg",
-          "fit": "cover"
-        }
-      ]
-    },
-    {
-      "_type": "feature",
-      "background": "grey",
-      "spacing": "normal",
-      "eyebrow": "RemPhos · Linkable Light Bars",
-      "title": "One linkable bar. Eight ways to light the job.",
-      "text": "LBI bars in 2, 3 and 4 ft with the driver inside. Link up to 40 from one feed, then set wattage and color on site. Compare all eight and try each one live in the LBI Family Overview.",
-      "show_lbi_list": true,
+      "show_on": "all",
+      "lines": [
+        "ONE LIGHT.",
+        "UNLIMITED POSSIBILITIES."
+      ],
+      "text": "The RemPhos Linkable Bar / Internal Driver (LBI) Family is designed for maximum retrofit flexibility. Available in a range of configurations, these versatile LED light bars make it easy to customize both retrofit and new construction projects. Explore them all and see them in action in the LBI Family Overview.",
       "buttons": [
         {
-          "label": "See the LBI Family Overview",
+          "label": "LBI FAMILY OVERVIEW",
           "link": "lbi.html",
           "style": "primary"
-        },
-        {
-          "label": "LBI part numbers",
-          "link": "remphos.html#linkable-light-bars",
-          "style": "ghost"
         }
       ],
-      "image": {
-        "src": "assets/img/product/palette-hero-rainbow.jpg",
-        "alt": "LBI Color Palette+ light bar"
-      },
-      "image_side": "right",
-      "image_width": 52,
-      "image_shape": "4:3",
-      "fit": "cover",
-      "position": ""
+      "items": [
+        {
+          "bar": "g1",
+          "name": "LINKABLE BAR / INTERNAL DRIVER (LBI G1)",
+          "tagline": "Our original, economical white light bar",
+          "link": "lbi-g1.html"
+        },
+        {
+          "bar": "g2",
+          "name": "LINKABLE BAR / INTERNAL DRIVER (LBI G2)",
+          "tagline": "Our new generation w/ tunable white and more lumens",
+          "link": "lbi-g2.html"
+        },
+        {
+          "bar": "65",
+          "name": "LINKABLE BAR / INTERNAL DRIVER IP65 (LBI 65)",
+          "tagline": "Our IP65-rated bar for waterproof linking",
+          "link": "lbi-65.html"
+        },
+        {
+          "bar": "max",
+          "name": "LINKABLE STRIP RETROFIT KIT + FIXTURE (LBI MAX)",
+          "tagline": "Our higher-lumen, linkable fixture",
+          "link": "lbi-max.html"
+        },
+        {
+          "bar": "palette",
+          "name": "LBI PALETTE / PRECISION WAVELENGTH SELECTION",
+          "tagline": "Designed for applications where color accuracy matters most",
+          "link": "color-palette.html"
+        },
+        {
+          "bar": "palette-plus",
+          "name": "LBI PALETTE + / LIMITLESS RGB COLOR MIXING",
+          "tagline": "Endless creativity... From subtle accents to dramatic effects",
+          "link": "lbi.html#plus"
+        },
+        {
+          "bar": "palette-dmx",
+          "name": "LBI PALETTE DMX",
+          "tagline": "Coming Soon!",
+          "link": ""
+        }
+      ]
     },
     {
-      "_type": "finder",
+      "_type": "replace_grid",
       "background": "plain",
       "spacing": "normal",
-      "title": "What are you replacing?",
-      "text": "Start from the fixture on the ceiling or the pole in the lot. Each card opens the part numbers that fit."
+      "show_on": "all",
+      "title": "WHAT ARE YOU REPLACING?",
+      "text": "Start from the fixture that you already have or select what you would like to upgrade to.",
+      "items": [
+        {
+          "label": "BOLLARD / POST TOP",
+          "link": "bollard-post-top.html"
+        },
+        {
+          "label": "SHOEBOX / WALL PACK",
+          "link": "shoe-box-wall-pack.html"
+        },
+        {
+          "label": "HIGH BAY / LOW BAY",
+          "link": "high-bay-low-bay.html"
+        },
+        {
+          "label": "HAZARDOUS LOCATION",
+          "link": "hazardous-location.html"
+        },
+        {
+          "label": "PL / PLL LAMP",
+          "link": "pl-pll.html"
+        },
+        {
+          "label": "T5 / T8 LAMP",
+          "link": "linear-t5-t8.html"
+        },
+        {
+          "label": "STRIP / LINEAR",
+          "link": "lbi-max.html"
+        },
+        {
+          "label": "TROFFER",
+          "link": "troffer-retrofit-kits-fixtures.html"
+        },
+        {
+          "label": "WALL / CEILING FIXTURE",
+          "link": "wall-ceiling-fixtures.html"
+        },
+        {
+          "label": "STAIRWELL / WRAPAROUND",
+          "link": "livc.html"
+        },
+        {
+          "label": "OFF-GRID LIGHTING",
+          "link": "solera.html"
+        }
+      ]
     },
     {
-      "_type": "next_steps",
+      "_type": "divider",
       "background": "plain",
       "spacing": "normal",
-      "title": "Samples, rebates and your local rep",
-      "text": "Eddy, our 5 mm LED with a big personality, is here to help on every job."
+      "show_on": "all"
     },
     {
-      "_type": "resources",
-      "background": "grey",
+      "_type": "help_cards",
+      "background": "plain",
       "spacing": "normal",
-      "title": "For everyone on the project",
-      "text": "Specifiers, distributors, contractors and facilities teams find what they need in the same place."
+      "show_on": "all",
+      "title": "SAMPLES, REBATES + YOUR LOCAL REP",
+      "cards": [
+        {
+          "graphic": "assets/img/uploads/homepage-graphic-01.png",
+          "graphic_alt": "",
+          "graphic_height": 131,
+          "title": "GET A SAMPLE",
+          "text": "Try it out in your space before you buy!",
+          "link_label": "REQUEST A SAMPLE >",
+          "link": "contact.html#sample"
+        },
+        {
+          "graphic": "",
+          "graphic_alt": "",
+          "graphic_height": 66,
+          "title": "FIND REBATES",
+          "text": "Most DLC-listed products qualify for utility rebates. We will find the ones in your area.",
+          "link_label": "CHECK REBATES >",
+          "link": "contact.html#rebates"
+        },
+        {
+          "graphic": "",
+          "graphic_alt": "",
+          "graphic_height": 70,
+          "title": "REP FINDER",
+          "text": "Contact your local rep for stock, pricing, samples and answers!",
+          "link_label": "FIND YOUR REP >",
+          "link": "contact.html#rep"
+        }
+      ]
     }
   ]
 }

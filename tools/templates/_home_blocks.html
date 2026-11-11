@@ -119,5 +119,67 @@
     </div>
   </div>
 </section>
+{#- ---------- The 2026-11 home page design (Kcampbell): sizes, spaces and colours follow Homepage-Design.pdf; styles in home.css ---------- #}
+{% elif b._type == "banner" %}
+<section class="hm-banner{{ wrapcls }}" aria-roledescription="carousel" aria-label="{{ b.heading or 'Featured' }}" data-seconds="{{ b.seconds }}" data-editable="array-item" data-id="banner">
+  {% if b.hid %}<h1 class="visually-hidden"{% if b.heading %} data-editable="text" data-prop="heading"{% endif %}>{{ b.heading or "Light Efficient Design: Leading Thru Innovation since 2008" }}</h1>{% endif %}
+  <div class="hm-slides" data-editable="array" data-prop="slides">
+    {% for sl in b.slides %}<div class="hm-slide{% if loop.first %} on{% endif %}" role="group" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ b.slides|length }}"{% if not loop.first %} aria-hidden="true"{% endif %} data-editable="array-item">{% if sl.link %}<a href="{{ sl.link }}"{% if not loop.first %} tabindex="-1"{% endif %}>{% endif %}<img src="{{ sl.src }}" alt="{{ sl.alt }}"{{ dims(sl.src) }}{% if not loop.first %} loading="lazy"{% endif %} data-editable="image" data-prop-src="image" data-prop-alt="alt">{% if sl.link %}</a>{% endif %}</div>{% endfor %}
+  </div>
+</section>
+{% elif b._type == "statement" %}
+<section class="hm-statement{{ wrapcls }}" data-editable="array-item" data-id="statement">
+  <div class="wrap"><h2 class="hm-h"{% if hid %} id="{{ hid }}"{% endif %} data-editable="array" data-prop="lines">{% for l in b.lines %}<span data-editable="text" data-prop="lines.{{ loop.index0 }}">{{ l }}</span>{% endfor %}</h2></div>
+</section>
+{% elif b._type == "brand_columns" %}
+<section class="hm-brands{{ wrapcls }}"{% if hid %} id="brands"{% endif %} aria-label="Our brands" data-editable="array-item" data-id="brand_columns">
+  <div class="wrap hm-brand-grid" data-editable="array" data-prop="columns" data-direction="row">
+    {% for c in b.columns %}
+    <div class="hm-brand b-{{ c.brand }}" data-editable="array-item">
+      <a class="hm-logo" href="{{ c.link or '#' }}">{% if c.logo %}<img src="{{ c.logo }}" alt="{{ c.logo_alt }}" style="width:{{ c.logo_width }}px"{{ dims(c.logo) }} data-editable="image" data-prop-src="logo" data-prop-alt="logo_alt">{% else %}<span class="hm-logo-missing">{{ c.logo_alt }}</span>{% endif %}</a>
+      <div class="hm-brand-body">
+        <div class="hm-body rt" data-editable="text" data-type="block" data-prop="text">{{ c.text|rich }}</div>
+        {% if c.chips %}<div class="hm-chips" data-editable="array" data-prop="chips" data-direction="row">{% for ch in c.chips %}<a class="hm-chip" href="{{ ch.link or c.link or '#' }}" data-editable="array-item"><span data-editable="text" data-prop="label">{{ ch.label }}</span></a>{% endfor %}</div>{% endif %}
+      </div>
+      {% if c.more_label %}<a class="hm-more" href="{{ c.more_link or '#' }}"><span data-editable="text" data-prop="more_label">{{ c.more_label }}</span></a>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% elif b._type == "lbi_list" %}
+<section class="hm-lbi{{ wrapcls }}"{% if hid %} aria-labelledby="{{ hid }}"{% endif %} data-editable="array-item" data-id="lbi_list">
+  <div class="wrap hm-lbi-grid">
+    <div class="hm-lbi-copy">
+      <h2 class="hm-h"{% if hid %} id="{{ hid }}"{% endif %} data-editable="array" data-prop="lines">{% for l in b.lines %}<span data-editable="text" data-prop="lines.{{ loop.index0 }}">{{ l }}</span>{% endfor %}</h2>
+      {% if b.text %}<div class="hm-body rt" data-editable="text" data-type="block" data-prop="text">{{ b.text|rich }}</div>{% endif %}
+      {% if b.buttons %}<div class="hm-pills" data-editable="array" data-prop="buttons" data-direction="row">{% for x in b.buttons %}<a class="hm-pill" href="{{ x.link }}" data-editable="array-item"><span data-editable="text" data-prop="label">{{ x.label }}</span></a>{% endfor %}</div>{% endif %}
+    </div>
+    <ul class="hm-bars" data-editable="array" data-prop="items">
+      {% for x in b['items'] %}<li data-editable="array-item">{% if x.link %}<a href="{{ x.link }}">{% else %}<div>{% endif %}<i class="lbi-bar bar-{{ x.bar }}" aria-hidden="true"></i><span><b data-editable="text" data-prop="name">{{ x.name }}</b><small data-editable="text" data-prop="tagline">{{ x.tagline }}</small></span>{% if x.link %}</a>{% else %}</div>{% endif %}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+{% elif b._type == "replace_grid" %}
+<section class="hm-replace{{ wrapcls }}"{% if hid %} aria-labelledby="{{ hid }}"{% endif %} data-editable="array-item" data-id="replace_grid">
+  <div class="wrap">
+    {% if b.title %}<h2 class="hm-h"{% if hid %} id="{{ hid }}"{% endif %} data-editable="text" data-prop="title">{{ b.title }}</h2>{% endif %}
+    {% if b.text %}<div class="hm-body hm-sub rt" data-editable="text" data-type="block" data-prop="text">{{ b.text|rich }}</div>{% endif %}
+    <div class="hm-boxes" data-editable="array" data-prop="items" data-direction="row">{% for x in b['items'] %}<a class="hm-box" href="{{ x.link or '#' }}" data-editable="array-item"><span data-editable="text" data-prop="label">{{ x.label }}</span></a>{% endfor %}</div>
+  </div>
+</section>
+{% elif b._type == "divider" %}
+<div class="hm-divider{{ wrapcls }}" data-editable="array-item" data-id="divider"><div class="wrap"><hr></div></div>
+{% elif b._type == "help_cards" %}
+<section class="hm-help{{ wrapcls }}"{% if hid %} aria-labelledby="{{ hid }}"{% endif %} data-editable="array-item" data-id="help_cards">
+  <div class="wrap">
+    {% if b.title %}<h2 class="hm-h center"{% if hid %} id="{{ hid }}"{% endif %} data-editable="text" data-prop="title">{{ b.title }}</h2>{% endif %}
+    <div class="hm-cards" data-editable="array" data-prop="cards" data-direction="row">
+      {% for c in b.cards %}<a class="hm-card" href="{{ c.link or '#' }}" data-editable="array-item">
+        <span class="hm-graphic">{% if c.graphic %}<img src="{{ c.graphic }}" alt="{{ c.graphic_alt }}" style="height:{{ c.graphic_height }}px"{{ dims(c.graphic) }} data-editable="image" data-prop-src="graphic" data-prop-alt="graphic_alt">{% endif %}</span>
+        <span class="hm-card-text"><b data-editable="text" data-prop="title">{{ c.title }}</b><span class="rt" data-editable="text" data-type="block" data-prop="text">{{ c.text|rich }}</span>{% if c.link_label %}<b class="hm-card-link" data-editable="text" data-prop="link_label">{{ c.link_label }}</b>{% endif %}</span>
+      </a>{% endfor %}
+    </div>
+  </div>
+</section>
 {% endif %}
 {% endmacro %}

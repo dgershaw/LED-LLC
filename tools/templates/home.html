@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% import "_home_blocks.html" as H with context %}
 {% block brand %}remphos{% endblock %}
+{% block head %}<link rel="stylesheet" href="assets/css/home.css">{% endblock %}
+{% block scripts %}<script src="assets/js/home.js"></script>{% endblock %}
 {% block main %}
 {#- The home page's blocks (content/home/index.json). In CloudCannon the team adds, removes, drags and resizes them;
     each <template> is what a newly added block of that kind looks like before its first save. #}
-<div class="home-blocks" data-editable="array" data-prop="blocks" data-id-key="_type">
+<div class="home-blocks home-v2" data-editable="array" data-prop="blocks" data-id-key="_type">
 {% for b in blocks %}{{ H.block(b, {"nav": nav, "finder": finder}) }}{% endfor %}
 {% for b in new_blocks %}<template data-id="{{ b._type }}">{{ H.block(b, {"nav": nav, "finder": finder}) }}</template>
 {% endfor %}

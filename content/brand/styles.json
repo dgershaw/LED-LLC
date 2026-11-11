@@ -106,6 +106,20 @@
       "why": "The footer colour in the new home page design",
       "approved_by": "Kcampbell",
       "date": "2026-11-11"
+    },
+    {
+      "where": "Home page, brand columns",
+      "what": "\"EXPLORE SOLERA >\" in Solera yellow (#FFCB05) on white, 20 px Avenir Black, with a yellow line under it",
+      "why": "As drawn in the home page design; the contrast is 1.5:1, under the 4.5:1 minimum",
+      "approved_by": "Kcampbell",
+      "date": "2026-11-11"
+    },
+    {
+      "where": "Home page, brand columns",
+      "what": "\"EXPLORE LIGHT EFFICIENT DESIGN >\" in Light Efficient Design green (#779802) on white, 20 px Avenir Black",
+      "why": "As drawn in the home page design; the contrast is 3.4:1, which passes only as large bold text",
+      "approved_by": "Kcampbell",
+      "date": "2026-11-11"
     }
   ],
   "note_colors": "Pantone values supplied by Kcampbell, 2026-11-11."

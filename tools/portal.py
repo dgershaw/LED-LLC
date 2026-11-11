@@ -208,7 +208,9 @@ def flatten(d):
 SECTION_KINDS = {"media": "Video and installation photos", "photos": "Photos", "highlights": "Key points", "case_studies": "Case studies",
                  "glance": "At a glance", "eddy": "Eddy"}
 HOME_KINDS = {"hero": "Headline", "photo_grid": "Photo grid", "brands": "Brand cards", "feature": "Photo and text", "image": "Photo",
-              "text": "Text", "finder": "What are you replacing?", "next_steps": "Eddy's next steps", "resources": "Resources"}
+              "text": "Text", "finder": "What are you replacing?", "next_steps": "Eddy's next steps", "resources": "Resources",
+              "banner": "Rotating banner", "statement": "Statement", "brand_columns": "Brand columns", "lbi_list": "LBI list",
+              "replace_grid": "Button grid", "divider": "Divider line", "help_cards": "Blue cards"}
 
 def wdiff(a, b):
     """The old and the new text as HTML, with what went away struck through and what came in underlined."""

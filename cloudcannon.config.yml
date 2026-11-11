@@ -199,6 +199,111 @@ collections_config:
         type: text
         label: Brand
         disabled: true
+      # the 2026-11 home page design (Kcampbell): banner, statement, brand columns, LBI list, replacement grid, help cards
+      heading:
+        type: text
+        label: Page title for search engines
+        comment: 'Not shown on the page. Leave empty for "Light Efficient Design: Leading Thru Innovation since 2008".' 
+      seconds:
+        type: range
+        label: Seconds per banner
+        options: { min: 3, max: 20, step: 1 }
+      slides:
+        type: array
+        label: Banners
+        comment: 1440 x 550 pixels. They take turns in this order; drag to reorder. Each can link to a page.
+        options:
+          structures:
+            values:
+              - label: Banner
+                value: { image: assets/img/uploads/homepage-banner-1.jpg, alt: Describe the banner, link: "" }
+      lines:
+        type: array
+        label: Heading lines
+        comment: Each entry is one line of the heading. Type it in capitals as it should appear.
+      columns:
+        type: array
+        label: Brand columns
+        options:
+          structures:
+            values:
+              - label: Brand column
+                value: { brand_color: remphos, logo: assets/img/brand/remphos-logo.png, logo_alt: RemPhos, logo_width: 205, link: remphos.html, text: A sentence or two about the brand., chips: [], more_label: "EXPLORE REMPHOS >", more_link: remphos.html }
+      brand_color:
+        type: select
+        label: Brand colour
+        comment: The colour of the lines and of the Explore link.
+        options:
+          values: { led: Light Efficient Design green, remphos: RemPhos blue, solera: Solera yellow }
+      logo:
+        type: image
+        label: Logo
+        comment: Shown exactly as supplied, only scaled to the width below.
+      logo_alt:
+        type: text
+        label: Logo description
+      logo_width:
+        type: range
+        label: Logo width (pixels at laptop size)
+        options: { min: 60, max: 420, step: 1 }
+      chips:
+        type: array
+        label: Category buttons
+        options:
+          structures:
+            values:
+              - label: Category button
+                value: { label: CATEGORY, link: products.html }
+      more_label:
+        type: text
+        label: Explore link text
+      more_link:
+        type: text
+        label: Explore link
+      items:
+        type: array
+        label: Rows
+        options:
+          structures:
+            values:
+              - label: LBI row
+                value: { bar: g2, name: "NEW ROW", tagline: A short line, link: lbi.html }
+              - label: Button (What are you replacing?)
+                value: { label: "NEW BUTTON", link: products.html }
+      bar:
+        type: select
+        label: Light bar drawing
+        options:
+          values: { g1: LBI G1 (warm white), g2: LBI G2 (white), "65": LBI 65 (cool white), max: LBI MAX (white), palette: LBI Palette (six set colours), palette-plus: LBI Palette+ (rainbow), palette-dmx: LBI Palette DMX (seamless rainbow) }
+      name:
+        type: text
+        label: Name
+      tagline:
+        type: text
+        label: Short line
+      cards:
+        type: array
+        label: Cards
+        options:
+          structures:
+            values:
+              - label: Card
+                value: { graphic: "", graphic_alt: "", graphic_height: 70, title: TITLE, text: A sentence or two., link_label: "LEARN MORE >", link: contact.html }
+      graphic:
+        type: image
+        label: Graphic
+        comment: A white graphic on a transparent background (PNG), shown as supplied.
+      graphic_alt:
+        type: text
+        label: Graphic description
+        comment: Leave empty when the graphic only decorates.
+      graphic_height:
+        type: range
+        label: Graphic height (pixels)
+        options: { min: 24, max: 180, step: 1 }
+      link_label:
+        type: text
+        label: Link text
   products:
     path: content/pages
     name: Product pages
@@ -371,6 +476,26 @@ _structures:
       - label: Resources
         description: The catalog, documents and contact cards.
         value: { _type: resources, background: grey, spacing: normal, title: For everyone on the project, text: "" }
+      - label: Rotating banner
+        description: Full-width 1440 x 550 banners that take turns, each with an optional link.
+        value: { _type: banner, background: plain, spacing: normal, show_on: all, heading: "", seconds: 6, slides: [ { image: assets/img/uploads/homepage-banner-1.jpg, alt: Describe the banner, link: "" } ] }
+      - label: Statement
+        description: A big centred heading, one line per entry.
+        value: { _type: statement, background: plain, spacing: normal, show_on: all, lines: [ "A NEW STATEMENT." ] }
+      - label: Brand columns
+        description: Logo, coloured lines, text, category buttons and an Explore link for each brand.
+        value: { _type: brand_columns, background: plain, spacing: normal, show_on: all, columns: [] }
+      - label: LBI list
+        description: A heading, text and button beside the LBI light bars.
+        value: { _type: lbi_list, background: plain, spacing: normal, show_on: all, lines: [ "A NEW HEADING." ], text: A sentence or two about it., buttons: [], items: [ { bar: g2, name: LBI G2, tagline: A short line, link: lbi-g2.html } ] }
+      - label: Button grid
+        description: A heading, a line of text and a grid of buttons, like What are you replacing?
+        value: { _type: replace_grid, background: plain, spacing: normal, show_on: all, title: A NEW HEADING, text: "", items: [ { label: BUTTON, link: products.html } ] }
+      - label: Divider line
+        value: { _type: divider, background: plain, spacing: normal, show_on: all }
+      - label: Blue cards
+        description: A heading and blue cards with a white graphic, like Samples, rebates + your local rep.
+        value: { _type: help_cards, background: plain, spacing: normal, show_on: all, title: A NEW HEADING, cards: [ { graphic: "", graphic_alt: "", graphic_height: 70, title: TITLE, text: A sentence or two., link_label: "LEARN MORE >", link: contact.html } ] }
 
 # What a new section on a product page starts as (the Sections list's "Add" menu). Keep in step with HOME_NEW and
 # page_new_blocks in tools/build.py. The "Page section" entries are the page's own sections; each one shows once.

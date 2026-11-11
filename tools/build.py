@@ -212,9 +212,20 @@ HOME_BLOCKS = {
     "finder": dict(title="", text=""),
     "next_steps": dict(title="", text=""),
     "resources": dict(title="", text=""),
+    # the 2026-11 home page design (Kcampbell): a rotating banner, a big statement, brand columns, the LBI list, the
+    # replacement grid, a divider and the blue help cards
+    "banner": dict(heading="", seconds=6, slides=[]),
+    "statement": dict(lines=[]),
+    "brand_columns": dict(columns=[]),
+    "lbi_list": dict(lines=[], text="", buttons=[], items=[]),
+    "replace_grid": dict(title="", text="", items=[]),
+    "divider": dict(),
+    "help_cards": dict(title="", cards=[]),
 }
 SHOW_ON = ("all", "laptop", "phone", "none")   # Show on: every screen, laptops and tablets only, phones only, hidden (David, 2026-11-11)
-HOME_IDS = {"hero": "h1", "brands": "brands-h", "feature": "lbi-h", "finder": "find-h", "next_steps": "next-h", "resources": "res-h"}
+HOME_IDS = {"hero": "h1", "brands": "brands-h", "feature": "lbi-h", "finder": "find-h", "next_steps": "next-h", "resources": "res-h",
+            "statement": "statement-h", "lbi_list": "lbi-h", "replace_grid": "find-h", "help_cards": "next-h"}
+LBI_BARS = ("g1", "g2", "65", "max", "palette", "palette-plus", "palette-dmx")   # the drawn light bars of the LBI list (home.css)
 PLACEHOLDER = "assets/img/office.jpg"
 HOME_NEW = [
     dict(_type="text", title="A new heading", text="A sentence or two about it.", align="left", buttons=[]),
@@ -229,6 +240,13 @@ HOME_NEW = [
     dict(_type="finder", title="What are you replacing?", text=""),
     dict(_type="next_steps", title="Samples, rebates and your local rep", text=""),
     dict(_type="resources", title="For everyone on the project", text=""),
+    dict(_type="banner", heading="", seconds=6, slides=[dict(image="assets/img/uploads/homepage-banner-1.jpg", alt="Describe the banner", link="")]),
+    dict(_type="statement", lines=["A NEW STATEMENT."]),
+    dict(_type="brand_columns", columns=[]),
+    dict(_type="lbi_list", lines=["A NEW HEADING."], text="A sentence or two about it.", buttons=[], items=[dict(bar="g2", name="LBI G2", tagline="A short line", link="lbi-g2.html")]),
+    dict(_type="replace_grid", title="A NEW HEADING", text="", items=[dict(label="BUTTON", link="products.html")]),
+    dict(_type="divider"),
+    dict(_type="help_cards", title="A NEW HEADING", cards=[dict(graphic="", graphic_alt="", title="TITLE", text="A sentence or two.", link_label="LEARN MORE >", link="contact.html")]),
 ]
 
 def clamp_int(v, lo, hi, default):
@@ -311,6 +329,40 @@ def home_blocks(blocks, brand_pics=None, new=False):
             b["align"] = b["align"] if b["align"] in ("left", "center", "right") else "center"
         if kind == "text":
             b["align"] = "center" if b["align"] == "center" else "left"
+        if kind == "banner":
+            b["seconds"] = clamp_int(b.get("seconds"), 3, 20, 6)
+            b["slides"] = [dict(src=web_path(x.get("image")), alt=(x.get("alt") or "").strip(), link=(x.get("link") or "").strip(), i=i)
+                           for i, x in enumerate(b["slides"] if isinstance(b["slides"], list) else [])
+                           if isinstance(x, dict) and web_path(x.get("image")) and (ROOT / web_path(x.get("image"))).is_file()]
+        if kind in ("statement", "lbi_list"):
+            b["lines"] = [x for x in b["lines"] if isinstance(x, str)] if isinstance(b["lines"], list) else []
+        if kind == "brand_columns":
+            cols = []
+            for x in b["columns"] if isinstance(b["columns"], list) else []:
+                if not isinstance(x, dict):
+                    continue
+                logo = web_path(x.get("logo"))
+                brand = next((v for v in (x.get("brand_color"), x.get("brand")) if v in ("led", "remphos", "solera")), "remphos")
+                cols.append(dict(brand=brand, logo=logo if logo and (ROOT / logo).is_file() else "", logo_alt=(x.get("logo_alt") or "").strip(),
+                                 logo_width=clamp_int(x.get("logo_width"), 60, 420, 200), link=(x.get("link") or "").strip(), text=x.get("text") or "",
+                                 chips=[dict(label=c.get("label") or "", link=(c.get("link") or "").strip()) for c in x.get("chips") or [] if isinstance(c, dict)],
+                                 more_label=x.get("more_label") or "", more_link=(x.get("more_link") or x.get("link") or "").strip()))
+            b["columns"] = cols
+        if kind == "lbi_list":
+            b["items"] = [dict(bar=x.get("bar") if x.get("bar") in LBI_BARS else "g2", name=x.get("name") or "", tagline=x.get("tagline") or "",
+                               link=(x.get("link") or "").strip()) for x in b["items"] if isinstance(x, dict)] if isinstance(b["items"], list) else []
+        if kind == "replace_grid":
+            b["items"] = [dict(label=x.get("label") or "", link=(x.get("link") or "").strip()) for x in b["items"] if isinstance(x, dict)] if isinstance(b["items"], list) else []
+        if kind == "help_cards":
+            cards = []
+            for x in b["cards"] if isinstance(b["cards"], list) else []:
+                if not isinstance(x, dict):
+                    continue
+                g = web_path(x.get("graphic"))
+                cards.append(dict(graphic=g if g and (ROOT / g).is_file() else "", graphic_alt=(x.get("graphic_alt") or "").strip(),
+                                  graphic_height=clamp_int(x.get("graphic_height"), 24, 180, 70), title=x.get("title") or "", text=x.get("text") or "",
+                                  link_label=x.get("link_label") or "", link=(x.get("link") or "").strip()))
+            b["cards"] = cards
         # the first block of each kind keeps the ids the tour and links know; a new block (a template) gets none
         b["hid"] = "" if new else (HOME_IDS[kind] if kind in HOME_IDS and kind not in seen else f"blk{n}-h")
         b["anchor"] = "brands" if kind == "brands" and kind not in seen and not new else ""
