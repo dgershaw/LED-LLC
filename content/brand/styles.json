@@ -99,6 +99,14 @@
       "use": "Section headers (40 px, Avenir Heavy, capitals)"
     }
   ],
-  "exceptions": [],
+  "exceptions": [
+    {
+      "where": "Footer of every page",
+      "what": "Background in Cool Gray 11 (#55565A), the brand text colour, with white text",
+      "why": "The footer colour in the new home page design",
+      "approved_by": "Kcampbell",
+      "date": "2026-11-11"
+    }
+  ],
   "note_colors": "Pantone values supplied by Kcampbell, 2026-11-11."
 }

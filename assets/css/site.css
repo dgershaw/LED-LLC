@@ -687,7 +687,8 @@ a.res:hover { text-decoration: none; border-color: var(--accent); }
 .drawer .portal-row .soon { margin-left: auto; }
 
 /* ---------- Footer: dark in both themes, like a signature ---------- */
-footer.site-footer { --f-bg: #0d0e12; --f-ink: #ffffff; --f-muted: #c9ccd4; --f-line: #2a2d36; background: var(--f-bg); color: var(--f-muted); padding-block: clamp(40px, 5vw, 64px) 28px; font-size: 0.9375rem; border-top: 0; }
+/* Cool Gray 11, the brand text colour, as the footer background (Kcampbell, 2026-11-11; see the exceptions in content/brand/styles.json) */
+footer.site-footer { --f-bg: #55565a; --f-ink: #ffffff; --f-muted: #f1f2f5; --f-line: rgb(255 255 255 / 0.3); background: var(--f-bg); color: var(--f-muted); padding-block: clamp(40px, 5vw, 64px) 28px; font-size: 0.9375rem; border-top: 0; }
 .site-footer a { color: var(--f-ink); }
 .site-footer a:hover { color: var(--f-ink); text-decoration: underline; }
 .ft-top { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(220px, 1fr) minmax(330px, 1.25fr) minmax(260px, 1.25fr); gap: 36px clamp(24px, 3vw, 56px); align-items: start; }
@@ -700,8 +701,8 @@ footer.site-footer { --f-bg: #0d0e12; --f-ink: #ffffff; --f-muted: #c9ccd4; --f-
 .ft-tag { margin-top: 8px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--f-muted); }
 .site-footer address { font-style: normal; margin-top: 18px; color: var(--f-ink); line-height: 1.5; }
 .ft-social { list-style: none; margin: 20px 0 0; padding: 0; display: flex; gap: 10px; }
-.ft-social a { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #1d2028; color: var(--f-ink); transition: background .15s; }
-.ft-social a:hover { background: #343844; }
+.ft-social a { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: rgb(0 0 0 / 0.22); color: var(--f-ink); transition: background .15s; }
+.ft-social a:hover { background: rgb(0 0 0 / 0.38); }
 .ft-social svg { width: 19px; height: 19px; }
 .ft-contact { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .ft-contact a, .ft-addr { display: inline-flex; align-items: flex-start; gap: 12px; font-weight: 700; color: var(--f-ink); line-height: 1.4; }
@@ -712,9 +713,9 @@ footer.site-footer { --f-bg: #0d0e12; --f-ink: #ffffff; --f-muted: #c9ccd4; --f-
 .ft-links a { font-weight: 500; }
 .ft-portal p { color: var(--f-ink); max-width: 46ch; line-height: 1.55; }
 .ft-portal-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin-top: 18px; }
-.ft-portal-btn { background: #799b3e; color: #ffffff; border: 0; border-radius: 8px; padding: 12px 20px; font-weight: 800; font-size: 0.9375rem; }
+.ft-portal-btn { background: var(--led); color: #ffffff; border: 0; border-radius: 8px; padding: 12px 20px; font-weight: 800; font-size: 0.9375rem; }
 .ft-portal-btn:hover { filter: brightness(1.08); }
-.site-footer .soon { background: transparent; color: var(--f-ink); border-color: #8a8f9c; }
+.site-footer .soon { background: transparent; color: var(--f-ink); border-color: #f1f2f5; }
 .ft-brands { display: flex; align-items: center; flex-wrap: wrap; gap: 18px 28px; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--f-line); }
 .ft-brands .logo-eq { --logo-s: 40px; }
 .ft-brands a:hover { opacity: 0.85; }
