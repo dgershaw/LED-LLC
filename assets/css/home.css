@@ -31,7 +31,7 @@
 .hm-brand { --bc: var(--remphos); --bt: var(--remphos); display: flex; flex-direction: column; min-width: 0; }
 .hm-brand.b-led { --bc: var(--led); --bt: var(--led); }
 .hm-brand.b-solera { --bc: var(--solera); --bt: var(--solera); }
-.hm-logo { display: flex; align-items: center; justify-content: center; height: 100px; margin-bottom: 31px; border-bottom: 2px solid var(--bc); box-sizing: content-box; padding-bottom: 31px; margin-bottom: 0; }
+.hm-logo { display: flex; align-items: flex-end; justify-content: center; height: 87px; padding-bottom: 44px; border-bottom: 2px solid var(--bc); box-sizing: content-box; }
 .hm-logo img { max-width: 100%; height: auto; }
 .hm-logo-missing { font-weight: 900; font-size: 1.25rem; }
 .hm-brand-body { padding: 13px 9px 0 8.5px; }
@@ -121,7 +121,7 @@
   .hm-brands, .hm-lbi, .hm-replace, .hm-help { padding-top: 56px; }
   .hm-divider { padding-top: 56px; }
   .hm-help { padding-bottom: 72px; }
-  .hm-logo { height: 84px; padding-bottom: 20px; }
+  .hm-logo { height: 72px; padding-bottom: 30px; }
   .hm-logo img { max-width: 80%; }
   .hm-box { min-height: 72px; font-size: 1.1875rem; }
   .hm-bars li > a, .hm-bars li > div { gap: 16px; }

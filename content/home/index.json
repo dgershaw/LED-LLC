@@ -47,7 +47,7 @@
       "show_on": "all",
       "columns": [
         {
-          "logo": "assets/img/brand/led-logo-original.png",
+          "logo": "assets/img/uploads/logo-led.png",
           "logo_alt": "Light Efficient Design",
           "logo_width": 315,
           "link": "light-efficient-design.html",
@@ -71,7 +71,7 @@
           "brand_color": "led"
         },
         {
-          "logo": "assets/img/brand/remphos-logo.png",
+          "logo": "assets/img/uploads/logo-remphos.png",
           "logo_alt": "RemPhos",
           "logo_width": 205,
           "link": "remphos.html",
@@ -91,7 +91,7 @@
           "brand_color": "remphos"
         },
         {
-          "logo": "assets/img/brand/solera-logo.png",
+          "logo": "assets/img/uploads/logo-solera.png",
           "logo_alt": "Solera",
           "logo_width": 172,
           "link": "solera.html",
