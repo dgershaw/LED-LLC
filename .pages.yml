@@ -213,6 +213,9 @@ content:
           - { name: fit, label: Fit, type: select, options: { values: [ { value: auto, label: Automatic }, { value: whole, label: Show the whole photo }, { value: fill, label: Fill the frame } ] } }
           - { name: size, label: Size (product cutouts), type: select, options: { values: [ { value: auto, label: Automatic }, { value: normal, label: Normal }, { value: wide, label: Wide } ] } }
           - { name: focus, label: Photo focus, description: "Optional, for example 50% 30%", type: string }
+          - { name: zoom, label: Zoom (%), description: "100 shows the photo as framed, up to 300", type: number }
+          - { name: photo_width, label: Width (% of the page), description: "Diagrams and wide banners, 20 to 100", type: number }
+          - { name: photo_align, label: Alignment, type: select, options: { values: [ { value: left, label: Left }, { value: center, label: Centre }, { value: right, label: Right } ] } }
           - { name: kind, label: Kind, type: string, hidden: true }
       - name: install_photos
         label: Installation photos
@@ -223,6 +226,7 @@ content:
           - { name: alt, label: Photo description, type: string }
           - { name: caption, label: Caption, type: string }
           - { name: focus, label: Photo focus, type: string }
+          - { name: zoom, label: Zoom (%), type: number }
       - name: sheet_slides
         label: "Spec-sheet pages: top slideshow"
         description: Product-only shots first, then photos in use.
@@ -234,6 +238,7 @@ content:
           - { name: caption, label: Caption, type: string }
           - { name: fit, label: Fit, type: select, options: { values: [ { value: whole, label: Show the whole photo }, { value: fill, label: Fill the frame } ] } }
           - { name: focus, label: Photo focus, type: string }
+          - { name: zoom, label: Zoom (%), type: number }
       - name: hero_image
         label: Main photo
         description: Shown whole, never cropped. Spec-sheet pages show their spec-sheet photos at the top and use this one on cards and link previews.

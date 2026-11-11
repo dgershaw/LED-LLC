@@ -138,7 +138,7 @@
     {% for im in items %}
     <figure class="ss-slide{% if loop.first %} is-on{% endif %}{% if im.contain %} contain{% endif %}" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ items|length }}"{% if not loop.first %} aria-hidden="true"{% endif %}{% if im.web in RAIN %} data-rain="{{ RAIN[im.web] }}"{% endif %}>
       {% set ed = prop and im.i is not none %}
-      <img src="{{ im.web }}" alt="{{ im.shows }}"{% if not loop.first %} loading="lazy"{% endif %}{{ dims(im.web) }}{% if im.focus %} style="object-position:{{ im.focus }}"{% endif %}{% if ed %} data-editable="image" data-prop-src="{{ prop }}.{{ im.i }}.image" data-prop-alt="{{ prop }}.{{ im.i }}.alt"{% endif %}>
+      <img src="{{ im.web }}" alt="{{ im.shows }}"{% if not loop.first %} loading="lazy"{% endif %}{{ dims(im.web) }}{{ photo_style(im.focus, im.zoom or 1) }}{% if ed %} data-editable="image" data-prop-src="{{ prop }}.{{ im.i }}.image" data-prop-alt="{{ prop }}.{{ im.i }}.alt"{% endif %}>
       {% if im.caption %}<figcaption{% if ed %} data-editable="text" data-prop="{{ prop }}.{{ im.i }}.caption"{% endif %}>{{ im.caption }}</figcaption>{% endif %}
     </figure>
     {% endfor %}

@@ -10,7 +10,7 @@
 {% macro head(b, hid) %}{% if b.title or b.text %}<div class="band-head{% if b.align == 'center' %} center{% endif %}">{% if b.title %}<h2 id="{{ hid }}" data-editable="text" data-prop="title">{{ b.title }}</h2>{% endif %}{% if b.text %}<div class="rt" data-editable="text" data-type="block" data-prop="text">{{ b.text|rich }}</div>{% endif %}</div>{% endif %}{% endmacro %}
 
 {%- macro photo(im) -%}
-<img src="{{ im.src }}" alt="{{ im.alt }}"{{ dims(im.src) }}{% if im.fit == 'contain' or im.position %} style="{% if im.fit == 'contain' %}object-fit:contain;{% endif %}{% if im.position %}object-position:{{ im.position }}{% endif %}"{% endif %} data-editable="image" data-prop-src="image" data-prop-alt="alt">
+<img src="{{ im.src }}" alt="{{ im.alt }}"{{ dims(im.src) }}{{ photo_style(im.position, im.zoom or 1, im.fit == 'contain') }} data-editable="image" data-prop-src="image" data-prop-alt="alt">
 {%- endmacro -%}
 
 {% macro block(b, ctx) %}
@@ -75,14 +75,14 @@
       {% endif %}
       {{ buttons(b.buttons, ' left') }}
     </div>
-    {% if b.image.src %}<figure class="shot photo shape-{{ b.image_shape|replace(':', '-') }}{% if b.fit == 'contain' %} contain{% endif %}"><img src="{{ b.image.src }}" alt="{{ b.image.alt }}"{{ dims(b.image.src) }}{% if b.position %} style="object-position:{{ b.position }}"{% endif %} data-editable="image" data-prop="image"></figure>{% endif %}
+    {% if b.image.src %}<figure class="shot photo shape-{{ b.image_shape|replace(':', '-') }}{% if b.fit == 'contain' %} contain{% endif %}"><img src="{{ b.image.src }}" alt="{{ b.image.alt }}"{{ dims(b.image.src) }}{{ photo_style(b.position, b.zoom) }} data-editable="image" data-prop="image"></figure>{% endif %}
   </div>
 </section>
 {% elif b._type == "image" %}
 <section class="band{{ wrapcls }}" data-editable="array-item" data-id="image">
   <div class="wrap">
     <figure class="blk-image align-{{ b.align }} shape-{{ b.image_shape|replace(':', '-') }}{% if b.fit == 'contain' %} contain{% endif %}" style="--w:{{ b.image_size }}%">
-      {% if b.link %}<a href="{{ b.link }}">{% endif %}<img src="{{ b.image.src }}" alt="{{ b.image.alt }}"{{ dims(b.image.src) }}{% if b.position %} style="object-position:{{ b.position }}"{% endif %} loading="lazy" data-editable="image" data-prop="image">{% if b.link %}</a>{% endif %}
+      <span class="blk-frame">{% if b.link %}<a href="{{ b.link }}">{% endif %}<img src="{{ b.image.src }}" alt="{{ b.image.alt }}"{{ dims(b.image.src) }}{{ photo_style(b.position, b.zoom) }} loading="lazy" data-editable="image" data-prop="image">{% if b.link %}</a>{% endif %}</span>
       {% if b.caption %}<figcaption data-editable="text" data-prop="caption">{{ b.caption }}</figcaption>{% endif %}
     </figure>
   </div>

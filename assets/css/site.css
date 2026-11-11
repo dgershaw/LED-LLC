@@ -1672,3 +1672,17 @@ html.calm .site-header, html.calm .mega { background: var(--bg) !important; }
 .feature .rt { margin-top: 12px; color: var(--muted); font-size: var(--step-1); max-width: 48ch; }
 .feature .rt p:not(.eyebrow) { margin-top: 0; max-width: none; }
 .feature .rt > * + * { margin-top: 0.7em; }
+
+/* ---------- Photo size, alignment and zoom (David, 2026-11-11). Zoom is the CSS scale property on the photo, clipped by its
+   frame; Photo focus says which part stays in view. Diagrams and wide banners on product pages take a width and a side. ---------- */
+.blk-frame { display: block; overflow: hidden; border-radius: var(--radius); }
+.blk-frame > a { display: block; }
+.blk-image .blk-frame img { border-radius: 0; }
+.diagram-fig, .strip-fig { overflow: hidden; }
+.diagram-fig.sized, .strip-fig.sized { width: min(100%, var(--w)); }
+.diagrams .diagram-fig.sized { justify-self: center; }
+.diagrams .diagram-fig.sized.align-left { justify-self: start; }
+.diagrams .diagram-fig.sized.align-right { justify-self: end; }
+.strip-fig.sized.align-center { margin-inline: auto; }
+.strip-fig.sized.align-right { margin-left: auto; }
+@media (max-width: 560px) { .diagram-fig.sized, .strip-fig.sized { width: 100%; } }

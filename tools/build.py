@@ -217,11 +217,11 @@ HOME_IDS = {"hero": "h1", "brands": "brands-h", "feature": "lbi-h", "finder": "f
 PLACEHOLDER = "assets/img/office.jpg"
 HOME_NEW = [
     dict(_type="text", title="A new heading", text="A sentence or two about it.", align="left", buttons=[]),
-    dict(_type="image", image=dict(src=PLACEHOLDER, alt="Describe the photo"), caption="", link="", image_size=100, align="center", image_shape="16:9", fit="cover", position=""),
+    dict(_type="image", image=dict(src=PLACEHOLDER, alt="Describe the photo"), caption="", link="", image_size=100, align="center", image_shape="16:9", fit="cover", position="", zoom=100),
     dict(_type="feature", eyebrow="", title="A new heading", text="A sentence or two about it.", show_lbi_list=False, buttons=[],
-         image=dict(src=PLACEHOLDER, alt="Describe the photo"), image_side="right", image_width=52, image_shape="4:3", fit="cover", position=""),
+         image=dict(src=PLACEHOLDER, alt="Describe the photo"), image_side="right", image_width=52, image_shape="4:3", fit="cover", position="", zoom=100),
     dict(_type="photo_grid", title="", text="", row_height="medium", tiles=[
-        dict(image=PLACEHOLDER, alt="Describe the photo", caption="Caption", link="", width=6, height=2, fit="cover", position=""),
+        dict(image=PLACEHOLDER, alt="Describe the photo", caption="Caption", link="", width=6, height=2, fit="cover", position="", zoom=100),
         dict(image=PLACEHOLDER, alt="Describe the photo", caption="Caption", link="", width=6, height=2, fit="cover", position="")]),
     dict(_type="hero", align="center", eyebrow="", headline="A new headline", headline_tail="", values=[], lede="", buttons=[]),
     dict(_type="brands", title="Three brands, built for the job in front of you", text="", photos=[]),
@@ -235,6 +235,24 @@ def clamp_int(v, lo, hi, default):
         return max(lo, min(hi, int(round(float(v)))))
     except (TypeError, ValueError):
         return default
+
+def zoom_of(v):
+    """A photo's zoom as a factor: the editor's slider runs from 100 % (as framed) to 300 %."""
+    return clamp_int(v, 100, 300, 100) / 100
+
+def photo_style(focus="", zoom=1, contain=False):
+    """The style= of a photo: which part stays in view when it is cropped (focus), how far it is zoomed in, and whether it
+    is shown whole. Zoom uses the CSS scale property, so a hover effect's transform still works on top of it."""
+    focus = (focus or "").strip()
+    css = []
+    if contain:
+        css.append("object-fit:contain")
+    focus = focus if re.fullmatch(r"[\w%.\s-]{1,40}", focus) else ""
+    if focus:
+        css.append(f"object-position:{focus}")
+    if zoom and zoom != 1:
+        css += [f"scale:{zoom:g}", "transform-origin:" + (focus or "center")]
+    return Markup(f' style="{";".join(css)}"') if css else Markup("")
 
 def home_image(v):
     """{src, alt} from the file, linked relative to the site root; empty when the file is missing."""
@@ -265,7 +283,7 @@ def home_blocks(blocks, brand_pics=None, new=False):
                 if src and (ROOT / src).is_file():
                     tiles.append(dict(src=src, alt=t.get("alt") or "", caption=t.get("caption") or "", link=(t.get("link") or "").strip(),
                                       width=clamp_int(t.get("width"), 1, 12, 4), height=clamp_int(t.get("height"), 1, 4, 1),
-                                      fit=t.get("fit") or "cover", position=(t.get("position") or "").strip()))
+                                      fit=t.get("fit") or "cover", position=(t.get("position") or "").strip(), zoom=zoom_of(t.get("zoom"))))
             b["tiles"] = tiles
             b["row_height"] = b["row_height"] if b["row_height"] in ("small", "medium", "large") else "medium"
         if kind == "brands":
@@ -281,6 +299,7 @@ def home_blocks(blocks, brand_pics=None, new=False):
             b["image"] = home_image(b["image"])
             b["image_shape"] = b["image_shape"] if b["image_shape"] in ("original", "1:1", "4:3", "3:2", "16:9", "21:9", "3:4") else "4:3"
             b["position"] = (b.get("position") or "").strip()
+            b["zoom"] = zoom_of(b.get("zoom"))
         if kind == "feature":
             b["image_width"] = clamp_int(b["image_width"], 25, 75, 52)
             b["sized"] = b["image_width"] != 52
@@ -1369,7 +1388,9 @@ def page_photos(items, hero):
         w, h = img_size(src) or (4, 3)
         ar = w / max(1, h)
         im = dict(web=src, shows=(x.get("alt") or "").strip(), caption=(x.get("caption") or "").strip(), ar=ar, i=i,
-                  kind=x.get("kind") or "application", fit=x.get("fit") or "auto", focus=(x.get("focus") or "").strip())
+                  kind=x.get("kind") or "application", fit=x.get("fit") or "auto", focus=(x.get("focus") or "").strip(),
+                  zoom=zoom_of(x.get("zoom")), width=clamp_int(x.get("photo_width"), 20, 100, 100),
+                  align=x.get("photo_align") if x.get("photo_align") in ("left", "center", "right") else "center")
         if how == "cutout":
             im["label"] = im["caption"]
             im["cls"] = "cut long" if size == "wide" or (size == "auto" and ar > 2.6) else "cut"
@@ -1607,7 +1628,7 @@ def load_media(cats):
             c["videos"].append(v)
             videos.append(v)
         if isinstance(c.get("install_photos"), list):   # the page file's installation photos (CloudCannon and Pages CMS)
-            c["install"] = [dict(src=web_path(p.get("image")), alt=p.get("alt") or "", caption=p.get("caption") or "", focus=p.get("focus") or "", i=i)
+            c["install"] = [dict(src=web_path(p.get("image")), alt=p.get("alt") or "", caption=p.get("caption") or "", focus=p.get("focus") or "", zoom=zoom_of(p.get("zoom")), i=i)
                             for i, p in enumerate(c["install_photos"]) if isinstance(p, dict)]
             c["install"] = [p for p in c["install"] if p["src"] and (ROOT / p["src"]).is_file()]
             c["install_editable"] = True
@@ -1670,12 +1691,12 @@ def load_cutsheets(cats):
             cs["plug"] = c["sheet_plug"].strip().rstrip(".")
         if isinstance(c.get("sheet_slides"), list):   # the page file's top slideshow (CloudCannon and Pages CMS), in its order
             slides = [dict(src=web_path(x.get("image")), alt=x.get("alt"), caption=x.get("caption"), fit="contain" if x.get("fit") == "whole" else "",
-                           focus=x.get("focus"), i=i) for i, x in enumerate(c["sheet_slides"]) if isinstance(x, dict)]
+                           focus=x.get("focus"), zoom=zoom_of(x.get("zoom")), i=i) for i, x in enumerate(c["sheet_slides"]) if isinstance(x, dict)]
             cs["slides_editable"] = True
         else:
             slides, cs["slides_editable"] = cs.get("slides") or [], False
         cs["slides"] = [dict(web=x["src"], shows=x.get("alt") or x.get("caption") or "", caption=x.get("caption"), contain=x.get("fit") == "contain",
-                             focus=x.get("focus") or "", i=x.get("i"))
+                             focus=x.get("focus") or "", zoom=x.get("zoom") or 1, i=x.get("i"))
                         for x in slides if x.get("src") and (ROOT / x["src"]).is_file()]
         cs["docs"] = [d for d in cs.get("docs") or [] if find_doc(d["pdf"])]
         for d in cs["docs"]:
@@ -2080,6 +2101,7 @@ def main():
     env.filters["bold"] = bold
     env.filters["strip_bold"] = strip_bold
     env.filters["rich"] = rich
+    env.globals["photo_style"] = photo_style
     env.filters["plain"] = plain_words
     env.filters["refs"] = refs
     env.filters["cellhtml"] = cellhtml

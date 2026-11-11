@@ -49,7 +49,7 @@
     {% set n = c.install|length %}
     <div class="media-grid{% if c.videos %} has-video{% endif %} n{{ n if n < 3 else 'm' }}">
       {% for v in c.videos %}{{ P.video(v, "lead" if loop.first else "") }}{% endfor %}
-      {% for p in c.install %}<a class="install{% if loop.index > 2 %} more{% endif %}" href="{{ p.src }}" data-lightbox data-caption="{{ p.caption }}"><img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy"{{ dims(p.src) }}{% if p.focus %} style="object-position:{{ p.focus }}"{% endif %}{% if c.install_editable %} data-editable="image" data-prop-src="install_photos.{{ p.i }}.image" data-prop-alt="install_photos.{{ p.i }}.alt"{% endif %}><span class="cap"{% if c.install_editable %} data-editable="text" data-prop="install_photos.{{ p.i }}.caption"{% endif %}>{{ p.caption }}</span></a>{% endfor %}
+      {% for p in c.install %}<a class="install{% if loop.index > 2 %} more{% endif %}" href="{{ p.src }}" data-lightbox data-caption="{{ p.caption }}"><img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy"{{ dims(p.src) }}{{ photo_style(p.focus, p.zoom or 1) }}{% if c.install_editable %} data-editable="image" data-prop-src="install_photos.{{ p.i }}.image" data-prop-alt="install_photos.{{ p.i }}.alt"{% endif %}><span class="cap"{% if c.install_editable %} data-editable="text" data-prop="install_photos.{{ p.i }}.caption"{% endif %}>{{ p.caption }}</span></a>{% endfor %}
     </div>
   </section>
   {% endif %}
@@ -68,7 +68,7 @@
       </div>
       {% endif %}
     </div>
-    {% for im in strips if not photos or im.web in RAIN %}<figure class="strip-fig"{% if im.web in RAIN %} data-rain="{{ RAIN[im.web] }}"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{% if im.i is not none %} data-editable="image" data-prop-src="photos.{{ im.i }}.image" data-prop-alt="photos.{{ im.i }}.alt"{% endif %}></figure>{% endfor %}
+    {% for im in strips if not photos or im.web in RAIN %}<figure class="strip-fig{% if im.width and im.width < 100 %} sized align-{{ im.align }}{% endif %}"{% if im.width and im.width < 100 %} style="--w:{{ im.width }}%"{% endif %}{% if im.web in RAIN %} data-rain="{{ RAIN[im.web] }}"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{% if im.i is not none %} data-editable="image" data-prop-src="photos.{{ im.i }}.image" data-prop-alt="photos.{{ im.i }}.alt"{% endif %}></figure>{% endfor %}
   </section>
   {% endif %}
 
@@ -155,7 +155,7 @@
   <section aria-labelledby="diag-h">
     <div class="section-head"><h2 id="diag-h">Diagrams</h2></div>
     <div class="diagrams n{{ diagrams|length if diagrams|length < 4 else 'm' }}">
-      {% for im in diagrams %}<figure class="diagram-fig"><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{{ natmax(im.web) }}{% if im.i is not none %} data-editable="image" data-prop-src="photos.{{ im.i }}.image" data-prop-alt="photos.{{ im.i }}.alt"{% endif %}>{% if im.caption %}<figcaption{% if im.i is not none %} data-editable="text" data-prop="photos.{{ im.i }}.caption"{% endif %}>{{ im.caption }}</figcaption>{% endif %}</figure>{% endfor %}
+      {% for im in diagrams %}<figure class="diagram-fig{% if im.width and im.width < 100 %} sized align-{{ im.align }}{% endif %}"{% if im.width and im.width < 100 %} style="--w:{{ im.width }}%"{% endif %}><img src="{{ im.web }}" alt="{{ im.shows }}" loading="lazy"{{ dims(im.web) }}{{ natmax(im.web) }}{% if im.i is not none %} data-editable="image" data-prop-src="photos.{{ im.i }}.image" data-prop-alt="photos.{{ im.i }}.alt"{% endif %}>{% if im.caption %}<figcaption{% if im.i is not none %} data-editable="text" data-prop="photos.{{ im.i }}.caption"{% endif %}>{{ im.caption }}</figcaption>{% endif %}</figure>{% endfor %}
     </div>
   </section>
   {% endif %}
