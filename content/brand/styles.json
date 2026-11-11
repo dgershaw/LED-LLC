@@ -5,22 +5,100 @@
     "note": "The catalog is set in Avenir. Macs and iPhones have it built in; everyone else sees the web font, its closest free cousin from Google Fonts."
   },
   "text_colors": [
-    { "name": "Ink", "key": "ink", "light": "#1b1c20", "dark": "#f1f2f5", "use": "Body text and headings" },
-    { "name": "Grey", "key": "grey", "light": "#5b5f6a", "dark": "#aeb3bd", "use": "Introductions, captions and small print" },
-    { "name": "RemPhos blue", "key": "remphos-blue", "light": "#1d5bc4", "dark": "#5c9bff", "use": "Links and highlights on RemPhos pages", "accent_for": "remphos" },
-    { "name": "Light Efficient Design green", "key": "led-green", "light": "#5d7d28", "dark": "#a3c75c", "use": "Links and highlights on Light Efficient Design pages", "accent_for": "led" },
-    { "name": "Solera gold", "key": "solera-gold", "light": "#7d5e00", "dark": "#f9c606", "use": "Links and highlights on Solera pages", "accent_for": "solera" }
+    {
+      "name": "Ink",
+      "key": "ink",
+      "light": "#55565a",
+      "dark": "#f1f2f5",
+      "use": "All text: body text and headings (Pantone Cool Gray 11 C)"
+    },
+    {
+      "name": "Grey",
+      "key": "grey",
+      "light": "#5b5f6a",
+      "dark": "#aeb3bd",
+      "use": "Introductions, captions and small print"
+    },
+    {
+      "name": "RemPhos blue",
+      "key": "remphos-blue",
+      "light": "#004e9a",
+      "dark": "#5c9bff",
+      "use": "Links and highlights on RemPhos pages (Pantone 7686 CP)",
+      "accent_for": "remphos"
+    },
+    {
+      "name": "Light Efficient Design green",
+      "key": "led-green",
+      "light": "#5d7d28",
+      "dark": "#a3c75c",
+      "use": "Links and highlights on Light Efficient Design pages",
+      "accent_for": "led"
+    },
+    {
+      "name": "Solera gold",
+      "key": "solera-gold",
+      "light": "#7d5e00",
+      "dark": "#f9c606",
+      "use": "Links and highlights on Solera pages",
+      "accent_for": "solera"
+    }
   ],
   "brand_colors": [
-    { "name": "Light Efficient Design green", "key": "led", "color": "#799b3e", "use": "Brand strips, dots and bands. Too light for small text: text uses the darker green above." },
-    { "name": "RemPhos blue", "key": "remphos", "color": "#004e99", "use": "Brand strips, dots and bands" },
-    { "name": "Solera yellow", "key": "solera", "color": "#f9c606", "use": "The Solera band at the top of every solar page. Never for text on white." }
+    {
+      "name": "Light Efficient Design green",
+      "key": "led",
+      "color": "#779802",
+      "use": "Pantone 377 C. Brand strips, dots and bands. Too light for small text: text uses the darker green above."
+    },
+    {
+      "name": "RemPhos blue",
+      "key": "remphos",
+      "color": "#004e9a",
+      "use": "Pantone 7686 CP. Brand strips, dots, bands and buttons"
+    },
+    {
+      "name": "Solera yellow",
+      "key": "solera",
+      "color": "#ffcb05",
+      "use": "Pantone 7406 CP. The Solera band at the top of every solar page. Never for text on white, except where listed below."
+    }
   ],
   "text_sizes": [
-    { "name": "Small", "key": "small", "rem": 0.875 },
-    { "name": "Large", "key": "large", "rem": 1.1875 },
-    { "name": "Extra large", "key": "xlarge", "rem": 1.5 },
-    { "name": "Headline", "key": "headline", "rem": 2 }
+    {
+      "name": "Small",
+      "key": "small",
+      "rem": 0.875,
+      "use": "Small buttons and tags (14 px, Avenir Heavy)"
+    },
+    {
+      "name": "Large",
+      "key": "large",
+      "rem": 1.1875
+    },
+    {
+      "name": "Body",
+      "key": "body",
+      "rem": 1.25,
+      "use": "Body text and subheaders (20 px; body in Avenir Roman, subheaders in Avenir Black)"
+    },
+    {
+      "name": "Extra large",
+      "key": "xlarge",
+      "rem": 1.5
+    },
+    {
+      "name": "Headline",
+      "key": "headline",
+      "rem": 2
+    },
+    {
+      "name": "Header",
+      "key": "header",
+      "rem": 2.5,
+      "use": "Section headers (40 px, Avenir Heavy, capitals)"
+    }
   ],
-  "exceptions": []
+  "exceptions": [],
+  "note_colors": "Pantone values supplied by Kcampbell, 2026-11-11."
 }
