@@ -218,6 +218,111 @@ collections_config:
         options:
           structures: _structures.page_sections
 
+  # The site's approved fonts, colours and text sizes (Amy George and David, 2026-11-11). One change here changes every page
+  # and the Styles menu of every formatted text box; the build refuses a text colour that is too faint or a size under 12 px
+  # and lists it at the top of the Brand styles page (style-guide.html). Like every save, it waits for approval.
+  brand:
+    path: content/brand
+    name: Brand styles
+    description: The fonts, colours and text sizes approved for the site. See them all on the Brand styles page of the sandbox.
+    url: /style-guide.html
+    icon: palette
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors: [data]
+    _inputs:
+      fonts:
+        type: object
+        label: Font
+      text_font:
+        type: text
+        label: Font
+        comment: The catalog font, used where the computer has it (Avenir is built into Macs and iPhones).
+      web_font:
+        type: text
+        label: Web font
+        comment: The Google Fonts family everyone else sees, spelled exactly as on fonts.google.com, for example Nunito Sans.
+      note:
+        type: textarea
+        label: Note for the Brand styles page
+      text_colors:
+        type: array
+        label: Text colours
+        comment: The colours text may use, each with a version for dark mode. The Styles menu offers every one; one marked as a brand's colour is also that brand's links and highlights.
+        options:
+          structures:
+            values:
+              - label: Text colour
+                value: { name: New colour, key: new-colour, light: "#1b1c20", dark: "#f1f2f5", use: "" }
+      name:
+        type: text
+        label: Name
+      key:
+        type: text
+        label: Short name
+        comment: Lower-case letters and dashes. Pages that use this colour or size refer to it by this name, so keep it once it is in use.
+      light:
+        type: color
+        label: On light pages
+      dark:
+        type: color
+        label: On dark pages
+      use:
+        type: text
+        label: Where it is used
+      accent_for:
+        type: select
+        label: Link and highlight colour for
+        options:
+          allow_empty: true
+          values: { led: Light Efficient Design pages, remphos: RemPhos pages, solera: Solera pages }
+      brand_colors:
+        type: array
+        label: Brand colours
+        comment: Brand strips, dots and bands. Not for text.
+        options: { disable_add: true, disable_remove: true, disable_reorder: true }
+      color:
+        type: color
+        label: Colour
+      text_sizes:
+        type: array
+        label: Text sizes
+        comment: The sizes in the Styles menu, besides Normal (16 px). Size is in rem; 1 = 16 px, 0.75 = 12 px, the smallest allowed.
+        options:
+          structures:
+            values:
+              - label: Text size
+                value: { name: New size, key: new-size, rem: 1.25 }
+      rem:
+        type: number
+        label: Size (rem)
+        options: { min: 0.75, max: 4, step: 0.0625 }
+      exceptions:
+        type: array
+        label: Approved exceptions
+        comment: One-off departures from these styles and who approved them. They are listed on the Brand styles page.
+        options:
+          structures:
+            values:
+              - label: Exception
+                value: { where: Page or block, what: What is different, why: "", approved_by: "", date: "" }
+      where:
+        type: text
+        label: Where
+      what:
+        type: text
+        label: What is different
+      why:
+        type: text
+        label: Why
+      approved_by:
+        type: text
+        label: Approved by
+      date:
+        type: date
+        label: Date
+
 # Spec-sheet pages (LBI G1, Shoe Box + Wall Pack, TAA troffers) show their spec-sheet points under the headline instead of
 # the Introduction, Key points and At a glance, so those boxes are hidden there to avoid edits that show nowhere.
 file_config:

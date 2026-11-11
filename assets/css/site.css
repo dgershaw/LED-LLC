@@ -1703,3 +1703,27 @@ html.calm .site-header, html.calm .mega { background: var(--bg) !important; }
 .blk.pblk.bg-grey > .wrap { padding-inline: 0; }
 .blk.pblk .band-head h2 { font-size: clamp(1.5rem, 2.6vw, 1.875rem); }
 .blk.pblk.home-grid { padding-block: 0; }
+.rt p.eyebrow-line { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.rt .light { font-weight: 300; }
+.rt .heavy { font-weight: 900; }
+/* Brand text colours (c-*) and text sizes (size-*) are generated into assets/css/brand.css from content/brand/styles.json. */
+
+/* ---------- Style guide (style-guide.html, built from content/brand/styles.json) ---------- */
+.sg-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+.sg-card { border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); padding: 16px 18px; display: grid; gap: 6px; align-content: start; }
+.sg-card.off { border-color: #b3261e; }
+.sg-sw { height: 64px; border-radius: 10px; border: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+.sg-sw span { display: grid; place-items: center; font-weight: 700; font-size: 0.9375rem; }
+.sg-card h3 { font-size: 1.0625rem; }
+.sg-card p, .sg-card small { color: var(--muted); font-size: 0.875rem; margin: 0; }
+.sg-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--ink); }
+.sg-tag.bad { background: #b3261e; color: #fff; }
+.sg-rows { display: grid; gap: 10px; }
+.sg-row { display: grid; grid-template-columns: minmax(120px, 200px) minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--line); }
+.sg-row > :first-child { color: var(--muted); font-size: 0.875rem; }
+.sg-rules { display: grid; gap: 10px; padding-left: 1.2em; margin: 0; }
+.sg-shapes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.sg-shapes figure { margin: 0; display: grid; gap: 6px; }
+.sg-shapes img { width: 100%; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); }
+.sg-shapes figcaption { font-size: 0.8125rem; color: var(--muted); }
+@media (max-width: 560px) { .sg-row { grid-template-columns: minmax(0, 1fr); gap: 4px; } }

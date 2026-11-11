@@ -671,8 +671,157 @@ def strip_bold(s):
 # italic, underline, links, lists, left/centre/right alignment and the house styles in assets/css/editor.css. Fonts,
 # colours and sizes stay the site's own, so a page can never drop below the contrast and 12 px rules. rich() keeps only that
 # much HTML and drops everything else (pasted fonts, colours, scripts), leaving the words. Plain text from before still works.
-RICH_STYLES = {"p": {"lead-large", "small-print", "note-box", "ta-left", "ta-center", "ta-right"},
-               "span": {"hl", "small-print"}}
+# ---------- Brand styles (Amy George and David, 2026-11-11) ----------
+# content/brand/styles.json is the one place the site's approved fonts, text colours, brand colours and text sizes live.
+# The team edits it in CloudCannon ("Brand styles"); a change goes to the sandbox and waits for approval like any other.
+# The build turns it into assets/css/brand.css (the site's colours and fonts), assets/css/editor.css (the Styles menu of
+# every formatted text box) and style-guide.html (the page that shows all of it). Claude follows the same file.
+# A text colour below 4.5:1 contrast on the page (light or dark), or a size under 12 px, is refused and reported.
+BRAND_FILE = ROOT / "content" / "brand" / "styles.json"
+BRAND_DEFAULT = {
+    "fonts": {"text_font": "Avenir", "web_font": "Nunito Sans"},
+    "text_colors": [
+        dict(name="Ink", key="ink", light="#1b1c20", dark="#f1f2f5"),
+        dict(name="Grey", key="grey", light="#5b5f6a", dark="#aeb3bd"),
+        dict(name="RemPhos blue", key="remphos-blue", light="#1d5bc4", dark="#5c9bff", accent_for="remphos"),
+        dict(name="Light Efficient Design green", key="led-green", light="#5d7d28", dark="#a3c75c", accent_for="led"),
+        dict(name="Solera gold", key="solera-gold", light="#7d5e00", dark="#f9c606", accent_for="solera")],
+    "brand_colors": [dict(name="Light Efficient Design green", key="led", color="#799b3e"), dict(name="RemPhos blue", key="remphos", color="#004e99"),
+                     dict(name="Solera yellow", key="solera", color="#f9c606")],
+    "text_sizes": [dict(name="Small", key="small", rem=0.875), dict(name="Large", key="large", rem=1.1875),
+                   dict(name="Extra large", key="xlarge", rem=1.5), dict(name="Headline", key="headline", rem=2)],
+    "exceptions": [],
+}
+PAGE_LIGHT, PAGE_DARK = ("#ffffff", "#fbfbfd"), ("#0c0d11", "#15171d")   # the page and card backgrounds a text colour sits on
+
+def _lum(hexc):
+    h = hexc.lstrip("#")
+    r, g, b = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+    f = lambda c: c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b)
+
+def contrast(a, b):
+    la, lb = sorted((_lum(a), _lum(b)), reverse=True)
+    return (la + 0.05) / (lb + 0.05)
+
+def _hex(v):
+    v = (v or "").strip()
+    if re.fullmatch(r"#?[0-9a-fA-F]{3}", v):
+        v = "#" + "".join(c * 2 for c in v.lstrip("#"))
+    v = v if v.startswith("#") else "#" + v
+    return v.lower() if re.fullmatch(r"#[0-9a-fA-F]{6}", v) else ""
+
+def _slug(v):
+    return re.sub(r"[^a-z0-9]+", "-", (v or "").lower()).strip("-")
+
+def load_brand():
+    """The brand styles file, checked: colours as #rrggbb with enough contrast, sizes of 12 px or more, keys usable as class
+    names. Anything that fails is left out (or falls back to the approved default) and listed in BRAND_PROBLEMS."""
+    raw = json.loads(BRAND_FILE.read_text()) if BRAND_FILE.is_file() else {}
+    out, problems = {}, []
+    f = dict(BRAND_DEFAULT["fonts"], **{k: v for k, v in (raw.get("fonts") or {}).items() if isinstance(v, str) and v.strip()})
+    for k in ("text_font", "web_font"):
+        if not re.fullmatch(r"[A-Za-z0-9 ]{2,40}", f[k]):
+            problems.append(f"Font name “{f[k]}” is not a plain font name, so {BRAND_DEFAULT['fonts'][k]} is used.")
+            f[k] = BRAND_DEFAULT["fonts"][k]
+    out["fonts"] = f
+    colors, seen = [], set()
+    for x in raw.get("text_colors") or BRAND_DEFAULT["text_colors"]:
+        if not isinstance(x, dict):
+            continue
+        key, light, dark = _slug(x.get("key") or x.get("name")), _hex(x.get("light")), _hex(x.get("dark")) or _hex(x.get("light"))
+        name = (x.get("name") or key).strip()
+        if not key or key in seen or not light:
+            problems.append(f"Text colour “{name}” needs a name and a colour like #1d5bc4, so it is not used.")
+            continue
+        worst_l, worst_d = min(contrast(light, b) for b in PAGE_LIGHT), min(contrast(dark, b) for b in PAGE_DARK)
+        c = dict(x, key=key, name=name, light=light, dark=dark, ratio_light=round(worst_l, 1), ratio_dark=round(worst_d, 1))
+        if worst_l < 4.5 or worst_d < 4.5:
+            c["refused"] = True
+            problems.append(f"Text colour “{name}” is too faint to read ({worst_l:.1f}:1 in light mode, {worst_d:.1f}:1 in dark; 4.5:1 is the minimum), so it is not used.")
+        seen.add(key)
+        colors.append(c)
+    for d in BRAND_DEFAULT["text_colors"][:2]:   # Ink and Grey are the site's text: never without them
+        if not any(c["key"] == d["key"] and not c.get("refused") for c in colors):
+            colors = [c for c in colors if c["key"] != d["key"]] + [dict(d, ratio_light=round(min(contrast(d["light"], b) for b in PAGE_LIGHT), 1),
+                                                                         ratio_dark=round(min(contrast(d["dark"], b) for b in PAGE_DARK), 1))]
+    out["text_colors"] = colors
+    out["brand_colors"] = [dict(x, key=_slug(x.get("key")), color=_hex(x.get("color"))) for x in raw.get("brand_colors") or BRAND_DEFAULT["brand_colors"]
+                           if isinstance(x, dict) and _slug(x.get("key")) in ("led", "remphos", "solera") and _hex(x.get("color"))]
+    sizes = []
+    for x in raw.get("text_sizes") or BRAND_DEFAULT["text_sizes"]:
+        if not isinstance(x, dict):
+            continue
+        key = _slug(x.get("key") or x.get("name"))
+        try:
+            rem = float(x.get("rem"))
+        except (TypeError, ValueError):
+            rem = 0
+        if not key or rem * 16 < 12 or rem > 4:
+            problems.append(f"Text size “{x.get('name') or key}” must be between 12 px (0.75) and 64 px (4), so it is not used.")
+            continue
+        sizes.append(dict(x, key=key, name=(x.get("name") or key).strip(), rem=rem))
+    out["text_sizes"] = sizes
+    out["exceptions"] = [x for x in raw.get("exceptions") or [] if isinstance(x, dict)]
+    out["problems"] = problems
+    return out
+
+BRAND = load_brand()
+BRAND_PROBLEMS = BRAND["problems"]
+TEXT_COLORS = [c for c in BRAND["text_colors"] if not c.get("refused")]
+# the classes a formatted text box may carry (rich() drops the rest): alignment, the fixed house styles, and one per
+# approved text colour (c-<key>) and text size (size-<key>)
+RICH_STYLES = {"p": {"lead-large", "small-print", "note-box", "eyebrow-line", "ta-left", "ta-center", "ta-right"} | {f"size-{x['key']}" for x in BRAND["text_sizes"]},
+               "span": {"hl", "small-print", "light", "heavy"} | {f"c-{c['key']}" for c in TEXT_COLORS} | {f"size-{x['key']}" for x in BRAND["text_sizes"]}}
+
+def brand_css():
+    """assets/css/brand.css: the approved colours and fonts as the site's variables, and the classes of the Styles menu."""
+    B = BRAND
+    fam = lambda: f'"{B["fonts"]["text_font"]}", "Avenir Next", "{B["fonts"]["web_font"]}", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+    tc = {c["key"]: c for c in TEXT_COLORS}
+    acc = {c["accent_for"]: c for c in TEXT_COLORS if c.get("accent_for") in ("led", "remphos", "solera")}
+    def vars_for(mode):
+        v = [f"--c-{k}: {c[mode]};" for k, c in tc.items()]
+        if "ink" in tc: v.append(f"--ink: {tc['ink'][mode]};")
+        if "grey" in tc: v.append(f"--muted: {tc['grey'][mode]};")
+        if "remphos" in acc: v.append(f"--accent: {acc['remphos'][mode]};")
+        return " ".join(v)
+    L = ["/* Generated by tools/build.py from content/brand/styles.json (the Brand styles in CloudCannon). Do not edit by hand. */",
+         ":root { " + vars_for("light") + " " + " ".join(f"--{b['key']}: {b['color']};" for b in B["brand_colors"])
+         + f" --font-ui: {fam()}; --font-display: {fam()}; }}",
+         '@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { ' + vars_for("dark") + " } }",
+         ':root[data-theme="dark"] { ' + vars_for("dark") + " }"]
+    for brand in ("led", "solera"):   # RemPhos is the default accent above
+        if brand in acc:
+            c = acc[brand]
+            L += [f'body[data-brand="{brand}"] {{ --accent: {c["light"]}; }}',
+                  f'@media (prefers-color-scheme: dark) {{ :root:not([data-theme="light"]) body[data-brand="{brand}"] {{ --accent: {c["dark"]}; }} }}',
+                  f':root[data-theme="dark"] body[data-brand="{brand}"] {{ --accent: {c["dark"]}; }}']
+    L += [f".rt .c-{k} {{ color: var(--c-{k}); }}" for k in tc]
+    L += [f".rt .size-{x['key']} {{ font-size: {x['rem']:g}rem; line-height: {1.2 if x['rem'] >= 1.5 else 1.45}; }}" for x in B["text_sizes"]]
+    return "\n".join(L) + "\n"
+
+def editor_css():
+    """assets/css/editor.css: what CloudCannon lists in the Styles menu of a formatted text box (every element.class rule)."""
+    L = ["/* Generated by tools/build.py from content/brand/styles.json. CloudCannon lists each element.class rule in the Styles menu. */",
+         "p.lead-large { font-size: 1.5rem; line-height: 1.35; font-weight: 500; }",
+         "p.note-box { padding: 14px 18px; border-left: 4px solid #1d5bc4; background: #f2f3f7; }",
+         "p.eyebrow-line { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }",
+         "p.small-print { font-size: 0.875rem; color: #5b5f6a; }",
+         "span.hl { color: #1d5bc4; font-weight: 700; }",
+         "span.small-print { font-size: 0.875rem; color: #5b5f6a; }",
+         "span.light { font-weight: 300; }",
+         "span.heavy { font-weight: 900; }"]
+    L += [f"span.c-{c['key']} {{ color: {c['light']}; }}" for c in TEXT_COLORS]
+    L += [f"{t}.size-{x['key']} {{ font-size: {x['rem']:g}rem; }}" for x in BRAND["text_sizes"] for t in ("p", "span")]
+    L += ["p.ta-left { text-align: left; }", "p.ta-center { text-align: center; }", "p.ta-right { text-align: right; }"]
+    return "\n".join(L) + "\n"
+
+def web_font_url():
+    w = BRAND["fonts"]["web_font"]
+    if w == "Nunito Sans":
+        return "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300..900&display=swap"
+    return f"https://fonts.googleapis.com/css2?family={w.replace(' ', '+')}:wght@300;400;500;600;700;800;900&display=swap"
 RICH_TAGS = {"p", "br", "strong", "b", "em", "i", "u", "a", "ul", "ol", "li", "span"}
 RICH_VOID = {"br"}
 
@@ -2164,6 +2313,7 @@ def main():
     env.filters["strip_bold"] = strip_bold
     env.filters["rich"] = rich
     env.globals["photo_style"] = photo_style
+    env.globals.update(WEB_FONT_URL=web_font_url(), BRAND_STYLES=BRAND, TEXT_COLORS=TEXT_COLORS)
     env.filters["plain"] = plain_words
     env.filters["refs"] = refs
     env.filters["cellhtml"] = cellhtml
@@ -2175,6 +2325,11 @@ def main():
                        total_pn=total_pn, dims=dims, dims_ratio=dims_ratio, IES=IES, logo_style=logo_style, spans=spans, NEXT_STEPS=NEXT_STEPS, PHONE=PHONE, EMAIL=EMAIL, HQ=HQ, MFG=MFG, SOCIAL=SOCIAL, RAIN=RAIN, natmax=natmax, pmenu=pmenu)
 
     pages = []  # (out, sitemap priority) in build order
+
+    (ROOT / "assets" / "css" / "brand.css").write_text(brand_css())
+    (ROOT / "assets" / "css" / "editor.css").write_text(editor_css())
+    for msg in BRAND_PROBLEMS:
+        print("brand styles:", msg)
 
     def render(tpl, out, priority, **ctx):
         html = newest_links(bust_cache(fix_copy(keep_together(env.get_template(tpl).render(**ctx)))))
@@ -2261,6 +2416,12 @@ def main():
     docs = [d for d in RESOURCE_DOCS if newest_path("assets/docs/" + d)]
     res_desc = compose_description(["Download the 2026 Full Product Catalog and the LBI spec sheets and sell sheets for Light Efficient Design, RemPhos and Solera.",
                                     "Every category page opens the catalog PDF at its own section."])
+    # the brand styles page: for the team, so not in the sitemap and never indexed
+    render("style-guide.html", "style-guide.html", 0.1, page="style-guide",
+           seo=seo_for("style-guide.html", f"Brand styles | {SITE_NAME}", "The fonts, colours and text sizes approved for the Light Efficient Design website.", image=HOME_IMAGE[0], image_alt=HOME_IMAGE[1]))
+    pages.pop()
+    sg = ROOT / "style-guide.html"
+    sg.write_text(re.sub(r'<meta name="robots" content="[^"]*">', '<meta name="robots" content="noindex, nofollow">', sg.read_text(), count=1))
     render("resources.html", "resources.html", 0.6, page="resources", docs=docs, studies=studies, videos=videos,
            seo=seo_for("resources.html", f"Catalog, Spec Sheets + Downloads | {SITE_NAME}", res_desc, jsonld=[
                ld_webpage("resources.html", "Catalog, spec sheets and files", res_desc, kind="CollectionPage", breadcrumb=True,

@@ -15,4 +15,7 @@ __pycache__/
 /out/
 assets/js/docmap.js
 assets/js/search-index.json
+# Generated from content/brand/styles.json by tools/build.py
 /_site/
+assets/css/brand.css
+assets/css/editor.css
