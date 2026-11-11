@@ -7,6 +7,27 @@
 paths:
   uploads: assets/img/uploads      # photos dropped into the editor; the build links them without the leading /
 
+# The toolbar of every formatted text box (data-type="block" in the templates): bold, italic, underline, links, lists,
+# alignment and the house styles in assets/css/editor.css. No font, colour or size pickers, so every page keeps the site's
+# type, contrast and 12 px minimum (David, 2026-11-11). tools/build.py rich() keeps only this much HTML.
+_editables:
+  block:
+    bold: true
+    italic: true
+    underline: true
+    link: true
+    bulletedlist: true
+    numberedlist: true
+    removeformat: true
+    format: p
+    blockquote: false
+    image: false
+    embed: false
+    left: ta-left
+    center: ta-center
+    right: ta-right
+    styles: /assets/css/editor.css
+
 collections_config:
   home:
     path: content/home
@@ -56,14 +77,33 @@ collections_config:
         type: array
         label: Values line
       lede:
-        type: textarea
+        type: html
         label: Introduction
+        comment: Bold, italic, links, lists, alignment and the house styles (Styles menu). Fonts and colours follow the site.
+        options: &rich
+          bold: true
+          italic: true
+          underline: true
+          link: true
+          bulletedlist: true
+          numberedlist: true
+          removeformat: true
+          format: p
+          blockquote: false
+          image: false
+          embed: false
+          left: ta-left
+          center: ta-center
+          right: ta-right
+          styles: /assets/css/editor.css
       title:
         type: text
         label: Heading
       text:
-        type: textarea
+        type: html
         label: Text
+        comment: Bold, italic, links, lists, alignment and the house styles (Styles menu). Fonts and colours follow the site.
+        options: *rich
       buttons:
         type: array
         label: Buttons
@@ -305,8 +345,10 @@ _inputs:
   headline:
     type: text
   intro:
-    type: textarea
+    type: html
     label: Introduction
+    comment: Bold, italic, links, lists, alignment and the house styles (Styles menu). Fonts and colours follow the site.
+    options: *rich
   callouts:
     type: array
     label: Key points

@@ -1,0 +1,11 @@
+/* The house styles offered in CloudCannon's "Styles" menu on formatted text boxes (David, 2026-11-11).
+   CloudCannon lists every element.class rule below; the site draws the same classes in site.css (".rt ...").
+   Add a style here and in site.css together, and in RICH_STYLES in tools/build.py, or the build drops it. */
+p.lead-large { font-size: 1.5rem; line-height: 1.35; font-weight: 500; color: #1b1c20; }
+p.note-box { padding: 14px 18px; border-left: 4px solid #1d5bc4; background: #f2f3f7; color: #1b1c20; }
+p.small-print { font-size: 0.875rem; color: #5b5f6a; }
+span.hl { color: #1d5bc4; font-weight: 700; }
+span.small-print { font-size: 0.875rem; color: #5b5f6a; }
+p.ta-left { text-align: left; }
+p.ta-center { text-align: center; }
+p.ta-right { text-align: right; }

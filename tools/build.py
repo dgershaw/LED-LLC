@@ -645,6 +645,99 @@ def bold(s):
 def strip_bold(s):
     return re.sub(r"\*\*(.+?)\*\*", r"\1", "" if s is None else str(s))
 
+# ---------- Formatted text (David, 2026-11-11: "Ability to format text") ----------
+# Text boxes edited in CloudCannon's rich-text toolbar (and the Introduction in Pages CMS) are saved as a little HTML: bold,
+# italic, underline, links, lists, left/centre/right alignment and the house styles in assets/css/editor.css. Fonts,
+# colours and sizes stay the site's own, so a page can never drop below the contrast and 12 px rules. rich() keeps only that
+# much HTML and drops everything else (pasted fonts, colours, scripts), leaving the words. Plain text from before still works.
+RICH_STYLES = {"p": {"lead-large", "small-print", "note-box", "ta-left", "ta-center", "ta-right"},
+               "span": {"hl", "small-print"}}
+RICH_TAGS = {"p", "br", "strong", "b", "em", "i", "u", "a", "ul", "ol", "li", "span"}
+RICH_VOID = {"br"}
+
+from html.parser import HTMLParser as _HTMLParser
+
+class _Rich(_HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.out, self.stack, self.skip = [], [], 0
+    def handle_starttag(self, tag, attrs):
+        if tag in ("script", "style", "iframe", "object", "template"):
+            self.skip += 1
+        if tag in ("div", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote"):
+            tag = "p"   # headings and boxes pasted in become paragraphs: the block's own heading is the heading
+        if tag in ("p", "li", "ul", "ol") and self.stack and self.stack[-1] in ("p", "li") and not (tag in ("ul", "ol") and self.stack[-1] == "li"):
+            self.handle_endtag(self.stack[-1])   # an unclosed paragraph or list item ends where the next one starts
+        if tag not in RICH_TAGS:
+            self.stack.append(None)
+            return
+        a = dict(attrs)
+        keep = []
+        cls = [c for c in (a.get("class") or "").split() if c in RICH_STYLES.get(tag, ())]
+        m = re.search(r"text-align\s*:\s*(left|center|right)", a.get("style") or "")
+        if m and tag == "p":
+            cls.append("ta-" + m.group(1))
+        if cls:
+            keep.append(f' class="{" ".join(dict.fromkeys(cls))}"')
+        if tag == "a":
+            href = (a.get("href") or "").strip()
+            if re.match(r"(?i)^(javascript|data|vbscript):", href) or not href:
+                self.stack.append(None)
+                return
+            keep.append(f' href="{H.escape(href)}"')
+            if re.match(r"(?i)^https?://", href) and "led-llc.com" not in href and "dgershaw.github.io" not in href:
+                keep.append(' target="_blank" rel="noopener"')
+        self.out.append(f"<{tag}{''.join(keep)}>")
+        if tag not in RICH_VOID:
+            self.stack.append(tag)
+    def handle_endtag(self, tag):
+        if tag in ("script", "style", "iframe", "object", "template"):
+            self.skip = max(0, self.skip - 1)
+        if tag in ("div", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote"):
+            tag = "p"
+        if tag in RICH_VOID or not self.stack:
+            return
+        # close up to the matching open tag, so stray end tags cannot break the page
+        if tag in self.stack:
+            while self.stack:
+                t = self.stack.pop()
+                if t:
+                    self.out.append(f"</{t}>")
+                if t == tag:
+                    break
+    def handle_data(self, data):
+        if not self.skip:
+            self.out.append(str(escape(data)))
+    def close(self):
+        super().close()
+        while self.stack:
+            t = self.stack.pop()
+            if t:
+                self.out.append(f"</{t}>")
+        return "".join(self.out)
+
+def rich(s):
+    """A formatted text box as safe HTML in paragraphs. Plain text (no tags) keeps its line breaks: a blank line starts a paragraph."""
+    s = "" if s is None else str(s)
+    if not s.strip():
+        return Markup("")
+    if not re.search(r"<\s*/?\s*[a-zA-Z]", s):
+        paras = [p.strip() for p in re.split(r"\n\s*\n", s) if p.strip()]
+        return Markup("".join("<p>" + re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", str(escape(p))).replace("\n", "<br>") + "</p>" for p in paras))
+    s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
+    p = _Rich()
+    p.feed(s)
+    html = p.close()
+    html = re.sub(r"<p>\s*</p>|<p class=\"[^\"]*\">\s*</p>", "", html)
+    if not re.match(r"\s*<(p|ul|ol)\b", html):   # loose words before the first paragraph
+        html = "<p>" + html + "</p>" if not re.search(r"<(p|ul|ol)\b", html) else html
+    return Markup(html)
+
+def plain_words(s):
+    """The words of a formatted text box, for share descriptions, search and the plain-text catalog."""
+    s = re.sub(r"<\s*(br|/p|/li)\s*/?>", " ", "" if s is None else str(s))
+    return re.sub(r"\s+", " ", H.unescape(re.sub(r"<[^>]+>", "", strip_bold(s)))).strip()
+
 def short_caption(im):
     if im.get("caption"):
         return im["caption"]
@@ -1308,7 +1401,8 @@ def load_categories():
         d["pages_label"] = ("Catalog p. " + (f"{pages[0]}–{pages[-1]}" if len(pages) > 1 else str(pages[0]))) if pages else ""
         d["rowcount"] = sum(1 for t in d.get("tables", []) for r in t["rows"] if r and is_pn(r[0]))
         d["headline"] = clean_headline(d.get("headline"))
-        d["intro"] = re.sub(r"\s+", " ", strip_bold(d.get("intro") or "")).strip()
+        d["intro_html"] = rich(d.get("intro"))   # formatted in CloudCannon or Pages CMS; d["intro"] stays the plain words
+        d["intro"] = plain_words(d.get("intro"))
         # extras first: an extra may own an image (a remote, a partner logo) that should not also appear as a cutout
         extras, extra_imgs = [], {}
         for e in d.get("extras", []):
@@ -1985,6 +2079,8 @@ def main():
     env = Environment(loader=FileSystemLoader(TPL), autoescape=select_autoescape(["html"]), trim_blocks=True, lstrip_blocks=True)
     env.filters["bold"] = bold
     env.filters["strip_bold"] = strip_bold
+    env.filters["rich"] = rich
+    env.filters["plain"] = plain_words
     env.filters["refs"] = refs
     env.filters["cellhtml"] = cellhtml
     env.filters["web_path"] = web_path

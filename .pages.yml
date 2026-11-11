@@ -103,7 +103,8 @@ content:
         type: string
       - name: intro
         label: Introduction
-        type: text
+        description: Bold, italic, links and lists are kept; fonts and colours follow the site.
+        type: rich-text
       - name: callouts
         label: Key points
         description: Short lines shown near the top of the page.

@@ -1646,3 +1646,29 @@ html.calm .site-header, html.calm .mega { background: var(--bg) !important; }
 .blk-text.align-center .band-head { margin-inline: auto; }
 .blk-text.align-center .band-head p { margin-inline: auto; }
 @media (prefers-reduced-motion: no-preference) { .home-grid > * { animation: rv-rise .85s cubic-bezier(.2, .65, .2, 1) .22s both; } }
+
+/* ---------- Formatted text (David, 2026-11-11): the rich-text boxes edited in CloudCannon (class rt). Bold, italic, links,
+   lists, alignment and the house styles listed in assets/css/editor.css; type and colour stay the site's own. ---------- */
+.rt > * + * { margin-top: 0.7em; }
+.rt p { margin: 0; }
+.rt > * + p, .rt > * + ul, .rt > * + ol { margin-top: 0.7em; }
+.rt ul, .rt ol { margin: 0; padding-left: 1.3em; }
+.rt li + li { margin-top: 0.3em; }
+.rt a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.rt strong, .rt b { color: var(--ink); font-weight: 700; }
+.rt .ta-center { text-align: center; }
+.rt .ta-right { text-align: right; }
+.rt .ta-left { text-align: left; }
+.rt p.lead-large { font-size: var(--step-2); line-height: 1.35; color: var(--ink); font-weight: 500; }
+.rt .hl { color: var(--accent); font-weight: 700; }
+.rt .small-print { font-size: 0.875rem; color: var(--muted); }
+.rt p.note-box { padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--surface-2); border-radius: 0 12px 12px 0; color: var(--ink); }
+.band-head .rt, .feature .rt, .home-hero .lede.rt { max-width: 680px; }
+.band-head.center .rt, .home-hero .lede.rt { margin-inline: auto; }
+.home-hero.left .lede.rt { margin-inline: 0; }
+.band-head .rt { margin-top: 10px; color: var(--muted); font-size: var(--step-1); }
+.band-head .rt p { margin-top: 0; }
+.band-head .rt > * + * { margin-top: 0.7em; }
+.feature .rt { margin-top: 12px; color: var(--muted); font-size: var(--step-1); max-width: 48ch; }
+.feature .rt p:not(.eyebrow) { margin-top: 0; max-width: none; }
+.feature .rt > * + * { margin-top: 0.7em; }

@@ -7,7 +7,7 @@
 
 {% macro buttons(list, cls="") %}{% if list %}<div class="hero-actions{{ cls }}" data-editable="array" data-prop="buttons" data-direction="row">{% for b in list %}{% if b.link == 'search' %}<button class="btn btn-{{ 'primary' if b.style == 'primary' else 'ghost' }}" data-open-search data-editable="array-item"><span data-editable="text" data-prop="label">{{ b.label }}</span></button>{% else %}<a class="btn btn-{{ 'primary' if b.style == 'primary' else 'ghost' }}" href="{{ b.link }}" data-editable="array-item"><span data-editable="text" data-prop="label">{{ b.label }}</span></a>{% endif %}{% endfor %}</div>{% endif %}{% endmacro %}
 
-{% macro head(b, hid) %}{% if b.title or b.text %}<div class="band-head{% if b.align == 'center' %} center{% endif %}">{% if b.title %}<h2 id="{{ hid }}" data-editable="text" data-prop="title">{{ b.title }}</h2>{% endif %}{% if b.text %}<p data-editable="text" data-prop="text">{{ b.text }}</p>{% endif %}</div>{% endif %}{% endmacro %}
+{% macro head(b, hid) %}{% if b.title or b.text %}<div class="band-head{% if b.align == 'center' %} center{% endif %}">{% if b.title %}<h2 id="{{ hid }}" data-editable="text" data-prop="title">{{ b.title }}</h2>{% endif %}{% if b.text %}<div class="rt" data-editable="text" data-type="block" data-prop="text">{{ b.text|rich }}</div>{% endif %}</div>{% endif %}{% endmacro %}
 
 {%- macro photo(im) -%}
 <img src="{{ im.src }}" alt="{{ im.alt }}"{{ dims(im.src) }}{% if im.fit == 'contain' or im.position %} style="{% if im.fit == 'contain' %}object-fit:contain;{% endif %}{% if im.position %}object-position:{{ im.position }}{% endif %}"{% endif %} data-editable="image" data-prop-src="image" data-prop-alt="alt">
@@ -21,7 +21,7 @@
   {% if b.eyebrow %}<p class="eyebrow" data-editable="text" data-prop="eyebrow">{{ b.eyebrow }}</p>{% endif %}
   <h1{% if hid %} id="{{ hid }}"{% endif %}><span data-editable="text" data-prop="headline">{{ b.headline }}</span>{% if b.headline_tail %} <span class="since" data-editable="text" data-prop="headline_tail">{{ b.headline_tail }}</span>{% endif %}</h1>
   {% if b['values'] %}<p class="values">{% for v in b['values'] %}{% if not loop.first %} {% endif %}<span data-editable="text" data-prop="values.{{ loop.index0 }}">{{ v }}</span>{% endfor %}</p>{% endif %}
-  {% if b.lede %}<p class="lede" data-editable="text" data-prop="lede">{{ b.lede }}</p>{% endif %}
+  {% if b.lede %}<div class="lede rt" data-editable="text" data-type="block" data-prop="lede">{{ b.lede|rich }}</div>{% endif %}
   {{ buttons(b.buttons) }}
 </section>
 {% elif b._type == "photo_grid" %}
@@ -61,7 +61,7 @@
     <div>
       {% if b.eyebrow %}<p class="eyebrow brand" data-editable="text" data-prop="eyebrow">{{ b.eyebrow }}</p>{% endif %}
       {% if b.title %}<h2{% if hid %} id="{{ hid }}"{% endif %} data-editable="text" data-prop="title">{{ b.title }}</h2>{% endif %}
-      {% if b.text %}<p data-editable="text" data-prop="text">{{ b.text }}</p>{% endif %}
+      {% if b.text %}<div class="rt" data-editable="text" data-type="block" data-prop="text">{{ b.text|rich }}</div>{% endif %}
       {% if b.show_lbi_list %}
       <div class="glyphs">
         <div class="glyph-row"><i style="--g:#fff8ec"></i><span><b>LBI G1</b><small>The economical white bar, dry and damp</small></span></div>
