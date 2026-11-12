@@ -49,7 +49,8 @@
         {
           "logo": "assets/img/uploads/logo-led.png",
           "logo_alt": "Light Efficient Design",
-          "logo_width": 315,
+          "logo_width": 313,
+          "logo_baseline": 92,
           "link": "light-efficient-design.html",
           "text": "Delivers practical, high-performance LED retrofit solutions: screw-in retrofits, pin-base retrofits and work site lighting that help contractors, facility managers, and distributors upgrade lighting faster, reduce energy costs, and extend the life of existing fixtures without unnecessary complexity.",
           "chips": [
@@ -73,7 +74,8 @@
         {
           "logo": "assets/img/uploads/logo-remphos.png",
           "logo_alt": "RemPhos",
-          "logo_width": 205,
+          "logo_width": 220,
+          "logo_baseline": 98,
           "link": "remphos.html",
           "text": "Transforms obsolete fluorescent and HID fixtures into modern, efficient LED lighting systems through innovative retrofit technology and new fixture options, helping customers modernize spaces while reducing waste, labor, and replacement costs.",
           "chips": [
@@ -93,7 +95,8 @@
         {
           "logo": "assets/img/uploads/logo-solera.png",
           "logo_alt": "Solera",
-          "logo_width": 172,
+          "logo_width": 178,
+          "logo_baseline": 80,
           "link": "solera.html",
           "text": "Provides reliable, off-grid and innovative, hybrid/intelligent solar lighting solutions that bring safety, visibility, and security to outdoor spaces where traditional power is impractical, costly, or unavailable.",
           "chips": [

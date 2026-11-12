@@ -136,11 +136,9 @@
   <div class="wrap hm-brand-grid" data-editable="array" data-prop="columns" data-direction="row">
     {% for c in b.columns %}
     <div class="hm-brand b-{{ c.brand }}" data-editable="array-item">
-      <a class="hm-logo" href="{{ c.link or '#' }}">{% if c.logo %}<img src="{{ c.logo }}" alt="{{ c.logo_alt }}" style="width:{{ c.logo_width }}px"{{ dims(c.logo) }} data-editable="image" data-prop-src="logo" data-prop-alt="logo_alt">{% else %}<span class="hm-logo-missing">{{ c.logo_alt }}</span>{% endif %}</a>
-      <div class="hm-brand-body">
-        <div class="hm-body rt" data-editable="text" data-type="block" data-prop="text">{{ c.text|rich }}</div>
-        {% if c.chips %}<div class="hm-chips" data-editable="array" data-prop="chips" data-direction="row">{% for ch in c.chips %}<a class="hm-chip" href="{{ ch.link or c.link or '#' }}" data-editable="array-item"><span data-editable="text" data-prop="label">{{ ch.label }}</span></a>{% endfor %}</div>{% endif %}
-      </div>
+      <a class="hm-logo" href="{{ c.link or '#' }}">{% if c.logo %}<img src="{{ c.logo }}" alt="{{ c.logo_alt }}" style="width:{{ c.logo_width }}px;--base:{{ c.logo_baseline }}"{{ dims(c.logo) }} data-editable="image" data-prop-src="logo" data-prop-alt="logo_alt">{% else %}<span class="hm-logo-missing">{{ c.logo_alt }}</span>{% endif %}</a>
+      <div class="hm-body hm-brand-text rt" data-editable="text" data-type="block" data-prop="text">{{ c.text|rich }}</div>
+      <div class="hm-chips" data-editable="array" data-prop="chips" data-direction="row">{% for ch in c.chips %}<a class="hm-chip" href="{{ ch.link or c.link or '#' }}" data-editable="array-item"><span data-editable="text" data-prop="label">{{ ch.label }}</span></a>{% endfor %}</div>
       {% if c.more_label %}<a class="hm-more" href="{{ c.more_link or '#' }}"><span data-editable="text" data-prop="more_label">{{ c.more_label }}</span></a>{% endif %}
     </div>
     {% endfor %}

@@ -344,7 +344,8 @@ def home_blocks(blocks, brand_pics=None, new=False):
                 logo = web_path(x.get("logo"))
                 brand = next((v for v in (x.get("brand_color"), x.get("brand")) if v in ("led", "remphos", "solera")), "remphos")
                 cols.append(dict(brand=brand, logo=logo if logo and (ROOT / logo).is_file() else "", logo_alt=(x.get("logo_alt") or "").strip(),
-                                 logo_width=clamp_int(x.get("logo_width"), 60, 420, 200), link=(x.get("link") or "").strip(), text=x.get("text") or "",
+                                 logo_width=clamp_int(x.get("logo_width"), 60, 420, 200),
+                                 logo_baseline="%g" % (clamp_int(x.get("logo_baseline"), 50, 100, 100) / 100), link=(x.get("link") or "").strip(), text=x.get("text") or "",
                                  chips=[dict(label=c.get("label") or "", link=(c.get("link") or "").strip()) for c in x.get("chips") or [] if isinstance(c, dict)],
                                  more_label=x.get("more_label") or "", more_link=(x.get("more_link") or x.get("link") or "").strip()))
             b["columns"] = cols

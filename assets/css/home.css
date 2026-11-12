@@ -32,11 +32,14 @@
 .hm-brand { --bc: var(--remphos); --bt: var(--remphos); display: flex; flex-direction: column; min-width: 0; }
 .hm-brand.b-led { --bc: var(--led); --bt: var(--led); }
 .hm-brand.b-solera { --bc: var(--solera); --bt: var(--solera); }
-.hm-logo { display: flex; align-items: flex-end; justify-content: center; height: 87px; padding-bottom: 44px; border-bottom: 2px solid var(--bc); box-sizing: content-box; }
-.hm-logo img { max-width: 100%; height: auto; }
+/* the logos (Kcampbell's red lines, 2026-11-12): every wordmark's lettering the same height, about 29.5 px at laptop size
+   (set by each logo's width), all on one baseline, 50 px above the coloured line. --base is where the lettering sits in the
+   file, as a share of its height from the top; rays and descenders hang below the baseline into the space above the line. */
+.hm-logo { display: flex; align-items: flex-end; justify-content: center; height: 84px; padding-bottom: 50px; border-bottom: 2px solid var(--bc); box-sizing: content-box; }
+.hm-logo img { max-width: 100%; height: auto; transform: translateY(calc((1 - var(--base, 1)) * 100%)); }
 .hm-logo-missing { font-weight: 900; font-size: 1.25rem; }
-.hm-brand-body { padding: 13px 9px 0 8.5px; }
-.hm-chips { display: flex; flex-wrap: wrap; gap: 10px 14px; margin-top: 22px; }
+.hm-body.hm-brand-text { padding: 13px 9px 0 8.5px; }
+.hm-chips { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 10px 14px; margin-top: 22px; padding-left: 8.5px; }
 .hm-chip { display: inline-flex; align-items: center; height: 40px; padding: 0 13px; border-radius: 20px; background: var(--hm-line);
   color: var(--ink); font: 800 0.875rem/1 var(--font-ui); text-transform: uppercase; white-space: nowrap; transition: background .15s; }
 .hm-chip:hover { text-decoration: none; background: color-mix(in srgb, var(--ink) 30%, transparent); }
@@ -44,6 +47,12 @@
 .hm-more span { display: block; padding-bottom: 11px; border-bottom: 2px solid var(--bc); color: var(--bt); font: 900 1.25rem/1.2 var(--font-display); text-transform: uppercase; }
 .hm-more:hover { text-decoration: none; }
 .hm-more:hover span { text-decoration: underline; text-underline-offset: 4px; }
+/* side by side, the columns share their rows, so the category buttons of all three start on one line (the red lines) */
+@media (min-width: 981px) {
+  .hm-brand-grid { grid-template-rows: repeat(4, auto); }
+  .hm-brand { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; }
+  .hm-brand .hm-more { margin-top: 0; align-self: end; }
+}
 
 /* ---------- One light, the LBI list ---------- */
 .hm-lbi { padding-top: 103px; }

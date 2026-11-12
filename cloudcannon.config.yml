@@ -228,7 +228,7 @@ collections_config:
           structures:
             values:
               - label: Brand column
-                value: { brand_color: remphos, logo: assets/img/brand/remphos-logo.png, logo_alt: RemPhos, logo_width: 205, link: remphos.html, text: A sentence or two about the brand., chips: [], more_label: "EXPLORE REMPHOS >", more_link: remphos.html }
+                value: { brand_color: remphos, logo: assets/img/uploads/logo-remphos.png, logo_alt: RemPhos, logo_width: 220, logo_baseline: 98, link: remphos.html, text: A sentence or two about the brand., chips: [], more_label: "EXPLORE REMPHOS >", more_link: remphos.html }
       brand_color:
         type: select
         label: Brand colour
@@ -246,6 +246,11 @@ collections_config:
         type: range
         label: Logo width (pixels at laptop size)
         options: { min: 60, max: 420, step: 1 }
+      logo_baseline:
+        type: range
+        label: Where the logo's lettering sits (% from its top)
+        comment: The logos line up on the bottom of their lettering. 100 lines up the bottom of the file; lower it when rays or letters hang below the words.
+        options: { min: 50, max: 100, step: 0.5 }
       chips:
         type: array
         label: Category buttons
