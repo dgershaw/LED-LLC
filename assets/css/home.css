@@ -71,30 +71,35 @@
 .hm-bars b { display: block; font: 800 0.875rem/19px var(--font-ui); text-transform: uppercase; }
 .hm-bars small { display: block; font: 400 0.875rem/19px var(--font-ui); }
 
-/* the light bars, drawn: white bars glow softly in their own tint; the LBI Palette shows its six set colours, the LBI
-   Palette+ a finer rainbow, the LBI Palette DMX a seamless one */
-.lbi-bar { --g: #fff8ed; position: relative; flex: 0 0 146px; height: 8px; border-radius: 4px; background: var(--g);
-  outline: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); box-shadow: 0 0 14px 1px var(--g); }
-.lbi-bar.bar-g2 { --g: #fff3dd; }
-.lbi-bar.bar-65 { --g: #dae9ff; }
-.lbi-bar.bar-max { --g: #fff8eb; }
-/* LBI Palette: its six set colours, each lit on top with the pale lens below (Kcampbell's reference, 2026-11-11) */
-.lbi-bar.bar-palette { height: 9px; outline-color: color-mix(in srgb, var(--ink) 12%, transparent); box-shadow: 0 0 10px 0 rgb(240 150 130 / 0.3); background:
-    linear-gradient(90deg, #fce4ee 0 16.66%, #fffeef 0 33.33%, #fdfbe1 0 50%, #eef6ef 0 66.66%, #dff2f7 0 83.33%, #ffffff 0) bottom / 100% 42% no-repeat,
-    linear-gradient(rgb(255 255 255 / 0), rgb(255 255 255 / 0.22) 50%, rgb(255 255 255 / 0)) top / 100% 58% no-repeat,
-    linear-gradient(90deg, #ee4150 0 16.66%, #f99f3d 0 33.33%, #ffcb41 0 50%, #72bf44 0 66.66%, #39c6f3 0 83.33%, #a99acb 0); }
-/* LBI Palette+: a finer rainbow of fifteen colours over a white lens, each glowing in its own colour */
-.lbi-bar.bar-palette-plus { --seg: linear-gradient(90deg, #f44768 0 6.66%, #f88267 0 13.33%, #fbbf59 0 20%, #fff94a 0 26.66%, #cfee49 0 33.33%,
+/* the light bars, drawn after the product photos (Kcampbell, 2026-11-12): each one lit on top, with the white rail (or
+   housing) of the real bar below, glowing in its own light. --lit is the lit lens, --rail the part below it. */
+.lbi-bar { --lit: linear-gradient(#fffaf1, #fff1dc); --g: rgb(255 214 150 / 0.55); --rail: linear-gradient(#f3f4f8, #dcdee7); --split: 55%;
+  position: relative; flex: 0 0 146px; height: 10px; border-radius: 5px 5px 2px 2px;
+  background: var(--rail) bottom / 100% calc(100% - var(--split)) no-repeat, var(--lit) top / 100% var(--split) no-repeat;
+  outline: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
+.lbi-bar::after { content: ""; position: absolute; inset: -6px -3px; border-radius: 8px; background: var(--glow, var(--g)); filter: blur(7px); opacity: 0.6; z-index: -1; }
+.lbi-bar.bar-g2 { --lit: linear-gradient(#fff7ea, #ffe9c8); --g: rgb(255 200 120 / 0.55); }
+/* LBI 65: the sealed tube, a little taller, with its grey end caps */
+.lbi-bar.bar-65 { --lit: linear-gradient(#f4f8ff, #dce8ff); --g: rgb(150 190 255 / 0.6); --rail: linear-gradient(#eef1f8, #d3d7e1); --split: 50%; height: 11px; border-radius: 4px;
+  background: linear-gradient(90deg, #bdc0ca 0 5.5%, transparent 0 94.5%, #bdc0ca 0) , var(--rail) bottom / 100% 50% no-repeat, var(--lit) top / 100% 50% no-repeat; }
+/* LBI MAX: the strip kit, a squarer body with the lens over a deeper housing and the connector tab at one end */
+.lbi-bar.bar-max { --lit: linear-gradient(#fffbf3, #fff0da); --g: rgb(255 214 150 / 0.5); --rail: linear-gradient(#eef2f8, #e1e6ef); --split: 48%;
+  height: 13px; border-radius: 1px; flex-basis: 140px; margin-right: 6px; }
+.lbi-bar.bar-max::before { content: ""; position: absolute; right: -6px; bottom: 2px; width: 5px; height: 4px; background: #e3e8f2; outline: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
+/* LBI Palette: its six set colours over the pale lens */
+.lbi-bar.bar-palette { --g: linear-gradient(90deg, #ee4150, #f99f3d, #ffcb41, #72bf44, #39c6f3, #a99acb); --glow: var(--g); --split: 58%;
+  --lit: linear-gradient(rgb(255 255 255 / 0), rgb(255 255 255 / 0.22) 50%, rgb(255 255 255 / 0)), linear-gradient(90deg, #ee4150 0 16.66%, #f99f3d 0 33.33%, #ffcb41 0 50%, #72bf44 0 66.66%, #39c6f3 0 83.33%, #a99acb 0);
+  --rail: linear-gradient(90deg, #fce4ee 0 16.66%, #fffeef 0 33.33%, #fdfbe1 0 50%, #eef6ef 0 66.66%, #dff2f7 0 83.33%, #ffffff 0); }
+.lbi-bar.bar-palette::after { opacity: 0.3; }
+/* LBI Palette+: a finer rainbow of fifteen colours over a white rail */
+.lbi-bar.bar-palette-plus { --lit: linear-gradient(90deg, #f44768 0 6.66%, #f88267 0 13.33%, #fbbf59 0 20%, #fff94a 0 26.66%, #cfee49 0 33.33%,
     #9edd4a 0 40%, #70cd4b 0 46.66%, #4bb549 0 53.33%, #4abf86 0 60%, #4ad8da 0 66.66%, #59b3dd 0 73.33%, #4a86e7 0 80%, #696ee1 0 86.66%,
-    #9c79f9 0 93.33%, #9952fe 0);
-  height: 9px; box-shadow: none; outline-color: color-mix(in srgb, var(--ink) 12%, transparent);
-  background: linear-gradient(#f9faff, #e2e5ef) bottom / 100% 35% no-repeat, var(--seg) top / 100% 65% no-repeat; }
-.lbi-bar.bar-palette-plus::after { content: ""; position: absolute; inset: -7px -3px; border-radius: 8px; background: var(--seg);
-  filter: blur(7px); opacity: 0.35; z-index: -1; }
-/* LBI Palette DMX: a seamless rainbow */
-.lbi-bar.bar-palette-dmx { box-shadow: none; background: linear-gradient(90deg, #ff2a1a, #ff7a10, #ffb000, #19e05a, #2a6bff, #8a3dff); }
-.lbi-bar.bar-palette-dmx::after { content: ""; position: absolute; inset: -6px -2px; border-radius: 8px;
-  background: inherit; filter: blur(7px); opacity: 0.45; z-index: -1; }
+    #9c79f9 0 93.33%, #9952fe 0); --glow: var(--lit); --split: 65%; --rail: linear-gradient(#f9faff, #e2e5ef); }
+.lbi-bar.bar-palette-plus::after { opacity: 0.35; }
+/* LBI Palette DMX: one seamless rainbow over a white rail */
+.lbi-bar.bar-palette-dmx { --lit: linear-gradient(90deg, #b33940, #de3f3c, #ef6d39, #f5b836, #d4d13e, #94ca5f, #3bab8a, #3591a8, #3674b5, #5950a1, #613e95);
+  --glow: var(--lit); --split: 58%; --rail: linear-gradient(#f3f4f8, #d6dae5); }
+.lbi-bar.bar-palette-dmx::after { opacity: 0.45; }
 
 /* ---------- What are you replacing? ---------- */
 .hm-replace { padding-top: 84px; }
@@ -142,6 +147,7 @@
   .hm-box { min-height: 72px; font-size: 1.1875rem; }
   .hm-bars li > a, .hm-bars li > div { gap: 16px; }
   .lbi-bar { flex-basis: 96px; }
+  .lbi-bar.bar-max { flex-basis: 90px; }
   .hm-card { grid-template-columns: 104px minmax(0, 1fr); }
   .hm-card-text { padding: 22px 16px 20px 0; }
 }
