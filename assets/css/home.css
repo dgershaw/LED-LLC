@@ -12,9 +12,10 @@
 .home-v2 .hm-body p { margin: 0; }
 .home-v2 .hm-body p + p { margin-top: 0.65em; }
 
-/* ---------- Rotating banner: 1440 x 550, full width, no arrows or dots ---------- */
+/* ---------- Rotating banner: 1440 x 550 at most, centred; it shrinks with the window but never grows past that (Kcampbell,
+   2026-11-12). No arrows or dots. ---------- */
 .hm-banner { position: relative; }
-.hm-slides { position: relative; aspect-ratio: 1440 / 550; overflow: hidden; }
+.hm-slides { position: relative; width: 100%; max-width: 1440px; margin-inline: auto; aspect-ratio: 1440 / 550; overflow: hidden; }
 .hm-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .8s ease, visibility 0s linear .8s; }
 .hm-slide.on { opacity: 1; visibility: visible; transition: opacity .8s ease, visibility 0s; }
 .hm-slide a, .hm-slide img { display: block; width: 100%; height: 100%; }
