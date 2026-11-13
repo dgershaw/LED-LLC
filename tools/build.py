@@ -33,6 +33,7 @@ CATALOG_PDF = "assets/docs/LED-2026-Full-Product-Catalog.pdf"
 # ---------------------------------------------------------------- site identity (SEO)
 # The one place to change the public domain: canonical URLs, Open Graph, the sitemap and llms.txt all use it.
 SITE_URL = "https://www.led-llc.com/"
+TEST_URL = (os.environ.get("SITE_BASE_URL") or "https://dgershaw.github.io/LED-LLC/").rstrip("/") + "/"   # see make_test_copy
 SITE_NAME = "Light Efficient Design"
 LASTMOD = os.environ.get("SITE_LASTMOD") or date.today().isoformat()  # sitemap <lastmod>; override to pin a date
 THEME_COLORS = {"led": "#799b3e", "remphos": "#004e99", "solera": "#f9c606"}  # the brand tokens in site.css
@@ -907,7 +908,7 @@ class _Rich(_HTMLParser):
                 self.stack.append(None)
                 return
             keep.append(f' href="{H.escape(href)}"')
-            if re.match(r"(?i)^https?://", href) and "led-llc.com" not in href and "dgershaw.github.io" not in href:
+            if re.match(r"(?i)^https?://", href) and "led-llc.com" not in href and "dgershaw.github.io" not in href and ".pages.dev" not in href:
                 keep.append(' target="_blank" rel="noopener"')
         self.out.append(f"<{tag}{''.join(keep)}>")
         if tag not in RICH_VOID:
@@ -1568,13 +1569,14 @@ def write_doc_map():
     (ROOT / "assets" / "js" / "docmap.js").write_text("window.DOC_MAP=" + json.dumps(m, separators=(",", ":")) + ";\n")
 
 def make_test_copy():
-    """The public test copy on GitHub Pages: no indexing, and link previews pointing at github.io (TEST_COPY marks it).
+    """The public test copy (TEST_COPY marks it): no indexing, and link previews pointing at the address the copy is
+    served from, which the host's build passes in SITE_BASE_URL (tools/cloudflare-build.sh); GitHub Pages without it.
     Canonicals and JSON-LD keep the future domain."""
     for p in ROOT.glob("*.html"):
         s = p.read_text()
         if 'name="robots"' not in s:
             s = s.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">', 1)
-        s = s.replace('content="https://www.led-llc.com/', 'content="https://dgershaw.github.io/LED-LLC/')
+        s = s.replace('content="https://www.led-llc.com/', f'content="{TEST_URL}')
         p.write_text(s)
     (ROOT / "robots.txt").write_text("User-agent: *\nDisallow: /\n")
     (ROOT / ".nojekyll").touch()
