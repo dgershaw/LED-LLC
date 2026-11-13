@@ -67,7 +67,7 @@
               "link": "light-efficient-design.html#work-lights"
             }
           ],
-          "more_label": "EXPLORE LIGHT EFFICIENT DESIGN >",
+          "more_label": "EXPLORE LIGHT EFFICIENT DESIGN &gt;",
           "more_link": "light-efficient-design.html",
           "brand_color": "led"
         },
@@ -88,7 +88,7 @@
               "link": "remphos.html#fixtures"
             }
           ],
-          "more_label": "EXPLORE REMPHOS >",
+          "more_label": "EXPLORE REMPHOS &gt;",
           "more_link": "remphos.html",
           "brand_color": "remphos"
         },
@@ -113,7 +113,7 @@
               "link": "solera.html#solar-lighting"
             }
           ],
-          "more_label": "EXPLORE SOLERA >",
+          "more_label": "EXPLORE SOLERA &gt;",
           "more_link": "solera.html",
           "brand_color": "solera"
         }
@@ -254,7 +254,7 @@
           "graphic_height": 131,
           "title": "GET A SAMPLE",
           "text": "Try it out in your space before you buy!",
-          "link_label": "REQUEST A SAMPLE >",
+          "link_label": "REQUEST A SAMPLE &gt;",
           "link": "contact.html#sample"
         },
         {
@@ -263,7 +263,7 @@
           "graphic_height": 66,
           "title": "FIND REBATES",
           "text": "Most DLC-listed products qualify for utility rebates. We will find the ones in your area.",
-          "link_label": "CHECK REBATES >",
+          "link_label": "CHECK REBATES &gt;",
           "link": "contact.html#rebates"
         },
         {
@@ -272,7 +272,7 @@
           "graphic_height": 70,
           "title": "REP FINDER",
           "text": "Contact your local rep for stock, pricing, samples and answers!",
-          "link_label": "FIND YOUR REP >",
+          "link_label": "FIND YOUR REP &gt;",
           "link": "contact.html#rep"
         }
       ]
