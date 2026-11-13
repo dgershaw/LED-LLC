@@ -14,7 +14,7 @@ The page also shows, for each edit, the old and new wording side by side; which 
 sandbox and the live site (compared from the two builds in --out); an inventory of every document by product with
 what is missing; and the permanent address and a QR code for every document (David, 2026-10-13).
 """
-import argparse, difflib, hashlib, html as H, json, re, subprocess, sys
+import argparse, difflib, hashlib, html as H, json, os, re, subprocess, sys
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -27,8 +27,11 @@ import build as B   # the generator's menu, product names and version rules; imp
 
 TZ = ZoneInfo("America/Chicago")          # Cary, Illinois
 CMS = "https://app.pagescms.org/dgershaw/led-llc/main"
-LIVE_URL = "https://dgershaw.github.io/LED-LLC/"
-SANDBOX_URL = LIVE_URL + "sandbox/"
+# Where the two copies are served. tools/hosting.json holds the addresses once the site is on Cloudflare Pages (the live
+# site and the sandbox are separate sites there); while it is empty they are the GitHub Pages addresses.
+HOSTING = json.loads((HERE / "hosting.json").read_text()) if (HERE / "hosting.json").is_file() else {}
+LIVE_URL = (HOSTING.get("live_url") or "https://dgershaw.github.io/LED-LLC/").rstrip("/") + "/"
+SANDBOX_URL = (HOSTING.get("sandbox_url") or os.environ.get("SANDBOX_URL") or LIVE_URL + "sandbox/").rstrip("/") + "/"
 FINAL_URL = B.SITE_URL                    # where the permanent addresses point once the site goes live on its own domain
 PEOPLE = {"dgershaw": "David", "github-actions[bot]": "The site builder"}
 KINDS = {"spec-sheets": "spec sheet", "instructions": "installation instructions", "sell-sheets": "sell sheet",
