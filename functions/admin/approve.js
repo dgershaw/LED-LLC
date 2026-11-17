@@ -18,10 +18,10 @@ function same(a, b) {   // compares every character, so the time taken tells not
 
 function approver(list, code) {
   let found = "";
-  for (const pair of String(list).split(";")) {
+  for (const pair of String(list).split(/[;\n]/)) {
     const at = pair.indexOf("=");
     if (at < 1) continue;
-    const name = pair.slice(0, at).trim(), theirs = pair.slice(at + 1).trim();
+    const name = pair.slice(0, at).trim().replace(/^["']/, ""), theirs = pair.slice(at + 1).trim().replace(/["']$/, "");
     if (theirs.length >= 12 && same(theirs, code)) found = name;
   }
   return found;
@@ -32,7 +32,9 @@ export async function onRequestPost({ request, env }) {
   if (new URL(request.url).origin !== request.headers.get("origin")) return json(403, { error: "wrong-page" });
   let body;
   try { body = await request.json(); } catch (e) { return json(400, { error: "bad-request" }); }
-  const name = approver(env.APPROVERS, String(body.code || "").trim());
+  // people sometimes type the whole "Name=code" entry, or wrap it in quotes; only the code counts
+  const typed = String(body.code || "").trim().replace(/^["']|["']$/g, "");
+  const name = approver(env.APPROVERS, typed) || approver(env.APPROVERS, typed.slice(typed.indexOf("=") + 1).trim());
   if (!name) {
     await new Promise(done => setTimeout(done, 1500));   // slows down guessing
     return json(401, { error: "wrong-code" });
