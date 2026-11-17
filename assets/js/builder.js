@@ -340,13 +340,6 @@
     $("#pb-areas").innerHTML = state.areas.map((a, i) => renderArea(a, i, P.per[i])).join("") || `<p class="pb-empty">No areas yet. Add one to start.</p>`;
   }
 
-  // The list so far starts level with the first box beside it (the words box, or the first area), not with the heading above.
-  function alignSide() {
-    const side = $("#pb-side"), words = $("#pb-words"), box = words && !words.hidden ? words : $("#pb-areas");
-    if (!side || !box || !box.offsetParent) return;
-    side.style.marginTop = Math.max(0, box.getBoundingClientRect().top - box.parentNode.getBoundingClientRect().top) + "px";
-  }
-  window.addEventListener("resize", alignSide);
   function renderSide() {
     const P = last, T = P.totals;
     const top = P.lines.slice(0, 9);
@@ -393,12 +386,11 @@
     $$(".pb-mode-btn").forEach(b => b.setAttribute("aria-selected", String(b.dataset.mode === state.mode)));
     $("#pb-words").hidden = state.mode !== "words";
     $("#pb-text").value = state.text;
-    alignSide();
   }
 
   function renderProject() { $$("[data-p]").forEach(i => { if (document.activeElement !== i) i.value = state.project[i.dataset.p] || ""; }); }
 
-  function renderAll() { compute(); renderAreas(); renderSide(); renderResults(); renderProject(); save(); alignSide(); }
+  function renderAll() { compute(); renderAreas(); renderSide(); renderResults(); renderProject(); save(); }
   function renderOutputs() { compute(); renderSide(); renderResults(); save(); }
 
   // ------------------------------------------------------------------ events
