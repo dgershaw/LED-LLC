@@ -42,5 +42,5 @@ jobs:
           echo "$OUT"
           case "$OUT" in Published*)
             gh workflow run deploy.yml --ref main
-            bash tools/notify.sh "Live site updated" "$NAME approved the sandbox for the live site.${NOTE:+ Note: $NOTE} It is live in a few minutes." "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal";;
+            bash tools/notify.sh "Live site updated" "$NAME approved the sandbox for the live site.${NOTE:+ Note: $NOTE} It is live in a few minutes." "https://led-sandbox.pages.dev/admin/" "Open the admin portal";;
           esac

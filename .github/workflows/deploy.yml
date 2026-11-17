@@ -89,4 +89,4 @@ jobs:
         run: |
           N=$(jq -r '.pending|length' out/admin/changes.json); WHO=$(jq -r '.pending[0].who // "Someone"' out/admin/changes.json)
           WHAT=$(jq -r '.pending[0].what|join("; ")' out/admin/changes.json)
-          bash main/tools/notify.sh "Sandbox updated" "$WHO: $WHAT. $N change$([ "$N" = 1 ] || echo s) now waiting for approval." "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal"
+          bash main/tools/notify.sh "Sandbox updated" "$WHO: $WHAT. $N change$([ "$N" = 1 ] || echo s) now waiting for approval." "https://led-sandbox.pages.dev/admin/" "Open the admin portal"

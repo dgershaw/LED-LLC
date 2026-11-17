@@ -53,4 +53,4 @@ jobs:
           git add go-live.json && git commit -q -m "Go-live scheduled by $NAME for $(jq -r .at_text go-live.json)"
           git push -f origin schedule
           gh workflow run deploy.yml --ref main
-          bash /tmp/notify.sh "Go-live scheduled" "$NAME scheduled the sandbox to go live on $(jq -r .at_text go-live.json).${NOTE:+ Note: $NOTE}" "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal"
+          bash /tmp/notify.sh "Go-live scheduled" "$NAME scheduled the sandbox to go live on $(jq -r .at_text go-live.json).${NOTE:+ Note: $NOTE}" "https://led-sandbox.pages.dev/admin/" "Open the admin portal"
