@@ -6,10 +6,12 @@ The repository is the source of the Light Efficient Design website: the Light Ef
 
 ## The one rule: sandbox first, a person approves
 
-- `main` is the **sandbox** (https://dgershaw.github.io/LED-LLC/sandbox/). `live` is the **live site** and moves only when a person clicks "Approve and publish to live" on the admin portal (https://dgershaw.github.io/LED-LLC/admin/), which runs `.github/workflows/approve.yml`.
+- `main` is the **sandbox** (https://led-sandbox.pages.dev/). `live` is the **live site** (https://led-live.pages.dev/) and moves only when a person clicks "Approve and publish to live" on the admin portal (https://led-sandbox.pages.dev/admin/), which runs `.github/workflows/approve.yml`.
+- Cloudflare Pages builds and hosts both (David, 2026-11-17): two projects, `led-sandbox` on `main` and `led-live` on `live`, each running `bash tools/cloudflare-build.sh` after every push and swapping the new version in all at once. The addresses are in `tools/hosting.json`. The old GitHub Pages addresses (dgershaw.github.io/LED-LLC) are being retired; never give them to anyone.
 - Push only to `main`. Never push to `live`, never merge `main` into `live`, never run or dispatch the approve, roll-back, undo or schedule workflows. They are for people.
 - When a change is done, say it is on the sandbox and waits for approval on the portal, and give the sandbox link to the page. Never call a change live.
 - Pull `main` before every change. Other people and other Claude sessions push to it too.
+- Publishing is never the teammate's job. Never ask or walk a teammate through GitHub (Actions, workflows, settings, re-running a build) or Cloudflare. A saved change shows on the sandbox within about five minutes; if it has not after ten, say so plainly and tell them to let David know. Do not try to fix the publishing yourself.
 
 ## Commit in the name of the person who asked
 
@@ -26,7 +28,7 @@ The repository is the source of the Light Efficient Design website: the Light Ef
 
 ## How the site is built
 
-- `tools/build.py` generates every page from `data/`, `content/` and `tools/templates/`. Built pages, `docs/`, `ies/`, `admin/` and `out/` are ignored by git and built by `.github/workflows/deploy.yml` after each push. Never hand-edit a built HTML file; change the data, content or template and rebuild.
+- `tools/build.py` generates every page from `data/`, `content/` and `tools/templates/`. Built pages, `docs/`, `ies/`, `admin/` and `out/` are ignored by git and built by Cloudflare Pages (`tools/cloudflare-build.sh`) after each push. Never hand-edit a built HTML file; change the data, content or template and rebuild.
 - Local check: `pip install jinja2 markupsafe pillow qrcode`, then `python3 tools/build.py`. Workflows call scripts as `bash tools/x.sh` because the files have no execute bit.
 - Page text the team edits in Pages CMS lives in `content/pages/<menu category>/<slug>.json` and overlays `data/<slug>.json`. Spec-sheet-led pages are described in `content/cutsheets.json`. `.pages.yml` configures the editor; a new download folder must be added there.
 - Documents live in `assets/docs/<kind>/<category>/<product>/` and IES files in `assets/ies/<category>/<product>/<part number>/`. Pages link them only through their permanent addresses, `docs/<file name>` and `ies/<part number>/<file name>`, which the build fills with the newest version. Never link an `assets/docs` path. A newer version is the same file name plus a version or date (`... V2.pdf`, `...-rev3.pdf`, `...-2026-10-12.pdf`).
