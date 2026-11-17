@@ -369,6 +369,7 @@
     if (a.job === "new" && !["run", "fixtures"].includes(a.app)) a.app = "fixtures";
     if (a.job === "retrofit" && !SHAPES[a.app] && a.app !== "cove") a.app = "troffer";
     if (SHAPES[a.app] && !SHAPES[a.app][a.size]) a.size = Object.keys(SHAPES[a.app])[0];
+    if (a.model !== "auto" && !MODELS[a.model]) a.model = "auto";   // a cleared or unknown pick falls back to the recommendation
     if (a.env === "wet" && a.model !== "auto" && a.model !== "lbi65") { fixes.push(`${MODELS[a.model].name} is for dry and damp locations, so this wet area uses LBI 65.`); a.model = "lbi65"; }
     const m = modelFor(a);
     if (!m.lens.includes(+a.barLen)) a.barLen = m.lens[0];

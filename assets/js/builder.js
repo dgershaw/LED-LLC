@@ -402,7 +402,7 @@
     else if (raw === "") v = null;
     else if (NUMERIC.has(k)) v = +raw;
     const resets = { delamp: ["barsPer", "watt"], job: ["app", "lamps", "lamp", "barsPer", "watt"], app: ["lamps", "lamp", "barsPer", "watt", "size"], size: ["lamps", "lamp", "barsPer"], lamps: ["barsPer"], model: ["watt", "cct"], barLen: ["watt"], env: ["model"] };
-    (resets[k] || []).forEach(x => { a[x] = x === "size" ? "" : null; });
+    (resets[k] || []).forEach(x => { a[x] = x === "size" ? "" : x === "model" ? "auto" : null; });
     if (k === "job") a.app = v === "new" ? "fixtures" : "troffer";
     if (k === "app" && (v === "cove" || v === "run")) { a.runs = a.runs || 1; }
     if (k === "model" && v === "plus") a.rgb = true;
