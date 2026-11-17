@@ -24,9 +24,9 @@
 .pb-tiles b { font-size: 1.375rem; line-height: 1.1; }
 .pb-tiles span { font-size: 0.75rem; color: var(--muted); }
 .pb-mini { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 0.8125rem; }
-.pb-mini li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+.pb-mini li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
 .pb-mini .pn { font-weight: var(--mono-weight); overflow-wrap: anywhere; }
-.pb-mini .q { white-space: nowrap; color: var(--muted); font-weight: 600; }
+.pb-mini .q { white-space: nowrap; color: var(--muted); font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
 .pb-mini .more { color: var(--muted); border: 0; }
 .pb-side-acts { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 

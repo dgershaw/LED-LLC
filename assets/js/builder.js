@@ -340,14 +340,20 @@
     $("#pb-areas").innerHTML = state.areas.map((a, i) => renderArea(a, i, P.per[i])).join("") || `<p class="pb-empty">No areas yet. Add one to start.</p>`;
   }
 
-  function miniOrder(l) { const o = E.orderParts(l); return [o.packs ? `${o.packs} × ${o.pack}-pk` : "", o.singles ? `${o.singles}` : ""].filter(Boolean).join(" + "); }
+  // The list so far starts level with the first box beside it (the words box, or the first area), not with the heading above.
+  function alignSide() {
+    const side = $("#pb-side"), words = $("#pb-words"), box = words && !words.hidden ? words : $("#pb-areas");
+    if (!side || !box || !box.offsetParent) return;
+    side.style.marginTop = Math.max(0, box.getBoundingClientRect().top - box.parentNode.getBoundingClientRect().top) + "px";
+  }
+  window.addEventListener("resize", alignSide);
   function renderSide() {
     const P = last, T = P.totals;
     const top = P.lines.slice(0, 9);
     $("#pb-side").innerHTML = `<div class="pb-side-in">
       <p class="eyebrow">Your bill of materials so far</p>
       <div class="pb-tiles"><div><b>${fmt(T.bars)}</b><span>light bars</span></div><div><b>${fmt(T.feeds)}</b><span>power feeds</span></div>${T.sensors ? `<div><b>${fmt(T.sensors)}</b><span>sensors</span></div>` : `<div><b>${P.lines.length}</b><span>line items</span></div>`}</div>
-      <ul class="pb-mini">${top.map(l => `<li><span class="pn">${h(l.pn)}</span><span class="q">${l.pack > 1 ? miniOrder(l) : `× ${fmt(l.qty)}`}</span></li>`).join("")}${P.lines.length > top.length ? `<li class="more">and ${P.lines.length - top.length} more</li>` : ""}</ul>
+      <ul class="pb-mini">${top.map(l => `<li><span class="pn">${h(l.pn)}</span><span class="q">× ${fmt(l.qty)}</span></li>`).join("")}${P.lines.length > top.length ? `<li class="more">and ${P.lines.length - top.length} more</li>` : ""}</ul>
       <a class="btn btn-primary" href="#pb-results">See the full list</a>
       <div class="pb-side-acts"><button type="button" class="pb-link" data-act="pdf">PDF</button><button type="button" class="pb-link" data-act="xlsx">Excel</button><button type="button" class="pb-link" data-act="quote">Email for a quote</button></div>
     </div>`;
@@ -387,11 +393,12 @@
     $$(".pb-mode-btn").forEach(b => b.setAttribute("aria-selected", String(b.dataset.mode === state.mode)));
     $("#pb-words").hidden = state.mode !== "words";
     $("#pb-text").value = state.text;
+    alignSide();
   }
 
   function renderProject() { $$("[data-p]").forEach(i => { if (document.activeElement !== i) i.value = state.project[i.dataset.p] || ""; }); }
 
-  function renderAll() { compute(); renderAreas(); renderSide(); renderResults(); renderProject(); save(); }
+  function renderAll() { compute(); renderAreas(); renderSide(); renderResults(); renderProject(); save(); alignSide(); }
   function renderOutputs() { compute(); renderSide(); renderResults(); save(); }
 
   // ------------------------------------------------------------------ events
