@@ -286,7 +286,11 @@
   }
   function busy(on) { btn.classList.toggle("busy", on); btn.textContent = on ? "Publishing…" : label; }
   function stop() { clearInterval(timer); busy(false); tell("Cancelled. Nothing was published."); }
-  function fallBack() { busy(false); say.hidden = true; window.open(btn.href, "_blank", "noopener"); }
+  function fallBack(why) {   // say why, and leave the editor's Actions page one click away
+    busy(false); tell(why + " Nothing was published. Until it is sorted out, approve on ");
+    var a = document.createElement("a"); a.href = btn.href; a.target = "_blank"; a.rel = "noopener"; a.textContent = "the editor's Actions page"; say.appendChild(a);
+    say.appendChild(document.createTextNode("."));
+  }
   function watch() {   // the portal is rebuilt once the live site has the new version
     var tries = 0, before = btn.getAttribute("data-waiting");
     timer = setInterval(function () {
@@ -299,13 +303,15 @@
   function send(code) {
     busy(true); tell("Sending your approval…");
     fetch("approve", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ code: code }) })
-      .then(function (r) { return r.json().then(function (d) { return { status: r.status, d: d }; }); })
+      .then(function (r) { return r.json().then(function (d) { return { status: r.status, d: d }; }, function () { return { status: r.status, d: null }; }); })
       .then(function (r) {
         if (r.status === 200) { set(code); tell("Approved by " + r.d.name + ". The live site updates in about three minutes, and this page refreshes itself when it has."); watch(); }
         else if (r.status === 401) { set(""); busy(false); form.hidden = false; input.value = ""; input.focus(); tell("That code was not recognised. Please enter it again."); }
-        else if (r.status === 501 || r.status === 404 || r.status === 405) fallBack();
-        else { busy(false); tell("The approval could not be sent (error " + r.status + "). Nothing was published. Please let David know."); }
-      }).catch(fallBack);
+        else if (r.status === 501) fallBack("One-click approval is switched on, but its two secrets have not reached this version of the portal (code 501).");
+        else if (!r.d) fallBack("The one-click approval service is not running on this site (code " + r.status + ").");
+        else if (r.status === 502) fallBack("GitHub refused the approval key (code " + r.d.status + ").");
+        else fallBack("The approval could not be sent (code " + r.status + ").");
+      }).catch(function () { fallBack("The approval service could not be reached."); });
   }
   function countdown(code) {
     var left = 5; busy(true); form.hidden = true;
