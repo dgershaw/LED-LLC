@@ -14,9 +14,16 @@
 .pb-mode-btn[aria-selected="true"] { background: var(--surface); box-shadow: 0 1px 4px rgb(0 0 0 / 0.14); color: var(--accent); }
 
 /* ---------- work area: questions + the list so far ---------- */
-.pb-work { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: clamp(20px, 3vw, 40px); align-items: start; padding-bottom: clamp(28px, 5vw, 48px); }
-.pb-main { min-width: 0; }
-.pb-side { position: sticky; top: calc(var(--header-h) + 16px); }
+/* The questions and the list so far share grid rows, so the list always starts level with the first area box. */
+.pb-work { display: grid; grid-template-columns: minmax(0, 1fr) 340px; column-gap: clamp(20px, 3vw, 40px); row-gap: 0; align-items: start; padding-bottom: clamp(28px, 5vw, 48px); }
+.pb-main { display: contents; }
+.pb-main > * { grid-column: 1; min-width: 0; }
+.pb-words { grid-row: 1; }
+.pb-areas-head { grid-row: 2; }
+.pb-areas { grid-row: 3; }
+.pb-add { grid-row: 4; }
+.pb-side { grid-column: 2; grid-row: 3 / span 2; align-self: stretch; margin-top: 16px; }
+.pb-side-in { position: sticky; top: calc(var(--header-h) + 16px); }
 .pb-side-in { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 20px; display: grid; gap: 14px; }
 .pb-side .btn { justify-content: center; }
 .pb-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
@@ -24,9 +31,9 @@
 .pb-tiles b { font-size: 1.375rem; line-height: 1.1; }
 .pb-tiles span { font-size: 0.75rem; color: var(--muted); }
 .pb-mini { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 0.8125rem; }
-.pb-mini li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+.pb-mini li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
 .pb-mini .pn { font-weight: var(--mono-weight); overflow-wrap: anywhere; }
-.pb-mini .q { white-space: nowrap; color: var(--muted); font-weight: 600; }
+.pb-mini .q { white-space: nowrap; color: var(--muted); font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
 .pb-mini .more { color: var(--muted); border: 0; }
 .pb-side-acts { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 

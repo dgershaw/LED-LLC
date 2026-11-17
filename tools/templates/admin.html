@@ -29,6 +29,14 @@
   .card .sched { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: #fff6d6; color: var(--ink); }
   .card .btn-approve { display: inline-block; margin-top: 16px; padding: 12px 20px; border-radius: 999px; background: var(--ok); color: #fff; font-weight: 700; text-decoration: none; }
   .card .btn-approve:hover { filter: brightness(1.08); }
+  .card .btn-approve.busy { background: var(--muted); pointer-events: none; }
+  .card .approve-say { margin-top: 12px; color: var(--ink); font-weight: 600; }
+  .card .approve-say button { margin-left: 8px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; cursor: pointer; }
+  .card .approve-code { margin-top: 14px; }
+  .card .approve-code label { display: block; color: var(--ink); font-weight: 600; margin-bottom: 6px; }
+  .card .approve-code span { display: flex; gap: 8px; flex-wrap: wrap; }
+  .card .approve-code input { flex: 1 1 180px; min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; color: var(--ink); background: var(--bg, #fff); }
+  .card .approve-code button { padding: 10px 18px; border-radius: 999px; border: 0; background: var(--ok); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
   .card .btn-back { display: inline-block; margin-top: 16px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-weight: 600; text-decoration: none; }
   .card .btn-back:hover { border-color: var(--ink); }
   .tabs { display: flex; flex-wrap: wrap; gap: 6px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
@@ -132,7 +140,9 @@
       <p>{% if pending|length == 1 %}change waiting for approval{% else %}changes waiting for approval{% endif %}{% if pending %}, the latest by {{ pending[0].who }} on {{ pending[0].when }}{% endif %}.
       {% if compare.same %}The sandbox and the live site are the same.{% else %}<a href="#compare">{{ compare.pages|length }} page{{ '' if compare.pages|length == 1 else 's' }} and {{ compare.files|length }} file{{ '' if compare.files|length == 1 else 's' }}</a> differ from the live site.{% endif %}</p>
       {% if schedule %}<p class="sched">Scheduled to go live on <strong>{{ schedule.when }}</strong>, set by {{ schedule.by }}{% if schedule.note %}: “{{ schedule.note }}”{% endif %}. It publishes the sandbox as it was when scheduled; <a href="{{ cms }}/actions" target="_blank" rel="noopener">cancel it</a> under Actions.</p>{% endif %}
-      {% if pending %}<a class="btn-approve" href="{{ cms }}/actions" target="_blank" rel="noopener">Approve and publish to live</a> <a class="btn-back" href="{{ cms }}/actions" target="_blank" rel="noopener" title="Approve now, publish at a chosen date and time">Schedule a go-live</a>{% endif %}
+      {% if pending %}<a class="btn-approve" id="approve" data-waiting="{{ pending|length }}" href="{{ cms }}/actions" target="_blank" rel="noopener">Approve and publish to live</a> <a class="btn-back" href="{{ cms }}/actions" target="_blank" rel="noopener" title="Approve now, publish at a chosen date and time">Schedule a go-live</a>
+      <form class="approve-code" id="approve-code" hidden><label for="approve-input">Your approval code (asked once on this device)</label><span><input id="approve-input" type="password" autocomplete="current-password" required minlength="12"><button type="submit">Approve</button></span></form>
+      <p class="approve-say" id="approve-say" role="status" hidden></p>{% endif %}
     </div>
     <div class="card">
       <h2><span class="dot"></span>Live site</h2>
@@ -259,6 +269,68 @@
   document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy address", 1500); } catch (e) { prompt("Copy this address", b.dataset.copy); }
   }));
+</script>
+<script>
+/* One-click approval: the button asks /admin/approve (functions/admin/approve.js) to start the approval in the name
+   behind this person's code. Five seconds to cancel; then the page waits for the new live version and reloads.
+   Where that service is not set up, the button stays a link to the Actions page of the editor. */
+(function () {
+  var btn = document.getElementById("approve"); if (!btn) return;
+  var say = document.getElementById("approve-say"), form = document.getElementById("approve-code"),
+      input = document.getElementById("approve-input"), KEY = "led-approve-code", timer = 0, label = btn.textContent;
+  function get() { try { return localStorage.getItem(KEY) || ""; } catch (e) { return ""; } }
+  function set(v) { try { v ? localStorage.setItem(KEY, v) : localStorage.removeItem(KEY); } catch (e) {} }
+  function tell(text, cancel) {
+    say.hidden = false; say.textContent = text;
+    if (cancel) { var b = document.createElement("button"); b.type = "button"; b.textContent = "Cancel"; b.onclick = stop; say.appendChild(b); }
+  }
+  function busy(on) { btn.classList.toggle("busy", on); btn.textContent = on ? "Publishing…" : label; }
+  function stop() { clearInterval(timer); busy(false); tell("Cancelled. Nothing was published."); }
+  function fallBack(why) {   // say why, and leave the editor's Actions page one click away
+    busy(false); tell(why + " Nothing was published. Until it is sorted out, approve on ");
+    var a = document.createElement("a"); a.href = btn.href; a.target = "_blank"; a.rel = "noopener"; a.textContent = "the editor's Actions page"; say.appendChild(a);
+    say.appendChild(document.createTextNode("."));
+  }
+  function watch() {   // the portal is rebuilt once the live site has the new version
+    var tries = 0, before = btn.getAttribute("data-waiting");
+    timer = setInterval(function () {
+      fetch("changes.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+        if (String(d.pending.length) !== before) location.reload();
+      }).catch(function () {});
+      if (++tries > 40) { clearInterval(timer); busy(false); tell("The approval was sent, but this page has not caught up after ten minutes. Please let David know."); }
+    }, 15000);
+  }
+  function send(code) {
+    busy(true); tell("Sending your approval…");
+    fetch("approve", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ code: code }) })
+      .then(function (r) { return r.json().then(function (d) { return { status: r.status, d: d }; }, function () { return { status: r.status, d: null }; }); })
+      .then(function (r) {
+        if (r.status === 200) { set(code); tell("Approved by " + r.d.name + ". The live site updates in about three minutes, and this page refreshes itself when it has."); watch(); }
+        else if (r.status === 401) { set(""); busy(false); form.hidden = false; input.value = ""; input.focus(); tell("That code was not recognised. Please enter it again."); }
+        else if (r.status === 501) fallBack("One-click approval is switched on, but its two secrets have not reached this version of the portal (code 501).");
+        else if (!r.d) fallBack("The one-click approval service is not running on this site (code " + r.status + ").");
+        else if (r.status === 502) fallBack("GitHub refused the approval key (code " + r.d.status + ").");
+        else fallBack("The approval could not be sent (code " + r.status + ").");
+      }).catch(function () { fallBack("The approval service could not be reached."); });
+  }
+  function countdown(code) {
+    var left = 5; busy(true); form.hidden = true;
+    var n = btn.getAttribute("data-waiting"), what = "Publishing " + n + (n === "1" ? " change" : " changes") + " to the live site in ";
+    tell(what + left + (left === 1 ? " second." : " seconds."), true);
+    timer = setInterval(function () {
+      left -= 1;
+      if (left <= 0) { clearInterval(timer); send(code); }
+      else tell(what + left + (left === 1 ? " second." : " seconds."), true);
+    }, 1000);
+  }
+  btn.addEventListener("click", function (e) {
+    if (location.protocol === "file:") return;
+    e.preventDefault();
+    var code = get();
+    if (code) countdown(code); else { form.hidden = false; input.focus(); }
+  });
+  form.addEventListener("submit", function (e) { e.preventDefault(); if (input.value.trim().length >= 12) countdown(input.value.trim()); });
+})();
 </script>
 </body>
 </html>

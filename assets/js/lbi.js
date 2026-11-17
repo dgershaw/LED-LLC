@@ -74,7 +74,7 @@
     },
     {
       id: "g2", group: "white", name: "LBI G2", short: "G2",
-      kind: "Linkable white light bar", glyph: "#fff4e0", profile: "slim",
+      kind: "Linkable white light bar", glyph: "warmcool", glyphShadow: "#fff1dc", profile: "slim",
       tagline: "The everyday workhorse. Up to 160 lumens per watt, with wattage and color temperature you set on site.",
       lead: "The new generation of the Linkable Bar with Internal Driver. A sleek, control-ready bar with a protective housing that links end to end into continuous runs, from offices and break rooms to retail aisles.",
       features: [
@@ -111,7 +111,7 @@
     },
     {
       id: "lbi65", group: "white", name: "LBI 65", short: "65",
-      kind: "Linkable white light bar, IP65 for wet locations", glyph: "#eaf3ff", profile: "wet",
+      kind: "Linkable white light bar, IP65 for wet locations", glyph: "warmcool", glyphShadow: "#fff1dc", profile: "wet",
       tagline: "The same linkable system, sealed for wet and outdoor locations. Liquid-tight end caps keep the IP65 rating even with accessories.",
       lead: "An IP65-rated linkable fixture or retrofit kit with a polycarbonate housing over an inner metal structure and heat sink. Built for parking garages, coolers, outdoor canopies, tunnels and walkways.",
       features: [
@@ -185,7 +185,7 @@
     },
     {
       id: "palette", group: "color", name: "LBI Palette", short: "Palette",
-      kind: "Linkable precision wavelength selection light bar", glyph: "linear-gradient(90deg,#ff2a1a,#ff7a10,#ffb000,#19e05a,#2a6bff,#8a3dff)", glyphShadow: "#ff7a10", profile: "slim",
+      kind: "Linkable precision wavelength selection light bar", glyph: "six", glyphShadow: "#c4b5ff", profile: "slim",
       tagline: "Six precise colors on the bar you already know. Pick the wavelength the job calls for and switch between two colors on site.",
       lead: "Our linkable bar with an internal driver, delivering precision wavelength selection. Each bar carries two colors on a switch: red or orange, amber or green, blue or violet. It uses the same accessories as the regular LBI.",
       features: [
@@ -220,7 +220,7 @@
     },
     {
       id: "plus", group: "color", name: "LBI Palette+", short: "Palette+",
-      kind: "Linkable RGBWW light bar: white light and limitless color in one", glyph: "conic", profile: "slim",
+      kind: "Linkable RGBWW light bar: white light and limitless color in one", glyph: "rgbww", glyphShadow: "#b9c4ff", profile: "slim",
       tagline: "White light out of the box. Any color from the remote. One bar does both.",
       lead: "LBI Palette+ is an LBI G2 that can also mix limitless color. Every bar ships set to white light, with FlexWatt and FlexColor switches identical to LBI G2, so it installs, dims and qualifies for rebates like any white bar. Add the optional RGBWW remote and the same bar becomes a full color tunable fixture. RGBWW means red, green, blue, warm white and cool white LEDs in one bar: any color, and any white from 2700K to 5000K.",
       features: [
@@ -258,7 +258,7 @@
     },
     {
       id: "x", group: "color", name: "LBI Palette DMX", short: "Palette DMX",
-      kind: "Linkable RGBWW color tunable light bar with DMX", glyph: "conic", profile: "slim", pending: true,
+      kind: "Linkable RGBWW color tunable light bar with DMX", glyph: "rgbww", glyphShadow: "#b9c4ff", profile: "slim", pending: true,
       tagline: "Full RGBWW color under DMX control. Program scenes, cues and shows from the console your venue already runs.",
       lead: "A linkable RGBWW light bar driven over DMX. Red, green, blue, warm white and cool white each have their own channel, so one bar mixes any color and any white from the console, for venues and installations that need programmed scenes and precise control of every run. Full specifications will be added when the spec sheet is ready.",
       features: [
@@ -278,7 +278,7 @@
     },
     {
       id: "palette65", group: "color", name: "LBI 65 Palette+", short: "LBI 65 Palette+",
-      kind: "IP65 linkable precision wavelength light bar, set by remote", glyph: "linear-gradient(90deg,#ff2a1a,#ff7a10,#ffb000,#19e05a,#2a6bff,#8a3dff)", glyphShadow: "#ff7a10", profile: "wet",
+      kind: "IP65 linkable precision wavelength light bar, set by remote", glyph: "six", glyphShadow: "#c4b5ff", profile: "wet",
       tagline: "The LBI Palette, sealed for wet locations. The same six colors, set with the included remote.",
       lead: "An IP65-rated linkable LED bar with an internal driver, delivering precision wavelength selection. Liquid-tight end caps and the same seamless, vapor-tight linking as the LBI 65. There are no switches on the bar: each bar carries two colors and four wattages, chosen with the included remote.",
       features: [
@@ -331,8 +331,22 @@
     return `rgb(${c(r)}, ${c(g)}, ${c(b)})`;
   }
   function hsl(hue, sat = 100, light = 50) { return `hsl(${hue} ${sat}% ${light}%)`; }
+  /* Bar glyphs (David, 2026-11-17): the tunable white bars (LBI G2, LBI 65) run warm white to cool white; the
+     color bars show their own colors as separate blocks, never a blended rainbow. LBI Palette and LBI 65 Palette+
+     show their six wavelengths; the RGBWW bars show their channels in order: red, green, blue, cool white, warm white. */
+  const WARM = "#ffc98a", COOL = "#dce9ff";
+  const RGBWW = ["#ff2a1a", "#19e05a", "#2a6bff", COOL, WARM];
+  function blocks(colors) {
+    const w = 100 / colors.length, gap = 1.6;
+    return "linear-gradient(90deg," + colors.map((c, k) => {
+      const a = (k * w + (k ? gap / 2 : 0)).toFixed(2), b = ((k + 1) * w - (k < colors.length - 1 ? gap / 2 : 0)).toFixed(2);
+      return `${k ? `transparent ${(k * w - gap / 2).toFixed(2)}% ${a}%,` : ""}${c} ${a}% ${b}%`;
+    }).join(",") + ")";
+  }
   function glyphCss(v) {
-    if (v.glyph === "conic") return "linear-gradient(90deg,#ff3355,#ffcc00,#33dd77,#33aaff,#aa55ff,#ff3355)";
+    if (v.glyph === "warmcool") return `linear-gradient(90deg,${WARM},#fff4e6 50%,${COOL})`;
+    if (v.glyph === "six") return blocks(["red", "orange", "amber", "green", "blue", "violet"].map(k => PALETTE_COLORS[k].hex));
+    if (v.glyph === "rgbww") return blocks(RGBWW);
     return v.glyph;
   }
 
@@ -350,7 +364,7 @@
   // ---------- switcher + family stage ----------
   function renderSwitcher() {
     const group = (g, label) => `<div class="sw-group" role="group" aria-label="${label}"><span class="sw-group-label" aria-hidden="true">${label}</span>${
-      V.filter(v => v.group === g).map(v => `<button class="sw-btn" data-go="${v.id}" aria-pressed="false"><span class="sw-glyph" style="--g:${glyphCss(v)}${v.glyph === "conic" || v.glyphShadow ? `;--gs:${v.glyphShadow || "#7a6cff"}` : ""}"></span>${h(v.name)}</button>`).join("")
+      V.filter(v => v.group === g).map(v => `<button class="sw-btn" data-go="${v.id}" aria-pressed="false"><span class="sw-glyph" style="--g:${glyphCss(v)}${v.glyphShadow ? `;--gs:${v.glyphShadow}` : ""}"></span>${h(v.name)}</button>`).join("")
     }</div>`;
     $("#switcher-row").innerHTML = group("white", "White") + '<span class="sw-divider" aria-hidden="true"></span>' + group("color", "Color");
   }
@@ -358,8 +372,7 @@
   function renderFamily() {
     const row = (v) => {
       const cls = v.profile === "max" ? "thick" : v.profile === "wet" ? "wet" : "";
-      const extra = v.id === "palette" || v.id === "palette65" ? "spectrum" : v.glyph === "conic" ? "spectrum cycle" : "";
-      return `<button class="fam-bar" data-go="${v.id}" data-scroll="1"><span class="mini ${cls} ${extra}" style="--g:${v.glyph === "conic" || v.id === "palette" || v.id === "palette65" ? "#fff" : v.glyph}"></span><span class="name">${h(v.name)}<span class="sub">${FAM_SUB[v.id]}</span></span></button>`;
+      return `<button class="fam-bar" data-go="${v.id}" data-scroll="1"><span class="mini ${cls}" style="--g:${glyphCss(v)};--gs:${v.glyphShadow || v.glyph}"></span><span class="name">${h(v.name)}<span class="sub">${FAM_SUB[v.id]}</span></span></button>`;
     };
     $("#fam-white").innerHTML = V.filter(v => v.group === "white").map(row).join("");
     $("#fam-color").innerHTML = V.filter(v => v.group === "color").map(row).join("");
@@ -750,7 +763,7 @@ ${remoteMode ? remoteHtml : `
   // ---------- compare ----------
   const ROWS = [["Light", "light"], ["Wattage", "watts"], ["Lumens", "lm"], ["Efficacy", "eff"], ["Control", "control"], ["Location", "rating"], ["Best for", "best"]];
   function renderCompare() {
-    const head = `<tr><th scope="col"><span class="visually-hidden">Spec</span></th>${V.map(v => `<th scope="col" data-col="${v.id}"><button class="colbtn" data-go="${v.id}" data-scroll="1"><span class="sw-glyph" style="--g:${glyphCss(v)}${v.glyph === "conic" || v.glyphShadow ? `;--gs:${v.glyphShadow || "#7a6cff"}` : ""}"></span><span class="grp">${v.group === "white" ? "White" : "Color"}</span><strong>${h(v.name)}</strong></button></th>`).join("")}</tr>`;
+    const head = `<tr><th scope="col"><span class="visually-hidden">Spec</span></th>${V.map(v => `<th scope="col" data-col="${v.id}"><button class="colbtn" data-go="${v.id}" data-scroll="1"><span class="sw-glyph" style="--g:${glyphCss(v)}${v.glyphShadow ? `;--gs:${v.glyphShadow}` : ""}"></span><span class="grp">${v.group === "white" ? "White" : "Color"}</span><strong>${h(v.name)}</strong></button></th>`).join("")}</tr>`;
     const body = ROWS.map(([lab, key]) => `<tr><th scope="row">${lab}</th>${V.map(v => `<td data-col="${v.id}" class="${/^Pending/.test(v.cmp[key]) ? "tbd" : ""}">${h(v.cmp[key]).split(" · ").join("<br>")}</td>`).join("")}</tr>`).join("")
       + `<tr><th scope="row">Lengths</th>${V.map(v => `<td data-col="${v.id}">${Object.keys(v.sizes).map(s => `${s} ft`).join(", ")}</td>`).join("")}</tr>`
       + `<tr><th scope="row">Linking</th>${V.map(v => `<td data-col="${v.id}">${v.pending ? "Linkable" : v.link || (v.id === "max" ? "20 @ 120V · 40 @ 277V" : "Up to 40 from one feed")}</td>`).join("")}</tr>`;

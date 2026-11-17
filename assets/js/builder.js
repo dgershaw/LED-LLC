@@ -340,14 +340,13 @@
     $("#pb-areas").innerHTML = state.areas.map((a, i) => renderArea(a, i, P.per[i])).join("") || `<p class="pb-empty">No areas yet. Add one to start.</p>`;
   }
 
-  function miniOrder(l) { const o = E.orderParts(l); return [o.packs ? `${o.packs} × ${o.pack}-pk` : "", o.singles ? `${o.singles}` : ""].filter(Boolean).join(" + "); }
   function renderSide() {
     const P = last, T = P.totals;
     const top = P.lines.slice(0, 9);
     $("#pb-side").innerHTML = `<div class="pb-side-in">
       <p class="eyebrow">Your bill of materials so far</p>
       <div class="pb-tiles"><div><b>${fmt(T.bars)}</b><span>light bars</span></div><div><b>${fmt(T.feeds)}</b><span>power feeds</span></div>${T.sensors ? `<div><b>${fmt(T.sensors)}</b><span>sensors</span></div>` : `<div><b>${P.lines.length}</b><span>line items</span></div>`}</div>
-      <ul class="pb-mini">${top.map(l => `<li><span class="pn">${h(l.pn)}</span><span class="q">${l.pack > 1 ? miniOrder(l) : `× ${fmt(l.qty)}`}</span></li>`).join("")}${P.lines.length > top.length ? `<li class="more">and ${P.lines.length - top.length} more</li>` : ""}</ul>
+      <ul class="pb-mini">${top.map(l => `<li><span class="pn">${h(l.pn)}</span><span class="q">× ${fmt(l.qty)}</span></li>`).join("")}${P.lines.length > top.length ? `<li class="more">and ${P.lines.length - top.length} more</li>` : ""}</ul>
       <a class="btn btn-primary" href="#pb-results">See the full list</a>
       <div class="pb-side-acts"><button type="button" class="pb-link" data-act="pdf">PDF</button><button type="button" class="pb-link" data-act="xlsx">Excel</button><button type="button" class="pb-link" data-act="quote">Email for a quote</button></div>
     </div>`;
@@ -403,7 +402,7 @@
     else if (raw === "") v = null;
     else if (NUMERIC.has(k)) v = +raw;
     const resets = { delamp: ["barsPer", "watt"], job: ["app", "lamps", "lamp", "barsPer", "watt"], app: ["lamps", "lamp", "barsPer", "watt", "size"], size: ["lamps", "lamp", "barsPer"], lamps: ["barsPer"], model: ["watt", "cct"], barLen: ["watt"], env: ["model"] };
-    (resets[k] || []).forEach(x => { a[x] = x === "size" ? "" : null; });
+    (resets[k] || []).forEach(x => { a[x] = x === "size" ? "" : x === "model" ? "auto" : null; });
     if (k === "job") a.app = v === "new" ? "fixtures" : "troffer";
     if (k === "app" && (v === "cove" || v === "run")) { a.runs = a.runs || 1; }
     if (k === "model" && v === "plus") a.rgb = true;
@@ -546,9 +545,12 @@
   function colName(i) { let s = ""; i += 1; while (i) { const r = (i - 1) % 26; s = String.fromCharCode(65 + r) + s; i = Math.floor((i - 1) / 26); } return s; }
   function sheetXml(rows, widths, merges) {
     // rows: [{ cells: [value|{v,s}], s: default style }]
-    let x = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheetViews><sheetView workbookViewId="0"/></sheetViews><cols>${widths.map((w, i) => `<col min="${i + 1}" max="${i + 1}" width="${w}" customWidth="1"/>`).join("")}</cols><sheetData>`;
+    let x = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheetPr><pageSetUpPr fitToPage="1"/></sheetPr><sheetViews><sheetView workbookViewId="0"/></sheetViews><cols>${widths.map((w, i) => `<col min="${i + 1}" max="${i + 1}" width="${w}" customWidth="1"/>`).join("")}</cols><sheetData>`;
+    // a row marked span is one note merged across every column, tall enough for its wrapped text
+    const total = widths.reduce((t, w) => t + w, 0); merges = (merges || []).slice();
     rows.forEach((row, ri) => {
-      x += `<row r="${ri + 1}">`;
+      if (row.span) merges.push(`A${ri + 1}:${colName(widths.length - 1)}${ri + 1}`);
+      x += row.span ? `<row r="${ri + 1}" ht="${Math.max(1, Math.ceil(String(row.cells[0]).length / (total * 0.9))) * 15}" customHeight="1">` : `<row r="${ri + 1}">`;
       row.cells.forEach((c, ci) => {
         if (c == null || c === "") return;
         const o = typeof c === "object" ? c : { v: c };
@@ -563,24 +565,24 @@
   }
   function downloadXlsx() {
     const P = compute();
-    const head = [{ cells: ["Light Efficient Design · RemPhos LBI Project Builder"], s: 1 }, { cells: ["Bill of materials, " + today()], s: 4 }];
+    const head = [{ cells: ["Light Efficient Design · RemPhos LBI Project Builder"], s: 1 }, { cells: ["Bill of materials, " + today()] }];
     contactLines().forEach(([k, v]) => head.push({ cells: [{ v: k, s: 2 }, v] }));
     head.push({ cells: [] });
     const rows1 = head.slice();
-    rows1.push({ cells: ["Group", "Part #", "Description", "Setting", "Qty needed", "Order", "Pack", "Areas"], s: 3 });
-    P.lines.forEach(l => rows1.push({ cells: [l.g, { v: l.pn, s: 5 }, l.d, l.set || "", l.qty, l.pack > 1 ? E.orderText(l) : l.qty, l.pack, l.project ? "Whole project" : l.areas.map(x => areaTitle(state.areas[x.i], x.i)).join(", ")], s: 4 }));
+    rows1.push({ cells: ["Group", "Part #", "Description", "Setting", { v: "Qty needed", s: 7 }, { v: "Order", s: 7 }, "Pack", "Areas"], s: 3 });
+    P.lines.forEach(l => rows1.push({ cells: [l.g, { v: l.pn, s: 5 }, l.d, l.set || "", l.qty, { v: E.orderText(l), s: 6 }, l.pack, l.project ? "Whole project" : l.areas.map(x => areaTitle(state.areas[x.i], x.i)).join(", ")], s: 4 }));
     rows1.push({ cells: [] });
     rows1.push({ cells: ["Totals"], s: 2 });
     rows1.push({ cells: ["Light bars", P.totals.bars] }, { cells: ["Power feeds", P.totals.feeds] }, { cells: ["Sensors", P.totals.sensors] }, { cells: ["Connected load (W)", P.totals.watts] });
     rows1.push({ cells: [] });
-    if (P.per.some(r => r.isRun)) rows1.push({ cells: [EXACT_NOTE], s: 4 });
-    rows1.push({ cells: ["A recommendation from the LBI spec sheets. Our team confirms quantities, settings and lead times on the quote. sales@led-llc.com · 847.380.3540"], s: 4 });
+    if (P.per.some(r => r.isRun)) rows1.push({ cells: [EXACT_NOTE], s: 4, span: true });
+    rows1.push({ cells: ["A recommendation from the LBI spec sheets. Our team confirms quantities, settings and lead times on the quote. sales@led-llc.com · 847.380.3540"], s: 4, span: true });
     const rows2 = head.slice();
-    rows2.push({ cells: ["Area", "Part #", "Description", "Setting", "Qty", "Order"], s: 3 });
+    rows2.push({ cells: ["Area", "Part #", "Description", "Setting", { v: "Qty", s: 7 }, { v: "Order", s: 7 }], s: 3 });
     P.per.forEach((r, i) => {
       rows2.push({ cells: [`${i + 1}. ${areaTitle(state.areas[i], i)}: ${areaSummary(r)}`], s: 2 });
-      rows2.push({ cells: [areaSpec(r)], s: 4 });
-      r.lines.forEach(l => rows2.push({ cells: ["", { v: l.pn, s: 5 }, l.d, l.set || "", l.qty, l.pack > 1 ? E.orderText(l) : l.qty], s: 4 }));
+      rows2.push({ cells: [areaSpec(r)], s: 4, span: true });
+      r.lines.forEach(l => rows2.push({ cells: ["", { v: l.pn, s: 5 }, l.d, l.set || "", l.qty, { v: E.orderText(l), s: 6 }], s: 4 }));
       r.notes.forEach(n => rows2.push({ cells: ["", "", n], s: 4 }));
       rows2.push({ cells: [] });
     });
@@ -589,9 +591,9 @@
       ["_rels/.rels", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`],
       ["xl/workbook.xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Bill of materials" sheetId="1" r:id="rId1"/><sheet name="Area by area" sheetId="2" r:id="rId2"/></sheets></workbook>`],
       ["xl/_rels/workbook.xml.rels", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet2.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`],
-      ["xl/styles.xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts count="4"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="14"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font></fonts><fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF004E99"/><bgColor indexed="64"/></patternFill></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="6"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyFont="1"/><xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyFont="1"/><xf numFmtId="0" fontId="3" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1"/><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf><xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyFont="1" applyAlignment="1"><alignment vertical="top"/></xf></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>`],
-      ["xl/worksheets/sheet1.xml", sheetXml(rows1, [14, 30, 60, 20, 11, 14, 7, 28])],
-      ["xl/worksheets/sheet2.xml", sheetXml(rows2, [10, 30, 70, 20, 8, 14])]
+      ["xl/styles.xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts count="4"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="14"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font></fonts><fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF004E99"/><bgColor indexed="64"/></patternFill></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="8"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyFont="1"/><xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyFont="1"/><xf numFmtId="0" fontId="3" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1"/><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf><xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyFont="1" applyAlignment="1"><alignment vertical="top"/></xf><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment horizontal="right" vertical="top" wrapText="1"/></xf><xf numFmtId="0" fontId="3" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment horizontal="right"/></xf></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>`],
+      ["xl/worksheets/sheet1.xml", sheetXml(rows1, [20, 30, 60, 20, 11, 26, 7, 30])],
+      ["xl/worksheets/sheet2.xml", sheetXml(rows2, [16, 30, 70, 20, 8, 26])]
     ];
     download(fileBase() + ".xlsx", zip(files));
   }
@@ -668,7 +670,7 @@
     }
     function need(hh) { if (y + hh > PH - M - 24) newPage(); }
     // columns: Part #, Description, Qty, Order
-    const C = [{ x: M, w: 150 }, { x: M + 156, w: 250 }, { x: M + 412, w: 40 }, { x: M + 458, w: PW - M - (M + 458) }];
+    const C = [{ x: M, w: 142 }, { x: M + 148, w: 216 }, { x: M + 368, w: 34 }, { x: M + 414, w: PW - M - (M + 414) - 4 }];
     function tableHead() {
       need(40);
       rect(M, y, PW - 2 * M, 18, BLUE);
@@ -679,13 +681,14 @@
       const desc = wrap(l.d, 8.5, false, C[1].w - 4);
       const set = l.set ? wrap(l.set, 8, false, C[1].w - 4) : [];
       const pn = wrap(l.pn, 8.5, true, C[0].w - 4);
-      const hh = Math.max(pn.length, desc.length + set.length) * 11 + 6;
+      const ord = wrap(order, 8.5, false, C[3].w);
+      const hh = Math.max(pn.length, desc.length + set.length, ord.length) * 11 + 6;
       if (y + hh > PH - M - 24) { newPage(); tableHead(); }
       pn.forEach((t, i) => text(C[0].x + 4, y + 9 + i * 11, t, 8.5, true));
       desc.forEach((t, i) => text(C[1].x, y + 9 + i * 11, t, 8.5));
       set.forEach((t, i) => text(C[1].x, y + 9 + (desc.length + i) * 11, t, 8, true, BLUE));
       text(C[2].x + C[2].w - textW(String(qty), 9, true), y + 9, String(qty), 9, true);
-      text(C[3].x + C[3].w - textW(order, 8.5), y + 9, order, 8.5);
+      ord.forEach((t, i) => text(C[3].x + C[3].w - textW(t, 8.5), y + 9 + i * 11, t, 8.5));
       y += hh; hline(M, PW - M, y - 2);
     }
     function groupRow(g) { need(30); text(M + 4, y + 10, g.toUpperCase(), 7.5, true, MUTED); y += 15; }

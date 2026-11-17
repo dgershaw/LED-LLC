@@ -64,13 +64,10 @@ html { scroll-padding-top: calc(var(--header-h) + var(--switcher-h) + 12px); }
 .fam-bar .mini { display: block; width: 100%; height: 10px; border-radius: 5px; background: linear-gradient(#e9eaee, #b9bcc4); position: relative; }
 .fam-bar .mini::after {
   content: ""; position: absolute; inset: 3px 6px; border-radius: 3px; background: var(--g);
-  box-shadow: 0 0 14px 3px var(--g), 0 0 40px 6px color-mix(in srgb, var(--g) 45%, transparent);
+  box-shadow: 0 0 14px 3px var(--gs, var(--g)), 0 0 40px 6px color-mix(in srgb, var(--gs, var(--g)) 45%, transparent);
 }
 .fam-bar .mini.thick { height: 14px; }
 .fam-bar .mini.wet::before { content: ""; position: absolute; inset: -2px; border-radius: 7px; border: 1px solid rgb(255 255 255 / 0.25); }
-.fam-bar .mini.spectrum::after { background: linear-gradient(90deg, #ff2a1a, #ff7a10, #ffb000, #19e05a, #2a6bff, #8a3dff); box-shadow: 0 0 16px 3px rgb(150 120 255 / 0.5); }
-.fam-bar .mini.cycle::after { animation: hue 8s linear infinite; }
-@keyframes hue { to { filter: hue-rotate(360deg); } }
 @media (max-width: 720px) { .family-stage { grid-template-columns: minmax(0, 1fr); } .fam-bar { grid-template-columns: minmax(0, 1fr) 9.5rem; gap: 16px; } }
 @media (max-width: 640px) {
   .sw-group-label { display: none; }

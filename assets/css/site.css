@@ -508,7 +508,10 @@ a.brand-card:hover { text-decoration: none; transform: translateY(-2px); box-sha
 .feature .glyphs { display: grid; gap: 10px; margin-top: 22px; }
 .feature .glyph-row { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 14px; align-items: center; font-size: 0.875rem; }
 .feature .glyph-row i { display: block; height: 8px; border-radius: 4px; background: var(--g); box-shadow: 0 0 14px 1px var(--g); outline: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
-.feature .glyph-row i.spectrum { background: linear-gradient(90deg, #ff2a1a, #ff7a10, #ffb000, #19e05a, #2a6bff, #8a3dff); box-shadow: 0 0 14px 1px rgb(150 120 255 / 0.5); }
+/* David, 2026-11-17: tunable white runs warm to cool; color bars show their own colors as separate blocks */
+.feature .glyph-row i.warmcool { background: linear-gradient(90deg, #ffc98a, #fff4e6 50%, #dce9ff); box-shadow: 0 0 14px 1px #fff1dc; }
+.feature .glyph-row i.six { background: linear-gradient(90deg, #ff2a1a 0.00% 15.87%, transparent 15.87% 17.47%, #ff7a10 17.47% 32.53%, transparent 32.53% 34.13%, #ffb000 34.13% 49.20%, transparent 49.20% 50.80%, #19e05a 50.80% 65.87%, transparent 65.87% 67.47%, #2a6bff 67.47% 82.53%, transparent 82.53% 84.13%, #8a3dff 84.13% 100.00%); box-shadow: 0 0 14px 1px rgb(196 181 255 / 0.55); }
+.feature .glyph-row i.rgbww { background: linear-gradient(90deg, #ff2a1a 0.00% 19.20%, transparent 19.20% 20.80%, #19e05a 20.80% 39.20%, transparent 39.20% 40.80%, #2a6bff 40.80% 59.20%, transparent 59.20% 60.80%, #dce9ff 60.80% 79.20%, transparent 79.20% 80.80%, #ffc98a 80.80% 100.00%); box-shadow: 0 0 14px 1px rgb(185 196 255 / 0.55); }
 .feature .glyph-row span b { font-weight: 600; } .feature .glyph-row span small { color: var(--muted); display: block; font-size: 0.75rem; }
 @media (max-width: 560px) { .feature .glyph-row { grid-template-columns: 4.5rem minmax(0, 1fr); } }
 
