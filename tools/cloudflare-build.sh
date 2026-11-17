@@ -26,7 +26,7 @@ PY
 copy_site() {   # the built pages and their files, without the sources: copy_site <from> <to>
   mkdir -p "$2"
   tar -C "$1" --exclude=./.git --exclude=./.github --exclude=./.cloudcannon --exclude=./tools --exclude=./data --exclude=./content \
-      --exclude=./notes --exclude=./_site --exclude=./node_modules --exclude=./README.md --exclude=./.pages.yml \
+      --exclude=./notes --exclude=./functions --exclude=./_site --exclude=./node_modules --exclude=./README.md --exclude=./.pages.yml \
       --exclude=./cloudcannon.config.yml --exclude=./.gitignore --exclude=./TEST_COPY --exclude=./CLAUDE.md -cf - . | tar -xf - -C "$2"
 }
 
