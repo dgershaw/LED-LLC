@@ -52,4 +52,4 @@ jobs:
           git commit -q --amend -m "Undid: $(git log -1 --format=%s "$SHA")"$'\n\n'"Undoes: $SHA"
           git push origin main
           gh workflow run deploy.yml --ref main
-          bash tools/notify.sh "A change was undone on the sandbox" "$NAME undid: $(git log -1 --format=%s "$SHA"). The undo waits for approval." "https://dgershaw.github.io/LED-LLC/admin/" "Open the admin portal"
+          bash tools/notify.sh "A change was undone on the sandbox" "$NAME undid: $(git log -1 --format=%s "$SHA"). The undo waits for approval." "https://led-sandbox.pages.dev/admin/" "Open the admin portal"

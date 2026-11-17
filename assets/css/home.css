@@ -1,0 +1,157 @@
+/* The home page design of 2026-11 (Kcampbell, Homepage-Design.pdf and Setup-Explanation.pdf). Sizes and spaces are the
+   design's at 1440 px: 40 px headers in Avenir Heavy, 20 px subheaders in Avenir Black, 20 px body in Avenir Roman, 14 px
+   small buttons in Avenir Heavy, all in Cool Gray 11 (--ink). Colours come from the Brand styles (brand.css); the two
+   departures (green and yellow link text) are listed in the exceptions of content/brand/styles.json.
+   Each block's own spacing is its default; the editor's "Space above and below" (.blk.sp-*) overrides it. */
+
+.home-v2 { --hm-line: color-mix(in srgb, var(--ink) 20%, transparent); --hm-gap: 15px; color: var(--ink); }
+.home-v2 .hm-h { font: 800 2.5rem/1.2 var(--font-display); letter-spacing: 0; color: var(--ink); margin: 0; text-wrap: balance; }
+.home-v2 .hm-h > span { display: block; }
+.home-v2 .hm-h.center { text-align: center; }
+.home-v2 .hm-body { font-size: 1.25rem; line-height: 1.3; font-weight: 400; color: var(--ink); }
+.home-v2 .hm-body p { margin: 0; }
+.home-v2 .hm-body p + p { margin-top: 0.65em; }
+
+/* ---------- Rotating banner: 1440 x 550 at most, centred; it shrinks with the window but never grows past that (Kcampbell,
+   2026-11-12). No arrows or dots. ---------- */
+.hm-banner { position: relative; }
+.hm-slides { position: relative; width: 100%; max-width: 1440px; margin-inline: auto; aspect-ratio: 1440 / 550; overflow: hidden; }
+.hm-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .8s ease, visibility 0s linear .8s; }
+.hm-slide.on { opacity: 1; visibility: visible; transition: opacity .8s ease, visibility 0s; }
+.hm-slide a, .hm-slide img { display: block; width: 100%; height: 100%; }
+.hm-slide img { object-fit: cover; }
+@media (prefers-reduced-motion: reduce) { .hm-slide, .hm-slide.on { transition: none; } }
+
+/* ---------- Statement ---------- */
+.hm-statement { padding-top: 55px; }
+.hm-statement .hm-h { text-align: center; }
+
+/* ---------- Brand columns ---------- */
+.hm-brands { padding-top: 49px; }
+.hm-brand-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--hm-gap); }
+.hm-brand { --bc: var(--remphos); --bt: var(--remphos); display: flex; flex-direction: column; min-width: 0; }
+.hm-brand.b-led { --bc: var(--led); --bt: var(--led); }
+.hm-brand.b-solera { --bc: var(--solera); --bt: var(--solera); }
+/* the logos (Kcampbell's red lines, 2026-11-12): every wordmark's lettering the same height, about 29.5 px at laptop size
+   (set by each logo's width), all on one baseline, 50 px above the coloured line. --base is where the lettering sits in the
+   file, as a share of its height from the top; rays and descenders hang below the baseline into the space above the line. */
+.hm-logo { display: flex; align-items: flex-end; justify-content: center; height: 84px; padding-bottom: 50px; border-bottom: 2px solid var(--bc); box-sizing: content-box; }
+.hm-logo img { max-width: 100%; height: auto; transform: translateY(calc((1 - var(--base, 1)) * 100%)); }
+.hm-logo-missing { font-weight: 900; font-size: 1.25rem; }
+.hm-body.hm-brand-text { padding: 13px 9px 0 8.5px; }
+.hm-chips { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 10px 14px; margin-top: 22px; padding-left: 8.5px; }
+.hm-chip { display: inline-flex; align-items: center; height: 40px; padding: 0 13px; border-radius: 20px; background: var(--hm-line);
+  color: var(--ink); font: 800 0.875rem/1 var(--font-ui); text-transform: uppercase; white-space: nowrap; transition: background .15s; }
+.hm-chip:hover { text-decoration: none; background: color-mix(in srgb, var(--ink) 30%, transparent); }
+.hm-more { margin-top: auto; padding-top: 30px; display: block; }
+.hm-more span { display: block; padding-bottom: 11px; border-bottom: 2px solid var(--bc); color: var(--bt); font: 900 1.25rem/1.2 var(--font-display); text-transform: uppercase; }
+.hm-more:hover { text-decoration: none; }
+.hm-more:hover span { text-decoration: underline; text-underline-offset: 4px; }
+/* side by side, the columns share their rows, so the category buttons of all three start on one line (the red lines) */
+@media (min-width: 981px) {
+  .hm-brand-grid { grid-template-rows: repeat(4, auto); }
+  .hm-brand { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; }
+  .hm-brand .hm-more { margin-top: 0; align-self: end; }
+}
+
+/* ---------- One light, the LBI list ---------- */
+.hm-lbi { padding-top: 103px; }
+.hm-lbi-grid { display: grid; grid-template-columns: minmax(0, 1fr) 578px; gap: 40px; align-items: start; }
+.hm-lbi-copy { padding-top: 33px; }
+.hm-lbi-copy { max-width: 650px; }
+.hm-lbi-copy .hm-body { margin-top: 12px; }
+.hm-pills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 17px; }
+.hm-pill { display: inline-flex; align-items: center; height: 40px; padding: 0 14.5px; border-radius: 20px; background: var(--remphos); color: #fff;
+  font: 800 0.875rem/1 var(--font-ui); text-transform: uppercase; white-space: nowrap; }
+.hm-pill:hover { text-decoration: none; filter: brightness(1.12); }
+.hm-bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.hm-bars li > a, .hm-bars li > div { display: flex; align-items: center; gap: 28px; color: var(--ink); }
+.hm-bars li > a:hover { text-decoration: none; }
+.hm-bars li > a:hover b { text-decoration: underline; }
+.hm-bars b { display: block; font: 800 0.875rem/19px var(--font-ui); text-transform: uppercase; }
+.hm-bars small { display: block; font: 400 0.875rem/19px var(--font-ui); }
+
+/* the light bars, drawn after the product photos (Kcampbell, 2026-11-12): each one lit on top, with the white rail (or
+   housing) of the real bar below, glowing in its own light. --lit is the lit lens, --rail the part below it. */
+.lbi-bar { --lit: linear-gradient(#fffaf1, #fff1dc); --g: rgb(255 214 150 / 0.55); --rail: linear-gradient(#f3f4f8, #dcdee7); --split: 55%;
+  position: relative; flex: 0 0 146px; height: 10px; border-radius: 5px 5px 2px 2px;
+  background: var(--rail) bottom / 100% calc(100% - var(--split)) no-repeat, var(--lit) top / 100% var(--split) no-repeat;
+  outline: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
+.lbi-bar::after { content: ""; position: absolute; inset: -6px -3px; border-radius: 8px; background: var(--glow, var(--g)); filter: blur(7px); opacity: 0.6; z-index: -1; }
+.lbi-bar.bar-g2 { --lit: linear-gradient(#fff7ea, #ffe9c8); --g: rgb(255 200 120 / 0.55); }
+/* LBI 65: the sealed tube, a little taller, with its grey end caps */
+.lbi-bar.bar-65 { --lit: linear-gradient(#f4f8ff, #dce8ff); --g: rgb(150 190 255 / 0.6); --rail: linear-gradient(#eef1f8, #d3d7e1); --split: 50%; height: 11px; border-radius: 4px;
+  background: linear-gradient(90deg, #bdc0ca 0 5.5%, transparent 0 94.5%, #bdc0ca 0) , var(--rail) bottom / 100% 50% no-repeat, var(--lit) top / 100% 50% no-repeat; }
+/* LBI MAX: the strip kit, a squarer body with the lens over a deeper housing and the connector tab at one end */
+.lbi-bar.bar-max { --lit: linear-gradient(#fffbf3, #fff0da); --g: rgb(255 214 150 / 0.5); --rail: linear-gradient(#eef2f8, #e1e6ef); --split: 48%;
+  height: 13px; border-radius: 1px; flex-basis: 140px; margin-right: 6px; }
+.lbi-bar.bar-max::before { content: ""; position: absolute; right: -6px; bottom: 2px; width: 5px; height: 4px; background: #e3e8f2; outline: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
+/* LBI Palette: its six set colours over the pale lens */
+.lbi-bar.bar-palette { --g: linear-gradient(90deg, #ee4150, #f99f3d, #ffcb41, #72bf44, #39c6f3, #a99acb); --glow: var(--g); --split: 58%;
+  --lit: linear-gradient(rgb(255 255 255 / 0), rgb(255 255 255 / 0.22) 50%, rgb(255 255 255 / 0)), linear-gradient(90deg, #ee4150 0 16.66%, #f99f3d 0 33.33%, #ffcb41 0 50%, #72bf44 0 66.66%, #39c6f3 0 83.33%, #a99acb 0);
+  --rail: linear-gradient(90deg, #fce4ee 0 16.66%, #fffeef 0 33.33%, #fdfbe1 0 50%, #eef6ef 0 66.66%, #dff2f7 0 83.33%, #ffffff 0); }
+.lbi-bar.bar-palette::after { opacity: 0.3; }
+/* LBI Palette+: a finer rainbow of fifteen colours over a white rail */
+.lbi-bar.bar-palette-plus { --lit: linear-gradient(90deg, #f44768 0 6.66%, #f88267 0 13.33%, #fbbf59 0 20%, #fff94a 0 26.66%, #cfee49 0 33.33%,
+    #9edd4a 0 40%, #70cd4b 0 46.66%, #4bb549 0 53.33%, #4abf86 0 60%, #4ad8da 0 66.66%, #59b3dd 0 73.33%, #4a86e7 0 80%, #696ee1 0 86.66%,
+    #9c79f9 0 93.33%, #9952fe 0); --glow: var(--lit); --split: 65%; --rail: linear-gradient(#f9faff, #e2e5ef); }
+.lbi-bar.bar-palette-plus::after { opacity: 0.35; }
+/* LBI Palette DMX: one seamless rainbow over a white rail */
+.lbi-bar.bar-palette-dmx { --lit: linear-gradient(90deg, #b33940, #de3f3c, #ef6d39, #f5b836, #d4d13e, #94ca5f, #3bab8a, #3591a8, #3674b5, #5950a1, #613e95);
+  --glow: var(--lit); --split: 58%; --rail: linear-gradient(#f3f4f8, #d6dae5); }
+.lbi-bar.bar-palette-dmx::after { opacity: 0.45; }
+
+/* ---------- What are you replacing? ---------- */
+.hm-replace { padding-top: 84px; }
+.hm-sub { margin-top: 13px; }
+.hm-boxes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 29.5px 11.5px; margin-top: 32px; }
+.hm-box { display: flex; align-items: center; justify-content: center; min-height: 90px; padding: 12px 16px; border: 1px solid var(--hm-line);
+  border-radius: 10px; text-align: center; color: var(--ink); font: 900 1.25rem/1.2 var(--font-display); text-transform: uppercase;
+  transition: border-color .15s, box-shadow .15s; }
+.hm-box:hover { text-decoration: none; border-color: var(--ink); box-shadow: 0 10px 24px -18px rgb(0 0 0 / 0.45); }
+
+/* ---------- Divider ---------- */
+.hm-divider { padding-top: 81px; }
+.hm-divider hr { margin: 0; border: 0; border-top: 2px solid var(--ink); }
+
+/* ---------- Samples, rebates + your local rep ---------- */
+.hm-help { padding-top: 83px; padding-bottom: 114px; }
+.hm-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--hm-gap); margin-top: 43.5px; }
+.hm-card { display: grid; grid-template-columns: 136px minmax(0, 1fr); min-height: 200px; border-radius: 10px; background: var(--remphos); color: #fff; }
+.hm-card:hover { text-decoration: none; filter: brightness(1.1); }
+.hm-graphic { display: grid; place-items: center; }
+.hm-graphic img { width: auto; max-width: 110px; }
+.hm-card-text { display: flex; flex-direction: column; padding: 29px 12px 21px 0; font: 400 1.25rem/1.2 var(--font-ui); }
+.hm-card-text > b { font: 900 1.25rem/1.2 var(--font-display); text-transform: uppercase; margin-bottom: 12px; }
+.hm-card-text > b.hm-card-link { margin: auto 0 0; padding-top: 14px; }
+
+/* ---------- Smaller screens ---------- */
+@media (max-width: 1180px) {
+  .hm-lbi-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .hm-lbi-copy { max-width: 760px; }
+  .hm-cards { grid-template-columns: minmax(0, 1fr); max-width: 640px; margin-inline: auto; }
+}
+@media (max-width: 980px) {
+  .hm-brand-grid { grid-template-columns: minmax(0, 1fr); gap: 56px; max-width: 640px; margin-inline: auto; }
+  .hm-boxes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; }
+}
+@media (max-width: 600px) {
+  .home-v2 .hm-h { font-size: 2rem; }
+  .home-v2 .hm-body { font-size: 1.1875rem; }
+  .hm-statement { padding-top: 36px; }
+  .hm-brands, .hm-lbi, .hm-replace, .hm-help { padding-top: 56px; }
+  .hm-divider { padding-top: 56px; }
+  .hm-help { padding-bottom: 72px; }
+  .hm-logo { height: 72px; padding-bottom: 30px; }
+  .hm-logo img { max-width: 80%; }
+  .hm-box { min-height: 72px; font-size: 1.1875rem; }
+  .hm-bars li > a, .hm-bars li > div { gap: 16px; }
+  .lbi-bar { flex-basis: 96px; }
+  .lbi-bar.bar-max { flex-basis: 90px; }
+  .hm-card { grid-template-columns: 104px minmax(0, 1fr); }
+  .hm-card-text { padding: 22px 16px 20px 0; }
+}
+
+/* the design's page is pure white (the rest of the site sits on a faint grey) */
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) body:has(.home-v2) { background: #ffffff; } }
+:root[data-theme="light"] body:has(.home-v2) { background: #ffffff; }

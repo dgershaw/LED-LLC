@@ -1,0 +1,724 @@
+# CloudCannon, the visual editor for the marketing team (David, 2026-11-03).
+# On the home page and the product pages, editors click any marked text to retype it and click a photo to drop in a new one.
+# Each save is a commit to `main`, so it lands on the sandbox first and still waits for "Approve and publish to live"
+# on the admin portal, like every other change. Pages CMS (.pages.yml) keeps working on the same files.
+# The templates say which text and photos are editable (data-editable attributes in tools/templates/home.html and category.html).
+
+paths:
+  uploads: assets/img/uploads      # photos dropped into the editor; the build links them without the leading /
+
+# The toolbar of every formatted text box (data-type="block" in the templates): bold, italic, underline, links, lists,
+# alignment and the house styles in assets/css/editor.css. No font, colour or size pickers, so every page keeps the site's
+# type, contrast and 12 px minimum (David, 2026-11-11). tools/build.py rich() keeps only this much HTML.
+_editables:
+  block:
+    bold: true
+    italic: true
+    underline: true
+    link: true
+    bulletedlist: true
+    numberedlist: true
+    removeformat: true
+    format: p
+    blockquote: false
+    image: false
+    embed: false
+    left: ta-left
+    center: ta-center
+    right: ta-right
+    styles: /assets/css/editor.css
+
+collections_config:
+  home:
+    path: content/home
+    name: Home page
+    description: The home page as blocks. Add, remove, drag and resize them in the visual editor; size and layout changes show after you save.
+    url: /
+    icon: home
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors: [visual, data]
+    # the home page's own controls (they win over the product-page labels below); the product pages' blocks reuse them (&block_inputs)
+    _inputs: &block_inputs
+      blocks:
+        type: array
+        label: Blocks
+        comment: The sections of the home page, top to bottom. Drag to reorder.
+        options:
+          structures: _structures.home_blocks
+      _type:
+        hidden: true
+      background:
+        type: select
+        label: Background
+        options:
+          values: { plain: White, grey: Grey band }
+      spacing:
+        type: select
+        label: Space above and below
+        options:
+          values: { none: None, tight: Small, normal: Normal, large: Large }
+      show_on:
+        type: select
+        label: Show on
+        comment: Hide a block on phones, or show it only on phones. Hidden keeps it in the list without showing it anywhere.
+        options:
+          values: { all: Every screen, laptop: Laptops and tablets only, phone: Phones only, none: Hidden }
+      align:
+        type: select
+        label: Alignment
+        options:
+          values: { left: Left, center: Centre, right: Right }
+      eyebrow:
+        type: text
+        label: Small line above the heading
+      headline:
+        type: text
+        label: Headline
+      headline_tail:
+        type: text
+        label: Second line of the headline (in blue)
+      values:
+        type: array
+        label: Values line
+      lede:
+        type: html
+        label: Introduction
+        comment: Bold, italic, links, lists, alignment and the house styles (Styles menu). Fonts and colours follow the site.
+        options: &rich
+          bold: true
+          italic: true
+          underline: true
+          link: true
+          bulletedlist: true
+          numberedlist: true
+          removeformat: true
+          format: p
+          blockquote: false
+          image: false
+          embed: false
+          left: ta-left
+          center: ta-center
+          right: ta-right
+          styles: /assets/css/editor.css
+      title:
+        type: text
+        label: Heading
+      text:
+        type: html
+        label: Text
+        comment: Bold, italic, links, lists, alignment and the house styles (Styles menu). Fonts and colours follow the site.
+        options: *rich
+      buttons:
+        type: array
+        label: Buttons
+        options:
+          structures:
+            values:
+              - label: Button
+                value: { label: Button text, link: contact.html, style: ghost }
+      label:
+        type: text
+        label: Button text
+      link:
+        type: text
+        label: Link
+        comment: A page (lbi.html), a section (#brands), a full web address, or "search" to open the part-number search.
+      style:
+        type: select
+        label: Button style
+        options:
+          values: { primary: Solid, ghost: Outline }
+      tiles:
+        type: array
+        label: Photo tiles
+        comment: Drag to reorder. Widths are out of 12 columns; on phones wide tiles fill the row and the rest take half.
+        options:
+          structures:
+            values:
+              - label: Photo tile
+                value: { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 4, height: 1, fit: cover, position: "", zoom: 100 }
+      width:
+        type: range
+        label: Width (columns, out of 12)
+        options: { min: 1, max: 12, step: 1 }
+      height:
+        type: range
+        label: Height (rows)
+        options: { min: 1, max: 4, step: 1 }
+      row_height:
+        type: select
+        label: Row height
+        options:
+          values: { small: Small, medium: Medium, large: Large }
+      caption:
+        type: text
+        label: Caption
+        comment: Optional. Keep it short enough for a phone.
+      fit:
+        type: select
+        label: Fit
+        options:
+          values: { cover: Fill the frame (may crop the edges), contain: Show the whole photo }
+      position:
+        type: text
+        label: Photo focus
+        comment: Optional. Which part of the photo stays in view when it is cropped or zoomed, for example "50% 20%" (across, down).
+      zoom:
+        type: range
+        label: Zoom (%)
+        comment: 100 shows the photo as framed; slide right to zoom in. Photo focus says which part stays in view.
+        options: { min: 100, max: 300, step: 10 }
+      image_side:
+        type: select
+        label: Photo side
+        options:
+          values: { left: Left, right: Right }
+      image_width:
+        type: range
+        label: Photo width (% of the row)
+        options: { min: 25, max: 75, step: 1 }
+      image_size:
+        type: range
+        label: Photo width (% of the page)
+        options: { min: 20, max: 100, step: 5 }
+      image_shape:
+        type: select
+        label: Photo shape
+        options:
+          values: { original: As the photo is, "1:1": Square, "4:3": "4:3", "3:2": "3:2", "16:9": "16:9 wide", "21:9": "21:9 panorama", "3:4": "3:4 tall" }
+      show_lbi_list:
+        type: switch
+        label: Show the LBI family list
+      photos:
+        type: array
+        label: Brand card photos
+        options: { disable_add: true, disable_remove: true, disable_reorder: true }
+      brand:
+        type: text
+        label: Brand
+        disabled: true
+      # the 2026-11 home page design (Kcampbell): banner, statement, brand columns, LBI list, replacement grid, help cards
+      heading:
+        type: text
+        label: Page title for search engines
+        comment: 'Not shown on the page. Leave empty for "Light Efficient Design: Leading Thru Innovation since 2008".' 
+      seconds:
+        type: range
+        label: Seconds per banner
+        options: { min: 3, max: 20, step: 1 }
+      slides:
+        type: array
+        label: Banners
+        comment: 1440 x 550 pixels. They take turns in this order; drag to reorder. Each can link to a page.
+        options:
+          structures:
+            values:
+              - label: Banner
+                value: { image: assets/img/uploads/homepage-banner-1.jpg, alt: Describe the banner, link: "" }
+      lines:
+        type: array
+        label: Heading lines
+        comment: Each entry is one line of the heading. Type it in capitals as it should appear.
+      columns:
+        type: array
+        label: Brand columns
+        options:
+          structures:
+            values:
+              - label: Brand column
+                value: { brand_color: remphos, logo: assets/img/uploads/logo-remphos.png, logo_alt: RemPhos, logo_width: 220, logo_baseline: 98, link: remphos.html, text: A sentence or two about the brand., chips: [], more_label: "EXPLORE REMPHOS >", more_link: remphos.html }
+      brand_color:
+        type: select
+        label: Brand colour
+        comment: The colour of the lines and of the Explore link.
+        options:
+          values: { led: Light Efficient Design green, remphos: RemPhos blue, solera: Solera yellow }
+      logo:
+        type: image
+        label: Logo
+        comment: Shown exactly as supplied, only scaled to the width below.
+      logo_alt:
+        type: text
+        label: Logo description
+      logo_width:
+        type: range
+        label: Logo width (pixels at laptop size)
+        options: { min: 60, max: 420, step: 1 }
+      logo_baseline:
+        type: range
+        label: Where the logo's lettering sits (% from its top)
+        comment: The logos line up on the bottom of their lettering. 100 lines up the bottom of the file; lower it when rays or letters hang below the words.
+        options: { min: 50, max: 100, step: 0.5 }
+      chips:
+        type: array
+        label: Category buttons
+        options:
+          structures:
+            values:
+              - label: Category button
+                value: { label: CATEGORY, link: products.html }
+      more_label:
+        type: text
+        label: Explore link text
+      more_link:
+        type: text
+        label: Explore link
+      items:
+        type: array
+        label: Rows
+        options:
+          structures:
+            values:
+              - label: LBI row
+                value: { bar: g2, name: "NEW ROW", tagline: A short line, link: lbi.html }
+              - label: Button (What are you replacing?)
+                value: { label: "NEW BUTTON", link: products.html }
+      bar:
+        type: select
+        label: Light bar drawing
+        options:
+          values: { g1: LBI G1 (warm white), g2: LBI G2 (white), "65": LBI 65 (cool white), max: LBI MAX (white), palette: LBI Palette (six set colours), palette-plus: LBI Palette+ (rainbow), palette-dmx: LBI Palette DMX (seamless rainbow) }
+      name:
+        type: text
+        label: Name
+      tagline:
+        type: text
+        label: Short line
+      cards:
+        type: array
+        label: Cards
+        options:
+          structures:
+            values:
+              - label: Card
+                value: { graphic: "", graphic_alt: "", graphic_height: 70, title: TITLE, text: A sentence or two., link_label: "LEARN MORE >", link: contact.html }
+      graphic:
+        type: image
+        label: Graphic
+        comment: A white graphic on a transparent background (PNG), shown as supplied.
+      graphic_alt:
+        type: text
+        label: Graphic description
+        comment: Leave empty when the graphic only decorates.
+      graphic_height:
+        type: range
+        label: Graphic height (pixels)
+        options: { min: 24, max: 180, step: 1 }
+      link_label:
+        type: text
+        label: Link text
+  products:
+    path: content/pages
+    name: Product pages
+    description: The text and main photo of each product page. Spec-sheet pages take their key points and photos from the spec sheet.
+    glob: ["**/*.json"]
+    url: "/[slug].html"
+    icon: lightbulb
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors: [visual, data]
+    _inputs:
+      sections:
+        type: array
+        label: Sections
+        comment: The middle of the page, top to bottom. Drag to reorder, add a text or photo block, or set a section to Hidden. The headline at the top and the specifications, documents and Next steps at the bottom stay in place.
+        options:
+          structures: _structures.page_sections
+
+  # The site's approved fonts, colours and text sizes (Amy George and David, 2026-11-11). One change here changes every page
+  # and the Styles menu of every formatted text box; the build refuses a text colour that is too faint or a size under 12 px
+  # and lists it at the top of the Brand styles page (style-guide.html). Like every save, it waits for approval.
+  brand:
+    path: content/brand
+    name: Brand styles
+    description: The fonts, colours and text sizes approved for the site. See them all on the Brand styles page of the sandbox.
+    url: /style-guide.html
+    icon: palette
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: true
+    _enabled_editors: [data]
+    _inputs:
+      fonts:
+        type: object
+        label: Font
+      text_font:
+        type: text
+        label: Font
+        comment: The catalog font, used where the computer has it (Avenir is built into Macs and iPhones).
+      web_font:
+        type: text
+        label: Web font
+        comment: The Google Fonts family everyone else sees, spelled exactly as on fonts.google.com, for example Nunito Sans.
+      note:
+        type: textarea
+        label: Note for the Brand styles page
+      text_colors:
+        type: array
+        label: Text colours
+        comment: The colours text may use, each with a version for dark mode. The Styles menu offers every one; one marked as a brand's colour is also that brand's links and highlights.
+        options:
+          structures:
+            values:
+              - label: Text colour
+                value: { name: New colour, key: new-colour, light: "#1b1c20", dark: "#f1f2f5", use: "" }
+      name:
+        type: text
+        label: Name
+      key:
+        type: text
+        label: Short name
+        comment: Lower-case letters and dashes. Pages that use this colour or size refer to it by this name, so keep it once it is in use.
+      light:
+        type: color
+        label: On light pages
+      dark:
+        type: color
+        label: On dark pages
+      use:
+        type: text
+        label: Where it is used
+      accent_for:
+        type: select
+        label: Link and highlight colour for
+        options:
+          allow_empty: true
+          values: { led: Light Efficient Design pages, remphos: RemPhos pages, solera: Solera pages }
+      brand_colors:
+        type: array
+        label: Brand colours
+        comment: Brand strips, dots and bands. Not for text.
+        options: { disable_add: true, disable_remove: true, disable_reorder: true }
+      color:
+        type: color
+        label: Colour
+      text_sizes:
+        type: array
+        label: Text sizes
+        comment: The sizes in the Styles menu, besides Normal (16 px). Size is in rem; 1 = 16 px, 0.75 = 12 px, the smallest allowed.
+        options:
+          structures:
+            values:
+              - label: Text size
+                value: { name: New size, key: new-size, rem: 1.25 }
+      rem:
+        type: number
+        label: Size (rem)
+        options: { min: 0.75, max: 4, step: 0.0625 }
+      exceptions:
+        type: array
+        label: Approved exceptions
+        comment: One-off departures from these styles and who approved them. They are listed on the Brand styles page.
+        options:
+          structures:
+            values:
+              - label: Exception
+                value: { where: Page or block, what: What is different, why: "", approved_by: "", date: "" }
+      where:
+        type: text
+        label: Where
+      what:
+        type: text
+        label: What is different
+      why:
+        type: text
+        label: Why
+      approved_by:
+        type: text
+        label: Approved by
+      date:
+        type: date
+        label: Date
+
+# Spec-sheet pages (LBI G1, Shoe Box + Wall Pack, TAA troffers) show their spec-sheet points under the headline instead of
+# the Introduction, Key points and At a glance, so those boxes are hidden there to avoid edits that show nowhere.
+file_config:
+  - glob:
+      - "content/pages/**/lbi-g1.json"
+      - "content/pages/**/shoe-box-wall-pack.json"
+      - "content/pages/**/taa-troffers.json"
+    _inputs:
+      intro:
+        hidden: true
+      callouts:
+        hidden: true
+      features:
+        hidden: true
+
+# What a new home block starts as (the "Add" menu of the home page's Blocks). Keep in step with HOME_NEW in tools/build.py,
+# which draws the same blocks for the visual editor's preview.
+_structures:
+  home_blocks:
+    style: modal
+    values:
+      - label: Text
+        description: A heading, a sentence or two, and optional buttons.
+        value: { _type: text, background: plain, spacing: normal, show_on: all, title: A new heading, text: A sentence or two about it., align: left, buttons: [] }
+      - label: Photo
+        description: One photo, sized and placed as you like, with an optional caption and link.
+        value: { _type: image, background: plain, spacing: normal, show_on: all, image: { src: assets/img/office.jpg, alt: Describe the photo }, caption: "", link: "", image_size: 100, align: center, image_shape: "16:9", fit: cover, position: "", zoom: 100 }
+      - label: Photo and text
+        description: A photo beside a heading and text. Choose the side and the photo's width.
+        value: { _type: feature, background: plain, spacing: normal, show_on: all, eyebrow: "", title: A new heading, text: A sentence or two about it., show_lbi_list: false, buttons: [], image: { src: assets/img/office.jpg, alt: Describe the photo }, image_side: right, image_width: 52, image_shape: "4:3", fit: cover, position: "", zoom: 100 }
+      - label: Photo grid
+        description: Photo tiles of any width and height, like the one under the headline.
+        value: { _type: photo_grid, background: plain, spacing: normal, show_on: all, title: "", text: "", row_height: medium, tiles: [ { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 6, height: 2, fit: cover, position: "", zoom: 100 }, { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 6, height: 2, fit: cover, position: "", zoom: 100 } ] }
+      - label: Headline
+        description: A big headline with an introduction and buttons, like the top of the page.
+        value: { _type: hero, background: plain, spacing: normal, align: center, eyebrow: "", headline: A new headline, headline_tail: "", values: [], lede: "", buttons: [] }
+      - label: Brand cards
+        description: The Light Efficient Design, RemPhos and Solera cards.
+        value: { _type: brands, background: plain, spacing: normal, title: "Three brands, built for the job in front of you", text: "", photos: [] }
+      - label: What are you replacing?
+        description: The cards that send people to the right products.
+        value: { _type: finder, background: plain, spacing: normal, title: "What are you replacing?", text: "" }
+      - label: Eddy's next steps
+        description: Samples, rebates and the rep finder, with Eddy.
+        value: { _type: next_steps, background: plain, spacing: normal, title: "Samples, rebates and your local rep", text: "" }
+      - label: Resources
+        description: The catalog, documents and contact cards.
+        value: { _type: resources, background: grey, spacing: normal, title: For everyone on the project, text: "" }
+      - label: Rotating banner
+        description: Full-width 1440 x 550 banners that take turns, each with an optional link.
+        value: { _type: banner, background: plain, spacing: normal, show_on: all, heading: "", seconds: 6, slides: [ { image: assets/img/uploads/homepage-banner-1.jpg, alt: Describe the banner, link: "" } ] }
+      - label: Statement
+        description: A big centred heading, one line per entry.
+        value: { _type: statement, background: plain, spacing: normal, show_on: all, lines: [ "A NEW STATEMENT." ] }
+      - label: Brand columns
+        description: Logo, coloured lines, text, category buttons and an Explore link for each brand.
+        value: { _type: brand_columns, background: plain, spacing: normal, show_on: all, columns: [] }
+      - label: LBI list
+        description: A heading, text and button beside the LBI light bars.
+        value: { _type: lbi_list, background: plain, spacing: normal, show_on: all, lines: [ "A NEW HEADING." ], text: A sentence or two about it., buttons: [], items: [ { bar: g2, name: LBI G2, tagline: A short line, link: lbi-g2.html } ] }
+      - label: Button grid
+        description: A heading, a line of text and a grid of buttons, like What are you replacing?
+        value: { _type: replace_grid, background: plain, spacing: normal, show_on: all, title: A NEW HEADING, text: "", items: [ { label: BUTTON, link: products.html } ] }
+      - label: Divider line
+        value: { _type: divider, background: plain, spacing: normal, show_on: all }
+      - label: Blue cards
+        description: A heading and blue cards with a white graphic, like Samples, rebates + your local rep.
+        value: { _type: help_cards, background: plain, spacing: normal, show_on: all, title: A NEW HEADING, cards: [ { graphic: "", graphic_alt: "", graphic_height: 70, title: TITLE, text: A sentence or two., link_label: "LEARN MORE >", link: contact.html } ] }
+
+# What a new section on a product page starts as (the Sections list's "Add" menu). Keep in step with HOME_NEW and
+# page_new_blocks in tools/build.py. The "Page section" entries are the page's own sections; each one shows once.
+  page_sections:
+    style: modal
+    values:
+      - label: Text
+        description: A heading, a sentence or two, and optional buttons.
+        _inputs: *block_inputs
+        value: { _type: text, background: plain, spacing: tight, show_on: all, title: A new heading, text: A sentence or two about it., align: left, buttons: [] }
+      - label: Photo
+        description: One photo, sized and placed as you like, with an optional caption and link.
+        _inputs: *block_inputs
+        value: { _type: image, background: plain, spacing: tight, show_on: all, image: { src: assets/img/office.jpg, alt: Describe the photo }, caption: "", link: "", image_size: 100, align: center, image_shape: "16:9", fit: cover, position: "", zoom: 100 }
+      - label: Photo and text
+        description: A photo beside a heading and text. Choose the side and the photo's width.
+        _inputs: *block_inputs
+        value: { _type: feature, background: plain, spacing: tight, show_on: all, eyebrow: "", title: A new heading, text: A sentence or two about it., show_lbi_list: false, buttons: [], image: { src: assets/img/office.jpg, alt: Describe the photo }, image_side: right, image_width: 52, image_shape: "4:3", fit: cover, position: "", zoom: 100 }
+      - label: Photo grid
+        description: Photo tiles of any width and height.
+        _inputs: *block_inputs
+        value: { _type: photo_grid, background: plain, spacing: tight, show_on: all, title: "", text: "", row_height: medium, tiles: [ { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 6, height: 2, fit: cover, position: "", zoom: 100 }, { image: assets/img/office.jpg, alt: Describe the photo, caption: Caption, link: "", width: 6, height: 2, fit: cover, position: "", zoom: 100 } ] }
+      - label: "Page section: Video and installation photos"
+        description: The product video and photos from real jobs.
+        _inputs: *block_inputs
+        value: { _type: media, show_on: all }
+      - label: "Page section: Photos"
+        description: The slideshow, product cutouts and banners from the Photos list.
+        _inputs: *block_inputs
+        value: { _type: photos, show_on: all }
+      - label: "Page section: Key points"
+        description: The highlight boxes from the Key points list.
+        _inputs: *block_inputs
+        value: { _type: highlights, show_on: all }
+      - label: "Page section: Case studies"
+        _inputs: *block_inputs
+        value: { _type: case_studies, show_on: all }
+      - label: "Page section: At a glance"
+        description: The warranty, listings and feature tiles, or the spec-sheet logos and icons.
+        _inputs: *block_inputs
+        value: { _type: glance, show_on: all }
+      - label: "Page section: Eddy"
+        _inputs: *block_inputs
+        value: { _type: eddy, show_on: all }
+
+# Saves become one change each on the portal, described in a plain sentence by the person saving.
+commit_templates:
+  - label: Describe the change
+    template_string: "{message}"
+    _inputs:
+      message:
+        type: text
+        label: What did you change?
+        comment: One plain sentence for the change list on the admin portal, for example "Changed the LBI 65 headline".
+
+_inputs:
+  # photos: {src, alt} on the product pages and in home blocks, image on the home tiles
+  hero_image:
+    type: object
+    label: Main photo
+    comment: Shown whole, never cropped. Use a product photo on a plain background.
+  src:
+    type: image
+    label: Photo
+  image:
+    type: image
+    label: Photo
+  alt:
+    type: text
+    label: Photo description
+    comment: What the photo shows, for screen readers and search engines.
+  caption:
+    type: text
+    label: Caption
+  link:
+    type: text
+    label: Link
+    comment: The page the tile opens, for example lbi.html
+  position:
+    type: text
+    label: Photo focus
+    comment: Optional. Which part of the photo stays in view when the tile crops it, for example "50% 20%".
+  # product page photos, in page order (the home page has its own photo controls above)
+  photos:
+    type: array
+    label: Photos
+    comment: Every photo below the top of the page, in the order shown. Drag to reorder; the main photo is set above.
+    options:
+      structures:
+        values:
+          - label: Photo
+            value: { image: assets/img/office.jpg, alt: Describe the photo, caption: "", show_as: slideshow, fit: auto, size: auto, focus: "", zoom: 100, photo_width: 100, photo_align: center }
+  install_photos:
+    type: array
+    label: Installation photos
+    comment: Photos from real jobs, shown beside the video. Drag to reorder.
+    options:
+      structures:
+        values:
+          - label: Installation photo
+            value: { image: assets/img/office.jpg, alt: Describe the photo, caption: Where it is, focus: "", zoom: 100 }
+  sheet_slides:
+    type: array
+    label: Top slideshow
+    comment: Spec-sheet pages. Product-only shots first, then photos in use. Drag to reorder.
+    options:
+      structures:
+        values:
+          - label: Slide
+            value: { image: assets/img/office.jpg, alt: Describe the photo, caption: "", fit: whole, focus: "", zoom: 100 }
+  show_as:
+    type: select
+    label: Show as
+    options:
+      values: { slideshow: In the slideshow, cutout: Product cutout (on white), diagram: Diagram, banner: Wide banner }
+  fit:
+    type: select
+    label: Fit
+    options:
+      values: { auto: Automatic, whole: Show the whole photo, fill: Fill the frame (may crop the edges) }
+  size:
+    type: select
+    label: Size
+    comment: For product cutouts.
+    options:
+      values: { auto: Automatic, normal: Normal, wide: Wide (two columns) }
+  focus:
+    type: text
+    label: Photo focus
+    comment: Optional. Which part of the photo stays in view when it is cropped or zoomed, for example "50% 30%" (across, down).
+  zoom:
+    type: range
+    label: Zoom (%)
+    comment: 100 shows the photo as framed; slide right to zoom in and crop. Main product photos always show the whole product.
+    options: { min: 100, max: 300, step: 10 }
+  photo_width:
+    type: range
+    label: Width (% of the page)
+    comment: For diagrams and wide banners. On phones they always fill the width.
+    options: { min: 20, max: 100, step: 5 }
+  photo_align:
+    type: select
+    label: Alignment
+    comment: For diagrams and wide banners narrower than the page.
+    options:
+      values: { left: Left, center: Centre, right: Right }
+  kind:
+    hidden: true
+  # product page text
+  title:
+    type: text
+    label: Page title
+  subtitle:
+    type: text
+  headline:
+    type: text
+  intro:
+    type: html
+    label: Introduction
+    comment: Bold, italic, links, lists, alignment and the house styles (Styles menu). Fonts and colours follow the site.
+    options: *rich
+  callouts:
+    type: array
+    label: Key points
+  sheet_points:
+    type: array
+    label: Spec-sheet points
+    comment: The bullet points under the headline, as on the spec sheet. Keep them to about five.
+  # spec-sheet pages: At a glance
+  sheet_marks:
+    type: array
+    label: Listing and warranty logos
+  logo:
+    type: image
+    label: Logo
+    comment: A black logo on a transparent background (PNG). The site colours it to match the page.
+  height:
+    type: number
+    label: Logo height (pixels)
+  sheet_flex:
+    type: object
+    label: SuperFlex or FlexColor panel
+  words:
+    hidden: true
+  sheet_icons:
+    type: array
+    label: Icon row
+  icon:
+    type: image
+    label: Icon
+    comment: A black icon on a transparent background (PNG). The site colours it to match the page.
+  value:
+    type: text
+    label: Bold line
+    comment: Optional. Shown in bold under the icon, for example 50,000 hrs.
+  scale:
+    hidden: true
+  sheet_plug:
+    type: text
+    label: Sensor line
+    comment: The line beside the Simple and Network lighting controls links.
+  features:
+    type: array
+    label: At a glance
+  label:
+    type: text
+    label: Feature
+  note:
+    type: text
+  tables:
+    type: array
+    label: Part-number and spec tables
+    comment: Rows are one line each, with the cells separated by " | ".
+  footnotes:
+    type: array
+  pdfPage:
+    hidden: true
+  catalogPage:
+    hidden: true
+  source:
+    hidden: true

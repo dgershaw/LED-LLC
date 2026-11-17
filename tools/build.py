@@ -33,6 +33,7 @@ CATALOG_PDF = "assets/docs/LED-2026-Full-Product-Catalog.pdf"
 # ---------------------------------------------------------------- site identity (SEO)
 # The one place to change the public domain: canonical URLs, Open Graph, the sitemap and llms.txt all use it.
 SITE_URL = "https://www.led-llc.com/"
+TEST_URL = (os.environ.get("SITE_BASE_URL") or "https://dgershaw.github.io/LED-LLC/").rstrip("/") + "/"   # see make_test_copy
 SITE_NAME = "Light Efficient Design"
 LASTMOD = os.environ.get("SITE_LASTMOD") or date.today().isoformat()  # sitemap <lastmod>; override to pin a date
 THEME_COLORS = {"led": "#799b3e", "remphos": "#004e99", "solera": "#f9c606"}  # the brand tokens in site.css
@@ -58,6 +59,7 @@ SHARE = {
     "resources.html": ("docs", ["assets/img/docs/RP-LBI-Spec_Sheet-p1.jpg", "assets/img/docs/RP-TV-TF-G1-TAA-Spec_Sheet-p1.jpg",
                                 "assets/img/docs/LED-8091_Spec_Sheet-p1.jpg"], "RemPhos and Light Efficient Design spec sheets"),
     "lbi.html": ("pair", ["assets/img/product/g2-hero.jpg", "assets/img/product/palette-hero-rainbow.jpg"], "RemPhos LBI white and color linkable light bars"),
+    "lbi-project-builder.html": ("pair", ["assets/img/product/g2-hero.jpg", "assets/img/cat/lbi-family/accessories-lbi-g2.jpg"], "RemPhos LBI light bar with its linking cables, connectors, power cables and brackets"),
     "light-efficient-design.html": ("brand", ["assets/img/brand/led-logo-h.png", "assets/img/cat/bollard-post-top/hero.jpg"], "Light Efficient Design LED retrofit lamps"),
     "remphos.html": ("brand", ["assets/img/brand/remphos-logo-white.png#004e99", "assets/img/product/g2-hero.jpg"], "RemPhos LBI linkable light bar"),
     "solera.html": ("brand", ["assets/img/brand/solera-logo.png", "assets/img/cover/p01-b1.jpg"], "Solera i-Series solar area light"),
@@ -70,7 +72,7 @@ SEO_TITLES = {
     "pl-pll": "PL + PLL LED Retrofit Lamps", "linear-t5-t8": "Linear T5 + T8 LED Retrofit Lamps", "work-lights": "Temporary LED Work Site Lights",
     "lighting-controls": "Simple + Networked Lighting Controls", "lbi-family": "LBI Family Overview + Accessories",
     "lbi-g2": "LBI G2 Linkable LED Light Bars", "lbi-g1": "LBI G1 Economical Linkable LED Light Bar", "lbi-65": "LBI 65 IP65 Linkable LED Light Bar", "lbi-max": "LBI MAX Linkable LED Strip Fixture",
-    "color-palette": "LBI Color Palette LED Light Bars", "livc": "LIVC Stairwell, Vanity + Wrap Fixtures", "wall-ceiling-fixtures": "Wall + Ceiling LED Fixtures",
+    "color-palette": "LBI Palette LED Light Bars", "livc": "LIVC Stairwell, Vanity + Wrap Fixtures", "wall-ceiling-fixtures": "Wall + Ceiling LED Fixtures",
     "wall-ceiling-retrofit-kits": "Wall + Ceiling LED Retrofit Kits", "type-c-kits-lbe": "Type C Kits + Linear Barkits (LBE)",
     "taa-type-c-kits-lbe": "TAA Type C Kits + Linear Barkits", "troffer-retrofit-kits-fixtures": "Troffer LED Retrofit Kits + Fixtures",
     "taa-troffers": "TAA Troffer LED Retrofit Kits + Fixtures", "i-series": "Solera i-Series Overview: Modular Solar Lighting", "solar-area-lights": "Solar Area Lights",
@@ -103,7 +105,7 @@ NAV_TITLES = {
     "bollard-post-top": "Bollard + Post Top", "shoe-box-wall-pack": "Shoe Box + Wall Pack", "high-bay-low-bay": "High Bay + Low Bay",
     "hazardous-location": "Hazardous Location", "pl-pll": "PL + PLL", "linear-t5-t8": "Linear T5 + T8", "work-lights": "Work Lights",
     "lighting-controls": "Lighting Controls", "lbi-family": "LBI Family Overview", "lbi-g2": "LBI G2", "lbi-g1": "LBI G1", "lbi-65": "LBI 65",
-    "lbi-max": "LBI MAX", "color-palette": "LBI Color Palette", "livc": "LIVC Stairwell, Vanity + Wrap", "wall-ceiling-fixtures": "Wall + Ceiling Fixtures",
+    "lbi-max": "LBI MAX", "color-palette": "LBI Palette", "livc": "LIVC Stairwell, Vanity + Wrap", "wall-ceiling-fixtures": "Wall + Ceiling Fixtures",
     "wall-ceiling-retrofit-kits": "Wall + Ceiling Retrofit Kits", "type-c-kits-lbe": "Type C Kits + Linear Barkits",
     "taa-type-c-kits-lbe": "TAA Type C Kits + Barkits", "troffer-retrofit-kits-fixtures": "Troffer Kits + Fixtures",
     "taa-troffers": "TAA Troffer Kits + Fixtures", "i-series": "Solera i-Series Overview", "solar-area-lights": "Area Lights",
@@ -118,7 +120,7 @@ PRODUCT_MENU = [
         ("HID replacement", ["shoe-box-wall-pack", "bollard-post-top", "high-bay-low-bay", "hazardous-location"]),
         ("Fluorescent replacement", ["pl-pll", "linear-t5-t8"])]),
     dict(key="indoor", name="Indoor Fixtures", blurb="Linkable light bars, color, stairwell and wraparound fixtures, troffers and work lights.", groups=[
-        ("Linkable light bars", ["lbi.html", "lbi-g1", "lbi-g2", "lbi-65", "lbi-max", "color-palette"]),
+        ("Linkable light bars", ["lbi.html", "lbi-project-builder.html", "lbi-g1", "lbi-g2", "lbi-65", "lbi-max", "color-palette"]),
         ("Fixtures", ["livc", "wall-ceiling-fixtures", "troffer-retrofit-kits-fixtures", "taa-troffers", "work-lights"])]),
     dict(key="kits", name="Retrofit Kits", blurb="Keep the housing, upgrade everything inside it.", groups=[
         ("", ["troffer-retrofit-kits-fixtures", "taa-troffers", "type-c-kits-lbe", "taa-type-c-kits-lbe", "wall-ceiling-retrofit-kits", "lbi-max"])]),
@@ -146,7 +148,7 @@ BRANDS = {
         points=[("1. Innovatively engineered", "LED fixtures and retrofits making installation as fast and easy as possible."),
                 ("2. Controllable and customizable", "Fixtures and retrofits that maximize the lighting experience for end users."),
                 ("3. The name", "Derived from the remote layer of phosphor that converts blue LED light to white.")],
-        groups=["Linkable Light Bars", "LBI Color Palette", "Lighting Controls", "Fixtures", "Retrofit Kits"]),
+        groups=["Linkable Light Bars", "LBI Palette", "Lighting Controls", "Fixtures", "Retrofit Kits"]),
     "solera": dict(
         key="solera", slug="solera", name="Solera", tagline="Solar lighting for any application",
         h1="Off-grid lighting with no trenching, no wiring and no energy bill.",
@@ -166,7 +168,7 @@ GROUP_BLURBS = {
     "Work Lights": "Temporary work-site lights and string lights with long cords and daisy-chaining for construction sites.",
     "Merchandising": "Gondolas, shippers and counter displays that put the lamp line on the distributor's floor.",
     "Linkable Light Bars": "The LBI family: 2, 3 and 4 ft linkable bars with the driver inside. Link up to 40 from one feed, then set wattage and color on site.",
-    "LBI Color Palette": "Precision wavelength bars and RGBWW full-color bars (red, green, blue, warm white and cool white) for grocery, hospitality and venues, with white light built in.",
+    "LBI Palette": "Precision wavelength bars and RGBWW full-color bars (red, green, blue, warm white and cool white) for grocery, hospitality and venues, with white light built in.",
     "Lighting Controls": "On-board switches, in-line sensors and the IR23 remote, or go wireless with Silvair Bluetooth mesh.",
     "Fixtures": "Stairwell, vanity and wraparound fixtures, drums and sconces that install in minutes.",
     "Retrofit Kits": "Wall, ceiling, troffer and linear kits that convert existing housings to LED, including TAA-compliant options.",
@@ -184,49 +186,195 @@ FINDER = [
     ("Strip or wrap fixtures", "LBI linkable bars and LBI MAX", "lbi.html"),
     ("Troffers", "Retrofit kits and new fixtures", "troffer-retrofit-kits-fixtures"),
     ("Dark parking lots and paths", "Solar area lights, no trenching", "solar-area-lights"),
-    ("Grocery, venues, facades", "LBI Color Palette light bars", "color-palette"),
+    ("Grocery, venues, facades", "LBI Palette light bars", "color-palette"),
     ("Stairwells, vanities, corridors", "LIVC fixtures that install in minutes", "livc"),
     ("Something else", "Search every part number and product name", "search"),
 ]
 
-# Home-page mosaic (David, 2026-10-08): the key products of the moment. Each tile links to its product, and each glow is
-# "x,y,w,h" as fractions of the image (w and h of its width), placed by site.js however the tile crops, plus an optional
-# " soft" for a wide, faint spill of light. Swap tiles here when new products launch. Captions stay short enough for a phone.
-MOSAIC = [  # key products of the moment; change freely. Each light is "x,y,w,h[,deg[,top]] [kind]", as fractions of the image
-    # (w and h of its width). kind: none = the lit surface (it glows and spills a halo), "soft" = a faint wide bloom,
-    # "beam" = a cone of light from x,y (h long, w wide at its far end, top = its width at the source as a share of w;
-    # deg 0 points down, positive turns it clockwise), "spark" = a small twinkle on a point source.
-    # A beam, bloom or spark breathes with the light listed before it.
-    dict(cls="m-a", file="cover/p01-b1.jpg", cap="Solera i-Series", alt="Solera i-Series solar area light", href="i-series.html",
-         glows=["0.16,0.4,0.22,0.05,22", "0.16,0.41,0.4,0.2,22 soft", "0.165,0.425,0.5,0.46,22,0.42 beam", "0.09,0.345,0.05,0.05 spark"]),
-    dict(cls="m-b", file="cover/p01-b8.jpg", cap="Retrofit lamps", alt="Light Efficient Design LED retrofit lamps", href="light-efficient-design.html",
-         glows=["0.215,0.44,0.12,0.3", "0.205,0.48,0.3,0.56 soft", "0.215,0.37,0.07,0.07 spark",
-                "0.515,0.38,0.3,0.26", "0.515,0.4,0.42,0.42 soft",
-                "0.35,0.51,0.07,0.33", "0.67,0.6,0.15,0.13", "0.67,0.6,0.24,0.24 soft", "0.773,0.56,0.05,0.5"]),
-    dict(cls="m-c", file="office.jpg", cap="LBI G2", alt="RemPhos LBI G2 light bars in an office", href="lbi.html#g2", pos="50% 20%",
-         glows=["0.27,0.114,0.26,0.045,39", "0.56,0.226,0.42,0.045", "0.837,0.114,0.24,0.045,-43", "0.556,0.306,0.24,0.034",
-                "0.556,0.34,0.22,0.03", "0.54,0.22,0.7,0.2 soft"]),
-    dict(cls="m-d", file="cover/p01-b4.jpg", cap="Retrofit kits", alt="RemPhos LED retrofit kits", href="wall-ceiling-retrofit-kits.html",
-         glows=["0.28,0.45,0.4,0.15", "0.27,0.38,0.56,0.36 soft", "0.79,0.485,0.38,0.06,14", "0.79,0.49,0.48,0.16,14 soft",
-                "0.1,0.87,0.18,0.12", "0.255,0.88,0.035,0.1"]),
-    dict(cls="m-e", file="cat/solar-bollard-post-tops/p33-b3.jpg", cap="Solar bollards", alt="Solera solar bollards and post tops along a path at night", href="solar-bollard-post-tops.html",
-         glows=["0.72,0.148,0.2,0.03", "0.72,0.152,0.52,0.372,0,0.38 beam", "0.72,0.2,0.34,0.14 soft",
-                "0.197,0.12,0.06,0.05", "0.197,0.14,0.2,0.16 soft", "0.197,0.15,0.17,0.3,0,0.2 beam", "0.197,0.115,0.05,0.05 spark",
-                "0.545,0.52,0.03,0.03", "0.6,0.57,0.025,0.025", "0.651,0.63,0.016,0.016", "0.668,0.65,0.012,0.012"]),
+def web_path(p):
+    """An image path as the pages link it: relative to the site root. CloudCannon saves uploads as /assets/img/uploads/...,
+    which would miss the sandbox's /sandbox/ prefix."""
+    return (p or "").strip().lstrip("/")
+
+# The home page is a stack of blocks (David, 2026-11-03: "give free control for the home page"): content/home/index.json
+# "blocks", which the team adds, removes, reorders and sizes in CloudCannon's visual editor. tools/templates/_home_blocks.html
+# draws each kind. HOME_BLOCKS holds every kind's settings and defaults; HOME_NEW is what a block starts as when added,
+# and must match _structures.home_blocks in cloudcannon.config.yml. On phones the blocks stack and grids fold to two columns.
+HOME_FILE = ROOT / "content" / "home" / "index.json"
+HOME = json.loads(HOME_FILE.read_text())
+HOME_BLOCKS = {
+    "hero": dict(align="center", eyebrow="", headline="", headline_tail="", values=[], lede="", buttons=[]),
+    "photo_grid": dict(title="", text="", row_height="medium", tiles=[]),
+    "brands": dict(title="", text="", photos=[]),
+    "feature": dict(eyebrow="", title="", text="", show_lbi_list=False, buttons=[], image=None, image_side="right", image_width=52,
+                    image_shape="4:3", fit="cover", position=""),
+    "image": dict(image=None, caption="", link="", image_size=100, align="center", image_shape="original", fit="cover", position=""),
+    "text": dict(eyebrow="", title="", text="", align="left", buttons=[]),
+    "finder": dict(title="", text=""),
+    "next_steps": dict(title="", text=""),
+    "resources": dict(title="", text=""),
+    # the 2026-11 home page design (Kcampbell): a rotating banner, a big statement, brand columns, the LBI list, the
+    # replacement grid, a divider and the blue help cards
+    "banner": dict(heading="", seconds=6, slides=[]),
+    "statement": dict(lines=[]),
+    "brand_columns": dict(columns=[]),
+    "lbi_list": dict(lines=[], text="", buttons=[], items=[]),
+    "replace_grid": dict(title="", text="", items=[]),
+    "divider": dict(),
+    "help_cards": dict(title="", cards=[]),
+}
+SHOW_ON = ("all", "laptop", "phone", "none")   # Show on: every screen, laptops and tablets only, phones only, hidden (David, 2026-11-11)
+HOME_IDS = {"hero": "h1", "brands": "brands-h", "feature": "lbi-h", "finder": "find-h", "next_steps": "next-h", "resources": "res-h",
+            "statement": "statement-h", "lbi_list": "lbi-h", "replace_grid": "find-h", "help_cards": "next-h"}
+LBI_BARS = ("g1", "g2", "65", "max", "palette", "palette-plus", "palette-dmx")   # the drawn light bars of the LBI list (home.css)
+PLACEHOLDER = "assets/img/office.jpg"
+HOME_NEW = [
+    dict(_type="text", title="A new heading", text="A sentence or two about it.", align="left", buttons=[]),
+    dict(_type="image", image=dict(src=PLACEHOLDER, alt="Describe the photo"), caption="", link="", image_size=100, align="center", image_shape="16:9", fit="cover", position="", zoom=100),
+    dict(_type="feature", eyebrow="", title="A new heading", text="A sentence or two about it.", show_lbi_list=False, buttons=[],
+         image=dict(src=PLACEHOLDER, alt="Describe the photo"), image_side="right", image_width=52, image_shape="4:3", fit="cover", position="", zoom=100),
+    dict(_type="photo_grid", title="", text="", row_height="medium", tiles=[
+        dict(image=PLACEHOLDER, alt="Describe the photo", caption="Caption", link="", width=6, height=2, fit="cover", position="", zoom=100),
+        dict(image=PLACEHOLDER, alt="Describe the photo", caption="Caption", link="", width=6, height=2, fit="cover", position="")]),
+    dict(_type="hero", align="center", eyebrow="", headline="A new headline", headline_tail="", values=[], lede="", buttons=[]),
+    dict(_type="brands", title="Three brands, built for the job in front of you", text="", photos=[]),
+    dict(_type="finder", title="What are you replacing?", text=""),
+    dict(_type="next_steps", title="Samples, rebates and your local rep", text=""),
+    dict(_type="resources", title="For everyone on the project", text=""),
+    dict(_type="banner", heading="", seconds=6, slides=[dict(image="assets/img/uploads/homepage-banner-1.jpg", alt="Describe the banner", link="")]),
+    dict(_type="statement", lines=["A NEW STATEMENT."]),
+    dict(_type="brand_columns", columns=[]),
+    dict(_type="lbi_list", lines=["A NEW HEADING."], text="A sentence or two about it.", buttons=[], items=[dict(bar="g2", name="LBI G2", tagline="A short line", link="lbi-g2.html")]),
+    dict(_type="replace_grid", title="A NEW HEADING", text="", items=[dict(label="BUTTON", link="products.html")]),
+    dict(_type="divider"),
+    dict(_type="help_cards", title="A NEW HEADING", cards=[dict(graphic="", graphic_alt="", title="TITLE", text="A sentence or two.", link_label="LEARN MORE >", link="contact.html")]),
 ]
 
+def clamp_int(v, lo, hi, default):
+    try:
+        return max(lo, min(hi, int(round(float(v)))))
+    except (TypeError, ValueError):
+        return default
 
-def mosaic_lights(glows):
-    """Template data for the mosaic lights: kind, coordinates and an animation offset shared with the light it belongs to."""
-    out, k = [], -1
-    for g in glows:
-        coords, _, kind = g.partition(" ")
-        if not kind:
-            k += 1
-        out.append(dict(kind=kind or "glow", g=coords, n=max(k, 0)))
-    for o in out:
-        o["delay"] = "%.1f" % ((o["n"] * 2.3 + (k + 1) * 0.7) % 6.2)
+def zoom_of(v):
+    """A photo's zoom as a factor: the editor's slider runs from 100 % (as framed) to 300 %."""
+    return clamp_int(v, 100, 300, 100) / 100
+
+def photo_style(focus="", zoom=1, contain=False):
+    """The style= of a photo: which part stays in view when it is cropped (focus), how far it is zoomed in, and whether it
+    is shown whole. Zoom uses the CSS scale property, so a hover effect's transform still works on top of it."""
+    focus = (focus or "").strip()
+    css = []
+    if contain:
+        css.append("object-fit:contain")
+    focus = focus if re.fullmatch(r"[\w%.\s-]{1,40}", focus) else ""
+    if focus:
+        css.append(f"object-position:{focus}")
+    if zoom and zoom != 1:
+        css += [f"scale:{zoom:g}", "transform-origin:" + (focus or "center")]
+    return Markup(f' style="{";".join(css)}"') if css else Markup("")
+
+def home_image(v):
+    """{src, alt} from the file, linked relative to the site root; empty when the file is missing."""
+    v = v if isinstance(v, dict) else {"src": v} if isinstance(v, str) else {}
+    src = web_path(v.get("src"))
+    return dict(src=src if src and (ROOT / src).is_file() else "", alt=(v.get("alt") or "").strip())
+
+def home_blocks(blocks, brand_pics=None, new=False):
+    """The home blocks with every setting filled in and kept in range, ready for _home_blocks.html."""
+    out, seen = [], set()
+    for n, raw in enumerate(blocks if isinstance(blocks, list) else []):
+        kind = raw.get("_type") if isinstance(raw, dict) else None
+        if kind not in HOME_BLOCKS:
+            continue
+        b = dict(HOME_BLOCKS[kind], background="plain", spacing="normal")
+        b.update({k: v for k, v in raw.items() if v is not None})
+        b["_type"], b["n"] = kind, n
+        b["background"] = b["background"] if b["background"] in ("plain", "grey") else "plain"
+        b["spacing"] = b["spacing"] if b["spacing"] in ("none", "tight", "normal", "large") else "normal"
+        b["show_on"] = b.get("show_on") if b.get("show_on") in SHOW_ON else "all"
+        b["buttons"] = [dict(label=x.get("label") or "Button", link=(x.get("link") or "#").strip(), style=x.get("style") or "ghost")
+                        for x in b.get("buttons") or [] if isinstance(x, dict)]
+        if kind == "hero":
+            b["values"] = [v for v in b["values"] if isinstance(v, str)]
+        if kind == "photo_grid":
+            tiles = []
+            for t in b["tiles"] if isinstance(b["tiles"], list) else []:
+                src = web_path(t.get("image")) if isinstance(t, dict) else ""
+                if src and (ROOT / src).is_file():
+                    tiles.append(dict(src=src, alt=t.get("alt") or "", caption=t.get("caption") or "", link=(t.get("link") or "").strip(),
+                                      width=clamp_int(t.get("width"), 1, 12, 4), height=clamp_int(t.get("height"), 1, 4, 1),
+                                      fit=t.get("fit") or "cover", position=(t.get("position") or "").strip(), zoom=zoom_of(t.get("zoom"))))
+            b["tiles"] = tiles
+            b["row_height"] = b["row_height"] if b["row_height"] in ("small", "medium", "large") else "medium"
+        if kind == "brands":
+            pics = {}
+            for i, x in enumerate(b["photos"] if isinstance(b["photos"], list) else []):
+                src = web_path(x.get("image")) if isinstance(x, dict) else ""
+                if src and (ROOT / src).is_file() and x.get("brand") in BRANDS:
+                    pics[x["brand"]] = dict(src=src, fit=x.get("fit") or "cover", position=(x.get("position") or "").strip(), i=i)
+            for k, (src, fit) in (brand_pics or {}).items():
+                pics.setdefault(k, dict(src=src, fit=fit or "cover", position="", i=None))
+            b["pics"] = pics
+        if kind in ("feature", "image"):
+            b["image"] = home_image(b["image"])
+            b["image_shape"] = b["image_shape"] if b["image_shape"] in ("original", "1:1", "4:3", "3:2", "16:9", "21:9", "3:4") else "4:3"
+            b["position"] = (b.get("position") or "").strip()
+            b["zoom"] = zoom_of(b.get("zoom"))
+        if kind == "feature":
+            b["image_width"] = clamp_int(b["image_width"], 25, 75, 52)
+            b["sized"] = b["image_width"] != 52
+            b["image_side"] = "left" if b["image_side"] == "left" else "right"
+        if kind == "image":
+            b["image_size"] = clamp_int(b["image_size"], 20, 100, 100)
+            b["align"] = b["align"] if b["align"] in ("left", "center", "right") else "center"
+        if kind == "text":
+            b["align"] = "center" if b["align"] == "center" else "left"
+        if kind == "banner":
+            b["seconds"] = clamp_int(b.get("seconds"), 3, 20, 6)
+            b["slides"] = [dict(src=web_path(x.get("image")), alt=(x.get("alt") or "").strip(), link=(x.get("link") or "").strip(), i=i)
+                           for i, x in enumerate(b["slides"] if isinstance(b["slides"], list) else [])
+                           if isinstance(x, dict) and web_path(x.get("image")) and (ROOT / web_path(x.get("image"))).is_file()]
+        if kind in ("statement", "lbi_list"):
+            b["lines"] = [x for x in b["lines"] if isinstance(x, str)] if isinstance(b["lines"], list) else []
+        if kind == "brand_columns":
+            cols = []
+            for x in b["columns"] if isinstance(b["columns"], list) else []:
+                if not isinstance(x, dict):
+                    continue
+                logo = web_path(x.get("logo"))
+                brand = next((v for v in (x.get("brand_color"), x.get("brand")) if v in ("led", "remphos", "solera")), "remphos")
+                cols.append(dict(brand=brand, logo=logo if logo and (ROOT / logo).is_file() else "", logo_alt=(x.get("logo_alt") or "").strip(),
+                                 logo_width=clamp_int(x.get("logo_width"), 60, 420, 200),
+                                 logo_baseline="%g" % (clamp_int(x.get("logo_baseline"), 50, 100, 100) / 100), link=(x.get("link") or "").strip(), text=x.get("text") or "",
+                                 chips=[dict(label=c.get("label") or "", link=(c.get("link") or "").strip()) for c in x.get("chips") or [] if isinstance(c, dict)],
+                                 more_label=x.get("more_label") or "", more_link=(x.get("more_link") or x.get("link") or "").strip()))
+            b["columns"] = cols
+        if kind == "lbi_list":
+            b["items"] = [dict(bar=x.get("bar") if x.get("bar") in LBI_BARS else "g2", name=x.get("name") or "", tagline=x.get("tagline") or "",
+                               link=(x.get("link") or "").strip()) for x in b["items"] if isinstance(x, dict)] if isinstance(b["items"], list) else []
+        if kind == "replace_grid":
+            b["items"] = [dict(label=x.get("label") or "", link=(x.get("link") or "").strip()) for x in b["items"] if isinstance(x, dict)] if isinstance(b["items"], list) else []
+        if kind == "help_cards":
+            cards = []
+            for x in b["cards"] if isinstance(b["cards"], list) else []:
+                if not isinstance(x, dict):
+                    continue
+                g = web_path(x.get("graphic"))
+                cards.append(dict(graphic=g if g and (ROOT / g).is_file() else "", graphic_alt=(x.get("graphic_alt") or "").strip(),
+                                  graphic_height=clamp_int(x.get("graphic_height"), 24, 180, 70), title=x.get("title") or "", text=x.get("text") or "",
+                                  link_label=x.get("link_label") or "", link=(x.get("link") or "").strip()))
+            b["cards"] = cards
+        # the first block of each kind keeps the ids the tour and links know; a new block (a template) gets none
+        b["hid"] = "" if new else (HOME_IDS[kind] if kind in HOME_IDS and kind not in seen else f"blk{n}-h")
+        b["anchor"] = "brands" if kind == "brands" and kind not in seen and not new else ""
+        seen.add(kind)
+        out.append(b)
     return out
+
+# The share card's mosaic: the first photo grid's first tiles
+MOSAIC = [dict(src=t["src"], pos=t["position"]) for t in next((b["tiles"] for b in home_blocks(HOME.get("blocks")) if b["_type"] == "photo_grid"), [])]
+
 
 # Pages the catalog prints without photography borrow a cover photo so the hero is never empty.
 HERO_FALLBACK = {}
@@ -239,7 +387,7 @@ HERO_OVERRIDE = {
     "lbi-g1": ("assets/img/product/g1-hero.jpg", "RemPhos LBI G1 linkable light bar with its end cap", "cover"),
     "lbi-65": ("assets/img/product/lbi65-hero.jpg", "RemPhos LBI 65 IP65 linkable light bar with its sealed end cap", "cover"),
     "lbi-max": ("assets/img/product/max-hero.jpg", "RemPhos LBI MAX high-lumen linkable strip", "cover"),
-    "color-palette": ("assets/img/product/palette-hero-blue.jpg", "RemPhos LBI Color Palette light bar glowing blue", "cover"),
+    "color-palette": ("assets/img/product/palette-hero-blue.jpg", "RemPhos LBI Palette light bar glowing blue", "cover"),
     "livc": ("assets/img/cat/livc/hero-product.jpg", "LIVC stairwell, vanity and wraparound fixture, with the rounded (LIVC-RD, 3.5 in) and square (LIVC-SQ, 3.0 in) endcap profiles", "cover"),
     "lighting-controls": ("assets/img/cat/lighting-controls/hero-products.jpg", "RemPhos in-line occupancy sensors for the LBI G2 and LBI 65, and the IR23 sensor remote", "cover"),
     "solar-bollard-post-tops": ("assets/img/cat/solar-bollard-post-tops/hero-spt.jpg", "SL-SPT solar post top lantern over a lit waterfront promenade", ""),
@@ -267,8 +415,8 @@ IES_DIR = ROOT / "assets" / "ies"
 ALSO_IN = {"lbi-max": ["Fixtures", "Retrofit Kits"]}
 # The three Eddy stickers: samples, rebates and the rep finder, on every product page and the LBI page.
 # Display names for the LBI documents on the Resources page (file names lose the "+" and the "Color")
-DOC_TITLES = {"spec-sheets/RP-LBI-Spec_Sheet.pdf": "LBI G1 Spec Sheet", "LBI-65-Palette-Red-Orange-Spec-Sheet.pdf": "LBI 65 Color Palette+ Red/Orange Spec Sheet",
-              "LBI-Palette-Sell-Sheet.pdf": "LBI Color Palette Sell Sheet"}
+DOC_TITLES = {"spec-sheets/RP-LBI-Spec_Sheet.pdf": "LBI G1 Spec Sheet", "LBI-65-Palette-Red-Orange-Spec-Sheet.pdf": "LBI 65 Palette+ Red/Orange Spec Sheet",
+              "LBI-Palette-Sell-Sheet.pdf": "LBI Palette Sell Sheet"}
 # The documents listed on the Resources page (by file name; the build finds each one's folder and newest version)
 RESOURCE_DOCS = ["LBI-65-Palette-Red-Orange-Spec-Sheet.pdf", "LBI-65-Spec-Sheet.pdf", "LBI-Family-Flyer.pdf", "LBI-G2-Spec-Sheet.pdf",
                  "LBI-MAX-Spec-Sheet.pdf", "LBI-Palette-Sell-Sheet.pdf", "LED-2026-Full-Product-Catalog.pdf"]
@@ -301,7 +449,9 @@ EDDY_HISTORY = [
 WIDE_COLS = {"features", "fixture", "mounting", "listings", "description", "notes", "item", "control", "products", "product", "accessory", "accessories",
              "replaces", "application", "applications", "configuration", "models", "model", "lamp", "lamps", "note", "option group", "options",
              "mounting height", "includes", "whats included", "benefit", "function", "comments", "remarks", "finish", "finish options", "kit", "kits", "choice"}
-UNIT_RE = re.compile(r"(?<![A-Z0-9\-])(\d+(?:\.\d+)?)\s+(FT|IN|LBS?|HRS?|YRS?)\b(?![\w-])")
+UNIT_RE = re.compile(r"(?<![A-Z0-9\-])(\d+(?:\.\d+)?)\s+(LBS?|HRS?|YRS?)\b(?![\w-])")
+# lengths in tables read in capitals, as on the spec sheets (2 FT, 19.3 IN x 1.2 IN)
+LEN_RE = re.compile(r"(?<![A-Za-z0-9\-])(\d+(?:\.\d+)?)\s+(ft|in)\b(?![\w-])", re.I)
 
 # Transcription notes the extractors left for the review pass. None of it is customer copy, so anything that matches stays out of the page.
 EDITORIAL_RE = re.compile(r"^(CHECK|UNREADABLE|LAYOUT NOTE|AS PRINTED|CATALOG AS PRINTED|Merged\b|Block also includes|Pages? \d|Page footer|Page note|Interpretation|Only the left|Only the two|Printed page|PDF page|This spread|Feature glyph|Product symbol key|Source note|Composite|Catalog section|Catalog page numbers?|Catalog table title|Catalog heading|Headline dash|Divider|No part numbers|No bold|No factory[- ]default|No -HV suffix|Listings? icons?|Listings? cell|Colou?r (dots?|key)|Footer key|Key labels|Size comparison height|Words in parentheses|The catalog)", re.I)
@@ -405,7 +555,7 @@ def feature_cols(n):
 # Product names that must not break across lines: "i-" alone at a line end, "LBI" without its model, a lone "+".
 NOWRAP = [(re.compile(r"\bi-Series\b"), "i-&#8288;Series"),  # word joiner: no break after the hyphen
           (re.compile(r"\bLBI (G2|65|MAX)\b"), r"LBI&nbsp;\1"),
-          (re.compile(r"\bPalette ([+X])(?![\w-])"), r"Palette\1"),   # Palette+ and PaletteX have no space (David, 2026-10-09)
+          (re.compile(r"\bPalette ([+X])(?![\w-])"), r"Palette\1"),   # Palette+ has no space (David, 2026-10-09)
           (re.compile(r"\b(built|TAA|all-in|plug-and|one|ballast)-(in|compliant|one|play|piece|bypass)\b"), r"\1-&#8288;\2"),
           (re.compile(r"(?<=\d) in(?=$| x |[,;)])"), "&nbsp;in"),  # dimensions: never leave "in" alone on a line
           (re.compile(r"\bp\. (\d+)(?:–(\d+))?"), lambda m: "p.&nbsp;" + m.group(1) + ("–&#8288;" + m.group(2) if m.group(2) else ""))]
@@ -429,12 +579,11 @@ COPY_FIXES = [
     ("Anchor-base and direct-burial poles from 10 to 30 ft", "Anchor-base and direct-burial poles from 8 to 30 ft"),
     ('<h1 id="h1">Pole Offering</h1>', '<h1 id="h1">Poles</h1>'),
     ("Gondolas + Shippers + Displays", "Gondolas, Shippers + Displays"),
-    # LBI naming rule: full product names, and RGBWW for the color-tunable bars
-    ("LBI&nbsp;65 Palette Red Orange Spec Sheet", "LBI&nbsp;65 Color Palette+ Red/Orange Spec Sheet"),
-    ("LBI 65 Palette Red Orange Spec Sheet", "LBI 65 Color Palette+ Red/Orange Spec Sheet"),
-    ("LBI&nbsp;65 Palette is also offered", "LBI&nbsp;65 Color Palette+ is also offered"),
-    ("LBI Palette Sell Sheet", "LBI Color Palette Sell Sheet"),
-    ("LBI&nbsp;G2 · LBI&nbsp;65 · Palette</td>", "LBI&nbsp;G2 · LBI&nbsp;65 · LBI Color Palette</td>"),
+    # LBI naming rule: full product names (LBI Palette, LBI Palette+, LBI Palette DMX since 2026-11-11), and RGBWW for the color-tunable bars
+    ("LBI&nbsp;65 Palette Red Orange Spec Sheet", "LBI&nbsp;65 Palette+ Red/Orange Spec Sheet"),
+    ("LBI 65 Palette Red Orange Spec Sheet", "LBI 65 Palette+ Red/Orange Spec Sheet"),
+    ("LBI&nbsp;65 Palette is also offered", "LBI&nbsp;65 Palette+ is also offered"),
+    ("LBI&nbsp;G2 · LBI&nbsp;65 · Palette</td>", "LBI&nbsp;G2 · LBI&nbsp;65 · LBI Palette</td>"),
     ("limitless RGB color mixing", "limitless RGBWW color mixing"), ("Limitless RGB Color Mixing", "Limitless RGBWW Color Mixing"),
     (">RGB color mixing and ", ">RGBWW color mixing and "), ("FlexColor: RGB color mixing", "FlexColor: RGBWW color mixing"),
     ("white presets, full RGB color,", "white presets, full RGBWW color,"),
@@ -483,7 +632,7 @@ def fix_copy(html):
     for rx, rep in COPY_RX:
         html = rx.sub(rep, html)
     # catalog headings are set in capitals, but the i in i-Series stays small
-    html = re.sub(r'alt="([^"]+)"', lambda m: 'alt="%s"' % clean_alt(m.group(1)), html)
+    html = re.sub(r'(?<![\w-])alt="([^"]+)"', lambda m: 'alt="%s"' % clean_alt(m.group(1)), html)   # not data-prop-alt="alt", the editor's binding
     html = re.sub(r"(<h1[^>]*>)i-&#8288;Series", r'\1<span class="nocap">i</span>-&#8288;Series', html)
     return html
 
@@ -543,11 +692,11 @@ def table_prep(t):
     cols = [cols[i] for i in keep]
     rows = [[r[i] for i in keep] for r in rows]
     t["pn_col"] = next((i for i, c in enumerate(cols) if "part" in c.lower()), 0 if cols and rows and is_pn(rows[0][0]) else None)
-    # units the catalog sets in capitals (8 FT, 3.0 IN) read as text here; part numbers are never touched
+    # weights and hours the catalog sets in capitals (12 LBS) read as text here, lengths stay in capitals; part numbers are never touched
     for r in rows:
         for i, c in enumerate(r):
             if i != t["pn_col"] and not isinstance(c, Markup):
-                r[i] = UNIT_RE.sub(lambda m: f"{m.group(1)} {m.group(2).lower()}", c)
+                r[i] = LEN_RE.sub(lambda m: f"{m.group(1)} {m.group(2).upper()}", UNIT_RE.sub(lambda m: f"{m.group(1)} {m.group(2).lower()}", c))
     t["columns"], t["rows"] = cols, rows
     norm = lambda c: re.sub(r"[^a-z ]", "", c.lower().replace("(s)", "s")).strip()
     t["wide"] = [norm(c) in WIDE_COLS or norm(c).rstrip("s") in WIDE_COLS for c in cols]
@@ -569,6 +718,248 @@ def bold(s):
 
 def strip_bold(s):
     return re.sub(r"\*\*(.+?)\*\*", r"\1", "" if s is None else str(s))
+
+# ---------- Formatted text (David, 2026-11-11: "Ability to format text") ----------
+# Text boxes edited in CloudCannon's rich-text toolbar (and the Introduction in Pages CMS) are saved as a little HTML: bold,
+# italic, underline, links, lists, left/centre/right alignment and the house styles in assets/css/editor.css. Fonts,
+# colours and sizes stay the site's own, so a page can never drop below the contrast and 12 px rules. rich() keeps only that
+# much HTML and drops everything else (pasted fonts, colours, scripts), leaving the words. Plain text from before still works.
+# ---------- Brand styles (Amy George and David, 2026-11-11) ----------
+# content/brand/styles.json is the one place the site's approved fonts, text colours, brand colours and text sizes live.
+# The team edits it in CloudCannon ("Brand styles"); a change goes to the sandbox and waits for approval like any other.
+# The build turns it into assets/css/brand.css (the site's colours and fonts), assets/css/editor.css (the Styles menu of
+# every formatted text box) and style-guide.html (the page that shows all of it). Claude follows the same file.
+# A text colour below 4.5:1 contrast on the page (light or dark), or a size under 12 px, is refused and reported.
+BRAND_FILE = ROOT / "content" / "brand" / "styles.json"
+BRAND_DEFAULT = {
+    "fonts": {"text_font": "Avenir", "web_font": "Nunito Sans"},
+    "text_colors": [
+        dict(name="Ink", key="ink", light="#1b1c20", dark="#f1f2f5"),
+        dict(name="Grey", key="grey", light="#5b5f6a", dark="#aeb3bd"),
+        dict(name="RemPhos blue", key="remphos-blue", light="#1d5bc4", dark="#5c9bff", accent_for="remphos"),
+        dict(name="Light Efficient Design green", key="led-green", light="#5d7d28", dark="#a3c75c", accent_for="led"),
+        dict(name="Solera gold", key="solera-gold", light="#7d5e00", dark="#f9c606", accent_for="solera")],
+    "brand_colors": [dict(name="Light Efficient Design green", key="led", color="#799b3e"), dict(name="RemPhos blue", key="remphos", color="#004e99"),
+                     dict(name="Solera yellow", key="solera", color="#f9c606")],
+    "text_sizes": [dict(name="Small", key="small", rem=0.875), dict(name="Large", key="large", rem=1.1875),
+                   dict(name="Extra large", key="xlarge", rem=1.5), dict(name="Headline", key="headline", rem=2)],
+    "exceptions": [],
+}
+PAGE_LIGHT, PAGE_DARK = ("#ffffff", "#fbfbfd"), ("#0c0d11", "#15171d")   # the page and card backgrounds a text colour sits on
+
+def _lum(hexc):
+    h = hexc.lstrip("#")
+    r, g, b = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+    f = lambda c: c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b)
+
+def contrast(a, b):
+    la, lb = sorted((_lum(a), _lum(b)), reverse=True)
+    return (la + 0.05) / (lb + 0.05)
+
+def _hex(v):
+    v = (v or "").strip()
+    if re.fullmatch(r"#?[0-9a-fA-F]{3}", v):
+        v = "#" + "".join(c * 2 for c in v.lstrip("#"))
+    v = v if v.startswith("#") else "#" + v
+    return v.lower() if re.fullmatch(r"#[0-9a-fA-F]{6}", v) else ""
+
+def _slug(v):
+    return re.sub(r"[^a-z0-9]+", "-", (v or "").lower()).strip("-")
+
+def load_brand():
+    """The brand styles file, checked: colours as #rrggbb with enough contrast, sizes of 12 px or more, keys usable as class
+    names. Anything that fails is left out (or falls back to the approved default) and listed in BRAND_PROBLEMS."""
+    raw = json.loads(BRAND_FILE.read_text()) if BRAND_FILE.is_file() else {}
+    out, problems = {}, []
+    f = dict(BRAND_DEFAULT["fonts"], **{k: v for k, v in (raw.get("fonts") or {}).items() if isinstance(v, str) and v.strip()})
+    for k in ("text_font", "web_font"):
+        if not re.fullmatch(r"[A-Za-z0-9 ]{2,40}", f[k]):
+            problems.append(f"Font name “{f[k]}” is not a plain font name, so {BRAND_DEFAULT['fonts'][k]} is used.")
+            f[k] = BRAND_DEFAULT["fonts"][k]
+    out["fonts"] = f
+    colors, seen = [], set()
+    for x in raw.get("text_colors") or BRAND_DEFAULT["text_colors"]:
+        if not isinstance(x, dict):
+            continue
+        key, light, dark = _slug(x.get("key") or x.get("name")), _hex(x.get("light")), _hex(x.get("dark")) or _hex(x.get("light"))
+        name = (x.get("name") or key).strip()
+        if not key or key in seen or not light:
+            problems.append(f"Text colour “{name}” needs a name and a colour like #1d5bc4, so it is not used.")
+            continue
+        worst_l, worst_d = min(contrast(light, b) for b in PAGE_LIGHT), min(contrast(dark, b) for b in PAGE_DARK)
+        c = dict(x, key=key, name=name, light=light, dark=dark, ratio_light=round(worst_l, 1), ratio_dark=round(worst_d, 1))
+        if worst_l < 4.5 or worst_d < 4.5:
+            c["refused"] = True
+            problems.append(f"Text colour “{name}” is too faint to read ({worst_l:.1f}:1 in light mode, {worst_d:.1f}:1 in dark; 4.5:1 is the minimum), so it is not used.")
+        seen.add(key)
+        colors.append(c)
+    for d in BRAND_DEFAULT["text_colors"][:2]:   # Ink and Grey are the site's text: never without them
+        if not any(c["key"] == d["key"] and not c.get("refused") for c in colors):
+            colors = [c for c in colors if c["key"] != d["key"]] + [dict(d, ratio_light=round(min(contrast(d["light"], b) for b in PAGE_LIGHT), 1),
+                                                                         ratio_dark=round(min(contrast(d["dark"], b) for b in PAGE_DARK), 1))]
+    out["text_colors"] = colors
+    out["brand_colors"] = [dict(x, key=_slug(x.get("key")), color=_hex(x.get("color"))) for x in raw.get("brand_colors") or BRAND_DEFAULT["brand_colors"]
+                           if isinstance(x, dict) and _slug(x.get("key")) in ("led", "remphos", "solera") and _hex(x.get("color"))]
+    sizes = []
+    for x in raw.get("text_sizes") or BRAND_DEFAULT["text_sizes"]:
+        if not isinstance(x, dict):
+            continue
+        key = _slug(x.get("key") or x.get("name"))
+        try:
+            rem = float(x.get("rem"))
+        except (TypeError, ValueError):
+            rem = 0
+        if not key or rem * 16 < 12 or rem > 4:
+            problems.append(f"Text size “{x.get('name') or key}” must be between 12 px (0.75) and 64 px (4), so it is not used.")
+            continue
+        sizes.append(dict(x, key=key, name=(x.get("name") or key).strip(), rem=rem))
+    out["text_sizes"] = sizes
+    out["exceptions"] = [x for x in raw.get("exceptions") or [] if isinstance(x, dict)]
+    out["problems"] = problems
+    return out
+
+BRAND = load_brand()
+BRAND_PROBLEMS = BRAND["problems"]
+TEXT_COLORS = [c for c in BRAND["text_colors"] if not c.get("refused")]
+# the classes a formatted text box may carry (rich() drops the rest): alignment, the fixed house styles, and one per
+# approved text colour (c-<key>) and text size (size-<key>)
+RICH_STYLES = {"p": {"lead-large", "small-print", "note-box", "eyebrow-line", "ta-left", "ta-center", "ta-right"} | {f"size-{x['key']}" for x in BRAND["text_sizes"]},
+               "span": {"hl", "small-print", "light", "heavy"} | {f"c-{c['key']}" for c in TEXT_COLORS} | {f"size-{x['key']}" for x in BRAND["text_sizes"]}}
+
+def brand_css():
+    """assets/css/brand.css: the approved colours and fonts as the site's variables, and the classes of the Styles menu."""
+    B = BRAND
+    fam = lambda: f'"{B["fonts"]["text_font"]}", "Avenir Next", "{B["fonts"]["web_font"]}", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+    tc = {c["key"]: c for c in TEXT_COLORS}
+    acc = {c["accent_for"]: c for c in TEXT_COLORS if c.get("accent_for") in ("led", "remphos", "solera")}
+    def vars_for(mode):
+        v = [f"--c-{k}: {c[mode]};" for k, c in tc.items()]
+        if "ink" in tc: v.append(f"--ink: {tc['ink'][mode]};")
+        if "grey" in tc: v.append(f"--muted: {tc['grey'][mode]};")
+        if "remphos" in acc: v.append(f"--accent: {acc['remphos'][mode]};")
+        return " ".join(v)
+    L = ["/* Generated by tools/build.py from content/brand/styles.json (the Brand styles in CloudCannon). Do not edit by hand. */",
+         ":root { " + vars_for("light") + " " + " ".join(f"--{b['key']}: {b['color']};" for b in B["brand_colors"])
+         + f" --font-ui: {fam()}; --font-display: {fam()}; }}",
+         '@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { ' + vars_for("dark") + " } }",
+         ':root[data-theme="dark"] { ' + vars_for("dark") + " }"]
+    for brand in ("led", "solera"):   # RemPhos is the default accent above
+        if brand in acc:
+            c = acc[brand]
+            L += [f'body[data-brand="{brand}"] {{ --accent: {c["light"]}; }}',
+                  f'@media (prefers-color-scheme: dark) {{ :root:not([data-theme="light"]) body[data-brand="{brand}"] {{ --accent: {c["dark"]}; }} }}',
+                  f':root[data-theme="dark"] body[data-brand="{brand}"] {{ --accent: {c["dark"]}; }}']
+    L += [f".rt .c-{k} {{ color: var(--c-{k}); }}" for k in tc]
+    L += [f".rt .size-{x['key']} {{ font-size: {x['rem']:g}rem; line-height: {1.2 if x['rem'] >= 1.5 else 1.45}; }}" for x in B["text_sizes"]]
+    return "\n".join(L) + "\n"
+
+def editor_css():
+    """assets/css/editor.css: what CloudCannon lists in the Styles menu of a formatted text box (every element.class rule)."""
+    L = ["/* Generated by tools/build.py from content/brand/styles.json. CloudCannon lists each element.class rule in the Styles menu. */",
+         "p.lead-large { font-size: 1.5rem; line-height: 1.35; font-weight: 500; }",
+         "p.note-box { padding: 14px 18px; border-left: 4px solid #1d5bc4; background: #f2f3f7; }",
+         "p.eyebrow-line { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }",
+         "p.small-print { font-size: 0.875rem; color: #5b5f6a; }",
+         "span.hl { color: #1d5bc4; font-weight: 700; }",
+         "span.small-print { font-size: 0.875rem; color: #5b5f6a; }",
+         "span.light { font-weight: 300; }",
+         "span.heavy { font-weight: 900; }"]
+    L += [f"span.c-{c['key']} {{ color: {c['light']}; }}" for c in TEXT_COLORS]
+    L += [f"{t}.size-{x['key']} {{ font-size: {x['rem']:g}rem; }}" for x in BRAND["text_sizes"] for t in ("p", "span")]
+    L += ["p.ta-left { text-align: left; }", "p.ta-center { text-align: center; }", "p.ta-right { text-align: right; }"]
+    return "\n".join(L) + "\n"
+
+def web_font_url():
+    w = BRAND["fonts"]["web_font"]
+    if w == "Nunito Sans":
+        return "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300..900&display=swap"
+    return f"https://fonts.googleapis.com/css2?family={w.replace(' ', '+')}:wght@300;400;500;600;700;800;900&display=swap"
+RICH_TAGS = {"p", "br", "strong", "b", "em", "i", "u", "a", "ul", "ol", "li", "span"}
+RICH_VOID = {"br"}
+
+from html.parser import HTMLParser as _HTMLParser
+
+class _Rich(_HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.out, self.stack, self.skip = [], [], 0
+    def handle_starttag(self, tag, attrs):
+        if tag in ("script", "style", "iframe", "object", "template"):
+            self.skip += 1
+        if tag in ("div", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote"):
+            tag = "p"   # headings and boxes pasted in become paragraphs: the block's own heading is the heading
+        if tag in ("p", "li", "ul", "ol") and self.stack and self.stack[-1] in ("p", "li") and not (tag in ("ul", "ol") and self.stack[-1] == "li"):
+            self.handle_endtag(self.stack[-1])   # an unclosed paragraph or list item ends where the next one starts
+        if tag not in RICH_TAGS:
+            self.stack.append(None)
+            return
+        a = dict(attrs)
+        keep = []
+        cls = [c for c in (a.get("class") or "").split() if c in RICH_STYLES.get(tag, ())]
+        m = re.search(r"text-align\s*:\s*(left|center|right)", a.get("style") or "")
+        if m and tag == "p":
+            cls.append("ta-" + m.group(1))
+        if cls:
+            keep.append(f' class="{" ".join(dict.fromkeys(cls))}"')
+        if tag == "a":
+            href = (a.get("href") or "").strip()
+            if re.match(r"(?i)^(javascript|data|vbscript):", href) or not href:
+                self.stack.append(None)
+                return
+            keep.append(f' href="{H.escape(href)}"')
+            if re.match(r"(?i)^https?://", href) and "led-llc.com" not in href and "dgershaw.github.io" not in href and ".pages.dev" not in href:
+                keep.append(' target="_blank" rel="noopener"')
+        self.out.append(f"<{tag}{''.join(keep)}>")
+        if tag not in RICH_VOID:
+            self.stack.append(tag)
+    def handle_endtag(self, tag):
+        if tag in ("script", "style", "iframe", "object", "template"):
+            self.skip = max(0, self.skip - 1)
+        if tag in ("div", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote"):
+            tag = "p"
+        if tag in RICH_VOID or not self.stack:
+            return
+        # close up to the matching open tag, so stray end tags cannot break the page
+        if tag in self.stack:
+            while self.stack:
+                t = self.stack.pop()
+                if t:
+                    self.out.append(f"</{t}>")
+                if t == tag:
+                    break
+    def handle_data(self, data):
+        if not self.skip:
+            self.out.append(str(escape(data)))
+    def close(self):
+        super().close()
+        while self.stack:
+            t = self.stack.pop()
+            if t:
+                self.out.append(f"</{t}>")
+        return "".join(self.out)
+
+def rich(s):
+    """A formatted text box as safe HTML in paragraphs. Plain text (no tags) keeps its line breaks: a blank line starts a paragraph."""
+    s = "" if s is None else str(s)
+    if not s.strip():
+        return Markup("")
+    if not re.search(r"<\s*/?\s*[a-zA-Z]", s):
+        paras = [p.strip() for p in re.split(r"\n\s*\n", s) if p.strip()]
+        return Markup("".join("<p>" + re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", str(escape(p))).replace("\n", "<br>") + "</p>" for p in paras))
+    s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
+    p = _Rich()
+    p.feed(s)
+    html = p.close()
+    html = re.sub(r"<p>\s*</p>|<p class=\"[^\"]*\">\s*</p>", "", html)
+    if not re.match(r"\s*<(p|ul|ol)\b", html):   # loose words before the first paragraph
+        html = "<p>" + html + "</p>" if not re.search(r"<(p|ul|ol)\b", html) else html
+    return Markup(html)
+
+def plain_words(s):
+    """The words of a formatted text box, for share descriptions, search and the plain-text catalog."""
+    s = re.sub(r"<\s*(br|/p|/li)\s*/?>", " ", "" if s is None else str(s))
+    return re.sub(r"\s+", " ", H.unescape(re.sub(r"<[^>]+>", "", strip_bold(s)))).strip()
 
 def short_caption(im):
     if im.get("caption"):
@@ -931,7 +1322,7 @@ def share_card(out, image):
     W, H = 1200, 630
     kind, srcs, _ = SHARE.get(out, ("single", [image], ""))
     if kind == "mosaic":
-        srcs = [f"assets/img/{m['file']}" for m in MOSAIC[:4]]
+        srcs = [m["src"] for m in MOSAIC[:4]]
     files = [ROOT / x.partition("#")[0] for x in srcs]
     if not srcs or not all(f.is_file() for f in files):
         return None
@@ -947,7 +1338,7 @@ def share_card(out, image):
     elif kind == "mosaic":
         g, tw, th = 8, (W - 8) // 2, (H - 8) // 2
         for i, im in enumerate(ims):
-            pos = MOSAIC[i].get("pos", "50% 50%").replace("%", "").split()
+            pos = (MOSAIC[i]["pos"] or "50% 50%").replace("%", "").split()
             card.paste(_cover(im, tw, th, (float(pos[0]) / 100, float(pos[1]) / 100)), ((tw + g) * (i % 2), (th + g) * (i // 2)))
     elif kind == "pair":
         for i, im in enumerate(ims):
@@ -1028,7 +1419,12 @@ def apply_page_file(slug, d):
     for k in PAGE_KEYS:
         d[k] = p.get(k, "" if k in ("title", "subtitle", "headline", "intro") else [])
     d["title"] = d["title"] or slug.replace("-", " ").title()
-    d["features"] = [dict(label=x.get("label", ""), note=x.get("note", "")) for x in d["features"] if isinstance(x, dict) and x.get("label")]
+    d["hero_image"] = p.get("hero_image") if isinstance(p.get("hero_image"), dict) else None
+    d["sheet_points"] = [x for x in p.get("sheet_points") or [] if isinstance(x, str)]   # spec-sheet pages only (load_cutsheets)
+    for k in ("sheet_marks", "sheet_flex", "sheet_icons", "sheet_plug", "sheet_slides", "photos", "install_photos", "sections"):
+        d[k] = p.get(k)
+    d["page_file"] = f.relative_to(ROOT).as_posix()   # CloudCannon's @file[...] address of this page's file
+    d["features"] = [dict(label=x.get("label", ""), note=x.get("note", ""), i=i) for i, x in enumerate(d["features"]) if isinstance(x, dict) and x.get("label")]
     d["tables"] = [dict(t, columns=t.get("columns") or [], notes=t.get("notes") or [],
                         rows=[re.split(r"\s*\|\s*", r.strip()) if isinstance(r, str) else r for r in t.get("rows") or []]) for t in d["tables"]]
 
@@ -1173,16 +1569,101 @@ def write_doc_map():
     (ROOT / "assets" / "js" / "docmap.js").write_text("window.DOC_MAP=" + json.dumps(m, separators=(",", ":")) + ";\n")
 
 def make_test_copy():
-    """The public test copy on GitHub Pages: no indexing, and link previews pointing at github.io (TEST_COPY marks it).
+    """The public test copy (TEST_COPY marks it): no indexing, and link previews pointing at the address the copy is
+    served from, which the host's build passes in SITE_BASE_URL (tools/cloudflare-build.sh); GitHub Pages without it.
     Canonicals and JSON-LD keep the future domain."""
     for p in ROOT.glob("*.html"):
         s = p.read_text()
         if 'name="robots"' not in s:
             s = s.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">', 1)
-        s = s.replace('content="https://www.led-llc.com/', 'content="https://dgershaw.github.io/LED-LLC/')
+        s = s.replace('content="https://www.led-llc.com/', f'content="{TEST_URL}')
         p.write_text(s)
     (ROOT / "robots.txt").write_text("User-agent: *\nDisallow: /\n")
     (ROOT / ".nojekyll").touch()
+
+def page_photos(items, hero):
+    """A page file's photo list as the gallery and cutouts load_categories lays out. Show as: slideshow, cutout (product
+    shots on white), diagram or banner (a wide strip). Size, for cutouts: normal, wide or auto (by shape).
+    Fit: whole, fill or auto. Each keeps its place in the file (i) for the visual editor."""
+    gallery, cutouts = [], []
+    for i, x in enumerate(items):
+        src = web_path(x.get("image")) if isinstance(x, dict) else ""
+        how, size = x.get("show_as") or "slideshow", x.get("size") or "auto"
+        if not src or not (ROOT / src).is_file() or (hero and hero["web"] == src and how != "cutout"):
+            continue   # the main photo is not repeated in the slideshow, but may stand among the product cutouts
+        w, h = img_size(src) or (4, 3)
+        ar = w / max(1, h)
+        im = dict(web=src, shows=(x.get("alt") or "").strip(), caption=(x.get("caption") or "").strip(), ar=ar, i=i,
+                  kind=x.get("kind") or "application", fit=x.get("fit") or "auto", focus=(x.get("focus") or "").strip(),
+                  zoom=zoom_of(x.get("zoom")), width=clamp_int(x.get("photo_width"), 20, 100, 100),
+                  align=x.get("photo_align") if x.get("photo_align") in ("left", "center", "right") else "center")
+        if how == "cutout":
+            im["label"] = im["caption"]
+            im["cls"] = "cut long" if size == "wide" or (size == "auto" and ar > 2.6) else "cut"
+            cutouts.append(im)
+            continue
+        im["cls"] = ("diagram tall" if ar < 0.9 else "diagram") if how == "diagram" else "strip" if how == "banner" else "wide" if ar > 1.9 else ""
+        gallery.append(im)
+    return gallery, cutouts
+
+# ---------- Product page sections (David, 2026-11-11: "add or delete sections/blocks ... or reorder") ----------
+# The middle of a product page is the page file's "sections" list, which the team reorders, hides and adds to in CloudCannon.
+# It holds the page's own sections (the kinds in PAGE_SECTIONS, filled from the spec sheet, the catalog and media.json) and
+# new blocks of the home page's kinds in PAGE_BLOCKS. The top (title, intro, main photo) and the end (part numbers and
+# specifications, diagrams, more details, documents, More from, Next steps) stay fixed: they come from the spec sheets.
+# A page section the page has content for but the list does not name is put back at its usual place, so a section is
+# removed with Show on: Hidden, never lost. Every block can be shown on every screen, laptops and tablets only, or phones only.
+PAGE_SECTIONS = ["media", "photos", "highlights", "case_studies", "glance", "eddy"]
+PAGE_BLOCKS = ["text", "image", "feature", "photo_grid"]
+
+def page_has(c, kind):
+    cs = c.get("cs")
+    gallery = c.get("gallery") or []
+    return bool({
+        "media": c.get("videos") or c.get("install"),
+        "photos": not cs and (c.get("cutouts") or any(not g["cls"].startswith("diagram") for g in gallery)),
+        "highlights": not cs and c.get("callouts"),
+        "case_studies": c.get("case_studies"),
+        "glance": cs or c.get("features"),
+        "eddy": c.get("eddy"),
+    }[kind])
+
+def default_sections(c):
+    return [dict(_type=k, show_on="all") for k in PAGE_SECTIONS if page_has(c, k)]
+
+def page_sections(c):
+    """The middle of a product page, in the page file's order, ready for category.html. Each entry keeps its place in the
+    file (n) so the visual editor's drag handles line up with the file."""
+    raw = c.get("sections") if isinstance(c.get("sections"), list) else None
+    out = []
+    for n, x in enumerate(raw if raw is not None else default_sections(c)):
+        kind = x.get("_type") if isinstance(x, dict) else None
+        show = x.get("show_on") if isinstance(x, dict) and x.get("show_on") in SHOW_ON else "all"
+        if kind in PAGE_SECTIONS and any(b["_type"] == kind for b in out):
+            out.append(dict(_type="unknown", show_on="none", n=n, has=False))   # a page section shows once
+        elif kind in PAGE_SECTIONS:
+            out.append(dict(_type=kind, show_on=show, n=n, has=page_has(c, kind)))
+        elif kind in PAGE_BLOCKS:
+            b = home_blocks([dict(x, spacing=x.get("spacing") or "tight")], new=False)
+            if b:
+                b = b[0]
+                b.update(n=n, hid=f"sec{n}-h", anchor="", inpage=True)
+                out.append(b)
+        else:
+            out.append(dict(_type="unknown", show_on="none", n=n, has=False))   # keeps the editor's count in line with the file
+    # page sections the list leaves out come back after the one before them in the usual order
+    named = {b["_type"] for b in out}
+    for k in PAGE_SECTIONS:
+        if k not in named and page_has(c, k):
+            before = PAGE_SECTIONS[:PAGE_SECTIONS.index(k)]
+            at = max([i + 1 for i, b in enumerate(out) if b["_type"] in before] or [0])
+            out.insert(at, dict(_type=k, show_on="all", n=None, has=True))
+    return out
+
+def page_new_blocks():
+    """What a block added on a product page starts as (the "Add" menu), drawn for the visual editor's preview."""
+    return [dict(b, spacing="tight", show_on="all", n=None, hid="", anchor="", inpage=True)
+            for b in home_blocks([x for x in HOME_NEW if x["_type"] in PAGE_BLOCKS], new=True)]
 
 def load_categories():
     cats = []
@@ -1206,7 +1687,8 @@ def load_categories():
         d["pages_label"] = ("Catalog p. " + (f"{pages[0]}–{pages[-1]}" if len(pages) > 1 else str(pages[0]))) if pages else ""
         d["rowcount"] = sum(1 for t in d.get("tables", []) for r in t["rows"] if r and is_pn(r[0]))
         d["headline"] = clean_headline(d.get("headline"))
-        d["intro"] = re.sub(r"\s+", " ", strip_bold(d.get("intro") or "")).strip()
+        d["intro_html"] = rich(d.get("intro"))   # formatted in CloudCannon or Pages CMS; d["intro"] stays the plain words
+        d["intro"] = plain_words(d.get("intro"))
         # extras first: an extra may own an image (a remote, a partner logo) that should not also appear as a cutout
         extras, extra_imgs = [], {}
         for e in d.get("extras", []):
@@ -1271,6 +1753,20 @@ def load_categories():
             hero = dict(web=web, shows=shows, caption=shows, kind="application", ar=size[0] / max(1, size[1]), override=fit0 or "plain")
         if hero is None and slug in HERO_FALLBACK:
             hero = dict(web=HERO_FALLBACK[slug][0], shows=HERO_FALLBACK[slug][1], caption=HERO_FALLBACK[slug][1], kind="application", ar=16 / 10)
+        # the main photo chosen in CloudCannon or Pages CMS (content/pages hero_image) wins; the one chosen above moves to the gallery
+        chosen = d.get("hero_image") or {}
+        src = web_path(chosen.get("src"))
+        if src and (ROOT / src).is_file() and (not hero or hero["web"] != src):
+            if hero and hero.get("kind") in ("application", "hero") and not hero.get("override"):
+                if hero.get("cls") is None:
+                    r = hero.get("ar") or 1.6
+                    hero["cls"] = "strip" if r > 3.2 else "wide" if r > 1.9 else ""
+                gallery.insert(0, hero)
+            size = img_size(src) or (16, 10)
+            alt = (chosen.get("alt") or "").strip() or d["title"]
+            hero = dict(web=src, shows=alt, caption=alt, kind="application", ar=size[0] / max(1, size[1]), override="plain")
+        elif hero and chosen.get("alt") and hero["web"] == src:
+            hero["shows"] = chosen["alt"].strip()
         if hero:
             gallery = [g for g in gallery if g["web"] != hero["web"]]
             ar = hero.get("ar") or 1.6
@@ -1280,7 +1776,13 @@ def load_categories():
         # Portrait and 4:3 heroes get a 4:3 tile so the whole product shows at a useful size.
         d["hero_tall"] = bool(hero) and (hero.get("ar") or 1.6) < 1.45
         d["hero_contain"] = fit == "contain"
-        gallery.sort(key=lambda g: (g["cls"].startswith("diagram"), g["cls"] == "diagram tall", g["cls"] not in ("wide", "strip")))
+        # The page file's photo list (photos, edited in CloudCannon and Pages CMS, David 2026-11-03) replaces the catalog's
+        # gallery and cutouts: its order is the page's order, and its Fit and Size choices win over the automatic ones below.
+        own_photos = isinstance(d.get("photos"), list)
+        if own_photos:
+            gallery, cutouts = page_photos(d["photos"], hero)
+        else:
+            gallery.sort(key=lambda g: (g["cls"].startswith("diagram"), g["cls"] == "diagram tall", g["cls"] not in ("wide", "strip")))
         for g in gallery:   # slideshow: room photos fill the frame, composites and odd shapes are shown whole
             g["contain"] = g.get("kind") == "hero" or not (1.4 <= (g.get("ar") or 1.6) <= 1.95)
         plain = [g for g in gallery if not g["cls"].startswith("diagram") and g["cls"] != "strip"]
@@ -1291,6 +1793,9 @@ def load_categories():
         d["ss_ar"] = round(stage, 3)
         for g in plain:
             g["contain"] = g.get("kind") == "hero" or abs(math.log((g.get("ar") or 1.6) / stage)) > 0.22
+        for g in gallery:
+            if g.get("fit") in ("whole", "fill"):
+                g["contain"] = g["fit"] == "whole"
         if len(plain) == 1 and plain[0]["cls"] == "" and plain[0].get("kind") == "hero":
             plain[0]["cls"] = "solo"  # a lone product composite is shown whole; a lone application photo still crops to a banner
         units = sum(2 if g["cls"] == "wide" else 1 for g in plain)
@@ -1306,6 +1811,8 @@ def load_categories():
         for g, sp in zip(tall, spans(len(tall), 12, 4) if len(tall) > 1 else [12]):
             g["span"] = sp
         for im in cutouts:
+            if own_photos:
+                continue   # the caption typed for it
             prods = im.get("products") or []
             im["label"] = ", ".join(prods) if prods and len(prods) <= 2 and len(", ".join(prods)) <= 40 else (im["caption"] or ", ".join(prods))
         d["cutouts_spans"] = bool(cutouts) and all(im["cls"] == "cut long" for im in cutouts)
@@ -1324,13 +1831,15 @@ def load_categories():
         d["footnotes"] = [f for f in d["footnotes"] if not any(norm(f).startswith(s) for s in shown)]
         # callouts: the catalog's big statements, minus duplicates of the headline, laid on 12 tracks so every row is full
         heads = {re.sub(r"\W+", " ", d["headline"].lower()).strip()}
-        callouts = []
-        for c in d.get("callouts", []):
+        callouts, where = [], {}   # where: each shown callout's position in the content file, for the visual editor
+        for i, c in enumerate(d.get("callouts", [])):
             c = clean_headline(c)
             if c and not is_editorial(c) and re.sub(r"\W+", " ", c.lower()).strip() not in heads:
                 callouts.append(c)
+                where.setdefault(c, i)
         callouts = dedupe(callouts)
         d["callouts"] = list(zip(callouts, spans(len(callouts), 12, 4 if len(callouts) != 3 else 3)))
+        d["callout_idx"] = [where[c] for c in callouts]
         feats = []
         for f in d.get("features", []):
             f["label"] = pageref(re.sub(r"\s*\|\s*", " / ", strip_bold(f.get("label") or "")).strip())
@@ -1383,7 +1892,14 @@ def load_media(cats):
                      thumb=f"https://i.ytimg.com/vi/{v['youtube']}/hqdefault.jpg", watch=f"https://www.youtube.com/watch?v={v['youtube']}")
             c["videos"].append(v)
             videos.append(v)
-        c["install"] = [dict(p) for p in (m.get("install_photos") or {}).get(c["slug"], []) if (ROOT / p["src"]).is_file()]
+        if isinstance(c.get("install_photos"), list):   # the page file's installation photos (CloudCannon and Pages CMS)
+            c["install"] = [dict(src=web_path(p.get("image")), alt=p.get("alt") or "", caption=p.get("caption") or "", focus=p.get("focus") or "", zoom=zoom_of(p.get("zoom")), i=i)
+                            for i, p in enumerate(c["install_photos"]) if isinstance(p, dict)]
+            c["install"] = [p for p in c["install"] if p["src"] and (ROOT / p["src"]).is_file()]
+            c["install_editable"] = True
+        else:
+            c["install"] = [dict(p) for p in (m.get("install_photos") or {}).get(c["slug"], []) if (ROOT / p["src"]).is_file()]
+            c["install_editable"] = False
         spot = (m.get("eddy_spots") or {}).get(c["slug"])
         c["eddy"] = dict(spot, img=f"assets/img/eddy/{spot['img']}") if spot and (EDDY_DIR / spot["img"]).is_file() else None
         c["case_studies"] = []
@@ -1416,18 +1932,49 @@ def load_cutsheets(cats):
             c["cs"] = None
             continue
         cs = dict(cs)
-        for k in ("marks", "icons"):
-            cs[k] = [dict(x, src=f"assets/img/icons/{x['img']}") for x in cs.get(k) or [] if (ROOT / "assets" / "img" / "icons" / x["img"]).is_file()]
-        cs["slides"] = [dict(web=x["src"], shows=x.get("alt") or x.get("caption") or "", caption=x.get("caption"), contain=x.get("fit") == "contain", focus=x.get("focus"))
-                        for x in cs.get("slides") or [] if (ROOT / x["src"]).is_file()]
+        # At a glance: listing marks, the SuperFlex or FlexColor panel, the icon row and the sensor line come from the page file
+        # (sheet_marks, sheet_flex, sheet_icons, sheet_plug; CloudCannon and Pages CMS edit them, David 2026-11-03), else from
+        # here. Each item keeps its place in the file (i) for the visual editor; an item whose picture is missing is skipped.
+        icons_dir = "assets/img/icons/"
+        own_marks, own_icons, own_flex = c.get("sheet_marks"), c.get("sheet_icons"), c.get("sheet_flex")
+        cs["marks_editable"], cs["icons_editable"] = isinstance(own_marks, list), isinstance(own_icons, list)
+        marks = ([dict(src=web_path(x.get("logo")), alt=x.get("alt") or "", h=x.get("height"), i=i) for i, x in enumerate(own_marks) if isinstance(x, dict)]
+                 if cs["marks_editable"] else [dict(x, src=icons_dir + x["img"], i=i) for i, x in enumerate(cs.get("marks") or [])])
+        icons = ([dict(src=web_path(x.get("icon")), value=x.get("value") or "", label=x.get("caption") or "", alt=x.get("alt") or "", scale=x.get("scale"), i=i)
+                  for i, x in enumerate(own_icons) if isinstance(x, dict)]
+                 if cs["icons_editable"] else [dict(x, src=icons_dir + x["img"], i=i) for i, x in enumerate(cs.get("icons") or [])])
+        cs["marks"] = [x for x in marks if x["src"] and (ROOT / x["src"]).is_file()]
+        cs["icons"] = [x for x in icons if x["src"] and (ROOT / x["src"]).is_file()]
+        cs["flex_editable"] = isinstance(own_flex, dict)
+        if cs["flex_editable"]:
+            cs["superflex"], cs["superflex_note"] = own_flex.get("headline") or "", own_flex.get("note") or ""
+            cs["flex_src"], cs["flex_alt"], cs["flex_words"] = web_path(own_flex.get("logo")), own_flex.get("alt") or "", bool(own_flex.get("words"))
+        else:
+            cs["flex_src"], cs["flex_words"] = icons_dir + (cs.get("flex_img") or "superflex.png"), not cs.get("flex_img")
+        cs["plug_editable"] = isinstance(c.get("sheet_plug"), str)
+        if cs["plug_editable"]:
+            cs["plug"] = c["sheet_plug"].strip().rstrip(".")
+        if isinstance(c.get("sheet_slides"), list):   # the page file's top slideshow (CloudCannon and Pages CMS), in its order
+            slides = [dict(src=web_path(x.get("image")), alt=x.get("alt"), caption=x.get("caption"), fit="contain" if x.get("fit") == "whole" else "",
+                           focus=x.get("focus"), zoom=zoom_of(x.get("zoom")), i=i) for i, x in enumerate(c["sheet_slides"]) if isinstance(x, dict)]
+            cs["slides_editable"] = True
+        else:
+            slides, cs["slides_editable"] = cs.get("slides") or [], False
+        cs["slides"] = [dict(web=x["src"], shows=x.get("alt") or x.get("caption") or "", caption=x.get("caption"), contain=x.get("fit") == "contain",
+                             focus=x.get("focus") or "", zoom=x.get("zoom") or 1, i=x.get("i"))
+                        for x in slides if x.get("src") and (ROOT / x["src"]).is_file()]
         cs["docs"] = [d for d in cs.get("docs") or [] if find_doc(d["pdf"])]
         for d in cs["docs"]:
             d["size"] = f"{(ROOT / find_doc(d['pdf'])).stat().st_size / 1e6:.1f} MB"
         cs["more"] = [table_prep(dict(t, notes=[t["note"]] if t.get("note") else [])) for t in (cs.get("options"), cs.get("accessories")) if t]
-        # the spec sheet sets "Simple" and "Network Lighting Controls" in the two control blues; both open the controls page
-        cs["points"] = [Markup(str(escape(b)).replace("Simple &amp; Network Lighting Controls",
-                        '<a class="ctl-s" href="lighting-controls.html">Simple</a> &amp; <a class="ctl-n" href="lighting-controls.html">Network Lighting Controls</a>'))
-                        for b in cs.get("bullets") or []]
+        # the points under the headline live in the page file (sheet_points, edited in CloudCannon and Pages CMS, David 2026-11-03);
+        # "bullets" here is only for a page whose file has none yet. Each keeps its place in the file for the visual editor.
+        # The spec sheet sets "Simple" and "Network Lighting Controls" in the two control blues; both open the controls page.
+        own = [(i, b) for i, b in enumerate(c.get("sheet_points") or []) if b.strip()]
+        cs["points_editable"] = bool(own)
+        cs["points"] = [(Markup(str(escape(b)).replace("Simple &amp; Network Lighting Controls",
+                        '<a class="ctl-s" href="lighting-controls.html">Simple</a> &amp; <a class="ctl-n" href="lighting-controls.html">Network Lighting Controls</a>')), i)
+                        for i, b in (own or list(enumerate(cs.get("bullets") or [])))]
         # Pages with several spec sheets (one per model group) carry a model table: each group of rows shares its spec
         # sheet (one merged cell), each model has its own installation instructions and IES files (David, 2026-10-08).
         sheet = next((d for d in cs["docs"] if d["kind"] == "Spec sheet"), None)
@@ -1510,8 +2057,8 @@ def build_nav(cats):
             items = [c for c in cats if c["brand_key"] == key and (c["group"] == g or g in also_groups(c))]
             if g == "Linkable Light Bars":
                 items = [dict(href="lbi.html", nav_title="LBI Family Overview", headline="All eight bars in one place: compare them, set them up and see them lit", featured=True)] + items
-            if g == "LBI Color Palette" and items:
-                items = items + [dict(href="lbi.html#palette", nav_title="LBI Color Palette in the LBI Family Overview", headline="Precision color and full RGBWW, live")]
+            if g == "LBI Palette" and items:
+                items = items + [dict(href="lbi.html#palette", nav_title="LBI Palette in the LBI Family Overview", headline="Precision color and full RGBWW, live")]
             if items:
                 groups.append(dict(name=g, blurb=GROUP_BLURBS.get(g, ""), entries=items))
         nav.append(dict(brand=b, groups=groups))
@@ -1527,6 +2074,8 @@ def build_product_menu(cats):
             for sl in slugs:
                 if sl == "lbi.html":
                     entries.append(dict(href="lbi.html", nav_title="LBI Family Overview", featured=True, brand=BRANDS["remphos"], hero=None, headline="Compare and set up all eight bars"))
+                elif sl == "lbi-project-builder.html":
+                    entries.append(dict(href=sl, nav_title="LBI Project Builder", featured=True, brand=BRANDS["remphos"], hero=None, headline="Build your LBI bill of materials and request a quote"))
                 elif sl == "i-series":
                     entries.append(dict(by_slug[sl], featured=True))
                 elif sl in by_slug:
@@ -1692,7 +2241,7 @@ def write_llms(cats, variants, total_pn, studies=()):
          f"> {SITE_NAME} (led-llc.com) designs and sells commercial LED lighting under three brands: Light Efficient Design LED retrofit lamps for HID and fluorescent fixtures, RemPhos linkable light bars, fixtures, retrofit kits and lighting controls, and Solera solar lighting and poles. This site is the web edition of the 2026 Full Product Catalog: part numbers with specifications, one page per product category.",
          "",
          "Key facts:", "",
-         f"- Brands: Light Efficient Design (screw-in and pin-base LED retrofit lamps, work lights, merchandising displays), RemPhos (LBI linkable light bars with internal drivers, LBI Color Palette color bars, lighting controls, fixtures, retrofit kits), Solera (solar area, bollard, flood, display and wall-pack lights, poles).",
+         f"- Brands: Light Efficient Design (screw-in and pin-base LED retrofit lamps, work lights, merchandising displays), RemPhos (LBI linkable light bars with internal drivers, LBI Palette color bars, lighting controls, fixtures, retrofit kits), Solera (solar area, bollard, flood, display and wall-pack lights, poles).",
          "- Part numbers: every category page lists its part numbers in tables with wattage, lumens, CCT, base, voltage and dimensions as printed in the catalog; factory defaults for selectable (FlexWatt / FlexColor) lamps are shown in bold. The full digest is in llms-full.txt.",
          f"- Corporate HQ & Training Center: {HQ['street']}, {HQ['city']}, {HQ['region']} {HQ['zip']}. Innovation & Manufacturing Center: {MFG['street']}, {MFG['city']}, {MFG['region']} {MFG['zip']}.",
          f"- Sales: {PHONE}, {EMAIL}. Samples, utility rebate help and local representatives for all three brands.",
@@ -1702,7 +2251,7 @@ def write_llms(cats, variants, total_pn, studies=()):
         b = BRANDS[key]
         L += [f"## {b['name']}", "", f"- [{b['name']} overview]({page_url(b['slug'] + '.html')}): {b['h1']} {b['blurb']}"]
         if key == "remphos":
-            L.append(f"- [LBI Family Overview]({page_url('lbi.html')}): The eight LBI linkable light bar variants ({', '.join(v['name'] for v in variants) or 'LBI G1, LBI G2, LBI 65, LBI MAX, LBI Color Palette, LBI Color Palette+, LBI Color PaletteX, LBI 65 Color Palette+'}) with lengths, wattage, lumens, color, controls and example part numbers.")
+            L.append(f"- [LBI Family Overview]({page_url('lbi.html')}): The eight LBI linkable light bar variants ({', '.join(v['name'] for v in variants) or 'LBI G1, LBI G2, LBI 65, LBI MAX, LBI Palette, LBI Palette+, LBI Palette DMX, LBI 65 Palette+'}) with lengths, wattage, lumens, color, controls and example part numbers.")
         for c in by_brand[key]:
             desc = clean_text(c.get("headline") or SEO_LEADS.get(c["slug"]) or GROUP_BLURBS.get(c["group"], ""))
             L.append(f"- [{c['nav_title']}]({page_url(c['href'])}): {c['group']}. {desc}")
@@ -1816,15 +2365,25 @@ def main():
     env = Environment(loader=FileSystemLoader(TPL), autoescape=select_autoescape(["html"]), trim_blocks=True, lstrip_blocks=True)
     env.filters["bold"] = bold
     env.filters["strip_bold"] = strip_bold
+    env.filters["rich"] = rich
+    env.globals["photo_style"] = photo_style
+    env.globals.update(WEB_FONT_URL=web_font_url(), BRAND_STYLES=BRAND, TEXT_COLORS=TEXT_COLORS)
+    env.filters["plain"] = plain_words
     env.filters["refs"] = refs
     env.filters["cellhtml"] = cellhtml
+    env.filters["web_path"] = web_path
     env.filters["cattitle"] = cattitle
-    # compact color chips: "LBI Color Palette bar rendering glowing red" -> "Red"
-    env.filters["chip"] = lambda t: (lambda x: x[:1].upper() + x[1:])(re.sub(r"^.*?\bbar rendering (?:glowing |showing the )?", "", str(t)).replace("full RGB spectrum", "LBI Color Palette+ RGBWW"))
+    # compact color chips: "LBI Palette bar rendering glowing red" -> "Red"
+    env.filters["chip"] = lambda t: (lambda x: x[:1].upper() + x[1:])(re.sub(r"^.*?\bbar rendering (?:glowing |showing the )?", "", str(t)).replace("full RGB spectrum", "LBI Palette+ RGBWW"))
     env.globals.update(DOC_TITLES=DOC_TITLES, PAGE_DOCS=PAGE_DOCS, NO_REBATES=NO_REBATES, BRANDS=BRANDS, BRAND_ORDER=BRAND_ORDER, nav=nav, cats=cats, CATALOG_PDF=CATALOG_PDF, SITE_NAME=SITE_NAME,
                        total_pn=total_pn, dims=dims, dims_ratio=dims_ratio, IES=IES, logo_style=logo_style, spans=spans, NEXT_STEPS=NEXT_STEPS, PHONE=PHONE, EMAIL=EMAIL, HQ=HQ, MFG=MFG, SOCIAL=SOCIAL, RAIN=RAIN, natmax=natmax, pmenu=pmenu)
 
     pages = []  # (out, sitemap priority) in build order
+
+    (ROOT / "assets" / "css" / "brand.css").write_text(brand_css())
+    (ROOT / "assets" / "css" / "editor.css").write_text(editor_css())
+    for msg in BRAND_PROBLEMS:
+        print("brand styles:", msg)
 
     def render(tpl, out, priority, **ctx):
         html = newest_links(bust_cache(fix_copy(keep_together(env.get_template(tpl).render(**ctx)))))
@@ -1840,7 +2399,8 @@ def main():
     for k, (web, _) in list(brand_pics.items()):
         if not (ROOT / web).is_file():
             brand_pics[k] = (heroes.get(next((c["slug"] for c in cats if c["brand_key"] == k and c["hero"]), ""), HOME_IMAGE[0]), "contain")
-    render("home.html", "index.html", 1.0, page="home", mosaic=[dict(m, lights=mosaic_lights(m["glows"])) for m in MOSAIC], brand_pics=brand_pics, finder=[
+    render("home.html", "index.html", 1.0, page="home", blocks=home_blocks(HOME.get("blocks"), brand_pics),
+           new_blocks=home_blocks(HOME_NEW, brand_pics, new=True), finder=[
         dict(q=q, strong=s, href=(h if h.endswith(".html") or h == "search" else f"{h}.html")) for q, s, h in FINDER if h in ("search",) or h.endswith(".html") or any(c["slug"] == h for c in cats)],
         heroes=heroes, brand_cats=by_brand,
         seo=seo_for("index.html", f"{SITE_NAME} | LED Retrofit Lamps, RemPhos, Solera", home_desc, image=HOME_IMAGE[0], image_alt=HOME_IMAGE[1],
@@ -1881,7 +2441,8 @@ def main():
         if c["slug"] == "i-series":
             render_iseries(c, related, render)
             continue
-        render("category.html", c["href"], 0.8, page=c["slug"], c=c, prev=cats[i - 1] if i else None, nxt=cats[i + 1] if i + 1 < len(cats) else None,
+        c["sections_list"] = page_sections(c)
+        render("category.html", c["href"], 0.8, page=c["slug"], c=c, new_blocks=page_new_blocks(), prev=cats[i - 1] if i else None, nxt=cats[i + 1] if i + 1 < len(cats) else None,
                related=related,
                seo=seo_for(c["href"], c["seo_title"], c["seo_description"], brand_key=c["brand_key"], og_type="product.group" if products else "website",
                            image=og_img, image_alt=og_alt, jsonld=[
@@ -1892,7 +2453,7 @@ def main():
     body, tail, fine = lbi_body()
     glance, glance_notes = lbi_glance(variants) if variants else (None, [])
     lbi_desc = compose_description(["RemPhos LBI family: linkable LED light bars with the driver inside, in 2, 3 and 4 ft.",
-                                    "LBI G1 (economical), LBI G2, LBI 65 (IP65), LBI MAX, LBI Color Palette, LBI Color Palette+, LBI Color PaletteX and LBI 65 Color Palette+.",
+                                    "LBI G1 (economical), LBI G2, LBI 65 (IP65), LBI MAX, LBI Palette, LBI Palette+, LBI Palette DMX and LBI 65 Palette+.",
                                     "Link up to 40 bars from one power feed, then set wattage and color on site."])
     lbi_img, lbi_alt = BRAND_IMAGES["remphos"]
     render("lbi.html", "lbi.html", 0.9, page="lbi", lbi_body=body, lbi_tail=tail, lbi_fine=fine, glance=glance, glance_notes=glance_notes,
@@ -1900,9 +2461,21 @@ def main():
                ld_webpage("lbi.html", "LBI Family Overview", lbi_desc, kind="CollectionPage", image=lbi_img,
                           **({"mainEntity": {"@id": page_url("lbi.html") + "#variants"}} if variants else {})),
                ld_lbi_products(variants) if variants else None]))
+    pb_desc = compose_description(["LBI Project Builder: use the design wizard or describe your project in words to build a complete RemPhos LBI bill of materials, then request a quote.",
+                                   "Light bars, linking cables, seamless connectors, power feeds, brackets, sensors and battery backup for retrofits, new fixtures, coves and tray ceilings, as a PDF or Excel file."])
+    render("builder.html", "lbi-project-builder.html", 0.8, page="lbi-project-builder",
+           seo=seo_for("lbi-project-builder.html", "LBI Project Builder: Bill of Materials and Quote | RemPhos", pb_desc, image=lbi_img, image_alt=lbi_alt, jsonld=[
+               ld_webpage("lbi-project-builder.html", "LBI Project Builder", pb_desc, image=lbi_img, breadcrumb=True),
+               ld_breadcrumbs("lbi-project-builder.html", [("Home", "index.html"), ("RemPhos", "remphos.html"), ("LBI Family Overview", "lbi.html"), ("LBI Project Builder", "lbi-project-builder.html")])]))
     docs = [d for d in RESOURCE_DOCS if newest_path("assets/docs/" + d)]
     res_desc = compose_description(["Download the 2026 Full Product Catalog and the LBI spec sheets and sell sheets for Light Efficient Design, RemPhos and Solera.",
                                     "Every category page opens the catalog PDF at its own section."])
+    # the brand styles page: for the team, so not in the sitemap and never indexed
+    render("style-guide.html", "style-guide.html", 0.1, page="style-guide",
+           seo=seo_for("style-guide.html", f"Brand styles | {SITE_NAME}", "The fonts, colours and text sizes approved for the Light Efficient Design website.", image=HOME_IMAGE[0], image_alt=HOME_IMAGE[1]))
+    pages.pop()
+    sg = ROOT / "style-guide.html"
+    sg.write_text(re.sub(r'<meta name="robots" content="[^"]*">', '<meta name="robots" content="noindex, nofollow">', sg.read_text(), count=1))
     render("resources.html", "resources.html", 0.6, page="resources", docs=docs, studies=studies, videos=videos,
            seo=seo_for("resources.html", f"Catalog, Spec Sheets + Downloads | {SITE_NAME}", res_desc, jsonld=[
                ld_webpage("resources.html", "Catalog, spec sheets and files", res_desc, kind="CollectionPage", breadcrumb=True,

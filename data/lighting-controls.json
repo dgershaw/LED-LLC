@@ -42,11 +42,11 @@
    ],
    "rows": [
     [
-     "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+",
+     "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+",
      "In-line microwave occupancy and daylight harvesting sensor"
     ],
     [
-     "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65",
+     "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65",
      "In-line passive infrared occupancy and daylight harvesting sensor"
     ],
     [
@@ -81,15 +81,15 @@
    ],
    "rows": [
     [
-     "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+",
+     "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+",
      "In-line Silvair™ Bluetooth microwave motion and daylight harvesting sensor"
     ],
     [
-     "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65",
+     "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65",
      "In-line Silvair™ Bluetooth control node"
     ],
     [
-     "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65",
+     "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65",
      "In-line Silvair™ Bluetooth passive infrared motion and daylight harvesting sensor"
     ],
     [
@@ -119,7 +119,7 @@
    ],
    "notes": [
     "Connect and control lighting fixtures via Bluetooth mesh w/ the Silvair app — available for iOS and Android on the App Store and Google Play (statement printed under the table beside the RemPhos x Silvair robot logo)",
-    "Merged product cells repeated: 'LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65' spans two rows, 'LBI MAX / LIVC / ...' spans two rows, 'LBE / TYPE C T5 & T8' spans two rows",
+    "Merged product cells repeated: 'LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65' spans two rows, 'LBI MAX / LIVC / ...' spans two rows, 'LBE / TYPE C T5 & T8' spans two rows",
     "Catalog prints the control descriptions in all caps and marks Silvair with a ™"
    ]
   }
@@ -218,8 +218,8 @@
    ],
    "rows": [
     [
-     "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65 / LBI MAX",
-     "Linkable light bars: LBI, LBI G2, LBI Color Palette / LBI Color Palette+, LBI 65 (IP65), LBI MAX"
+     "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65 / LBI MAX",
+     "Linkable light bars: LBI, LBI G2, LBI Palette / LBI Palette+, LBI 65 (IP65), LBI MAX"
     ],
     [
      "LIVC",

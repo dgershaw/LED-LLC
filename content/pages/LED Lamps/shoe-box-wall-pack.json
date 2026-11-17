@@ -1,6 +1,6 @@
 {
   "title": "Shoe Box + Wall Pack",
-  "headline": "Replaces up to 400W HID.",
+  "headline": "Replaces up To 400W HID.",
   "intro": "Retrofit almost any shoe box or wall pack fixture to energy & maintenance saving LEDs. Eliminate ballast failures. FlexColor on several models allows for less stocked inventory as well as field adjustability.",
   "callouts": [
     "Rotatable base directs lumens out of fixture"
@@ -62,7 +62,7 @@
         "Listings"
       ],
       "rows": [
-        "LED-8087E345D-G4 | 120-277V | 100W | 30W | 3500/**4200**/4300 | FlexColor 3000K/**4000K**/5000K | E26 |  | 3.0 in x 6.4 in | cUL Listed, cUL Classified",
+        "LED-8087E345D-G4 | 120-277V | 100W | 20W | 3500/**4200**/4300 | FlexColor 3000K/**4000K**/5000K | E26 |  | 3.0 in x 6.4 in | cUL Listed, cUL Classified",
         "LED-8087E345CD-G4 | 220-347V | 100W | 30W | 3500/**4200**/4300 | FlexColor 3000K/**4000K**/5000K | E26 |  | 3.0 in x 6.4 in | cUL Listed, cUL Classified",
         "LED-8087M345D-G4 | 120-277V | 100W | 30W | 3500/**4200**/4300 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 3.0 in x 6.9 in | cUL Listed, cUL Classified",
         "LED-8087M345CD-G4 | 220-347V | 100W | 30W | 3500/**4200**/4300 | FlexColor 3000K/**4000K**/5000K | EX39 |  | 3.0 in x 6.9 in | cUL Listed, cUL Classified",
@@ -86,5 +86,180 @@
     "For listing status go to LED-LLC.com (DLC)",
     "Default lumens and CCT for FlexColor lamps are shown in bold",
     "Size comparison height labels: 5.5 in = ED17, 8.1 in = 30W corn lamp, 11.5 in = ED37, 11.2 in = 110W corn lamp (assigned from dimension-line position and drawing scale; the graphic prints no heights for LED-8087E or LED-8090M, whose table dimensions are 6.4 in and 11.4 in long)"
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/shoe-box-wall-pack/hero-extended.jpg",
+    "alt": "The composite with the complete LED-8088 lamp (body over the photo, screw base overhanging onto white below); the 'LED-8088' caption and the two callout lines in the white margin were painted out"
+  },
+  "sheet_points": [
+    "20W to 110W models replace up to 400W HID, and the 320W LED-8091 replaces 1000W HID",
+    "Light panel can rotate once the base is tightened to direct light out of the fixture",
+    "Includes a fan and thermal sensor to run cool and ensure a long and bright life",
+    "Enclosed fixture safe and approved for damp locations",
+    "HV models run on 277-480V (can be used on 347V)"
+  ],
+  "sheet_marks": [
+    {
+      "logo": "assets/img/icons/warranty-5.png",
+      "alt": "5-year warranty",
+      "height": 54
+    },
+    {
+      "logo": "assets/img/icons/culus.png",
+      "alt": "cULus Listed",
+      "height": 40
+    },
+    {
+      "logo": "assets/img/icons/culus-classified.png",
+      "alt": "cULus Classified: mogul or 120V medium base only",
+      "height": 40
+    },
+    {
+      "logo": "assets/img/icons/dlc-listed.png",
+      "alt": "DLC Listed",
+      "height": 52
+    }
+  ],
+  "sheet_flex": {
+    "logo": "assets/img/icons/flexcolor.png",
+    "alt": "FlexColor",
+    "headline": "Switch between 3000K, 4000K and 5000K",
+    "note": "FlexColor (-FC) models, set on the lamp. Factory default 4000K.",
+    "words": false
+  },
+  "sheet_icons": [
+    {
+      "icon": "assets/img/icons/volt-120-277.png",
+      "value": "",
+      "caption": "Voltage",
+      "alt": "120-277V, also works on 208V and 240V"
+    },
+    {
+      "icon": "assets/img/icons/base-med-mogul.png",
+      "value": "",
+      "caption": "Medium + mogul base",
+      "alt": "Screw base"
+    },
+    {
+      "icon": "assets/img/icons/ballast-bypass.png",
+      "value": "",
+      "caption": "Ballast bypass",
+      "alt": "UL Type B ballast bypass"
+    },
+    {
+      "icon": "assets/img/icons/active-cooling.png",
+      "value": "",
+      "caption": "Active cooling",
+      "alt": "Fan"
+    },
+    {
+      "icon": "assets/img/icons/cri-80.png",
+      "value": "",
+      "caption": "CRI",
+      "alt": "80+ CRI"
+    },
+    {
+      "icon": "assets/img/icons/surge-10ka.png",
+      "value": "",
+      "caption": "Surge protection",
+      "alt": "10kA surge protection"
+    },
+    {
+      "icon": "assets/img/icons/temp.png",
+      "value": "-40°F to 122°F",
+      "caption": "Operating temp",
+      "alt": "Thermometer"
+    },
+    {
+      "icon": "assets/img/icons/life-l70-l90.png",
+      "value": "50,000 hrs",
+      "caption": "Rated life",
+      "alt": "L70 and L90 rated life"
+    }
+  ],
+  "photos": [
+    {
+      "image": "assets/img/cat/shoe-box-wall-pack/size-comparison.jpg",
+      "alt": "Size comparison strip with labels: ED17 (5.5 in), LED-8087E (OURS), 30W corn lamp (8.1 in), ED37 (11.5 in), LED-8090M (OURS), 110W corn lamp (11.2 in)",
+      "caption": "Size comparison vs HID and corn lamps",
+      "show_as": "diagram",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/shoe-box-wall-pack/light-distribution.jpg",
+      "alt": "Light distribution / foot candle comparison on DLC pole-mounted fixtures: LED-8090 (110W shoe box), LED-8089 (80W shoe box) and LED-8027 (100W post top) with foot candles, delivered lumens and LPW; re-cropped without the green page rule and section divider",
+      "caption": "Foot candle comparison, pole-mounted",
+      "show_as": "diagram",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": [
+    {
+      "image": "assets/img/install/shoe-box-wall-pack/parking-lot-fog.jpg",
+      "alt": "Parking lot poles with LED shoe box fixtures shining down through fog",
+      "caption": "Parking lot in fog",
+      "focus": "50% 30%"
+    },
+    {
+      "image": "assets/img/install/shoe-box-wall-pack/rail-yard-platforms.jpg",
+      "alt": "Rail yard platforms at night lit by pole-mounted LED fixtures",
+      "caption": "Rail yard platforms",
+      "focus": "50% 40%"
+    }
+  ],
+  "sheet_slides": [
+    {
+      "image": "assets/img/cutsheet/shoe-box-wall-pack/flexcolor-shoebox.jpg",
+      "alt": "FlexColor shoe box and wall pack LED retrofit lamp with its rotatable screw base",
+      "caption": "FlexColor shoe box retrofit (-FC)",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cutsheet/shoe-box-wall-pack/led-8089m.jpg",
+      "alt": "LED-8089M shoe box retrofit lamp with a fan housing and mogul base",
+      "caption": "LED-8089M with a mogul base",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cutsheet/shoe-box-wall-pack/led-8091.jpg",
+      "alt": "LED-8091 320W retrofit: a flat LED panel that mounts on the fixture lens, wired to its driver with a mogul base",
+      "caption": "LED-8091: LED panel and driver",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/shoe-box-wall-pack/hero.jpg",
+      "alt": "Shoe box retrofit lamp over a parking lot lit at night and a loading dock lit by wall packs",
+      "caption": "Parking lot and loading dock",
+      "fit": "fill",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cutsheet/shoe-box-wall-pack/street-night.jpg",
+      "alt": "Parking lot and street lit by shoe box fixtures at night",
+      "caption": "Street and parking lot",
+      "fit": "fill",
+      "focus": "50% 45%"
+    }
+  ],
+  "sections": [
+    {
+      "_type": "media",
+      "show_on": "all"
+    },
+    {
+      "_type": "case_studies",
+      "show_on": "all"
+    },
+    {
+      "_type": "glance",
+      "show_on": "all"
+    }
   ]
 }

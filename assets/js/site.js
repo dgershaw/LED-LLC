@@ -266,30 +266,6 @@
   window.addEventListener("hashchange", unfold);
   unfold();
 
-  /* ----- Home mosaic glows: each glow is given in image coordinates ("x,y,w,h" fractions), so place it on the
-     cropped image (object-fit: cover, centered) every time the tile changes size ----- */
-  const glowTiles = $$(".mosaic figure").filter(f => f.querySelector(".glow"));
-  if (glowTiles.length) {
-    const place = () => glowTiles.forEach(fig => {
-      const img = fig.querySelector("img"), W = fig.clientWidth, H = fig.clientHeight;
-      const iw = +img.getAttribute("width") || img.naturalWidth, ih = +img.getAttribute("height") || img.naturalHeight;
-      if (!iw || !ih || !W) return;
-      const s = Math.max(W / iw, H / ih), dw = iw * s, dh = ih * s;
-      const [px, py] = (getComputedStyle(img).objectPosition.match(/[\d.]+%/g) || ["50%", "50%"]).map(v => parseFloat(v) / 100);
-      const dx = (W - dw) * px, dy = (H - dh) * py;
-      $$(".glow", fig).forEach(g => {
-        const [x, y, w, h, deg = 0, top = 0.25] = g.dataset.g.split(",").map(Number);
-        const k = g.classList.contains("beam") || g.classList.contains("spark") ? 1 : 1.6;  // 1.6: the halo spills past the lamp
-        Object.assign(g.style, { left: dx + x * dw + "px", top: dy + y * dh + "px", width: w * dw * k + "px", height: (h || w) * dw * k + "px" });
-        g.style.setProperty("--r", deg + "deg");
-        g.style.setProperty("--tw", top * 100 + "%");
-      });
-    });
-    place();
-    window.addEventListener("load", place, { once: true });
-    if ("ResizeObserver" in window) new ResizeObserver(place).observe($(".mosaic")); else window.addEventListener("resize", place);
-  }
-
   /* ----- At a glance on phones: the first six points, the rest one tap away ----- */
   $$(".spec-tiles").forEach(list => {
     if (list.children.length <= 6) return;
@@ -440,31 +416,6 @@
     const io2 = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add("awake"); io2.unobserve(en.target); } }), { threshold: 0.2 });
     wake.forEach(el => io2.observe(el));
   }
-})();
-
-/* 2026-10-09: the LED in the header logo is Eddy (David's ask). Now and then, at random, he wiggles, sometimes twice,
-   and a mouse hover wiggles him too; a click opens his page. Reduced motion keeps him still, and a hidden tab skips its turn. */
-(function () {
-  "use strict";
-  const eddy = document.querySelector(".hdr-eddy");
-  if (!eddy || !window.matchMedia) return;
-  const still = window.matchMedia("(prefers-reduced-motion: reduce)");
-  let timer = 0, done = 0;
-  const rest = () => { clearTimeout(done); eddy.classList.remove("wiggle", "twice"); };
-  const wiggle = twice => {
-    if (still.matches || document.hidden || eddy.classList.contains("wiggle")) return;
-    eddy.classList.toggle("twice", twice);
-    eddy.classList.add("wiggle");
-    done = setTimeout(rest, twice ? 2300 : 1300);          // in case animationend never comes
-  };
-  eddy.addEventListener("animationend", rest);
-  const next = (min, max) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => { wiggle(Math.random() < 0.3); next(8000, 24000); }, min + Math.random() * (max - min));
-  };
-  next(3000, 7000);
-  document.addEventListener("visibilitychange", () => { if (document.hidden) { clearTimeout(timer); rest(); } else next(3000, 9000); });
-  eddy.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") wiggle(false); });
 })();
 
 /* Presentation mode switch in the footer (see base.html): flips the setting and reloads so every script starts still. */

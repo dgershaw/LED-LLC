@@ -146,5 +146,162 @@
     "Lumens are printed as a range (min-max across the FlexWatt settings) in bold weight for every row; no single lumen value is marked as the factory default",
     "Operating temp is printed as '-0°F TO 122°F' in the catalog icon strip",
     "CATALOG AS PRINTED: RP-TRV-G2-2X2 dimensions read 47.8 in x 23.9 in x 3.3 in and RP-TRV-G2-2X4 read 23.9 in x 23.9 in x 3.3 in; the two appear transposed in the catalog (a 2X2 should be ~24 x 24) but are transcribed exactly as printed"
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/taa-troffers/hero.jpg",
+    "alt": "Catalog composite: RP-TRV volumetric troffer retrofit kit in front of a modern white laboratory with linear ceiling lights; kit kept whole, 'RP-TRV (VOLUMETRIC)' caption painted out of the white margin"
+  },
+  "sheet_points": [
+    "Slim design makes it easier to replace a wide range of existing fixtures",
+    "Constant current driver is flicker free in accordance with IEEE-PAR1789, conforms to GSA P100",
+    "Emergency battery backup option available",
+    "Choose from a volumetric or a flat panel design",
+    "Field installable Simple & Network Lighting Controls options"
+  ],
+  "sheet_marks": [
+    {
+      "logo": "assets/img/icons/taa.png",
+      "alt": "TAA: meets the requirements of the United States Trade Agreements Act",
+      "height": 30
+    },
+    {
+      "logo": "assets/img/icons/warranty-5.png",
+      "alt": "5-year warranty",
+      "height": 54
+    },
+    {
+      "logo": "assets/img/icons/culus.png",
+      "alt": "cULus Listed",
+      "height": 40
+    },
+    {
+      "logo": "assets/img/icons/dlc-premium.png",
+      "alt": "DLC Listed Premium",
+      "height": 52
+    }
+  ],
+  "sheet_flex": {
+    "logo": "assets/img/icons/superflex.png",
+    "alt": "SuperFlex",
+    "headline": "Switch between 3 wattages & 3 CCTs",
+    "note": "Fixtures (TV/TF). The retrofit kits switch between up to 5 wattages and 5 CCTs.",
+    "words": true
+  },
+  "sheet_icons": [
+    {
+      "icon": "assets/img/icons/volt-120-277.png",
+      "value": "",
+      "caption": "Voltage",
+      "alt": "120-277V"
+    },
+    {
+      "icon": "assets/img/icons/dim-to-off.png",
+      "value": "",
+      "caption": "Sensor ready",
+      "alt": "0-10V dim to off"
+    },
+    {
+      "icon": "assets/img/icons/emg.png",
+      "value": "",
+      "caption": "Optional EMG battery backup",
+      "alt": "Emergency battery"
+    },
+    {
+      "icon": "assets/img/icons/cri-80.png",
+      "value": "",
+      "caption": "CRI",
+      "alt": "80+ CRI"
+    },
+    {
+      "icon": "assets/img/icons/beam-120.png",
+      "value": "",
+      "caption": "Beam angle",
+      "alt": "120 degree beam angle"
+    },
+    {
+      "icon": "assets/img/icons/temp.png",
+      "value": "0°F to 122°F",
+      "caption": "Operating temp",
+      "alt": "Thermometer"
+    },
+    {
+      "icon": "assets/img/icons/surge-2-5ka.png",
+      "value": "",
+      "caption": "Surge protection",
+      "alt": "2.5kA surge protection"
+    },
+    {
+      "icon": "assets/img/icons/life-l70.png",
+      "value": "50,000 hrs",
+      "caption": "Rated life (L70)",
+      "alt": "L70 rated life"
+    }
+  ],
+  "sheet_plug": "Simply remove the cap and plug in the sensor",
+  "photos": [],
+  "install_photos": [],
+  "sheet_slides": [
+    {
+      "image": "assets/img/cutsheet/taa-troffers/rp-tv.jpg",
+      "alt": "RemPhos RP-TV volumetric troffer fixture",
+      "caption": "RP-TV volumetric fixture",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cutsheet/taa-troffers/rp-tf.jpg",
+      "alt": "RemPhos RP-TF flat panel troffer fixture",
+      "caption": "RP-TF flat panel fixture",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/taa-troffers/p28-b5.jpg",
+      "alt": "RemPhos RP-TRV volumetric troffer retrofit kit",
+      "caption": "RP-TRV volumetric retrofit kit",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/taa-troffers/p28-b6.jpg",
+      "alt": "RemPhos RP-TRF flat panel troffer retrofit kit",
+      "caption": "RP-TRF flat panel retrofit kit",
+      "fit": "whole",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cutsheet/taa-troffers/classroom.jpg",
+      "alt": "Students studying in a classroom lit by ceiling troffers",
+      "caption": "Classroom",
+      "fit": "fill",
+      "focus": "50% 22%"
+    },
+    {
+      "image": "assets/img/cat/taa-troffers/hero.jpg",
+      "alt": "A laboratory with the RP-TRV volumetric retrofit kit",
+      "caption": "Laboratory",
+      "fit": "fill",
+      "focus": "88% 50%"
+    },
+    {
+      "image": "assets/img/cat/taa-troffers/hero-trf.jpg",
+      "alt": "A control room with the RP-TRF flat panel retrofit kit",
+      "caption": "Control room",
+      "fit": "fill",
+      "focus": "8% 50%"
+    },
+    {
+      "image": "assets/img/cat/taa-troffers/p28-b1.jpg",
+      "alt": "A woman working at a laptop in a bright office",
+      "caption": "Office",
+      "fit": "fill",
+      "focus": "50% 40%"
+    }
+  ],
+  "sections": [
+    {
+      "_type": "glance",
+      "show_on": "all"
+    }
   ]
 }

@@ -6,10 +6,12 @@ The repository is the source of the Light Efficient Design website: the Light Ef
 
 ## The one rule: sandbox first, a person approves
 
-- `main` is the **sandbox** (https://dgershaw.github.io/LED-LLC/sandbox/). `live` is the **live site** and moves only when a person clicks "Approve and publish to live" on the admin portal (https://dgershaw.github.io/LED-LLC/admin/), which runs `.github/workflows/approve.yml`.
+- `main` is the **sandbox** (https://led-sandbox.pages.dev/). `live` is the **live site** (https://led-live.pages.dev/) and moves only when a person clicks "Approve and publish to live" on the admin portal (https://led-sandbox.pages.dev/admin/), which runs `.github/workflows/approve.yml`.
+- Cloudflare Pages builds and hosts both (David, 2026-11-17): two projects, `led-sandbox` on `main` and `led-live` on `live`, each running `bash tools/cloudflare-build.sh` after every push and swapping the new version in all at once. The addresses are in `tools/hosting.json`. The old GitHub Pages addresses (dgershaw.github.io/LED-LLC) are being retired; never give them to anyone.
 - Push only to `main`. Never push to `live`, never merge `main` into `live`, never run or dispatch the approve, roll-back, undo or schedule workflows. They are for people.
 - When a change is done, say it is on the sandbox and waits for approval on the portal, and give the sandbox link to the page. Never call a change live.
 - Pull `main` before every change. Other people and other Claude sessions push to it too.
+- Publishing is never the teammate's job. Never ask or walk a teammate through GitHub (Actions, workflows, settings, re-running a build) or Cloudflare. A saved change shows on the sandbox within about five minutes; if it has not after ten, say so plainly and tell them to let David know. Do not try to fix the publishing yourself.
 
 ## Commit in the name of the person who asked
 
@@ -26,25 +28,28 @@ The repository is the source of the Light Efficient Design website: the Light Ef
 
 ## How the site is built
 
-- `tools/build.py` generates every page from `data/`, `content/` and `tools/templates/`. Built pages, `docs/`, `ies/`, `admin/` and `out/` are ignored by git and built by `.github/workflows/deploy.yml` after each push. Never hand-edit a built HTML file; change the data, content or template and rebuild.
+- `tools/build.py` generates every page from `data/`, `content/` and `tools/templates/`. Built pages, `docs/`, `ies/`, `admin/` and `out/` are ignored by git and built by Cloudflare Pages (`tools/cloudflare-build.sh`) after each push. Never hand-edit a built HTML file; change the data, content or template and rebuild.
 - Local check: `pip install jinja2 markupsafe pillow qrcode`, then `python3 tools/build.py`. Workflows call scripts as `bash tools/x.sh` because the files have no execute bit.
 - Page text the team edits in Pages CMS lives in `content/pages/<menu category>/<slug>.json` and overlays `data/<slug>.json`. Spec-sheet-led pages are described in `content/cutsheets.json`. `.pages.yml` configures the editor; a new download folder must be added there.
 - Documents live in `assets/docs/<kind>/<category>/<product>/` and IES files in `assets/ies/<category>/<product>/<part number>/`. Pages link them only through their permanent addresses, `docs/<file name>` and `ies/<part number>/<file name>`, which the build fills with the newest version. Never link an `assets/docs` path. A newer version is the same file name plus a version or date (`... V2.pdf`, `...-rev3.pdf`, `...-2026-10-12.pdf`).
+- CloudCannon is the marketing team's visual editor (`cloudcannon.config.yml`, `.cloudcannon/`, `tools/cloudcannon-build.sh`). It edits the home page and the product pages (`content/pages`), and saves to `main` the same way Pages CMS does. The home page (`content/home/index.json`) is a stack of blocks the team adds, removes, reorders and sizes freely (`tools/templates/_home_blocks.html`, `HOME_BLOCKS` and `HOME_NEW` in `build.py`, `_structures.home_blocks` in the config). Pages CMS does not edit it. A text or photo is click-to-edit when its template element carries `data-editable` and `data-prop` naming its content field. Keep those attributes when you move copy, and add them when you make new copy editable. On a product page the middle of the page is the content file's `sections` list (`page_sections` in `build.py`): the page's own sections (video and install photos, photos, key points, case studies, At a glance, Eddy) and Text, Photo, Photo and text and Photo grid blocks, in the order the team sets, each with Show on (every screen, laptops only, phones only, hidden); the top of the page and everything from the specifications down stay fixed. Formatted text boxes (`type: html`) go through `rich()` in `build.py`, which keeps only bold, italic, links, lists, alignment, the house styles and the approved colours and sizes; never add free font, colour or size pickers. On a product page the content file holds every photo: `hero_image` (the main photo), `photos` (slideshow, cutouts, diagrams and banners, in page order, with Fit and Size presets), `install_photos`, and on spec-sheet pages the `sheet_*` lists (points, logos, icons, top slideshow). These override the build's automatic choices. Uploads go to `assets/img/uploads/`. The build's `alt=` clean-up must never touch `data-prop-alt`.
 - The admin portal is `tools/portal.py` with `tools/templates/admin.html`, built from the git history. When a page field is added to the content JSON, extend `flatten()` in `portal.py` so the word-by-word diff shows it.
 - `notes/` is private working material and is ignored by git. Never commit it and never put secrets, webhook addresses or email addresses of real people in the repository.
 
 ## Names and facts
 
-- Always write the brand and product names in full: Light Efficient Design, RemPhos, Solera; LBI G1, LBI G2, LBI 65, LBI MAX, LBI Color Palette, LBI Color Palette+, LBI Color PaletteX, LBI 65 Color Palette+. "Palette+" and "PaletteX" have no space before the + or X. Never shorten a name to "Palette+" or "the Color Palette" in visible text.
-- The eight LBI variants are listed in that order everywhere: LBI G1 (the economical LBI, still sold) first, LBI G2 second; the LBI Family Overview opens on LBI G2. 3 ft bars exist only for LBI G1, LBI G2 and LBI 65.
+- Always write the brand and product names in full, as the marketing team supplies them (Kcampbell, 2026-11-11): Light Efficient Design, RemPhos, Solera; LBI G1, LBI G2, LBI 65, LBI MAX, LBI Palette, LBI Palette+, LBI Palette DMX (coming soon), LBI 65 Palette+. "Palette+" has no space before the +. The old names (LBI Color Palette, LBI Color Palette+, LBI Color PaletteX, LBI 65 Color Palette+) were replaced on every page on 2026-11-11 and are never used again. Never shorten a name to "Palette+" or "the Palette" in visible text.
+- The LBI variants are listed in that order everywhere: LBI G1 (the economical LBI, still sold) first, LBI G2 second; the LBI Family Overview opens on LBI G2. The home page lists LBI G1, LBI G2, LBI 65, LBI MAX, LBI Palette, LBI Palette+ and LBI Palette DMX, without the LBI 65 Palette+. 3 ft bars exist only for LBI G1, LBI G2 and LBI 65.
 - Never state a count of SKUs, models or part numbers anywhere on the site.
-- LBI Color Palette+ ships in white mode with the same switches as LBI G2 and is DLC listed that way; color needs the optional remote, sold separately. No LBI 65 product has physical switches; they come with a remote.
+- LBI Palette+ ships in white mode with the same switches as LBI G2 and is DLC listed that way; color needs the optional remote, sold separately. No LBI 65 product has physical switches; they come with a remote.
 - The spec sheets are the source of truth. A product page is rebuilt from its spec sheet only when the team sends that sheet, and the page needs far less than the sheet: a visitor who wants everything downloads the sheet.
 - Open questions about catalog data go to David rather than being guessed.
 
 ## Look and feel
 
+- Never modify a logo: no splitting, recolouring, redrawing, cropping into the artwork, re-arranging or animating. Use the files exactly as the team supplies them (the header uses `assets/img/brand/led-logo-original.png`); scaling to size is the only change allowed.
 - "Less is more": a clean, Apple-like, fully responsive site. Nothing busy. A cluttered page loses sections; it is not compressed.
+- Brand styles live in one file, `content/brand/styles.json` ("Brand styles" in CloudCannon, shown on the sandbox's `style-guide.html`): the font, the text colours with their dark-mode versions, the brand colours and the text sizes. The build turns it into `assets/css/brand.css` and the editor's Styles menu, and refuses a text colour under 4.5:1 contrast or a size under 12 px. Use only those; never hard-code a new colour, size or font in a template or page. A one-off departure needs the requester's go-ahead and an entry in the file's `exceptions` list (where, what, why, approved by, date), which the style guide shows.
 - High contrast everywhere, no text smaller than 12 px, the catalog fonts. Product heroes show the whole product, never cropped; no blurry or oversized images; boxes in a row are equal size; pages fill a laptop screen (content up to 1760 px wide with fluid gutters) and work on an iPhone. Check every change at about 1440 px and 390 px wide before pushing.
 - Product page order: compact auto-sliding imagery (product-only shots first, then in use); "At a glance" as a short list of the cut sheet's five points with its logos and symbols; video, install photos and case studies near the top; specifications and the part-number table with one IES download per row; "Next steps, with a little help from Eddy" at the very bottom; "More from" as a small auto-scrolling strip.
 - Every page has its own share image under `assets/img/share/`, generated by the build. Titles, descriptions and structured data come from `build.py`; a new page needs its SEO title and lead there.
@@ -52,12 +57,12 @@ The repository is the source of the Light Efficient Design website: the Light Ef
 
 ## Eddy, the mascot
 
-- Eddy (Edison) is a 5 mm LED named after Thomas Edison, created by Senior Creative Director Amy George. The LED in the header logo is Eddy; the welcome tour is `assets/js/tour.js` with its styles at the end of `assets/css/site.css`.
+- Eddy (Edison) is a 5 mm LED named after Thomas Edison, created by Senior Creative Director Amy George. The LED in the logo is Eddy, but the logo itself is never animated or split to make him move; the welcome tour is `assets/js/tour.js` with its styles at the end of `assets/css/site.css`.
 - Any Eddy drawn by Claude must look like Amy's stickers (see `assets/img/eddy/`): the same head-to-body proportions, eye, pins and gloves. Before calling it done, show the person a large side-by-side with a sticker. When Amy supplies a plain Eddy, use her art directly instead of drawing.
 - Eddy's recorded voice lines are MP3 files under `assets/audio/tour/`; to change a line, replace the file with the same name.
 
 ## Before you finish
 
 1. Rebuild locally and look at the changed pages at laptop and phone widths.
-2. Search the new copy for short Palette names and for digit + "SKUs", "models" or "part numbers".
+2. Search the new copy for short or retired Palette names and for digit + "SKUs", "models" or "part numbers".
 3. Commit as the requester with a plain-sentence subject, push to `main`, and tell the person the sandbox link and that the change waits for approval on the portal.

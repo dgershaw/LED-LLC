@@ -7,6 +7,7 @@
   "use strict";
   if (!window.matchMedia) return;
   if (/[?&]tourframe\b/.test(location.search)) return;            // a page shown inside the touch-screen tour never runs its own
+  if (window.inEditorMode || /\.cloudvent\.net$/.test(location.hostname)) return;   // not while the team edits the page in CloudCannon
   // Touch screens (iPhone, iPad) only let a page start sound after a tap, and every page change locks it again. So there the
   // tour never leaves the home page: other pages open in a full-screen frame under Eddy, and his voice runs straight through
   // (David, 2026-10-09: "make this one continuous thing"). Laptops still move from page to page.
@@ -28,7 +29,7 @@
 
   /* The stops. `at` is what the spotlight frames, `do` opens or closes the Products menu first, `pose` adds a wave. */
   const STOPS = [
-    { key: "welcome", page: "index.html", at: ".home-hero h1", pose: "wave", fun: "juggle", hold: 7600, bare: true,
+    { key: "welcome", page: "index.html", at: ".home-hero h1, .hm-banner", pose: "wave", fun: "juggle", hold: 7600, bare: true,
       say: "<strong>Welcome to our new home!</strong> Light Efficient Design, RemPhos and Solera, all under one roof. Let me show you around." },
     { key: "products", page: "index.html", at: "#mega-products .mega-cols", do: "menu",
       say: "Everything we make lives under <strong>Products</strong>, sorted the way the trade thinks: lamps, indoor fixtures, retrofit kits, outdoor and solar, controls." },
@@ -46,8 +47,8 @@
       say: "Then the <strong>part numbers</strong>, with spec sheets, instructions and IES files right in the table." },
     { key: "next", page: "shoe-box-wall-pack.html", at: ".next-steps", pose: "wave",
       say: "Need a sample, a rebate or your local rep? That's my department, at the bottom of every page." },
-    { key: "home", page: "index.html", at: ".hdr-eddy", pose: "wave", fun: "wiggle", last: true,
-      say: "That's the tour! I live in the logo, so whenever I wiggle, click me and I'll lend a hand. <strong>Welcome home.</strong>" },
+    { key: "home", page: "index.html", at: ".hdr-logo", pose: "wave", last: true,
+      say: "That's the tour! I'm the LED in our logo, and I'm always around to lend a hand. <strong>Welcome home.</strong>" },
   ];
 
   /* Eddy as a drawing, so he can point, wave, blink and hop. Proportions follow Amy George's stickers. */
@@ -168,7 +169,7 @@
     fit(true);
     if (arriving) { arriving = false; requestAnimationFrame(() => requestAnimationFrame(() => guide && guide.classList.remove("dash-in"))); }
     if (st.fun === "juggle" && !reduce) funIntro(); else if (st.pose === "wave") wave();
-    if (st.fun === "flip") flipSwitches(); else if (st.fun === "pick") pickBar(); else if (st.fun === "wiggle") wiggleLogo();
+    if (st.fun === "flip") flipSwitches(); else if (st.fun === "pick") pickBar();
     speak(st);
     startTimer(Math.max(duration(st.say), st.hold || 0));
     try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ }
@@ -417,13 +418,6 @@
       undo.push(() => size(s0));
     }
   }
-  /* The last stop: the header LED wiggles as Eddy says "whenever I wiggle", and once more on "click me" (David, 2026-10-09). */
-  function wiggleLogo() {
-    const led = $(".hdr-eddy"); if (!led) return;
-    const go = twice => { led.classList.remove("wiggle", "twice"); void led.offsetWidth; led.classList.toggle("twice", twice); led.classList.add("wiggle"); };
-    funT.push(setTimeout(() => go(true), 2700), setTimeout(() => go(false), 5100));
-  }
-
   /* ----- Pace: a line stays up long enough to read, longer when spoken; hovering the bubble pauses it. ----- */
   function duration(s) {
     const n = s.replace(/<[^>]+>/g, "").length;

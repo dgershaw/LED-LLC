@@ -14,7 +14,7 @@ The page also shows, for each edit, the old and new wording side by side; which 
 sandbox and the live site (compared from the two builds in --out); an inventory of every document by product with
 what is missing; and the permanent address and a QR code for every document (David, 2026-10-13).
 """
-import argparse, difflib, hashlib, html as H, json, re, subprocess, sys
+import argparse, difflib, hashlib, html as H, json, os, re, subprocess, sys
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -27,8 +27,11 @@ import build as B   # the generator's menu, product names and version rules; imp
 
 TZ = ZoneInfo("America/Chicago")          # Cary, Illinois
 CMS = "https://app.pagescms.org/dgershaw/led-llc/main"
-LIVE_URL = "https://dgershaw.github.io/LED-LLC/"
-SANDBOX_URL = LIVE_URL + "sandbox/"
+# Where the two copies are served. tools/hosting.json holds the addresses once the site is on Cloudflare Pages (the live
+# site and the sandbox are separate sites there); while it is empty they are the GitHub Pages addresses.
+HOSTING = json.loads((HERE / "hosting.json").read_text()) if (HERE / "hosting.json").is_file() else {}
+LIVE_URL = (HOSTING.get("live_url") or "https://dgershaw.github.io/LED-LLC/").rstrip("/") + "/"
+SANDBOX_URL = (HOSTING.get("sandbox_url") or os.environ.get("SANDBOX_URL") or LIVE_URL + "sandbox/").rstrip("/") + "/"
 FINAL_URL = B.SITE_URL                    # where the permanent addresses point once the site goes live on its own domain
 PEOPLE = {"dgershaw": "David", "github-actions[bot]": "The site builder"}
 KINDS = {"spec-sheets": "spec sheet", "instructions": "installation instructions", "sell-sheets": "sell sheet",
@@ -99,6 +102,10 @@ def describe(c, main):
         verb = {"A": "Uploaded", "M": "Replaced", "D": "Removed", "R": "Renamed"}.get(status, "Changed")
         if path.startswith("content/pages/"):
             lines.append(f"Edited the {page_title(main, path)} page")
+        elif path.startswith("content/home/"):
+            lines.append("Edited the home page")
+        elif path.startswith("content/brand/"):
+            lines.append("Edited the brand styles")
         elif path.startswith("assets/docs/"):
             kind = KINDS.get(p.parts[2], "document") if len(p.parts) > 2 else "document"
             product = p.parts[4] if len(p.parts) > 5 else ""
@@ -132,6 +139,19 @@ def flatten(d):
         if k in d:
             scalars.append((label, text(d[k])))
     lists.append(("Key points", [text(x) for x in d.get("callouts", [])]))
+    if "sheet_points" in d:
+        lists.append(("Spec-sheet points", [text(x) for x in d.get("sheet_points", [])]))
+    if isinstance(d.get("sheet_marks"), list):
+        lists.append(("Listing and warranty logos", [text({k: x.get(k) for k in ("logo", "alt", "height")}) for x in d["sheet_marks"] if isinstance(x, dict)]))
+    if isinstance(d.get("sheet_flex"), dict):
+        scalars.append(("SuperFlex panel", text({k: d["sheet_flex"].get(k) for k in ("logo", "alt", "headline", "note")})))
+    if isinstance(d.get("sheet_icons"), list):
+        lists.append(("Icon row", [text({k: x.get(k) for k in ("icon", "value", "caption", "alt")}) for x in d["sheet_icons"] if isinstance(x, dict)]))
+    if "sheet_plug" in d:
+        scalars.append(("Sensor line", text(d["sheet_plug"])))
+    for k, label in (("photos", "Photos"), ("install_photos", "Installation photos"), ("sheet_slides", "Top slideshow")):
+        if isinstance(d.get(k), list) and "blocks" not in d:
+            lists.append((label, [text({f: x.get(f) for f in ("image", "alt", "caption", "show_as", "fit", "size", "focus", "zoom", "photo_width", "photo_align")}) for x in d[k] if isinstance(x, dict)]))
     lists.append(("At a glance", [text(x) for x in d.get("features", [])]))
     for t in d.get("tables", []):
         name = short(text(t.get("title")) or "Table")
@@ -140,7 +160,60 @@ def flatten(d):
         lists.append((f"{name}: rows", [text(r) for r in t.get("rows", [])]))
         lists.append((f"{name}: notes", [text(x) for x in t.get("notes", [])]))
     lists.append(("Footnotes", [text(x) for x in d.get("footnotes", [])]))
+    for k, label in (("hero_image", "Main photo"), ("lbi_image", "LBI photo")):   # {src, alt}, edited in CloudCannon or Pages CMS
+        if isinstance(d.get(k), dict):
+            scalars.append((label, text(d[k].get("src"))))
+            scalars.append((f"{label}: description", text(d[k].get("alt"))))
+    # the home page file (content/home/index.json)
+    for k, label in (("eyebrow", "Line above the headline"), ("headline_tail", "Second line of the headline"), ("lede", "Home introduction"),
+                     ("brands_title", "Brands heading"), ("brands_text", "Brands text"), ("lbi_title", "LBI heading"), ("lbi_text", "LBI text"),
+                     ("finder_title", "Replacing heading"), ("finder_text", "Replacing text"),
+                     ("resources_title", "Resources heading"), ("resources_text", "Resources text")):
+        if k in d:
+            scalars.append((label, text(d[k])))
+    for i, m in enumerate(d.get("mosaic", []) if isinstance(d.get("mosaic"), list) else []):
+        for k, label in (("image", "photo"), ("alt", "photo description"), ("caption", "caption"), ("link", "link"), ("position", "photo focus")):
+            scalars.append((f"Photo tile {i + 1}: {label}", text(m.get(k))))
+    # the home page as blocks (since 2026-11-03): every setting of every block, so moves and resizes show too
+    for i, blk in enumerate(d.get("blocks", []) if isinstance(d.get("blocks"), list) else []):
+        if not isinstance(blk, dict):
+            continue
+        name = f"Block {i + 1} ({HOME_KINDS.get(blk.get('_type'), blk.get('_type') or 'block')})"
+        for k, v in blk.items():
+            if k == "_type":
+                continue
+            if isinstance(v, list) and v and all(isinstance(x, dict) for x in v):
+                lists.append((f"{name}: {k.replace('_', ' ')}", [text(x) for x in v]))
+            else:
+                scalars.append((f"{name}: {k.replace('_', ' ')}", text(v) if not isinstance(v, (int, float, bool)) else str(v)))
+    # the brand styles file (content/brand/styles.json, since 2026-11-11)
+    if isinstance(d.get("fonts"), dict):
+        scalars.append(("Font", text(d["fonts"].get("text_font"))))
+        scalars.append(("Web font", text(d["fonts"].get("web_font"))))
+    for k, label, fields in (("text_colors", "Text colours", ("name", "light", "dark", "accent_for")), ("brand_colors", "Brand colours", ("name", "color")),
+                             ("text_sizes", "Text sizes", ("name", "rem")), ("exceptions", "Approved exceptions", ("where", "what", "approved_by", "date"))):
+        if isinstance(d.get(k), list):
+            lists.append((label, [text({f: x.get(f) for f in fields}) for x in d[k] if isinstance(x, dict)]))
+    # product page sections (since 2026-11-11): the order, Show on, and every setting of the blocks added there
+    for i, blk in enumerate(d.get("sections", []) if isinstance(d.get("sections"), list) else []):
+        if not isinstance(blk, dict):
+            continue
+        name = f"Section {i + 1} ({SECTION_KINDS.get(blk.get('_type'), HOME_KINDS.get(blk.get('_type'), blk.get('_type') or 'section'))})"
+        for k, v in blk.items():
+            if k == "_type":
+                continue
+            if isinstance(v, list) and v and all(isinstance(x, dict) for x in v):
+                lists.append((f"{name}: {k.replace('_', ' ')}", [text(x) for x in v]))
+            else:
+                scalars.append((f"{name}: {k.replace('_', ' ')}", text(v) if not isinstance(v, (int, float, bool)) else str(v)))
     return scalars, lists
+
+SECTION_KINDS = {"media": "Video and installation photos", "photos": "Photos", "highlights": "Key points", "case_studies": "Case studies",
+                 "glance": "At a glance", "eddy": "Eddy"}
+HOME_KINDS = {"hero": "Headline", "photo_grid": "Photo grid", "brands": "Brand cards", "feature": "Photo and text", "image": "Photo",
+              "text": "Text", "finder": "What are you replacing?", "next_steps": "Eddy's next steps", "resources": "Resources",
+              "banner": "Rotating banner", "statement": "Statement", "brand_columns": "Brand columns", "lbi_list": "LBI list",
+              "replace_grid": "Button grid", "divider": "Divider line", "help_cards": "Blue cards"}
 
 def wdiff(a, b):
     """The old and the new text as HTML, with what went away struck through and what came in underlined."""
@@ -205,16 +278,22 @@ def details(c, main):
     pages = sum(1 for _, p in c["files"] if p.startswith("content/pages/"))
     for status, path in c["files"]:
         slug = slug_of(path)
-        if slug and slug not in seen:
+        if path.startswith("content/home/") and "home" not in seen:
+            seen.add("home")
+            links.append(("Open the home page", SANDBOX_URL))
+        elif path.startswith("content/brand/") and "brand" not in seen:
+            seen.add("brand")
+            links.append(("Open the brand styles", SANDBOX_URL + "style-guide.html"))
+        elif slug and slug not in seen:
             seen.add(slug)
             links.append((f"Open the {B.NAV_TITLES.get(slug, slug.replace('-', ' ').title())} page", f"{SANDBOX_URL}{slug}.html"))
         elif (path.startswith("assets/docs/") or path.startswith("assets/ies/")) and status != "D" and Path(path).suffix.lower() in B.DOWNLOAD_EXTS:
             links.append((f"Open {Path(path).name}", SANDBOX_URL + B.url_path(B.public_path(path))))
-        if path.startswith("content/pages/") and path.endswith(".json") and len(diff) < MAX_DIFF_ROWS:
+        if path.startswith(("content/pages/", "content/home/", "content/brand/")) and path.endswith(".json") and len(diff) < MAX_DIFF_ROWS:
             before = file_at(main, f"{c['sha']}^", path) if c["parents"] else ""
             after = file_at(main, c["sha"], path) if status != "D" else ""
             slug = Path(path).stem
-            prefix = (B.NAV_TITLES.get(slug, slug.replace("-", " ").title()) + ": ") if pages > 1 else ""
+            prefix = ("Home page: " if path.startswith("content/home/") else "Brand styles: " if path.startswith("content/brand/") else B.NAV_TITLES.get(slug, slug.replace("-", " ").title()) + ": ") if pages > 1 else ""
             diff += [(prefix + f, a, b) for f, a, b in page_diff(before, after)]
     return links[:6], diff[:MAX_DIFF_ROWS]
 

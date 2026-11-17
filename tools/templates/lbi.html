@@ -24,6 +24,13 @@
     </div>
   </section>
 {% endif %}
+{#- The project-wide bill of materials lives on its own page (David, 2026-11-05); this band points to it. #}
+<section class="band alt pb-promo" aria-labelledby="pb-promo-h">
+  <div class="wrap" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px">
+    <div style="max-width:70ch"><p class="eyebrow brand">LBI Project Builder</p><h2 id="pb-promo-h" style="font-size:var(--step-3);font-weight:700;margin-top:6px">Specifying a whole job?</h2><p style="color:var(--muted);margin-top:8px;font-size:var(--step-1)">Describe each area, retrofit or new, and get every bar, linking cable, connector, power cable, bracket and sensor in one list to send for a quote.</p></div>
+    <a class="btn btn-primary" href="lbi-project-builder.html">Build a project list</a>
+  </div>
+</section>
 <div class="wrap" style="padding-block:clamp(40px,6vw,64px)">{{ P.next_steps("Ready to put LBI on your next job?", "Request a sample, check rebates in your area, or reach your local rep.") }}</div>
 {{ lbi_tail }}
 {% if lbi_fine %}<div class="wrap"><p class="footnotes" style="margin-bottom:40px">{{ lbi_fine }}</p></div>{% endif %}

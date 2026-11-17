@@ -236,7 +236,7 @@
         "RP-TTF",
         "RP-TTV"
       ],
-      "use": "callout (prefer custom/troffer-retrofit-kits-fixtures-hero.jpg for a hero without the text)"
+      "use": "callout (prefer custom/troffer-retrofit-kits-fixtures-hero.png for a hero without the text)"
     },
     {
       "file": "p27-b3.jpg",
@@ -259,9 +259,9 @@
       "use": "superseded by custom/troffer-retrofit-kits-fixtures-rp-ttf.jpg and custom/troffer-retrofit-kits-fixtures-rp-ttv.jpg (split, captions removed)"
     },
     {
-      "file": "custom/troffer-retrofit-kits-fixtures-hero.jpg",
+      "file": "custom/troffer-retrofit-kits-fixtures-hero.png",
       "kind": "hero",
-      "shows": "RP-TTF flat-panel troffer kit at an angle on the blue dotted-wave background, re-cropped from block 2 with the NEED AIR RETURN callout text painted out in the flat background blue; panel shown whole (1331 x 604)",
+      "shows": "RP-TTF flat-panel troffer kit at an angle; cut out of block 2 onto a transparent background, panel shown whole (835 x 393)",
       "products": [
         "RP-TTF",
         "RP-TTV"

@@ -30,8 +30,8 @@
         "Control"
       ],
       "rows": [
-        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ | In-line microwave occupancy and daylight harvesting sensor",
-        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65 | In-line passive infrared occupancy and daylight harvesting sensor",
+        "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ | In-line microwave occupancy and daylight harvesting sensor",
+        "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65 | In-line passive infrared occupancy and daylight harvesting sensor",
         "LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 | Microwave occupancy and daylight hold-off sensor",
         "DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 | Limited-range microwave occupancy and daylight hold-off sensor",
         "TTV / TTF | Passive infrared occupancy and daylight harvesting sensor",
@@ -51,9 +51,9 @@
         "Control"
       ],
       "rows": [
-        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ | In-line Silvair™ Bluetooth microwave motion and daylight harvesting sensor",
-        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65 | In-line Silvair™ Bluetooth control node",
-        "LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65 | In-line Silvair™ Bluetooth passive infrared motion and daylight harvesting sensor",
+        "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ | In-line Silvair™ Bluetooth microwave motion and daylight harvesting sensor",
+        "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65 | In-line Silvair™ Bluetooth control node",
+        "LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65 | In-line Silvair™ Bluetooth passive infrared motion and daylight harvesting sensor",
         "LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 | Silvair™ Bluetooth microwave motion and daylight harvesting sensor",
         "LBI MAX / LIVC / DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 | Silvair™ Bluetooth node w/ external antenna",
         "DRUMS / SCONCE / LEDCR / LEDSR / LBE / TYPE C T5 & T8 / TTV / TTF | Silvair™ Bluetooth control node",
@@ -63,7 +63,7 @@
       ],
       "notes": [
         "Connect and control lighting fixtures via Bluetooth mesh w/ the Silvair app — available for iOS and Android on the App Store and Google Play (statement printed under the table beside the RemPhos x Silvair robot logo)",
-        "Merged product cells repeated: 'LBI / LBI-G2 / LBI COLOR PALETTE / LBI COLOR PALETTE+ / LBI 65' spans two rows, 'LBI MAX / LIVC / ...' spans two rows, 'LBE / TYPE C T5 & T8' spans two rows",
+        "Merged product cells repeated: 'LBI / LBI-G2 / LBI PALETTE / LBI PALETTE+ / LBI 65' spans two rows, 'LBI MAX / LIVC / ...' spans two rows, 'LBE / TYPE C T5 & T8' spans two rows",
         "Catalog prints the control descriptions in all caps and marks Silvair with a ™"
       ],
       "pdfPage": 14
@@ -72,5 +72,48 @@
   "footnotes": [
     "PDF page 14 is a two-page spread; only the left half carries a printed page number (24), the right half (tables) is unnumbered and taken as 25",
     "No part numbers, wattages or listings appear on this spread; it is a compatibility matrix of control options per luminaire family"
+  ],
+  "hero_image": {
+    "src": "assets/img/cat/lighting-controls/hero-products.jpg",
+    "alt": "RemPhos in-line occupancy sensors for the LBI G2 and LBI 65, and the IR23 sensor remote"
+  },
+  "photos": [
+    {
+      "image": "assets/img/cat/lighting-controls/p14-b4.jpg",
+      "alt": "Hand holding a smartphone running the Silvair app ('Corridor' zone: A scene / B scene, On / Off / Auto, dimming sliders for All luminaires, Luminaire 1, Luminaire 2) in a dim open-plan office; clean photo, no caption",
+      "caption": "Hand holding a smartphone running the Silvair app",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    },
+    {
+      "image": "assets/img/cat/lighting-controls/p14-b1.jpg",
+      "alt": "White wall-mounted single-button switch / wall controller on a grey wall with a blurred open-plan office behind; clean stock photo, no caption",
+      "caption": "White wall-mounted single-button switch / wall controller",
+      "show_as": "slideshow",
+      "fit": "auto",
+      "size": "auto",
+      "focus": ""
+    }
+  ],
+  "install_photos": [],
+  "sections": [
+    {
+      "_type": "photos",
+      "show_on": "all"
+    },
+    {
+      "_type": "highlights",
+      "show_on": "all"
+    },
+    {
+      "_type": "glance",
+      "show_on": "all"
+    },
+    {
+      "_type": "eddy",
+      "show_on": "all"
+    }
   ]
 }

@@ -270,7 +270,7 @@ input[type="range"] { width: 100%; accent-color: #f4f5f8; }
 .hue-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 3px solid #111; cursor: pointer; }
 .hue-slider::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 3px solid #111; cursor: pointer; }
 
-/* DMX console (PaletteX) */
+/* DMX console (LBI Palette DMX) */
 .console {
   display: grid; grid-template-columns: repeat(5, minmax(52px, 1fr)) minmax(0, 1.5fr); gap: 14px; align-items: stretch;
   background: #101217; border: 1px solid #2a2e38; border-radius: 16px; padding: 16px;
@@ -278,14 +278,14 @@ input[type="range"] { width: 100%; accent-color: #f4f5f8; }
 @media (max-width: 640px) { .console { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; padding: 12px; } .console .dmx-side { grid-column: 1 / -1; } .fader output { min-width: 0; width: 100%; padding: 2px 3px; font-size: 0.75rem; } }
 .fader { display: grid; justify-items: center; gap: 8px; }
 .fader .ch { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--stage-muted); }
-.fader output { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--stage-ink); background: #05060a; border: 1px solid #262a33; border-radius: 6px; padding: 2px 6px; min-width: 3.4em; text-align: center; }
+.fader output { font-family: var(--font-mono); font-weight: var(--mono-weight); font-size: 0.8125rem; color: var(--stage-ink); background: #05060a; border: 1px solid #262a33; border-radius: 6px; padding: 2px 6px; min-width: 3.4em; text-align: center; }
 .fader .slot { position: relative; height: 170px; width: 100%; display: grid; place-items: center; }
 .fader input[type="range"] {
   writing-mode: vertical-lr; direction: rtl; width: 28px; height: 160px; accent-color: var(--fc, #f4f5f8); cursor: pointer;
 }
 .fader .name { font-size: 0.8125rem; font-weight: 700; color: var(--fc, var(--stage-ink)); text-align: center; line-height: 1.15; }
 .dmx-side { display: grid; gap: 12px; align-content: start; }
-.dmx-addr { font-family: var(--font-mono); font-size: 1.5rem; color: #ff5b3a; background: #05060a; border: 1px solid #262a33; border-radius: 8px; padding: 8px 12px; letter-spacing: 0.08em; text-shadow: 0 0 10px #ff5b3a88; }
+.dmx-addr { font-family: var(--font-mono); font-weight: var(--mono-weight); font-size: 1.5rem; color: #ff5b3a; background: #05060a; border: 1px solid #262a33; border-radius: 8px; padding: 8px 12px; letter-spacing: 0.08em; text-shadow: 0 0 10px #ff5b3a88; }
 .scene-btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: 8px; }
 .scene-btns button { border: 1px solid #2f3440; background: #171a21; color: var(--stage-ink); border-radius: 8px; padding: 7px 6px; white-space: nowrap; font-size: 0.8125rem; cursor: pointer; }
 .scene-btns button:hover { border-color: #5a6070; }
@@ -469,7 +469,7 @@ table.cmp { border-collapse: collapse; width: 100%; min-width: 860px; font-size:
 .acc-name { font-size: 0.875rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
 .acc-name small { display: block; font-size: 0.8125rem; font-weight: 500; color: var(--muted); }
 
-/* LBI 65 + LBI 65 Color Palette+: no switches on the bar, everything is set with the included remote */
+/* LBI 65 + LBI 65 Palette+: no switches on the bar, everything is set with the included remote */
 .remote.ip65 { width: 264px; gap: 14px; padding: 18px 16px 22px; }
 .remote.ip65 .rgrp { display: grid; gap: 7px; }
 .remote.ip65 .rlab { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #4a4e57; text-align: center; }
@@ -507,10 +507,6 @@ html { scroll-padding-top: calc(var(--safe-top, 0px) + var(--header-h) + var(--s
   .sw-group:last-child { flex-grow: 1.35; }
   .sw-btn { flex: 1 1 0; min-width: 0; padding: 6px 4px; font-size: 0.75rem; line-height: 1.12; text-align: center; text-wrap: balance; }
 }
-
-/* Scroll catch at the configurator (lbi.js): the page is locked for a moment. A stable gutter keeps the layout from shifting when the scrollbar goes away. */
-html { scrollbar-gutter: stable; }
-html.scroll-hold { overflow: hidden; }
 
 /* The LBI 65's real remote (David, 2026-10-09): white body, power and RESET, a grey adjust panel, a dark color temperature panel,
    an outlined PW panel and the RemPhos wordmark, after the drawing on the spec sheet. */
