@@ -201,7 +201,19 @@ def web_path(p):
 # draws each kind. HOME_BLOCKS holds every kind's settings and defaults; HOME_NEW is what a block starts as when added,
 # and must match _structures.home_blocks in cloudcannon.config.yml. On phones the blocks stack and grids fold to two columns.
 HOME_FILE = ROOT / "content" / "home" / "index.json"
-HOME = json.loads(HOME_FILE.read_text())
+def plain_fields(v, key=""):
+    """The visual editor sometimes saves a typed > or & in a one-line field as &gt; or &amp; (it did on 2026-11-13, and
+    the home page showed "EXPLORE REMPHOS &GT;"). Plain fields are read back as the characters themselves; formatted
+    text boxes (text, lede, intro) keep their HTML and go through rich()."""
+    if isinstance(v, dict):
+        return {k: plain_fields(x, k) for k, x in v.items()}
+    if isinstance(v, list):
+        return [plain_fields(x, key) for x in v]
+    if isinstance(v, str) and key not in ("text", "lede", "intro") and "&" in v:
+        return H.unescape(v)
+    return v
+
+HOME = plain_fields(json.loads(HOME_FILE.read_text()))
 HOME_BLOCKS = {
     "hero": dict(align="center", eyebrow="", headline="", headline_tail="", values=[], lede="", buttons=[]),
     "photo_grid": dict(title="", text="", row_height="medium", tiles=[]),
